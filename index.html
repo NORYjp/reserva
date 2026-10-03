@@ -68,7 +68,7 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 <div class="opts" id="opts"></div>
 <div class="cal-h"><button id="prev">‹</button><div id="mon"></div><button id="next">›</button></div>
 <div class="grid" id="grid"></div>
-<div class="hint">Cerrado: lunes, 1er y 3er martes ・ 休み：毎週月曜・第1火曜・第3火曜</div>
+<div class="hint">Cerrado: lunes, 1er y 3er martes, 3er domingo ・ 休み：毎週月曜・第1火曜・第3火曜・第3日曜</div>
 
 <div class="step" style="border:none;margin-top:12px;font-size:15px">Hora <small>Time・時間</small></div>
 <div class="times" id="times"><div class="hint" style="grid-column:1/-1">Primero elija el día ・ 先に日にちを選んでください</div></div>
@@ -121,7 +121,7 @@ function nowMx(){const s=new Date().toLocaleString('en-US',{timeZone:'America/Me
 const NOW=nowMx(); const TODAY=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
 const LAST=new Date(TODAY); LAST.setDate(LAST.getDate()+60);
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-function closed(d){const w=d.getDay(),n=Math.ceil(d.getDate()/7);if(w===1)return true;if(w===2&&(n===1||n===3))return true;return EXTRA.indexOf(ymd(d))>=0;}
+function closed(d){const w=d.getDay(),n=Math.ceil(d.getDate()/7);if(w===1)return true;if(w===2&&(n===1||n===3))return true;if(w===0&&n===3)return true;return EXTRA.indexOf(ymd(d))>=0;}
 function dur(){let t=0;const perm=sel.menus.indexOf(4)>=0;sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});return t;}
 const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
 function slots(d){const w=d.getDay();let last;if(w===0)last=OPEN;else if(CLOSE[w])last=CLOSE[w]-Math.max(dur(),30);else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
