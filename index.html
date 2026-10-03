@@ -27,6 +27,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .t{border:1.5px solid #222;border-radius:10px;padding:10px 0;background:#fff;font:inherit;font-size:16px;cursor:pointer}
 .t.on{background:#1d1d1d;color:#fff}
 .hint{font-size:13px;color:#888;font-family:'Kaisei Decol',serif}
+.inp{display:block;width:100%;border:1.5px solid #ccc;border-radius:10px;padding:11px 10px;font:inherit;font-size:16px;margin-top:8px}
 textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font:inherit;font-size:15px;min-height:60px}
 .go{display:block;width:100%;margin-top:18px;padding:15px;border:none;border-radius:14px;background:#b00020;color:#fff;font:inherit;font-size:18px;cursor:pointer}
 .go:disabled{background:#ccc}
@@ -70,7 +71,12 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 <div class="step" style="border:none;margin-top:12px;font-size:15px">Hora <small>Time・時間</small></div>
 <div class="times" id="times"><div class="hint" style="grid-column:1/-1">Primero elija el día ・ 先に日にちを選んでください</div></div>
 
-<div class="step">3. Comentario <small>Note・ご要望（任意）</small></div>
+<div class="step">3. Contacto <small>Contact・ご連絡先</small></div>
+<input id="tel" class="inp" type="tel" inputmode="tel" autocomplete="tel" placeholder="Celular / Mobile / 携帯番号">
+<input id="mail" class="inp" type="email" inputmode="email" autocomplete="email" placeholder="Correo / Email / メール">
+<div class="hint" style="margin-top:4px">Para la confirmación y el recordatorio por correo. ・ For confirmation &amp; reminder email. ・ 確定と前日のお知らせメールに使います。</div>
+
+<div class="step">4. Comentario <small>Note・ご要望（任意）</small></div>
 <textarea id="note" placeholder="Opcional / Optional / 任意"></textarea>
 
 <div class="sum" id="sum">—</div>
@@ -141,9 +147,12 @@ function upd(){const ms=menuText();const o=sel.opts.filter(x=>x.date&&x.time);
  document.getElementById('photoNote').style.display=needPhoto()?'block':'none';
  document.getElementById('sum').innerHTML=(ms||'— Menú')+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)].split(' ・ ')[0]+': '+fmtOpt(x)).join('<br>'):'— Día / Hora');
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null);
- document.getElementById('go').disabled=!(ms&&colorOk&&sel.opts[0].date&&sel.opts[0].time&&ID);}
+ document.getElementById('go').disabled=!(ms&&colorOk&&sel.opts[0].date&&sel.opts[0].time&&ID&&telOk()&&mailOk());}
+function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'').length>=10;}
+function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
+['tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent='Enviando… ・ 送信中…';document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),note:document.getElementById('note').value})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>Solicitud recibida</h1><p>'+r.label.split(String.fromCharCode(10)).join('<br>')+'<br>'+menuText()+'</p>'+(needPhoto()?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+'<p>Le confirmaremos su cita por DM.<br>We will confirm by DM.<br>確定はDMでお知らせします。</p><a class="ig" href="https://ig.me/m/the_home_hair_re_creative">Volver a Instagram ・ インスタに戻る</a></div>';}
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>Solicitud recibida</h1><p>'+r.label.split(String.fromCharCode(10)).join('<br>')+'<br>'+menuText()+'</p>'+(needPhoto()?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+'<p>Le confirmaremos su cita por DM.<br>We will confirm by DM.<br>確定はDMでお知らせします。</p><a class="ig" href="https://ig.me/m/the_home_hair_re_creative">Volver a Instagram ・ インスタに戻る</a></div>';}
   else{b.disabled=false;b.textContent='Enviar solicitud ・ Send ・ 送る';document.getElementById('err').textContent='Error. Por favor escríbanos por DM. ・ エラー：DMでお知らせください';}}).catch(()=>{b.disabled=false;b.textContent='Enviar solicitud ・ Send ・ 送る';document.getElementById('err').textContent='Error. Por favor escríbanos por DM. ・ エラー：DMでお知らせください';});};
 if(!ID){document.getElementById('err').textContent='Abra esta página desde el botón en Instagram DM ・ インスタDMのボタンから開いてください';}
 drawOpts();drawCal();upd();
