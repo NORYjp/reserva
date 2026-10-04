@@ -1,0 +1,1462 @@
+{
+ "ok": true,
+ "updated": "2026-10-04",
+ "items": [
+  {
+   "id": "D001",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Creative Conditioner Teal",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con color, pensado para tonos turquesa.",
+    "en": "Color-depositing conditioner designed for turquoise shades.",
+    "ja": "ターコイズ系の色向けの色つきコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello decolorado que busca reflejos turquesa. Acondicionador con pigmento que busca mantener el tono y el brillo.",
+    "en": "For pre-lightened hair wanting turquoise tones. A pigmented conditioner that aims to keep color vivid and shiny.",
+    "ja": "ブリーチ毛でターコイズ系の色を楽しみたい人向け。色とツヤを保つことを目指す色つきコンディショナー。"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D001.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D002",
+   "line": "AUTHENTIC",
+   "name": "AUTHENTIC Moisturizing Balm",
+   "type": "バーム",
+   "size": "150ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Bálsamo hidratante pensado para cabello, rostro y cuerpo.",
+    "en": "Moisturizing balm designed for hair, face and body.",
+    "ja": "髪・顔・体に使える保湿バーム。"
+   },
+   "feat": {
+    "es": "Bálsamo multiuso con base de aceite para cabello, rostro y cuerpo. Textura suave pensada para hidratar.",
+    "en": "Multi-use oil-based balm for hair, face and body. A gentle texture designed for moisture.",
+    "ja": "髪・顔・体に使えるオイルベースの万能バーム。やさしい質感で保湿を目指す。"
+   },
+   "list": 915,
+   "salon": 824,
+   "photo": "productos/img/D002.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D003",
+   "line": "DEDE",
+   "name": "DEDE Shampoo Bar",
+   "type": "シャンプーバー",
+   "size": "100g",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo sólido pensado para uso diario; práctico para viajar.",
+    "en": "Solid shampoo designed for everyday use; handy for travel.",
+    "ja": "毎日使い向けの固形シャンプー。旅行にも便利。"
+   },
+   "feat": {
+    "es": "Shampoo sólido para lavado diario, ideal para cabello fino a medio. Espuma suave.",
+    "en": "Solid shampoo for daily washing, suited to fine to medium hair. Soft lather.",
+    "ja": "細い〜普通の髪の毎日洗い向けの固形シャンプー。やわらかい泡で洗える。"
+   },
+   "list": 635,
+   "salon": 572,
+   "photo": "productos/img/D003.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D004",
+   "line": "HEART OF GLASS",
+   "name": "HEART OF GLASS Rich Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello rubio, con mechas o decolorado.",
+    "en": "Conditioner designed for blonde, highlighted or bleached hair.",
+    "ja": "ブロンド・ハイライト・ブリーチ毛向けのコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello rubio natural o decolorado. Acondicionador nutritivo que busca un rubio más luminoso y fácil de desenredar; sin siliconas.",
+    "en": "For natural or lightened blonde hair. A nourishing conditioner aiming for brighter blondes and easier detangling; silicone-free.",
+    "ja": "生まれつき・ブリーチのブロンド向け。明るさとからまりにくさを目指す濃厚コンディショナー（シリコンなし）。"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D004.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D005",
+   "line": "HEART OF GLASS",
+   "name": "HEART OF GLASS Silkening Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello rubio, con mechas o decolorado.",
+    "en": "Shampoo designed for blonde, highlighted or bleached hair.",
+    "ja": "ブロンド・ハイライト・ブリーチ毛向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello rubio natural o teñido. Limpia con suavidad y ayuda a retirar residuos y minerales del agua que apagan el tono.",
+    "en": "For natural or dyed blonde hair. Gentle cleansing that helps remove buildup and water minerals that dull the tone.",
+    "ja": "ブロンド（地毛・カラー）向け。水のミネラルや残留物をやさしく落とし、色のくすみ対策を目指すシャンプー。"
+   },
+   "list": 780,
+   "salon": 702,
+   "photo": "productos/img/D005.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D006",
+   "line": "LIQUID SPELL",
+   "name": "Liquid Spell",
+   "type": "洗い流さないトリートメント（液）",
+   "size": "50ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Fluido sin enjuague pensado para cabello fino o debilitado.",
+    "en": "Leave-in fluid designed for fine or weakened hair.",
+    "ja": "細い髪・弱った髪向けの洗い流さない液。"
+   },
+   "feat": {
+    "es": "Tratamiento sin enjuague para cabello fino o sensibilizado. Busca dar cuerpo y un aspecto más fuerte y luminoso.",
+    "en": "Leave-in treatment for fine or sensitized hair. Aims to add body and a stronger, shinier look.",
+    "ja": "細い髪・傷みやすい髪向けの洗い流さないトリートメント。ハリ・コシとツヤを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D006.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D007",
+   "line": "LOVE",
+   "name": "LOVE Curl Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello rizado u ondulado.",
+    "en": "Shampoo designed for curly or wavy hair.",
+    "ja": "カール・ウェーブの髪向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello rizado u ondulado. Limpieza suave e hidratante que prepara el rizo para definir.",
+    "en": "For curly or wavy hair. Gentle, moisturizing cleanse that preps curls for definition.",
+    "ja": "カール・ウェーブの髪向け。うるおいを残してやさしく洗い、カールをまとめやすくすることを目指す。"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D007.jpg",
+   "stock": "ok",
+   "rank": 3
+  },
+  {
+   "id": "D008",
+   "line": "LOVE",
+   "name": "LOVE Curl Shampoo (Refill Pouch)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl"
+   ],
+   "desc": {
+    "es": "Recarga de shampoo pensado para cabello rizado u ondulado.",
+    "en": "Refill pouch of shampoo designed for curly or wavy hair.",
+    "ja": "カール・ウェーブの髪向けシャンプーの詰め替え。"
+   },
+   "feat": {
+    "es": "Recarga 500 ml. Para cabello rizado u ondulado. Limpieza suave e hidratante que prepara el rizo para definir.",
+    "en": "500 ml refill. For curly or wavy hair. Gentle, moisturizing cleanse that preps curls for definition.",
+    "ja": "500ml詰め替え。カール・ウェーブの髪向け。うるおいを残してやさしく洗い、カールをまとめやすくすることを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D008.jpg",
+   "stock": "low",
+   "rank": 3
+  },
+  {
+   "id": "D009",
+   "line": "LOVE",
+   "name": "LOVE Shampoo Bar",
+   "type": "シャンプーバー",
+   "size": "100g",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Shampoo sólido pensado para cabello con frizz; práctico para viajar.",
+    "en": "Solid shampoo designed for frizz-prone hair; handy for travel.",
+    "ja": "広がりやすい髪向けの固形シャンプー。旅行にも便利。"
+   },
+   "feat": {
+    "es": "Shampoo sólido para cabello con frizz o rebelde que busca un look más controlado. Espuma cremosa.",
+    "en": "Solid shampoo for frizzy or unruly hair seeking a smoother look. Creamy lather.",
+    "ja": "広がり・くせが気になる髪向けの固形シャンプー。クリーミーな泡でまとまりを目指す。"
+   },
+   "list": 635,
+   "salon": 572,
+   "photo": "productos/img/D009.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D010",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello con frizz o rebelde.",
+    "en": "Conditioner designed for frizzy or unruly hair.",
+    "ja": "くせ・広がりが気になる髪向けのコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello grueso o con frizz. Acondicionador de acción rápida que busca un cabello más suave, manejable y con brillo.",
+    "en": "For thick or frizzy hair. Quick-acting conditioner aiming for softer, more manageable, shinier hair.",
+    "ja": "太い髪・広がる髪向け。短時間でやわらかく、まとまり・ツヤのある髪を目指すコンディショナー。"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D010.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D011",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Conditioner",
+   "type": "コンディショナー（ミニ）",
+   "size": "75ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello con frizz; ideal para probar o viajar.",
+    "en": "Mini size designed for frizzy hair; good for trying or travel.",
+    "ja": "くせ・広がり向け。お試し・旅行用のミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello grueso o con frizz. Acondicionador de acción rápida que busca un cabello más suave, manejable y con brillo.",
+    "en": "Mini size. For thick or frizzy hair. Quick-acting conditioner aiming for softer, more manageable, shinier hair.",
+    "ja": "ミニサイズ。太い髪・広がる髪向け。短時間でやわらかく、まとまり・ツヤのある髪を目指すコンディショナー。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D011.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D012",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello con frizz o rebelde.",
+    "en": "Shampoo designed for frizzy or unruly hair.",
+    "ja": "くせ・広がりが気になる髪向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello con frizz o rebelde. Limpia con suavidad buscando un acabado liso natural sin apelmazar.",
+    "en": "For frizzy or unruly hair. Gentle cleanse aiming for a naturally smooth finish without weighing hair down.",
+    "ja": "広がり・くせが気になる髪向け。重くせず、自然になめらかな仕上がりを目指すシャンプー。"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D012.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D013",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Shampoo",
+   "type": "シャンプー（ミニ）",
+   "size": "75ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello con frizz; ideal para probar o viajar.",
+    "en": "Mini size designed for frizzy hair; good for trying or travel.",
+    "ja": "くせ・広がり向け。お試し・旅行用のミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello con frizz o rebelde. Limpia con suavidad buscando un acabado liso natural sin apelmazar.",
+    "en": "Mini size. For frizzy or unruly hair. Gentle cleanse aiming for a naturally smooth finish without weighing hair down.",
+    "ja": "ミニサイズ。広がり・くせが気になる髪向け。重くせず、自然になめらかな仕上がりを目指すシャンプー。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D013.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D014",
+   "line": "MINU",
+   "name": "MINU Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello teñido.",
+    "en": "Conditioner designed for color-treated hair.",
+    "ja": "カラーした髪向けのコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello teñido. Acondicionador ligero que busca proteger el color y dar brillo; facilita el desenredo.",
+    "en": "For color-treated hair. Lightweight conditioner aiming to protect color and add shine; eases detangling.",
+    "ja": "カラー毛向け。軽い使い心地で、色もちとツヤ・指通りを目指すコンディショナー。"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D014.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D015",
+   "line": "MINU",
+   "name": "MINU Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello teñido.",
+    "en": "Shampoo designed for color-treated hair.",
+    "ja": "カラーした髪向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello teñido. Limpieza suave que busca conservar la intensidad del color lavado tras lavado.",
+    "en": "For color-treated hair. Gentle cleanse aiming to keep color vibrant wash after wash.",
+    "ja": "カラー毛向け。やさしく洗い、洗うたびの色あせを防ぐことを目指すシャンプー。"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D015.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D016",
+   "line": "MOMO",
+   "name": "MOMO Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello seco, sin sensación pesada.",
+    "en": "Conditioner designed for dry hair, with a light feel.",
+    "ja": "乾燥した髪向け。重くなりにくいコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello seco o deshidratado. Hidratación rápida con fórmula ligera que no aporta peso.",
+    "en": "For dry or dehydrated hair. Quick, lightweight hydration that doesn't weigh hair down.",
+    "ja": "乾燥した髪向け。軽い質感ですばやくうるおいを与えることを目指すコンディショナー。"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D016.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D017",
+   "line": "MOMO",
+   "name": "MOMO Conditioner",
+   "type": "コンディショナー（ミニ）",
+   "size": "75ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello seco; ideal para probar o viajar.",
+    "en": "Mini size designed for dry hair; good for trying or travel.",
+    "ja": "乾燥した髪向け。お試し・旅行用のミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello seco o deshidratado. Hidratación rápida con fórmula ligera que no aporta peso.",
+    "en": "Mini size. For dry or dehydrated hair. Quick, lightweight hydration that doesn't weigh hair down.",
+    "ja": "ミニサイズ。乾燥した髪向け。軽い質感ですばやくうるおいを与えることを目指すコンディショナー。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D017.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D018",
+   "line": "MOMO",
+   "name": "MOMO Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello seco, sin sensación pesada.",
+    "en": "Shampoo designed for dry hair, with a light feel.",
+    "ja": "乾燥した髪向け。重くなりにくいシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello seco o deshidratado. Limpieza suave que busca dejarlo más suave y con brillo natural.",
+    "en": "For dry or dehydrated hair. Gentle cleanse aiming for softer hair with natural shine.",
+    "ja": "乾燥した髪向け。やさしく洗い、やわらかさと自然なツヤを目指すシャンプー。"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D018.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D019",
+   "line": "MOMO",
+   "name": "MOMO Shampoo",
+   "type": "シャンプー（ミニ）",
+   "size": "75ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello seco; ideal para probar o viajar.",
+    "en": "Mini size designed for dry hair; good for trying or travel.",
+    "ja": "乾燥した髪向け。お試し・旅行用のミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello seco o deshidratado. Limpieza suave que busca dejarlo más suave y con brillo natural.",
+    "en": "Mini size. For dry or dehydrated hair. Gentle cleanse aiming for softer hair with natural shine.",
+    "ja": "ミニサイズ。乾燥した髪向け。やさしく洗い、やわらかさと自然なツヤを目指すシャンプー。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D019.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D020",
+   "line": "MOMO",
+   "name": "MOMO Shampoo Bar",
+   "type": "シャンプーバー",
+   "size": "100g",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo sólido pensado para cabello seco; práctico para viajar.",
+    "en": "Solid shampoo designed for dry hair; handy for travel.",
+    "ja": "乾燥した髪向けの固形シャンプー。旅行にも便利。"
+   },
+   "feat": {
+    "es": "Shampoo sólido para cabello seco o deshidratado. Limpieza delicada pensada para hidratar.",
+    "en": "Solid shampoo for dry or dehydrated hair. Delicate cleanse designed for moisture.",
+    "ja": "乾燥した髪向けの固形シャンプー。うるおいを意識したやさしい洗い心地。"
+   },
+   "list": 635,
+   "salon": 572,
+   "photo": "productos/img/D020.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D021",
+   "line": "more inside",
+   "name": "Curl Building Serum",
+   "type": "スタイリング（セラム）",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl",
+    "style"
+   ],
+   "desc": {
+    "es": "Sérum pensado para definir rizos y ondas.",
+    "en": "Serum designed to help define curls and waves.",
+    "ja": "カール・ウェーブをまとめたい人向けのセラム。"
+   },
+   "feat": {
+    "es": "Sérum para cabello ondulado o rizado. Busca rizos definidos y flexibles, con brillo natural y menos frizz.",
+    "en": "Serum for wavy or curly hair. Aims for defined, bouncy curls with natural shine and less frizz.",
+    "ja": "ウェーブ・カールの髪向けのセラム。弾むカールと自然なツヤ、広がりにくさを目指す。"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D021.jpg",
+   "stock": "low",
+   "rank": 4
+  },
+  {
+   "id": "D022",
+   "line": "more inside",
+   "name": "Curl Gel Oil",
+   "type": "スタイリング（ジェルオイル）",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl",
+    "style"
+   ],
+   "desc": {
+    "es": "Gel-aceite pensado para peinar cabello rizado.",
+    "en": "Gel-oil designed for styling curly hair.",
+    "ja": "カールの髪のスタイリング向けのジェルオイル。"
+   },
+   "feat": {
+    "es": "Para cabello rizado a muy rizado. Textura que pasa de gel a aceite para definir e hidratar; fijación media (3/5).",
+    "en": "For curly to very curly hair. Gel-to-oil texture to define and moisturize; medium hold (3/5).",
+    "ja": "カール〜強いカールの髪向け。ジェルからオイルに変わる質感で、カールをまとめうるおす。キープ力は中（3/5）。"
+   },
+   "list": 799,
+   "salon": 719,
+   "photo": "productos/img/D022.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D023",
+   "line": "more inside",
+   "name": "Medium Hold Pliable Paste",
+   "type": "スタイリング（ペースト）",
+   "size": "125ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Pasta de fijación media pensada para peinados flexibles.",
+    "en": "Medium-hold paste designed for flexible styles.",
+    "ja": "やわらかく動きを出したい人向けのミディアムホールドのペースト。"
+   },
+   "feat": {
+    "es": "Pasta de fijación media con acabado natural e invisible. Para peinados controlados que conservan el movimiento.",
+    "en": "Medium-hold paste with a natural, invisible finish. For controlled styles that keep movement.",
+    "ja": "ミディアムホールドのペースト。自然で目立たない仕上がりで、動きを残したまとまりに。"
+   },
+   "list": 790,
+   "salon": 711,
+   "photo": "productos/img/D023.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D024",
+   "line": "more inside",
+   "name": "This is a Curl Moisturizing Mousse",
+   "type": "スタイリング（ムース）",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl",
+    "style"
+   ],
+   "desc": {
+    "es": "Mousse pensada para cabello rizado.",
+    "en": "Mousse designed for curly hair.",
+    "ja": "カールの髪向けのムース。"
+   },
+   "feat": {
+    "es": "Mousse cremosa de fijación media para rizos. Busca definir e hidratar con cuerpo y brillo natural.",
+    "en": "Creamy medium-hold mousse for curls. Aims to define and moisturize with body and natural shine.",
+    "ja": "カール向けのクリーミーなムース（キープ力は中）。うるおいとボリューム、自然なツヤのあるカールを目指す。"
+   },
+   "list": 710,
+   "salon": 639,
+   "photo": "productos/img/D024.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D025",
+   "line": "more inside",
+   "name": "This is a Medium Hairspray",
+   "type": "スタイリング（スプレー）",
+   "size": "400ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray de fijación media pensado para terminar el peinado.",
+    "en": "Medium-hold hairspray designed for finishing styles.",
+    "ja": "仕上げ向けのミディアムホールドのスプレー。"
+   },
+   "feat": {
+    "es": "Spray invisible de fijación media para terminar el peinado. Nebulización fina; permite remodelar y ayuda contra la humedad.",
+    "en": "Invisible medium-hold spray for finishing. Fine mist; re-workable and helps against humidity.",
+    "ja": "仕上げ用の目立たないミディアムホールドスプレー。細かいミストで、あとから整え直しやすく湿気対策にも。"
+   },
+   "list": 845,
+   "salon": 761,
+   "photo": "productos/img/D025.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D026",
+   "line": "more inside",
+   "name": "This is a Primer",
+   "type": "スタイリング前のベース",
+   "size": "100ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Base pensada para usar antes de peinar.",
+    "en": "Primer designed to be used before styling.",
+    "ja": "スタイリングの前に使うベース。"
+   },
+   "feat": {
+    "es": "Leave-in cremoso en spray para usar antes de peinar. Busca dar cuerpo, proteger del calor y de la humedad.",
+    "en": "Creamy leave-in spray to use before styling. Aims to add body and protect against heat and humidity.",
+    "ja": "スタイリング前に使うクリーム状のスプレー。ボリュームと熱・湿気から守ることを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D026.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D027",
+   "line": "more inside",
+   "name": "This is a Shimmering Mist",
+   "type": "スタイリング（ツヤ出しミスト）",
+   "size": "200ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Bruma pensada para dar brillo al terminar el peinado.",
+    "en": "Mist designed to add shine when finishing styles.",
+    "ja": "仕上げにツヤを足したい人向けのミスト。"
+   },
+   "feat": {
+    "es": "Spray de acabado con brillo y textura aterciopelada. Ideal para terminar peinados y recogidos; ayuda contra el frizz.",
+    "en": "Finishing spray for shine and a velvety feel. Great for styles and updos; helps with frizz.",
+    "ja": "ツヤとしっとりした手ざわりを足す仕上げスプレー。アップスタイルの仕上げにも。広がり対策に。"
+   },
+   "list": 699,
+   "salon": 629,
+   "photo": "productos/img/D027.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D028",
+   "line": "more inside",
+   "name": "This is a Strong Moulding Clay",
+   "type": "スタイリング（クレイ）",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Arcilla de fijación fuerte pensada para peinados con forma.",
+    "en": "Strong-hold clay designed for shaped styles.",
+    "ja": "形をしっかり作りたい人向けのクレイ。"
+   },
+   "feat": {
+    "es": "Arcilla de fijación fuerte con acabado mate y seco. Para looks desenfadados con forma; no pegajosa.",
+    "en": "Strong-hold clay with a dry matte finish. For textured, shaped looks; non-sticky.",
+    "ja": "強いキープ力のクレイ。マットでさらっとした仕上がりで、ラフな形づくりに。べたつきにくい。"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D028.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D029",
+   "line": "more inside",
+   "name": "This is a Texturizing Dust",
+   "type": "スタイリング（パウダー）",
+   "size": "8g",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Polvo pensado para dar textura y volumen en la raíz.",
+    "en": "Powder designed to add texture and root volume.",
+    "ja": "根元のボリューム・質感を出したい人向けのパウダー。"
+   },
+   "feat": {
+    "es": "Polvo texturizante para volumen en la raíz. Busca cuerpo duradero sin dejar residuos visibles.",
+    "en": "Texturizing powder for root volume. Aims for lasting body without visible residue.",
+    "ja": "根元のボリューム用パウダー。目立つ残りなく、ふんわり感が続くことを目指す。"
+   },
+   "list": 740,
+   "salon": 666,
+   "photo": "productos/img/D029.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D030",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Energizing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cuero cabelludo con tendencia a caída.",
+    "en": "Shampoo designed for scalps prone to hair fall.",
+    "ja": "抜け毛が気になる頭皮向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cuero cabelludo con cabello frágil o con tendencia a la caída. Limpieza suave con sensación refrescante y revitalizante.",
+    "en": "For scalps with fragile hair or prone to hair fall. Gentle cleanse with a fresh, revitalizing feel.",
+    "ja": "抜け毛・細くなった髪が気になる頭皮向け。すっきり元気な使い心地のやさしいシャンプー。"
+   },
+   "list": 815,
+   "salon": 734,
+   "photo": "productos/img/D030.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D031",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Hair Building Pak",
+   "type": "トリートメント（パック）",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla pensada para cabello débil o maltratado.",
+    "en": "Treatment pack designed for weak or damaged hair.",
+    "ja": "弱った髪・ダメージ毛向けのパック。"
+   },
+   "feat": {
+    "es": "Tratamiento con enjuague para cabello seco, quebradizo o dañado. Con queratina vegetal; busca un cabello suave y con cuerpo.",
+    "en": "Rinse-out treatment for dry, brittle or damaged hair. With plant keratin; aims for soft hair with body.",
+    "ja": "乾燥・切れやすい・傷んだ髪向けの洗い流すトリートメント。植物性ケラチン配合で、やわらかくハリのある髪を目指す。"
+   },
+   "list": 1180,
+   "salon": 1062,
+   "photo": "productos/img/D031.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D032",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cabello débil o deshidratado.",
+    "en": "Shampoo designed for weak or dehydrated hair.",
+    "ja": "弱った髪・乾燥した髪向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cuero cabelludo deshidratado y cabello seco o débil. Shampoo nutritivo de limpieza suave.",
+    "en": "For dehydrated scalps and dry or weak hair. A nourishing, gentle shampoo.",
+    "ja": "乾燥した頭皮と、乾燥・弱った髪向けの栄養シャンプー。やさしい洗い心地。"
+   },
+   "list": 815,
+   "salon": 734,
+   "photo": "productos/img/D032.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D033",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Vegetarian Miracle Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello débil o deshidratado.",
+    "en": "Conditioner designed for weak or dehydrated hair.",
+    "ja": "弱った髪・乾燥した髪向けのコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello seco y débil, fino a medio. Con enjuague; busca un cabello suave, luminoso y fácil de peinar.",
+    "en": "For dry, weak, fine-to-medium hair. Rinse-out; aims for soft, shiny, easy-to-comb hair.",
+    "ja": "乾燥して弱った細い〜普通の髪向け。洗い流すタイプで、やわらかさ・ツヤ・指通りを目指す。"
+   },
+   "list": 1010,
+   "salon": 909,
+   "photo": "productos/img/D033.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D034",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Vegetarian Miracle Mask",
+   "type": "マスク",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla pensada para cabello débil o deshidratado.",
+    "en": "Mask designed for weak or dehydrated hair.",
+    "ja": "弱った髪・乾燥した髪向けのマスク。"
+   },
+   "feat": {
+    "es": "Para cabello seco y débil, grueso o rebelde. Mascarilla con enjuague de nutrición extra; busca suavidad y brillo.",
+    "en": "For dry, weak, thick or unruly hair. Rinse-out mask with extra nourishment; aims for softness and shine.",
+    "ja": "乾燥して弱った太い髪・くせ毛向け。しっかり栄養を与える洗い流すマスクで、やわらかさとツヤを目指す。"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D034.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D035",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Purifying Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para cuero cabelludo con caspa.",
+    "en": "Shampoo designed for scalps prone to dandruff.",
+    "ja": "フケが気になる頭皮向けのシャンプー。"
+   },
+   "feat": {
+    "es": "Para cuero cabelludo con caspa grasa o seca. Limpia y purifica buscando un cuero cabelludo limpio sin irritar.",
+    "en": "For scalps with oily or dry dandruff. Cleanses and purifies, aiming for a clean, non-irritated scalp.",
+    "ja": "脂性・乾性のフケが気になる頭皮向け。刺激をおさえて頭皮をすっきり清潔に保つことを目指す。"
+   },
+   "list": 765,
+   "salon": 689,
+   "photo": "productos/img/D035.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D036",
+   "line": "NOUNOU",
+   "name": "NOUNOU Conditioner",
+   "type": "コンディショナー（ミニ）",
+   "size": "75ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello maltratado (decoloración, permanente, alaciado).",
+    "en": "Mini size designed for damaged hair (bleach, perm, straightening).",
+    "ja": "ブリーチ・パーマ・縮毛矯正後の髪向け。ミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello maltratado por decoloración, permanente o alisado. Nutre en profundidad y busca desenredar sin dejar pesado.",
+    "en": "Mini size. For hair damaged by bleach, perms or straightening. Deeply nourishing; aims to detangle without weighing down.",
+    "ja": "ミニサイズ。ブリーチ・パーマ・縮毛矯正で傷んだ髪向け。しっかり栄養を与え、重くせず指通りを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D036.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D037",
+   "line": "NOUNOU",
+   "name": "NOUNOU Shampoo",
+   "type": "シャンプー（ミニ）",
+   "size": "75ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Tamaño mini, pensado para cabello maltratado (decoloración, permanente, alaciado).",
+    "en": "Mini size designed for damaged hair (bleach, perm, straightening).",
+    "ja": "ブリーチ・パーマ・縮毛矯正後の髪向け。ミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para cabello seco o muy procesado (decoloración, permanente, alisado). Limpieza suave que busca devolver suavidad y brillo.",
+    "en": "Mini size. For dry or heavily processed hair (bleach, perm, straightening). Gentle cleanse aiming to restore softness and shine.",
+    "ja": "ミニサイズ。乾燥・ブリーチ・パーマ・縮毛矯正などで傷んだ髪向け。やさしく洗い、やわらかさとツヤを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D037.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D038",
+   "line": "OI",
+   "name": "OI All in One Milk",
+   "type": "洗い流さないトリートメント（ミルク）",
+   "size": "135ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Leche sin enjuague pensada para todo tipo de cabello; brillo y suavidad.",
+    "en": "Leave-in milk designed for all hair types; for shine and softness.",
+    "ja": "すべての髪向けの洗い流さないミルク。ツヤとやわらかさに。"
+   },
+   "feat": {
+    "es": "Leave-in en spray para cabello fino a medio. Busca controlar el frizz, desenredar y dar brillo; protección térmica hasta 230 °C.",
+    "en": "Leave-in spray for fine to medium hair. Aims to tame frizz, detangle and add shine; heat protection up to 230 °C.",
+    "ja": "細い〜普通の髪向けのスプレー式・洗い流さないミルク。広がり・からまり対策とツヤに。230℃までの熱から守る。"
+   },
+   "list": 1230,
+   "salon": 1107,
+   "photo": "productos/img/D038.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D039",
+   "line": "OI",
+   "name": "OI All in One Milk",
+   "type": "洗い流さないトリートメント（ミルク・ミニ）",
+   "size": "50ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Tamaño mini de la leche sin enjuague; ideal para probar o viajar.",
+    "en": "Mini size leave-in milk; good for trying or travel.",
+    "ja": "洗い流さないミルクのミニサイズ。お試し・旅行用に。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Leave-in en spray para cabello fino a medio. Busca controlar el frizz, desenredar y dar brillo; protección térmica hasta 230 °C.",
+    "en": "Mini size. Leave-in spray for fine to medium hair. Aims to tame frizz, detangle and add shine; heat protection up to 230 °C.",
+    "ja": "ミニサイズ。細い〜普通の髪向けのスプレー式・洗い流さないミルク。広がり・からまり対策とツヤに。230℃までの熱から守る。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D039.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D040",
+   "line": "OI",
+   "name": "OI Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para todo tipo de cabello; brillo y suavidad.",
+    "en": "Conditioner designed for all hair types; for shine and softness.",
+    "ja": "すべての髪向けのコンディショナー。ツヤとやわらかさに。"
+   },
+   "feat": {
+    "es": "Para todo tipo de cabello, sobre todo seco, con frizz o teñido. Crema sedosa que busca suavidad y brillo; con el aroma OI.",
+    "en": "For all hair types, especially dry, frizzy or colored. Silky cream aiming for softness and shine; signature OI scent.",
+    "ja": "すべての髪、特に乾燥・広がり・カラー毛向け。なめらかなクリームでやわらかさとツヤを目指す。OIの香り。"
+   },
+   "list": 1010,
+   "salon": 909,
+   "photo": "productos/img/D040.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D041",
+   "line": "OI",
+   "name": "OI Conditioner",
+   "type": "コンディショナー（ミニ）",
+   "size": "75ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Tamaño mini; ideal para probar o viajar.",
+    "en": "Mini size; good for trying or travel.",
+    "ja": "OIコンディショナーのミニサイズ。お試し・旅行用に。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Para todo tipo de cabello, sobre todo seco, con frizz o teñido. Crema sedosa que busca suavidad y brillo; con el aroma OI.",
+    "en": "Mini size. For all hair types, especially dry, frizzy or colored. Silky cream aiming for softness and shine; signature OI scent.",
+    "ja": "ミニサイズ。すべての髪、特に乾燥・広がり・カラー毛向け。なめらかなクリームでやわらかさとツヤを目指す。OIの香り。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D041.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D042",
+   "line": "OI",
+   "name": "OI Hair Butter",
+   "type": "トリートメント（バター）",
+   "size": "250ml",
+   "nayami": "乾燥・広がり",
+   "concerns": [
+    "dry",
+    "frizz"
+   ],
+   "desc": {
+    "es": "Mantequilla nutritiva pensada para cabello grueso o seco.",
+    "en": "Nourishing butter designed for thick or dry hair.",
+    "ja": "太い髪・乾燥した髪向けのヘアバター。"
+   },
+   "feat": {
+    "es": "Mascarilla tipo mantequilla para cabello grueso, rizado o con frizz. Textura rica que busca suavidad y fácil peinado.",
+    "en": "Butter-style mask for thick, curly or frizzy hair. Rich texture aiming for softness and easy styling.",
+    "ja": "太い髪・カール・広がる髪向けのバター状トリートメント。濃厚な質感でやわらかさとまとまりを目指す。"
+   },
+   "list": 1185,
+   "salon": 1067,
+   "photo": "productos/img/D042.jpg",
+   "stock": "low",
+   "rank": 2
+  },
+  {
+   "id": "D043",
+   "line": "OI",
+   "name": "OI Hair Butter",
+   "type": "トリートメント（バター・ミニ）",
+   "size": "75ml",
+   "nayami": "乾燥・広がり",
+   "concerns": [
+    "dry",
+    "frizz"
+   ],
+   "desc": {
+    "es": "Tamaño mini de la mantequilla nutritiva.",
+    "en": "Mini size of the nourishing hair butter.",
+    "ja": "ヘアバターのミニサイズ。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Mascarilla tipo mantequilla para cabello grueso, rizado o con frizz. Textura rica que busca suavidad y fácil peinado.",
+    "en": "Mini size. Butter-style mask for thick, curly or frizzy hair. Rich texture aiming for softness and easy styling.",
+    "ja": "ミニサイズ。太い髪・カール・広がる髪向けのバター状トリートメント。濃厚な質感でやわらかさとまとまりを目指す。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D043.jpg",
+   "stock": "ok",
+   "rank": 2
+  },
+  {
+   "id": "D044",
+   "line": "OI",
+   "name": "OI Hand Balm",
+   "type": "ハンドバーム",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Bálsamo para manos con el aroma de la línea OI.",
+    "en": "Hand balm with the OI fragrance.",
+    "ja": "OIの香りのハンドバーム。"
+   },
+   "feat": {
+    "es": "Crema de manos nutritiva para todo tipo de piel, con el aroma de la línea OI. Pensada para sol, viento y frío.",
+    "en": "Nourishing hand cream for all skin types with the OI scent. Designed for sun, wind and cold.",
+    "ja": "すべての肌向けの保湿ハンドクリーム。OIの香り。日差し・風・寒さが気になるときに。"
+   },
+   "list": 620,
+   "salon": 558,
+   "photo": "productos/img/D044.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D045",
+   "line": "OI",
+   "name": "OI Oil",
+   "type": "オイル",
+   "size": "135ml",
+   "nayami": "広がり・乾燥",
+   "concerns": [
+    "frizz",
+    "dry"
+   ],
+   "desc": {
+    "es": "Aceite pensado para todo tipo de cabello; brillo y suavidad.",
+    "en": "Hair oil designed for all hair types; for shine and softness.",
+    "ja": "すべての髪向けのヘアオイル。ツヤとやわらかさに。"
+   },
+   "feat": {
+    "es": "Aceite multiuso, ideal para cabello medio a grueso. Busca suavidad, brillo y control del frizz sin apelmazar; antes o después de peinar.",
+    "en": "Multi-use oil, best for medium to thick hair. Aims for softness, shine and frizz control without weight; before or after styling.",
+    "ja": "普通〜太い髪向けの万能オイル。重くせず、やわらかさ・ツヤ・広がり対策を目指す。乾かす前にも仕上げにも。"
+   },
+   "list": 1540,
+   "salon": 1386,
+   "photo": "productos/img/D045.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D046",
+   "line": "OI",
+   "name": "OI Oil",
+   "type": "オイル（ミニ）",
+   "size": "50ml",
+   "nayami": "広がり・乾燥",
+   "concerns": [
+    "frizz",
+    "dry"
+   ],
+   "desc": {
+    "es": "Tamaño mini del aceite; ideal para probar o viajar.",
+    "en": "Mini size hair oil; good for trying or travel.",
+    "ja": "ヘアオイルのミニサイズ。お試し・旅行用に。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Aceite multiuso, ideal para cabello medio a grueso. Busca suavidad, brillo y control del frizz sin apelmazar; antes o después de peinar.",
+    "en": "Mini size. Multi-use oil, best for medium to thick hair. Aims for softness, shine and frizz control without weight; before or after styling.",
+    "ja": "ミニサイズ。普通〜太い髪向けの万能オイル。重くせず、やわらかさ・ツヤ・広がり対策を目指す。乾かす前にも仕上げにも。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D046.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D047",
+   "line": "OI",
+   "name": "OI Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo pensado para todo tipo de cabello; brillo y suavidad.",
+    "en": "Shampoo designed for all hair types; for shine and softness.",
+    "ja": "すべての髪向けのシャンプー。ツヤとやわらかさに。"
+   },
+   "feat": {
+    "es": "Shampoo para todo tipo de cabello y uso diario. Limpieza delicada que busca suavidad y brillo; deja el aroma OI.",
+    "en": "Everyday shampoo for all hair types. Delicate cleanse aiming for softness and shine; leaves the OI scent.",
+    "ja": "すべての髪の毎日使い向け。やさしく洗い、やわらかさとツヤを目指す。OIの香りが残る。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D047.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D048",
+   "line": "OI",
+   "name": "OI Shampoo",
+   "type": "シャンプー（ミニ）",
+   "size": "90ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Tamaño mini; ideal para probar o viajar.",
+    "en": "Mini size; good for trying or travel.",
+    "ja": "OIシャンプーのミニサイズ。お試し・旅行用に。"
+   },
+   "feat": {
+    "es": "Tamaño mini. Shampoo para todo tipo de cabello y uso diario. Limpieza delicada que busca suavidad y brillo; deja el aroma OI.",
+    "en": "Mini size. Everyday shampoo for all hair types. Delicate cleanse aiming for softness and shine; leaves the OI scent.",
+    "ja": "ミニサイズ。すべての髪の毎日使い向け。やさしく洗い、やわらかさとツヤを目指す。OIの香りが残る。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D048.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D049",
+   "line": "OI",
+   "name": "OI Soufflé",
+   "type": "スタイリング（スフレ）",
+   "size": "50ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz",
+    "style"
+   ],
+   "desc": {
+    "es": "Soufflé pensado para dar cuerpo y suavidad al peinar.",
+    "en": "Soufflé designed to add body and softness when styling.",
+    "ja": "やわらかくボリュームを出したい人向けのスフレ。"
+   },
+   "feat": {
+    "es": "Espuma leave-in para cabello fino a medio. Busca cuerpo y brillo sin apelmazar; protección térmica hasta 230 °C.",
+    "en": "Leave-in foam for fine to medium hair. Aims for body and shine without weight; heat protection up to 230 °C.",
+    "ja": "細い〜普通の髪向けの洗い流さないフォーム。重くせずボリュームとツヤを目指す。230℃までの熱から守る。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D049.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D050",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE After Shave & Moisturizing Cream",
+   "type": "アフターシェーブ",
+   "size": "100ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Crema para después del afeitado, pensada para hidratar la piel.",
+    "en": "After-shave cream designed to moisturize the skin.",
+    "ja": "ひげそり後の肌のうるおい向けのクリーム。"
+   },
+   "feat": {
+    "es": "Crema ligera para después del afeitado o como hidratante diaria. Con manteca de karité; pensada para calmar la piel.",
+    "en": "Light cream for after shaving or daily moisture. With shea butter; designed to soothe skin.",
+    "ja": "ひげそり後や毎日の保湿に使える軽いクリーム。シアバター配合で、肌を落ち着かせることを目指す。"
+   },
+   "list": 610,
+   "salon": 549,
+   "photo": "productos/img/D050.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D051",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Softening Shaving Gel",
+   "type": "シェービングジェル",
+   "size": "200ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Gel de afeitar pensado para suavizar la barba.",
+    "en": "Shaving gel designed to soften the beard.",
+    "ja": "ひげをやわらかくしてそるためのジェル。"
+   },
+   "feat": {
+    "es": "Gel que se convierte en espuma para un afeitado suave y controlado. Con extracto calmante.",
+    "en": "Gel-to-foam formula for a smooth, controlled shave. With a soothing extract.",
+    "ja": "泡に変わるジェルで、なめらかにそりやすいことを目指す。肌を落ち着かせる成分入り。"
+   },
+   "list": null,
+   "salon": null,
+   "photo": "productos/img/D051.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D052",
+   "line": "The Circle Chronicles",
+   "name": "The Spotlight Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla de una aplicación pensada para dar brillo.",
+    "en": "Single-use mask designed for shine.",
+    "ja": "ツヤを出したいときの1回用マスク。"
+   },
+   "feat": {
+    "es": "Mascarilla de una aplicación para todo tipo de cabello, sobre todo opaco. Busca brillo extra sin apelmazar.",
+    "en": "Single-use mask for all hair types, especially dull hair. Aims for extra shine without weight.",
+    "ja": "すべての髪、特にツヤがない髪向けの1回用マスク。重くせずツヤを足すことを目指す。"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D052.jpg",
+   "stock": "low",
+   "rank": null
+  },
+  {
+   "id": "D053",
+   "line": "VOLU",
+   "name": "VOLU Shampoo Bar",
+   "type": "シャンプーバー",
+   "size": "100g",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo sólido pensado para cabello fino; práctico para viajar.",
+    "en": "Solid shampoo designed for fine hair; handy for travel.",
+    "ja": "細い髪向けの固形シャンプー。旅行にも便利。"
+   },
+   "feat": {
+    "es": "Shampoo sólido para cabello fino o sin cuerpo. Busca un cabello ligero con volumen.",
+    "en": "Solid shampoo for fine or limp hair. Aims for light hair with volume.",
+    "ja": "細い髪・ボリュームが出にくい髪向けの固形シャンプー。軽くふんわりを目指す。"
+   },
+   "list": 635,
+   "salon": 572,
+   "photo": "productos/img/D053.jpg",
+   "stock": "ok",
+   "rank": null
+  },
+  {
+   "id": "D054",
+   "line": "AUTHENTIC",
+   "name": "AUTHENTIC Nourishing Oil",
+   "type": "オイル（髪・顔・体）",
+   "size": "140ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Aceite nutritivo pensado para cabello, rostro y cuerpo.",
+    "en": "Nourishing oil designed for hair, face and body.",
+    "ja": "髪・顔・体に使える保湿オイル。"
+   },
+   "feat": {
+    "es": "Aceite multiuso para cabello, rostro, cuello y cuerpo. Pensado para hidratar puntas secas y dejar la piel suave.",
+    "en": "Multi-use oil for hair, face, neck and body. Designed to moisturize dry ends and leave skin soft.",
+    "ja": "髪・顔・首・体に使える万能オイル。乾燥した毛先のうるおいと、肌のやわらかさを目指す。"
+   },
+   "list": 1045,
+   "salon": 941,
+   "photo": "productos/img/D054.jpg",
+   "stock": "order",
+   "rank": 1
+  },
+  {
+   "id": "D055",
+   "line": "LOVE",
+   "name": "LOVE Curl Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl"
+   ],
+   "desc": {
+    "es": "Acondicionador pensado para cabello rizado u ondulado.",
+    "en": "Conditioner designed for curly or wavy hair.",
+    "ja": "カール・ウェーブの髪向けのコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello ondulado o rizado. Busca hidratar y dar elasticidad y volumen al rizo sin dejarlo pesado.",
+    "en": "For wavy or curly hair. Aims to moisturize and add bounce and volume without weighing curls down.",
+    "ja": "ウェーブ・カールの髪向け。重くせず、うるおいと弾力・ボリュームのあるカールを目指す。"
+   },
+   "list": 770,
+   "salon": 693,
+   "photo": "productos/img/D055.jpg",
+   "stock": "order",
+   "rank": 3
+  }
+ ]
+}
