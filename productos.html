@@ -19,12 +19,15 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .filters{display:flex;flex-wrap:wrap;gap:6px}
 .chip{border:1.5px solid #222;border-radius:12px;padding:7px 10px;background:#fff;font:inherit;font-size:13px;cursor:pointer}
 .chip.on{background:#1d1d1d;color:#fff}
+.chip.tv{border-color:#0b5c8f;color:#0b5c8f;font-weight:700;background:#e3f1fb}.chip.tv.on{background:#0b5c8f;color:#fff}
+.pl{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:5px;fill:currentColor;transform:rotate(45deg)}.phv .pl{width:19px;height:19px;margin:0;transform:rotate(45deg)}
+.ph{position:relative}.phv{display:inline-flex;vertical-align:middle;margin-left:6px;width:30px;height:30px;border-radius:50%;background:#0b5c8f;color:#fff;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(11,92,143,.35)}
 .card{border-bottom:1px solid #eee;padding:12px 0}
 .top{display:flex;gap:12px;align-items:stretch}
 .ph{flex:0 0 44%;max-width:190px;min-height:150px;align-self:stretch;border-radius:12px;overflow:hidden;background-color:#f5f5f3;background-repeat:no-repeat;background-size:contain;background-position:50% 50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#aaa;text-align:center;padding:0}
 .info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
 .body{margin-top:8px}
-.trv{display:inline-block;font-size:11.5px;font-weight:700;border-radius:20px;padding:2px 9px;margin:4px 0 2px;background:#e3f1fb;color:#0b5c8f;border:1px solid #0b5c8f;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
+.trv{display:inline-flex;align-items:center;font-size:12px;line-height:1.25;white-space:nowrap;font-weight:700;border-radius:8px;padding:5px 7px;margin:6px 0 4px;background:#0b5c8f;color:#fff;border:1px solid #0b5c8f;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
 .ds b.tv{color:#0b5c8f;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif;font-size:13.5px}
 .ln{font-size:11px;color:#888;letter-spacing:.5px}
 .nm{font-size:16px;line-height:1.25;margin:2px 0}
@@ -74,34 +77,36 @@ let LANG=(Q.get('lang')||'').toLowerCase();
 if(LANGS.indexOf(LANG)<0){const n=(navigator.language||'es').slice(0,2).toLowerCase();LANG=LANGS.indexOf(n)>=0?n:'es';}
 const ID=(Q.get('id')||'').replace(/[^0-9]/g,'');
 const TX={
-sub:{es:'Productos en THE HOME Hair re-creative',en:'Products at THE HOME Hair re-creative',ja:'THE HOME Hair re-creative の店頭商品'},
-s1:{es:'¿Qué te preocupa?',en:'Your hair concern',ja:'髪のお悩み'},
-note:{es:'Precios con IVA incluido. Precio de salón = 10% de descuento para clientes.',en:'Prices include VAT (IVA). Salon price = 10% off for clients.',ja:'価格はIVA（税）込み。サロン価格＝お客様10%オフ。'},
+sub:{es:'Productos disponibles en THE HOME Hair re-creative',en:'Available at THE HOME Hair re-creative',ja:'THE HOME Hair re-creative 取り扱い商品'},
+s1:{es:'Elija según su necesidad',en:'Shop by concern or use',ja:'お悩み・用途から選ぶ'},
+note:{es:'Precios con IVA incluido. Precio de salón: 10 % de descuento sobre el precio regular para nuestros clientes.',en:'All prices include VAT (IVA). Salon price: 10% off the regular price for our clients.',ja:'価格はすべてIVA（税）込みです。サロン価格は当店のお客様向けに定価から10%オフ。'},
 loading:{es:'Cargando…',en:'Loading…',ja:'読み込み中…'},
-err:{es:'No se pudo cargar. Escríbenos por DM.',en:"Couldn't load. Please message us by DM.",ja:'読み込めませんでした。DMでお問い合わせください。'},
+err:{es:'No fue posible cargar la información. Escríbanos por DM.',en:"Couldn't load. Please message us by DM.",ja:'読み込めませんでした。DMでお問い合わせください。'},
 none:{es:'No hay productos en esta categoría.',en:'No products in this category.',ja:'このお悩みの商品はありません。'},
 list:{es:'Precio regular',en:'Regular price',ja:'定価'},
 salon:{es:'Precio de salón',en:'Salon price',ja:'サロン価格'},
-ask:{es:'Precio: pregúntanos por DM',en:'Price: ask us by DM',ja:'価格はDMでお問い合わせください'},
+ask:{es:'Precio: consúltenos por DM',en:'Price available by DM',ja:'価格はDMでご案内します'},
 ok:{es:'Disponible',en:'In stock',ja:'在庫あり'},
 low:{es:'Últimas piezas',en:'Only a few left',ja:'残りわずか'},
 order:{es:'Bajo pedido',en:'Available to order',ja:'お取り寄せ'},
 hold:{es:'Apartar',en:'Hold for me',ja:'取り置きする'},
-holdMsg:{es:'Envíanos este mensaje por DM. Nory te confirma disponibilidad:',en:'Send us this message by DM. Nory will confirm availability:',ja:'この文をDMで送ってください。在庫を確認してNoryからお返事します：'},
+holdMsg:{es:'Envíenos este mensaje por DM y Nory le confirmará la disponibilidad:',en:'Send us this message by DM and Nory will confirm availability:',ja:'下の文をDMでお送りください。在庫を確認のうえ、Noryよりご連絡します：'},
 copy:{es:'Copiar',en:'Copy',ja:'コピー'},
 copied:{es:'Copiado ✓',en:'Copied ✓',ja:'コピーしました ✓'},
-openIG:{es:'Abrir Instagram DM',en:'Open Instagram DM',ja:'インスタDMを開く'},
+openIG:{es:'Abrir DM de Instagram',en:'Open Instagram DM',ja:'Instagram DMを開く'},
 openWA:{es:'Abrir WhatsApp',en:'Open WhatsApp',ja:'WhatsAppを開く'},
 book:{es:'📅 Reservar cita',en:'📅 Book an appointment',ja:'📅 予約する'},
 upd:{es:'Actualizado',en:'Updated',ja:'更新'},
-popT:{es:'Lo más popular en el salón',en:'Salon favorites',ja:'当サロンで人気の商品'},
-trvB:{es:'✈ Tamaño viaje',en:'✈ Travel size',ja:'✈ 旅行用サイズ'},
-trv:{es:'Tamaño ideal para viajar · Apto para equipaje de mano',en:'Perfect travel size · Carry-on friendly',ja:'旅行用にぴったり・機内持ち込みOK'},
-rk:{es:'Más vendido en THE HOME No.',en:'THE HOME best seller No.',ja:'THE HOMEで人気 No.'},
-f:{all:{es:'Todo',en:'All',ja:'すべて'},frizz:{es:'Frizz',en:'Frizz',ja:'広がり・くせ'},color:{es:'Color',en:'Color',ja:'カラー'},damage:{es:'Daño / decoloración',en:'Damage / bleach',ja:'ダメージ'},dry:{es:'Resequedad',en:'Dryness',ja:'乾燥'},curl:{es:'Rizos',en:'Curls',ja:'カール'},scalp:{es:'Cuero cabelludo',en:'Scalp',ja:'頭皮'},style:{es:'Peinado',en:'Styling',ja:'スタイリング'},other:{es:'Otros',en:'Others',ja:'その他'}}
+popT:{es:'Los favoritos del salón',en:'Salon favorites',ja:'当店の人気アイテム'},
+trvB:{es:'Tamaño de viaje · cabina',en:'Travel size · carry-on',ja:'旅行用・機内持ち込み可'},
+trv:{es:'Tamaño de viaje · apto para equipaje de mano',en:'Travel size · carry-on friendly',ja:'旅行に便利なトラベルサイズ（機内持ち込み可）'},
+rk:{es:'Favorito No.',en:'Salon favorite No.',ja:'当店人気 No.'},
+f:{all:{es:'Todo',en:'All',ja:'すべて'},travel:{es:'Para viajar (equipaje de mano)',en:'Travel (carry-on)',ja:'旅行用（機内持ち込み）'},frizz:{es:'Frizz',en:'Frizz',ja:'くせ・広がり'},color:{es:'Color',en:'Color',ja:'カラー'},damage:{es:'Daño / decoloración',en:'Damage / bleached hair',ja:'ダメージ・ブリーチ'},dry:{es:'Resequedad',en:'Dryness',ja:'乾燥'},curl:{es:'Rizos',en:'Curls',ja:'カール'},scalp:{es:'Cuero cabelludo',en:'Scalp',ja:'頭皮'},style:{es:'Peinado',en:'Styling',ja:'スタイリング'},other:{es:'Otros',en:'Others',ja:'その他'}}
 };
 const T=k=>TX[k][LANG];
-const FIL=['all','frizz','color','damage','dry','curl','scalp','style','other'];
+// 飛行機マーク（書体によって✈が小さく出るので図で描く。Material Icons「flight」）
+const PL='<svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>';
+const FIL=['all','travel','frizz','color','damage','dry','curl','scalp','style','other'];
 let ITEMS=[],CUR='all',OPEN='',UPD='';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const peso=n=>'$'+Number(n).toLocaleString('en-US');
@@ -110,7 +115,9 @@ function langs(){document.getElementById('langs').innerHTML=LANGS.map(l=>'<a hre
  document.querySelectorAll('#langs a').forEach(a=>a.onclick=ev=>{ev.preventDefault();LANG=a.dataset.l;draw();});}
 function texts(){document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=T(el.dataset.t);});
  const b=document.getElementById('book');b.href=RESERVA+(ID?'?id='+ID:'');document.documentElement.lang=LANG;document.getElementById('upd').textContent=UPD?T('upd')+': '+UPD:'';}
-function filters(){document.getElementById('filters').innerHTML=FIL.filter(k=>k==='all'||ITEMS.some(i=>i.concerns.indexOf(k)>=0)).map(k=>'<button class="chip'+(k===CUR?' on':'')+'" data-k="'+k+'">'+TX.f[k][LANG]+'</button>').join('');
+// 旅行用（機内持ち込み）は concerns ではなく travel の印で選ぶ（10/4 Nory）
+const has=(i,k)=>k==='travel'?i.travel===true:i.concerns.indexOf(k)>=0;
+function filters(){document.getElementById('filters').innerHTML=FIL.filter(k=>k==='all'||ITEMS.some(i=>has(i,k))).map(k=>'<button class="chip'+(k==='travel'?' tv':'')+(k===CUR?' on':'')+'" data-k="'+k+'">'+(k==='travel'?PL:'')+TX.f[k][LANG]+'</button>').join('');
  document.querySelectorAll('#filters .chip').forEach(b=>b.onclick=()=>{CUR=b.dataset.k;OPEN='';draw();});}
 function holdBox(it){const msg='APARTAR '+it.id+' – '+it.name+' '+it.size;
  return '<div class="box">'+T('holdMsg')+'<br><code class="msg">'+esc(msg)+'</code><br>'
@@ -124,15 +131,15 @@ function card(it,sec){sec=sec||'l';const price=it.salon?'<div class="pr">'+(it.l
  const fs=(it.feat&&it.feat[LANG]||'').split(/\s*[\n|;；]\s*/).filter(Boolean);
  const rk=it.rank?'<span class="rk">'+T('rk')+it.rank+'</span>':'';
  const tv=it.travel===true;
- const ds=(tv?'<b class="tv">'+T('trv')+'.</b> ':'')+(it.desc&&it.desc[LANG]?esc(it.desc[LANG]):'');
+ const ds=(it.desc&&it.desc[LANG]?esc(it.desc[LANG]):'');
  // 写真（大きめ）と名前・容量・価格・在庫を横並び。説明・特徴・取り置きはカードの横幅いっぱいで下へ（10/4 Nory：写真の下の余白をなくす）
- return '<div class="card"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small></div>'+(tv?'<div><span class="trv">'+T('trvB')+'</span></div>':'')+price
+ return '<div class="card"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small>'+(tv?'<span class="phv" aria-hidden="true">'+PL+'</span>':'')+'</div>'+(tv?'<div><span class="trv">'+PL+T('trvB')+'</span></div>':'')+price
   +'<div><span class="st '+it.stock+'">'+T(it.stock)+'</span></div></div></div><div class="body">'+(ds?'<div class="ds">'+ds+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')
   +'<button class="hold" data-id="'+esc(sec+it.id)+'">'+T('hold')+'</button>'+(OPEN===sec+it.id?holdBox(it):'')+'</div></div>';}
 function popular(){const ps=ITEMS.filter(i=>i.rank>=1&&i.rank<=4).sort((a,b)=>a.rank-b.rank);
  document.getElementById('pop').style.display=ps.length?'block':'none';
  document.getElementById('popList').innerHTML=ps.map(it=>card(it,'p')).join('');}
-function list(){popular();const xs=ITEMS.filter(i=>CUR==='all'||i.concerns.indexOf(CUR)>=0);
+function list(){popular();const xs=ITEMS.filter(i=>CUR==='all'||has(i,CUR));
  document.getElementById('list').innerHTML=xs.length?xs.map(card).join(''):'<div class="hint" style="padding:20px 0">'+T('none')+'</div>';
  document.querySelectorAll('.hold').forEach(b=>b.onclick=()=>{OPEN=OPEN===b.dataset.id?'':b.dataset.id;list();});
  document.querySelectorAll('.cp').forEach(cp=>cp.onclick=()=>{const t=cp.parentNode.querySelector('.msg').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{cp.textContent=T('copied');}).catch(()=>{});});}
