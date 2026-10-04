@@ -84,7 +84,7 @@
    "photo": "productos/img/D003.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false,
+   "travel": true,
    "kw": "シャンプー shampoo champú champu"
   },
   {
@@ -254,7 +254,7 @@
    "photo": "productos/img/D009.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false,
+   "travel": true,
    "kw": "シャンプー shampoo champú champu"
   },
   {
@@ -562,7 +562,7 @@
    "photo": "productos/img/D020.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false,
+   "travel": true,
    "kw": "シャンプー shampoo champú champu"
   },
   {
@@ -1510,7 +1510,7 @@
    "photo": "productos/img/D053.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false,
+   "travel": true,
    "kw": "シャンプー shampoo champú champu"
   },
   {
@@ -4397,7 +4397,7 @@
    "photo": "productos/img/D155.jpg",
    "stock": "order",
    "rank": null,
-   "travel": false,
+   "travel": true,
    "kw": "シャンプー shampoo champú champu"
   },
   {
