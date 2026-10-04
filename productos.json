@@ -1417,14 +1417,14 @@
     "dry"
    ],
    "desc": {
-    "es": "Aceite nutritivo pensado para cabello, rostro y cuerpo.",
-    "en": "Nourishing oil designed for hair, face and body.",
-    "ja": "髪・顔・体に使える保湿オイル。"
+    "es": "Aceite orgánico para cabello, rostro y cuerpo.",
+    "en": "Organic oil for hair, face and body.",
+    "ja": "オーガニックオイル。髪・顔・体に使える。"
    },
    "feat": {
-    "es": "Aceite multiuso para cabello, rostro, cuello y cuerpo. Pensado para hidratar puntas secas y dejar la piel suave.",
-    "en": "Multi-use oil for hair, face, neck and body. Designed to moisturize dry ends and leave skin soft.",
-    "ja": "髪・顔・首・体に使える万能オイル。乾燥した毛先のうるおいと、肌のやわらかさを目指す。"
+    "es": "Aceite orgánico multiuso para cabello, rostro, cuello y cuerpo. Hidrata puntas secas y deja la piel suave.",
+    "en": "Organic multi-use oil for hair, face, neck and body. Moisturizes dry ends and leaves skin soft.",
+    "ja": "オーガニックの万能オイル。髪・顔・首・体に使え、乾燥した毛先のうるおいと肌のやわらかさを目指す。"
    },
    "list": 1045,
    "salon": 941,
