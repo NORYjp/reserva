@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE HOME Hair re-creative</title>
+<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;background:#fff;color:#1d1d1d;margin:0;padding:40px 16px;text-align:center}a.b{display:inline-block;background:#1d1d1d;color:#fff;text-decoration:none;border-radius:10px;padding:14px 22px;font-weight:bold;margin-top:18px}</style>
+</head><body>
+<p id="m">…</p>
+<script>
+// 確定メール・DMの「Googleカレンダーに追加」ボタン → Googleカレンダーの追加画面へ
+const API='https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
+const L=(navigator.language||'es').slice(0,2);
+const TX={es:['Abriendo Google Calendar…','No encontramos una cita confirmada.','Abrir Google Calendar'],en:['Opening Google Calendar…','No confirmed appointment found.','Open Google Calendar'],ja:['Googleカレンダーを開いています…','確定した予約が見つかりませんでした。','Googleカレンダーを開く']}[L]||null;
+const T=TX||['Abriendo Google Calendar…','No encontramos una cita confirmada.','Abrir Google Calendar'];
+const m=document.getElementById('m');m.textContent=T[0];
+const id=(new URLSearchParams(location.search).get('id')||'').replace(/[^0-9]/g,'');
+const z=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+fetch(API+'?action=gcal&id='+id).then(r=>r.json()).then(j=>{
+  if(!j.ok){m.textContent=T[1];return;}
+  const s=new Date(j.start),e=new Date(j.start+j.dur*60000);
+  const u='https://calendar.google.com/calendar/render?action=TEMPLATE'+
+    '&text='+encodeURIComponent('THE HOME Hair re-creative – '+j.menu)+
+    '&dates='+z(s)+'/'+z(e)+
+    '&location='+encodeURIComponent('Calle Ensenada 138, Condesa, CDMX')+
+    '&details='+encodeURIComponent(j.menu+'\nhttps://x.gd/uCfi5')+'&ctz=America/Mexico_City';
+  m.innerHTML='';const a=document.createElement('a');a.className='b';a.href=u;a.textContent=T[2];m.appendChild(a);
+  location.href=u;
+}).catch(()=>{m.textContent=T[1];});
+</script>
+</body></html>
