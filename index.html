@@ -77,8 +77,7 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 <div class="times" id="times"></div>
 
 <div class="step" data-t="s3"></div>
-<input id="name" class="inp" type="text" autocomplete="name">
-<div class="hint" id="nameNote" style="display:none;color:#b00020;margin:-4px 0 8px" data-t="nameFull"></div>
+<div id="nameRow" style="display:flex;gap:8px"><input id="name" class="inp" type="text" autocomplete="given-name" style="flex:1;min-width:0"><input id="last" class="inp" type="text" autocomplete="family-name" style="flex:1;min-width:0"></div>
 <input id="tel" class="inp" type="tel" inputmode="tel" autocomplete="tel">
 <input id="mail" class="inp" type="email" inputmode="email" autocomplete="email">
 <div class="hint" style="margin-top:4px" data-t="mailNote"></div>
@@ -113,8 +112,8 @@ closed:{es:'Cerrado: lunes, 1er y 3er martes, 3er domingo',en:'Closed: Mondays, 
 hora:{es:'Hora',en:'Time',ja:'時間'},
 pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にちを選んでください'},
 s3:{es:'3. Contacto',en:'3. Contact',ja:'3. ご連絡先'},
-name:{es:'Nombre y apellido',en:'First and last name',ja:'フルネーム（姓と名）'},
-nameFull:{es:'Escriba nombre y apellido (ej. Ana López).',en:'Please write your first and last name (e.g. Ana López).',ja:'姓と名を、あいだを空けて入れてください（例：山田 花子）。'},
+name:{es:'Nombre',en:'First name',ja:'名（例：花子）'},
+last:{es:'Apellido(s)',en:'Last name(s)',ja:'姓（例：山田）'},
 tel:{es:'Celular',en:'Mobile',ja:'携帯番号'},
 mail:{es:'Correo',en:'Email',ja:'メールアドレス'},
 mailNote:{es:'Para la confirmación y el recordatorio por correo.',en:'For your confirmation and reminder email.',ja:'確定と前日のお知らせメールに使います。'},
@@ -235,20 +234,20 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  document.getElementById('sum').innerHTML=(showMenus()||T('menuNone'))+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+(dur()?'<br><small>⏱ '+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':''):T('dtNone'));
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null);
  const all3=sel.opts.every(x=>x.date&&x.time);document.getElementById('need3').style.display=all3?'none':'block';
- const nv=document.getElementById('name').value.trim();document.getElementById('nameNote').style.display=(nv&&!nameOk())?'block':'none';
  document.getElementById('go').disabled=!(ms&&colorOk&&all3&&ID&&nameOk()&&telOk()&&mailOk());lock();}
-// フルネーム必須：姓と名の2つ（あいだに空白）（Nory 10/3）
-function nameOk(){const p=document.getElementById('name').value.replace(/\u3000/g,' ').trim().split(/\s+/).filter(Boolean);return p.length>=2&&p.join('').length>=3;}
+// 名と姓は別々の欄で、両方必須（Nory 10/3）
+function nameOk(){return document.getElementById('name').value.trim().length>=1&&document.getElementById('last').value.trim().length>=1;}
+function fullName(){const n=document.getElementById('name').value.trim(),l=document.getElementById('last').value.trim();return LANG==='ja'?l+' '+n:n+' '+l;}
 function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'').length>=10;}
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
-['name','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
+['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:document.getElementById('name').value.trim(),tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,dur:Math.max(dur(),30)})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T('doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)).join('<br>')+'<br>'+showMenus()+'</p>'+(needPhoto()?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T('doneC')+'</p><a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a></div>';}
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,dur:Math.max(dur(),30)})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T('doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)).join('<br>')+'<br>'+showMenus()+'</p>'+(needPhoto()?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T('doneC')+'</p><a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a></div>';}
   else{b.disabled=false;b.textContent=T('send');document.getElementById('err').textContent=T('err');}}).catch(()=>{b.disabled=false;b.textContent=T('send');document.getElementById('err').textContent=T('err');});};
 if(!ID){document.getElementById('err').textContent=T('noId');}
 document.documentElement.lang=LANG;
 document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));
-document.getElementById('name').placeholder=T('name');document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
+document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
 document.getElementById('go').textContent=T('send');
 (()=>{const L=document.getElementById('langs');[['es','Español'],['en','English'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===LANG?'on':'';const u=new URL(location.href);u.searchParams.set('lang',k);a.href=u.toString();L.appendChild(a);});})();
 drawTimes();drawOpts();drawCal();upd();
