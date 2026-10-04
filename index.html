@@ -78,6 +78,7 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 
 <div class="step" data-t="s3"></div>
 <div id="nameRow" style="display:flex;gap:8px"><input id="name" class="inp" type="text" autocomplete="given-name" style="flex:1;min-width:0"><input id="last" class="inp" type="text" autocomplete="family-name" style="flex:1;min-width:0"></div>
+<input id="last2" class="inp" type="text" style="display:none">
 <input id="tel" class="inp" type="tel" inputmode="tel" autocomplete="tel">
 <input id="mail" class="inp" type="email" inputmode="email" autocomplete="email">
 <div class="hint" style="margin-top:4px" data-t="mailNote"></div>
@@ -113,7 +114,8 @@ hora:{es:'Hora',en:'Time',ja:'時間'},
 pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にちを選んでください'},
 s3:{es:'3. Contacto',en:'3. Contact',ja:'3. ご連絡先'},
 name:{es:'Nombre',en:'First name',ja:'名（例：花子）'},
-last:{es:'Apellido(s)',en:'Last name(s)',ja:'姓（例：山田）'},
+last:{es:'Apellido paterno',en:'Last name(s)',ja:'姓（例：山田）'},
+last2:{es:'Apellido materno (opcional)',en:'',ja:''},
 tel:{es:'Celular',en:'Mobile',ja:'携帯番号'},
 mail:{es:'Correo',en:'Email',ja:'メールアドレス'},
 mailNote:{es:'Para la confirmación y el recordatorio por correo.',en:'For your confirmation and reminder email.',ja:'確定と前日のお知らせメールに使います。'},
@@ -237,7 +239,7 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  document.getElementById('go').disabled=!(ms&&colorOk&&all3&&ID&&nameOk()&&telOk()&&mailOk());lock();}
 // 名と姓は別々の欄で、両方必須（Nory 10/3）
 function nameOk(){return document.getElementById('name').value.trim().length>=1&&document.getElementById('last').value.trim().length>=1;}
-function fullName(){const n=document.getElementById('name').value.trim(),l=document.getElementById('last').value.trim();return LANG==='ja'?l+' '+n:n+' '+l;}
+function fullName(){const n=document.getElementById('name').value.trim(),l=document.getElementById('last').value.trim(),l2=LANG==='es'?document.getElementById('last2').value.trim():'';return LANG==='ja'?l+' '+n:(n+' '+l+(l2?' '+l2:''));}
 function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'').length>=10;}
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
 ['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
@@ -247,7 +249,7 @@ document.getElementById('go').onclick=()=>{const b=document.getElementById('go')
 if(!ID){document.getElementById('err').textContent=T('noId');}
 document.documentElement.lang=LANG;
 document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));
-document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
+document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='es'){const x=document.getElementById('last2');x.style.display='block';x.placeholder=T('last2');}if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
 document.getElementById('go').textContent=T('send');
 (()=>{const L=document.getElementById('langs');[['es','Español'],['en','English'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===LANG?'on':'';const u=new URL(location.href);u.searchParams.set('lang',k);a.href=u.toString();L.appendChild(a);});})();
 drawTimes();drawOpts();drawCal();upd();
