@@ -172,13 +172,17 @@ function nowMx(){const s=new Date().toLocaleString('en-US',{timeZone:'America/Me
 const NOW=nowMx(); const TODAY=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
 const LAST=new Date(TODAY); LAST.setDate(LAST.getDate()+60);
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-function closed(d){const w=d.getDay(),n=Math.ceil(d.getDate()/7);if(w===1)return true;if(w===2&&(n===1||n===3))return true;if(w===0&&n===3)return true;return EXTRA.indexOf(ymd(d))>=0;}
+let OPENX=[];
+function closed(d){if(EXTRA.indexOf(ymd(d))<0&&OPENX.indexOf(ymd(d))>=0)return false;const w=d.getDay(),n=Math.ceil(d.getDate()/7);if(w===1)return true;if(w===2&&(n===1||n===3))return true;if(w===0&&n===3)return true;return EXTRA.indexOf(ymd(d))>=0;}
 function dur(){let t=0;const perm=sel.menus.indexOf(4)>=0;sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});return t;}
 const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
 // 日曜：10:00から。埋まったら次の時間（Googleの記録 SUNDAY を見る）
 const SUN_CLOSE=1020; // 17:00
 let SUNDAY={};
 fetch(API+'?action=sunday').then(x=>x.json()).then(j=>{SUNDAY=j||{};revalidate();upd();}).catch(()=>{});
+// お店のGoogleカレンダーの「休み」（旅行など）を読んで休みにする
+// 「営業」と入れた日は、決まった休みでも開ける
+fetch(API+'?action=closed').then(x=>x.json()).then(j=>{((j&&j.closed)||[]).forEach(d=>{if(EXTRA.indexOf(d)<0)EXTRA.push(d);});OPENX=(j&&j.open)||[];revalidate();upd();}).catch(()=>{});
 const toM=t=>{const a=t.split(':');return (+a[0])*60+(+a[1]);};
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
@@ -221,7 +225,7 @@ function drawTimes(){const t=document.getElementById('times');t.innerHTML='';if(
 function showMenus(){return sel.menus.map(i=>i===3&&sel.ctype!==null?MENUS[3][1][LANG]+' ('+CTYPES[sel.ctype][1][LANG]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][1][LANG]:'')+')':(i===5&&sel.stype!==null?MENUS[5][1][LANG]+' ('+STYPES[sel.stype][1][LANG]+')':MENUS[i][1][LANG])).join(' + ');}
 function menuText(){return sel.menus.map(i=>i===3&&sel.ctype!==null?'Color ('+CTYPES[sel.ctype][0]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][0].toLowerCase():'')+')':(i===5&&sel.stype!==null?'Alaciado ('+STYPES[sel.stype][0]+')':MENUS[i][0])).join(' + ');}
 let lastDur=-1;
-function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=slots(o.date);if(!ok.length){o.date=null;o.time=null;}else if(o.time&&ok.indexOf(o.time)<0)o.time=null;}});drawCal();drawTimes();drawOpts();}
+function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]:slots(o.date);if(!ok.length){o.date=null;o.time=null;}else if(o.time&&ok.indexOf(o.time)<0)o.time=null;}});drawCal();drawTimes();drawOpts();}
 function endTxt(o){const a=o.time.split(':');const e=(+a[0])*60+(+a[1])+dur();return o.date.getDay()===0?'':' → '+hm(e);}
 // 選んだ時間から閉店までに終わらないメニューは押せなくする
 function fitsWith(ch){const b={m:sel.menus.slice(),c:sel.ctype,bl:sel.bleach,s:sel.stype};ch();const ok=sel.opts.every(o=>!(o.date&&o.time)||slots(o.date).indexOf(o.time)>=0);sel.menus=b.m;sel.ctype=b.c;sel.bleach=b.bl;sel.stype=b.s;return ok;}
