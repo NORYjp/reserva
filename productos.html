@@ -47,6 +47,12 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .dtext{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:26px;letter-spacing:1px;color:#1d1d1d}
 .rk{display:inline-block;align-self:flex-start;font-size:12.5px;font-weight:800;border-radius:20px;padding:3px 11px;margin:2px 0 4px;background:linear-gradient(135deg,#fff3a6,#ffcf2e 55%,#f5a800);color:#c8001e;border:1.5px solid #c8001e;box-shadow:0 2px 6px rgba(200,0,30,.25);letter-spacing:.2px;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
 .rk::before{content:'👑 '}
+.srch{position:relative;margin:4px 0 6px}
+.srch input{width:100%;box-sizing:border-box;border:1.5px solid #222;border-radius:24px;padding:10px 38px 10px 38px;font:inherit;font-size:16px;background:#fff;color:#1d1d1d;-webkit-appearance:none;appearance:none}
+.srch input::-webkit-search-cancel-button{display:none}
+.srch svg{position:absolute;left:13px;top:50%;width:17px;height:17px;transform:translateY(-50%);fill:none;stroke:#777;stroke-width:2}
+.srch .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:#eee;color:#555;border-radius:50%;width:24px;height:24px;font-size:14px;line-height:24px;padding:0;cursor:pointer;display:none}
+.cnt{font-size:12px;color:#888;margin:8px 0 0;font-family:'Kaisei Decol',serif}
 .pop{margin-top:6px}.pop .step{margin-top:12px}
 .pop .card{background:#faf8f4;border-radius:14px;border-bottom:none;padding:8px;margin-top:8px}
 </style></head>
@@ -55,10 +61,13 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 <!-- Davinesのロゴ：productos/img/davines_logo.svg（mx.davines.com のヘッダーの公式ロゴそのまま・加工なし。2026-10-04 Nory許可）。読めないときだけ文字の「davines」 -->
 <div class="sub" data-t="sub"></div>
 <div class="langs" id="langs"></div>
+<!-- 検索窓（10/4 Nory：名前・種類で、3言語。ハンドクリームなどの言い方でも見つかる） -->
+<div class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><input type="search" id="q" autocomplete="off" enterkeyhint="search"><button class="clr" id="qx" type="button" aria-label="×">×</button></div>
 <div class="pop" id="pop" style="display:none"><div class="step" data-t="popT"></div><div id="popList"></div></div>
 <div class="step" data-t="s1"></div>
 <div class="filters" id="filters"></div>
 <div class="hint" style="margin-top:8px" data-t="note"></div>
+<div class="cnt" id="cnt"></div>
 <div id="list"><div class="hint" style="text-align:center;padding:30px 0" data-t="loading"></div></div>
 <a class="go" id="book" href="#" data-t="book"></a>
 <div class="hint" style="text-align:center;margin-top:10px" id="upd"></div>
@@ -83,6 +92,10 @@ note:{es:'Precios con IVA incluido. Precio de salón: 10 % de descuento sobre el
 loading:{es:'Cargando…',en:'Loading…',ja:'読み込み中…'},
 err:{es:'No fue posible cargar la información. Escríbanos por DM.',en:"Couldn't load. Please message us by DM.",ja:'読み込めませんでした。DMでお問い合わせください。'},
 none:{es:'No hay productos en esta categoría.',en:'No products in this category.',ja:'このお悩みの商品はありません。'},
+qph:{es:'Buscar producto (p. ej. crema de manos)',en:'Search products (e.g. hand cream)',ja:'商品を探す（例：ハンドクリーム）'},
+nores:{es:'No encontramos productos con esa búsqueda. Con gusto le orientamos por DM.',en:'No products match your search. We are happy to help by DM.',ja:'該当する商品が見つかりませんでした。DMでお気軽にお問い合わせください。'},
+cnt:{es:' productos',en:' products',ja:'品'},
+cnt1:{es:' producto',en:' product',ja:'品'},
 list:{es:'Precio regular',en:'Regular price',ja:'定価'},
 salon:{es:'Precio de salón',en:'Salon price',ja:'サロン価格'},
 ask:{es:'Precio: consúltenos por DM',en:'Price available by DM',ja:'価格はDMでご案内します'},
@@ -101,19 +114,23 @@ popT:{es:'Los favoritos del salón',en:'Salon favorites',ja:'当店の人気ア�
 trvB:{es:'Tamaño de viaje · cabina',en:'Travel size · carry-on',ja:'旅行用・機内持ち込み可'},
 trv:{es:'Tamaño de viaje · apto para equipaje de mano',en:'Travel size · carry-on friendly',ja:'旅行に便利なトラベルサイズ（機内持ち込み可）'},
 rk:{es:'Favorito No.',en:'Salon favorite No.',ja:'当店人気 No.'},
-f:{all:{es:'Todo',en:'All',ja:'すべて'},travel:{es:'Para viajar (equipaje de mano)',en:'Travel (carry-on)',ja:'旅行用（機内持ち込み）'},frizz:{es:'Frizz',en:'Frizz',ja:'くせ・広がり'},color:{es:'Color',en:'Color',ja:'カラー'},damage:{es:'Daño / decoloración',en:'Damage / bleached hair',ja:'ダメージ・ブリーチ'},dry:{es:'Resequedad',en:'Dryness',ja:'乾燥'},curl:{es:'Rizos',en:'Curls',ja:'カール'},scalp:{es:'Cuero cabelludo',en:'Scalp',ja:'頭皮'},style:{es:'Peinado',en:'Styling',ja:'スタイリング'},other:{es:'Otros',en:'Others',ja:'その他'}}
+f:{all:{es:'Todo',en:'All',ja:'すべて'},travel:{es:'Para viajar (equipaje de mano)',en:'Travel (carry-on)',ja:'旅行用（機内持ち込み）'},frizz:{es:'Frizz',en:'Frizz',ja:'くせ・広がり'},color:{es:'Color',en:'Color',ja:'カラー'},damage:{es:'Daño / decoloración',en:'Damage / bleached hair',ja:'ダメージ・ブリーチ'},dry:{es:'Resequedad',en:'Dryness',ja:'乾燥'},curl:{es:'Rizos',en:'Curls',ja:'カール'},scalp:{es:'Cuero cabelludo',en:'Scalp',ja:'頭皮'},style:{es:'Peinado',en:'Styling',ja:'スタイリング'},body:{es:'Cuerpo y manos',en:'Body & hands',ja:'ボディ・ハンド'},other:{es:'Otros',en:'Others',ja:'その他'}}
 };
 const T=k=>TX[k][LANG];
 // 飛行機マーク（書体によって✈が小さく出るので図で描く。Material Icons「flight」）
 const PL='<svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>';
-const FIL=['all','travel','frizz','color','damage','dry','curl','scalp','style','other'];
-let ITEMS=[],CUR='all',OPEN='',UPD='';
+const FIL=['all','travel','frizz','color','damage','dry','curl','scalp','style','body','other'];
+let ITEMS=[],CUR='all',OPEN='',UPD='',QS='';
+// 検索：大文字小文字・アクセント記号・ひらがな/カタカナの違いを無視。名前・ライン・種類・説明・特徴（3言語）と kw（言い換え）から探す
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\u3041-\u3096]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60)).replace(/[・／\/（）()、,.;；:]/g,' ');
+const hay=i=>i._h||(i._h=norm([i.id,i.line,i.name,i.type,i.nayami,i.size,i.kw,i.desc&&i.desc.es,i.desc&&i.desc.en,i.desc&&i.desc.ja,i.feat&&i.feat.es,i.feat&&i.feat.en,i.feat&&i.feat.ja].join(' ')));
+const match=i=>{const ws=norm(QS).split(/\s+/).filter(Boolean);if(!ws.length)return true;const h=hay(i);return ws.every(w=>h.indexOf(w)>=0);};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const peso=n=>'$'+Number(n).toLocaleString('en-US');
 
 function langs(){document.getElementById('langs').innerHTML=LANGS.map(l=>'<a href="#" data-l="'+l+'" class="'+(l===LANG?'on':'')+'">'+({es:'Español',en:'English',ja:'日本語'})[l]+'</a>').join('');
  document.querySelectorAll('#langs a').forEach(a=>a.onclick=ev=>{ev.preventDefault();LANG=a.dataset.l;draw();});}
-function texts(){document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=T(el.dataset.t);});
+function texts(){document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=T(el.dataset.t);});document.getElementById('q').placeholder=T('qph');
  const b=document.getElementById('book');b.href=RESERVA+(ID?'?id='+ID:'');document.documentElement.lang=LANG;document.getElementById('upd').textContent=UPD?T('upd')+': '+UPD:'';}
 // 旅行用（機内持ち込み）は concerns ではなく travel の印で選ぶ（10/4 Nory）
 const has=(i,k)=>k==='travel'?i.travel===true:i.concerns.indexOf(k)>=0;
@@ -127,7 +144,8 @@ function holdBox(it){const msg='APARTAR '+it.id+' – '+it.name+' '+it.size;
   +'</div>';}
 function card(it,sec){sec=sec||'l';const price=it.salon?'<div class="pr">'+(it.list?'<s>'+peso(it.list)+'</s>':'')+'<b>'+peso(it.salon)+'</b> MXN<small>'+T('salon')+' · IVA incl.</small></div>':'<div class="pr"><small>'+T('ask')+'</small></div>';
  const src=it.photo?(it.photo.indexOf('/')>=0?it.photo:'productos/img/'+it.photo):'';
- const ph=src?'style="background-image:url('+esc(src)+')"':'';
+ // 写真は画面に近づいてから読む（170品でも最初が重くならないように）
+ const ph=src?'data-bg="'+esc(src)+'"':'';
  const fs=(it.feat&&it.feat[LANG]||'').split(/\s*[\n|;；]\s*/).filter(Boolean);
  const rk=it.rank?'<span class="rk">'+T('rk')+it.rank+'</span>':'';
  const tv=it.travel===true;
@@ -136,15 +154,23 @@ function card(it,sec){sec=sec||'l';const price=it.salon?'<div class="pr">'+(it.l
  return '<div class="card"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small>'+(tv?'<span class="phv" aria-hidden="true">'+PL+'</span>':'')+'</div>'+(tv?'<div><span class="trv">'+PL+T('trvB')+'</span></div>':'')+price
   +'<div><span class="st '+it.stock+'">'+T(it.stock)+'</span></div></div></div><div class="body">'+(ds?'<div class="ds">'+ds+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')
   +'<button class="hold" data-id="'+esc(sec+it.id)+'">'+T('hold')+'</button>'+(OPEN===sec+it.id?holdBox(it):'')+'</div></div>';}
-function popular(){const ps=ITEMS.filter(i=>i.rank>=1&&i.rank<=4).sort((a,b)=>a.rank-b.rank);
+const IO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.style.backgroundImage='url("'+el.dataset.bg+'")';el.removeAttribute('data-bg');IO.unobserve(el);}}),{rootMargin:'600px 0px'}):null;
+function lazy(){document.querySelectorAll('.ph[data-bg]').forEach(el=>{if(IO)IO.observe(el);else{el.style.backgroundImage='url("'+el.dataset.bg+'")';el.removeAttribute('data-bg');}});}
+function popular(){const ps=QS.trim()?[]:ITEMS.filter(i=>i.rank>=1&&i.rank<=4).sort((a,b)=>a.rank-b.rank);
  document.getElementById('pop').style.display=ps.length?'block':'none';
  document.getElementById('popList').innerHTML=ps.map(it=>card(it,'p')).join('');}
-function list(){popular();const xs=ITEMS.filter(i=>CUR==='all'||has(i,CUR));
- document.getElementById('list').innerHTML=xs.length?xs.map(card).join(''):'<div class="hint" style="padding:20px 0">'+T('none')+'</div>';
+function list(){if(IO)IO.disconnect();popular();const xs=ITEMS.filter(i=>(CUR==='all'||has(i,CUR))&&match(i));
+ document.getElementById('cnt').textContent=xs.length+T(xs.length===1?'cnt1':'cnt');document.getElementById('qx').style.display=QS?'block':'none';
+ document.getElementById('list').innerHTML=xs.length?xs.map(card).join(''):'<div class="hint" style="padding:20px 0">'+T(QS.trim()?'nores':'none')+'</div>';
+ lazy();
  document.querySelectorAll('.hold').forEach(b=>b.onclick=()=>{OPEN=OPEN===b.dataset.id?'':b.dataset.id;list();});
  document.querySelectorAll('.cp').forEach(cp=>cp.onclick=()=>{const t=cp.parentNode.querySelector('.msg').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{cp.textContent=T('copied');}).catch(()=>{});});}
 function draw(){langs();texts();if(ITEMS.length){filters();list();}}
 
+let QT=0;const QI=document.getElementById('q');
+QI.addEventListener('input',()=>{clearTimeout(QT);QT=setTimeout(()=>{QS=QI.value;OPEN='';if(ITEMS.length)list();},150);});
+QI.addEventListener('keydown',ev=>{if(ev.key==='Enter')QI.blur();});
+document.getElementById('qx').onclick=()=>{QI.value='';QS='';if(ITEMS.length)list();QI.focus();};
 draw();
 fetch(API?API+'?action=products':DATA,{cache:'no-cache'}).then(x=>{if(!x.ok)throw 0;return x.json();})
  .then(j=>{if(!j||!j.ok)throw 0;ITEMS=j.items||[];UPD=j.updated||'';draw();})

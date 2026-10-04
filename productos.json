@@ -27,7 +27,8 @@
    "photo": "productos/img/D001.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D002",
@@ -37,7 +38,8 @@
    "size": "150ml",
    "nayami": "乾燥",
    "concerns": [
-    "dry"
+    "dry",
+    "body"
    ],
    "desc": {
     "es": "Bálsamo multiusos a base de aceites para cabello, rostro y cuerpo.",
@@ -54,7 +56,8 @@
    "photo": "productos/img/D002.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "バーム クリーム bálsamo balsamo crema balm cream"
   },
   {
    "id": "D003",
@@ -81,7 +84,8 @@
    "photo": "productos/img/D003.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D004",
@@ -109,7 +113,8 @@
    "photo": "productos/img/D004.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D005",
@@ -128,7 +133,7 @@
     "ja": "ブロンド・ハイライト毛のための、やさしい洗い心地のシャンプー。"
    },
    "feat": {
-    "es": "Elimina residuos y minerales del agua que opacan el tono",
+    "es": "Ayuda a retirar residuos y minerales del agua que opacan el tono",
     "en": "Removes water minerals and residue that dull the tone",
     "ja": "髪色をくすませる、水のミネラルや残留物を落とします"
    },
@@ -137,7 +142,8 @@
    "photo": "productos/img/D005.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D006",
@@ -164,7 +170,8 @@
    "photo": "productos/img/D006.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "トリートメント tratamiento treatment"
   },
   {
    "id": "D007",
@@ -191,7 +198,8 @@
    "photo": "productos/img/D007.jpg",
    "stock": "ok",
    "rank": 3,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D008",
@@ -218,7 +226,8 @@
    "photo": "productos/img/D008.jpg",
    "stock": "low",
    "rank": 3,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
   },
   {
    "id": "D009",
@@ -245,7 +254,8 @@
    "photo": "productos/img/D009.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D010",
@@ -272,7 +282,8 @@
    "photo": "productos/img/D010.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D011",
@@ -299,7 +310,8 @@
    "photo": "productos/img/D011.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D012",
@@ -326,7 +338,8 @@
    "photo": "productos/img/D012.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D013",
@@ -353,7 +366,8 @@
    "photo": "productos/img/D013.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D014",
@@ -380,7 +394,8 @@
    "photo": "productos/img/D014.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D015",
@@ -407,7 +422,8 @@
    "photo": "productos/img/D015.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D016",
@@ -434,7 +450,8 @@
    "photo": "productos/img/D016.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D017",
@@ -461,7 +478,8 @@
    "photo": "productos/img/D017.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D018",
@@ -488,7 +506,8 @@
    "photo": "productos/img/D018.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D019",
@@ -515,7 +534,8 @@
    "photo": "productos/img/D019.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D020",
@@ -542,7 +562,8 @@
    "photo": "productos/img/D020.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D021",
@@ -570,7 +591,8 @@
    "photo": "productos/img/D021.jpg",
    "stock": "low",
    "rank": 4,
-   "travel": false
+   "travel": false,
+   "kw": "セラム 美容液 sérum serum スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D022",
@@ -598,7 +620,8 @@
    "photo": "productos/img/D022.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "オイル aceite oil ジェル gel スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D023",
@@ -625,7 +648,8 @@
    "photo": "productos/img/D023.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D024",
@@ -653,7 +677,8 @@
    "photo": "productos/img/D024.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "ムース espuma mousse スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D025",
@@ -680,7 +705,8 @@
    "photo": "productos/img/D025.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D026",
@@ -707,7 +733,8 @@
    "photo": "productos/img/D026.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D027",
@@ -734,7 +761,8 @@
    "photo": "productos/img/D027.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D028",
@@ -761,7 +789,8 @@
    "photo": "productos/img/D028.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D029",
@@ -788,7 +817,8 @@
    "photo": "productos/img/D029.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D030",
@@ -815,7 +845,8 @@
    "photo": "productos/img/D030.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
   },
   {
    "id": "D031",
@@ -843,7 +874,8 @@
    "photo": "productos/img/D031.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
   },
   {
    "id": "D032",
@@ -871,7 +903,8 @@
    "photo": "productos/img/D032.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D033",
@@ -899,7 +932,8 @@
    "photo": "productos/img/D033.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D034",
@@ -927,7 +961,8 @@
    "photo": "productos/img/D034.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
   },
   {
    "id": "D035",
@@ -954,7 +989,8 @@
    "photo": "productos/img/D035.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
   },
   {
    "id": "D036",
@@ -981,7 +1017,8 @@
    "photo": "productos/img/D036.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D037",
@@ -1008,7 +1045,8 @@
    "photo": "productos/img/D037.jpg",
    "stock": "low",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D038",
@@ -1037,7 +1075,8 @@
    "photo": "productos/img/D038.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
   },
   {
    "id": "D039",
@@ -1066,7 +1105,8 @@
    "photo": "productos/img/D039.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
   },
   {
    "id": "D040",
@@ -1095,7 +1135,8 @@
    "photo": "productos/img/D040.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D041",
@@ -1124,7 +1165,8 @@
    "photo": "productos/img/D041.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "コンディショナー リンス acondicionador conditioner"
   },
   {
    "id": "D042",
@@ -1152,7 +1194,8 @@
    "photo": "productos/img/D042.jpg",
    "stock": "low",
    "rank": 2,
-   "travel": false
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment バター クリーム manteca mantequilla butter cream"
   },
   {
    "id": "D043",
@@ -1180,7 +1223,8 @@
    "photo": "productos/img/D043.jpg",
    "stock": "ok",
    "rank": 2,
-   "travel": true
+   "travel": true,
+   "kw": "トリートメント tratamiento treatment バター クリーム manteca mantequilla butter cream"
   },
   {
    "id": "D044",
@@ -1190,7 +1234,7 @@
    "size": "75ml",
    "nayami": "",
    "concerns": [
-    "other"
+    "body"
    ],
    "desc": {
     "es": "Bálsamo hidratante para manos con la fragancia de OI.",
@@ -1207,7 +1251,8 @@
    "photo": "productos/img/D044.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "ハンドクリーム ハンドケア 手 crema de manos crema para manos manos hand cream hand care hands バーム クリーム bálsamo balsamo crema balm cream"
   },
   {
    "id": "D045",
@@ -1235,7 +1280,8 @@
    "photo": "productos/img/D045.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "オイル aceite oil"
   },
   {
    "id": "D046",
@@ -1263,7 +1309,8 @@
    "photo": "productos/img/D046.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "オイル aceite oil"
   },
   {
    "id": "D047",
@@ -1292,7 +1339,8 @@
    "photo": "productos/img/D047.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D048",
@@ -1321,7 +1369,8 @@
    "photo": "productos/img/D048.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D049",
@@ -1349,7 +1398,8 @@
    "photo": "productos/img/D049.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": true
+   "travel": true,
+   "kw": "スタイリング 整髪料 peinado styling"
   },
   {
    "id": "D050",
@@ -1359,7 +1409,7 @@
    "size": "100ml",
    "nayami": "",
    "concerns": [
-    "other"
+    "body"
    ],
    "desc": {
     "es": "Crema ligera que calma e hidrata la piel después del afeitado.",
@@ -1376,7 +1426,8 @@
    "photo": "productos/img/D050.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "アフターシェーブ ひげそり後 aftershave after shave"
   },
   {
    "id": "D051",
@@ -1386,7 +1437,7 @@
    "size": "200ml",
    "nayami": "",
    "concerns": [
-    "other"
+    "body"
    ],
    "desc": {
     "es": "Gel que se transforma en espuma para un afeitado suave.",
@@ -1403,7 +1454,8 @@
    "photo": "productos/img/D051.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "ジェル gel シェービング ひげそり afeitar afeitado shaving"
   },
   {
    "id": "D052",
@@ -1430,7 +1482,8 @@
    "photo": "productos/img/D052.jpg",
    "stock": "low",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
   },
   {
    "id": "D053",
@@ -1457,7 +1510,8 @@
    "photo": "productos/img/D053.jpg",
    "stock": "ok",
    "rank": null,
-   "travel": false
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
   },
   {
    "id": "D054",
@@ -1467,7 +1521,8 @@
    "size": "140ml",
    "nayami": "乾燥",
    "concerns": [
-    "dry"
+    "dry",
+    "body"
    ],
    "desc": {
     "es": "Aceite multiusos 100 % de origen natural, con aceite de cártamo orgánico.",
@@ -1484,7 +1539,8 @@
    "photo": "productos/img/D054.jpg",
    "stock": "order",
    "rank": 1,
-   "travel": false
+   "travel": false,
+   "kw": "オイル aceite oil"
   },
   {
    "id": "D055",
@@ -1511,7 +1567,3261 @@
    "photo": "productos/img/D055.jpg",
    "stock": "order",
    "rank": 3,
-   "travel": false
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D056",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Shampoo Silver",
+   "type": "シャンプー（色つき）",
+   "size": "280ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo con pigmento que neutraliza los reflejos amarillos en rubios fríos, platinados y canas.",
+    "en": "Pigmented shampoo that neutralizes yellow tones in cool blonde, platinum and grey hair.",
+    "ja": "黄ばみを抑え、寒色系ブロンド・プラチナ・白髪を美しく見せるカラーシャンプー。"
+   },
+   "feat": {
+    "es": "Tonos fríos más luminosos; Fórmula biodegradable con pigmentos puros",
+    "en": "Brighter cool tones; Biodegradable formula with pure pigments",
+    "ja": "寒色系の髪色をより明るく；純度の高い色素を使った生分解性処方"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D056.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D057",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Shampoo Chocolate",
+   "type": "シャンプー（色つき）",
+   "size": "280ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo con pigmento que intensifica los tonos castaño oscuro y negro.",
+    "en": "Pigmented shampoo that intensifies dark brown and black tones.",
+    "ja": "ダークブラウン・黒髪の色みを深める、カラーシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Color más profundo y luminoso",
+    "en": "For natural or color-treated hair; Deeper, more luminous color",
+    "ja": "地毛にもカラー毛にも；深みとツヤのある髪色に"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D057.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D058",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Shampoo Copper",
+   "type": "シャンプー（色つき）",
+   "size": "280ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo con pigmento que intensifica los tonos cobrizos.",
+    "en": "Pigmented shampoo that intensifies copper tones.",
+    "ja": "カッパー（銅色）系の色みを鮮やかに保つ、カラーシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Reflejos cobrizos con más brillo",
+    "en": "For natural or color-treated hair; Brighter copper reflections",
+    "ja": "地毛にもカラー毛にも；銅色の輝きを長く"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D058.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D059",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Shampoo Red",
+   "type": "シャンプー（色つき）",
+   "size": "280ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo con pigmento que intensifica los tonos rojizos.",
+    "en": "Pigmented shampoo that intensifies red tones.",
+    "ja": "レッド系の色みを鮮やかに保つ、カラーシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Rojos vibrantes por más tiempo",
+    "en": "For natural or color-treated hair; Keeps reds vibrant for longer",
+    "ja": "地毛にもカラー毛にも；赤みの鮮やかさが長続き"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D059.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D060",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Shampoo Tobacco",
+   "type": "シャンプー（色つき）",
+   "size": "280ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Shampoo con pigmento que intensifica los tonos castaño y castaño claro.",
+    "en": "Pigmented shampoo that intensifies brown and light brown tones.",
+    "ja": "ブラウン・ライトブラウンの色みを深める、カラーシャンプー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Castaños con más luz y profundidad",
+    "en": "For natural or color-treated hair; Browns with more depth and shine",
+    "ja": "地毛にもカラー毛にも；ブラウンに深みとツヤを"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D060.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D061",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Conditioner Silver",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que neutraliza los reflejos amarillos en rubios fríos, platinados y canas.",
+    "en": "Pigmented conditioner that neutralizes yellow tones in cool blonde, platinum and grey hair.",
+    "ja": "黄ばみを抑え、寒色系ブロンド・プラチナ・白髪を整えるカラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Tonos fríos más luminosos; Deja el cabello suave y manejable",
+    "en": "Brighter cool tones; Leaves hair soft and manageable",
+    "ja": "寒色系の髪色をより明るく；やわらかくまとまる髪に"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D061.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D062",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Conditioner Chocolate",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que intensifica los tonos castaño oscuro y negro.",
+    "en": "Pigmented conditioner that intensifies dark brown and black tones.",
+    "ja": "ダークブラウン・黒髪の色みを深める、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Color profundo con brillo",
+    "en": "For natural or color-treated hair; Deep, glossy color",
+    "ja": "地毛にもカラー毛にも；深みのあるツヤ髪に"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D062.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D063",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Conditioner Copper",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que intensifica los reflejos cobrizos.",
+    "en": "Pigmented conditioner that intensifies copper reflections.",
+    "ja": "カッパー（銅色）系の色みを鮮やかに保つ、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Reflejos cobrizos más intensos",
+    "en": "For natural or color-treated hair; More intense copper tones",
+    "ja": "地毛にもカラー毛にも；銅色の輝きをより鮮やかに"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D063.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D064",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Conditioner Red",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que intensifica los tonos rojizos.",
+    "en": "Pigmented conditioner that intensifies red tones.",
+    "ja": "レッド系の色みを鮮やかに保つ、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Rojos luminosos por más tiempo",
+    "en": "For natural or color-treated hair; Luminous reds for longer",
+    "ja": "地毛にもカラー毛にも；赤みの輝きが長続き"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D064.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D065",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Conditioner Tobacco",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que intensifica los tonos castaño y castaño claro.",
+    "en": "Pigmented conditioner that intensifies brown and light brown tones.",
+    "ja": "ブラウン・ライトブラウンの色みを深める、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Para cabello natural o teñido; Castaños luminosos",
+    "en": "For natural or color-treated hair; Luminous browns",
+    "ja": "地毛にもカラー毛にも；明るさのあるブラウンに"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D065.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D066",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Creative Conditioner Coral",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que aporta reflejos coral al cabello decolorado.",
+    "en": "Pigmented conditioner that adds coral tones to pre-lightened hair.",
+    "ja": "ブリーチ毛にコーラルの色みを補う、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Renueva el tono en cada uso; Deja el cabello suave y con brillo",
+    "en": "Refreshes the tone with every use; Leaves hair soft and glossy",
+    "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D066.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D067",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Creative Conditioner Lavender",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que aporta reflejos lavanda al cabello decolorado.",
+    "en": "Pigmented conditioner that adds lavender tones to pre-lightened hair.",
+    "ja": "ブリーチ毛にラベンダーの色みを補う、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Renueva el tono en cada uso; Deja el cabello suave y con brillo",
+    "en": "Refreshes the tone with every use; Leaves hair soft and glossy",
+    "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D067.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D068",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Creative Conditioner Marine Blue",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que aporta reflejos azules al cabello decolorado.",
+    "en": "Pigmented conditioner that adds blue tones to pre-lightened hair.",
+    "ja": "ブリーチ毛にブルーの色みを補う、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Renueva el tono en cada uso; Deja el cabello suave y con brillo",
+    "en": "Refreshes the tone with every use; Leaves hair soft and glossy",
+    "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D068.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D069",
+   "line": "ALCHEMIC",
+   "name": "ALCHEMIC Creative Conditioner Pink",
+   "type": "コンディショナー（色つき）",
+   "size": "250ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Acondicionador con pigmento que aporta reflejos rosas al cabello decolorado.",
+    "en": "Pigmented conditioner that adds pink tones to pre-lightened hair.",
+    "ja": "ブリーチ毛にピンクの色みを補う、カラーコンディショナー。"
+   },
+   "feat": {
+    "es": "Renueva el tono en cada uso; Deja el cabello suave y con brillo",
+    "en": "Refreshes the tone with every use; Leaves hair soft and glossy",
+    "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
+   },
+   "list": 865,
+   "salon": 779,
+   "photo": "productos/img/D069.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D070",
+   "line": "AUTHENTIC",
+   "name": "AUTHENTIC Cleansing Nectar",
+   "type": "シャンプー（髪・体）",
+   "size": "280ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Néctar limpiador de textura oleosa para cabello y cuerpo.",
+    "en": "Oil-textured cleansing nectar for hair and body.",
+    "ja": "髪と体に使える、オイルのような質感の洗浄ネクター。"
+   },
+   "feat": {
+    "es": "Cabello sedoso y piel aterciopelada; Limpieza delicada para uso diario",
+    "en": "Silky hair and velvety skin; Gentle cleansing for daily use",
+    "ja": "髪はしなやかに、肌はなめらかに；毎日使えるやさしい洗い心地"
+   },
+   "list": 660,
+   "salon": 594,
+   "photo": "productos/img/D070.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D071",
+   "line": "AUTHENTIC",
+   "name": "AUTHENTIC Replenishing Butter",
+   "type": "バター（髪・顔・体）",
+   "size": "230ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Manteca nutritiva para la hidratación profunda de cabello, rostro y cuerpo.",
+    "en": "Nourishing butter that deeply moisturizes hair, face and body.",
+    "ja": "髪・顔・体を深くうるおす、栄養たっぷりのバター。"
+   },
+   "feat": {
+    "es": "Fórmula delicada para todo tipo de cabello y piel; Ideal para zonas muy resecas",
+    "en": "Gentle formula for all hair and skin types; Ideal for very dry areas",
+    "ja": "すべての髪・肌タイプにやさしい処方；乾燥が特に気になる部分に"
+   },
+   "list": 965,
+   "salon": 869,
+   "photo": "productos/img/D071.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "バター クリーム manteca mantequilla butter cream"
+  },
+  {
+   "id": "D072",
+   "line": "DEDE",
+   "name": "DEDE Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo delicado para uso diario en todo tipo de cabello.",
+    "en": "Gentle everyday shampoo for all hair types.",
+    "ja": "すべての髪質に、毎日使えるやさしいシャンプー。"
+   },
+   "feat": {
+    "es": "Suavidad y brillo natural sin peso; Con extracto antioxidante de hibisco blanco",
+    "en": "Softness and natural shine without weight; With antioxidant white hibiscus extract",
+    "ja": "重くならずに、やわらかさと自然なツヤ；抗酸化のホワイトハイビスカスエキス配合"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D072.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D073",
+   "line": "DEDE",
+   "name": "DEDE Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Acondicionador ligero de acción rápida para todo tipo de cabello.",
+    "en": "Lightweight, fast-acting conditioner for all hair types.",
+    "ja": "すべての髪質に、すばやくなじむ軽やかなコンディショナー。"
+   },
+   "feat": {
+    "es": "Desenreda con facilidad; Suave y brillante, sin apelmazar",
+    "en": "Detangles with ease; Soft and shiny without weighing hair down",
+    "ja": "指通りなめらか；重さを感じない、やわらかなツヤ髪に"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D073.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D074",
+   "line": "DEDE",
+   "name": "DEDE Leave-in Conditioner",
+   "type": "洗い流さないトリートメント（スプレー）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Acondicionador ligero sin enjuague en spray para todo tipo de cabello.",
+    "en": "Lightweight leave-in conditioning spray for all hair types.",
+    "ja": "すべての髪質に使える、軽やかな洗い流さないスプレー。"
+   },
+   "feat": {
+    "es": "Facilita el desenredado; Protección térmica hasta 230 °C",
+    "en": "Helps detangle; Heat protection up to 230 °C",
+    "ja": "指通りをなめらかに；230℃までの熱から髪を守ります"
+   },
+   "list": 999,
+   "salon": 899,
+   "photo": "productos/img/D074.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment スプレー spray"
+  },
+  {
+   "id": "D075",
+   "line": "ESSENTIAL HAIRCARE",
+   "name": "DEDY Hand Wash",
+   "type": "ハンドソープ",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Jabón de manos delicado para uso diario en todo tipo de piel.",
+    "en": "Gentle everyday hand wash for all skin types.",
+    "ja": "すべての肌タイプに、毎日使えるやさしいハンドソープ。"
+   },
+   "feat": {
+    "es": "Deja la piel aterciopelada; Aroma delicado y agradable",
+    "en": "Leaves skin velvety soft; A delicate, pleasant scent",
+    "ja": "洗い上がりはなめらかな手肌に；やさしく心地よい香り"
+   },
+   "list": 435,
+   "salon": 392,
+   "photo": "productos/img/D075.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ハンドウォッシュ 石けん 手 manos hands jabón de manos jabon hand soap hand wash"
+  },
+  {
+   "id": "D076",
+   "line": "ESSENTIAL HAIRCARE",
+   "name": "WE STAND/for regeneration Hair, Body & Face Butter",
+   "type": "バター（髪・顔・体）",
+   "size": "100ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Manteca hidratante multiusos para cabello, cuerpo y rostro.",
+    "en": "Multi-use moisturizing butter for hair, body and face.",
+    "ja": "髪・体・顔に使える、マルチ保湿バター。"
+   },
+   "feat": {
+    "es": "Suaviza e hidrata piel y cabello; Con caléndula orgánica de cultivo regenerativo",
+    "en": "Softens and moisturizes skin and hair; With regeneratively grown organic calendula",
+    "ja": "肌と髪をやわらかくうるおす；環境再生型農法のオーガニックカレンデュラ配合"
+   },
+   "list": 550,
+   "salon": 495,
+   "photo": "productos/img/D076.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "バター クリーム manteca mantequilla butter cream"
+  },
+  {
+   "id": "D077",
+   "line": "HAIR REFRESHER",
+   "name": "Hair Refresher",
+   "type": "ドライシャンプー",
+   "size": "150ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo en seco en spray que refresca el cabello sin agua.",
+    "en": "Dry shampoo spray that refreshes hair without water.",
+    "ja": "水を使わずに髪をリフレッシュする、スプレータイプのドライシャンプー。"
+   },
+   "feat": {
+    "es": "Absorbe el exceso de grasa; Cuerpo ligero y aroma fresco",
+    "en": "Absorbs excess oil; Light body and a fresh scent",
+    "ja": "余分な皮脂を吸着；ふんわり軽く、さわやかな香り"
+   },
+   "list": 734,
+   "salon": 661,
+   "photo": "productos/img/D077.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu ドライシャンプー shampoo en seco dry shampoo"
+  },
+  {
+   "id": "D078",
+   "line": "HEART OF GLASS",
+   "name": "HEART OF GLASS Intense Treatment",
+   "type": "トリートメント",
+   "size": "150ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Tratamiento intensivo que fortalece e ilumina el cabello rubio, natural o teñido.",
+    "en": "Intensive treatment that strengthens and brightens natural or color-treated blonde hair.",
+    "ja": "地毛・カラーのブロンドを補強し、明るく輝かせる集中トリートメント。"
+   },
+   "feat": {
+    "es": "Ayuda a prevenir el quiebre; Rubios con más luminosidad",
+    "en": "Helps prevent breakage; Brighter-looking blondes",
+    "ja": "切れ毛を防ぐサポート；明るく輝くブロンドに"
+   },
+   "list": 860,
+   "salon": 774,
+   "photo": "productos/img/D078.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D079",
+   "line": "HEART OF GLASS",
+   "name": "HEART OF GLASS Sheer Glaze",
+   "type": "洗い流さないトリートメント（熱保護）",
+   "size": "150ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Protector térmico iluminador sin enjuague para cabello rubio.",
+    "en": "Brightening leave-in heat protector for blonde hair.",
+    "ja": "ブロンドの髪を輝かせる、洗い流さないヒートプロテクト。"
+   },
+   "feat": {
+    "es": "Hidratación y brillo luminoso; Prolonga la duración del peinado con calor",
+    "en": "Hydration and radiant shine; Helps heat styling last longer",
+    "ja": "うるおいと透明感のあるツヤ；アイロン・ドライヤーのスタイルを長持ちさせます"
+   },
+   "list": 999,
+   "salon": 899,
+   "photo": "productos/img/D079.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D080",
+   "line": "THERE MUST BE AN ANGEL",
+   "name": "Instant Bonding Glow",
+   "type": "トリートメント（リキッド）",
+   "size": "300ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Tratamiento de acción rápida que refuerza y aporta brillo extra al cabello rubio.",
+    "en": "Fast-acting treatment that strengthens blonde hair and adds extra shine.",
+    "ja": "ブロンドの髪を補強し、さらなるツヤを与える速効トリートメント。"
+   },
+   "feat": {
+    "es": "Fortalece y repara la fibra capilar; Prolonga la luminosidad del color",
+    "en": "Strengthens and repairs the hair fiber; Prolongs color radiance",
+    "ja": "髪の内部を補強・補修；髪色の輝きを長く保ちます"
+   },
+   "list": 1010,
+   "salon": 909,
+   "photo": "productos/img/D080.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D081",
+   "line": "THERE MUST BE AN ANGEL",
+   "name": "Beautiful Things Restoring Leave-in Mask",
+   "type": "洗い流さないマスク",
+   "size": "90ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Mascarilla reparadora sin enjuague para cabello teñido o decolorado.",
+    "en": "Restoring leave-in mask for color-treated or bleached hair.",
+    "ja": "カラー毛・ブリーチ毛のための、洗い流さない補修マスク。"
+   },
+   "feat": {
+    "es": "Suavidad, brillo y color duradero; Con protección térmica",
+    "en": "Softness, shine and longer-lasting color; With heat protection",
+    "ja": "やわらかさ・ツヤ・色もちを守ります；熱から髪を守る処方"
+   },
+   "list": 970,
+   "salon": 873,
+   "photo": "productos/img/D081.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D082",
+   "line": "LIQUID SPELL",
+   "name": "Liquid Spell",
+   "type": "洗い流さないトリートメント（液）",
+   "size": "125ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Fluido reforzador sin enjuague que aporta cuerpo al cabello fino o sensibilizado.",
+    "en": "Reinforcing leave-in fluid that adds body to fine or sensitized hair.",
+    "ja": "細い髪・ダメージ毛にハリとコシを与える、洗い流さない補強フルイド。"
+   },
+   "feat": {
+    "es": "Compacta la estructura del cabello; Brillo natural y tacto sedoso",
+    "en": "Strengthens the hair structure; Natural shine and a silky feel",
+    "ja": "髪の内部を引き締めます；自然なツヤとしなやかな手触り"
+   },
+   "list": 985,
+   "salon": 887,
+   "photo": "productos/img/D082.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D083",
+   "line": "LOVE",
+   "name": "LOVE Curl Cleansing Cream",
+   "type": "クレンジングクリーム（シャンプー＋コンディショナー）",
+   "size": "500ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl"
+   ],
+   "desc": {
+    "es": "Crema limpiadora que limpia y acondiciona en un solo paso el cabello muy rizado.",
+    "en": "Cleansing cream that washes and conditions very curly hair in one step.",
+    "ja": "強いカールの髪を、1本で洗ってうるおす洗浄クリーム。"
+   },
+   "feat": {
+    "es": "Limpieza delicada sin resecar; Rizos muy suaves",
+    "en": "Gentle cleansing without dryness; Very soft curls",
+    "ja": "乾燥させない、やさしい洗い上がり；とてもやわらかなカールに"
+   },
+   "list": 1030,
+   "salon": 927,
+   "photo": "productos/img/D083.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D084",
+   "line": "LOVE",
+   "name": "LOVE Curl Cream",
+   "type": "洗い流さないトリートメント（クリーム）",
+   "size": "150ml",
+   "nayami": "カール・広がり",
+   "concerns": [
+    "curl",
+    "frizz"
+   ],
+   "desc": {
+    "es": "Crema hidratante que define rizos y ondas con fijación suave.",
+    "en": "Moisturizing cream that defines curls and waves with a soft hold.",
+    "ja": "カール・ウェーブをやわらかくまとめる、保湿クリーム。"
+   },
+   "feat": {
+    "es": "Rizos elásticos, nunca rígidos; Controla el frizz",
+    "en": "Bouncy curls that never feel stiff; Tames frizz",
+    "ja": "かたくならない弾むカール；広がりを抑えます"
+   },
+   "list": 950,
+   "salon": 855,
+   "photo": "productos/img/D084.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D085",
+   "line": "LOVE",
+   "name": "LOVE Curl Enhancing Milk",
+   "type": "洗い流さないトリートメント（ミルク）",
+   "size": "250ml",
+   "nayami": "カール・広がり",
+   "concerns": [
+    "curl",
+    "frizz"
+   ],
+   "desc": {
+    "es": "Leche ligera que realza los rizos y ondas.",
+    "en": "Lightweight milk that enhances curls and waves.",
+    "ja": "カール・ウェーブを引き立てる、軽やかなミルク。"
+   },
+   "feat": {
+    "es": "Ayuda a prevenir el quiebre y el frizz; Protección térmica hasta 230 °C",
+    "en": "Helps prevent breakage and frizz; Heat protection up to 230 °C",
+    "ja": "切れ毛・広がりを防ぐサポート；230℃までの熱から髪を守ります"
+   },
+   "list": 999,
+   "salon": 899,
+   "photo": "productos/img/D085.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
+  },
+  {
+   "id": "D086",
+   "line": "LOVE",
+   "name": "LOVE Curl Mask",
+   "type": "マスク",
+   "size": "250ml",
+   "nayami": "カール・乾燥",
+   "concerns": [
+    "curl",
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla nutritiva de acción rápida para cabello rizado y ondulado.",
+    "en": "Fast-acting nourishing mask for curly and wavy hair.",
+    "ja": "カール・ウェーブ毛を短時間でうるおす、栄養マスク。"
+   },
+   "feat": {
+    "es": "Nutre en profundidad; Rizos más definidos",
+    "en": "Deeply nourishes; More defined curls",
+    "ja": "髪の芯まで栄養を届けます；まとまりのあるカールに"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D086.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D087",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Shampoo (Refill)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Recarga del shampoo anti-frizz que deja el cabello suave, disciplinado y fácil de peinar.",
+    "en": "Refill of the anti-frizz shampoo that leaves hair soft, smooth and easy to style.",
+    "ja": "広がりを抑え、やわらかくまとまる髪に導くシャンプー、詰め替え用。"
+   },
+   "feat": {
+    "es": "Ayuda a proteger de la humedad; Formato recarga que reduce envases",
+    "en": "Helps protect against humidity; Refill format that reduces packaging",
+    "ja": "湿気による広がりから守ります；容器のごみを減らす詰め替え"
+   },
+   "list": 1140,
+   "salon": 1026,
+   "photo": "productos/img/D087.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
+  },
+  {
+   "id": "D088",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Mask",
+   "type": "マスク",
+   "size": "250ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Mascarilla anti-frizz de acción rápida para cabello grueso y rebelde.",
+    "en": "Fast-acting anti-frizz mask for thick, unruly hair.",
+    "ja": "太く広がりやすい髪に、すばやく効く広がり防止マスク。"
+   },
+   "feat": {
+    "es": "Control del frizz duradero; Cabello visiblemente más suave",
+    "en": "Long-lasting frizz control; Visibly softer hair",
+    "ja": "広がりにくさが長続き；見た目にもやわらかな髪に"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D088.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D089",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Lightweight Milk",
+   "type": "洗い流さないトリートメント（ミルク）",
+   "size": "150ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz"
+   ],
+   "desc": {
+    "es": "Leche ligera sin enjuague anti-frizz para cabello fino a medio.",
+    "en": "Lightweight leave-in anti-frizz milk for fine to medium hair.",
+    "ja": "細い〜普通の髪の広がりを抑える、軽やかなミルク。"
+   },
+   "feat": {
+    "es": "Acabado sedoso sin peso; Realza el brillo natural",
+    "en": "Silky finish without weight; Enhances natural shine",
+    "ja": "重くならない、しなやかな仕上がり；自然なツヤを引き出します"
+   },
+   "list": 950,
+   "salon": 855,
+   "photo": "productos/img/D089.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
+  },
+  {
+   "id": "D090",
+   "line": "LOVE",
+   "name": "LOVE Smoothing Serum",
+   "type": "洗い流さないトリートメント（セラム）",
+   "size": "150ml",
+   "nayami": "広がり・乾燥",
+   "concerns": [
+    "frizz",
+    "dry"
+   ],
+   "desc": {
+    "es": "Sérum anti-frizz e hidratante para cabello grueso y áspero.",
+    "en": "Hydrating anti-frizz serum for thick, coarse hair.",
+    "ja": "太くごわつく髪の広がりを抑え、うるおす美容液。"
+   },
+   "feat": {
+    "es": "Protección duradera contra el frizz; Con protección térmica",
+    "en": "Long-lasting frizz protection; With heat protection",
+    "ja": "広がりにくさが長続き；熱から髪を守る処方"
+   },
+   "list": 950,
+   "salon": 855,
+   "photo": "productos/img/D090.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment セラム 美容液 sérum serum"
+  },
+  {
+   "id": "D091",
+   "line": "MELU",
+   "name": "MELU Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Shampoo anti-quiebre para cabello largo o dañado.",
+    "en": "Anti-breakage shampoo for long or damaged hair.",
+    "ja": "ロングヘア・ダメージ毛の切れ毛を防ぐシャンプー。"
+   },
+   "feat": {
+    "es": "Espuma suave y cremosa; Cabello luminoso y sedoso",
+    "en": "Soft, creamy lather; Luminous, silky hair",
+    "ja": "やわらかくクリーミーな泡；ツヤのあるしなやかな髪に"
+   },
+   "list": 690,
+   "salon": 621,
+   "photo": "productos/img/D091.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D092",
+   "line": "MELU",
+   "name": "MELU Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Acondicionador anti-quiebre para cabello largo o dañado.",
+    "en": "Anti-breakage conditioner for long or damaged hair.",
+    "ja": "ロングヘア・ダメージ毛の切れ毛を防ぐコンディショナー。"
+   },
+   "feat": {
+    "es": "Nutre las puntas; Suave y sedoso, sin peso",
+    "en": "Nourishes the ends; Soft and silky without weight",
+    "ja": "毛先に栄養を与えます；重くならない、しなやかな髪に"
+   },
+   "list": 770,
+   "salon": 693,
+   "photo": "productos/img/D092.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D093",
+   "line": "MELU",
+   "name": "MELU Spray",
+   "type": "洗い流さないトリートメント（スプレー）",
+   "size": "250ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Spray ligero sin enjuague anti-quiebre para cabello largo o dañado.",
+    "en": "Lightweight anti-breakage leave-in spray for long or damaged hair.",
+    "ja": "ロングヘア・ダメージ毛の切れ毛を防ぐ、洗い流さない軽やかなスプレー。"
+   },
+   "feat": {
+    "es": "Refuerza la fibra capilar; Protege de la contaminación ambiental",
+    "en": "Reinforces the hair fiber; Shields against environmental pollution",
+    "ja": "髪を内側から補強；大気汚染などの外的ダメージから守ります"
+   },
+   "list": 1160,
+   "salon": 1044,
+   "photo": "productos/img/D093.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment スプレー spray"
+  },
+  {
+   "id": "D094",
+   "line": "MINU",
+   "name": "MINU Shampoo (Refill)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Recarga del shampoo iluminador que protege el color del cabello teñido.",
+    "en": "Refill of the illuminating shampoo that protects color-treated hair.",
+    "ja": "カラー毛の色もちを守り、輝きを与えるシャンプー、詰め替え用。"
+   },
+   "feat": {
+    "es": "Color brillante lavado tras lavado; Formato recarga que reduce envases",
+    "en": "Bright color wash after wash; Refill format that reduces packaging",
+    "ja": "洗うたびに鮮やかな髪色をキープ；容器のごみを減らす詰め替え"
+   },
+   "list": 1140,
+   "salon": 1026,
+   "photo": "productos/img/D094.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
+  },
+  {
+   "id": "D095",
+   "line": "MINU",
+   "name": "MINU Mask",
+   "type": "マスク",
+   "size": "250ml",
+   "nayami": "カラー・ダメージ",
+   "concerns": [
+    "color",
+    "damage"
+   ],
+   "desc": {
+    "es": "Mascarilla de acción rápida que protege el color y aporta brillo al cabello teñido.",
+    "en": "Fast-acting mask that protects color and adds shine to color-treated hair.",
+    "ja": "カラー毛の色もちを守り、ツヤを与える速効マスク。"
+   },
+   "feat": {
+    "es": "Nutrición con acción anti-quiebre; Textura rica pero ligera",
+    "en": "Nourishment with anti-breakage action; Rich yet lightweight texture",
+    "ja": "切れ毛を防ぎながら栄養補給；濃厚なのに軽やかな質感"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D095.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D096",
+   "line": "MINU",
+   "name": "MINU Milk",
+   "type": "洗い流さないトリートメント（ミルク）",
+   "size": "150ml",
+   "nayami": "カラー",
+   "concerns": [
+    "color"
+   ],
+   "desc": {
+    "es": "Tratamiento sin enjuague que protege el color y aporta brillo al cabello teñido.",
+    "en": "Leave-in treatment that protects color and adds shine to color-treated hair.",
+    "ja": "カラー毛の色もちを守り、ツヤを与える洗い流さないミルク。"
+   },
+   "feat": {
+    "es": "Hidrata y fortalece; Protección térmica hasta 230 °C",
+    "en": "Hydrates and strengthens; Heat protection up to 230 °C",
+    "ja": "うるおいを与え、髪を強く；230℃までの熱から髪を守ります"
+   },
+   "list": 950,
+   "salon": 855,
+   "photo": "productos/img/D096.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
+  },
+  {
+   "id": "D097",
+   "line": "MOMO",
+   "name": "MOMO Serum",
+   "type": "洗い流さないトリートメント（セラム）",
+   "size": "150ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Sérum hidratante intensivo de textura ligera para cabello seco.",
+    "en": "Lightweight, intensive hydrating serum for dry hair.",
+    "ja": "乾燥した髪を集中的にうるおす、軽やかな美容液。"
+   },
+   "feat": {
+    "es": "Suavidad y brillo; Facilita el desenredado",
+    "en": "Softness and shine; Makes detangling easier",
+    "ja": "やわらかさとツヤ；指通りなめらかに"
+   },
+   "list": 950,
+   "salon": 855,
+   "photo": "productos/img/D097.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment セラム 美容液 sérum serum"
+  },
+  {
+   "id": "D098",
+   "line": "MOMO",
+   "name": "MOMO Shampoo (Refill)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Recarga del shampoo hidratante para cabello seco o deshidratado.",
+    "en": "Refill of the hydrating shampoo for dry or dehydrated hair.",
+    "ja": "乾燥した髪をうるおすシャンプー、詰め替え用。"
+   },
+   "feat": {
+    "es": "Espuma cremosa; Formato recarga que reduce envases",
+    "en": "Creamy lather; Refill format that reduces packaging",
+    "ja": "クリーミーな泡；容器のごみを減らす詰め替え"
+   },
+   "list": 1125,
+   "salon": 1013,
+   "photo": "productos/img/D098.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
+  },
+  {
+   "id": "D099",
+   "line": "more inside",
+   "name": "This is a Primer",
+   "type": "スタイリング前のベース",
+   "size": "250ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz",
+    "style"
+   ],
+   "desc": {
+    "es": "Primer cremoso en spray que prepara el cabello para el peinado.",
+    "en": "Creamy spray primer that preps hair for styling.",
+    "ja": "スタイリング前に髪を整える、クリーミーなスプレープライマー。"
+   },
+   "feat": {
+    "es": "Barrera anti-humedad; Protege del calor y aporta cuerpo",
+    "en": "Anti-humidity barrier; Heat protection and added body",
+    "ja": "湿気から髪を守ります；熱保護とほどよいボリューム"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D099.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D100",
+   "line": "more inside",
+   "name": "This is a Dry Wax Spray",
+   "type": "スタイリング（ワックススプレー）",
+   "size": "200ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray con efecto cera para una definición natural con acabado mate satinado.",
+    "en": "Wax-effect spray for natural definition with a satin-matte finish.",
+    "ja": "自然な束感とセミマットな質感をつくる、ワックススプレー。"
+   },
+   "feat": {
+    "es": "Textura y volumen naturales; Fijación flexible, sin residuos grasos",
+    "en": "Natural texture and volume; Flexible hold without greasy residue",
+    "ja": "自然な動きとボリューム；ベタつかない、やわらかなキープ"
+   },
+   "list": 799,
+   "salon": 719,
+   "photo": "productos/img/D100.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray ワックス cera wax スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D101",
+   "line": "more inside",
+   "name": "This is an Invisible Dry Shampoo",
+   "type": "ドライシャンプー",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo en seco invisible que limpia y refresca el cabello sin agua.",
+    "en": "Invisible dry shampoo that cleanses and refreshes hair without water.",
+    "ja": "水を使わずに髪を清潔に整える、白残りしにくいドライシャンプー。"
+   },
+   "feat": {
+    "es": "Absorbe el exceso de grasa; Prolonga la duración del peinado",
+    "en": "Absorbs excess oil; Helps your style last longer",
+    "ja": "余分な皮脂を吸着；スタイルを長持ちさせます"
+   },
+   "list": 870,
+   "salon": 783,
+   "photo": "productos/img/D101.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu ドライシャンプー shampoo en seco dry shampoo"
+  },
+  {
+   "id": "D102",
+   "line": "more inside",
+   "name": "This is a Dry Texturizer",
+   "type": "スタイリング（スプレー）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray texturizante seco que aporta cuerpo.",
+    "en": "Dry texturizing spray that adds body.",
+    "ja": "ボリュームと動きを出す、ドライテクスチャースプレー。"
+   },
+   "feat": {
+    "es": "Fijación media; Acabado natural y despeinado",
+    "en": "Medium hold; Natural, undone finish",
+    "ja": "キープ力：ミディアム；自然でラフな仕上がり"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D102.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D103",
+   "line": "more inside",
+   "name": "This is a Forming Pomade",
+   "type": "スタイリング（ポマード）",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Cera suave de fijación ligera para looks moldeables.",
+    "en": "Soft, light-hold pomade for reworkable looks.",
+    "ja": "何度でも整え直せる、ソフトなライトホールドワックス。"
+   },
+   "feat": {
+    "es": "Efecto invisible; Ideal para cabello corto",
+    "en": "Invisible finish; Ideal for short hair",
+    "ja": "つけていないような自然な仕上がり；ショートヘアに"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D103.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D104",
+   "line": "more inside",
+   "name": "This is a Medium Hold Finishing Gum",
+   "type": "スタイリング（ガム）",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Goma texturizante de fijación media con acabado ligeramente mate.",
+    "en": "Medium-hold texturizing gum with a slightly matte finish.",
+    "ja": "セミマットに仕上がる、ミディアムホールドのガム。"
+   },
+   "feat": {
+    "es": "Looks definidos y moldeables; No es pegajosa ni deja residuos",
+    "en": "Defined, reworkable looks; Not sticky, no residue",
+    "ja": "束感がありながら整え直しも自在；ベタつかず、残りません"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D104.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D105",
+   "line": "more inside",
+   "name": "This is a Medium Hold Modeling Gel",
+   "type": "スタイリング（ジェル）",
+   "size": "250ml",
+   "nayami": "カール",
+   "concerns": [
+    "curl",
+    "style"
+   ],
+   "desc": {
+    "es": "Gel hidratante de fijación media para looks estructurados con brillo.",
+    "en": "Hydrating medium-hold gel for structured, glossy looks.",
+    "ja": "ツヤのある立体的なスタイルをつくる、保湿ジェル。"
+   },
+   "feat": {
+    "es": "Define los rizos con efecto anti-frizz; Seca rápido, sin residuos",
+    "en": "Defines curls with anti-frizz action; Dries fast, no residue",
+    "ja": "広がりを抑えてカールをまとめます；すぐ乾き、残りません"
+   },
+   "list": 695,
+   "salon": 626,
+   "photo": "productos/img/D105.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ジェル gel スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D106",
+   "line": "more inside",
+   "name": "This is a Relaxing Moisturizing Fluid",
+   "type": "スタイリング（フルイド）",
+   "size": "125ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz",
+    "style"
+   ],
+   "desc": {
+    "es": "Fluido cremoso hidratante para un look liso y disciplinado.",
+    "en": "Creamy moisturizing fluid for a sleek, controlled look.",
+    "ja": "まっすぐまとまるスタイルをつくる、保湿クリームフルイド。"
+   },
+   "feat": {
+    "es": "Controla el frizz y protege de la humedad; Protege del calor de las herramientas",
+    "en": "Helps control frizz and humidity; Protects from heat tools",
+    "ja": "広がりを抑え、湿気から守ります；アイロンの熱から守ります"
+   },
+   "list": 599,
+   "salon": 539,
+   "photo": "productos/img/D106.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D107",
+   "line": "more inside",
+   "name": "This is a Sea Salt Spray",
+   "type": "スタイリング（スプレー）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray de sal marina que crea textura y volumen con efecto playa.",
+    "en": "Sea salt spray for beachy texture and volume.",
+    "ja": "海辺のような無造作な動きとボリュームをつくる、シーソルトスプレー。"
+   },
+   "feat": {
+    "es": "Control ligero con efecto anti-frizz; Acabado ligeramente mate",
+    "en": "Light hold with anti-frizz action; Slightly matte finish",
+    "ja": "広がりを抑えるライトホールド；セミマットな仕上がり"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D107.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D108",
+   "line": "more inside",
+   "name": "This is a Shine Wax",
+   "type": "スタイリング（ワックス）",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Cera suave de fijación ligera para acabados con brillo.",
+    "en": "Soft, light-hold wax for a glossy finish.",
+    "ja": "ツヤのある仕上がりをつくる、ソフトなライトホールドワックス。"
+   },
+   "feat": {
+    "es": "Para cabello corto y recogidos; Brillo sin apelmazar",
+    "en": "For short hair and updos; Shine without weight",
+    "ja": "ショートヘアやまとめ髪に；重くならないツヤ"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D108.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ワックス cera wax スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D109",
+   "line": "more inside",
+   "name": "This is a Strong Dry Wax",
+   "type": "スタイリング（ワックス）",
+   "size": "75ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Cera seca de fijación extra fuerte con efecto mate.",
+    "en": "Extra-strong-hold dry wax with a matte finish.",
+    "ja": "マットに仕上がる、エクストラストロングのドライワックス。"
+   },
+   "feat": {
+    "es": "Define y separa mechones; Para looks creativos",
+    "en": "Defines and separates sections; For creative looks",
+    "ja": "毛束をくっきり分けます；個性的なスタイルに"
+   },
+   "list": 750,
+   "salon": 675,
+   "photo": "productos/img/D109.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ワックス cera wax スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D110",
+   "line": "more inside",
+   "name": "This is a Strong Hairspray",
+   "type": "スタイリング（スプレー）",
+   "size": "400ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray invisible de fijación fuerte y anti-humedad.",
+    "en": "Invisible, humidity-resistant strong-hold hairspray.",
+    "ja": "湿気に強い、見えないストロングホールドスプレー。"
+   },
+   "feat": {
+    "es": "Bruma muy fina, sin residuos; Para looks de larga duración",
+    "en": "Ultra-fine mist, no residue; For long-lasting looks",
+    "ja": "ごく細かいミストで残りません；長時間スタイルをキープ"
+   },
+   "list": 845,
+   "salon": 761,
+   "photo": "productos/img/D110.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D111",
+   "line": "more inside",
+   "name": "This is an Extra Strong Hairspray",
+   "type": "スタイリング（スプレー）",
+   "size": "400ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray de fijación extra fuerte que resiste el movimiento y la humedad.",
+    "en": "Extra-strong-hold hairspray that resists movement and humidity.",
+    "ja": "動きや湿気に負けない、エクストラストロングスプレー。"
+   },
+   "feat": {
+    "es": "Fijación todo el día; Acabado elástico y natural",
+    "en": "All-day hold; Flexible, natural finish",
+    "ja": "一日中しっかりキープ；しなやかで自然な仕上がり"
+   },
+   "list": 845,
+   "salon": 761,
+   "photo": "productos/img/D111.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D112",
+   "line": "more inside",
+   "name": "This is an Invisible No Gas Spray",
+   "type": "スタイリング（スプレー）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Spray sin gas, invisible y de fijación media.",
+    "en": "Invisible, non-aerosol medium-hold spray.",
+    "ja": "ガスを使わない、見えないミディアムホールドスプレー。"
+   },
+   "feat": {
+    "es": "Resistente a la humedad, secado rápido; Ideal con herramientas de calor",
+    "en": "Humidity-resistant and quick-drying; Ideal with heat tools",
+    "ja": "湿気に強く、すぐ乾きます；アイロン・ドライヤーと一緒に"
+   },
+   "list": 699,
+   "salon": 629,
+   "photo": "productos/img/D112.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スプレー spray スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D113",
+   "line": "more inside",
+   "name": "This is an Invisible Serum",
+   "type": "スタイリング（セラム）",
+   "size": "50ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz",
+    "style"
+   ],
+   "desc": {
+    "es": "Sérum invisible de fijación ligera con efecto satinado.",
+    "en": "Invisible, light-hold serum with a satin finish.",
+    "ja": "サテンのような質感に仕上がる、ライトホールドのスタイリング美容液。"
+   },
+   "feat": {
+    "es": "Control ligero con acción anti-frizz; Efecto natural de \"día después\"",
+    "en": "Light control with anti-frizz action; Natural \"day-after\" effect",
+    "ja": "広がりを抑えるライトコントロール；こなれた自然な質感"
+   },
+   "list": 690,
+   "salon": 621,
+   "photo": "productos/img/D113.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "セラム 美容液 sérum serum スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D114",
+   "line": "more inside",
+   "name": "This is a Texturizing Serum",
+   "type": "スタイリング（セラム）",
+   "size": "150ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Sérum sedoso de fijación ligera para una textura suave y moldeable.",
+    "en": "Silky, light-hold serum for soft, workable texture.",
+    "ja": "やわらかく整えやすい質感をつくる、ライトホールドのセラム。"
+   },
+   "feat": {
+    "es": "Para looks lisos u ondulados; Brillo sin residuos",
+    "en": "For straight or wavy looks; Shine without residue",
+    "ja": "ストレートにもウェーブにも；残らないツヤ"
+   },
+   "list": 599,
+   "salon": 539,
+   "photo": "productos/img/D114.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "セラム 美容液 sérum serum スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D115",
+   "line": "more inside",
+   "name": "This is a Volume Boosting Mousse",
+   "type": "スタイリング（ムース）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Mousse ligera y cremosa que crea volumen duradero.",
+    "en": "Light, creamy mousse for long-lasting volume.",
+    "ja": "長時間ボリュームが続く、軽くクリーミーなムース。"
+   },
+   "feat": {
+    "es": "Cuerpo natural sin apelmazar; Para todo tipo de cabello",
+    "en": "Natural body without weight; For all hair types",
+    "ja": "重くならない自然なボリューム；すべての髪質に"
+   },
+   "list": 710,
+   "salon": 639,
+   "photo": "productos/img/D115.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ムース espuma mousse スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D116",
+   "line": "more inside",
+   "name": "This is an Oil Non Oil",
+   "type": "スタイリング（ジェル）",
+   "size": "250ml",
+   "nayami": "広がり",
+   "concerns": [
+    "frizz",
+    "style"
+   ],
+   "desc": {
+    "es": "Gel fluido hidratante sin fijación que ayuda a controlar el frizz.",
+    "en": "Hydrating fluid gel with no hold that helps control frizz.",
+    "ja": "キープ力なしで広がりを抑える、保湿ジェルフルイド。"
+   },
+   "feat": {
+    "es": "Para looks y texturas naturales; Sin residuos ni peso",
+    "en": "For natural looks and textures; No residue or weight",
+    "ja": "自然なスタイル・質感に；重さも残りもありません"
+   },
+   "list": 699,
+   "salon": 629,
+   "photo": "productos/img/D116.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ジェル gel スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D117",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Calming Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo delicado que calma el cuero cabelludo sensible.",
+    "en": "Gentle shampoo that soothes a sensitive scalp.",
+    "ja": "敏感な頭皮をやさしく洗い、落ち着かせるシャンプー。"
+   },
+   "feat": {
+    "es": "Para cuero cabelludo muy delicado; Alivio y confort",
+    "en": "For very delicate scalps; Relief and comfort",
+    "ja": "とてもデリケートな頭皮に；すっきりと心地よく"
+   },
+   "list": 765,
+   "salon": 689,
+   "photo": "productos/img/D117.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D118",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Calming Superactive",
+   "type": "頭皮用セラム",
+   "size": "100ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Tratamiento que aporta confort y equilibrio al cuero cabelludo sensible.",
+    "en": "Treatment that brings comfort and balance to a sensitive scalp.",
+    "ja": "デリケートな頭皮を心地よく整える、頭皮用トリートメント。"
+   },
+   "feat": {
+    "es": "Sensación de calma duradera; Frescura agradable al aplicar",
+    "en": "A long-lasting calming feel; Pleasantly fresh on application",
+    "ja": "落ち着いた心地よさが続きます；なじませるとすっきり"
+   },
+   "list": 1195,
+   "salon": 1076,
+   "photo": "productos/img/D118.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "セラム 美容液 sérum serum 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D119",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Detoxifying Scrub Shampoo",
+   "type": "シャンプー（スクラブ）",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo con partículas exfoliantes que revitaliza el cuero cabelludo.",
+    "en": "Exfoliating shampoo that revitalizes the scalp.",
+    "ja": "スクラブ入りで頭皮をすっきり整える、リフレッシュシャンプー。"
+   },
+   "feat": {
+    "es": "Limpieza profunda y delicada; Protege de los radicales libres",
+    "en": "Deep yet gentle cleansing; Protects against free radicals",
+    "ja": "やさしく、しっかり洗浄；酸化ストレスから頭皮を守ります"
+   },
+   "list": 765,
+   "salon": 689,
+   "photo": "productos/img/D119.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D120",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Elevating Fragrance",
+   "type": "ルームフレグランス",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Fragancia relajante de la línea Naturaltech para ambiente y textiles.",
+    "en": "Relaxing Naturaltech fragrance for rooms and fabrics.",
+    "ja": "空間や布に使える、NATURALTECHのリラックスフレグランス。"
+   },
+   "feat": {
+    "es": "Aroma intenso y persistente; Para toallas, telas y el ambiente",
+    "en": "Intense, long-lasting scent; For towels, fabrics and rooms",
+    "ja": "深く長く続く香り；タオル・布・お部屋に"
+   },
+   "list": 1200,
+   "salon": 1080,
+   "photo": "productos/img/D120.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "フレグランス 香り fragancia fragrance"
+  },
+  {
+   "id": "D121",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Elevating Scalp Recovery Treatment",
+   "type": "頭皮用トリートメント",
+   "size": "100ml",
+   "nayami": "頭皮・乾燥",
+   "concerns": [
+    "scalp",
+    "dry"
+   ],
+   "desc": {
+    "es": "Tratamiento sin enjuague para cuero cabelludo sensibilizado y deshidratado.",
+    "en": "Leave-in treatment for a sensitized, dehydrated scalp.",
+    "ja": "敏感で乾燥した頭皮のための、洗い流さないトリートメント。"
+   },
+   "feat": {
+    "es": "Aporta confort al cuero cabelludo; Calma e hidrata",
+    "en": "Brings comfort to the scalp; Soothes and hydrates",
+    "ja": "頭皮を心地よく整えます；落ち着かせてうるおす"
+   },
+   "list": 1195,
+   "salon": 1076,
+   "photo": "productos/img/D121.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D122",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Energizing Gel",
+   "type": "頭皮・髪用ジェル",
+   "size": "150ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Gel sin enjuague que da fuerza y cuerpo al cabello fino.",
+    "en": "Leave-in gel that gives strength and body to fine hair.",
+    "ja": "細い髪に力強さとハリを与える、洗い流さないジェル。"
+   },
+   "feat": {
+    "es": "Hidrata y tonifica; Equilibra el cuero cabelludo",
+    "en": "Hydrates and tones; Balances the scalp",
+    "ja": "うるおいとハリを与えます；頭皮のバランスを整えます"
+   },
+   "list": 799,
+   "salon": 719,
+   "photo": "productos/img/D122.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ジェル gel 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D123",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Energizing Seasonal Superactive",
+   "type": "頭皮用ローション",
+   "size": "100ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Loción para el cuero cabelludo, para quienes notan más caída con el estrés o el cambio de estación.",
+    "en": "Scalp lotion for those who notice more shedding with stress or seasonal changes.",
+    "ja": "ストレスや季節の変わり目の抜け毛が気になる方への頭皮用ローション。"
+   },
+   "feat": {
+    "es": "Apoya la sensación de cuerpo y firmeza; También como cuidado preventivo",
+    "en": "Supports a fuller, firmer feel; Also for preventive care",
+    "ja": "ボリューム感・ハリをサポート；予防ケアにも"
+   },
+   "list": 1985,
+   "salon": 1787,
+   "photo": "productos/img/D123.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D124",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Energizing Superactive",
+   "type": "頭皮用セラム",
+   "size": "100ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Sérum para el cuero cabelludo, para quienes se preocupan por el cabello frágil y la caída.",
+    "en": "Scalp serum for those concerned about fragile hair and shedding.",
+    "ja": "抜け毛が気になる、細く弱い髪と頭皮のための美容液。"
+   },
+   "feat": {
+    "es": "Ayuda a equilibrar el exceso de grasa; Apoya la sensación de cuerpo y firmeza",
+    "en": "Helps balance excess oil; Supports a fuller, firmer feel",
+    "ja": "余分な皮脂のバランスを整えます；ボリューム感・ハリをサポート"
+   },
+   "list": 2240,
+   "salon": 2016,
+   "photo": "productos/img/D124.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "セラム 美容液 sérum serum 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D125",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Energizing Thickening Tonic",
+   "type": "頭皮用トニック",
+   "size": "100ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Tónico sin enjuague que aporta una sensación de mayor cuerpo a cada cabello.",
+    "en": "Leave-in tonic that gives each strand a fuller feel.",
+    "ja": "1本1本の髪にハリ・コシ感を与える、洗い流さないトニック。"
+   },
+   "feat": {
+    "es": "Cabello con más cuerpo, sin peso; Revitaliza el cuero cabelludo",
+    "en": "Fuller-feeling hair without weight; Revitalizes the scalp",
+    "ja": "重くならずにボリューム感；頭皮をすっきり整えます"
+   },
+   "list": 1200,
+   "salon": 1080,
+   "photo": "productos/img/D125.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D126",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Royal Jelly Superactive",
+   "type": "頭皮用ローション",
+   "size": "8ml",
+   "nayami": "頭皮・乾燥",
+   "concerns": [
+    "scalp",
+    "dry"
+   ],
+   "desc": {
+    "es": "Loción con jalea real para el cuero cabelludo muy deshidratado.",
+    "en": "Royal jelly lotion for a very dehydrated scalp.",
+    "ja": "乾燥がひどい頭皮のための、ローヤルゼリー配合ローション。"
+   },
+   "feat": {
+    "es": "Acción nutritiva y remineralizante; Revitaliza el cabello",
+    "en": "Nourishing and remineralizing action; Revitalizes hair",
+    "ja": "頭皮に栄養とミネラルを；髪に元気を与えます"
+   },
+   "list": 2000,
+   "salon": 1800,
+   "photo": "productos/img/D126.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D127",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Nourishing Keratin Sealer",
+   "type": "洗い流さないトリートメント（液）",
+   "size": "100ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Tratamiento sin enjuague con queratina vegetal para cabello seco y dañado.",
+    "en": "Leave-in treatment with plant keratin for dry, damaged hair.",
+    "ja": "植物性ケラチン配合、乾燥・ダメージ毛のための洗い流さないトリートメント。"
+   },
+   "feat": {
+    "es": "Sella la cutícula para más brillo; Ayuda a prevenir las puntas abiertas",
+    "en": "Seals the cuticle for more shine; Helps prevent split ends",
+    "ja": "キューティクルを整えてツヤを；枝毛を防ぐサポート"
+   },
+   "list": 910,
+   "salon": 819,
+   "photo": "productos/img/D127.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D128",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Purifying Gel",
+   "type": "頭皮用ジェル",
+   "size": "150ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Tratamiento en gel para el cuero cabelludo con caspa seca o grasa.",
+    "en": "Gel treatment for a scalp with dry or oily dandruff.",
+    "ja": "乾性・脂性のフケが気になる頭皮のためのジェル。"
+   },
+   "feat": {
+    "es": "Purifica y equilibra el cuero cabelludo; Ayuda a reducir el exceso de grasa",
+    "en": "Purifies and balances the scalp; Helps reduce excess oil",
+    "ja": "頭皮を清潔に整えます；余分な皮脂を抑えるサポート"
+   },
+   "list": 780,
+   "salon": 702,
+   "photo": "productos/img/D128.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ジェル gel 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D129",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Rebalancing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo que reequilibra el cuero cabelludo con exceso de grasa.",
+    "en": "Shampoo that rebalances an oily scalp.",
+    "ja": "皮脂が多い頭皮のバランスを整えるシャンプー。"
+   },
+   "feat": {
+    "es": "Controla el exceso de sebo; Cuero cabelludo limpio por más tiempo",
+    "en": "Controls excess sebum; Keeps the scalp clean for longer",
+    "ja": "余分な皮脂をコントロール；すっきりした頭皮が長続き"
+   },
+   "list": 765,
+   "salon": 689,
+   "photo": "productos/img/D129.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D130",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Rebalancing Cleansing Treatment",
+   "type": "頭皮用トリートメント",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Tratamiento líquido para el cuero cabelludo graso.",
+    "en": "Liquid treatment for an oily scalp.",
+    "ja": "皮脂が多い頭皮のための、リキッドトリートメント。"
+   },
+   "feat": {
+    "es": "Evita la sensación de cabello pesado; Sin efecto rebote",
+    "en": "Prevents that heavy-hair feeling; No rebound effect",
+    "ja": "髪の重たさを防ぎます；皮脂の戻りを抑えます"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D130.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D131",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Renewing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo delicado que mantiene el bienestar del cuero cabelludo y el cabello.",
+    "en": "Gentle shampoo that supports scalp and hair wellbeing.",
+    "ja": "頭皮と髪の健やかさを保つ、やさしいシャンプー。"
+   },
+   "feat": {
+    "es": "Para todo tipo de cuero cabelludo; Cabello más suave, brillante y con cuerpo",
+    "en": "For all scalp types; Softer, shinier hair with more body",
+    "ja": "すべての頭皮タイプに；やわらかく、ツヤとハリのある髪に"
+   },
+   "list": 815,
+   "salon": 734,
+   "photo": "productos/img/D131.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D132",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Renewing Conditioning Treatment",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Acondicionador que nutre e hidrata el cuero cabelludo y el cabello.",
+    "en": "Conditioner that nourishes and hydrates scalp and hair.",
+    "ja": "頭皮と髪に栄養とうるおいを与えるコンディショナー。"
+   },
+   "feat": {
+    "es": "Cabello sano, compacto y brillante; Sin dejar peso",
+    "en": "Healthy, strong and shiny hair; Without weight",
+    "ja": "健やかでツヤのある、引き締まった髪に；重くなりません"
+   },
+   "list": 975,
+   "salon": 878,
+   "photo": "productos/img/D132.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D133",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Replumping Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo cremoso que aporta elasticidad e hidratación al cabello.",
+    "en": "Creamy shampoo that adds elasticity and hydration.",
+    "ja": "髪に弾力とうるおいを与える、クリーミーなシャンプー。"
+   },
+   "feat": {
+    "es": "Espuma densa y delicada; Protege la estructura del cabello",
+    "en": "Dense, gentle lather; Protects the hair structure",
+    "ja": "濃密でやさしい泡；髪の内部を守りながら洗います"
+   },
+   "list": 815,
+   "salon": 734,
+   "photo": "productos/img/D133.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D134",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Replumping Conditioner",
+   "type": "コンディショナー",
+   "size": "150ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Acondicionador hidratante que devuelve la elasticidad al cabello.",
+    "en": "Hydrating conditioner that restores elasticity to hair.",
+    "ja": "髪に弾力を取り戻す、保湿コンディショナー。"
+   },
+   "feat": {
+    "es": "Desenreda y compacta; Hidrata y protege",
+    "en": "Detangles and strengthens; Hydrates and protects",
+    "ja": "指通りよく、引き締まった髪に；うるおいを与えて守ります"
+   },
+   "list": 675,
+   "salon": 608,
+   "photo": "productos/img/D134.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D135",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Replumping Hair Filler Superactive",
+   "type": "洗い流さないトリートメント（液）",
+   "size": "100ml",
+   "nayami": "乾燥・広がり",
+   "concerns": [
+    "dry",
+    "frizz"
+   ],
+   "desc": {
+    "es": "Fluido sin enjuague que redensifica y da cuerpo al cabello.",
+    "en": "Leave-in fluid that replumps hair and adds body.",
+    "ja": "髪にハリとボリュームを与える、洗い流さないフルイド。"
+   },
+   "feat": {
+    "es": "Peinado más duradero; Efecto anti-humedad prolongado",
+    "en": "Longer-lasting styles; Long-lasting anti-humidity effect",
+    "ja": "スタイルが長持ち；湿気による広がりを長時間防ぎます"
+   },
+   "list": 1170,
+   "salon": 1053,
+   "photo": "productos/img/D135.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D136",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Wellbeing Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo hidratante y ligero para todo tipo de cabello.",
+    "en": "Light, hydrating shampoo for all hair types.",
+    "ja": "すべての髪質に、うるおいを与える軽やかなシャンプー。"
+   },
+   "feat": {
+    "es": "Espuma densa y rica; Limpia sin agredir el cabello",
+    "en": "Dense, rich lather; Cleanses without stripping",
+    "ja": "濃密でリッチな泡；髪をいたわりながら洗います"
+   },
+   "list": 765,
+   "salon": 689,
+   "photo": "productos/img/D136.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D137",
+   "line": "NATURALTECH",
+   "name": "NATURALTECH Wellbeing Conditioner",
+   "type": "コンディショナー",
+   "size": "150ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Acondicionador hidratante para todo tipo de cabello.",
+    "en": "Hydrating conditioner for all hair types.",
+    "ja": "すべての髪質に、うるおいを与えるコンディショナー。"
+   },
+   "feat": {
+    "es": "Desenreda con facilidad; Cabello suave y sedoso",
+    "en": "Detangles with ease; Soft, silky hair",
+    "ja": "指通りなめらか；やわらかく、しなやかな髪に"
+   },
+   "list": 630,
+   "salon": 567,
+   "photo": "productos/img/D137.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D138",
+   "line": "NOUNOU",
+   "name": "NOUNOU Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Shampoo nutritivo para cabello dañado por decoloración, permanente o alaciado.",
+    "en": "Nourishing shampoo for hair damaged by bleaching, perms or straightening.",
+    "ja": "ブリーチ・パーマ・縮毛矯正で傷んだ髪のための、栄養シャンプー。"
+   },
+   "feat": {
+    "es": "Limpia con suavidad; Devuelve hidratación, brillo y cuerpo",
+    "en": "Cleanses gently; Restores moisture, shine and body",
+    "ja": "やさしく洗い上げます；うるおい・ツヤ・ハリを取り戻します"
+   },
+   "list": 690,
+   "salon": 621,
+   "photo": "productos/img/D138.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D139",
+   "line": "NOUNOU",
+   "name": "NOUNOU Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Acondicionador nutritivo para cabello dañado por procesos químicos.",
+    "en": "Nourishing conditioner for chemically treated, damaged hair.",
+    "ja": "カラーやパーマなどで傷んだ髪のための、栄養コンディショナー。"
+   },
+   "feat": {
+    "es": "Nutre en profundidad; Fácil de desenredar, sin peso",
+    "en": "Deeply nourishes; Easy to detangle, without weight",
+    "ja": "髪の芯まで栄養を；指通りよく、重くなりません"
+   },
+   "list": 770,
+   "salon": 693,
+   "photo": "productos/img/D139.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D140",
+   "line": "NOUNOU",
+   "name": "NOUNOU Mask",
+   "type": "マスク",
+   "size": "250ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla nutritiva de acción rápida para cabello tratado y quebradizo.",
+    "en": "Fast-acting nourishing mask for treated, brittle hair.",
+    "ja": "傷んで切れやすい髪のための、速効栄養マスク。"
+   },
+   "feat": {
+    "es": "Hidratación y reparación profundas; Devuelve suavidad y resistencia",
+    "en": "Deep hydration and repair; Restores softness and strength",
+    "ja": "うるおいと補修を髪の芯まで；やわらかさと強さを取り戻します"
+   },
+   "list": 1040,
+   "salon": 936,
+   "photo": "productos/img/D140.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D141",
+   "line": "NOUNOU",
+   "name": "NOUNOU Shampoo (Refill)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "ダメージ・乾燥",
+   "concerns": [
+    "damage",
+    "dry"
+   ],
+   "desc": {
+    "es": "Recarga del shampoo nutritivo para cabello dañado por procesos químicos.",
+    "en": "Refill of the nourishing shampoo for chemically damaged hair.",
+    "ja": "カラーやパーマで傷んだ髪のための栄養シャンプー、詰め替え用。"
+   },
+   "feat": {
+    "es": "Nutrición e hidratación profundas; Formato recarga que reduce envases",
+    "en": "Deep nourishment and hydration; Refill format that reduces packaging",
+    "ja": "髪の芯まで栄養とうるおい；容器のごみを減らす詰め替え"
+   },
+   "list": 1125,
+   "salon": 1013,
+   "photo": "productos/img/D141.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
+  },
+  {
+   "id": "D142",
+   "line": "OI",
+   "name": "OI Liquid Luster",
+   "type": "トリートメント（リキッド）",
+   "size": "300ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Tratamiento líquido con enjuague que aporta un brillo intenso.",
+    "en": "Rinse-off liquid treatment for intense shine.",
+    "ja": "ガラスのようなツヤを与える、洗い流すリキッドトリートメント。"
+   },
+   "feat": {
+    "es": "Para todo tipo de cabello; Acabado sedoso y muy suave",
+    "en": "For all hair types; Silky, ultra-soft finish",
+    "ja": "すべての髪質に；しなやかで、とてもやわらかな仕上がり"
+   },
+   "list": 1235,
+   "salon": 1112,
+   "photo": "productos/img/D142.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment"
+  },
+  {
+   "id": "D143",
+   "line": "OI",
+   "name": "OI Shampoo (Refill)",
+   "type": "シャンプー（詰め替え）",
+   "size": "500ml",
+   "nayami": "広がり・乾燥・カラー",
+   "concerns": [
+    "frizz",
+    "dry",
+    "color"
+   ],
+   "desc": {
+    "es": "Recarga del shampoo antioxidante de OI para todo tipo de cabello.",
+    "en": "Refill of the antioxidant OI shampoo for all hair types.",
+    "ja": "すべての髪質に使える、OIの抗酸化シャンプー、詰め替え用。"
+   },
+   "feat": {
+    "es": "Suavidad, brillo y cuerpo; Aroma OI de larga duración",
+    "en": "Softness, shine and body; Long-lasting OI fragrance",
+    "ja": "やわらかさ・ツヤ・ハリ；OIの香りが長く続きます"
+   },
+   "list": 1395,
+   "salon": 1256,
+   "photo": "productos/img/D143.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 詰め替え レフィル recarga refill"
+  },
+  {
+   "id": "D144",
+   "line": "OI",
+   "name": "OI Soufflé",
+   "type": "スタイリング（スフレ）",
+   "size": "125ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "style"
+   ],
+   "desc": {
+    "es": "Espuma ligera sin enjuague que aporta cuerpo y brillo incluso al cabello fino.",
+    "en": "Lightweight leave-in foam that adds body and shine, even to fine hair.",
+    "ja": "細い髪にもボリュームとツヤを与える、洗い流さない軽やかな泡。"
+   },
+   "feat": {
+    "es": "Con aceite de roucou; Cabello visiblemente más lleno, sin peso",
+    "en": "With roucou oil; Visibly fuller hair without weight",
+    "ja": "ロウクウオイル配合；重くならずに、ふんわりとした髪に"
+   },
+   "list": 1090,
+   "salon": 981,
+   "photo": "productos/img/D144.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D145",
+   "line": "OI",
+   "name": "OI Body Wash",
+   "type": "ボディソープ",
+   "size": "280ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Gel de ducha cremoso que limpia e hidrata todo tipo de piel.",
+    "en": "Creamy shower gel that cleanses and moisturizes all skin types.",
+    "ja": "すべての肌タイプをうるおしながら洗う、クリーミーなボディソープ。"
+   },
+   "feat": {
+    "es": "Piel suave e hidratada; Con la fragancia de OI",
+    "en": "Soft, moisturized skin; With the OI fragrance",
+    "ja": "やわらかく、うるおいのある肌に；OIの香り"
+   },
+   "list": 590,
+   "salon": 531,
+   "photo": "productos/img/D145.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ボディ 体 cuerpo body"
+  },
+  {
+   "id": "D146",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Hair, Beard & Body Wash",
+   "type": "シャンプー（髪・ひげ・体）",
+   "size": "300ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Limpiador para cabello, barba y cuerpo con aroma cítrico.",
+    "en": "Citrus-scented wash for hair, beard and body.",
+    "ja": "髪・ひげ・体に使える、シトラスの香りの洗浄料。"
+   },
+   "feat": {
+    "es": "Limpieza delicada e hidratación; También antes del afeitado",
+    "en": "Gentle cleansing and hydration; Also before shaving",
+    "ja": "やさしく洗い、うるおいを与えます；シェービング前にも"
+   },
+   "list": 680,
+   "salon": 612,
+   "photo": "productos/img/D146.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu ひげ ヒゲ barba beard"
+  },
+  {
+   "id": "D147",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Pre-Shaving & Beard Oil",
+   "type": "ひげ用オイル",
+   "size": "50ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Aceite con almendra y jojoba para preparar la piel antes del afeitado.",
+    "en": "Almond and jojoba oil that preps skin before shaving.",
+    "ja": "アーモンド・ホホバオイル配合、シェービング前の肌を整えるオイル。"
+   },
+   "feat": {
+    "es": "También suaviza y da forma a la barba; Hidrata la piel",
+    "en": "Also softens and shapes the beard; Moisturizes skin",
+    "ja": "ひげをやわらかく整えます；肌をうるおします"
+   },
+   "list": 670,
+   "salon": 603,
+   "photo": "productos/img/D147.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "オイル aceite oil ひげ ヒゲ barba beard"
+  },
+  {
+   "id": "D148",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Shaving Gel",
+   "type": "シェービングジェル",
+   "size": "150ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Gel transparente sin espuma para un afeitado de precisión.",
+    "en": "Transparent, non-foaming gel for precise shaving.",
+    "ja": "泡立たない透明ジェルで、細かい部分まで剃りやすい。"
+   },
+   "feat": {
+    "es": "Ideal para contornos de barba, bigote y cuello; Afeitado suave",
+    "en": "Ideal for beard, moustache and neck lines; Smooth shave",
+    "ja": "ひげ・口ひげ・首まわりのラインに；なめらかな剃り心地"
+   },
+   "list": 670,
+   "salon": 603,
+   "photo": "productos/img/D148.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "ジェル gel シェービング ひげそり afeitar afeitado shaving"
+  },
+  {
+   "id": "D149",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Medium Hold Fiber Cream",
+   "type": "スタイリング（クリーム）",
+   "size": "50ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Crema de fijación media con efecto fibroso para cabello corto y medio.",
+    "en": "Medium-hold fiber cream for short to medium hair.",
+    "ja": "ショート〜ミディアムに、束感をつくるミディアムホールドクリーム。"
+   },
+   "feat": {
+    "es": "Brillo satinado natural; Se puede volver a peinar sin residuos",
+    "en": "Natural satin shine; Restylable without residue",
+    "ja": "自然なサテンのツヤ；何度でも整え直せて残りません"
+   },
+   "list": 670,
+   "salon": 603,
+   "photo": "productos/img/D149.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D150",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Styling Clay",
+   "type": "スタイリング（クレイ）",
+   "size": "50ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Pasta tipo arcilla de fijación fuerte con efecto mate y seco.",
+    "en": "Strong-hold clay paste with a dry, matte finish.",
+    "ja": "マットでドライに仕上がる、ストロングホールドのクレイ。"
+   },
+   "feat": {
+    "es": "Fijación duradera resistente a la humedad; Sin efecto mojado",
+    "en": "Long-lasting, humidity-resistant hold; No wet look",
+    "ja": "湿気に強く長時間キープ；ウェット感のない仕上がり"
+   },
+   "list": 670,
+   "salon": 603,
+   "photo": "productos/img/D150.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D151",
+   "line": "PASTA & LOVE",
+   "name": "PASTA & LOVE Styling Paste",
+   "type": "スタイリング（ペースト）",
+   "size": "125ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Pasta invisible de fijación media para peinados flexibles.",
+    "en": "Invisible medium-hold paste for flexible styles.",
+    "ja": "動きのあるスタイルをつくる、ミディアムホールドのペースト。"
+   },
+   "feat": {
+    "es": "Realza el brillo natural y el movimiento; No es rígida ni pegajosa",
+    "en": "Enhances natural shine and movement; Never stiff or sticky",
+    "ja": "自然なツヤと動きを引き出します；かたまらず、ベタつきません"
+   },
+   "list": 670,
+   "salon": 603,
+   "photo": "productos/img/D151.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
+  },
+  {
+   "id": "D152",
+   "line": "SOLU",
+   "name": "SOLU Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Shampoo purificante que limpia en profundidad cuero cabelludo y cabello.",
+    "en": "Purifying shampoo that deeply cleanses scalp and hair.",
+    "ja": "頭皮と髪を深く洗い上げる、ピュリファイングシャンプー。"
+   },
+   "feat": {
+    "es": "Ayuda a retirar residuos de productos de peinado; Combate impurezas ambientales",
+    "en": "Removes styling product buildup; Fights environmental impurities",
+    "ja": "スタイリング剤の残りを落とします；大気中の汚れもすっきり"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D152.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D153",
+   "line": "SOLU",
+   "name": "SOLU Sea Salt Scrub",
+   "type": "頭皮用スクラブ",
+   "size": "250ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Exfoliante de sal marina que purifica y revitaliza el cuero cabelludo.",
+    "en": "Sea salt scrub that purifies and revitalizes the scalp.",
+    "ja": "頭皮をすっきり整える、シーソルトのスクラブ。"
+   },
+   "feat": {
+    "es": "Ayuda a retirar residuos y contaminación; Aporta cuerpo y textura",
+    "en": "Removes buildup and pollution; Adds body and texture",
+    "ja": "残留物や汚れを落とします；髪にハリと動きを"
+   },
+   "list": 850,
+   "salon": 765,
+   "photo": "productos/img/D153.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D154",
+   "line": "SU",
+   "name": "SU Hair & Body Wash",
+   "type": "シャンプー（髪・体）",
+   "size": "250ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Limpiador hidratante para cabello y cuerpo después del sol.",
+    "en": "Moisturizing hair and body wash for after sun exposure.",
+    "ja": "日差しを浴びた後の髪と体を、うるおしながら洗う洗浄料。"
+   },
+   "feat": {
+    "es": "Doble acción: cabello y piel; Con extracto antioxidante de naranja amarga",
+    "en": "Dual action for hair and skin; With antioxidant bitter orange extract",
+    "ja": "髪と肌を1本で；抗酸化のビターオレンジエキス配合"
+   },
+   "list": 699,
+   "salon": 629,
+   "photo": "productos/img/D154.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D155",
+   "line": "SU",
+   "name": "SU Hair & Body Wash Bar",
+   "type": "シャンプーバー（髪・体）",
+   "size": "100g",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Barra sólida hidratante para cabello y cuerpo.",
+    "en": "Moisturizing solid bar for hair and body.",
+    "ja": "髪と体に使える、保湿タイプの固形バー。"
+   },
+   "feat": {
+    "es": "Espuma rica y cremosa; Limpieza suave",
+    "en": "Rich, creamy lather; Gentle cleansing",
+    "ja": "濃密でクリーミーな泡；やさしい洗い心地"
+   },
+   "list": 605,
+   "salon": 545,
+   "photo": "productos/img/D155.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D156",
+   "line": "SU",
+   "name": "SU Hair & Body Oil",
+   "type": "オイル（髪・体）",
+   "size": "135ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry",
+    "body"
+   ],
+   "desc": {
+    "es": "Aceite nutritivo para cabello y cuerpo expuestos al sol.",
+    "en": "Nourishing oil for sun-exposed hair and body.",
+    "ja": "日差しを浴びる髪と体のための、栄養オイル。"
+   },
+   "feat": {
+    "es": "Ayuda a proteger el cabello de los rayos UV; Hidrata durante y después del sol",
+    "en": "Helps protect hair from UV rays; Hydrates during and after sun",
+    "ja": "紫外線から髪を守るサポート；日中も日差しの後もうるおいを"
+   },
+   "list": 985,
+   "salon": 887,
+   "photo": "productos/img/D156.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "オイル aceite oil"
+  },
+  {
+   "id": "D157",
+   "line": "SU",
+   "name": "SU Hair Mask",
+   "type": "マスク",
+   "size": "150ml",
+   "nayami": "乾燥・ダメージ",
+   "concerns": [
+    "dry",
+    "damage"
+   ],
+   "desc": {
+    "es": "Mascarilla hidratante para cabello dañado por sol, cloro y sal.",
+    "en": "Hydrating mask for hair damaged by sun, chlorine and salt.",
+    "ja": "紫外線・プール・海水で傷んだ髪をうるおすマスク。"
+   },
+   "feat": {
+    "es": "Devuelve suavidad y luz; Acción antioxidante",
+    "en": "Restores softness and radiance; Antioxidant action",
+    "ja": "やわらかさと輝きを取り戻します；抗酸化ケア"
+   },
+   "list": 795,
+   "salon": 716,
+   "photo": "productos/img/D157.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D158",
+   "line": "SU",
+   "name": "SU Hair Milk",
+   "type": "洗い流さないトリートメント（ミルク）",
+   "size": "135ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Leche sin enjuague con protección UV para el cabello expuesto al sol.",
+    "en": "Leave-in milk with UV protection for sun-exposed hair.",
+    "ja": "日差しを浴びる髪を守る、UVケア入りの洗い流さないミルク。"
+   },
+   "feat": {
+    "es": "Suavidad y brillo aun tras horas al sol; Fórmula ligera, sin peso",
+    "en": "Softness and shine even after hours in the sun; Lightweight formula",
+    "ja": "長時間の日差しの後もやわらかくツヤやかに；重くならない軽やかな処方"
+   },
+   "list": 980,
+   "salon": 882,
+   "photo": "productos/img/D158.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "トリートメント tratamiento treatment ミルク leche milk"
+  },
+  {
+   "id": "D159",
+   "line": "SU",
+   "name": "SU Protective Cream SPF 30",
+   "type": "日焼け止め（顔・体）",
+   "size": "100ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Protector solar SPF 30 de amplio espectro para rostro y cuerpo.",
+    "en": "Broad-spectrum SPF 30 sunscreen for face and body.",
+    "ja": "顔と体に使える、SPF30の日焼け止め（UVA・UVB対応）。"
+   },
+   "feat": {
+    "es": "Mantiene la piel hidratada; Ayuda a prevenir el fotoenvejecimiento",
+    "en": "Keeps skin hydrated; Helps prevent photoaging",
+    "ja": "肌のうるおいを保ちます；紫外線による肌の老化を防ぐサポート"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D159.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "日焼け止め UV 紫外線 protector solar bloqueador sunscreen sun cream"
+  },
+  {
+   "id": "D160",
+   "line": "SU",
+   "name": "SU Protective Cream SPF 50",
+   "type": "日焼け止め（顔・体）",
+   "size": "100ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Protector solar SPF 50 de muy alta protección para rostro y cuerpo.",
+    "en": "Very-high-protection SPF 50 sunscreen for face and body.",
+    "ja": "顔と体に使える、SPF50の高い防御力の日焼け止め（UVA・UVB対応）。"
+   },
+   "feat": {
+    "es": "Ayuda a prevenir la deshidratación de la piel; Combate los signos del fotoenvejecimiento",
+    "en": "Helps prevent skin dehydration; Fights signs of photoaging",
+    "ja": "肌の乾燥を防ぐサポート；紫外線による肌の老化に"
+   },
+   "list": 850,
+   "salon": 765,
+   "photo": "productos/img/D160.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "日焼け止め UV 紫外線 protector solar bloqueador sunscreen sun cream"
+  },
+  {
+   "id": "D161",
+   "line": "SU",
+   "name": "SU Aftersun",
+   "type": "アフターサン（体）",
+   "size": "150ml",
+   "nayami": "",
+   "concerns": [
+    "body"
+   ],
+   "desc": {
+    "es": "Gel crema para después del sol que hidrata y calma la piel del cuerpo.",
+    "en": "After-sun cream gel that hydrates and soothes body skin.",
+    "ja": "日差しを浴びた後の肌をうるおし、落ち着かせるジェルクリーム。"
+   },
+   "feat": {
+    "es": "Sensación fresca y calmante; Absorción rápida",
+    "en": "A fresh, soothing feel; Fast absorption",
+    "ja": "ひんやりと心地よい使用感；すばやくなじみます"
+   },
+   "list": 915,
+   "salon": 824,
+   "photo": "productos/img/D161.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "アフターサン 日焼け後 after sun aftersun"
+  },
+  {
+   "id": "D162",
+   "line": "The Circle Chronicles",
+   "name": "The Let It Go Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "乾燥・頭皮",
+   "concerns": [
+    "dry",
+    "scalp"
+   ],
+   "desc": {
+    "es": "Mascarilla relajante que hidrata cabello y cuero cabelludo.",
+    "en": "Relaxing mask that hydrates hair and scalp.",
+    "ja": "髪と頭皮をうるおし、リラックスさせるマスク。"
+   },
+   "feat": {
+    "es": "Suavidad y confort; Para una pausa de bienestar",
+    "en": "Softness and comfort; For a moment of wellbeing",
+    "ja": "やわらかさと心地よさ；ほっとひと息つく時間に"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D162.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D163",
+   "line": "The Circle Chronicles",
+   "name": "The Purity Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Mascarilla detox y antioxidante para cuero cabelludo y cabello.",
+    "en": "Detox, antioxidant mask for scalp and hair.",
+    "ja": "頭皮と髪をすっきり整える、デトックスマスク。"
+   },
+   "feat": {
+    "es": "Ayuda a retirar impurezas por contaminación y polvo; Rutina purificante",
+    "en": "Removes impurities from pollution and dust; A purifying ritual",
+    "ja": "大気汚染やほこりの汚れを落とします；すっきりリセット"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D163.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D164",
+   "line": "The Circle Chronicles",
+   "name": "The Quick Fix Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "乾燥",
+   "concerns": [
+    "dry"
+   ],
+   "desc": {
+    "es": "Mascarilla de acción rápida que hidrata y facilita el desenredado.",
+    "en": "Quick-acting mask that hydrates and helps detangle.",
+    "ja": "うるおいと指通りを与える、短時間ケア用のマスク。"
+   },
+   "feat": {
+    "es": "Para todo tipo de cabello; Ideal para un cuidado breve",
+    "en": "For all hair types; Ideal for a quick treatment",
+    "ja": "すべての髪質に；短時間のケアに"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D164.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D165",
+   "line": "The Circle Chronicles",
+   "name": "The Renaissance Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Mascarilla reparadora para cabello muy dañado.",
+    "en": "Repairing mask for very damaged hair.",
+    "ja": "ひどく傷んだ髪のための、補修マスク。"
+   },
+   "feat": {
+    "es": "Brillo, nutrición y suavidad; Ideal si usa herramientas de calor",
+    "en": "Shine, nourishment and softness; Ideal if you use heat tools",
+    "ja": "ツヤ・栄養・やわらかさ；アイロン・ドライヤーをよく使う方に"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D165.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D166",
+   "line": "The Circle Chronicles",
+   "name": "The Restless Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "ダメージ",
+   "concerns": [
+    "damage"
+   ],
+   "desc": {
+    "es": "Mascarilla invisible que protege del quiebre, pensada para el ritmo de un día activo.",
+    "en": "Invisible anti-breakage mask for hair on the go.",
+    "ja": "忙しい日にも使える、切れ毛を防ぐ見えないマスク。"
+   },
+   "feat": {
+    "es": "Aporta cuerpo y elasticidad; Ayuda a proteger del quiebre",
+    "en": "Body and elasticity; Protects against breakage",
+    "ja": "ハリと弾力；切れ毛から髪を守ります"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D166.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask"
+  },
+  {
+   "id": "D167",
+   "line": "The Circle Chronicles",
+   "name": "The Wake-Up Circle Hair Mask",
+   "type": "マスク（1回用）",
+   "size": "50ml",
+   "nayami": "頭皮",
+   "concerns": [
+    "scalp"
+   ],
+   "desc": {
+    "es": "Mascarilla revitalizante para cuero cabelludo y cabello estresados.",
+    "en": "Revitalizing mask for stressed scalp and hair.",
+    "ja": "疲れた頭皮と髪を元気にする、リフレッシュマスク。"
+   },
+   "feat": {
+    "es": "Energía y volumen al cabello sin vida; Devuelve tono e hidratación",
+    "en": "Energy and volume for dull hair; Restores tone and hydration",
+    "ja": "元気のない髪にハリとボリューム；頭皮にうるおいを"
+   },
+   "list": 320,
+   "salon": 288,
+   "photo": "productos/img/D167.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "マスク ヘアマスク トリートメント mascarilla mask hair mask 頭皮 スカルプ cuero cabelludo scalp"
+  },
+  {
+   "id": "D168",
+   "line": "VOLU",
+   "name": "VOLU Shampoo",
+   "type": "シャンプー",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Shampoo voluminizador para cabello fino.",
+    "en": "Volumizing shampoo for fine hair.",
+    "ja": "細い髪にボリュームを与えるシャンプー。"
+   },
+   "feat": {
+    "es": "Limpia sin apelmazar; Cabello sedoso y con más volumen",
+    "en": "Cleanses without weighing down; Silky hair with more volume",
+    "ja": "重くならずに洗い上げます；しなやかで、ふんわりとした髪に"
+   },
+   "list": 730,
+   "salon": 657,
+   "photo": "productos/img/D168.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "シャンプー shampoo champú champu"
+  },
+  {
+   "id": "D169",
+   "line": "VOLU",
+   "name": "VOLU Conditioner",
+   "type": "コンディショナー",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "other"
+   ],
+   "desc": {
+    "es": "Acondicionador voluminizador ultraligero para cabello fino.",
+    "en": "Ultra-light volumizing conditioner for fine hair.",
+    "ja": "細い髪のための、ごく軽いボリュームコンディショナー。"
+   },
+   "feat": {
+    "es": "Facilita el desenredado sin peso; Realza el volumen natural",
+    "en": "Helps detangle without weight; Boosts natural volume",
+    "ja": "重くならずに指通りなめらか；自然なボリュームを引き出します"
+   },
+   "list": 835,
+   "salon": 752,
+   "photo": "productos/img/D169.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "コンディショナー リンス acondicionador conditioner"
+  },
+  {
+   "id": "D170",
+   "line": "VOLU",
+   "name": "VOLU Hair Mist",
+   "type": "スタイリング（ボリュームミスト）",
+   "size": "250ml",
+   "nayami": "",
+   "concerns": [
+    "style"
+   ],
+   "desc": {
+    "es": "Bruma voluminizadora que levanta el cabello fino desde la raíz.",
+    "en": "Volumizing mist that lifts fine hair from the root.",
+    "ja": "細い髪を根元から立ち上げる、ボリュームミスト。"
+   },
+   "feat": {
+    "es": "Volumen que dura días; Sin residuos, cabello ligero",
+    "en": "Volume that lasts for days; No residue, light hair",
+    "ja": "数日続くボリューム；残らず、軽やかな髪に"
+   },
+   "list": 999,
+   "salon": 899,
+   "photo": "productos/img/D170.jpg",
+   "stock": "order",
+   "rank": null,
+   "travel": false,
+   "kw": "スタイリング 整髪料 peinado styling"
   }
  ]
 }
