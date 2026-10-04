@@ -1317,7 +1317,7 @@
    "line": "OI",
    "name": "OI Shampoo",
    "type": "シャンプー",
-   "size": "250ml",
+   "size": "280ml",
    "nayami": "広がり・乾燥・カラー",
    "concerns": [
     "frizz",
@@ -1334,8 +1334,8 @@
     "en": "Leaves a subtle OI fragrance",
     "ja": "洗い上がりにOIの香りがほのかに残ります"
    },
-   "list": null,
-   "salon": null,
+   "list": 870,
+   "salon": 783,
    "photo": "productos/img/D047.jpg",
    "stock": "ok",
    "rank": null,
