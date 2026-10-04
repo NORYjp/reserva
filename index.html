@@ -87,6 +87,7 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 
 <div class="sum" id="sum">—</div>
 <button class="go" id="go" disabled></button>
+<div class="hint" id="need3" style="text-align:center;margin-top:8px;display:none;color:#b00020" data-t="need3"></div>
 <div class="err" id="err"></div>
 <div class="hint" style="text-align:center;margin-top:10px" data-t="reqNote"></div>
 </div>
@@ -105,7 +106,8 @@ bleachNote:{es:'(el precio y el tiempo cambian)',en:'(price & time differ)',ja:'
 spart:{es:'¿Qué parte?',en:'Which part?',ja:'どこをまっすぐにしますか？'},
 bleachWarn:{es:'⚠️ Si tuvo decoloración o mechas en el último año, es posible que no se pueda hacer. Lo revisamos con su foto.',en:'⚠️ If you bleached or had highlights in the past year, it may not be possible. We will check with your photo.',ja:'⚠️ 1年以内にブリーチ・ハイライトをした髪は、できない可能性がございます。写真で確認します。'},
 photo:{es:'📸 Envíenos por DM una foto del estilo deseado y de su cabello actual, para darle precio y tiempo exactos.',en:'📸 Please send us photos by DM (desired style & current hair) for an exact price and time.',ja:'📸 料金と施術時間をお伝えするため、DMで写真（なりたい髪・今の髪）をお送りください。'},
-s2:{es:'2. Día y hora (hasta 3 opciones)',en:'2. Date & time (up to 3 options)',ja:'2. 日時（第3希望まで）'},
+s2:{es:'2. Día y hora (elija 3 opciones)',en:'2. Date & time (choose 3 options)',ja:'2. 日時（第1〜第3希望をすべて選んでください）'},
+need3:{es:'Elija las 3 opciones (①②③) para enviar.',en:'Please choose all 3 options (①②③) to send.',ja:'①②③の3つとも選ぶと送れます。'},
 closed:{es:'Cerrado: lunes, 1er y 3er martes, 3er domingo',en:'Closed: Mondays, 1st & 3rd Tuesday, 3rd Sunday',ja:'休み：毎週月曜・第1火曜・第3火曜・第3日曜'},
 hora:{es:'Hora',en:'Time',ja:'時間'},
 pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にちを選んでください'},
@@ -230,7 +232,8 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  document.getElementById('cutNote').style.display=cutPhoto()?'block':'none';
  document.getElementById('sum').innerHTML=(showMenus()||T('menuNone'))+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+(dur()?'<br><small>⏱ '+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':''):T('dtNone'));
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null);
- document.getElementById('go').disabled=!(ms&&colorOk&&sel.opts[0].date&&sel.opts[0].time&&ID&&nameOk()&&telOk()&&mailOk());lock();}
+ const all3=sel.opts.every(x=>x.date&&x.time);document.getElementById('need3').style.display=all3?'none':'block';
+ document.getElementById('go').disabled=!(ms&&colorOk&&all3&&ID&&nameOk()&&telOk()&&mailOk());lock();}
 function nameOk(){return document.getElementById('name').value.trim().length>=2;}
 function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'').length>=10;}
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
