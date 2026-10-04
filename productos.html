@@ -19,9 +19,13 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .filters{display:flex;flex-wrap:wrap;gap:6px}
 .chip{border:1.5px solid #222;border-radius:12px;padding:7px 10px;background:#fff;font:inherit;font-size:13px;cursor:pointer}
 .chip.on{background:#1d1d1d;color:#fff}
-.card{display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid #eee;padding:10px 0}
-.ph{flex:0 0 108px;width:108px;height:108px;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background-color:#f5f5f3;background-repeat:no-repeat;background-size:contain;background-position:50% 50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#aaa;text-align:center;padding:0}
-.info{flex:1;min-width:0}
+.card{border-bottom:1px solid #eee;padding:12px 0}
+.top{display:flex;gap:12px;align-items:stretch}
+.ph{flex:0 0 44%;max-width:190px;min-height:150px;align-self:stretch;border-radius:12px;overflow:hidden;background-color:#f5f5f3;background-repeat:no-repeat;background-size:contain;background-position:50% 50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#aaa;text-align:center;padding:0}
+.info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.body{margin-top:8px}
+.trv{display:inline-block;font-size:11.5px;font-weight:700;border-radius:20px;padding:2px 9px;margin:4px 0 2px;background:#e3f1fb;color:#0b5c8f;border:1px solid #0b5c8f;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
+.ds b.tv{color:#0b5c8f;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif;font-size:13.5px}
 .ln{font-size:11px;color:#888;letter-spacing:.5px}
 .nm{font-size:16px;line-height:1.25;margin:2px 0}
 .nm small{font-size:12px;color:#777}
@@ -38,7 +42,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .go{display:block;width:100%;margin-top:22px;padding:15px;border:none;border-radius:14px;background:#1d1d1d;color:#fff;font:inherit;font-size:17px;text-align:center;text-decoration:none}
 .err{color:#b00020;font-size:14px;margin-top:10px;text-align:center}
 .dtext{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:26px;letter-spacing:1px;color:#1d1d1d}
-.rk{display:inline-block;font-size:12.5px;font-weight:800;border-radius:20px;padding:3px 11px;margin:2px 0 4px;background:linear-gradient(135deg,#fff3a6,#ffcf2e 55%,#f5a800);color:#c8001e;border:1.5px solid #c8001e;box-shadow:0 2px 6px rgba(200,0,30,.25);letter-spacing:.2px;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
+.rk{display:inline-block;align-self:flex-start;font-size:12.5px;font-weight:800;border-radius:20px;padding:3px 11px;margin:2px 0 4px;background:linear-gradient(135deg,#fff3a6,#ffcf2e 55%,#f5a800);color:#c8001e;border:1.5px solid #c8001e;box-shadow:0 2px 6px rgba(200,0,30,.25);letter-spacing:.2px;font-family:'Hanken Grotesk','Kaisei Decol',sans-serif}
 .rk::before{content:'👑 '}
 .pop{margin-top:6px}.pop .step{margin-top:12px}
 .pop .card{background:#faf8f4;border-radius:14px;border-bottom:none;padding:8px;margin-top:8px}
@@ -91,6 +95,8 @@ openWA:{es:'Abrir WhatsApp',en:'Open WhatsApp',ja:'WhatsAppを開く'},
 book:{es:'📅 Reservar cita',en:'📅 Book an appointment',ja:'📅 予約する'},
 upd:{es:'Actualizado',en:'Updated',ja:'更新'},
 popT:{es:'Lo más popular en el salón',en:'Salon favorites',ja:'当サロンで人気の商品'},
+trvB:{es:'✈ Tamaño viaje',en:'✈ Travel size',ja:'✈ 旅行用サイズ'},
+trv:{es:'Tamaño ideal para viajar · Apto para equipaje de mano',en:'Perfect travel size · Carry-on friendly',ja:'旅行用にぴったり・機内持ち込みOK'},
 rk:{es:'Más vendido en THE HOME No.',en:'THE HOME best seller No.',ja:'THE HOMEで人気 No.'},
 f:{all:{es:'Todo',en:'All',ja:'すべて'},frizz:{es:'Frizz',en:'Frizz',ja:'広がり・くせ'},color:{es:'Color',en:'Color',ja:'カラー'},damage:{es:'Daño / decoloración',en:'Damage / bleach',ja:'ダメージ'},dry:{es:'Resequedad',en:'Dryness',ja:'乾燥'},curl:{es:'Rizos',en:'Curls',ja:'カール'},scalp:{es:'Cuero cabelludo',en:'Scalp',ja:'頭皮'},style:{es:'Peinado',en:'Styling',ja:'スタイリング'},other:{es:'Otros',en:'Others',ja:'その他'}}
 };
@@ -117,8 +123,12 @@ function card(it,sec){sec=sec||'l';const price=it.salon?'<div class="pr">'+(it.l
  const ph=src?'style="background-image:url('+esc(src)+')"':'';
  const fs=(it.feat&&it.feat[LANG]||'').split(/\s*[\n|;；]\s*/).filter(Boolean);
  const rk=it.rank?'<span class="rk">'+T('rk')+it.rank+'</span>':'';
- return '<div class="card"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small></div>'+(it.desc&&it.desc[LANG]?'<div class="ds">'+esc(it.desc[LANG])+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')+price
-  +'<span class="st '+it.stock+'">'+T(it.stock)+'</span><br><button class="hold" data-id="'+esc(sec+it.id)+'">'+T('hold')+'</button>'+(OPEN===sec+it.id?holdBox(it):'')+'</div></div>';}
+ const tv=it.travel===true;
+ const ds=(tv?'<b class="tv">'+T('trv')+'.</b> ':'')+(it.desc&&it.desc[LANG]?esc(it.desc[LANG]):'');
+ // 写真（大きめ）と名前・容量・価格・在庫を横並び。説明・特徴・取り置きはカードの横幅いっぱいで下へ（10/4 Nory：写真の下の余白をなくす）
+ return '<div class="card"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small></div>'+(tv?'<div><span class="trv">'+T('trvB')+'</span></div>':'')+price
+  +'<div><span class="st '+it.stock+'">'+T(it.stock)+'</span></div></div></div><div class="body">'+(ds?'<div class="ds">'+ds+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')
+  +'<button class="hold" data-id="'+esc(sec+it.id)+'">'+T('hold')+'</button>'+(OPEN===sec+it.id?holdBox(it):'')+'</div></div>';}
 function popular(){const ps=ITEMS.filter(i=>i.rank>=1&&i.rank<=4).sort((a,b)=>a.rank-b.rank);
  document.getElementById('pop').style.display=ps.length?'block':'none';
  document.getElementById('popList').innerHTML=ps.map(it=>card(it,'p')).join('');}

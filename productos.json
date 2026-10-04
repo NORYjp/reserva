@@ -26,7 +26,8 @@
    "salon": 779,
    "photo": "productos/img/D001.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D002",
@@ -52,7 +53,8 @@
    "salon": 824,
    "photo": "productos/img/D002.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D003",
@@ -78,7 +80,8 @@
    "salon": 572,
    "photo": "productos/img/D003.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D004",
@@ -105,7 +108,8 @@
    "salon": 936,
    "photo": "productos/img/D004.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D005",
@@ -132,7 +136,8 @@
    "salon": 702,
    "photo": "productos/img/D005.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D006",
@@ -158,7 +163,8 @@
    "salon": null,
    "photo": "productos/img/D006.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D007",
@@ -184,7 +190,8 @@
    "salon": 657,
    "photo": "productos/img/D007.jpg",
    "stock": "ok",
-   "rank": 3
+   "rank": 3,
+   "travel": false
   },
   {
    "id": "D008",
@@ -210,7 +217,8 @@
    "salon": null,
    "photo": "productos/img/D008.jpg",
    "stock": "low",
-   "rank": 3
+   "rank": 3,
+   "travel": false
   },
   {
    "id": "D009",
@@ -236,7 +244,8 @@
    "salon": 572,
    "photo": "productos/img/D009.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D010",
@@ -262,7 +271,8 @@
    "salon": 752,
    "photo": "productos/img/D010.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D011",
@@ -288,7 +298,8 @@
    "salon": null,
    "photo": "productos/img/D011.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D012",
@@ -314,7 +325,8 @@
    "salon": 657,
    "photo": "productos/img/D012.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D013",
@@ -340,7 +352,8 @@
    "salon": null,
    "photo": "productos/img/D013.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D014",
@@ -366,7 +379,8 @@
    "salon": 752,
    "photo": "productos/img/D014.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D015",
@@ -392,7 +406,8 @@
    "salon": 657,
    "photo": "productos/img/D015.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D016",
@@ -418,7 +433,8 @@
    "salon": 752,
    "photo": "productos/img/D016.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D017",
@@ -444,7 +460,8 @@
    "salon": null,
    "photo": "productos/img/D017.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D018",
@@ -470,7 +487,8 @@
    "salon": 657,
    "photo": "productos/img/D018.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D019",
@@ -496,7 +514,8 @@
    "salon": null,
    "photo": "productos/img/D019.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D020",
@@ -522,7 +541,8 @@
    "salon": 572,
    "photo": "productos/img/D020.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D021",
@@ -549,7 +569,8 @@
    "salon": 779,
    "photo": "productos/img/D021.jpg",
    "stock": "low",
-   "rank": 4
+   "rank": 4,
+   "travel": false
   },
   {
    "id": "D022",
@@ -576,7 +597,8 @@
    "salon": 719,
    "photo": "productos/img/D022.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D023",
@@ -602,7 +624,8 @@
    "salon": 711,
    "photo": "productos/img/D023.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D024",
@@ -629,7 +652,8 @@
    "salon": 639,
    "photo": "productos/img/D024.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D025",
@@ -655,7 +679,8 @@
    "salon": 761,
    "photo": "productos/img/D025.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D026",
@@ -681,7 +706,8 @@
    "salon": null,
    "photo": "productos/img/D026.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D027",
@@ -707,7 +733,8 @@
    "salon": 629,
    "photo": "productos/img/D027.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D028",
@@ -733,7 +760,8 @@
    "salon": 675,
    "photo": "productos/img/D028.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D029",
@@ -759,7 +787,8 @@
    "salon": 666,
    "photo": "productos/img/D029.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D030",
@@ -785,7 +814,8 @@
    "salon": 734,
    "photo": "productos/img/D030.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D031",
@@ -812,7 +842,8 @@
    "salon": 1062,
    "photo": "productos/img/D031.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D032",
@@ -839,7 +870,8 @@
    "salon": 734,
    "photo": "productos/img/D032.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D033",
@@ -866,7 +898,8 @@
    "salon": 909,
    "photo": "productos/img/D033.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D034",
@@ -893,7 +926,8 @@
    "salon": 936,
    "photo": "productos/img/D034.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D035",
@@ -919,7 +953,8 @@
    "salon": 689,
    "photo": "productos/img/D035.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D036",
@@ -945,7 +980,8 @@
    "salon": null,
    "photo": "productos/img/D036.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D037",
@@ -971,7 +1007,8 @@
    "salon": null,
    "photo": "productos/img/D037.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D038",
@@ -999,7 +1036,8 @@
    "salon": 1107,
    "photo": "productos/img/D038.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D039",
@@ -1027,7 +1065,8 @@
    "salon": null,
    "photo": "productos/img/D039.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D040",
@@ -1055,7 +1094,8 @@
    "salon": 909,
    "photo": "productos/img/D040.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D041",
@@ -1083,7 +1123,8 @@
    "salon": null,
    "photo": "productos/img/D041.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D042",
@@ -1110,7 +1151,8 @@
    "salon": 1067,
    "photo": "productos/img/D042.jpg",
    "stock": "low",
-   "rank": 2
+   "rank": 2,
+   "travel": false
   },
   {
    "id": "D043",
@@ -1137,7 +1179,8 @@
    "salon": null,
    "photo": "productos/img/D043.jpg",
    "stock": "ok",
-   "rank": 2
+   "rank": 2,
+   "travel": true
   },
   {
    "id": "D044",
@@ -1163,7 +1206,8 @@
    "salon": 558,
    "photo": "productos/img/D044.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D045",
@@ -1190,7 +1234,8 @@
    "salon": 1386,
    "photo": "productos/img/D045.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D046",
@@ -1217,7 +1262,8 @@
    "salon": null,
    "photo": "productos/img/D046.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D047",
@@ -1245,7 +1291,8 @@
    "salon": null,
    "photo": "productos/img/D047.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D048",
@@ -1273,7 +1320,8 @@
    "salon": null,
    "photo": "productos/img/D048.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D049",
@@ -1300,7 +1348,8 @@
    "salon": null,
    "photo": "productos/img/D049.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": true
   },
   {
    "id": "D050",
@@ -1326,7 +1375,8 @@
    "salon": 549,
    "photo": "productos/img/D050.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D051",
@@ -1352,7 +1402,8 @@
    "salon": null,
    "photo": "productos/img/D051.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D052",
@@ -1378,7 +1429,8 @@
    "salon": 288,
    "photo": "productos/img/D052.jpg",
    "stock": "low",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D053",
@@ -1404,7 +1456,8 @@
    "salon": 572,
    "photo": "productos/img/D053.jpg",
    "stock": "ok",
-   "rank": null
+   "rank": null,
+   "travel": false
   },
   {
    "id": "D054",
@@ -1422,15 +1475,16 @@
     "ja": "オーガニックオイル。髪・顔・体に使える。"
    },
    "feat": {
-    "es": "Aceite orgánico multiuso para cabello, rostro, cuello y cuerpo. Hidrata puntas secas y deja la piel suave.",
-    "en": "Organic multi-use oil for hair, face, neck and body. Moisturizes dry ends and leaves skin soft.",
-    "ja": "オーガニックの万能オイル。髪・顔・首・体に使え、乾燥した毛先のうるおいと肌のやわらかさを目指す。"
+    "es": "Aceite orgánico multiuso para cabello, rostro, cuello y cuerpo. Hidrata puntas secas y deja la piel suave.; Larga duración: el cabello no se reseca en todo el día; Rinde mucho: con poca cantidad dura aprox. 3 meses (según el largo del cabello)",
+    "en": "Organic multi-use oil for hair, face, neck and body. Moisturizes dry ends and leaves skin soft.; Long-lasting: hair stays moisturized all day; A little goes a long way: lasts about 3 months (depending on hair length)",
+    "ja": "オーガニックの万能オイル。髪・顔・首・体に使え、乾燥した毛先のうるおいと肌のやわらかさを目指す。；長持ち：つけてから一日中、髪が乾燥しない；少量で足りるので約3か月もつ（髪の長さによる）"
    },
    "list": 1045,
    "salon": 941,
    "photo": "productos/img/D054.jpg",
    "stock": "order",
-   "rank": 1
+   "rank": 1,
+   "travel": false
   },
   {
    "id": "D055",
@@ -1456,7 +1510,8 @@
    "salon": 693,
    "photo": "productos/img/D055.jpg",
    "stock": "order",
-   "rank": 3
+   "rank": 3,
+   "travel": false
   }
  ]
 }
