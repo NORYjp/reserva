@@ -37,7 +37,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .pr{font-size:15px;margin:4px 0}.pr s{color:#999;font-size:13px;margin-right:6px}.pr b{color:#b00020}
 .pr small{display:block;font-size:11px;color:#888;font-family:'Kaisei Decol',serif}
 .st{display:inline-block;font-size:12px;border-radius:20px;padding:2px 9px;margin:2px 0 6px;font-family:'Kaisei Decol',serif}
-.st.ok{background:#e6f4ea;color:#1e6b34}.st.low{background:#fff4e5;color:#8a5300}.st.last{background:#b00020;color:#fff;font-weight:bold;font-size:14px;padding:4px 12px;letter-spacing:.5px;box-shadow:0 0 0 0 rgba(176,0,32,.5);animation:lastp 1.8s ease-out infinite}@keyframes lastp{0%{box-shadow:0 0 0 0 rgba(176,0,32,.45)}70%{box-shadow:0 0 0 9px rgba(176,0,32,0)}100%{box-shadow:0 0 0 0 rgba(176,0,32,0)}}@media (prefers-reduced-motion:reduce){.st.last{animation:none}}.st.order{background:#eee;color:#555}
+.st.ok{background:#e6f4ea;color:#1e6b34}.st.low{background:#fff4e5;color:#8a5300}.st.last{background:#b00020;color:#fff;font-weight:bold;font-size:15px;padding:5px 14px;letter-spacing:.5px;box-shadow:0 0 0 0 rgba(176,0,32,.5);animation:lastp 1.8s ease-out infinite}@keyframes lastp{0%{box-shadow:0 0 0 0 rgba(176,0,32,.45)}70%{box-shadow:0 0 0 9px rgba(176,0,32,0)}100%{box-shadow:0 0 0 0 rgba(176,0,32,0)}}@media (prefers-reduced-motion:reduce){.st.last{animation:none}}.card.lastc{border:2px solid #b00020;box-shadow:0 4px 14px rgba(176,0,32,.18)}.lastn{color:#b00020;font-size:12px;font-weight:bold;margin-top:2px;line-height:1.4}.st.order{background:#eee;color:#555}
 .hold{display:inline-block;border:none;border-radius:30px;background:#b00020;color:#fff;font:inherit;font-size:13px;padding:8px 14px;cursor:pointer;text-decoration:none}
 .box{background:#f4f1ec;border-radius:12px;padding:12px;font-size:14px;line-height:1.6;margin-top:8px;font-family:'Kaisei Decol',serif}
 .box code{font-family:inherit;font-weight:bold;background:#fff;border-radius:6px;padding:2px 6px}
@@ -102,6 +102,7 @@ ask:{es:'Precio: consúltenos por DM',en:'Price available by DM',ja:'価格はDM
 ok:{es:'Disponible',en:'In stock',ja:'在庫あり'},
 low:{es:'Últimas piezas',en:'Only a few left',ja:'残りわずか'},
 last:{es:'¡Última pieza!',en:'Last one!',ja:'ラスト1点！'},
+lastN:{es:'Solo queda una en el salón. Apártala hoy.',en:'Only one left in the salon. Reserve it today.',ja:'店頭に残り1点のみ。お早めにお取り置きください。'},
 order:{es:'Bajo pedido',en:'Available to order',ja:'お取り寄せ'},
 hold:{es:'Apartar',en:'Hold for me',ja:'取り置きする'},
 holdMsg:{es:'Envíenos este mensaje por DM y Nory le confirmará la disponibilidad:',en:'Send us this message by DM and Nory will confirm availability:',ja:'下の文をDMでお送りください。在庫を確認のうえ、Noryよりご連絡します：'},
@@ -152,8 +153,8 @@ function card(it,sec){sec=sec||'l';const price=it.salon?'<div class="pr">'+(it.l
  const tv=it.travel===true;
  const ds=(it.desc&&it.desc[LANG]?esc(it.desc[LANG]):'');
  // 写真（大きめ）と名前・容量・価格・在庫を横並び。説明・特徴・取り置きはカードの横幅いっぱいで下へ（10/4 Nory：写真の下の余白をなくす）
- return '<div class="card"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small>'+(tv?'<span class="phv" aria-hidden="true">'+PL+'</span>':'')+'</div>'+(tv?'<div><span class="trv">'+PL+T('trvB')+'</span></div>':'')+price
-  +'<div><span class="st '+it.stock+'">'+T(it.stock)+'</span></div></div></div><div class="body">'+(ds?'<div class="ds">'+ds+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')
+ return '<div class="card'+(it.stock==='last'?' lastc':'')+'"><div class="top"><div class="ph" '+ph+'>'+(it.photo?'':esc(it.line))+'</div><div class="info">'+rk+'<div class="ln">'+esc(it.line)+'</div><div class="nm">'+esc(it.name)+' <small>'+esc(it.size)+'</small>'+(tv?'<span class="phv" aria-hidden="true">'+PL+'</span>':'')+'</div>'+(tv?'<div><span class="trv">'+PL+T('trvB')+'</span></div>':'')+price
+  +'<div><span class="st '+it.stock+'">'+T(it.stock)+'</span></div>'+(it.stock==='last'?'<div class="lastn">'+T('lastN')+'</div>':'')+'</div></div><div class="body">'+(ds?'<div class="ds">'+ds+'</div>':'')+(fs.length?'<ul class="ft">'+fs.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>':'')
   +'<button class="hold" data-id="'+esc(sec+it.id)+'">'+T('hold')+'</button>'+(OPEN===sec+it.id?holdBox(it):'')+'</div></div>';}
 const IO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.style.backgroundImage='url("'+el.dataset.bg+'")';el.removeAttribute('data-bg');IO.unobserve(el);}}),{rootMargin:'600px 0px'}):null;
 function lazy(){document.querySelectorAll('.ph[data-bg]').forEach(el=>{if(IO)IO.observe(el);else{el.style.backgroundImage='url("'+el.dataset.bg+'")';el.removeAttribute('data-bg');}});}
@@ -173,7 +174,7 @@ QI.addEventListener('input',()=>{clearTimeout(QT);QT=setTimeout(()=>{QS=QI.value
 QI.addEventListener('keydown',ev=>{if(ev.key==='Enter')QI.blur();});
 document.getElementById('qx').onclick=()=>{QI.value='';QS='';if(ITEMS.length)list();QI.focus();};
 draw();
-fetch(API?API+'?action=products':DATA,{cache:'no-cache'}).then(x=>{if(!x.ok)throw 0;return x.json();})
+fetch(API?API+'?action=products':DATA+'?v='+Date.now(),{cache:'no-store'}).then(x=>{if(!x.ok)throw 0;return x.json();})
  .then(j=>{if(!j||!j.ok)throw 0;ITEMS=j.items||[];UPD=j.updated||'';draw();})
  .catch(()=>{document.getElementById('list').innerHTML='<div class="err">'+T('err')+'</div>';});
 </script>
