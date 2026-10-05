@@ -208,7 +208,7 @@ function draw(){
  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=TX[e.dataset.t][L]);
  document.querySelectorAll('[data-href]').forEach(e=>e.href=BASE[e.dataset.href]+'?lang='+L);
  const b=document.getElementById('langs');b.innerHTML='';
- [['es','Español'],['en','English'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{L=k;draw();};b.appendChild(a);});
+ [['es','Español'],['en','English'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{L=k;draw();/* 【下書き 10/5 小さな直し】アドレスに ?lang を付ける */try{const u=new URL(location.href);u.searchParams.set('lang',L);history.replaceState(null,'',u.toString());}catch(e){}};b.appendChild(a);});
 }
 draw();
 </script>

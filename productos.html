@@ -132,7 +132,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const peso=n=>'$'+Number(n).toLocaleString('en-US');
 
 function langs(){document.getElementById('langs').innerHTML=LANGS.map(l=>'<a href="#" data-l="'+l+'" class="'+(l===LANG?'on':'')+'">'+({es:'Español',en:'English',ja:'日本語'})[l]+'</a>').join('');
- document.querySelectorAll('#langs a').forEach(a=>a.onclick=ev=>{ev.preventDefault();LANG=a.dataset.l;draw();});}
+ document.querySelectorAll('#langs a').forEach(a=>a.onclick=ev=>{ev.preventDefault();LANG=a.dataset.l;draw();/* 【下書き 10/5 小さな直し】アドレスに ?lang を付ける */try{const u=new URL(location.href);u.searchParams.set('lang',LANG);history.replaceState(null,'',u.toString());}catch(e){}});}
 function texts(){document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=T(el.dataset.t);});document.getElementById('q').placeholder=T('qph');
  const b=document.getElementById('book');b.href=ID?RESERVA+'?lang='+LANG+'&id='+ID:IG;/* 【下書き 10/5】idなしはインスタDMへ・言語を引き継ぐ */document.documentElement.lang=LANG;document.getElementById('upd').textContent=UPD?T('upd')+': '+UPD:'';}
 // 旅行用（機内持ち込み）は concerns ではなく travel の印で選ぶ（10/4 Nory）
@@ -179,4 +179,7 @@ fetch(API?API+'?action=products':DATA+'?v='+Date.now(),{cache:'no-store'}).then(
  .then(j=>{if(!j||!j.ok)throw 0;ITEMS=j.items||[];UPD=j.updated||'';draw();})
  .catch(()=>{document.getElementById('list').innerHTML='<div class="err">'+T('err')+'</div>';});
 </script>
+<!-- 【下書き 10/5 小さな直し】トップ（/）に戻るリンク。ページの外枠の外に置くので、予約完了の画面に変わっても消えない -->
+<div style="text-align:center;margin:0 auto;max-width:480px;padding:14px 16px 28px;font-size:13px"><a id="homeL" href="/" style="color:#777">← Inicio</a></div>
+<script>(function(){var a=document.getElementById('homeL'),t={es:'Inicio',en:'Home',ja:'ホーム'};function u(){var l=document.documentElement.lang;if(!t[l])l='es';a.textContent='← '+t[l];a.href='/?lang='+l;}u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();</script>
 </body></html>

@@ -75,7 +75,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 <a class="go" id="book" href="#" data-t="book"></a>
 <a class="go" id="bookWa" href="#" style="background:#1f7a4d;display:none"></a>
 <a class="go2" id="shop" href="#" data-t="shop"></a>
-<div class="addr">Calle Ensenada 138, Condesa, CDMX</div>
+<div class="addr">Calle Ensenada 138, Condesa, C.P. 06100, CDMX</div><!-- 【下書き 10/5 小さな直し】トップと同じ郵便番号あり -->
 </div>
 <script>
 // ===== 設定 =====
@@ -212,4 +212,7 @@ fetch(API+'?action=closed',ctl?{signal:ctl.signal}:{}).then(x=>x.json()).then(j=
 // 空き状況（本番にはまだない ?action=availability。USE_AV=false のあいだは呼ばない → 印なし＋「予約ページで空きを確認」）
 if(USE_AV)fetch(API+'?action=availability').then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)&&Object.keys(j).length){AV=j;draw();}}).catch(()=>{});
 </script>
+<!-- 【下書き 10/5 小さな直し】トップ（/）に戻るリンク。ページの外枠の外に置くので、予約完了の画面に変わっても消えない -->
+<div style="text-align:center;margin:0 auto;max-width:480px;padding:14px 16px 28px;font-size:13px"><a id="homeL" href="/" style="color:#777">← Inicio</a></div>
+<script>(function(){var a=document.getElementById('homeL'),t={es:'Inicio',en:'Home',ja:'ホーム'};function u(){var l=document.documentElement.lang;if(!t[l])l='es';a.textContent='← '+t[l];a.href='/?lang='+l;}u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();</script>
 </body></html>
