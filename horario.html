@@ -73,6 +73,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 <div class="note" data-t="fixedNote"></div>
 
 <a class="go" id="book" href="#" data-t="book"></a>
+<a class="go" id="bookWa" href="#" style="background:#1f7a4d;display:none"></a>
 <a class="go2" id="shop" href="#" data-t="shop"></a>
 <div class="addr">Calle Ensenada 138, Condesa, CDMX</div>
 </div>
@@ -194,7 +195,7 @@ function draw(){document.documentElement.lang=LANG;
  const L=document.getElementById('langs');L.innerHTML='';
  LANGS.forEach(l=>{const a=document.createElement('a');a.href='#';a.textContent=l==='ja'?'日本語':l==='en'?'English':'Español';if(l===LANG)a.className='on';
   a.onclick=e=>{e.preventDefault();location.search='?lang='+l+(ID?'&id='+ID:'');};L.appendChild(a);});
- document.getElementById('book').href=ID?RESERVA+'?lang='+LANG+'&id='+ID:IGDM; // 【下書き 10/5】idなしはインスタDMへ
+ document.getElementById('book').href=ID?RESERVA+'?lang='+LANG+'&id='+ID:IGDM; {const w=document.getElementById('bookWa');if(ID){w.style.display='none';}else{w.style.display='';w.textContent={es:'💬 Reservar por WhatsApp',en:'💬 Book via WhatsApp',ja:'💬 WhatsAppで予約する'}[LANG]||'💬 Reservar por WhatsApp';w.href='https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.');}} // 【下書き 10/5】idなしはインスタDMへ
  document.getElementById('checkAv').href=RESERVA+'?lang='+LANG+(ID?'&id='+ID:'');
  document.getElementById('shop').href=SHOP+'?lang='+LANG+(ID?'&id='+ID:'');
  drawToday();drawCals();drawHours();}
