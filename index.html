@@ -70,6 +70,15 @@ img{display:block;max-width:100%}
 .pill.line{background:transparent;color:var(--accent);border:1px solid var(--accent)}
 .pill.line:hover{background:var(--accent);color:#fff}
 
+.hero{min-height:calc(100vh - 160px)!important;min-height:calc(100svh - 160px)!important;align-items:center!important}
+@media (min-width:820px){.hero{min-height:calc(100vh - 112px)!important}}
+.hero-in{padding-bottom:70px!important}
+.cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--pink);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;animation:cue 1.8s ease-in-out infinite}
+.cue i{width:30px;height:30px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+@keyframes cue{0%,100%{transform:translate(-50%,0);opacity:.75}50%{transform:translate(-50%,12px);opacity:1}}
+.btns-l{margin:26px 0 0;max-width:400px}
+.pill.wa-l{color:var(--accent);border-color:var(--accent)}
+.pill.wa-l:hover{background:var(--accent);color:#fff}
 /* 区切り */
 section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .big{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--accent);font-size:clamp(40px,11vw,88px);line-height:1;letter-spacing:.02em;margin:0 0 22px}
@@ -143,7 +152,7 @@ footer a{color:#f3e2cf}
 .dock .d-wa{background:var(--wa);color:#fff}
 
 /* ゆっくり出てくる動き */
-.fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.fade{opacity:1}
 .fade.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
@@ -185,20 +194,21 @@ footer a{color:#f3e2cf}
   <div class="hero-in">
     <h1><img class="logo" src="logo_round.png" alt="THE HOME Hair re-creative" width="463" height="463"><span class="vh">THE HOME</span></h1>
     <p class="sub">Hair re-creative · Condesa, CDMX</p>
-    <p class="lead" data-t="lead"></p>
-    <div class="btns" id="book">
-      <a class="pill ig" href="https://ig.me/m/the_home_hair_re_creative"><span data-t="book"></span><small data-t="bookN"></small></a>
-      <a class="pill wa" href="https://wa.me/525521798065"><span data-t="wa"></span><small data-t="waN"></small></a>
-    </div>
   </div>
+  <!-- 押すと下へ（2026-10-05 Nory「真ん中にアイコン、クリックヒアが動いて、押すと下の画面へ」） -->
+  <a class="cue" href="#about" aria-label="next"><span data-t="cue"></span><i></i></a>
 </header>
 
-<section class="fade">
+<section class="fade" id="about">
   <div class="two">
     <h2 class="big" data-t="aboutBig"></h2>
     <div>
       <p class="kicker">THE HOME Hair re-creative</p>
       <p class="text" data-t="lead"></p>
+      <div class="btns btns-l" id="book">
+        <a class="pill ig" href="https://ig.me/m/the_home_hair_re_creative"><span data-t="book"></span><small data-t="bookN"></small></a>
+        <a class="pill wa wa-l" href="https://wa.me/525521798065"><span data-t="wa"></span><small data-t="waN"></small></a>
+      </div>
       <!-- 店内の動画：@the_home_hair_re_creative のリール（2026-10-05 Nory「店内の動画があればさらによし」） -->
       <figure class="room" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
     </div>
@@ -319,6 +329,7 @@ dockIg:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタで�
 dockWa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約'},
 ph1:{es:'Espacio para foto (interior del salón)',en:'Photo placeholder (salon interior)',ja:'写真を入れる場所（店内）'},
 ph2:{es:'Espacio para foto (estante de productos Davines)',en:'Photo placeholder (Davines product shelf)',ja:'写真を入れる場所（店頭のDavines商品の棚）'},
+cue:{es:'Descubrir',en:'Discover',ja:'さらに見る'},
 aboutBig:{es:'Bienvenidos a THE\u00a0HOME.',en:'Welcome to THE\u00a0HOME.',ja:'ようこそ、THE\u00a0HOMEへ。'},
 stylesMore:{es:'Ver estilos en Instagram',en:'See styles on Instagram',ja:'スタイルをインスタグラムで見る'},
 menuBig:{es:'Menú y precios.',en:'Menu & prices.',ja:'メニューと料金'},
