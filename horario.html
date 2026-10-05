@@ -88,7 +88,7 @@ const EXTRA = ["2026-09-29"]; // 臨時の休み（予約ページ・Code.gs の
 const LANGS=['es','en','ja'];
 const Q=new URLSearchParams(location.search);
 let LANG=(Q.get('lang')||'').toLowerCase();
-if(LANGS.indexOf(LANG)<0){const n=(navigator.language||'es').slice(0,2).toLowerCase();LANG=LANGS.indexOf(n)>=0?n:'es';}
+if(LANGS.indexOf(LANG)<0){LANG='es';} // 言語の指定がないときは必ずスペイン語（メキシコの店。Nory 10/4）
 const ID=(Q.get('id')||'').replace(/[^0-9]/g,'');
 const TX={
 title:{es:'Horario',en:'Opening days',ja:'営業日・お休み'},
