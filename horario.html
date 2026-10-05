@@ -80,6 +80,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 // ===== 設定 =====
 // 休みの読み込み：予約ページと同じ Apps Script（読むだけ）
 const API = 'https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
+const IGDM = 'https://ig.me/m/the_home_hair_re_creative'; // 【下書き 10/5】idなしの予約先
 const RESERVA = '/reserva/'; // 予約ページ（https://thehomehair.com/reserva/）
 const SHOP = 'productos.html'; // 商品ページ（同じフォルダ）
 const USE_AV = true; // 空き状況の印（本番 Code.gs v21 に ?action=availability あり 2026-10-04）
@@ -182,7 +183,7 @@ function drawCals(){const box=document.getElementById('cals');box.innerHTML='';l
  const has=!!AV&&Object.keys(AV).length>0;
  document.getElementById('avLeg').style.display=has?'flex':'none';
  document.getElementById('waitDM').style.display='none'; // キャンセル待ちはNoryが決めるまで出さない
- document.getElementById('checkAv').style.display=has?'none':'block';}
+ document.getElementById('checkAv').style.display=(has||!ID)?'none':'block';/* 【下書き 10/5】idなしは出さない（予約ボタンでDMへ） */}
 
 function drawHours(){const t=document.getElementById('hours');t.innerHTML='';
  [2,3,4,5,6,0,1].forEach(w=>{const r=document.createElement('tr');r.innerHTML='<td></td><td></td>';
@@ -193,7 +194,7 @@ function draw(){document.documentElement.lang=LANG;
  const L=document.getElementById('langs');L.innerHTML='';
  LANGS.forEach(l=>{const a=document.createElement('a');a.href='#';a.textContent=l==='ja'?'日本語':l==='en'?'English':'Español';if(l===LANG)a.className='on';
   a.onclick=e=>{e.preventDefault();location.search='?lang='+l+(ID?'&id='+ID:'');};L.appendChild(a);});
- document.getElementById('book').href=RESERVA+'?lang='+LANG+(ID?'&id='+ID:'');
+ document.getElementById('book').href=ID?RESERVA+'?lang='+LANG+'&id='+ID:IGDM; // 【下書き 10/5】idなしはインスタDMへ
  document.getElementById('checkAv').href=RESERVA+'?lang='+LANG+(ID?'&id='+ID:'');
  document.getElementById('shop').href=SHOP+'?lang='+LANG+(ID?'&id='+ID:'');
  drawToday();drawCals();drawHours();}

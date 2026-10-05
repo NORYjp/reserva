@@ -134,7 +134,7 @@ const peso=n=>'$'+Number(n).toLocaleString('en-US');
 function langs(){document.getElementById('langs').innerHTML=LANGS.map(l=>'<a href="#" data-l="'+l+'" class="'+(l===LANG?'on':'')+'">'+({es:'Español',en:'English',ja:'日本語'})[l]+'</a>').join('');
  document.querySelectorAll('#langs a').forEach(a=>a.onclick=ev=>{ev.preventDefault();LANG=a.dataset.l;draw();});}
 function texts(){document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=T(el.dataset.t);});document.getElementById('q').placeholder=T('qph');
- const b=document.getElementById('book');b.href=RESERVA+(ID?'?id='+ID:'');document.documentElement.lang=LANG;document.getElementById('upd').textContent=UPD?T('upd')+': '+UPD:'';}
+ const b=document.getElementById('book');b.href=ID?RESERVA+'?lang='+LANG+'&id='+ID:IG;/* 【下書き 10/5】idなしはインスタDMへ・言語を引き継ぐ */document.documentElement.lang=LANG;document.getElementById('upd').textContent=UPD?T('upd')+': '+UPD:'';}
 // 旅行用（機内持ち込み）は concerns ではなく travel の印で選ぶ（10/4 Nory）
 const has=(i,k)=>k==='travel'?i.travel===true:i.concerns.indexOf(k)>=0;
 function filters(){document.getElementById('filters').innerHTML=FIL.filter(k=>k==='all'||ITEMS.some(i=>has(i,k))).map(k=>'<button class="chip'+(k==='travel'?' tv':'')+(k===CUR?' on':'')+'" data-k="'+k+'">'+(k==='travel'?PL:'')+TX.f[k][LANG]+'</button>').join('');
