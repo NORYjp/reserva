@@ -314,4 +314,7 @@ if(CAMBIO){
  const f=sel.opts.findIndex(o=>!o.date);sel.cur=f<0?0:f;drawCal();drawTimes();drawOpts();upd();};})();
 drawTimes();drawOpts();drawCal();upd();
 </script>
+<!-- 【下書き 10/5 小さな直し】トップ（/）に戻るリンク。ページの外枠の外に置くので、予約完了の画面に変わっても消えない -->
+<div style="text-align:center;margin:0 auto;max-width:480px;padding:14px 16px 28px;font-size:13px"><a id="homeL" href="/" style="color:#777">← Inicio</a></div>
+<script>(function(){var a=document.getElementById('homeL'),t={es:'Inicio',en:'Home',ja:'ホーム'};function u(){var l=document.documentElement.lang;if(!t[l])l='es';a.textContent='← '+t[l];a.href='/?lang='+l;}u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();</script>
 </body></html>
