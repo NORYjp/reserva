@@ -83,6 +83,11 @@ section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 /* 写真の並び */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:36px}
 .gallery figure{margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:2px;background:var(--sand)}
+.map{margin:20px 0 0;aspect-ratio:4/3;overflow:hidden;border-radius:2px;border:1px solid var(--line);background:var(--sand)}
+.map iframe{width:100%;height:100%;border:0;display:block;filter:sepia(.25) saturate(.9)}
+.room{margin:0 0 22px;aspect-ratio:4/3;overflow:hidden;border-radius:2px}
+.room img{width:100%;height:100%;object-fit:cover}
+.gallery video::-webkit-media-controls,.gallery video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 .gallery img,.gallery video{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .gallery figure:hover img{transform:scale(1.04)}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px dashed var(--accent);color:var(--accent);font-size:11px;line-height:1.5}
@@ -193,14 +198,15 @@ footer a{color:#f3e2cf}
     <div>
       <p class="kicker">THE HOME Hair re-creative</p>
       <p class="text" data-t="lead"></p>
+      <!-- 店内の写真：お店のインスタの投稿（素材/お店の写真_インスタ/09）。2026-10-05 Nory「店内の写真は別の場所に」 -->
+      <figure class="room" style="margin:26px 0 0"><img src="interior.jpg" alt="" loading="lazy"></figure>
     </div>
   </div>
   <div class="gallery">
-    <!-- 動画：@nory_thehomehair のリール（2026-10-05 Nory「写真じゃなくて動画も」） -->
-    <figure><video src="reel_bob.mp4" poster="reel_bob.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
-    <figure><video src="reel_red.mp4" poster="reel_red.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
-    <!-- 店内の写真：お店のインスタの投稿（素材/お店の写真_インスタ/09） -->
-    <figure><img src="interior.jpg" alt="" loading="lazy"></figure>
+    <!-- 動画：@nory_thehomehair のリール 7・10・12番（2026-10-05 Nory選択）。表紙は顔の画像 -->
+    <figure><video src="reel_07.mp4" poster="reel_07.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+    <figure><video src="reel_10.mp4" poster="reel_10.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+    <figure><video src="reel_12.mp4" poster="reel_12.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
   </div>
   <a class="styles-link" href="https://www.instagram.com/nory_thehomehair/" data-t="stylesMore"></a>
 </section>
@@ -274,6 +280,8 @@ footer a{color:#f3e2cf}
     <h2 class="big" data-t="accessBig"></h2>
     <div>
       <p class="addr">Calle Ensenada 138, Condesa,<br>C.P. 06100, CDMX</p>
+      <!-- 地図：Googleマップをそのまま表示（2026-10-05 Nory「参考のページのように地図を」） -->
+      <div class="map"><iframe src="https://www.google.com/maps?q=THE+HOME+Hair+re-creative,+Calle+Ensenada+138,+Condesa,+06100+CDMX&z=16&output=embed" title="Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
       <div class="stack">
         <a class="pill line" href="https://www.google.com/maps/place/The+Home+Hair+re-creative/@19.4062426,-99.1765919,17z" data-t="map"></a>
         <a class="pill line" href="https://www.google.com/search?q=The+Home+Hair+re-creative#lrd=0x85d1ff55b28da79f:0xdb3a8bbdf2c8606b,3,,,," data-t="reviews"></a>
@@ -310,7 +318,7 @@ dockIg:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタで�
 dockWa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約'},
 ph1:{es:'Espacio para foto (interior del salón)',en:'Photo placeholder (salon interior)',ja:'写真を入れる場所（店内）'},
 ph2:{es:'Espacio para foto (estante de productos Davines)',en:'Photo placeholder (Davines product shelf)',ja:'写真を入れる場所（店頭のDavines商品の棚）'},
-aboutBig:{es:'Bienvenidos a THE HOME.',en:'Welcome to THE HOME.',ja:'ようこそ、THE HOMEへ。'},
+aboutBig:{es:'Bienvenidos a THE\u00a0HOME.',en:'Welcome to THE\u00a0HOME.',ja:'ようこそ、THE\u00a0HOMEへ。'},
 stylesMore:{es:'Ver estilos en Instagram',en:'See styles on Instagram',ja:'スタイルをインスタグラムで見る'},
 menuBig:{es:'Menú y precios.',en:'Menu & prices.',ja:'メニューと料金'},
 m1:{es:'Corte · caballero',en:'Haircut · men',ja:'カット（メンズ）'},
@@ -357,7 +365,7 @@ p4:{es:'Le agradecemos traer una foto del estilo que desea.',
 shopBig:{es:'Productos.',en:'Products.',ja:'店頭商品'},
 shopTx:{es:'Productos Davines disponibles en el salón.',en:'Davines products available at the salon.',ja:'サロンでDavinesの商品をお求めいただけます。'},
 shopBtn:{es:'Ver productos',en:'View products',ja:'商品を見る'},
-accessBig:{es:'Ubicación.',en:'Location.',ja:'アクセス'},
+accessBig:{es:'Visítenos.',en:'Visit us.',ja:'ご来店ください。'},
 map:{es:'Abrir en Google Maps',en:'Open in Google Maps',ja:'Googleマップで開く'},
 reviews:{es:'Reseñas en Google',en:'Google reviews',ja:'Googleのクチコミ'}
 };
@@ -380,6 +388,14 @@ draw();
  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12});
  els.forEach(e=>io.observe(e));
 })();
+</script>
+<script>
+/* 動画を開いた瞬間に自動で流す（音なし）。止められた時は、画面に入った時・指で触れた時にもう一度流す */
+(function(){var vs=[].slice.call(document.querySelectorAll('.gallery video'));function go(v){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+vs.forEach(go);
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(e.target);});});vs.forEach(function(v){io.observe(v);});}
+['touchstart','scroll','click'].forEach(function(ev){window.addEventListener(ev,function(){vs.forEach(function(v){if(v.paused)go(v);});},{passive:true});});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)vs.forEach(go);});})();
 </script>
 </body>
 </html>
