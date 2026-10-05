@@ -86,7 +86,8 @@ section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .map{margin:20px 0 0;aspect-ratio:4/3;overflow:hidden;border-radius:2px;border:1px solid var(--line);background:var(--sand)}
 .map iframe{width:100%;height:100%;border:0;display:block;filter:sepia(.25) saturate(.9)}
 .room{margin:0 0 22px;aspect-ratio:4/3;overflow:hidden;border-radius:2px}
-.room img{width:100%;height:100%;object-fit:cover}
+.room img,.room video{display:block;width:100%;height:100%;object-fit:cover}
+.room video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 .gallery video::-webkit-media-controls,.gallery video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 .gallery img,.gallery video{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .gallery figure:hover img{transform:scale(1.04)}
@@ -198,14 +199,14 @@ footer a{color:#f3e2cf}
     <div>
       <p class="kicker">THE HOME Hair re-creative</p>
       <p class="text" data-t="lead"></p>
-      <!-- 店内の写真：お店のインスタの投稿（素材/お店の写真_インスタ/09）。2026-10-05 Nory「店内の写真は別の場所に」 -->
-      <figure class="room" style="margin:26px 0 0"><img src="interior.jpg" alt="" loading="lazy"></figure>
+      <!-- 店内の動画：@the_home_hair_re_creative のリール（2026-10-05 Nory「店内の動画があればさらによし」） -->
+      <figure class="room" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
     </div>
   </div>
   <div class="gallery">
-    <!-- 動画：@nory_thehomehair のリール 7・10・12番（2026-10-05 Nory選択）。表紙は顔の画像 -->
-    <figure><video src="reel_07.mp4" poster="reel_07.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
-    <figure><video src="reel_10.mp4" poster="reel_10.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+    <!-- 動画：@nory_thehomehair のリール 1・3・12番（2026-10-05 Nory選択）。表紙は顔の画像 -->
+    <figure><video src="reel_01.mp4" poster="reel_01.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+    <figure><video src="reel_03.mp4" poster="reel_03.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
     <figure><video src="reel_12.mp4" poster="reel_12.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
   </div>
   <a class="styles-link" href="https://www.instagram.com/nory_thehomehair/" data-t="stylesMore"></a>
@@ -391,7 +392,7 @@ draw();
 </script>
 <script>
 /* 動画を開いた瞬間に自動で流す（音なし）。止められた時は、画面に入った時・指で触れた時にもう一度流す */
-(function(){var vs=[].slice.call(document.querySelectorAll('.gallery video'));function go(v){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+(function(){var vs=[].slice.call(document.querySelectorAll('.gallery video,.room video'));function go(v){v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');var p=v.play();if(p&&p.catch)p.catch(function(){});}
 vs.forEach(go);
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(e.target);});});vs.forEach(function(v){io.observe(v);});}
 ['touchstart','scroll','click'].forEach(function(ev){window.addEventListener(ev,function(){vs.forEach(function(v){if(v.paused)go(v);});},{passive:true});});
