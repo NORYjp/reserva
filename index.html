@@ -83,7 +83,7 @@ section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 /* 写真の並び */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:36px}
 .gallery figure{margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:2px;background:var(--sand)}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.gallery img,.gallery video{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .gallery figure:hover img{transform:scale(1.04)}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:1px dashed var(--accent);color:var(--accent);font-size:11px;line-height:1.5}
 .styles-link{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
@@ -196,8 +196,9 @@ footer a{color:#f3e2cf}
     </div>
   </div>
   <div class="gallery">
-    <figure><img src="style1.jpg" alt="" loading="lazy"></figure>
-    <figure><img src="style2_bright.jpg" alt="" loading="lazy"></figure>
+    <!-- 動画：@nory_thehomehair のリール（2026-10-05 Nory「写真じゃなくて動画も」） -->
+    <figure><video src="reel_bob.mp4" poster="reel_bob.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
+    <figure><video src="reel_red.mp4" poster="reel_red.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
     <!-- 店内の写真：お店のインスタの投稿（素材/お店の写真_インスタ/09） -->
     <figure><img src="interior.jpg" alt="" loading="lazy"></figure>
   </div>
