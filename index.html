@@ -79,6 +79,12 @@ img{display:block;max-width:100%}
 .btns-l{margin:26px 0 0;max-width:400px}
 .pill.wa-l{color:var(--accent);border-color:var(--accent)}
 .pill.wa-l:hover{background:var(--accent);color:#fff}
+/* 最初は写真の画面だけ。「さらに見る」で下を出す（2026-10-05 Nory） */
+body.gate{padding-bottom:0!important;overflow:hidden;height:100vh;height:100svh}
+body.gate header.hero~*{display:none!important}
+body.gate .pill-s{display:none!important}
+body.gate .hero{min-height:calc(100vh - 86px)!important;min-height:calc(100svh - 86px)!important}
+@media (min-width:820px){body.gate .hero{min-height:calc(100vh - 112px)!important}}
 /* 区切り */
 section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .big{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--accent);font-size:clamp(40px,11vw,88px);line-height:1;letter-spacing:.02em;margin:0 0 22px}
@@ -178,7 +184,7 @@ footer a{color:#f3e2cf}
 }
 </style>
 </head>
-<body>
+<body class="gate">
 
 <div class="bar">
   <a class="brand" href="#top"><span class="b1">THE HOME</span><span class="b2">HAIR RE-CREATIVE</span></a>
@@ -193,7 +199,7 @@ footer a{color:#f3e2cf}
   <img src="hero.jpg" alt="">
   <div class="hero-in">
     <h1><img class="logo" src="logo_round.png" alt="THE HOME Hair re-creative" width="463" height="463"><span class="vh">THE HOME</span></h1>
-    <p class="sub">Hair re-creative · Condesa, CDMX</p>
+    <p class="sub"><span style="white-space:nowrap">THE HOME Hair re-creative</span> · <span style="white-space:nowrap">Condesa, CDMX</span></p>
   </div>
   <!-- 押すと下へ（2026-10-05 Nory「真ん中にアイコン、クリックヒアが動いて、押すと下の画面へ」） -->
   <a class="cue" href="#about" aria-label="next"><span data-t="cue"></span><i></i></a>
@@ -408,6 +414,13 @@ vs.forEach(go);
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go(e.target);});});vs.forEach(function(v){io.observe(v);});}
 ['touchstart','scroll','click'].forEach(function(ev){window.addEventListener(ev,function(){vs.forEach(function(v){if(v.paused)go(v);});},{passive:true});});
 document.addEventListener('visibilitychange',function(){if(!document.hidden)vs.forEach(go);});})();
+</script>
+<script>
+/* 「さらに見る」を押すまでは下を見せない。ほかのページから #book などで来た時は最初から全部見せる */
+(function(){var b=document.body;function open(){if(!b.classList.contains('gate'))return;b.classList.remove('gate');window.dispatchEvent(new Event('scroll'));}
+if(location.hash&&location.hash!=='#top'){open();}
+var c=document.querySelector('.cue');if(c)c.addEventListener('click',function(e){e.preventDefault();open();setTimeout(function(){var a=document.getElementById('about');if(a)a.scrollIntoView({behavior:'smooth'});},30);});
+var p=document.querySelector('.brand');if(p)p.addEventListener('click',function(){});})();
 </script>
 </body>
 </html>
