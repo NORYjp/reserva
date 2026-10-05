@@ -111,7 +111,7 @@
    "list": 1040,
    "salon": 936,
    "photo": "productos/img/D004.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "コンディショナー リンス acondicionador conditioner"
@@ -140,7 +140,7 @@
    "list": 780,
    "salon": 702,
    "photo": "productos/img/D005.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "シャンプー shampoo champú champu"
@@ -168,7 +168,7 @@
    "list": null,
    "salon": null,
    "photo": "productos/img/D006.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": true,
    "kw": "トリートメント tratamiento treatment"
@@ -448,7 +448,7 @@
    "list": 835,
    "salon": 752,
    "photo": "productos/img/D016.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "コンディショナー リンス acondicionador conditioner"
@@ -504,7 +504,7 @@
    "list": 730,
    "salon": 657,
    "photo": "productos/img/D018.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "シャンプー shampoo champú champu"
@@ -532,7 +532,7 @@
    "list": null,
    "salon": null,
    "photo": "productos/img/D019.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": true,
    "kw": "シャンプー shampoo champú champu"
@@ -560,7 +560,7 @@
    "list": 635,
    "salon": 572,
    "photo": "productos/img/D020.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": true,
    "kw": "シャンプー shampoo champú champu"
@@ -589,7 +589,7 @@
    "list": 865,
    "salon": 779,
    "photo": "productos/img/D021.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": 4,
    "travel": false,
    "kw": "セラム 美容液 sérum serum スタイリング 整髪料 peinado styling"
@@ -646,7 +646,7 @@
    "list": 790,
    "salon": 711,
    "photo": "productos/img/D023.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "スタイリング 整髪料 peinado styling"
@@ -675,7 +675,7 @@
    "list": 710,
    "salon": 639,
    "photo": "productos/img/D024.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "ムース espuma mousse スタイリング 整髪料 peinado styling"
@@ -787,7 +787,7 @@
    "list": 750,
    "salon": 675,
    "photo": "productos/img/D028.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "スタイリング 整髪料 peinado styling"
@@ -815,7 +815,7 @@
    "list": 740,
    "salon": 666,
    "photo": "productos/img/D029.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "スタイリング 整髪料 peinado styling"
@@ -843,7 +843,7 @@
    "list": 815,
    "salon": 734,
    "photo": "productos/img/D030.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
@@ -987,7 +987,7 @@
    "list": 765,
    "salon": 689,
    "photo": "productos/img/D035.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "シャンプー shampoo champú champu 頭皮 スカルプ cuero cabelludo scalp"
@@ -1015,7 +1015,7 @@
    "list": null,
    "salon": null,
    "photo": "productos/img/D036.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": true,
    "kw": "コンディショナー リンス acondicionador conditioner"
@@ -1043,7 +1043,7 @@
    "list": null,
    "salon": null,
    "photo": "productos/img/D037.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": true,
    "kw": "シャンプー shampoo champú champu"
@@ -1424,7 +1424,7 @@
    "list": 610,
    "salon": 549,
    "photo": "productos/img/D050.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "アフターシェーブ ひげそり後 aftershave after shave"
@@ -1452,7 +1452,7 @@
    "list": null,
    "salon": null,
    "photo": "productos/img/D051.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": null,
    "travel": false,
    "kw": "ジェル gel シェービング ひげそり afeitar afeitado shaving"
@@ -1537,7 +1537,7 @@
    "list": 1045,
    "salon": 941,
    "photo": "productos/img/D054.jpg",
-   "stock": "low",
+   "stock": "last",
    "rank": 1,
    "travel": false,
    "kw": "オイル aceite oil"
