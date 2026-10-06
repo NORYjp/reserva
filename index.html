@@ -113,6 +113,7 @@ body.gate .music{bottom:24px}
 .acc-body.open{display:block;animation:accin .35s ease}
 @keyframes accin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .band .acc{margin-bottom:0}
+.hero .catch{font-family:var(--serif);font-size:clamp(20px,5.4vw,30px);font-weight:500;letter-spacing:.04em;color:#fff8f0;margin:18px 0 0;text-shadow:0 2px 10px rgba(0,0,0,.35)}
 /* 区切り */
 section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .big{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--accent);font-size:clamp(40px,11vw,88px);line-height:1;letter-spacing:.02em;margin:0 0 22px}
@@ -227,6 +228,7 @@ footer a{color:#f3e2cf}
   <img src="hero.jpg" alt="">
   <div class="hero-in">
     <h1><img class="logo" src="logo_round.png" alt="THE HOME Hair re-creative" width="463" height="463"><span class="vh">THE HOME</span></h1>
+    <p class="catch" data-t="catch"></p>
     <p class="sub"><span style="white-space:nowrap">THE HOME Hair re-creative</span> · <span style="white-space:nowrap">Condesa, CDMX</span></p>
   </div>
   <!-- 押すと下へ（2026-10-05 Nory「真ん中にアイコン、クリックヒアが動いて、押すと下の画面へ」） -->
@@ -240,8 +242,8 @@ footer a{color:#f3e2cf}
       <p class="kicker">THE HOME Hair re-creative</p>
       <p class="text" data-t="lead"></p>
       <div class="btns btns-l" id="book">
-        <a class="pill ig" href="https://ig.me/m/the_home_hair_re_creative"><span data-t="book"></span><small data-t="bookN"></small></a>
-        <a class="pill wa wa-l" href="https://wa.me/525521798065"><span data-t="wa"></span><small data-t="waN"></small></a>
+        <a class="pill ig" href="/reserva/?src=web" data-href="reserva"><span data-t="book"></span><small data-t="bookN"></small></a>
+        <a class="pill wa wa-l" href="https://ig.me/m/the_home_hair_re_creative"><span data-t="igB"></span><small data-t="igN"></small></a>
       </div>
       <!-- 店内の動画：@the_home_hair_re_creative のリール（2026-10-05 Nory「店内の動画があればさらによし」） -->
       <figure class="room" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
@@ -277,7 +279,7 @@ footer a{color:#f3e2cf}
         <div class="r"><span class="n" data-t="spa2"></span><span class="p">$600 – 800</span></div>
       </div>
       <p class="note" data-t="spaNote"></p>
-      <a class="pill line" href="https://ig.me/m/the_home_hair_re_creative" data-t="book"></a>
+      <a class="pill line" href="/reserva/?src=web" data-href="reserva" data-t="book"></a>
     </div>
   </div>
 </div>
@@ -350,21 +352,22 @@ footer a{color:#f3e2cf}
 </footer>
 
 <nav class="dock">
-  <a class="d-ig" href="https://ig.me/m/the_home_hair_re_creative" data-t="dockIg"></a>
+  <a class="d-ig" href="/reserva/?src=web" data-href="reserva" data-t="dockIg"></a>
   <a class="d-wa" href="https://wa.me/525521798065" data-t="dockWa"></a>
 </nav>
 
 <script>
 const TX={
-lead:{es:'Un salón japonés en la Condesa. Atendemos con cita, con tiempo y atención dedicados a cada persona.',
- en:'A Japanese hair salon in Condesa. By appointment only, with time and attention dedicated to each guest.',
- ja:'コンデサの日本人美容室です。完全予約制で、お一人おひとりに時間をかけてご対応いたします。'},
+lead:{es:'Un lugar para descubrir su nueva versión. En THE HOME, salón japonés en la Condesa, encontrará el estilo que realmente le va. Solo con cita.',en:'A place to discover a new you. At THE HOME, a Japanese salon in Condesa, find the style that is truly yours. By appointment only.',ja:'新しい自分に出会える場所。コンデサの日本人美容室 THE HOME で、まだ知らない「似合う」を見つけてください。完全予約制です。'},
 navBook:{es:'Reservar',en:'Book',ja:'ご予約'},
 book:{es:'Reservar cita',en:'Book an appointment',ja:'ご予約'},
-bookN:{es:'Por mensaje directo de Instagram',en:'Via Instagram direct message',ja:'インスタグラムのメッセージから承ります'},
+igB:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタでご予約'},
+igN:{es:'Por mensaje directo de Instagram',en:'Via Instagram direct message',ja:'インスタグラムのメッセージから'},
+catch:{es:'Descubra su nueva versión.',en:'Discover a new you.',ja:'新しい自分に、出会う場所。'},
+bookN:{es:'Elija día y hora en el calendario',en:'Choose a day and time on the calendar',ja:'カレンダーから日時を選べます'},
 wa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppでご予約'},
 waN:{es:'Por mensaje de WhatsApp',en:'Via WhatsApp message',ja:'WhatsAppのメッセージから承ります'},
-dockIg:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタで予約'},
+dockIg:{es:'Reservar cita',en:'Book now',ja:'予約する'},
 dockWa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約'},
 ph1:{es:'Espacio para foto (interior del salón)',en:'Photo placeholder (salon interior)',ja:'写真を入れる場所（店内）'},
 ph2:{es:'Espacio para foto (estante de productos Davines)',en:'Photo placeholder (Davines product shelf)',ja:'写真を入れる場所（店頭のDavines商品の棚）'},
@@ -424,11 +427,11 @@ reviews:{es:'Reseñas en Google',en:'Google reviews',ja:'Googleのクチコミ'}
 const LS=['es','en','ja'];
 let L=(new URLSearchParams(location.search).get('lang')||(navigator.language||'es').slice(0,2)).toLowerCase();
 if(LS.indexOf(L)<0)L='es';
-const BASE={horario:'/horario.html',productos:'/productos.html'};
+const BASE={horario:'/horario.html',productos:'/productos.html',reserva:'/reserva/?src=web'};
 function draw(){
  document.documentElement.lang=L;
  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=TX[e.dataset.t][L]);
- document.querySelectorAll('[data-href]').forEach(e=>e.href=BASE[e.dataset.href]+'?lang='+L);
+ document.querySelectorAll('[data-href]').forEach(e=>e.href=BASE[e.dataset.href]+(BASE[e.dataset.href].indexOf('?')>=0?'&':'?')+'lang='+L);
  const b=document.getElementById('langs');b.innerHTML='';
  [['es','ES'],['en','EN'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{L=k;draw();try{const u=new URL(location.href);u.searchParams.set('lang',L);history.replaceState(null,'',u.toString());}catch(e){}};b.appendChild(a);});
 }
