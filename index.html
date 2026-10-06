@@ -51,6 +51,19 @@ img{display:block;max-width:100%}
 .hero-in{position:relative;z-index:1;padding:0 16px 56px;width:100%;max-width:720px}
 .hero h1{font-family:var(--display);font-weight:300;font-size:clamp(50px,15vw,128px);line-height:.92;letter-spacing:.04em;margin:0}
 .hero h1 .logo{position:static;display:block;width:clamp(130px,32vw,280px);height:auto;margin:0 auto;border-radius:50%}
+/* 丸いロゴが上から降りてきて、小さく弾んで止まる（10/6 Nory）。1回だけ。秒数は計測（3日）の結果で変えるので、この2つの変数だけ直せばよい */
+:root{--logo-drop-delay:.5s;--logo-drop-dur:1.2s}
+.hero h1 .logo{animation:logoDrop var(--logo-drop-dur) var(--logo-drop-delay) both 1}
+@keyframes logoDrop{
+ 0%{transform:translateY(calc(-50vh - 100%));opacity:0;animation-timing-function:cubic-bezier(.22,.61,.36,1)}
+ 12%{opacity:1}
+ 74%{transform:translateY(0);animation-timing-function:ease-out}
+ 86%{transform:translateY(-10px);animation-timing-function:ease-in}
+ 100%{transform:translateY(0);opacity:1}
+}
+@media (prefers-reduced-motion:reduce){.hero h1 .logo{animation:none}}
+/* 日本語のキャッチ「ARTな美容室。」の ART だけ英語の見出しの字体（10/6 Nory） */
+.catch .art-en{font-family:'The Home Font F','Cormorant Garamond',serif;font-weight:400;font-size:1.12em;letter-spacing:.06em;margin-right:.04em}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .hero .sub{color:var(--pink);font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin:16px 0 0}
 .hero .tag span{display:inline-block;white-space:nowrap}
@@ -228,6 +241,8 @@ footer a{color:#f3e2cf}
 --orn-saw:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 12%22%3E%3Cpath d=%22M0 0 L12 11.2 L24.9 0 L35.6 11.1 L48.4 0 L60.3 10.3 L71.1 0 L83.8 11.1 L95.5 0 L108 10.6 L120.7 0 L132.9 10.7 L145 0 L155.1 11.2 L168.8 0 L179.3 11 L192.1 0 L204.9 10.5 L216.1 0 L228.8 11 L240 0 Z%22 fill=%22%23f7ebdd%22/%3E%3C/svg%3E");
 --fz-c:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpath d=%22M0 0H47.5V47.5H0Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M0 0H49.6V20H20V49.6H0Z%22 fill=%22%23b4532a%22/%3E%3Cpath d=%22M49.6 19H19V49.6H21V21H49.6Z%22 fill=%22%233a2a20%22/%3E%3Cpath d=%22M19 19 L55 19 L47.6 46.4 Q47.2 47.2 46.4 47.6 L19 55 Z%22 fill=%22%233a2a20%22/%3E%3Cpath d=%22M15.1 12.7 Q14.5 15.0 12.0 15.8 Q9.6 16.6 7.6 15.3 Q5.5 14.0 4.6 11.8 Q3.7 9.6 4.8 7.5 Q5.9 5.4 8.1 4.5 Q10.4 3.5 12.7 4.6 Q15.0 5.6 15.4 8.0 Q15.7 10.3 15.1 12.7Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M34.6 7.2 Q35.8 8.6 35.2 10.3 Q34.7 12.0 33.4 13.0 Q32.2 14.1 30.4 14.2 Q28.6 14.3 27.5 12.8 Q26.4 11.3 26.6 9.5 Q26.8 7.7 28.3 6.7 Q29.8 5.7 31.5 5.8 Q33.3 5.9 34.6 7.2Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M11.8 34.7 Q10.4 35.6 8.7 35.0 Q7.1 34.4 6.2 32.9 Q5.3 31.4 5.9 29.6 Q6.4 27.9 8.0 27.4 Q9.7 26.8 11.2 27.3 Q12.7 27.9 13.8 29.2 Q14.9 30.6 14.1 32.2 Q13.3 33.9 11.8 34.7Z%22 fill=%22%23f7ebdd%22/%3E%3C/svg%3E");
  --fz-c2:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpath d=%22M0 0H47.5V47.5H0Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M0 0H49.6V20H20V49.6H0Z%22 fill=%22%23b4532a%22/%3E%3Cpath d=%22M49.6 19H19V49.6H21V21H49.6Z%22 fill=%22%233a2a20%22/%3E%3Cpath d=%22M19 19 L58 19 L45 37 L32.4 31.6 Q31.4 31.4 31.6 32.4 L37 45 L19 58 Z%22 fill=%22%233a2a20%22/%3E%3Cpath d=%22M15.1 12.7 Q14.5 15.0 12.0 15.8 Q9.6 16.6 7.6 15.3 Q5.5 14.0 4.6 11.8 Q3.7 9.6 4.8 7.5 Q5.9 5.4 8.1 4.5 Q10.4 3.5 12.7 4.6 Q15.0 5.6 15.4 8.0 Q15.7 10.3 15.1 12.7Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M34.6 7.2 Q35.8 8.6 35.2 10.3 Q34.7 12.0 33.4 13.0 Q32.2 14.1 30.4 14.2 Q28.6 14.3 27.5 12.8 Q26.4 11.3 26.6 9.5 Q26.8 7.7 28.3 6.7 Q29.8 5.7 31.5 5.8 Q33.3 5.9 34.6 7.2Z%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M11.8 34.7 Q10.4 35.6 8.7 35.0 Q7.1 34.4 6.2 32.9 Q5.3 31.4 5.9 29.6 Q6.4 27.9 8.0 27.4 Q9.7 26.8 11.2 27.3 Q12.7 27.9 13.8 29.2 Q14.9 30.6 14.1 32.2 Q13.3 33.9 11.8 34.7Z%22 fill=%22%23f7ebdd%22/%3E%3C/svg%3E");
+--orn-zzb:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 16%22%3E%3Cpath d=%22M0 14 L6.3 2.5 L14.4 13.8 L21.8 3.1 L26.6 12.5 L31.3 3.4 L36.2 13.7 L43.1 4.6 L48.2 13.4 L56.2 5 L63.9 12.9 L73.7 2.1 L82.9 13.2 L88.2 2.4 L94.4 11.6 L99.9 3.8 L107.9 12.9 L115.5 2.2 L120.3 13.4 L128.5 3.3 L134.8 12.3 L141.8 2.9 L150.6 12 L156.5 3.8 L163.9 11.5 L172.4 2.9 L182.3 13.7 L189.1 4.4 L194.4 12.6 L199.1 4.1 L207.8 12.3 L217.1 3 L225.4 12.3 L233.1 3.4 L240 14%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%223.4%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22/%3E%3C/svg%3E");
+ --orn-arrow:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 16%22%3E%3Cg fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.8%22 stroke-linejoin=%22round%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M0 14 L5.3 5 L10.2 12 L15 2.8 L23 13.4 L29.8 3.4 L35.9 12.6 L41 4.6 L45.8 13.3 L50.4 2.8 L56.3 11.4 L62.2 2.4 L67.6 11.1 L72.3 3.9 L78.1 12.1 L83.8 4.2 L90 12.1 L97.7 3.8 L102.7 13.8 L110.5 3.5 L115.7 11.3 L122.2 4.3 L129.8 13.2 L135.5 4.7 L140.5 11.8 L145.4 4.2 L152.3 11.3 L159.8 3.6 L165 13.6 L171.3 3.6 L176 14 L194 14%22/%3E%3Cpath d=%22M186 8.6 L195 14 L186.4 17%22/%3E%3C/g%3E%3C/svg%3E");
  --fz:30px;
 }
 @media (min-width:820px){:root{--fz:46px}}
@@ -273,6 +288,14 @@ body.gate .music{bottom:calc(24px + var(--fz))}
 /* 言語の切りかえ：えらばれている言語の下は、太めの手描きの波線（朱色）10/6 Nory */
 .langs a{padding-bottom:7px}
 .langs a.on{border-bottom:0;background:var(--orn-lang) left bottom/20px 4px repeat-x}
+:root{--lk-head:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 11 9%22%3E%3Cpath d=%22M0 5.4 H1.6 V.6 H8.6 L11 2.4 V8.4 H0 Z%22 fill=%22%23b4532a%22/%3E%3Crect x=%224.6%22 y=%222.2%22 width=%222%22 height=%222%22 fill=%22%23f7ebdd%22/%3E%3Cpath d=%22M7.6 6.3 H11%22 stroke=%22%23f7ebdd%22 stroke-width=%22.9%22/%3E%3C/svg%3E");--lk-body:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 9%22%3E%3Cpath d=%22M0 6.9 H3 V2.4 H9 V6.9 H12%22 fill=%22none%22 stroke=%22%23b4532a%22 stroke-width=%222.4%22 stroke-linejoin=%22miter%22 stroke-linecap=%22butt%22/%3E%3C/svg%3E");--lk-tail:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 5 9%22%3E%3Cpath d=%22M5 5.7 V8.1 L0 7.3 Z%22 fill=%22%23b4532a%22/%3E%3C/svg%3E")}
+/* 言語の切りかえ：えらばれている言語の下は、メニューのククルカン案Aの小さい版（四角く折れる段の蛇・頭は右・朱色）10/6 Nory
+   文字にかからないよう、文字の下にすき間をあけて置く。左右は言語どうしのすき間（8〜10px）の半分まで（4px）だけはみ出す */
+.langs a{position:relative;padding-bottom:11px}
+.langs a.on{background:none!important}
+.langs a.on::after{content:"";position:absolute;left:-4px;right:-4px;bottom:0;height:9px;box-sizing:border-box;padding:0 11px 0 4px;
+ background:var(--lk-tail) left center/4px 9px no-repeat,var(--lk-head) right center/11px 9px no-repeat,var(--lk-body) left center/10px 9px round no-repeat;
+ background-origin:border-box,border-box,content-box;background-clip:border-box,border-box,content-box;pointer-events:none}
 /* 項目の区切り：線の代わりに、ごく細い手描きの波線 */
 .menu{border-top:0}
 .menu .r,.list li{position:relative;border-bottom:0}
@@ -281,8 +304,59 @@ body.gate .music{bottom:calc(24px + var(--fz))}
 /* メニューの赤い帯の区切り：見本8の手描きのしまのような、太めのクリームの線の中に細い線（二重・ゆれる）10/6 Nory */
 .band .menu .r::after{height:9px;bottom:-4px;background:var(--orn-dbl) left center/200px 9px repeat-x;-webkit-mask:none;mask:none}
 /* 区切りの帯1：メニューの赤い帯の上下に、クリームの民芸模様 */
-.band{background-image:var(--orn-folk),var(--orn-folk);background-repeat:repeat-x;background-position:left 16px,left calc(100% - 16px);background-size:192px 11px;padding-top:76px;padding-bottom:76px}
-@media (min-width:820px){.band{padding-top:110px;padding-bottom:110px;background-size:224px 13px;background-position:left 22px,left calc(100% - 22px)}}
+/* 区切りの帯1：メニューの赤い帯の上下を、外枠と同じ手描きのドットの帯＋茶色のジグザグに（10/6 Nory） */
+.band{position:relative;--bz:34px;padding-top:calc(var(--bz) + 56px);padding-bottom:calc(var(--bz) + 56px)}
+@media (min-width:820px){.band{--bz:44px;padding-top:calc(var(--bz) + 84px);padding-bottom:calc(var(--bz) + 84px)}}
+.band::before,.band::after{content:"";position:absolute;left:0;right:0;height:var(--bz);background-color:var(--cream);background-repeat:round no-repeat;background-size:calc(var(--bz)*12.5) 100%;pointer-events:none}
+.band::before{top:0;background-image:var(--fz-b)}
+.band::after{bottom:0;background-image:var(--fz-t)}
+/* 見出し「メニューと料金」：少し小さくして1行に */
+.band .big{white-space:nowrap;font-size:clamp(20px,6.3vw,64px)}
+:lang(ja) .band .big{font-size:clamp(26px,8vw,52px)}
+/* 見出しの下のジグザグ：大きく・太く・大小ランダム */
+.band .big{padding-bottom:26px}
+.band .big::before{width:min(calc(100% - 58px),260px);height:16px;opacity:1;-webkit-mask:var(--orn-zzb) left center/180px 16px repeat-x;mask:var(--orn-zzb) left center/180px 16px repeat-x}
+/* メニューの中の小見出し（ヘッドスパ）の下：はっきりしたジグザグ＋先に小さな矢印 */
+.band .sub-h{position:relative;padding-bottom:22px}
+.band .sub-h::after{content:"";position:absolute;left:0;bottom:0;width:180px;height:15px;background-color:currentColor;-webkit-mask:var(--orn-arrow) left center/180px 15px no-repeat;mask:var(--orn-arrow) left center/180px 15px no-repeat}
+/* ===== 見出しの下：大きいジグザグ＋右の端に蛇の頭（言語の下のククルカンと同じ頭・右向き）10/6 Nory
+   見出しの下のジグザグは全部この形にそろえる（ようこそ・メニューと料金・営業時間・ご来店の前に・店頭商品・お客様の声・アクセス・ヘッドスパの小見出し）。
+   色は今までどおり見出しの線の色（文字の色）。開閉の丸いボタン（＋）がある見出しは、ボタンの手前で止める ===== */
+:root{--hz-zz:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 16%22%3E%3Cpath d=%22M-1 13.6 L0 12.5 L7.6 3.3 L16.3 12.8 L24.4 3.7 L32 12.5 L33 13.6%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222.7%22 stroke-linejoin=%22miter%22 stroke-miterlimit=%226%22/%3E%3C/svg%3E");--hz-hd:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 11 9%22%3E%3Cpath fill-rule=%22evenodd%22 d=%22M0 5.4 H1.6 V.6 H8.6 L11 2.4 V8.4 H0 Z M4.6 2.2 H6.6 V4.2 H4.6 Z M7.6 5.85 H11 V6.75 H7.6 Z%22 fill=%22%23000%22/%3E%3C/svg%3E")}
+.big,.band .big{padding-bottom:30px}
+.band .sub-h{padding-bottom:28px}
+.big::before,.band .big::before,.band .sub-h::after{content:"";position:absolute;left:0;bottom:0;height:18px;box-sizing:border-box;padding-right:21px;opacity:1;background-color:currentColor;
+ -webkit-mask:var(--hz-hd) right center/22px 18px no-repeat border-box border-box,var(--hz-zz) left center/36px 18px round content-box content-box;
+ mask:var(--hz-hd) right center/22px 18px no-repeat border-box border-box,var(--hz-zz) left center/36px 18px round content-box content-box}
+.big::before{width:min(100%,260px)}
+.big.acc::before,.band .big::before{width:min(calc(100% - 58px),280px)}
+.band .sub-h::after{width:min(100%,220px)}
+/* 10/6 Nory直し2：パソコンでは見出しの下の線を「見出しの文字の長さ」までにして、蛇の頭を文字のすぐ近くに置く（長さは下のJSが --hz-w に入れる）。スマホは今のまま */
+@media (min-width:820px){
+ .big::before,.big.acc::before,.band .big::before,.band .sub-h::after{width:min(var(--hz-w,260px),calc(100% - 58px))}
+}
+/* 「ご来店ください。」などの見出しは1行に収める（文字を少し小さく） */
+[data-t="accessBig"]{white-space:nowrap}
+@media (min-width:820px){:lang(ja) [data-t="accessBig"]{font-size:clamp(30px,3.6vw,54px)}}
+@media (max-width:819px){:lang(ja) [data-t="accessBig"]{font-size:clamp(24px,7.4vw,34px)}}
+/* 蛇と次の文のあいだを少しあける（パソコンの2列では見出しの下のすき間が0になっていたため。店頭商品・お客様の声など）10/6 レビュー */
+@media (min-width:820px){.two .big + p,.two .big + .menu,.two .big + .list{margin-top:22px}}
+/* 見出しの折り返し（10/6 Nory「1文字・1語だけ次の行に落ちるのはおかしい」）：どの言語・どの画面でも1〜2行に自然に収める。
+   ・行の長さをそろえる（text-wrap:balance）
+   ・日本語：パソコンの幅に合わせて文字の大きさを変え、「間」「に」など1文字だけ落ちないように
+   ・スペイン語・英語：長い見出し（Antes de su visita. / Before your visit. など）が2行に収まる大きさに */
+.big,.hero .catch{text-wrap:balance}
+@media (min-width:820px){
+ :lang(ja) .big{font-size:clamp(30px,4.1vw,60px)}
+ :lang(es) .big,:lang(en) .big{font-size:clamp(28px,3.4vw,50px)}
+ :lang(ja) .big[data-t="accessBig"]{font-size:clamp(28px,3.6vw,54px)}
+}
+.big[data-t="accessBig"],.big[data-t="rvBig"]{white-space:nowrap;text-wrap:nowrap}
+@media (max-width:819px){
+ :lang(es) .big,:lang(en) .big{font-size:clamp(26px,8.4vw,40px)}
+ :lang(es) .big.acc,:lang(en) .big.acc{font-size:clamp(24px,7.9vw,38px)}
+}
+/* ===== 見出しの蛇 end ===== */
 /* 区切りの帯2：朱色×クリームの手描きのしま（店頭商品の前） */
 .orn-stripe{height:10px;margin:88px 0 0;background:var(--orn-stripe) left center/172px 10px repeat-x;opacity:.9}
 @media (min-width:820px){.orn-stripe{height:12px;margin-top:120px;background-size:206px 12px}}
@@ -291,6 +365,110 @@ body.gate .music{bottom:calc(24px + var(--fz))}
 /* 区切りの帯3：フッターの上に、のこぎり刃の縁取り（入口の白黒のギザギザ） */
 footer{position:relative}
 footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:var(--orn-saw) left top/200px 10px repeat-x}
+
+/* ===== クチコミ：レコードプレーヤー（10/6 Nory B案を選択・アート担当）。部品の名前は rv- で始める ===== */
+.rv-deck-w{perspective:1000px;width:min(343px,100%);margin:6px auto 0}
+@media (min-width:820px){.rv-deck-w{width:420px}}
+.rv-deck{position:relative;aspect-ratio:1/1.02;transform:rotateX(14deg);transform-origin:50% 100%;border-radius:14px;padding:3%;
+ box-shadow:inset 0 0 0 3px #3a2a20,inset 0 0 0 7px #8e3f1f,0 18px 24px -10px rgba(58,42,32,.45);
+ background:repeating-linear-gradient(92deg,rgba(255,255,255,.04) 0 2px,transparent 2px 7px),linear-gradient(#6a4630,#4a3020)}
+.rv-deck::after{content:"";position:absolute;left:10px;right:10px;bottom:-12px;height:12px;
+ background:linear-gradient(135deg,transparent 50%,#3a2a20 50%) 0 0/14px 12px,linear-gradient(225deg,transparent 50%,#3a2a20 50%) 0 0/14px 12px}
+.rv-disc{position:relative;width:96%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#2a1d16 0 1.2px,#3a2a20 1.2px 2.6px);box-shadow:0 6px 10px rgba(0,0,0,.45),inset 0 0 0 2px #1c130e}
+.rv-spin{position:absolute;inset:0;border-radius:50%;animation:rvRot 9s linear infinite}
+.rv-shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:conic-gradient(from 20deg,transparent 0 30deg,rgba(255,240,220,.16) 45deg,transparent 60deg 200deg,rgba(255,240,220,.12) 220deg,transparent 240deg)}
+.rv-label{position:absolute;left:50%;top:50%;width:93%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#c46136 0 60%,#b4532a 61%);box-shadow:0 0 0 2px #3a2a20,inset 0 0 0 5px rgba(247,235,221,.25)}
+.rv-ring{position:absolute;inset:0;width:100%;height:100%}
+.rv-ring text{font-family:'The Home Font F',serif;font-size:8.6px;letter-spacing:2px;fill:#f7ebdd}
+.rv-txt{position:absolute;left:50%;top:50%;width:58%;transform:translate(-50%,-50%);color:#fff8f0;text-align:center;transition:opacity .9s}
+.rv-txt q{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:15.5px;font-weight:500;line-height:1.2;font-style:italic;quotes:"“" "”"}
+@media (min-width:820px){.rv-txt q{font-size:19px}}
+#resenas{scroll-margin-top:96px}
+.rv-txt .rv-who{display:block;margin-top:8px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.rv-txt .rv-st{display:block;font-size:11px;letter-spacing:.22em;margin-top:2px}
+.rv-txt.rv-fade{opacity:0}
+.rv-arm{position:absolute;right:-3%;top:-4%;width:42%;pointer-events:none;transform-origin:78% 14%;animation:rvArm 9s ease-in-out infinite}
+.rv-go{display:table;margin:26px auto 0;padding:6px 4px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:17px;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;letter-spacing:.02em}
+.rv-go:hover{color:var(--accent-d)}
+.rv-ctrl{display:flex;justify-content:center;gap:18px;margin-top:14px}
+.rv-ctrl button{width:44px;height:44px;border-radius:50%;border:1px solid var(--accent);background:transparent;color:var(--accent);font-size:18px;cursor:pointer}
+.rv-score{font-family:'Cormorant Garamond',serif;font-size:20px;margin:0}
+.rv-score b{color:var(--accent);font-weight:500}
+.rv-score .rv-s{color:var(--accent);letter-spacing:.1em}
+.rv-paused .rv-spin,.rv-paused .rv-arm{animation-play-state:paused}
+@keyframes rvRot{to{transform:rotate(360deg)}}
+@keyframes rvArm{0%,100%{transform:rotate(0)}50%{transform:rotate(1.4deg)}}
+@media (prefers-reduced-motion:reduce){.rv-spin,.rv-arm{animation:none!important}.rv-txt{transition:none}}
+
+/* ===== メニューの区切り4→5（10/6 Nory「頭は全部右向き・尻尾なし」→「ジグザグを約20%大きく・全体も少し大きく」）
+   クリームのジグザグ（太さ約2.5px）＋右はしに写真IMG_3847からなぞった頭。高さ24px ===== */
+:root{--mk-head:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 138 84%22%3E%3Cpath fill=%22%23f7ebdd%22 fill-rule=%22evenodd%22 d=%22M33 1 L76 3 L82 6 L87 15 L99 5 L131 9 L136 11 L137 31 L134 42 L84 40 L71 40 L69 41 L65 59 L66 73 L69 75 L89 74 L124 75 L129 77 L131 84 L0 84 L0 80 L6 77 L10 7 L15 3ZM42 14 L35 16 L31 20 L29 25 L28 33 L35 44 L42 48 L48 48 L53 46 L59 41 L61 35 L61 27 L58 21 L54 17ZM42 21 L49 22 L55 28 L54 36 L48 40 L40 40 L35 34 L35 26ZM44 27 L42 29 L41 33 L46 36 L49 34 L50 31 L48 28ZM19 43 L17 52 L21 62 L38 69 L50 68 L54 65 L52 61 L31 55ZM73 45 L132 47 L133 51 L123 62 L120 62 L114 53 L111 51 L107 51 L99 61 L91 50 L87 49 L83 53 L76 63 L71 63 L70 53ZM87 54 L89 54 L95 63 L98 65 L102 65 L107 57 L110 55 L116 64 L121 67 L126 65 L133 57 L133 67 L131 69 L124 70 L71 70 L70 67 L78 66ZM16 65 L15 67 L16 73 L23 78 L37 82 L46 81 L48 79 L48 76 L29 72Z%22/%3E%3C/svg%3E");--mk-zz:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 14 20%22%3E%3Cpath d=%22M0 14.5 L3.5 10 L7 14.5 L10.5 10 L14 14.5%22 fill=%22none%22 stroke=%22%23f7ebdd%22 stroke-width=%222.1%22 stroke-linejoin=%22miter%22 stroke-linecap=%22square%22/%3E%3C/svg%3E")}
+.band .menu .r::after{height:24px;bottom:-13px;box-sizing:border-box;padding:0 37px 0 0;opacity:1;transform:none;
+ background:var(--mk-head) right center/40px 24px no-repeat,var(--mk-zz) left center/17px 24px repeat-x;
+ background-origin:border-box,content-box;background-clip:border-box,content-box;-webkit-mask:none;mask:none}
+.band .menu .r{padding-top:22px;padding-bottom:28px}
+@media (min-width:820px){.band .menu .r{padding-top:24px;padding-bottom:30px}}
+.band .menu + .note{margin-top:24px}
+/* ===== 見本の蛇 end ===== */
+/* ===== メニューの文字（10/6 Nory「蛇が目立つぶん、メニュー名と料金を大きく・読みやすく」・アート担当）
+   メニュー名と料金を大きく・少し太く。かっこの中（ショート・ボブ、40分〜1時間など）は2行目に小さく出して、変な所で折り返さない ===== */
+.band .menu .r{padding:22px 0 28px;align-items:center;gap:14px}
+.band .menu .n{flex:1 1 auto;min-width:0;font-size:18px;font-weight:400;line-height:1.35;letter-spacing:.02em;text-wrap:balance;word-break:keep-all;overflow-wrap:anywhere}
+:lang(ja) .band .menu .n{font-weight:700;letter-spacing:.04em;font-size:19px}
+@media (min-width:820px){:lang(ja) .band .menu .n{font-size:22px}}
+.band .menu .n .n2{display:block;margin-top:2px;font-size:.78em;font-weight:400;opacity:.88;letter-spacing:.03em}:lang(ja) .band .menu .n .n2{font-weight:500}
+.band .menu .p{flex:0 0 auto;font-size:28px;font-weight:400;line-height:1.1}
+@media (min-width:820px){.band .menu .n .n2{display:inline;margin:0 0 0 .35em}.band .menu .n{font-size:20px}.band .menu .p{font-size:31px}.band .menu .r{padding:24px 0 30px}}
+/* 10/6 レビュー直し：言葉の途中で折り返さない。名前が入りきらない行だけ、料金を次の行の右に回す */
+.band .menu .r{flex-wrap:wrap}
+.band .menu .n{min-width:min-content;overflow-wrap:normal}
+.band .menu .p{margin-left:auto}
+/* ===== メニューの文字 end ===== */
+/* ===== 蛇の頭そろえ（10/6 Nory「はい、揃えて」）：見出しの下（右はしの頭）と言語の下の蛇を、写真IMG_3847からなぞった蛇と同じ形に
+   見出しの下＝なぞった頭（四角い頭・丸い目・ギザギザの歯）・右向き・色は今までどおり文字の色。
+   言語の下＝なぞった段の体（1つの山）をくり返し＋なぞった頭。長さは言語の文字に合わせて伸び縮み・朱色 ===== */
+:root{--hz-hd:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 138 84%22%3E%3Cpath fill=%22%23000%22 fill-rule=%22evenodd%22 d=%22M33 1 L76 3 L82 6 L87 15 L99 5 L131 9 L136 11 L137 31 L134 42 L84 40 L71 40 L69 41 L65 59 L66 73 L69 75 L89 74 L124 75 L129 77 L131 84 L0 84 L0 80 L6 77 L10 7 L15 3ZM42 14 L35 16 L31 20 L29 25 L28 33 L35 44 L42 48 L48 48 L53 46 L59 41 L61 35 L61 27 L58 21 L54 17ZM42 21 L49 22 L55 28 L54 36 L48 40 L40 40 L35 34 L35 26ZM44 27 L42 29 L41 33 L46 36 L49 34 L50 31 L48 28ZM19 43 L17 52 L21 62 L38 69 L50 68 L54 65 L52 61 L31 55ZM73 45 L132 47 L133 51 L123 62 L120 62 L114 53 L111 51 L107 51 L99 61 L91 50 L87 49 L83 53 L76 63 L71 63 L70 53ZM87 54 L89 54 L95 63 L98 65 L102 65 L107 57 L110 55 L116 64 L121 67 L126 65 L133 57 L133 67 L131 69 L124 70 L71 70 L70 67 L78 66ZM16 65 L15 67 L16 73 L23 78 L37 82 L46 81 L48 79 L48 76 L29 72Z%22/%3E%3C/svg%3E");--lk-body:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 210 210%22%3E%3Cpath fill=%22%23b4532a%22 fill-rule=%22evenodd%22 d=%22M80 11 L85 12 L86 22 L91 20 L91 12 L96 11 L100 14 L99 22 L106 22 L106 15 L108 14 L115 15 L116 23 L119 24 L123 23 L124 16 L131 16 L133 25 L138 24 L139 17 L146 17 L147 26 L152 27 L154 17 L158 16 L163 19 L161 27 L165 27 L167 19 L171 19 L175 21 L173 29 L176 31 L179 30 L181 25 L187 28 L188 32 L182 35 L180 39 L181 42 L188 42 L190 49 L181 51 L180 56 L188 57 L189 62 L187 65 L179 65 L178 71 L188 74 L187 80 L179 81 L180 87 L187 88 L188 95 L179 96 L178 101 L187 104 L188 110 L186 113 L178 113 L178 120 L186 119 L187 123 L179 130 L190 131 L191 122 L194 120 L197 122 L198 129 L204 128 L204 119 L209 117 L210 136 L173 135 L169 132 L167 123 L171 44 L168 36 L155 33 L118 30 L46 30 L37 32 L31 43 L35 119 L33 136 L26 140 L0 140 L0 133 L5 133 L6 123 L12 124 L12 133 L17 133 L24 131 L20 122 L27 119 L25 111 L16 113 L14 107 L15 103 L25 101 L24 94 L15 93 L16 84 L25 83 L24 76 L14 74 L16 67 L24 66 L23 60 L16 59 L15 56 L15 49 L23 48 L22 42 L15 40 L16 33 L24 33 L23 29 L16 24 L17 21 L24 17 L31 24 L32 13 L39 12 L43 22 L48 22 L48 13 L51 12 L56 14 L58 23 L64 22 L64 15 L66 14 L72 14 L73 22 L76 23 L79 21 L78 13ZM56 32 L62 34 L64 42 L64 68 L61 71 L56 71 L54 67 L54 39ZM43 32 L47 34 L48 42 L48 68 L44 72 L40 70 L39 63 L40 37ZM73 32 L76 33 L78 36 L78 70 L74 73 L70 72 L69 66 L70 43ZM99 35 L113 36 L115 38 L112 43 L100 44 L86 43 L83 41 L86 36ZM124 35 L130 39 L129 71 L127 78 L122 77 L121 70 L121 38ZM139 37 L144 39 L145 45 L145 73 L141 78 L137 77 L135 71 L135 40ZM153 37 L158 38 L160 44 L159 73 L157 78 L152 77 L151 69 L151 44ZM94 49 L114 51 L113 57 L104 59 L84 57 L85 50ZM94 64 L114 67 L113 72 L103 74 L83 72 L84 66ZM49 73 L66 75 L65 80 L55 81 L39 79 L40 75ZM91 77 L112 79 L118 85 L122 176 L125 198 L210 195 L210 210 L112 210 L108 167 L112 93 L111 87 L105 85 L87 85 L81 89 L83 205 L64 208 L0 206 L0 193 L56 196 L69 193 L71 85 L74 79ZM52 83 L63 83 L65 89 L62 93 L51 93 L41 92 L39 87 L43 84ZM139 87 L159 88 L157 94 L148 95 L128 94 L128 88ZM45 96 L63 97 L64 102 L58 104 L40 103 L39 98ZM147 104 L158 105 L157 112 L139 114 L128 113 L128 107ZM40 106 L45 108 L46 119 L48 108 L51 106 L54 108 L54 140 L53 142 L49 142 L46 134 L44 141 L38 139 L38 113ZM60 107 L64 108 L65 117 L65 140 L62 142 L59 141 L57 133 L57 112ZM132 123 L157 125 L158 130 L153 133 L129 133 L127 126ZM169 141 L173 143 L174 154 L174 191 L171 193 L167 191 L165 186 L166 148ZM133 141 L137 144 L138 154 L138 189 L134 192 L129 188 L128 173 L130 144ZM151 142 L155 143 L157 151 L157 189 L153 193 L148 190 L147 185 L148 146ZM199 144 L210 144 L210 153 L193 152 L183 151 L182 146ZM0 145 L5 149 L5 184 L0 185ZM18 146 L21 146 L23 150 L23 184 L19 187 L15 185 L14 181 L15 152ZM41 146 L62 147 L63 153 L55 156 L34 154 L33 148ZM200 161 L210 161 L210 172 L192 171 L183 170 L182 164ZM36 162 L61 163 L63 168 L58 171 L34 171 L32 165ZM40 177 L62 178 L62 184 L54 185 L32 185 L32 179ZM192 180 L210 180 L210 190 L200 190 L182 188 L184 181Z%22/%3E%3C/svg%3E");--lk-head:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 340 210%22%3E%3Cpath fill=%22%23b4532a%22 fill-rule=%22evenodd%22 d=%22M93 18 L101 18 L103 29 L106 30 L110 30 L111 20 L120 23 L120 31 L127 30 L127 21 L133 19 L136 20 L137 29 L139 31 L144 28 L145 19 L153 21 L152 30 L153 31 L158 31 L161 21 L169 23 L167 33 L179 41 L179 112 L185 116 L193 116 L196 113 L198 55 L202 41 L223 37 L259 38 L270 41 L277 51 L289 41 L323 46 L327 51 L325 78 L261 76 L257 83 L255 103 L255 109 L259 111 L317 112 L321 118 L322 132 L253 131 L251 143 L252 192 L248 195 L210 199 L116 200 L111 199 L109 193 L109 111 L102 107 L83 106 L78 109 L76 116 L74 201 L55 205 L0 210 L0 199 L0 195 L60 190 L61 139 L65 99 L67 90 L73 87 L106 88 L118 89 L122 92 L124 173 L125 179 L130 183 L146 186 L173 185 L227 182 L237 178 L238 153 L234 127 L179 126 L171 124 L169 117 L171 53 L166 43 L157 40 L102 39 L44 42 L27 45 L21 61 L15 130 L12 134 L0 136 L0 120 L2 125 L10 120 L9 118 L3 116 L3 110 L5 107 L11 109 L12 106 L11 101 L2 100 L4 91 L12 91 L12 84 L3 80 L4 73 L12 74 L13 72 L12 66 L4 63 L4 57 L7 52 L14 55 L15 50 L14 45 L5 40 L7 33 L10 32 L18 38 L20 34 L17 26 L27 24 L29 34 L34 35 L37 33 L37 23 L44 22 L46 33 L54 33 L54 23 L59 21 L64 22 L65 32 L72 32 L74 30 L73 20 L79 18 L82 19 L83 29 L91 30ZM92 45 L119 45 L118 52 L104 53 L78 52 L77 46ZM63 45 L68 46 L70 50 L70 72 L67 84 L61 81 L60 52ZM33 45 L39 46 L40 51 L37 85 L33 86 L31 83ZM47 46 L53 46 L55 50 L53 85 L48 85 L46 81 L45 53ZM128 46 L132 47 L135 50 L134 80 L132 87 L128 86 L126 83 L126 51ZM143 46 L148 47 L151 54 L150 84 L147 86 L143 86 L140 80 L140 53ZM159 46 L162 47 L164 51 L164 83 L162 85 L158 85 L156 80 L156 49ZM232 51 L221 56 L218 69 L225 80 L238 84 L249 77 L251 64 L244 53ZM232 57 L239 58 L245 64 L244 73 L238 77 L230 76 L225 70 L225 62ZM93 58 L119 60 L117 67 L103 68 L77 66 L79 60ZM234 64 L231 70 L236 72 L240 67ZM92 74 L117 76 L116 82 L103 83 L78 82 L77 78 L79 75ZM209 79 L207 89 L211 99 L228 105 L240 105 L244 101 L242 97 L221 92ZM263 81 L322 83 L323 87 L313 99 L304 90 L297 87 L289 97 L281 87 L277 86 L266 99 L261 100 L260 89ZM31 89 L54 90 L55 96 L48 98 L25 97 L24 91ZM149 89 L162 90 L163 95 L158 98 L145 98 L132 97 L131 92ZM277 91 L279 91 L288 102 L292 101 L300 92 L311 103 L316 101 L323 93 L323 103 L314 106 L261 106 L260 104 L268 103ZM206 101 L206 109 L213 115 L227 118 L236 117 L238 112 L219 108ZM144 103 L162 104 L160 112 L150 113 L131 111 L133 105ZM33 105 L54 105 L54 112 L45 115 L25 114 L24 108ZM139 116 L160 118 L161 124 L153 126 L132 125 L132 119ZM28 122 L52 123 L53 128 L48 131 L24 131 L23 125ZM133 132 L139 136 L138 174 L136 180 L132 180 L130 177 L130 137ZM165 132 L168 132 L171 136 L170 175 L167 178 L163 176 L162 167 L162 136ZM147 132 L153 133 L155 137 L154 170 L152 178 L147 177 L145 170 L144 135ZM212 133 L231 133 L232 137 L229 140 L199 141 L182 141 L179 138 L180 135ZM52 135 L56 136 L57 141 L57 183 L53 186 L48 181 L49 148ZM20 137 L24 139 L25 153 L25 181 L22 187 L18 186 L16 181 L17 142ZM36 137 L41 140 L42 151 L43 184 L39 188 L34 186 L32 180 L33 143ZM3 143 L13 144 L13 149 L9 152 L0 153 L0 144ZM201 146 L230 148 L230 153 L227 156 L209 157 L180 154 L182 148ZM0 161 L11 161 L10 170 L0 172ZM187 163 L227 164 L230 166 L229 170 L221 173 L181 172 L180 166ZM0 180 L10 181 L10 189 L0 190Z%22/%3E%3C/svg%3E")}
+.big::before,.band .big::before,.band .sub-h::after{padding-right:29px;
+ -webkit-mask:var(--hz-hd) right center/30px 18px no-repeat border-box border-box,var(--hz-zz) left center/36px 18px round content-box content-box;
+ mask:var(--hz-hd) right center/30px 18px no-repeat border-box border-box,var(--hz-zz) left center/36px 18px round content-box content-box}
+.langs a.on::after{height:10px;bottom:0;padding:0 15px 0 0;
+ background:var(--lk-head) right center/16px 10px no-repeat,var(--lk-body) left center/10px 10px round no-repeat;
+ background-origin:border-box,content-box;background-clip:border-box,content-box}
+/* スマホのスペイン語・英語：「MENÚ Y PRECIOS.」などが開閉の丸いボタンにかからない大きさに */
+@media (max-width:819px){.band .big.acc{padding-right:52px}:lang(es) .band .big.acc,:lang(en) .band .big.acc{font-size:clamp(20px,6.2vw,30px)}}
+/* ===== 蛇の頭そろえ end ===== */
+/* ===== 見出しの体（10/6 Nory「顔だけククルカンはおかしい。体もククルカンに」）：見出しの下の線を、写真IMG_3847からなぞった段の体（1つの山のくり返し）＋右はしになぞった山と頭に。
+   長さ・止まる位置（開閉ボタンの手前・パソコンは見出しの文字の長さ）は今のまま。色は今までどおり文字の色。高さ22px（うろこが見える大きさ） ===== */
+:root{--hb-body:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 210 210%22%3E%3Cpath fill=%22%23000%22 fill-rule=%22evenodd%22 d=%22M80 11 L85 12 L86 22 L91 20 L91 12 L96 11 L100 14 L99 22 L106 22 L106 15 L108 14 L115 15 L116 23 L119 24 L123 23 L124 16 L131 16 L133 25 L138 24 L139 17 L146 17 L147 26 L152 27 L154 17 L158 16 L163 19 L161 27 L165 27 L167 19 L171 19 L175 21 L173 29 L176 31 L179 30 L181 25 L187 28 L188 32 L182 35 L180 39 L181 42 L188 42 L190 49 L181 51 L180 56 L188 57 L189 62 L187 65 L179 65 L178 71 L188 74 L187 80 L179 81 L180 87 L187 88 L188 95 L179 96 L178 101 L187 104 L188 110 L186 113 L178 113 L178 120 L186 119 L187 123 L179 130 L190 131 L191 122 L194 120 L197 122 L198 129 L204 128 L204 119 L209 117 L210 136 L173 135 L169 132 L167 123 L171 44 L168 36 L155 33 L118 30 L46 30 L37 32 L31 43 L35 119 L33 136 L26 140 L0 140 L0 133 L5 133 L6 123 L12 124 L12 133 L17 133 L24 131 L20 122 L27 119 L25 111 L16 113 L14 107 L15 103 L25 101 L24 94 L15 93 L16 84 L25 83 L24 76 L14 74 L16 67 L24 66 L23 60 L16 59 L15 56 L15 49 L23 48 L22 42 L15 40 L16 33 L24 33 L23 29 L16 24 L17 21 L24 17 L31 24 L32 13 L39 12 L43 22 L48 22 L48 13 L51 12 L56 14 L58 23 L64 22 L64 15 L66 14 L72 14 L73 22 L76 23 L79 21 L78 13ZM56 32 L62 34 L64 42 L64 68 L61 71 L56 71 L54 67 L54 39ZM43 32 L47 34 L48 42 L48 68 L44 72 L40 70 L39 63 L40 37ZM73 32 L76 33 L78 36 L78 70 L74 73 L70 72 L69 66 L70 43ZM99 35 L113 36 L115 38 L112 43 L100 44 L86 43 L83 41 L86 36ZM124 35 L130 39 L129 71 L127 78 L122 77 L121 70 L121 38ZM139 37 L144 39 L145 45 L145 73 L141 78 L137 77 L135 71 L135 40ZM153 37 L158 38 L160 44 L159 73 L157 78 L152 77 L151 69 L151 44ZM94 49 L114 51 L113 57 L104 59 L84 57 L85 50ZM94 64 L114 67 L113 72 L103 74 L83 72 L84 66ZM49 73 L66 75 L65 80 L55 81 L39 79 L40 75ZM91 77 L112 79 L118 85 L122 176 L125 198 L210 195 L210 210 L112 210 L108 167 L112 93 L111 87 L105 85 L87 85 L81 89 L83 205 L64 208 L0 206 L0 193 L56 196 L69 193 L71 85 L74 79ZM52 83 L63 83 L65 89 L62 93 L51 93 L41 92 L39 87 L43 84ZM139 87 L159 88 L157 94 L148 95 L128 94 L128 88ZM45 96 L63 97 L64 102 L58 104 L40 103 L39 98ZM147 104 L158 105 L157 112 L139 114 L128 113 L128 107ZM40 106 L45 108 L46 119 L48 108 L51 106 L54 108 L54 140 L53 142 L49 142 L46 134 L44 141 L38 139 L38 113ZM60 107 L64 108 L65 117 L65 140 L62 142 L59 141 L57 133 L57 112ZM132 123 L157 125 L158 130 L153 133 L129 133 L127 126ZM169 141 L173 143 L174 154 L174 191 L171 193 L167 191 L165 186 L166 148ZM133 141 L137 144 L138 154 L138 189 L134 192 L129 188 L128 173 L130 144ZM151 142 L155 143 L157 151 L157 189 L153 193 L148 190 L147 185 L148 146ZM199 144 L210 144 L210 153 L193 152 L183 151 L182 146ZM0 145 L5 149 L5 184 L0 185ZM18 146 L21 146 L23 150 L23 184 L19 187 L15 185 L14 181 L15 152ZM41 146 L62 147 L63 153 L55 156 L34 154 L33 148ZM200 161 L210 161 L210 172 L192 171 L183 170 L182 164ZM36 162 L61 163 L63 168 L58 171 L34 171 L32 165ZM40 177 L62 178 L62 184 L54 185 L32 185 L32 179ZM192 180 L210 180 L210 190 L200 190 L182 188 L184 181Z%22/%3E%3C/svg%3E");--hb-head:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 340 210%22%3E%3Cpath fill=%22%23000%22 fill-rule=%22evenodd%22 d=%22M93 18 L101 18 L103 29 L106 30 L110 30 L111 20 L120 23 L120 31 L127 30 L127 21 L133 19 L136 20 L137 29 L139 31 L144 28 L145 19 L153 21 L152 30 L153 31 L158 31 L161 21 L169 23 L167 33 L179 41 L179 112 L185 116 L193 116 L196 113 L198 55 L202 41 L223 37 L259 38 L270 41 L277 51 L289 41 L323 46 L327 51 L325 78 L261 76 L257 83 L255 103 L255 109 L259 111 L317 112 L321 118 L322 132 L253 131 L251 143 L252 192 L248 195 L210 199 L116 200 L111 199 L109 193 L109 111 L102 107 L83 106 L78 109 L76 116 L74 201 L55 205 L0 210 L0 199 L0 195 L60 190 L61 139 L65 99 L67 90 L73 87 L106 88 L118 89 L122 92 L124 173 L125 179 L130 183 L146 186 L173 185 L227 182 L237 178 L238 153 L234 127 L179 126 L171 124 L169 117 L171 53 L166 43 L157 40 L102 39 L44 42 L27 45 L21 61 L15 130 L12 134 L0 136 L0 120 L2 125 L10 120 L9 118 L3 116 L3 110 L5 107 L11 109 L12 106 L11 101 L2 100 L4 91 L12 91 L12 84 L3 80 L4 73 L12 74 L13 72 L12 66 L4 63 L4 57 L7 52 L14 55 L15 50 L14 45 L5 40 L7 33 L10 32 L18 38 L20 34 L17 26 L27 24 L29 34 L34 35 L37 33 L37 23 L44 22 L46 33 L54 33 L54 23 L59 21 L64 22 L65 32 L72 32 L74 30 L73 20 L79 18 L82 19 L83 29 L91 30ZM92 45 L119 45 L118 52 L104 53 L78 52 L77 46ZM63 45 L68 46 L70 50 L70 72 L67 84 L61 81 L60 52ZM33 45 L39 46 L40 51 L37 85 L33 86 L31 83ZM47 46 L53 46 L55 50 L53 85 L48 85 L46 81 L45 53ZM128 46 L132 47 L135 50 L134 80 L132 87 L128 86 L126 83 L126 51ZM143 46 L148 47 L151 54 L150 84 L147 86 L143 86 L140 80 L140 53ZM159 46 L162 47 L164 51 L164 83 L162 85 L158 85 L156 80 L156 49ZM232 51 L221 56 L218 69 L225 80 L238 84 L249 77 L251 64 L244 53ZM232 57 L239 58 L245 64 L244 73 L238 77 L230 76 L225 70 L225 62ZM93 58 L119 60 L117 67 L103 68 L77 66 L79 60ZM234 64 L231 70 L236 72 L240 67ZM92 74 L117 76 L116 82 L103 83 L78 82 L77 78 L79 75ZM209 79 L207 89 L211 99 L228 105 L240 105 L244 101 L242 97 L221 92ZM263 81 L322 83 L323 87 L313 99 L304 90 L297 87 L289 97 L281 87 L277 86 L266 99 L261 100 L260 89ZM31 89 L54 90 L55 96 L48 98 L25 97 L24 91ZM149 89 L162 90 L163 95 L158 98 L145 98 L132 97 L131 92ZM277 91 L279 91 L288 102 L292 101 L300 92 L311 103 L316 101 L323 93 L323 103 L314 106 L261 106 L260 104 L268 103ZM206 101 L206 109 L213 115 L227 118 L236 117 L238 112 L219 108ZM144 103 L162 104 L160 112 L150 113 L131 111 L133 105ZM33 105 L54 105 L54 112 L45 115 L25 114 L24 108ZM139 116 L160 118 L161 124 L153 126 L132 125 L132 119ZM28 122 L52 123 L53 128 L48 131 L24 131 L23 125ZM133 132 L139 136 L138 174 L136 180 L132 180 L130 177 L130 137ZM165 132 L168 132 L171 136 L170 175 L167 178 L163 176 L162 167 L162 136ZM147 132 L153 133 L155 137 L154 170 L152 178 L147 177 L145 170 L144 135ZM212 133 L231 133 L232 137 L229 140 L199 141 L182 141 L179 138 L180 135ZM52 135 L56 136 L57 141 L57 183 L53 186 L48 181 L49 148ZM20 137 L24 139 L25 153 L25 181 L22 187 L18 186 L16 181 L17 142ZM36 137 L41 140 L42 151 L43 184 L39 188 L34 186 L32 180 L33 143ZM3 143 L13 144 L13 149 L9 152 L0 153 L0 144ZM201 146 L230 148 L230 153 L227 156 L209 157 L180 154 L182 148ZM0 161 L11 161 L10 170 L0 172ZM187 163 L227 164 L230 166 L229 170 L221 173 L181 172 L180 166ZM0 180 L10 181 L10 189 L0 190Z%22/%3E%3C/svg%3E")}
+.big::before,.band .big::before,.band .sub-h::after{height:22px;padding-right:35px;
+ -webkit-mask:var(--hb-head) right center/36px 22px no-repeat border-box border-box,var(--hb-body) left center/22px 22px round no-repeat content-box content-box;
+ mask:var(--hb-head) right center/36px 22px no-repeat border-box border-box,var(--hb-body) left center/22px 22px round no-repeat content-box content-box}
+.big,.band .big{padding-bottom:34px}
+.band .sub-h{padding-bottom:32px}
+/* ===== 見出しの体 end ===== */
+
+/* rv-variant start（蓄音機：50年代のスーツケース型 10/6 Nory 案3に決定） */
+.rv-deck-w{position:relative}
+.rv-deck::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:4;opacity:.3;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .12 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.rv-back{position:absolute;left:0;top:0;width:100%;height:auto;pointer-events:none;z-index:0}
+.rv-deck{z-index:1}
+.rv-front{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.rv-arm-old{z-index:3}
+.rv-label{background:radial-gradient(circle,#c24f28 0 57%,#a8441f 58% 60%,#b84a24 61%)!important;box-shadow:0 0 0 2px #3a2a20,inset 0 0 0 4px rgba(217,178,95,.35)!important}
+.rv-ring text{fill:#e2bd6a!important}
+.rv-v3{padding-top:34%}
+.rv-v3 .rv-deck{background:repeating-linear-gradient(45deg,rgba(247,235,221,.13) 0 1px,transparent 1px 4px),repeating-linear-gradient(-45deg,rgba(247,235,221,.13) 0 1px,transparent 1px 4px),#8e3f1f;box-shadow:inset 0 0 0 3px #3a2a20,inset 0 0 0 7px #efdcc6,inset 0 0 0 9px #3a2a20,0 18px 24px -10px rgba(58,42,32,.45)}
+.rv-knobs{position:absolute;left:3%;bottom:2%;width:15%;z-index:2;pointer-events:none}
+/* rv-variant end */
+/* ===== パソコンの直し（10/6 Nory）：スマホ（819px以下）はさわらない =====
+   ・蓄音機：幅の上限を決め、画面の高さにも合わせて小さくする（ふたまで入れた全体の高さ＝幅×約1.41。画面の高さの約8割に収める）
+   ・店内の動画：元の動画の縦横（1078×1916＝縦長 9:16）のまま見せる。切り取りなし・幅の上限つき */
+@media (min-width:820px){
+ #rvBox.rv-deck-w{width:clamp(300px,calc((100vh - 170px) / 1.41),400px);max-width:100%}
+ .two .room{aspect-ratio:auto!important;width:min(100%,360px);max-height:none}
+ .two .room video{width:100%;height:auto;aspect-ratio:1078/1916;object-fit:cover}
+}
 </style>
 </head>
 <body class="gate">
@@ -413,6 +591,90 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;bac
 <a class="mq" href="/productos.html" data-href="productos" aria-label="Davines"><div class="mq-in"><img src="/productos/img/D001.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D004.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D005.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D007.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D011.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D014.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D015.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D017.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D019.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D020.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D021.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D022.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D023.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D024.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D001.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D004.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D005.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D007.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D011.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D014.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D015.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D017.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D019.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D020.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D021.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D022.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D023.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D024.jpg" alt="" loading="lazy" width="160" height="160"></div></a>
 
 
+<!-- クチコミ：レコードプレーヤー（10/6 Nory B案）。クチコミは Googleマップの星5（資料/美容室/クチコミ_ホームページ用.md）・スペイン語のまま -->
+<section class="fade" id="resenas">
+  <div class="two">
+    <div>
+      <p class="kicker" data-t="rvKick"></p>
+      <h2 class="big" data-t="rvBig"></h2>
+      <p class="rv-score"><b data-t="rvNum">4,9</b> <span class="rv-s">★★★★★</span> · <span data-t="rvCount"></span></p>
+    </div>
+    <div>
+      <div class="rv-deck-w rv-v3" id="rvBox">
+        <svg class="rv-back" viewBox="0 0 100 50" aria-hidden="true">
+          <defs><filter id="rvWb"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="1.1"/></filter><pattern id="rvTw" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#8e3f1f"/><path d="M0 0 L3 3 M3 0 L0 3" stroke="#f7ebdd" stroke-width=".35" opacity=".35"/></pattern>
+          <pattern id="rvGr" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".6" fill="#3a2a20"/></pattern></defs>
+          <g filter="url(#rvWb)" stroke="#3a2a20" stroke-width=".8">
+            <rect x="40" y="0.8" width="20" height="5" rx="2.5" fill="none" stroke="#5a3b28" stroke-width="1.6"/>
+            <path d="M6 50 L10 5 L90 5 L94 50 Z" fill="url(#rvTw)"/>
+            <path d="M10 5 L90 5" stroke="#efdcc6" stroke-width="1"/>
+            <circle cx="50" cy="27" r="15" fill="#efdcc6"/><circle cx="50" cy="27" r="13.5" fill="url(#rvGr)" stroke-width=".5"/>
+            <rect x="38" y="44" width="24" height="4.5" rx="1" fill="#d9b25f"/>
+            <text x="50" y="47.6" text-anchor="middle" font-family="'The Home Font F',serif" font-size="3.4" fill="#3a2a20" stroke="none">THE HOME</text>
+          </g>
+        </svg>
+        <div class="rv-deck">
+          <div class="rv-disc">
+            <div class="rv-spin" id="rvSpin"><div class="rv-label">
+              <svg class="rv-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="rvC" d="M100,100 m-91,0 a91,91 0 1,1 182,0 a91,91 0 1,1 -182,0"/></defs>
+                <circle cx="100" cy="100" r="97" fill="none" stroke="#d9b25f" stroke-width="1.2"/>
+                <text><textPath href="#rvC">THE HOME HAIR RE-CREATIVE ✦ CONDESA · CDMX ✦ 78 R.P.M. ✦</textPath></text>
+                <circle cx="100" cy="100" r="84" fill="none" stroke="#d9b25f" stroke-width=".8" stroke-dasharray="2 3" opacity=".8"/></svg>
+            </div></div>
+            <div class="rv-shine"></div>
+            <div class="rv-txt" id="rvTxt" aria-live="polite"></div>
+          </div>
+          <svg class="rv-arm rv-arm-old" viewBox="0 0 160 220" aria-hidden="true">
+            <defs><filter id="rvWa"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="11"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter></defs>
+            <g filter="url(#rvWa)" stroke="#3a2a20" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="104" y="10" width="42" height="42" rx="8" fill="#efdcc6"/><circle cx="125" cy="31" r="9" fill="#b4532a"/>
+              <path d="M118 40 L108 150 L96 162 L118 172 L126 160 L120 150 L130 42 Z" fill="#efdcc6"/>
+              <path d="M112 146 L122 150" stroke-width="1.2"/>
+            </g>
+          </svg>
+          <svg class="rv-front" viewBox="0 0 100 102" preserveAspectRatio="none" aria-hidden="true">
+            <g stroke="#3a2a20" stroke-width=".6">
+              <rect x="20" y="98" width="9" height="4" rx="1" fill="#d9b25f"/><rect x="71" y="98" width="9" height="4" rx="1" fill="#d9b25f"/>
+            </g>
+          </svg>
+          <svg class="rv-knobs" viewBox="0 0 30 12" aria-hidden="true">
+            <g stroke="#3a2a20" stroke-width=".8"><circle cx="5" cy="6" r="4.4" fill="#efdcc6"/><circle cx="15" cy="6" r="4.4" fill="#efdcc6"/><circle cx="25" cy="6" r="4.4" fill="#efdcc6"/>
+            <path d="M5 2.4 V5 M15 2.4 L13.4 4.6 M25 2.4 L26.6 4.6" stroke-width="1"/></g>
+          </svg>
+        </div>
+      </div>
+      <a class="rv-go" href="https://www.google.com/search?q=The+Home+Hair+re-creative#lrd=0x85d1ff55b28da79f:0xdb3a8bbdf2c8606b,3,,,," target="_blank" rel="noopener" data-t="rvGo"></a>
+      <div class="rv-ctrl"><button type="button" id="rvPv" aria-label="‹">‹</button><button type="button" id="rvNx" aria-label="›">›</button></div>
+    </div>
+  </div>
+</section>
+<script>
+/* クチコミのレコード：6.5秒ごとに入れかわる。さわる・マウスをのせると止まる。動きを減らす設定の人は止めたまま（‹ › で送る） */
+(function(){
+var R=[
+ ["Nory se tomó el tiempo de entender a mi cabello y diseñar el corte… Mi cabello quedó perfecto!","Jan R."],
+ ["The best haircut I’ve ever gotten! … I will fly back to Mexico City just to get a haircut here.","D. K."],
+ ["Nory… es bastante detallista con su técnica y eso hace que el corte luzca mejor.","Damián L."],
+ ["He takes his time to make sure the cut is perfect, which I have not seen hairdresser do nowadays.","Marie B."],
+ ["Me hice un tratamiento japonés de cuatro pasos e inmediatamente note la hidratación.","Cecilia F."],
+ ["I had dyed my hair at home and it was terrible. … he fixed my hair and it looked amazing.","Doris C."],
+ ["Nori es un genio, súper amable y detallista. Hizo un corte adaptado a mi tipo de pelo…","Delfinace"],
+ ["It’s worth coming just to check out the antique interior design and vintage clothes.","Grant S."]
+];
+var t=document.getElementById('rvTxt'),box=document.getElementById('rvBox'),i=0,paused=false,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function put(n){i=(n+R.length)%R.length;t.innerHTML='<q>'+R[i][0]+'</q><span class="rv-who">'+R[i][1]+'</span><span class="rv-st">★★★★★</span>';}
+function show(n){t.classList.add('rv-fade');setTimeout(function(){put(n);t.classList.remove('rv-fade');},reduce?0:900);}
+put(0);
+setInterval(function(){if(!paused&&!reduce&&!document.hidden)show(i+1);},6500);
+function setP(p){paused=p;box.classList.toggle('rv-paused',p);}
+box.addEventListener('pointerdown',function(){setP(!paused);});
+box.addEventListener('mouseenter',function(){setP(true);});
+box.addEventListener('mouseleave',function(){setP(false);});
+document.getElementById('rvNx').onclick=function(){show(i+1);};
+document.getElementById('rvPv').onclick=function(){show(i-1);};
+})();
+</script>
+
 <section class="fade">
   <div class="two">
     <h2 class="big" data-t="accessBig"></h2>
@@ -448,7 +710,7 @@ navBook:{es:'Reservar',en:'Book',ja:'ご予約'},
 book:{es:'Reservar cita',en:'Book an appointment',ja:'ご予約'},
 igB:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタでご予約'},
 igN:{es:'Por mensaje directo de Instagram',en:'Via Instagram direct message',ja:'インスタグラムのメッセージから'},
-catch:{es:'Un salón de belleza con alma artística.',en:'An art-inspired hair salon.',ja:'アートな美容室。'}, /* 10/6 Nory「アートな美容室」 */
+catch:{es:'Un salón de belleza con alma artística.',en:'An art-inspired hair salon.',ja:'ARTな美容室。'}, /* 10/6 Nory「アートな美容室」 */
 bookN:{es:'Elija día y hora en el calendario',en:'Choose a day and time on the calendar',ja:'カレンダーから日時を選べます'},
 wa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppでご予約'},
 waN:{es:'Por mensaje de WhatsApp',en:'Via WhatsApp message',ja:'WhatsAppのメッセージから承ります'},
@@ -511,7 +773,12 @@ shopTx:{es:'Productos Davines disponibles en el salón.',en:'Davines products av
 shopBtn:{es:'Ver productos',en:'View products',ja:'商品を見る'},
 accessBig:{es:'Visítenos.',en:'Visit us.',ja:'ご来店ください。'},
 map:{es:'Abrir en Google Maps',en:'Open in Google Maps',ja:'Googleマップで開く'},
-reviews:{es:'Reseñas en Google',en:'Google reviews',ja:'Googleのクチコミ'}
+reviews:{es:'Reseñas en Google',en:'Google reviews',ja:'Googleのクチコミ'},
+rvKick:{es:'Reseñas · Google',en:'Reviews · Google',ja:'Googleのクチコミ'},
+rvBig:{es:'Lo que dicen.',en:'What they say.',ja:'お客様の声'},
+rvNum:{es:'4,9',en:'4.9',ja:'4.9'},
+rvCount:{es:'200 reseñas',en:'200 reviews',ja:'200件'},
+rvGo:{es:'Ver todas en Google ›',en:'See all on Google ›',ja:'Googleのクチコミを見る ›'}
 };
 const LS=['es','en','ja'];
 let L=(new URLSearchParams(location.search).get('lang')||(navigator.language||'es').slice(0,2)).toLowerCase();
@@ -520,11 +787,22 @@ const BASE={horario:'/horario.html',productos:'/productos.html',reserva:'/reserv
 function draw(){
  document.documentElement.lang=L;
  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=TX[e.dataset.t][L]);
+ /* メニュー名のかっこの中を2行目に小さく（10/6 アート担当） */
+ document.querySelectorAll('.band .menu .n').forEach(e=>{const t=e.textContent;const m=t.match(/^(.+?)\s*([（(].+[)）])$/);let main=m?m[1]:t;const sub=m?m[2]:'';const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');let h;
+  if(L==='ja'){h=esc(main).replace(/(のみ・|に|と|・|の(?!み))/g,'$1<wbr>');}
+  else{const w=main.split(' ');const g=[];for(let i=w.length;i>0;i-=2)g.unshift(w.slice(Math.max(0,i-2),i).join('\u00a0'));h=esc(g.join(' '));}
+  e.innerHTML=h+(sub?'<span class="n2">'+esc(sub)+'</span>':'');}); /* 10/6 レビュー：日本語は意味の切れ目（に・と・の・「・」の後）だけで折り返す。英語・スペイン語は最後の2語をつなげて1語だけの行を作らない */
+ /* 日本語のキャッチの ART だけ英語の字体にする（文はこちらで決めた固定の文なので安全） */
+ if(L==='ja'){const c=document.querySelector('.catch[data-t="catch"]');if(c)c.innerHTML='<span class="art-en">ART</span>な美容室。';}
  document.querySelectorAll('[data-href]').forEach(e=>e.href=BASE[e.dataset.href]+(BASE[e.dataset.href].indexOf('?')>=0?'&':'?')+'lang='+L);
  const b=document.getElementById('langs');b.innerHTML='';
  [['es','ES'],['en','EN'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{L=k;draw();try{const u=new URL(location.href);u.searchParams.set('lang',L);history.replaceState(null,'',u.toString());}catch(e){}};b.appendChild(a);});
 }
 draw();
+/* 10/6 Nory直し2：見出しの文字の長さを測って、下の蛇の線の長さにする（最短120px・最長280px） */
+function hzFit(){document.querySelectorAll('.big,.band .sub-h').forEach(function(h){try{var r=document.createRange();r.selectNodeContents(h);var w=0;[].forEach.call(r.getClientRects(),function(q){w=Math.max(w,q.width)});if(w>0)h.style.setProperty('--hz-w',Math.round(Math.min(280,Math.max(120,w+8)))+'px');}catch(e){}});}
+hzFit();window.addEventListener('resize',hzFit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(hzFit);
+(function(){var d0=draw;draw=function(){d0();hzFit();};})();
 /* 画面に入ったらゆっくり出す（動きを減らす設定の人には動かさない） */
 (function(){
  const els=document.querySelectorAll('.fade');
@@ -573,6 +851,36 @@ items.forEach(function(n){body.appendChild(n);});h.after(body);
 if(par.classList.contains('band-in')){par.style.display='block';}
 function t(){var o=h.getAttribute('aria-expanded')==='true';h.setAttribute('aria-expanded',o?'false':'true');body.classList.toggle('open',!o);}
 h.addEventListener('click',t);h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});});})();
+</script>
+<script>
+/* 【滞在 10/6】最初の画面（ロゴの画面）に何秒いたかを1回だけ送る（ロゴの動きの秒数を決めるため。3日間）。
+   送るのは「秒・終わり方（scroll/click/leave）・端末（sp/pc：画面の幅で判定）・言語」だけ。クッキー・名前・IDは使わない。
+   失敗しても何もしない（ページの動きは変わらない）。ほかのページから #book などで来た時（最初の画面を見ていない）は送らない。 */
+(function(){try{
+if(navigator.webdriver||!navigator.sendBeacon||(location.hash&&location.hash!=='#top'))return;
+var URL_='https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
+var done=false,t0=document.visibilityState==='hidden'?-1:performance.now(),y0=window.scrollY||0,ty=null;
+/* 裏で開かれたタブは、見えた時から数える */
+function vis(){if(t0<0&&document.visibilityState==='visible')t0=performance.now();}
+function send(end){if(done||t0<0)return;done=true;off();
+ var s=Math.round((performance.now()-t0)/100)/10;if(!(s>=0))return;if(s>600)s=600;
+ var lg=(document.documentElement.lang||'es').slice(0,2);if(['es','en','ja'].indexOf(lg)<0)lg='es';
+ var d={action:'dwell',s:s,end:end,dev:(window.innerWidth<820?'sp':'pc'),lang:lg};
+ try{navigator.sendBeacon(URL_,new Blob([JSON.stringify(d)],{type:'text/plain;charset=UTF-8'}));}catch(e){}}
+/* 最初の画面から外れたか：ヒーローの下の端が画面の半分より上に来たら scroll */
+var hero=document.getElementById('top');
+function onScroll(){if(!hero)return;var r=hero.getBoundingClientRect();if(r.bottom<window.innerHeight*0.5&&(window.scrollY||0)>y0+10)send('scroll');}
+/* 最初の画面は下に動かない作り（gate）なので、上へ大きく指を払った・ホイールを回したのも「下へ行こうとした」= scroll とみなす */
+function ts(e){if(e.touches&&e.touches[0])ty=e.touches[0].clientY;}
+function tm(e){if(ty!==null&&e.touches&&e.touches[0]&&ty-e.touches[0].clientY>60&&document.body.classList.contains('gate'))send('scroll');}
+function wh(e){if(e.deltaY>40&&document.body.classList.contains('gate'))send('scroll');}
+function ck(){send('click');}
+function vc(){if(document.visibilityState==='hidden')send('leave');else vis();}
+function ph(){send('leave');}
+var L_=[[window,'scroll',onScroll],[window,'touchstart',ts],[window,'touchmove',tm],[window,'wheel',wh],[window,'click',ck],[document,'visibilitychange',vc],[window,'pagehide',ph]];
+function off(){L_.forEach(function(x){x[0].removeEventListener(x[1],x[2],true);});}
+L_.forEach(function(x){x[0].addEventListener(x[1],x[2],{capture:true,passive:true});});
+}catch(e){}})();
 </script>
 </body>
 </html>
