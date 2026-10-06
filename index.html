@@ -105,6 +105,14 @@ body.gate .music{bottom:24px}
 .mq:hover .mq-in{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.mq-in{animation-duration:120s}}
+/* 押すと開く見出し（料金・営業時間・ご来店の前に）2026-10-05 Nory */
+.acc{cursor:pointer;position:relative;padding-right:52px;-webkit-tap-highlight-color:transparent}
+.acc::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid currentColor;border-radius:50%;font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;line-height:38px;text-align:center;transition:transform .3s ease}
+.acc[aria-expanded="true"]::after{content:"\2212";transform:translateY(-50%) rotate(180deg)}
+.acc-body{display:none}
+.acc-body.open{display:block;animation:accin .35s ease}
+@keyframes accin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.band .acc{margin-bottom:0}
 /* 区切り */
 section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .big{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--accent);font-size:clamp(40px,11vw,88px);line-height:1;letter-spacing:.02em;margin:0 0 22px}
@@ -250,7 +258,7 @@ footer a{color:#f3e2cf}
 
 <div class="band fade">
   <div class="band-in two">
-    <h2 class="big" data-t="menuBig"></h2>
+    <h2 class="big acc" data-t="menuBig" role="button" tabindex="0" aria-expanded="false"></h2>
     <div>
       <div class="menu">
         <div class="r"><span class="n" data-t="m1"></span><span class="p">$1,000</span></div>
@@ -277,7 +285,7 @@ footer a{color:#f3e2cf}
 <section class="fade">
   <div class="cols">
     <div>
-      <h2 class="big" data-t="hoursBig"></h2>
+      <h2 class="big acc" data-t="hoursBig" role="button" tabindex="0" aria-expanded="false"></h2>
       <div class="menu">
         <div class="r"><span class="n" data-t="d1"></span><span class="p">10:00 – 19:00</span></div>
         <div class="r"><span class="n" data-t="d2"></span><span class="p">10:00 – 20:00</span></div>
@@ -287,7 +295,7 @@ footer a{color:#f3e2cf}
       <div class="stack"><a class="pill line" href="/horario.html" data-href="horario" data-t="calendar"></a></div>
     </div>
     <div>
-      <h2 class="big mt-sp" data-t="policyBig"></h2>
+      <h2 class="big mt-sp acc" data-t="policyBig" role="button" tabindex="0" aria-expanded="false"></h2>
       <ol class="list">
         <li><span class="no">01</span><span data-t="p0"></span></li>
         <li><span class="no">02</span><span data-t="p1"></span></li>
@@ -458,6 +466,16 @@ function play(){var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
 function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){window.removeEventListener(t,first,true)});if(!off&&!(e&&b.contains(e.target)))play();}
 ['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
 b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}try{localStorage.setItem('thmusic',off?'off':'on')}catch(e){}});ui();})();
+</script>
+<script>
+/* 見出しを押すと中が開く。見出しのあとの中身をまとめて隠す */
+(function(){document.querySelectorAll('h2.acc').forEach(function(h){var par=h.parentNode,body=document.createElement('div');body.className='acc-body';
+var sib=h.nextSibling;var items=[];while(sib){items.push(sib);sib=sib.nextSibling;}
+if(par.classList.contains('band-in')){items=[h.nextElementSibling];}
+items.forEach(function(n){body.appendChild(n);});h.after(body);
+if(par.classList.contains('band-in')){par.style.display='block';}
+function t(){var o=h.getAttribute('aria-expanded')==='true';h.setAttribute('aria-expanded',o?'false':'true');body.classList.toggle('open',!o);}
+h.addEventListener('click',t);h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});});})();
 </script>
 </body>
 </html>
