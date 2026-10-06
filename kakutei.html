@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<!-- 【確定ボタン 10/5 仕組み担当・下書き】Noryだけが使う「予約の確定」ページ。通知メールのボタンから開く。
+     Googleのログインに関係なく開ける（iPhoneでGoogleアカウントが複数でも開ける）。
+     中身は Apps Script（API）の ?action=cinfo で読み、「確定する」は POST {action:'confirm'}。k（合い言葉）が合わないと何も読めない・確定できない。 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>予約の確定 – The Home Hair</title>
+<link rel="icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Kaisei+Decol:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f1ec;font-family:'Kaisei Decol',sans-serif;color:#1d1d1d}
+.w{width:100%;max-width:480px;margin:0 auto;background:#fff;min-height:100vh;padding:18px 16px 40px}
+.logo{display:block;width:72px;height:72px;margin:0 auto 4px;border-radius:50%}
+h1{font-family:'Diplomata SC',serif;font-size:18px;text-align:center;margin:4px 0 14px}
+.card{background:#f4f1ec;border-radius:12px;padding:12px 14px;line-height:1.6;font-size:15px}
+.card .nm{font-size:20px;font-weight:700}
+.card .dt{font-size:19px;font-weight:700;margin-top:4px}
+.box{border-radius:10px;padding:10px 12px;margin:12px 0 0;font-size:14px;line-height:1.6}
+.red{background:#fdecee;color:#b00020}
+.blue{background:#e8f0fe;color:#1a4fa0}
+.gray{background:#f3f3f3;color:#333}
+label{display:block;margin-top:14px;font-size:14px;color:#444}
+.inp{display:block;width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font:inherit;font-size:18px;margin-top:6px;background:#fff;color:#1d1d1d}
+.chk{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#1d1d1d}
+.chk input{width:24px;height:24px;flex:none}
+.go{display:block;width:100%;margin-top:20px;padding:15px;border:none;border-radius:14px;background:#1d1d1d;color:#fff;font:inherit;font-size:18px;font-weight:700;cursor:pointer}
+.go:disabled{background:#aaa}
+#msg{margin-top:14px;font-size:15px;line-height:1.6}
+.ok{background:#e7f5ea;color:#1b6b2a;border-radius:10px;padding:12px}
+.ng{background:#fdecee;color:#b00020;border-radius:10px;padding:12px}
+.load{text-align:center;color:#888;padding:40px 0}
+a{color:inherit}
+</style>
+</head><body><div class="w">
+<img class="logo" src="logo_round.png" alt="">
+<h1>予約の確定</h1>
+<div id="app"><div class="load">読み込み中…</div></div>
+</div>
+<script>
+// Apps Script の API（予約ページ reserva/index.html と同じアドレス）
+const API = 'https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
+const Q = new URLSearchParams(location.search);
+const R = Q.get('r') || '', O = Q.get('o') || '0', K = Q.get('k') || '';
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fail(t){ $('app').innerHTML = '<div class="ng">⚠️ ' + esc(t) + '</div>'; }
+function dateJa(d, w){ const p = d.split('-'); return (+p[1]) + '/' + (+p[2]) + '（' + w + '）'; }
+function durJa(m){ m = +m || 0; return (m >= 60 ? Math.floor(m / 60) + '時間' : '') + (m % 60 ? (m % 60) + '分' : ''); }
+
+function show(j){
+  let h = '<div class="card"><div class="nm">' + esc(j.name) + '</div>' +
+    '<div>' + esc(j.menu) + (j.photo ? '・📸写真あり' : '') + '</div>' +
+    '<div class="dt">' + dateJa(j.date, j.dow) + ' ' + (j.any ? '時間おまかせ' : esc(j.time)) + '</div>' +
+    '<div style="font-size:13px;color:#666">目安 ' + durJa(j.dur) + '</div></div>';
+  if (j.kind === 'cambio') h += '<div class="box red">変更の希望です。今の予約：' + esc(j.cur) + '<br>確定するまでは今の予約のままです。</div>';
+  if (j.direct) {
+    const wa = String(j.tel || '').replace(/[^0-9]/g, '');
+    h += '<div class="box blue">' + esc(j.src) + 'からの申し込み（DMなし）。<br>' +
+      'WhatsApp：' + (wa ? '<a href="https://wa.me/' + wa + '">' + esc(j.tel) + '</a>' : 'なし') + '<br>' +
+      'メール：' + (j.mail ? esc(j.mail) : 'なし') + '<br>' +
+      (j.gmail ? '確定すると、お客様に確定メールが届きます。' : '確定しても、お客様には自動で何も届きません。WhatsAppで連絡してください。') + '</div>';
+  }
+  if (j.done) { $('app').innerHTML = h + '<div class="box red">この予約はもう確定しています（' + esc(j.done) + '）</div>'; return; }
+  if (j.busy && j.busy.length) {
+    $('app').innerHTML = h + '<div class="box red">⚠️ この時間はもう予約があります。確定できません。<br>' + j.busy.map(esc).join('<br>') + '</div>'; return;
+  }
+  if (j.any) {
+    h += '<div class="box gray">この日の予定：' + (j.day.length ? '<br>' + j.day.map(esc).join('<br>') : 'なし') + '</div>' +
+      '<label>開始時間<input id="tm" class="inp" type="time" step="1800"></label>';
+  }
+  h += '<label>料金（ペソ）<input id="pr" class="inp" type="number" inputmode="numeric" value="' + esc(j.price) + '"></label>' +
+    '<label>施術時間（分）<input id="du" class="inp" type="number" inputmode="numeric" step="10" value="' + esc(j.dur) + '"></label>' +
+    '<label class="chk"><input id="nw" type="checkbox">新規のお客様（題名の先頭に S. をつける）</label>' +
+    '<label>カレンダーの題名<input id="ti" class="inp" type="text" value="' + esc(j.title) + '"></label>' +
+    (j.kind === 'cambio' ? '<label class="chk"><input id="dl" type="checkbox" checked>今の予約（' + esc(j.cur) + '）のカレンダーの予定を消す</label>' : '') +
+    '<button id="go" class="go">この内容で確定する</button><div id="msg"></div>';
+  $('app').innerHTML = h;
+  $('nw').onchange = function(){ const t = $('ti'); t.value = t.value.replace(/^S\./, ''); if (this.checked) t.value = 'S.' + t.value; };
+  $('go').onclick = confirmIt;
+}
+
+function confirmIt(){
+  const b = $('go'), tm = $('tm') ? $('tm').value : '';
+  if ($('tm') && !/^\d\d:\d\d$/.test(tm)) { $('msg').innerHTML = '<div class="ng">⚠️ 開始時間を入れてください</div>'; return; }
+  b.disabled = true; b.textContent = '確定中…'; $('msg').innerHTML = '';
+  fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'confirm', r: R, o: Number(O), k: K, price: $('pr').value, dur: $('du').value, title: $('ti').value, time: tm, delOld: !!($('dl') && $('dl').checked) }) })
+    .then(x => x.json())
+    .then(x => {
+      if (x && x.ok) {
+        b.style.display = 'none';
+        $('msg').innerHTML = '<div class="ok">' + esc(x.msg || '✅ 確定しました。お客様に確定のDMとメールが届きます。カレンダーにも入れました。') + '</div>';
+      } else {
+        b.disabled = false; b.textContent = 'この内容で確定する';
+        $('msg').innerHTML = '<div class="ng">⚠️ ' + esc((x && x.err) || '確定できませんでした') + '</div>';
+      }
+    })
+    .catch(() => {
+      // 通信が切れた時：確定できたか分からないので、押し直す前に読み直して確かめる
+      b.disabled = false; b.textContent = 'この内容で確定する';
+      $('msg').innerHTML = '<div class="ng">⚠️ 通信が切れました。確定できたか分からないので、<a href="' + esc(location.href) + '">このページを開き直して</a>「もう確定しています」と出ないか見てください。</div>';
+    });
+}
+
+if (!/^R[0-9A-Za-z]+$/.test(R) || !K || !/^\d$/.test(O)) fail('リンクが正しくありません');
+else fetch(API + '?action=cinfo&r=' + encodeURIComponent(R) + '&o=' + O + '&k=' + encodeURIComponent(K))
+  .then(x => x.json())
+  .then(j => { if (j && j.ok) show(j); else fail((j && j.err) || '読み込めませんでした'); })
+  .catch(() => fail('読み込めませんでした。電波の良い所で開き直してください。'));
+</script>
+</body></html>
