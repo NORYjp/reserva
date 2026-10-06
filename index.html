@@ -16,7 +16,7 @@
 <!-- 新デザイン（2026-10-05 Nory「とりあえず公開して後で修正」で公開）。事実は 資料/美容室.md と今のトップ（web/index.html）だけ。 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@400;500;600&family=Kaisei+Decol:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@400;500;600&family=Kaisei+Decol:wght@400;500;700&family=Special+Elite&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* お店のオリジナルフォント（Nory作・大文字A〜Zと記号）。2026-10-05 秘書がÁÉÍÑÓÚとハイフンを足した。ない文字（数字・日本語）はふつうのフォントに戻る */
 @font-face{font-family:'The Home Font F';src:url('TheHomeFontF-Regular.ttf') format('truetype');font-display:swap;unicode-range:U+0020-0022,U+0027,U+002C,U+002E,U+003A-003B,U+002D,U+003F,U+0041-005A,U+00C1,U+00C9,U+00CD,U+00D1,U+00D3,U+00DA}
@@ -469,6 +469,28 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;bac
  .two .room{aspect-ratio:auto!important;width:min(100%,360px);max-height:none}
  .two .room video{width:100%;height:auto;aspect-ratio:1078/1916;object-fit:cover}
 }
+/* 小さい説明の字＝Special Elite（英語・スペイン語。日本語は下のKlee One）2026-10-06 Nory決定G */
+:lang(es) .text,:lang(en) .text,:lang(es) .list li,:lang(en) .list li,:lang(es) .note,:lang(en) .note,:lang(es) .pill small,:lang(en) .pill small,:lang(es) .hero .lead,:lang(en) .hero .lead,:lang(es) footer p:not(.fb),:lang(en) footer p:not(.fb),:lang(es) .rv-txt .rv-who,:lang(en) .rv-txt .rv-who{font-family:'Special Elite','Montserrat',sans-serif;font-weight:400}
+:lang(es) .list li .no,:lang(en) .list li .no{font-family:'Cormorant Garamond',serif}
+:lang(es) .text,:lang(en) .text,:lang(es) .list li,:lang(en) .list li{font-size:14.5px;line-height:1.75}
+:lang(es) .pill small,:lang(en) .pill small{font-size:11.5px;letter-spacing:0;opacity:.95}
+:lang(es) .rv-txt .rv-who,:lang(en) .rv-txt .rv-who{font-size:11px;letter-spacing:.12em}
+@media (min-width:820px){:lang(es) .text,:lang(en) .text,:lang(es) .list li,:lang(en) .list li{font-size:15.5px}}
+/* 日本語の小さい説明の字＝Klee One（教科書体）2026-10-06 Nory決定M */
+:lang(ja) .text,:lang(ja) .list li,:lang(ja) .note,:lang(ja) .pill small,:lang(ja) .hero .lead,:lang(ja) footer p:not(.fb),:lang(ja) .rv-txt .rv-who{font-family:'Klee One','Kaisei Decol',serif}
+:lang(ja) .list li .no{font-family:'Cormorant Garamond',serif}
+/* 曜日の名前・営業時間の時刻・大きい住所も小さい字と同じフォントに（営業時間の所だけ。メニュー名・料金はそのまま）2026-10-06 17:05 Nory決定 */
+:lang(es) [data-t="hoursBig"] ~ * .menu .n,:lang(en) [data-t="hoursBig"] ~ * .menu .n,:lang(es) [data-t="hoursBig"] ~ * .menu .p,:lang(en) [data-t="hoursBig"] ~ * .menu .p,:lang(es) .addr,:lang(en) .addr{font-family:'Special Elite','Montserrat',sans-serif;font-weight:400}
+:lang(ja) [data-t="hoursBig"] ~ * .menu .n,:lang(ja) [data-t="hoursBig"] ~ * .menu .p,:lang(ja) .addr{font-family:'Klee One','Kaisei Decol',serif;font-weight:400}
+[data-t="hoursBig"] ~ * .menu .n{font-size:15px}
+[data-t="hoursBig"] ~ * .menu .p{font-size:17px;letter-spacing:.02em}
+:lang(es) .addr,:lang(en) .addr{font-size:21px;line-height:1.5}
+:lang(ja) .addr{font-size:20px;line-height:1.5}
+@media (min-width:820px){[data-t="hoursBig"] ~ * .menu .n{font-size:16px}[data-t="hoursBig"] ~ * .menu .p{font-size:19px}:lang(es) .addr,:lang(en) .addr{font-size:24px}:lang(ja) .addr{font-size:22px}}
+/* パソコン：オレンジ地の上のピンクの注意書き 12→13px（2026-10-06 Nory決定） */
+@media (min-width:820px){.band .note{font-size:13px}}
+/* 営業日カレンダーのボタン：スマホで1行に収める（2026-10-06 Nory決定） */
+@media (max-width:819px){.pill.line[data-t="calendar"]{white-space:nowrap;font-size:12px;letter-spacing:.06em;padding-left:12px;padding-right:12px}:lang(ja) .pill.line[data-t="calendar"]{font-size:13px;letter-spacing:.04em}}
 </style>
 </head>
 <body class="gate">
