@@ -202,14 +202,18 @@ const MENUS = [
  ['Color',{es:'Color',en:'Color',ja:'カラー'},'$1,300',1],
  ['Permanente',{es:'Permanente',en:'Perm',ja:'パーマ'},'$1,500',1],
  ['Alaciado japonés',{es:'Alaciado japonés',en:'Japanese straightening',ja:'縮毛矯正'},'$3,000',1],
- ['Tratamiento',{es:'Tratamiento',en:'Treatment',ja:'トリートメント'},'$1,300',1]
-];
+ ['Tratamiento',{es:'Tratamiento',en:'Treatment',ja:'トリートメント'},'$1,300',1],
+ ['Brushing corto',{es:'Lavado y brushing (corto/bob)',en:'Shampoo & blow-dry (short/bob)',ja:'シャンプーブロー（ショート・ボブ）'},'$600',0],
+ ['Brushing largo',{es:'Lavado y brushing (largo)',en:'Shampoo & blow-dry (long)',ja:'シャンプーブロー（ロング）'},'$700',0],
+ ['Brushing extra largo',{es:'Lavado y brushing (extra largo)',en:'Shampoo & blow-dry (extra long)',ja:'シャンプーブロー（スーパーロング）'},'$800',0],
+ ['Cejas',{es:'Corte de cejas',en:'Eyebrow trim',ja:'眉カット'},'$100',0]
+]; // 【10/6 Nory】シャンプーブロー3つ・眉カットを追加
 const price=m=>LANG==='ja'?m[2]+(m[3]?'〜':''):(m[3]?T('from')+' ':'')+m[2];
 const OPEN = 600; // 10:00
 // 閉店（最後のお客様が終わる時間・分）。日曜は10:00の1枠だけ
 const CLOSE = {2:1140,3:1140,4:1140,5:1140,6:1200}; // 火〜金 19:00 / 土 20:00
 // メニューの所要時間（分）Nory 2026-10-03
-const DUR_MENU = {0:60, 1:90, 2:10, 6:90};          // メンズ / レディース / 前髪 / トリートメント
+const DUR_MENU = {0:60, 1:90, 2:10, 6:90, 7:35, 8:40, 9:50, 10:10}; // 10/6 シャンプーブロー 35/40/50分・眉カット10分          // メンズ / レディース / 前髪 / トリートメント
 const DUR_PERM_MEN = 120, DUR_PERM_WOMEN = 150;      // パーマはカット込み（男性2時間・女性2時間半）
 const DUR_COLOR = [90, 90, 210, 210];                 // 全体 / リタッチ / ハイライト / ダブル
 const DUR_COLOR_RETOUCH_BLEACH = 120;                 // リタッチ（ブリーチあり）
