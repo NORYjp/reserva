@@ -28,6 +28,7 @@ h1{font-family:'Diplomata SC',serif;font-size:22px;text-align:center;margin:6px 
 .times{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .t{border:1.5px solid #222;border-radius:10px;padding:10px 0;background:#fff;font:inherit;font-size:16px;cursor:pointer}
 .t.on{background:#1d1d1d;color:#fff}
+.t.busy{background:#eee;color:#aaa;border-color:#ddd;text-decoration:line-through;cursor:not-allowed} /* 【下書き 10/5 埋まり】お店のカレンダーで埋まっている時間 */
 .hint{font-size:13px;color:#888;font-family:'Kaisei Decol',serif}
 .inp{display:block;width:100%;border:1.5px solid #ccc;border-radius:10px;padding:11px 10px;font:inherit;font-size:16px;margin-top:8px}
 textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font:inherit;font-size:15px;min-height:60px}
@@ -238,6 +239,16 @@ fetch(API+'?action=sunday').then(x=>x.json()).then(j=>{SUNDAY=j||{};revalidate()
 // 「営業」と入れた日は、決まった休みでも開ける
 fetch(API+'?action=closed').then(x=>x.json()).then(j=>{((j&&j.closed)||[]).forEach(d=>{if(EXTRA.indexOf(d)<0)EXTRA.push(d);});OPENX=(j&&j.open)||[];revalidate();upd();}).catch(()=>{});
 const toM=t=>{const a=t.split(':');return (+a[0])*60+(+a[1]);};
+// 【下書き 10/5 埋まり】お店のカレンダーで埋まっている時間 {日付:[[開始分,終了分],...]}（?action=busy）。読めない時は {} のまま＝今まで通り全部選べる
+let BUSY={};
+fetch(API+'?action=busy').then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)){BUSY=j;revalidate();upd();}}).catch(()=>{});
+// 変更のページ：その人の今の予約（CUR.start）の日付と開始分（メキシコ時間）
+function curDM(){if(!CUR||!CUR.start)return null;const p={};new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(CUR.start)).forEach(x=>{p[x.type]=x.value;});return {d:p.year+'-'+p.month+'-'+p.day,m:(+p.hour%24)*60+(+p.minute)};}
+// その日の埋まり。変更のときは、今の予約と同じ開始時間の埋まりを外す（自分の予約で自分がふさがらないように）
+function busyOf(k){let a=Array.isArray(BUSY[k])?BUSY[k]:[];if(CAMBIO){const c=curDM();if(c&&c.d===k)a=a.filter(b=>b[0]!==c.m);}return a;}
+// 開始 s（'HH:MM'）から施術時間（メニュー未定なら最小30分）が埋まりと重なるか
+function busyHit(d,s){const st=toM(s),en=st+Math.max(dur(),30);return busyOf(ymd(d)).some(b=>+b[1]>st&&+b[0]<en);}
+function freeSlots(d){return slots(d).filter(s=>!busyHit(d,s));}
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&o.time!=='any'&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
  return st;}
@@ -269,17 +280,17 @@ function drawCal(){const g=document.getElementById('grid');g.innerHTML='';docume
  for(let i=0;i<view.getDay();i++){const e=document.createElement('div');e.className='d blank';g.appendChild(e);}
  const last=new Date(view.getFullYear(),view.getMonth()+1,0).getDate();
  for(let day=1;day<=last;day++){const d=new Date(view.getFullYear(),view.getMonth(),day);const b=document.createElement('button');b.textContent=day;
-  const ok=d>=TODAY&&d<=LAST&&!closed(d)&&slots(d).length>0;b.className='d'+(ok?'':' off')+(sel.date&&ymd(sel.date)===ymd(d)?' on':'');
+  const ok=d>=TODAY&&d<=LAST&&!closed(d)&&freeSlots(d).length>0; // 【10/5 埋まり】空きが0の日は押せない（時間おまかせも同じ）b.className='d'+(ok?'':' off')+(sel.date&&ymd(sel.date)===ymd(d)?' on':'');
   if(ok)b.onclick=()=>{sel.date=d;sel.time=ANY?'any':null;if(ANY&&sel.cur<2&&!sel.opts[sel.cur+1].date)sel.cur++;drawCal();drawTimes();drawOpts();upd();};else b.disabled=true;g.appendChild(b);}
  document.getElementById('prev').disabled=view<=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
 }
 document.getElementById('prev').onclick=()=>{if(view>new Date(TODAY.getFullYear(),TODAY.getMonth(),1)){view=new Date(view.getFullYear(),view.getMonth()-1,1);drawCal();}};
 document.getElementById('next').onclick=()=>{const n=new Date(view.getFullYear(),view.getMonth()+1,1);if(n<=LAST){view=n;drawCal();}};
-function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.style.display=ANY?'none':'';document.getElementById('horaH').style.display=ANY?'none':'';if(ANY)return;if(!sel.date){t.innerHTML='<div class="hint" style="grid-column:1/-1">'+T('pickDay')+'</div>';return;}slots(sel.date).forEach(s=>{const b=document.createElement('button');const taken=sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(sel.date)&&o.time===s);b.className='t'+(sel.time===s?' on':'');b.textContent=s;if(taken){b.disabled=true;b.style.opacity='.3';}b.onclick=()=>{sel.time=s;drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};t.appendChild(b);});}
+function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.style.display=ANY?'none':'';document.getElementById('horaH').style.display=ANY?'none':'';if(ANY)return;if(!sel.date){t.innerHTML='<div class="hint" style="grid-column:1/-1">'+T('pickDay')+'</div>';return;}slots(sel.date).forEach(s=>{const b=document.createElement('button');const taken=sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(sel.date)&&o.time===s);const busy=busyHit(sel.date,s);b.className='t'+(sel.time===s?' on':'')+(busy?' busy':'');b.textContent=s;if(busy){b.disabled=true;}else if(taken){b.disabled=true;b.style.opacity='.3';}b.onclick=()=>{sel.time=s;drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};t.appendChild(b);});}
 function showMenus(){return sel.menus.map(i=>i===3&&sel.ctype!==null?MENUS[3][1][LANG]+' ('+CTYPES[sel.ctype][1][LANG]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][1][LANG]:'')+')':(i===5&&sel.stype!==null?MENUS[5][1][LANG]+' ('+STYPES[sel.stype][1][LANG]+')':MENUS[i][1][LANG])).join(' + ');}
 function menuText(){return sel.menus.map(i=>i===3&&sel.ctype!==null?'Color ('+CTYPES[sel.ctype][0]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][0].toLowerCase():'')+')':(i===5&&sel.stype!==null?'Alaciado ('+STYPES[sel.stype][0]+')':MENUS[i][0])).join(' + ');}
 let lastDur=-1;
-function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]:slots(o.date);if(!ok.length){o.date=null;o.time=null;}else if(o.time&&o.time!=='any'&&ok.indexOf(o.time)<0)o.time=null;}});drawCal();drawTimes();drawOpts();}
+function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]:freeSlots(o.date);if(!ok.length){o.date=null;o.time=null;}else if(o.time&&o.time!=='any'&&ok.indexOf(o.time)<0)o.time=null;}});drawCal();drawTimes();drawOpts();}
 function endTxt(o){if(o.time==='any')return '';const a=o.time.split(':');const e=(+a[0])*60+(+a[1])+dur();return o.date.getDay()===0?'':(LANG==='ja'?' → '+hm(e)+T('aprox'):' → '+T('aprox')+' '+hm(e));} // 終わる時間には必ず aprox.（Nory 10/4）
 // 選んだ時間から閉店までに終わらないメニューは押せなくする
 function fitsWith(ch){const b={m:sel.menus.slice(),c:sel.ctype,bl:sel.bleach,s:sel.stype};ch();const ok=sel.opts.every(o=>!(o.date&&o.time)||(o.time==='any'?slots(o.date).length>0:slots(o.date).indexOf(o.time)>=0));sel.menus=b.m;sel.ctype=b.c;sel.bleach=b.bl;sel.stype=b.s;return ok;}
@@ -325,6 +336,7 @@ if(CAMBIO){
  fetch(API+'?action=myres&id='+ID).then(x=>x.json()).then(j=>{
   if(!j||!j.ok){cb.textContent=T('cNone');return;}
   CUR=j;
+  revalidate(); // 【10/5 埋まり】今の予約の時間を埋まりから外して引き直す
   if(!j.open){cb.textContent=T('cClosed');document.getElementById('go').style.display='none';return;}
   cb.innerHTML='<b>'+T('cCur')+'</b><br>'+fmtCur(j.start)+'<br>'+j.menu.replace(/[<>&]/g,'')+'<br><small>'+T('cKeep')+'</small>';
   const parts=j.menu.split(' + ').map(x=>x.trim());
