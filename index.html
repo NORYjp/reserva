@@ -460,13 +460,18 @@ var p=document.querySelector('.brand');if(p)p.addEventListener('click',function(
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
 <button class="music" id="musicBtn" aria-label="music" title="Music">♪</button>
 <script>
-/* 画面に最初にさわった時に音楽を流す（ブラウザの決まりで、開いただけでは音が出せない）。♪で止める・流す。止めた人は次も止めたまま */
-(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');a.volume=.45;var off=false;try{off=localStorage.getItem('thmusic')==='off'}catch(e){}
+/* 画面に最初にさわった時に音楽を流す（ブラウザの決まりで、開いただけでは音が出せない）。♪で止める・流す。次に開いた時はまた流す */
+(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');a.volume=.45;var off=false;try{localStorage.removeItem('thmusic')}catch(e){} /* 開くたびに毎回流す（止めたことは覚えない）2026-10-05 Nory */
 function ui(){b.className='music '+(a.paused?'off':'on');}
 function play(){var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
 function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){window.removeEventListener(t,first,true)});if(!off&&!(e&&b.contains(e.target)))play();}
 ['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
-b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}try{localStorage.setItem('thmusic',off?'off':'on')}catch(e){}});ui();})();
+/* 止まっていたら、画面にさわった時・ページに戻った時に、また流す（♪で止めた人はそのまま） */
+function resume(e){if(!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
+['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)resume();});
+a.addEventListener('pause',ui);a.addEventListener('play',ui);
+b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}});ui();})();
 </script>
 <script>
 /* 見出しを押すと中が開く。見出しのあとの中身をまとめて隠す */
