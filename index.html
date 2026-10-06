@@ -92,6 +92,19 @@ body.gate .hero{min-height:calc(100vh - 86px)!important;min-height:calc(100svh -
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (min-width:820px){.music{bottom:24px;right:24px}}
 body.gate .music{bottom:24px}
+.dv{display:flex;flex-direction:column;align-items:center;gap:14px;margin:26px 0 0;padding:26px 20px 22px;max-width:400px;border:1px solid var(--line);border-radius:4px;background:#fffaf4;text-decoration:none;color:var(--accent);transition:transform .3s ease,box-shadow .3s ease}
+.dv:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,42,32,.12)}
+.dv img{width:180px;height:auto}
+.dv-c{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--pink-d);animation:dvp 1.6s ease-in-out infinite}
+.dv-c i{font-style:normal;display:inline-block;animation:dva 1.6s ease-in-out infinite}
+@keyframes dvp{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes dva{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.mq{display:block;overflow:hidden;margin:48px 0 0;padding:18px 0;background:#fffaf4;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mq-in{display:flex;gap:14px;padding-right:14px;width:max-content;animation:mq 45s linear infinite}
+.mq img{width:150px;height:150px;object-fit:cover;border-radius:4px;background:#f4f1ee}
+.mq:hover .mq-in{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-in{animation-duration:120s}}
 /* 区切り */
 section{padding:72px 16px 0;max-width:1080px;margin:0 auto}
 .big{font-family:var(--display);font-weight:400;text-transform:uppercase;color:var(--accent);font-size:clamp(40px,11vw,88px);line-height:1;letter-spacing:.02em;margin:0 0 22px}
@@ -294,10 +307,15 @@ footer a{color:#f3e2cf}
     <div>
       <h2 class="big" data-t="shopBig"></h2>
       <p class="text" data-t="shopTx"></p>
+      <!-- Davinesのロゴを押すと商品ページへ（2026-10-05 Nory「ダビネスのロゴ、クリックヒアのように」） -->
+      <a class="dv" href="/productos.html" data-href="productos" aria-label="Davines"><img src="/productos/img/davines_logo.svg" alt="Davines" width="200" height="60"><span class="dv-c"><span data-t="dvClick"></span> <i>→</i></span></a>
       <div class="stack"><a class="pill line" href="/productos.html" data-href="productos" data-t="shopBtn"></a></div>
     </div>
   </div>
 </section>
+<!-- Davinesの商品が横に流れ続ける帯（2026-10-05 Nory「商品がくるくる回っているようなもの」）。押すと商品ページへ -->
+<a class="mq" href="/productos.html" data-href="productos" aria-label="Davines"><div class="mq-in"><img src="/productos/img/D001.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D004.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D005.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D007.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D011.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D014.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D015.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D017.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D019.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D020.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D021.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D022.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D023.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D024.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D001.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D004.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D005.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D007.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D011.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D014.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D015.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D017.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D019.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D020.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D021.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D022.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D023.jpg" alt="" loading="lazy" width="160" height="160"><img src="/productos/img/D024.jpg" alt="" loading="lazy" width="160" height="160"></div></a>
+
 
 <section class="fade">
   <div class="two">
@@ -342,6 +360,7 @@ dockIg:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタで�
 dockWa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約'},
 ph1:{es:'Espacio para foto (interior del salón)',en:'Photo placeholder (salon interior)',ja:'写真を入れる場所（店内）'},
 ph2:{es:'Espacio para foto (estante de productos Davines)',en:'Photo placeholder (Davines product shelf)',ja:'写真を入れる場所（店頭のDavines商品の棚）'},
+dvClick:{es:'Toque aquí',en:'Click here',ja:'こちらをタップ'},
 cue:{es:'Descubrir',en:'Discover',ja:'さらに見る'},
 aboutBig:{es:'Bienvenidos a THE\u00a0HOME.',en:'Welcome to THE\u00a0HOME.',ja:'ようこそ、THE\u00a0HOMEへ。'},
 stylesMore:{es:'Ver estilos en Instagram',en:'See styles on Instagram',ja:'スタイルをインスタグラムで見る'},
