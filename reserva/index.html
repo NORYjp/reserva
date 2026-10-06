@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>THE HOME Hair re-creative – Reserva</title><meta property="og:title" content="Book now – THE HOME Hair re-creative"><meta property="og:description" content="Calle Ensenada 138, Condesa, CDMX"><meta property="og:image" content="https://thehomehair.com/og2.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
+<html><head><!-- 【下書き 2026-10-05 仕組み担当】本番 web/reserva/index.html（10/5 公開版）の写し。Googleマップの「予約」（?src=google・?id= なし）から開いた人も送れるようにした。本番は変えていない。違いは「【Google 10/4】」「【Google 10/5】」の所だけ。 --><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>THE HOME Hair re-creative – Reserva</title><meta property="og:title" content="Book now – THE HOME Hair re-creative"><meta property="og:description" content="Calle Ensenada 138, Condesa, CDMX"><meta property="og:image" content="https://thehomehair.com/og2.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Yeseva+One&family=Kaisei+Decol:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -88,6 +88,7 @@ textarea{width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font
 <input id="last2" class="inp" type="text" style="display:none">
 <input id="tel" class="inp" type="tel" inputmode="tel" autocomplete="tel">
 <input id="mail" class="inp" type="email" inputmode="email" autocomplete="email">
+<input id="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><!-- 【Google 10/4】人には見えない欄（ロボット対策） -->
 <div class="hint" style="margin-top:4px" data-t="mailNote"></div>
 </div>
 
@@ -164,10 +165,32 @@ cClosed:{es:'El plazo para cambios y cancelaciones es hasta las 10:00 a.m. del d
 cNone:{es:'No encontramos una cita confirmada.',en:'We could not find a confirmed appointment.',ja:'確定済みのご予約が見つかりませんでした。'},
 cLoading:{es:'Cargando…',en:'Loading…',ja:'読み込み中…'}
 });
+// 【Google 10/4】IDなし（Googleマップ・ホームページ）の人に出す文。DMがないので、確定はメール、写真と相談はWhatsApp
+Object.assign(TX,{
+telWa:{es:'Celular (WhatsApp)',en:'Mobile (WhatsApp)',ja:'携帯番号（WhatsApp）'},
+gMailNote:{es:'Le enviaremos la confirmación de su cita a este correo.',en:'We will send your appointment confirmation to this email.',ja:'ご予約の確定は、このメールアドレスにお送りします。'},
+gReq:{es:'Esto es una solicitud. Le confirmaremos su cita por correo electrónico.',en:'This is a request. We will confirm your appointment by email.',ja:'こちらは予約のご希望の受付です。確定はメールでお知らせします。'},
+gAnyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por WhatsApp o por correo.',en:'Choose 1 to 3 days. We will suggest a time via WhatsApp or email.',ja:'日にちを1〜3つお選びください。お時間はWhatsAppまたはメールでご提案します。'},
+gPhoto:{es:'📸 Para darle el precio y el tiempo exactos, envíenos por WhatsApp una foto del estilo que desea y otra de su cabello actual.',en:'📸 To give you an exact price and time, please send us a photo of the style you would like and one of your current hair via WhatsApp.',ja:'📸 料金と施術時間を正確にお伝えするため、ご希望のスタイルと現在の髪の写真をWhatsAppでお送りください。'},
+gDoneC:{es:'Le enviamos un correo de recepción. Le confirmaremos su cita por correo electrónico; si no lo encuentra, revise su carpeta de spam.',en:'We have sent you a receipt by email. We will confirm your appointment by email; if you cannot find it, please check your spam folder.',ja:'受付のメールをお送りしました。ご予約の確定もメールでお知らせします。見当たらない場合は迷惑メールフォルダもご確認ください。'},
+gBack:{es:'Escríbanos por WhatsApp',en:'Message us on WhatsApp',ja:'WhatsAppで問い合わせる'},
+gMailNoteOff:{es:'Le contactaremos por WhatsApp o por teléfono para confirmar su cita.',en:'We will contact you via WhatsApp or phone to confirm your appointment.',ja:'ご予約の確定は、お店からWhatsAppまたはお電話でご連絡します。'},
+gReqOff:{es:'Esto es una solicitud. Le confirmaremos su cita por WhatsApp o por teléfono.',en:'This is a request. We will confirm your appointment via WhatsApp or phone.',ja:'こちらは予約のご希望の受付です。確定はお店からWhatsAppまたはお電話でご連絡します。'},
+gAnyNoteOff:{es:'Elija de 1 a 3 días. Le propondremos la hora por WhatsApp o por teléfono.',en:'Choose 1 to 3 days. We will suggest a time via WhatsApp or phone.',ja:'日にちを1〜3つお選びください。お時間はお店からWhatsAppまたはお電話でご提案します。'},
+gDoneCOff:{es:'Hemos recibido su solicitud. Le contactaremos por WhatsApp o por teléfono para confirmar su cita.',en:'We have received your request. We will contact you via WhatsApp or phone to confirm your appointment.',ja:'ご希望を受け付けました。ご予約の確定は、お店からWhatsAppまたはお電話でご連絡します。'},
+gErr:{es:'No pudimos recibir su solicitud. Por favor escríbanos por WhatsApp (55 2179 8065).',en:'We could not receive your request. Please message us on WhatsApp (55 2179 8065).',ja:'受付できませんでした。お手数ですが、WhatsApp（55 2179 8065）でご連絡ください。'}
+});
 const T=k=>TX[k][LANG];
 const CAMBIO=new URLSearchParams(location.search).get('cambio')==='1'; // 【下書き 10/4】
 let CUR=null; // 今の予約（?action=myres）
 const ID = (new URLSearchParams(location.search).get('id')||'').replace(/[^0-9]/g,'');
+// 【Google 10/4】Googleマップから開いた人（?src=google・IDなし・変更のページ以外）は送れる。来店きっかけ「Google」の印
+const DIRECT_SRC=['google','wa','web']; // 【WA 10/5】IDなしでフォームを出す src の一覧（Code.gs の DIRECT_SRC と同じにする）
+const SRC=(s=>DIRECT_SRC.indexOf(s)>=0?s:'')((new URLSearchParams(location.search).get('src')||'').toLowerCase());
+const DIRECT=!ID&&!CAMBIO&&!!SRC; // 【WA 10/5】?src=google・wa・web で送れる。idなし・srcなし（ほかの src）は今どおりDM/WhatsAppのボタン
+const WA_SHOP='525521798065'; // お店のWhatsApp（名刺 55-2179-8065）
+let GMAIL=false; // お客様へのメール（GOOGLE_MAIL）がオンか。分かるまでは「オフ」の文（お店からWhatsAppかお電話で）を出す
+const gk=k=>GMAIL?k:k+'Off'; // オンなら今のメールの文、オフなら …Off の文
 const EXTRA = ["2026-09-29"]; // 臨時の休み（Code.gs の EXTRA_CLOSED と同じにする）
 const API = 'https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
 // [Noryに届く名前（スペイン語）, 表示する名前, 料金, 「から」かどうか]
@@ -271,7 +294,7 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  document.getElementById('sum').innerHTML=(showMenus()||T('menuNone'))+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+(dur()?'<br><small>⏱ '+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':''):T('dtNone'));
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null);
  const all3=ANY?sel.opts.some(x=>x.date&&x.time):sel.opts.every(x=>x.date&&x.time);const n3=document.getElementById('need3');n3.textContent=T(ANY?'need1':'need3');n3.style.display=all3?'none':'block';
- document.getElementById('go').disabled=!(ms&&colorOk&&all3&&ID&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));lock();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
+ document.getElementById('go').disabled=!(ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));lock();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
 // 名と姓は別々の欄で、両方必須（Nory 10/3）
 function nameOk(){return document.getElementById('name').value.trim().length>=1&&document.getElementById('last').value.trim().length>=1;}
 function fullName(){const n=document.getElementById('name').value.trim(),l=document.getElementById('last').value.trim(),l2=LANG==='es'?document.getElementById('last2').value.trim():'';return LANG==='ja'?l+' '+n:(n+' '+l+(l2?' '+l2:''));}
@@ -279,13 +302,18 @@ function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
 ['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30)})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(dur()?'<br><small>⏱ '+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T('anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T(CAMBIO?'cDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
-  else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):T('err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T('err');});};
-if(!ID){/* 【下書き 10/5】idなし：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><a class="go" style="text-decoration:none;text-align:center;background:#1f7a4d" href="https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.')+'">'+({es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約する'}[LANG]||'Reservar por WhatsApp')+'</a>';app.appendChild(bx);}
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30)})}).then(x=>x.json()).then(r=>{if(r&&r.ok){document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(dur()?'<br><small>⏱ '+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):'doneC')+'</p>'+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
+  else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
+if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><a class="go" style="text-decoration:none;text-align:center;background:#1f7a4d" href="https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.')+'">'+({es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約する'}[LANG]||'Reservar por WhatsApp')+'</a>';app.appendChild(bx);}
 document.documentElement.lang=LANG;
 document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));
 document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='es'){const x=document.getElementById('last2');x.style.display='block';x.placeholder=T('last2');}if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
 document.getElementById('go').textContent=T('send');
+// 【Google 10/4】IDなしの人：携帯は「WhatsApp」、確定はメール、写真はWhatsAppで
+// 文はメールのスイッチで切りかえる：最初は「オフ」の文 → ?action=gmode でオンと分かったらメールの文。送ったあとの画面は Apps Script の返事（r.mail）で決める
+function gText(){document.querySelector('[data-t="mailNote"]').textContent=T(gk('gMailNote'));document.querySelector('[data-t="reqNote"]').textContent=T(gk('gReq'));document.getElementById('anyNote').textContent=T(gk('gAnyNote'));}
+if(DIRECT){document.getElementById('tel').placeholder=T('telWa');document.getElementById('photoNote').textContent=T('gPhoto');gText();
+ fetch(API+'?action=gmode').then(x=>x.json()).then(j=>{GMAIL=!!(j&&j.mail);gText();}).catch(()=>{});}
 // 【下書き 10/4】変更モード：題名・説明を変え、連絡先を隠し、今の予約を読む。メニューは今の予約のものを最初から選んでおく
 if(CAMBIO){
  document.querySelector('h1').textContent=T('cTitle');document.title='THE HOME Hair re-creative – '+T('cTitle');
