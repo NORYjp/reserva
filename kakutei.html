@@ -107,9 +107,16 @@ function confirmIt(){
 }
 
 if (!/^R[0-9A-Za-z]+$/.test(R) || !K || !/^\d$/.test(O)) fail('リンクが正しくありません');
-else fetch(API + '?action=cinfo&r=' + encodeURIComponent(R) + '&o=' + O + '&k=' + encodeURIComponent(K))
-  .then(x => x.json())
-  .then(j => { if (j && j.ok) show(j); else fail((j && j.err) || '読み込めませんでした'); })
-  .catch(() => fail('読み込めませんでした。電波の良い所で開き直してください。'));
+else load(1);
+
+// 読み込み：12秒で止まったら自動でやり直す（最大4回）
+function load(n){
+  const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), 12000);
+  if (n > 1) $('app').innerHTML = '<div class="load">読み込み中…（' + n + '回目）</div>';
+  fetch(API + '?action=cinfo&r=' + encodeURIComponent(R) + '&o=' + O + '&k=' + encodeURIComponent(K) + '&t=' + Date.now(), { signal: ctl.signal, cache: 'no-store' })
+    .then(x => x.json())
+    .then(j => { clearTimeout(tm); if (j && j.ok) show(j); else fail((j && j.err) || '読み込めませんでした'); })
+    .catch(() => { clearTimeout(tm); if (n < 4) load(n + 1); else fail('読み込めませんでした。電波の良い所で開き直してください。'); });
+}
 </script>
 </body></html>
