@@ -294,6 +294,8 @@
     body.hero-blur .hero-video{ object-fit:contain; object-position:center center; }
   }
   .hero-inner{ padding-bottom:112px; }
+  /* 最初の画面の「Señor Nory」をオレンジに（2026-10-07 Nory）。トップページの見出しと同じオレンジ・影で動画の上でも読める */
+  .hero h1{ color:#f08a4b; text-shadow:0 2px 14px rgba(0,0,0,.42), 0 1px 2px rgba(0,0,0,.25); }
   /* 下へ進むボタン（さらに見る） */
   .cue{
     position:absolute; left:50%; bottom:26px; z-index:3;
@@ -520,7 +522,7 @@
     </div>
 
     <div class="lot reveal" id="lote-guide">
-      <div class="lot-media slides" aria-roledescription="carousel"><img id="img-guide" src="media/guide.jpg" loading="lazy" decoding="async" alt="México Guide"><video data-src="media/guide.mp4" preload="none" playsinline muted loop aria-label="México Guide video"></video></div>
+      <div class="lot-media drift"><img id="img-guide" src="media/guide.jpg" loading="lazy" decoding="async" alt="México Guide"></div>
       <div class="lot-body">
         <div class="lot-tag">LOTE Nº 02</div>
         <h3 class="disp">
