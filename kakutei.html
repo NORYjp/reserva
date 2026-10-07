@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja"><head>
+<!-- 【本人番号 10/7 仕組み担当・下書き】元＝web/kakutei.html（今の公開中）。違いは「本人番号 10/7」の所だけ。公開はしていない。
+     cinfo に idWarn があるとき：確定ボタンの前に「🔴要確認：リンクの番号と予約した人が違う可能性」と、
+     「お客様のメールに直接確定メールを送る（Googleの道）」／「今までどおり ManyChat で確定」を選ぶ欄を出す（はじめは Googleの道）。
+     Apps Script が 下書き_Code_本人番号の注意.gs になる前に公開しても、idWarn が来ないので今と同じ見え方（害はない）。 -->
 <!-- 【確定ボタン 10/5 仕組み担当・下書き】Noryだけが使う「予約の確定」ページ。通知メールのボタンから開く。
      Googleのログインに関係なく開ける（iPhoneでGoogleアカウントが複数でも開ける）。
      中身は Apps Script（API）の ?action=cinfo で読み、「確定する」は POST {action:'confirm'}。k（合い言葉）が合わないと何も読めない・確定できない。 -->
@@ -33,6 +37,12 @@ label{display:block;margin-top:14px;font-size:14px;color:#444}
 .ok{background:#e7f5ea;color:#1b6b2a;border-radius:10px;padding:12px}
 .ng{background:#fdecee;color:#b00020;border-radius:10px;padding:12px}
 .load{text-align:center;color:#888;padding:40px 0}
+/* 本人番号 10/7 */
+.warn{background:#b00020;color:#fff;border-radius:10px;padding:12px;margin:12px 0 0;font-size:14px;line-height:1.6}
+.warn b{font-size:15px}
+.way{display:flex;gap:10px;align-items:flex-start;border:1.5px solid #e3c4c9;border-radius:10px;padding:10px 12px;margin-top:10px;font-size:15px;line-height:1.5;background:#fff}
+.way input{width:22px;height:22px;flex:none;margin-top:2px}
+.way small{display:block;color:#666;font-size:13px}
 a{color:inherit}
 </style>
 </head><body><div class="w">
@@ -64,7 +74,13 @@ function show(j){
       'メール：' + (j.mail ? esc(j.mail) : 'なし') + '<br>' +
       (j.gmail ? '確定すると、お客様に確定メールが届きます。' : '確定しても、お客様には自動で何も届きません。WhatsAppで連絡してください。') + '</div>';
   }
-  if (j.done) { $('app').innerHTML = h + '<div class="box red">この予約はもう確定しています（' + esc(j.done) + '）</div>'; return; }
+  if (j.done) { $('app').innerHTML = h + '<div class="box red">この予約はもう確定しています（' + esc(j.done) + '）' + (j.via === 'google' ? '・Googleの道' : '') + '</div>'; return; }
+  // 本人番号 10/7：リンクの番号と予約した人が違う可能性
+  if (j.idWarn) {
+    const wa = String(j.tel || '').replace(/[^0-9]/g, '');
+    h += '<div class="warn"><b>' + esc(j.idWarn.head) + '</b><br>' + (j.idWarn.why || []).map(esc).join('<br>') +
+      '<br>メール：' + (j.mail ? esc(j.mail) : 'なし') + '／WhatsApp：' + (wa ? '<a href="https://wa.me/' + wa + '">' + esc(j.tel) + '</a>' : 'なし') + '</div>';
+  }
   if (j.busy && j.busy.length) {
     $('app').innerHTML = h + '<div class="box red">⚠️ この時間はもう予約があります。確定できません。<br>' + j.busy.map(esc).join('<br>') + '</div>'; return;
   }
@@ -77,6 +93,11 @@ function show(j){
     '<label class="chk"><input id="nw" type="checkbox">新規のお客様（題名の先頭に S. をつける）</label>' +
     '<label>カレンダーの題名<input id="ti" class="inp" type="text" value="' + esc(j.title) + '"></label>' +
     (j.kind === 'cambio' ? '<label class="chk"><input id="dl" type="checkbox" checked>今の予約（' + esc(j.cur) + '）のカレンダーの予定を消す</label>' : '') +
+    (j.idWarn && j.kind !== 'cambio' ? // 本人番号 10/7：送り方を選ぶ（はじめは Googleの道）
+      '<label class="way"><input type="radio" name="via" value="google" checked' + (j.mail ? '' : ' disabled') + '><span><b>お客様のメールに直接確定メールを送る（Googleの道）</b>' +
+        '<small>' + (!j.mail ? '⚠️ お客様のメールが無いため選べません。WhatsAppで伝えてください。' : j.gmail ? 'ManyChatには何も入れません（DMは出ません）。お店のGmailから ' + esc(j.mail) + ' へ確定メール、前日朝7時にお知らせメール。' : '⚠️ GOOGLE_MAIL がオフのため、お客様には何も届きません（カレンダーだけ）。WhatsAppで伝えてください。') + '</small></span></label>' +
+      '<label class="way"><input type="radio" name="via" value=""' + (j.mail ? '' : ' checked') + '><span><b>今までどおり ManyChat で確定</b>' +
+        '<small>確定DM・確定メール・前日メールは、リンクの番号の連絡先に届きます。' + (j.idWarn.owner ? 'この番号は Nory本人なので、メールが合わないと止まります。' : 'メールが合わないと止まります。') + '</small></span></label>' : '') +
     '<button id="go" class="go">この内容で確定する</button><div id="msg"></div>';
   $('app').innerHTML = h;
   $('nw').onchange = function(){ const t = $('ti'); t.value = t.value.replace(/^S\./, ''); if (this.checked) t.value = 'S.' + t.value; };
@@ -88,7 +109,8 @@ function confirmIt(){
   if ($('tm') && !/^\d\d:\d\d$/.test(tm)) { $('msg').innerHTML = '<div class="ng">⚠️ 開始時間を入れてください</div>'; return; }
   b.disabled = true; b.textContent = '確定中…'; $('msg').innerHTML = '';
   fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify({ action: 'confirm', r: R, o: Number(O), k: K, price: $('pr').value, dur: $('du').value, title: $('ti').value, time: tm, delOld: !!($('dl') && $('dl').checked) }) })
+    body: JSON.stringify({ action: 'confirm', r: R, o: Number(O), k: K, price: $('pr').value, dur: $('du').value, title: $('ti').value, time: tm, delOld: !!($('dl') && $('dl').checked),
+      via: (document.querySelector('input[name="via"]:checked') || {}).value || '' }) }) // 本人番号 10/7
     .then(x => x.json())
     .then(x => {
       if (x && x.ok) {
