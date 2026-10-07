@@ -1,6 +1,6 @@
 {
  "ok": true,
- "updated": "2026-10-04",
+ "updated": "2026-10-06",
  "items": [
   {
    "id": "D001",
@@ -23,7 +23,7 @@
     "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D001.jpg",
    "stock": "low",
    "rank": null,
@@ -52,7 +52,7 @@
     "ja": "やわらかな質感で、乾燥が気になる部分をしっとり"
    },
    "list": 915,
-   "salon": 824,
+   "salon": 820,
    "photo": "productos/img/D002.jpg",
    "stock": "ok",
    "rank": null,
@@ -80,7 +80,7 @@
     "ja": "やわらかな泡で、軽やかに洗い上げます；固形タイプで旅先にも"
    },
    "list": 635,
-   "salon": 572,
+   "salon": 570,
    "photo": "productos/img/D003.jpg",
    "stock": "low",
    "rank": null,
@@ -109,7 +109,7 @@
     "ja": "明るい髪色に輝きを与え、からまりにくくします；シリコンフリー"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D004.jpg",
    "stock": "last",
    "rank": null,
@@ -138,7 +138,7 @@
     "ja": "髪色をくすませる、水のミネラルや残留物を落とします"
    },
    "list": 780,
-   "salon": 702,
+   "salon": 700,
    "photo": "productos/img/D005.jpg",
    "stock": "last",
    "rank": null,
@@ -194,7 +194,7 @@
     "ja": "やさしく洗い、まとまりのあるカールに"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D007.jpg",
    "stock": "ok",
    "rank": 3,
@@ -250,7 +250,7 @@
     "ja": "クリーミーな泡で、まとまりのある髪に；固形タイプで旅先にも"
    },
    "list": 635,
-   "salon": 572,
+   "salon": 570,
    "photo": "productos/img/D009.jpg",
    "stock": "low",
    "rank": null,
@@ -278,7 +278,7 @@
     "ja": "短時間でなじみ、ツヤのあるなめらかな髪に"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D010.jpg",
    "stock": "ok",
    "rank": null,
@@ -334,7 +334,7 @@
     "ja": "自然な仕上がりで、まとまりやすい髪に"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D012.jpg",
    "stock": "ok",
    "rank": null,
@@ -390,7 +390,7 @@
     "ja": "指通りのよい、なめらかな仕上がり"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D014.jpg",
    "stock": "ok",
    "rank": null,
@@ -418,7 +418,7 @@
     "ja": "やさしく洗い上げ、色もちをサポートします"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D015.jpg",
    "stock": "ok",
    "rank": null,
@@ -446,7 +446,7 @@
     "ja": "しっとりやわらかな手ざわりに"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D016.jpg",
    "stock": "last",
    "rank": null,
@@ -502,7 +502,7 @@
     "ja": "やわらかく、自然なツヤのある髪に"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D018.jpg",
    "stock": "last",
    "rank": null,
@@ -558,7 +558,7 @@
     "ja": "うるおいを残す、やさしい洗い心地；固形タイプで旅先にも"
    },
    "list": 635,
-   "salon": 572,
+   "salon": 570,
    "photo": "productos/img/D020.jpg",
    "stock": "last",
    "rank": null,
@@ -587,7 +587,7 @@
     "ja": "弾むようなカールと自然なツヤ；広がりにくい仕上がりに"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D021.jpg",
    "stock": "last",
    "rank": 4,
@@ -616,7 +616,7 @@
     "ja": "カールをまとめ、うるおいを与えます；キープ力：ミディアム（3/5）"
    },
    "list": 799,
-   "salon": 719,
+   "salon": 720,
    "photo": "productos/img/D022.jpg",
    "stock": "ok",
    "rank": null,
@@ -644,7 +644,7 @@
     "ja": "自然でさりげない仕上がり"
    },
    "list": 790,
-   "salon": 711,
+   "salon": 710,
    "photo": "productos/img/D023.jpg",
    "stock": "last",
    "rank": null,
@@ -673,7 +673,7 @@
     "ja": "ツヤのある、ふんわりとしたカールに；キープ力：ミディアム"
    },
    "list": 710,
-   "salon": 639,
+   "salon": 650,
    "photo": "productos/img/D024.jpg",
    "stock": "last",
    "rank": null,
@@ -701,7 +701,7 @@
     "ja": "細かいミストで、あとから整え直せます；湿気からスタイルを守ります"
    },
    "list": 845,
-   "salon": 761,
+   "salon": 760,
    "photo": "productos/img/D025.jpg",
    "stock": "ok",
    "rank": null,
@@ -757,7 +757,7 @@
     "ja": "まとめ髪の仕上げにも；広がりを抑えます"
    },
    "list": 699,
-   "salon": 629,
+   "salon": 630,
    "photo": "productos/img/D027.jpg",
    "stock": "ok",
    "rank": null,
@@ -785,7 +785,7 @@
     "ja": "べたつかず、さらりとした仕上がり；無造作なスタイルに"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D028.jpg",
    "stock": "last",
    "rank": null,
@@ -813,7 +813,7 @@
     "ja": "目に見える残りがなく、ふんわり感が続きます"
    },
    "list": 740,
-   "salon": 666,
+   "salon": 670,
    "photo": "productos/img/D029.jpg",
    "stock": "last",
    "rank": null,
@@ -841,7 +841,7 @@
     "ja": "爽快感のある、やさしい洗い心地"
    },
    "list": 815,
-   "salon": 734,
+   "salon": 730,
    "photo": "productos/img/D030.jpg",
    "stock": "last",
    "rank": null,
@@ -870,7 +870,7 @@
     "ja": "乾燥・切れ毛が気になる髪に；やわらかく、ハリのある髪に"
    },
    "list": 1180,
-   "salon": 1062,
+   "salon": 1060,
    "photo": "productos/img/D031.jpg",
    "stock": "low",
    "rank": null,
@@ -899,7 +899,7 @@
     "ja": "しっとりとした洗い上がり"
    },
    "list": 815,
-   "salon": 734,
+   "salon": 730,
    "photo": "productos/img/D032.jpg",
    "stock": "ok",
    "rank": null,
@@ -928,7 +928,7 @@
     "ja": "細い〜普通の髪に；なめらかな指通り"
    },
    "list": 1010,
-   "salon": 909,
+   "salon": 910,
    "photo": "productos/img/D033.jpg",
    "stock": "ok",
    "rank": null,
@@ -957,7 +957,7 @@
     "ja": "太い髪・くせ毛に；やわらかく、ツヤのある髪に"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D034.jpg",
    "stock": "low",
    "rank": null,
@@ -985,7 +985,7 @@
     "ja": "脂性・乾性どちらのフケにも；頭皮にやさしい洗い心地"
    },
    "list": 765,
-   "salon": 689,
+   "salon": 690,
    "photo": "productos/img/D035.jpg",
    "stock": "last",
    "rank": null,
@@ -1071,7 +1071,7 @@
     "ja": "広がり・からまりを抑えます；230℃までの熱から髪を守ります"
    },
    "list": 1230,
-   "salon": 1107,
+   "salon": 1110,
    "photo": "productos/img/D038.jpg",
    "stock": "ok",
    "rank": null,
@@ -1131,7 +1131,7 @@
     "ja": "乾燥・広がり・カラー毛に特におすすめ；OIシリーズ特有の香り"
    },
    "list": 1010,
-   "salon": 909,
+   "salon": 910,
    "photo": "productos/img/D040.jpg",
    "stock": "ok",
    "rank": null,
@@ -1190,7 +1190,7 @@
     "ja": "濃厚な質感で、やわらかくまとまる髪に"
    },
    "list": 1185,
-   "salon": 1067,
+   "salon": 1070,
    "photo": "productos/img/D042.jpg",
    "stock": "low",
    "rank": 2,
@@ -1247,7 +1247,7 @@
     "ja": "日差しや風、寒さで乾いた手に；すべての肌タイプに"
    },
    "list": 620,
-   "salon": 558,
+   "salon": 560,
    "photo": "productos/img/D044.jpg",
    "stock": "ok",
    "rank": null,
@@ -1276,7 +1276,7 @@
     "ja": "ドライ前にも、仕上げにも；普通〜太い髪の広がりを抑えます"
    },
    "list": 1540,
-   "salon": 1386,
+   "salon": 1390,
    "photo": "productos/img/D045.jpg",
    "stock": "ok",
    "rank": null,
@@ -1335,7 +1335,7 @@
     "ja": "洗い上がりにOIの香りがほのかに残ります"
    },
    "list": 870,
-   "salon": 783,
+   "salon": 780,
    "photo": "productos/img/D047.jpg",
    "stock": "ok",
    "rank": null,
@@ -1422,7 +1422,7 @@
     "ja": "シアバター配合；毎日の保湿にも"
    },
    "list": 610,
-   "salon": 549,
+   "salon": 550,
    "photo": "productos/img/D050.jpg",
    "stock": "last",
    "rank": null,
@@ -1478,7 +1478,7 @@
     "ja": "軽い仕上がりで、髪に輝きを"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D052.jpg",
    "stock": "low",
    "rank": null,
@@ -1506,7 +1506,7 @@
     "ja": "ボリュームが出にくい髪に；固形タイプで旅先にも"
    },
    "list": 635,
-   "salon": 572,
+   "salon": 570,
    "photo": "productos/img/D053.jpg",
    "stock": "ok",
    "rank": null,
@@ -1535,7 +1535,7 @@
     "ja": "毛先のうるおいが一日中続きます。顔・体の保湿にも；少量で髪全体になじむため、長くお使いいただけます"
    },
    "list": 1045,
-   "salon": 941,
+   "salon": 950,
    "photo": "productos/img/D054.jpg",
    "stock": "last",
    "rank": 1,
@@ -1563,7 +1563,7 @@
     "ja": "軽やかで、ボリュームのあるカールに"
    },
    "list": 770,
-   "salon": 693,
+   "salon": 690,
    "photo": "productos/img/D055.jpg",
    "stock": "order",
    "rank": 3,
@@ -1591,7 +1591,7 @@
     "ja": "寒色系の髪色をより明るく；純度の高い色素を使った生分解性処方"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D056.jpg",
    "stock": "order",
    "rank": null,
@@ -1619,7 +1619,7 @@
     "ja": "地毛にもカラー毛にも；深みとツヤのある髪色に"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D057.jpg",
    "stock": "order",
    "rank": null,
@@ -1647,7 +1647,7 @@
     "ja": "地毛にもカラー毛にも；銅色の輝きを長く"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D058.jpg",
    "stock": "order",
    "rank": null,
@@ -1675,7 +1675,7 @@
     "ja": "地毛にもカラー毛にも；赤みの鮮やかさが長続き"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D059.jpg",
    "stock": "order",
    "rank": null,
@@ -1703,7 +1703,7 @@
     "ja": "地毛にもカラー毛にも；ブラウンに深みとツヤを"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D060.jpg",
    "stock": "order",
    "rank": null,
@@ -1731,7 +1731,7 @@
     "ja": "寒色系の髪色をより明るく；やわらかくまとまる髪に"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D061.jpg",
    "stock": "order",
    "rank": null,
@@ -1759,7 +1759,7 @@
     "ja": "地毛にもカラー毛にも；深みのあるツヤ髪に"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D062.jpg",
    "stock": "order",
    "rank": null,
@@ -1787,7 +1787,7 @@
     "ja": "地毛にもカラー毛にも；銅色の輝きをより鮮やかに"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D063.jpg",
    "stock": "order",
    "rank": null,
@@ -1815,7 +1815,7 @@
     "ja": "地毛にもカラー毛にも；赤みの輝きが長続き"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D064.jpg",
    "stock": "order",
    "rank": null,
@@ -1843,7 +1843,7 @@
     "ja": "地毛にもカラー毛にも；明るさのあるブラウンに"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D065.jpg",
    "stock": "order",
    "rank": null,
@@ -1871,7 +1871,7 @@
     "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D066.jpg",
    "stock": "order",
    "rank": null,
@@ -1899,7 +1899,7 @@
     "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D067.jpg",
    "stock": "order",
    "rank": null,
@@ -1927,7 +1927,7 @@
     "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D068.jpg",
    "stock": "order",
    "rank": null,
@@ -1955,7 +1955,7 @@
     "ja": "使うたびに色みを補い、鮮やかさをキープ；ツヤのあるなめらかな仕上がり"
    },
    "list": 865,
-   "salon": 779,
+   "salon": 780,
    "photo": "productos/img/D069.jpg",
    "stock": "order",
    "rank": null,
@@ -1984,7 +1984,7 @@
     "ja": "髪はしなやかに、肌はなめらかに；毎日使えるやさしい洗い心地"
    },
    "list": 660,
-   "salon": 594,
+   "salon": 590,
    "photo": "productos/img/D070.jpg",
    "stock": "order",
    "rank": null,
@@ -2013,7 +2013,7 @@
     "ja": "すべての髪・肌タイプにやさしい処方；乾燥が特に気になる部分に"
    },
    "list": 965,
-   "salon": 869,
+   "salon": 870,
    "photo": "productos/img/D071.jpg",
    "stock": "order",
    "rank": null,
@@ -2041,7 +2041,7 @@
     "ja": "重くならずに、やわらかさと自然なツヤ；抗酸化のホワイトハイビスカスエキス配合"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D072.jpg",
    "stock": "order",
    "rank": null,
@@ -2069,7 +2069,7 @@
     "ja": "指通りなめらか；重さを感じない、やわらかなツヤ髪に"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D073.jpg",
    "stock": "order",
    "rank": null,
@@ -2097,7 +2097,7 @@
     "ja": "指通りをなめらかに；230℃までの熱から髪を守ります"
    },
    "list": 999,
-   "salon": 899,
+   "salon": 900,
    "photo": "productos/img/D074.jpg",
    "stock": "order",
    "rank": null,
@@ -2125,7 +2125,7 @@
     "ja": "洗い上がりはなめらかな手肌に；やさしく心地よい香り"
    },
    "list": 435,
-   "salon": 392,
+   "salon": 390,
    "photo": "productos/img/D075.jpg",
    "stock": "order",
    "rank": null,
@@ -2154,7 +2154,7 @@
     "ja": "肌と髪をやわらかくうるおす；環境再生型農法のオーガニックカレンデュラ配合"
    },
    "list": 550,
-   "salon": 495,
+   "salon": 500,
    "photo": "productos/img/D076.jpg",
    "stock": "order",
    "rank": null,
@@ -2182,7 +2182,7 @@
     "ja": "余分な皮脂を吸着；ふんわり軽く、さわやかな香り"
    },
    "list": 734,
-   "salon": 661,
+   "salon": 660,
    "photo": "productos/img/D077.jpg",
    "stock": "order",
    "rank": null,
@@ -2211,7 +2211,7 @@
     "ja": "切れ毛を防ぐサポート；明るく輝くブロンドに"
    },
    "list": 860,
-   "salon": 774,
+   "salon": 770,
    "photo": "productos/img/D078.jpg",
    "stock": "order",
    "rank": null,
@@ -2240,7 +2240,7 @@
     "ja": "うるおいと透明感のあるツヤ；アイロン・ドライヤーのスタイルを長持ちさせます"
    },
    "list": 999,
-   "salon": 899,
+   "salon": 900,
    "photo": "productos/img/D079.jpg",
    "stock": "order",
    "rank": null,
@@ -2269,7 +2269,7 @@
     "ja": "髪の内部を補強・補修；髪色の輝きを長く保ちます"
    },
    "list": 1010,
-   "salon": 909,
+   "salon": 910,
    "photo": "productos/img/D080.jpg",
    "stock": "order",
    "rank": null,
@@ -2298,7 +2298,7 @@
     "ja": "やわらかさ・ツヤ・色もちを守ります；熱から髪を守る処方"
    },
    "list": 970,
-   "salon": 873,
+   "salon": 870,
    "photo": "productos/img/D081.jpg",
    "stock": "order",
    "rank": null,
@@ -2326,7 +2326,7 @@
     "ja": "髪の内部を引き締めます；自然なツヤとしなやかな手触り"
    },
    "list": 985,
-   "salon": 887,
+   "salon": 890,
    "photo": "productos/img/D082.jpg",
    "stock": "order",
    "rank": null,
@@ -2354,7 +2354,7 @@
     "ja": "乾燥させない、やさしい洗い上がり；とてもやわらかなカールに"
    },
    "list": 1030,
-   "salon": 927,
+   "salon": 930,
    "photo": "productos/img/D083.jpg",
    "stock": "order",
    "rank": null,
@@ -2383,7 +2383,7 @@
     "ja": "かたくならない弾むカール；広がりを抑えます"
    },
    "list": 950,
-   "salon": 855,
+   "salon": 860,
    "photo": "productos/img/D084.jpg",
    "stock": "order",
    "rank": null,
@@ -2412,7 +2412,7 @@
     "ja": "切れ毛・広がりを防ぐサポート；230℃までの熱から髪を守ります"
    },
    "list": 999,
-   "salon": 899,
+   "salon": 900,
    "photo": "productos/img/D085.jpg",
    "stock": "order",
    "rank": null,
@@ -2441,7 +2441,7 @@
     "ja": "髪の芯まで栄養を届けます；まとまりのあるカールに"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D086.jpg",
    "stock": "order",
    "rank": null,
@@ -2469,7 +2469,7 @@
     "ja": "湿気による広がりから守ります；容器のごみを減らす詰め替え"
    },
    "list": 1140,
-   "salon": 1026,
+   "salon": 1030,
    "photo": "productos/img/D087.jpg",
    "stock": "order",
    "rank": null,
@@ -2497,7 +2497,7 @@
     "ja": "広がりにくさが長続き；見た目にもやわらかな髪に"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D088.jpg",
    "stock": "order",
    "rank": null,
@@ -2525,7 +2525,7 @@
     "ja": "重くならない、しなやかな仕上がり；自然なツヤを引き出します"
    },
    "list": 950,
-   "salon": 855,
+   "salon": 860,
    "photo": "productos/img/D089.jpg",
    "stock": "order",
    "rank": null,
@@ -2554,7 +2554,7 @@
     "ja": "広がりにくさが長続き；熱から髪を守る処方"
    },
    "list": 950,
-   "salon": 855,
+   "salon": 860,
    "photo": "productos/img/D090.jpg",
    "stock": "order",
    "rank": null,
@@ -2582,7 +2582,7 @@
     "ja": "やわらかくクリーミーな泡；ツヤのあるしなやかな髪に"
    },
    "list": 690,
-   "salon": 621,
+   "salon": 620,
    "photo": "productos/img/D091.jpg",
    "stock": "order",
    "rank": null,
@@ -2610,7 +2610,7 @@
     "ja": "毛先に栄養を与えます；重くならない、しなやかな髪に"
    },
    "list": 770,
-   "salon": 693,
+   "salon": 690,
    "photo": "productos/img/D092.jpg",
    "stock": "order",
    "rank": null,
@@ -2638,7 +2638,7 @@
     "ja": "髪を内側から補強；大気汚染などの外的ダメージから守ります"
    },
    "list": 1160,
-   "salon": 1044,
+   "salon": 1050,
    "photo": "productos/img/D093.jpg",
    "stock": "order",
    "rank": null,
@@ -2666,7 +2666,7 @@
     "ja": "洗うたびに鮮やかな髪色をキープ；容器のごみを減らす詰め替え"
    },
    "list": 1140,
-   "salon": 1026,
+   "salon": 1030,
    "photo": "productos/img/D094.jpg",
    "stock": "order",
    "rank": null,
@@ -2695,7 +2695,7 @@
     "ja": "切れ毛を防ぎながら栄養補給；濃厚なのに軽やかな質感"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D095.jpg",
    "stock": "order",
    "rank": null,
@@ -2723,7 +2723,7 @@
     "ja": "うるおいを与え、髪を強く；230℃までの熱から髪を守ります"
    },
    "list": 950,
-   "salon": 855,
+   "salon": 860,
    "photo": "productos/img/D096.jpg",
    "stock": "order",
    "rank": null,
@@ -2751,7 +2751,7 @@
     "ja": "やわらかさとツヤ；指通りなめらかに"
    },
    "list": 950,
-   "salon": 855,
+   "salon": 860,
    "photo": "productos/img/D097.jpg",
    "stock": "order",
    "rank": null,
@@ -2779,7 +2779,7 @@
     "ja": "クリーミーな泡；容器のごみを減らす詰め替え"
    },
    "list": 1125,
-   "salon": 1013,
+   "salon": 1010,
    "photo": "productos/img/D098.jpg",
    "stock": "order",
    "rank": null,
@@ -2808,7 +2808,7 @@
     "ja": "湿気から髪を守ります；熱保護とほどよいボリューム"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D099.jpg",
    "stock": "order",
    "rank": null,
@@ -2836,7 +2836,7 @@
     "ja": "自然な動きとボリューム；ベタつかない、やわらかなキープ"
    },
    "list": 799,
-   "salon": 719,
+   "salon": 720,
    "photo": "productos/img/D100.jpg",
    "stock": "order",
    "rank": null,
@@ -2864,7 +2864,7 @@
     "ja": "余分な皮脂を吸着；スタイルを長持ちさせます"
    },
    "list": 870,
-   "salon": 783,
+   "salon": 780,
    "photo": "productos/img/D101.jpg",
    "stock": "order",
    "rank": null,
@@ -2892,7 +2892,7 @@
     "ja": "キープ力：ミディアム；自然でラフな仕上がり"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D102.jpg",
    "stock": "order",
    "rank": null,
@@ -2920,7 +2920,7 @@
     "ja": "つけていないような自然な仕上がり；ショートヘアに"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D103.jpg",
    "stock": "order",
    "rank": null,
@@ -2948,7 +2948,7 @@
     "ja": "束感がありながら整え直しも自在；ベタつかず、残りません"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D104.jpg",
    "stock": "order",
    "rank": null,
@@ -2977,7 +2977,7 @@
     "ja": "広がりを抑えてカールをまとめます；すぐ乾き、残りません"
    },
    "list": 695,
-   "salon": 626,
+   "salon": 630,
    "photo": "productos/img/D105.jpg",
    "stock": "order",
    "rank": null,
@@ -3006,7 +3006,7 @@
     "ja": "広がりを抑え、湿気から守ります；アイロンの熱から守ります"
    },
    "list": 599,
-   "salon": 539,
+   "salon": 550,
    "photo": "productos/img/D106.jpg",
    "stock": "order",
    "rank": null,
@@ -3034,7 +3034,7 @@
     "ja": "広がりを抑えるライトホールド；セミマットな仕上がり"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D107.jpg",
    "stock": "order",
    "rank": null,
@@ -3062,7 +3062,7 @@
     "ja": "ショートヘアやまとめ髪に；重くならないツヤ"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D108.jpg",
    "stock": "order",
    "rank": null,
@@ -3090,7 +3090,7 @@
     "ja": "毛束をくっきり分けます；個性的なスタイルに"
    },
    "list": 750,
-   "salon": 675,
+   "salon": 680,
    "photo": "productos/img/D109.jpg",
    "stock": "order",
    "rank": null,
@@ -3118,7 +3118,7 @@
     "ja": "ごく細かいミストで残りません；長時間スタイルをキープ"
    },
    "list": 845,
-   "salon": 761,
+   "salon": 760,
    "photo": "productos/img/D110.jpg",
    "stock": "order",
    "rank": null,
@@ -3146,7 +3146,7 @@
     "ja": "一日中しっかりキープ；しなやかで自然な仕上がり"
    },
    "list": 845,
-   "salon": 761,
+   "salon": 760,
    "photo": "productos/img/D111.jpg",
    "stock": "order",
    "rank": null,
@@ -3174,7 +3174,7 @@
     "ja": "湿気に強く、すぐ乾きます；アイロン・ドライヤーと一緒に"
    },
    "list": 699,
-   "salon": 629,
+   "salon": 630,
    "photo": "productos/img/D112.jpg",
    "stock": "order",
    "rank": null,
@@ -3203,7 +3203,7 @@
     "ja": "広がりを抑えるライトコントロール；こなれた自然な質感"
    },
    "list": 690,
-   "salon": 621,
+   "salon": 620,
    "photo": "productos/img/D113.jpg",
    "stock": "order",
    "rank": null,
@@ -3231,7 +3231,7 @@
     "ja": "ストレートにもウェーブにも；残らないツヤ"
    },
    "list": 599,
-   "salon": 539,
+   "salon": 550,
    "photo": "productos/img/D114.jpg",
    "stock": "order",
    "rank": null,
@@ -3259,7 +3259,7 @@
     "ja": "重くならない自然なボリューム；すべての髪質に"
    },
    "list": 710,
-   "salon": 639,
+   "salon": 650,
    "photo": "productos/img/D115.jpg",
    "stock": "order",
    "rank": null,
@@ -3288,7 +3288,7 @@
     "ja": "自然なスタイル・質感に；重さも残りもありません"
    },
    "list": 699,
-   "salon": 629,
+   "salon": 630,
    "photo": "productos/img/D116.jpg",
    "stock": "order",
    "rank": null,
@@ -3316,7 +3316,7 @@
     "ja": "とてもデリケートな頭皮に；すっきりと心地よく"
    },
    "list": 765,
-   "salon": 689,
+   "salon": 690,
    "photo": "productos/img/D117.jpg",
    "stock": "order",
    "rank": null,
@@ -3344,7 +3344,7 @@
     "ja": "落ち着いた心地よさが続きます；なじませるとすっきり"
    },
    "list": 1195,
-   "salon": 1076,
+   "salon": 1080,
    "photo": "productos/img/D118.jpg",
    "stock": "order",
    "rank": null,
@@ -3372,7 +3372,7 @@
     "ja": "やさしく、しっかり洗浄；酸化ストレスから頭皮を守ります"
    },
    "list": 765,
-   "salon": 689,
+   "salon": 690,
    "photo": "productos/img/D119.jpg",
    "stock": "order",
    "rank": null,
@@ -3429,7 +3429,7 @@
     "ja": "頭皮を心地よく整えます；落ち着かせてうるおす"
    },
    "list": 1195,
-   "salon": 1076,
+   "salon": 1080,
    "photo": "productos/img/D121.jpg",
    "stock": "order",
    "rank": null,
@@ -3457,7 +3457,7 @@
     "ja": "うるおいとハリを与えます；頭皮のバランスを整えます"
    },
    "list": 799,
-   "salon": 719,
+   "salon": 720,
    "photo": "productos/img/D122.jpg",
    "stock": "order",
    "rank": null,
@@ -3485,7 +3485,7 @@
     "ja": "ボリューム感・ハリをサポート；予防ケアにも"
    },
    "list": 1985,
-   "salon": 1787,
+   "salon": 1790,
    "photo": "productos/img/D123.jpg",
    "stock": "order",
    "rank": null,
@@ -3513,7 +3513,7 @@
     "ja": "余分な皮脂のバランスを整えます；ボリューム感・ハリをサポート"
    },
    "list": 2240,
-   "salon": 2016,
+   "salon": 2020,
    "photo": "productos/img/D124.jpg",
    "stock": "order",
    "rank": null,
@@ -3599,7 +3599,7 @@
     "ja": "キューティクルを整えてツヤを；枝毛を防ぐサポート"
    },
    "list": 910,
-   "salon": 819,
+   "salon": 820,
    "photo": "productos/img/D127.jpg",
    "stock": "order",
    "rank": null,
@@ -3627,7 +3627,7 @@
     "ja": "頭皮を清潔に整えます；余分な皮脂を抑えるサポート"
    },
    "list": 780,
-   "salon": 702,
+   "salon": 700,
    "photo": "productos/img/D128.jpg",
    "stock": "order",
    "rank": null,
@@ -3655,7 +3655,7 @@
     "ja": "余分な皮脂をコントロール；すっきりした頭皮が長続き"
    },
    "list": 765,
-   "salon": 689,
+   "salon": 690,
    "photo": "productos/img/D129.jpg",
    "stock": "order",
    "rank": null,
@@ -3683,7 +3683,7 @@
     "ja": "髪の重たさを防ぎます；皮脂の戻りを抑えます"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D130.jpg",
    "stock": "order",
    "rank": null,
@@ -3711,7 +3711,7 @@
     "ja": "すべての頭皮タイプに；やわらかく、ツヤとハリのある髪に"
    },
    "list": 815,
-   "salon": 734,
+   "salon": 730,
    "photo": "productos/img/D131.jpg",
    "stock": "order",
    "rank": null,
@@ -3739,7 +3739,7 @@
     "ja": "健やかでツヤのある、引き締まった髪に；重くなりません"
    },
    "list": 975,
-   "salon": 878,
+   "salon": 880,
    "photo": "productos/img/D132.jpg",
    "stock": "order",
    "rank": null,
@@ -3767,7 +3767,7 @@
     "ja": "濃密でやさしい泡；髪の内部を守りながら洗います"
    },
    "list": 815,
-   "salon": 734,
+   "salon": 730,
    "photo": "productos/img/D133.jpg",
    "stock": "order",
    "rank": null,
@@ -3795,7 +3795,7 @@
     "ja": "指通りよく、引き締まった髪に；うるおいを与えて守ります"
    },
    "list": 675,
-   "salon": 608,
+   "salon": 610,
    "photo": "productos/img/D134.jpg",
    "stock": "order",
    "rank": null,
@@ -3824,7 +3824,7 @@
     "ja": "スタイルが長持ち；湿気による広がりを長時間防ぎます"
    },
    "list": 1170,
-   "salon": 1053,
+   "salon": 1050,
    "photo": "productos/img/D135.jpg",
    "stock": "order",
    "rank": null,
@@ -3852,7 +3852,7 @@
     "ja": "濃密でリッチな泡；髪をいたわりながら洗います"
    },
    "list": 765,
-   "salon": 689,
+   "salon": 690,
    "photo": "productos/img/D136.jpg",
    "stock": "order",
    "rank": null,
@@ -3880,7 +3880,7 @@
     "ja": "指通りなめらか；やわらかく、しなやかな髪に"
    },
    "list": 630,
-   "salon": 567,
+   "salon": 570,
    "photo": "productos/img/D137.jpg",
    "stock": "order",
    "rank": null,
@@ -3909,7 +3909,7 @@
     "ja": "やさしく洗い上げます；うるおい・ツヤ・ハリを取り戻します"
    },
    "list": 690,
-   "salon": 621,
+   "salon": 620,
    "photo": "productos/img/D138.jpg",
    "stock": "order",
    "rank": null,
@@ -3938,7 +3938,7 @@
     "ja": "髪の芯まで栄養を；指通りよく、重くなりません"
    },
    "list": 770,
-   "salon": 693,
+   "salon": 690,
    "photo": "productos/img/D139.jpg",
    "stock": "order",
    "rank": null,
@@ -3967,7 +3967,7 @@
     "ja": "うるおいと補修を髪の芯まで；やわらかさと強さを取り戻します"
    },
    "list": 1040,
-   "salon": 936,
+   "salon": 950,
    "photo": "productos/img/D140.jpg",
    "stock": "order",
    "rank": null,
@@ -3996,7 +3996,7 @@
     "ja": "髪の芯まで栄養とうるおい；容器のごみを減らす詰め替え"
    },
    "list": 1125,
-   "salon": 1013,
+   "salon": 1010,
    "photo": "productos/img/D141.jpg",
    "stock": "order",
    "rank": null,
@@ -4024,7 +4024,7 @@
     "ja": "すべての髪質に；しなやかで、とてもやわらかな仕上がり"
    },
    "list": 1235,
-   "salon": 1112,
+   "salon": 1110,
    "photo": "productos/img/D142.jpg",
    "stock": "order",
    "rank": null,
@@ -4054,7 +4054,7 @@
     "ja": "やわらかさ・ツヤ・ハリ；OIの香りが長く続きます"
    },
    "list": 1395,
-   "salon": 1256,
+   "salon": 1260,
    "photo": "productos/img/D143.jpg",
    "stock": "order",
    "rank": null,
@@ -4083,7 +4083,7 @@
     "ja": "ロウクウオイル配合；重くならずに、ふんわりとした髪に"
    },
    "list": 1090,
-   "salon": 981,
+   "salon": 980,
    "photo": "productos/img/D144.jpg",
    "stock": "order",
    "rank": null,
@@ -4111,7 +4111,7 @@
     "ja": "やわらかく、うるおいのある肌に；OIの香り"
    },
    "list": 590,
-   "salon": 531,
+   "salon": 530,
    "photo": "productos/img/D145.jpg",
    "stock": "order",
    "rank": null,
@@ -4139,7 +4139,7 @@
     "ja": "やさしく洗い、うるおいを与えます；シェービング前にも"
    },
    "list": 680,
-   "salon": 612,
+   "salon": 610,
    "photo": "productos/img/D146.jpg",
    "stock": "order",
    "rank": null,
@@ -4167,7 +4167,7 @@
     "ja": "ひげをやわらかく整えます；肌をうるおします"
    },
    "list": 670,
-   "salon": 603,
+   "salon": 600,
    "photo": "productos/img/D147.jpg",
    "stock": "order",
    "rank": null,
@@ -4195,7 +4195,7 @@
     "ja": "ひげ・口ひげ・首まわりのラインに；なめらかな剃り心地"
    },
    "list": 670,
-   "salon": 603,
+   "salon": 600,
    "photo": "productos/img/D148.jpg",
    "stock": "order",
    "rank": null,
@@ -4223,7 +4223,7 @@
     "ja": "自然なサテンのツヤ；何度でも整え直せて残りません"
    },
    "list": 670,
-   "salon": 603,
+   "salon": 600,
    "photo": "productos/img/D149.jpg",
    "stock": "order",
    "rank": null,
@@ -4251,7 +4251,7 @@
     "ja": "湿気に強く長時間キープ；ウェット感のない仕上がり"
    },
    "list": 670,
-   "salon": 603,
+   "salon": 600,
    "photo": "productos/img/D150.jpg",
    "stock": "order",
    "rank": null,
@@ -4279,7 +4279,7 @@
     "ja": "自然なツヤと動きを引き出します；かたまらず、ベタつきません"
    },
    "list": 670,
-   "salon": 603,
+   "salon": 600,
    "photo": "productos/img/D151.jpg",
    "stock": "order",
    "rank": null,
@@ -4307,7 +4307,7 @@
     "ja": "スタイリング剤の残りを落とします；大気中の汚れもすっきり"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D152.jpg",
    "stock": "order",
    "rank": null,
@@ -4335,7 +4335,7 @@
     "ja": "残留物や汚れを落とします；髪にハリと動きを"
    },
    "list": 850,
-   "salon": 765,
+   "salon": 770,
    "photo": "productos/img/D153.jpg",
    "stock": "order",
    "rank": null,
@@ -4364,7 +4364,7 @@
     "ja": "髪と肌を1本で；抗酸化のビターオレンジエキス配合"
    },
    "list": 699,
-   "salon": 629,
+   "salon": 630,
    "photo": "productos/img/D154.jpg",
    "stock": "order",
    "rank": null,
@@ -4393,7 +4393,7 @@
     "ja": "濃密でクリーミーな泡；やさしい洗い心地"
    },
    "list": 605,
-   "salon": 545,
+   "salon": 550,
    "photo": "productos/img/D155.jpg",
    "stock": "order",
    "rank": null,
@@ -4422,7 +4422,7 @@
     "ja": "紫外線から髪を守るサポート；日中も日差しの後もうるおいを"
    },
    "list": 985,
-   "salon": 887,
+   "salon": 890,
    "photo": "productos/img/D156.jpg",
    "stock": "order",
    "rank": null,
@@ -4451,7 +4451,7 @@
     "ja": "やわらかさと輝きを取り戻します；抗酸化ケア"
    },
    "list": 795,
-   "salon": 716,
+   "salon": 720,
    "photo": "productos/img/D157.jpg",
    "stock": "order",
    "rank": null,
@@ -4479,7 +4479,7 @@
     "ja": "長時間の日差しの後もやわらかくツヤやかに；重くならない軽やかな処方"
    },
    "list": 980,
-   "salon": 882,
+   "salon": 880,
    "photo": "productos/img/D158.jpg",
    "stock": "order",
    "rank": null,
@@ -4507,7 +4507,7 @@
     "ja": "肌のうるおいを保ちます；紫外線による肌の老化を防ぐサポート"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D159.jpg",
    "stock": "order",
    "rank": null,
@@ -4535,7 +4535,7 @@
     "ja": "肌の乾燥を防ぐサポート；紫外線による肌の老化に"
    },
    "list": 850,
-   "salon": 765,
+   "salon": 770,
    "photo": "productos/img/D160.jpg",
    "stock": "order",
    "rank": null,
@@ -4563,7 +4563,7 @@
     "ja": "ひんやりと心地よい使用感；すばやくなじみます"
    },
    "list": 915,
-   "salon": 824,
+   "salon": 820,
    "photo": "productos/img/D161.jpg",
    "stock": "order",
    "rank": null,
@@ -4592,7 +4592,7 @@
     "ja": "やわらかさと心地よさ；ほっとひと息つく時間に"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D162.jpg",
    "stock": "order",
    "rank": null,
@@ -4620,7 +4620,7 @@
     "ja": "大気汚染やほこりの汚れを落とします；すっきりリセット"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D163.jpg",
    "stock": "order",
    "rank": null,
@@ -4648,7 +4648,7 @@
     "ja": "すべての髪質に；短時間のケアに"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D164.jpg",
    "stock": "order",
    "rank": null,
@@ -4676,7 +4676,7 @@
     "ja": "ツヤ・栄養・やわらかさ；アイロン・ドライヤーをよく使う方に"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D165.jpg",
    "stock": "order",
    "rank": null,
@@ -4704,7 +4704,7 @@
     "ja": "ハリと弾力；切れ毛から髪を守ります"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D166.jpg",
    "stock": "order",
    "rank": null,
@@ -4732,7 +4732,7 @@
     "ja": "元気のない髪にハリとボリューム；頭皮にうるおいを"
    },
    "list": 320,
-   "salon": 288,
+   "salon": 290,
    "photo": "productos/img/D167.jpg",
    "stock": "order",
    "rank": null,
@@ -4760,7 +4760,7 @@
     "ja": "重くならずに洗い上げます；しなやかで、ふんわりとした髪に"
    },
    "list": 730,
-   "salon": 657,
+   "salon": 660,
    "photo": "productos/img/D168.jpg",
    "stock": "order",
    "rank": null,
@@ -4788,7 +4788,7 @@
     "ja": "重くならずに指通りなめらか；自然なボリュームを引き出します"
    },
    "list": 835,
-   "salon": 752,
+   "salon": 750,
    "photo": "productos/img/D169.jpg",
    "stock": "order",
    "rank": null,
@@ -4816,7 +4816,7 @@
     "ja": "数日続くボリューム；残らず、軽やかな髪に"
    },
    "list": 999,
-   "salon": 899,
+   "salon": 900,
    "photo": "productos/img/D170.jpg",
    "stock": "order",
    "rank": null,
