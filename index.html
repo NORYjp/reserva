@@ -387,6 +387,9 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;bac
 .rv-txt .rv-who{display:block;margin-top:8px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 .rv-txt .rv-st{display:block;font-size:11px;letter-spacing:.22em;margin-top:2px}
 .rv-txt.rv-fade{opacity:0}
+.rv-txt .rv-tr{margin-left:.6em;font-size:.8em;letter-spacing:.08em;text-transform:none;opacity:.6;font-weight:400}
+:lang(ja) .rv-txt q{font-family:'Klee One','Kaisei Decol',serif;font-style:normal;font-weight:400;font-size:13px;line-height:1.45;quotes:"「" "」";word-break:auto-phrase}
+@media (min-width:820px){:lang(ja) .rv-txt q{font-size:16px}}
 .rv-arm{position:absolute;right:-3%;top:-4%;width:42%;pointer-events:none;transform-origin:78% 14%;animation:rvArm 9s ease-in-out infinite}
 .rv-go{display:table;margin:26px auto 0;padding:6px 4px;font-family:var(--display);font-style:normal;text-transform:uppercase;font-weight:400;font-size:18px;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;letter-spacing:.02em}:lang(ja) .rv-go{text-transform:none;letter-spacing:.04em}
 .rv-go:hover{color:var(--accent-d)}
@@ -673,20 +676,25 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;bac
 <script>
 /* クチコミのレコード：6.5秒ごとに入れかわる。さわる・マウスをのせると止まる。動きを減らす設定の人は止めたまま（‹ › で送る） */
 (function(){
+/* 10/6 Nory「言語ごとに出して。訳して」：o＝元の言語（元の文はそのまま）。ほかの2つは訳。訳のときだけ名前の横に小さく「翻訳」 */
 var R=[
- ["Nory se tomó el tiempo de entender a mi cabello y diseñar el corte… Mi cabello quedó perfecto!","Jan R."],
- ["The best haircut I’ve ever gotten! … I will fly back to Mexico City just to get a haircut here.","D. K."],
- ["Nory… es bastante detallista con su técnica y eso hace que el corte luzca mejor.","Damián L."],
- ["He takes his time to make sure the cut is perfect, which I have not seen hairdresser do nowadays.","Marie B."],
- ["Me hice un tratamiento japonés de cuatro pasos e inmediatamente note la hidratación.","Cecilia F."],
- ["I had dyed my hair at home and it was terrible. … he fixed my hair and it looked amazing.","Doris C."],
- ["Nori es un genio, súper amable y detallista. Hizo un corte adaptado a mi tipo de pelo…","Delfinace"],
- ["It’s worth coming just to check out the antique interior design and vintage clothes.","Grant S."]
+ {o:'es',n:'Jan R.',es:'Nory se tomó el tiempo de entender a mi cabello y diseñar el corte… Mi cabello quedó perfecto!',en:'Nory took the time to understand my hair and design the cut… My hair turned out perfect!',ja:'Noryさんは時間をかけて私の髪を理解し、カットを考えてくれました…仕上がりは完璧です！'},
+ {o:'en',n:'D. K.',en:'The best haircut I’ve ever gotten! … I will fly back to Mexico City just to get a haircut here.',es:'¡El mejor corte que me han hecho en la vida! … Volveré en avión a la Ciudad de México solo para cortarme el cabello aquí.',ja:'今までで最高のカットです！…ここで髪を切るためだけに、またメキシコシティへ飛んで来ます。'},
+ {o:'es',n:'Damián L.',es:'Nory… es bastante detallista con su técnica y eso hace que el corte luzca mejor.',en:'Nory… is very detail-oriented in his technique, and that makes the cut look even better.',ja:'Noryさんは…技術がとても細やかで、そのおかげでカットがより美しく見えます。'},
+ {o:'en',n:'Marie B.',en:'He takes his time to make sure the cut is perfect, which I have not seen hairdresser do nowadays.',es:'Se toma su tiempo para asegurarse de que el corte quede perfecto, algo que hoy en día no he visto en otros estilistas.',ja:'カットが完璧になるよう、時間をかけてくれます。今どき、そんな美容師さんは見たことがありません。'},
+ {o:'es',n:'Cecilia F.',es:'Me hice un tratamiento japonés de cuatro pasos e inmediatamente note la hidratación.',en:'I had a four-step Japanese treatment and noticed the hydration right away.',ja:'4ステップの日本式トリートメントを受けて、すぐに髪のうるおいを実感しました。'},
+ {o:'en',n:'Doris C.',en:'I had dyed my hair at home and it was terrible. … he fixed my hair and it looked amazing.',es:'Me había teñido el cabello en casa y quedó terrible. … él lo arregló y se veía increíble.',ja:'自分で髪を染めたら、ひどい色に。…彼が直してくれて、とてもきれいになりました。'},
+ {o:'es',n:'Delfinace',es:'Nori es un genio, súper amable y detallista. Hizo un corte adaptado a mi tipo de pelo…',en:'Nory is a genius, super kind and attentive to detail. He gave me a cut suited to my hair type…',ja:'Noryさんは天才！とても優しくて細やか。私の髪質に合わせたカットにしてくれました…'},
+ {o:'en',n:'Grant S.',en:'It’s worth coming just to check out the antique interior design and vintage clothes.',es:'Vale la pena venir aunque sea solo para ver el diseño interior antiguo y la ropa vintage.',ja:'アンティークの内装と古着を見るためだけでも、来る価値があります。'}
 ];
+var TR={es:'Traducido',en:'Translated',ja:'翻訳'};
+function lg(){var l=(document.documentElement.lang||'es').slice(0,2);return TR[l]?l:'es';}
 var t=document.getElementById('rvTxt'),box=document.getElementById('rvBox'),i=0,paused=false,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-function put(n){i=(n+R.length)%R.length;t.innerHTML='<q>'+R[i][0]+'</q><span class="rv-who">'+R[i][1]+'</span><span class="rv-st">★★★★★</span>';}
+function put(n){i=(n+R.length)%R.length;var r=R[i],l=lg();t.innerHTML='<q>'+r[l]+'</q><span class="rv-who">'+r.n+(l!==r.o?'<span class="rv-tr">· '+TR[l]+'</span>':'')+'</span><span class="rv-st">★★★★★</span>';}
 function show(n){t.classList.add('rv-fade');setTimeout(function(){put(n);t.classList.remove('rv-fade');},reduce?0:900);}
 put(0);
+/* ES/EN/日本語ボタンで html の lang が変わったら、今のクチコミをすぐその言語にする */
+try{new MutationObserver(function(){put(i);}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
 setInterval(function(){if(!paused&&!reduce&&!document.hidden)show(i+1);},6500);
 function setP(p){paused=p;box.classList.toggle('rv-paused',p);}
 box.addEventListener('pointerdown',function(){setP(!paused);});
