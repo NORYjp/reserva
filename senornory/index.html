@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Señor Nory — Hair. Food. Fashion. Space. Culture. Design.</title>
+<meta name="description" content="Señor Nory — estilista japonés en Condesa, CDMX. Hair, vintage, gastronomía y espacio entre México y Japón. Japanese hairstylist &amp; cultural curator in Mexico City.">
+<link rel="canonical" href="https://thehomehair.com/senornory/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Señor Nory">
+<meta property="og:title" content="Señor Nory — México × Japón">
+<meta property="og:description" content="Hair. Food. Fashion. Space. Culture. Design. — CDMX, México">
+<meta property="og:url" content="https://thehomehair.com/senornory/">
+<meta property="og:image" content="https://thehomehair.com/senornory/og_senornory.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Señor Nory — México × Japón">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1a1410">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=Kaisei+Decol:wght@400;500;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1a1410;
+    --bg-panel: #221a14;
+    --gold: #b78c4f;
+    --gold-bright: #d7ac6e;
+    --rust: #8a3b2a;
+    --cream: #ece1cb;
+    --cream-dim: #cbbfa6;
+    --sage: #55665a;
+    --line: rgba(183,140,79,0.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Newsreader','Klee One', serif;
+    font-size:17px;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  .disp{font-family:'Fraunces','Kaisei Decol', serif;}
+  .mono{font-family:'IBM Plex Mono','Kaisei Decol', monospace;}
+
+  .tr{display:none;}
+  .tri{display:none;}
+  body.lang-ja .tr.ja{display:block;}
+  body.lang-es .tr.es{display:block;}
+  body.lang-en .tr.en{display:block;}
+  body.lang-ja .tri.ja{display:inline;}
+  body.lang-es .tri.es{display:inline;}
+  body.lang-en .tri.en{display:inline;}
+
+  .langbar{
+    position:fixed; top:20px; right:20px; z-index:50;
+    display:flex; gap:2px;
+    background:rgba(26,20,16,0.55);
+    backdrop-filter:blur(6px);
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+  .langbar button{
+    font-family:'IBM Plex Mono','Kaisei Decol', monospace;
+    font-size:11px; letter-spacing:0.08em;
+    background:none; border:none; color:var(--cream-dim);
+    padding:8px 12px; cursor:pointer;
+    transition:color .3s, background .3s;
+  }
+  .langbar button.active{ color:var(--bg); background:var(--gold); }
+  .langbar button:hover{ color:var(--gold-bright); }
+  .langbar button.active:hover{ color:var(--bg); }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 28px; }
+
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:flex-end;
+    background-color:var(--bg);
+    background-size:contain; background-position:center top; background-repeat:no-repeat;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,15,11,0.35) 0%, rgba(20,15,11,0.55) 55%, rgba(20,15,11,0.92) 100%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    padding:0 28px 80px;
+  }
+  .hero-eyebrow{
+    font-size:12px; letter-spacing:0.28em; color:var(--gold-bright);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-weight:500;
+    font-size:clamp(52px, 11vw, 118px);
+    line-height:0.92;
+    color:var(--cream);
+    letter-spacing:-0.01em;
+  }
+  .hero-tagline{
+    margin-top:22px;
+    font-size:clamp(15px, 2vw, 19px);
+    color:var(--cream-dim);
+    font-style:italic;
+    max-width:520px;
+  }
+  .scroll-cue{
+    position:absolute; bottom:26px; left:28px; z-index:2;
+    font-family:'IBM Plex Mono','Kaisei Decol'; font-size:10px; letter-spacing:0.2em;
+    color:var(--cream-dim); opacity:0.7;
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue .bar{ width:1px; height:34px; background:var(--gold); animation:scrollmove 1.8s ease-in-out infinite; }
+  @keyframes scrollmove{ 0%,100%{transform:scaleY(1); opacity:0.5;} 50%{transform:scaleY(0.4); opacity:1;} }
+
+  section{ padding:100px 0; position:relative; }
+  .eyebrow{
+    font-family:'IBM Plex Mono','Kaisei Decol'; font-size:11px; letter-spacing:0.24em;
+    color:var(--gold); margin-bottom:22px;
+  }
+
+  .profile-inner{ max-width:640px; }
+  .profile h2{
+    font-family:'Fraunces','Kaisei Decol'; font-weight:500; font-style:italic;
+    font-size:clamp(28px,3.4vw,40px);
+    color:var(--cream); margin-bottom:20px; line-height:1.25;
+  }
+  .profile p{ color:var(--cream-dim); margin-bottom:16px; }
+  .motto{
+    margin-top:32px; padding:24px 0 0; border-top:1px solid var(--line);
+  }
+  .motto .quote{
+    font-family:'Fraunces','Kaisei Decol'; font-style:italic; font-weight:500;
+    font-size:clamp(20px,2.4vw,26px);
+    color:var(--gold-bright);
+    line-height:1.4;
+  }
+
+  .lot{
+    display:grid; grid-template-columns: 1fr 1.3fr; gap:50px;
+    align-items:start;
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .lot:first-of-type{ border-top:1px solid var(--line); }
+  .lot.text-only{ grid-template-columns:1fr; }
+  .lot.text-only .lot-body{ max-width:640px; }
+  .lot:nth-of-type(even):not(.text-only) .lot-media{ order:2; }
+  .lot:nth-of-type(even):not(.text-only) .lot-body{ order:1; }
+
+  .lot-media{ display:flex; flex-direction:column; gap:10px; }
+  .lot-media img{
+    width:100%; height:auto; display:block;
+    filter:sepia(10%) saturate(90%);
+    border:1px solid var(--line);
+  }
+  .lot-media video{
+    width:100%; height:auto; display:block;
+    filter:sepia(10%) saturate(90%);
+    border:1px solid var(--line);
+  }
+  .emblem-wrap{
+    display:flex; justify-content:center;
+    margin:0 0 48px;
+  }
+  .emblem-img{
+    width:100%; max-width:360px; height:auto; display:block;
+  }
+  .lot-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono','Kaisei Decol'; font-size:11px; letter-spacing:0.12em;
+    color:var(--gold); border:1px solid var(--gold); padding:5px 11px;
+    margin-bottom:18px;
+  }
+  .lot-body h3{
+    font-family:'Fraunces','Kaisei Decol'; font-weight:500;
+    font-size:clamp(22px,2.6vw,30px);
+    color:var(--cream); margin-bottom:14px;
+  }
+  .lot-body p{ color:var(--cream-dim); margin-bottom:14px; }
+  .lot-body p:last-child{ margin-bottom:0; }
+  .lot-sub{
+    font-family:'Fraunces','Kaisei Decol'; font-weight:600; font-style:italic;
+    font-size:clamp(16px,1.8vw,20px);
+    color:var(--gold-bright); margin-bottom:20px;
+  }
+  .lot-divider{ width:56px; border-top:1px solid var(--line); margin:0 0 24px; }
+  .lot-links{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; margin-top:26px; }
+  .lot-btn{
+    display:inline-flex; align-items:center; gap:10px; min-height:44px;
+    font-family:'IBM Plex Mono','Kaisei Decol', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--bg); background:var(--gold); border:1px solid var(--gold);
+    padding:10px 18px; text-decoration:none; transition:background .3s, color .3s;
+  }
+  .lot-btn:hover{ background:transparent; color:var(--gold-bright); }
+  .lot-link{
+    font-family:'IBM Plex Mono','Kaisei Decol', monospace; font-size:11px; letter-spacing:0.12em;
+    color:var(--cream-dim); text-decoration:none; border-bottom:1px solid var(--line); padding:6px 0;
+  }
+  .lot-link:hover{ color:var(--gold-bright); border-color:var(--gold); }
+
+  /* 写真・動画の自動スライド（2026-10-06 Nory「下も自動で動くように」） */
+  .lot-media.slides{ display:block; position:relative; aspect-ratio:4/5; overflow:hidden; border:1px solid var(--line); background:var(--bg-panel); touch-action:pan-y; user-select:none; -webkit-user-select:none; }
+  .lot-media.slides > img, .lot-media.slides > video{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border:none;
+    opacity:0; transform:scale(1.035); transition:opacity 1.4s ease, transform 6s ease-out;
+    pointer-events:none;
+  }
+  .lot-media.slides > .on{ opacity:1; transform:scale(1); }
+  .slide-dots{ position:absolute; left:0; right:0; bottom:12px; z-index:2; display:flex; justify-content:center; gap:4px; }
+  .slide-dots button{ width:28px; height:24px; padding:0; background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .slide-dots button::before{ content:""; width:18px; height:1px; background:rgba(236,225,203,.55); transition:background .4s, height .4s; }
+  .slide-dots button.on::before{ background:var(--gold-bright); height:2px; }
+  .lot-media.slides::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:56px; z-index:1; pointer-events:none; background:linear-gradient(180deg,transparent,rgba(20,15,11,.45)); }
+  .lot-media.drift{ overflow:hidden; border:1px solid var(--line); }
+  .lot-media.drift img{ border:none; animation:drift 14s ease-in-out infinite alternate; transform-origin:50% 60%; }
+  @keyframes drift{ from{ transform:scale(1); } to{ transform:scale(1.06); } }
+  @media (prefers-reduced-motion: reduce){
+    .lot-media.slides > img, .lot-media.slides > video{ transition:none; transform:none; }
+    .lot-media.drift img{ animation:none; }
+  }
+  .lot-caption{
+    font-family:'IBM Plex Mono','Kaisei Decol'; font-size:11px; letter-spacing:0.14em;
+    color:var(--gold); margin-top:20px;
+  }
+
+  .next{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .next-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+  }
+  .next h2{ font-family:'Fraunces','Kaisei Decol'; font-weight:500; font-style:italic; font-size:clamp(26px,3vw,34px); color:var(--gold-bright); margin-bottom:18px; }
+  .next p{ color:var(--cream-dim); }
+
+  footer{ padding:80px 0 60px; }
+  .footer-title{ font-family:'Fraunces','Kaisei Decol'; font-style:italic; font-size:clamp(24px,3vw,32px); color:var(--cream); margin-bottom:34px; }
+  .ig-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-bottom:60px; }
+  .ig-card{
+    display:block; border:1px solid var(--line); padding:18px 20px;
+    text-decoration:none; color:var(--cream);
+    transition:border-color .3s, background .3s;
+  }
+  .ig-card:hover{ border-color:var(--gold); background:rgba(183,140,79,0.06); }
+  .ig-card .label{ font-family:'IBM Plex Mono','Kaisei Decol'; font-size:10px; letter-spacing:0.14em; color:var(--gold); margin-bottom:6px; }
+  .ig-card .handle{ font-family:'Fraunces','Kaisei Decol'; font-size:17px; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:28px; border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono','Kaisei Decol'; font-size:11px; color:var(--cream-dim); letter-spacing:0.06em;
+  }
+
+  @media (max-width:820px){
+    .lot{ grid-template-columns:1fr; gap:22px; padding:44px 0; }
+    .lot:nth-of-type(even):not(.text-only) .lot-media,
+    .lot:nth-of-type(even):not(.text-only) .lot-body{ order:initial; }
+    .next-grid{ grid-template-columns:1fr; }
+    .ig-grid{ grid-template-columns:1fr; }
+    section{ padding:64px 0; }
+  }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* 最初の画面の動画（2026-10-06・全面） */
+  .hero{
+    height:100vh; height:100svh; min-height:520px;
+    background-image:url(hero_poster.jpg);
+    background-size:cover; background-position:50% 52%;
+    overflow:hidden;
+  }
+  .hero::before{ z-index:1; }
+  .hero-video, .hero-video-bg{
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:50% 52%;
+    transition:opacity .45s ease;
+  }
+  .hero-video-bg{ display:none; }
+  .hero-video.dip, .hero-video-bg.dip{ opacity:.2; }
+  /* 案B：横長の画面だけ、後ろにぼかした同じ動画を敷き、上に人が切れない動画を置く */
+  @media (min-aspect-ratio: 4/5){
+    body.hero-blur .hero-video-bg{ display:block; filter:blur(26px) brightness(.75); transform:scale(1.12); }
+    body.hero-blur .hero-video{ object-fit:contain; object-position:center center; }
+  }
+  .hero-inner{ padding-bottom:112px; }
+  /* 下へ進むボタン（さらに見る） */
+  .cue{
+    position:absolute; left:50%; bottom:26px; z-index:3;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono','Kaisei Decol', monospace; font-size:11px; letter-spacing:0.24em;
+    color:var(--gold-bright); text-decoration:none; text-transform:uppercase;
+    background:none; border:none; cursor:pointer; padding:8px 14px;
+    animation:cue 1.8s ease-in-out infinite;
+  }
+  .cue i{ width:22px; height:22px; border-right:1px solid currentColor; border-bottom:1px solid currentColor; transform:rotate(45deg); }
+  @keyframes cue{ 0%,100%{transform:translate(-50%,0); opacity:.75;} 50%{transform:translate(-50%,10px); opacity:1;} }
+  /* ゲート：最初は最初の画面だけ。「さらに見る」で下が開く */
+  body.gate{ overflow:hidden; height:100vh; height:100svh; }
+  body.gate .hero ~ *{ display:none !important; }
+  @media (prefers-reduced-motion: reduce){
+    .hero-video, .hero-video-bg{ display:none !important; }
+    .cue{ animation:none; }
+  }
+  /* 音楽ボタン（2026-10-06・美容室のページと同じしくみ）。曲のファイルが無いときは出さない */
+  .music{
+    position:fixed; right:20px; bottom:22px; z-index:40;
+    width:42px; height:42px; border-radius:50%; padding:0;
+    display:none; align-items:center; justify-content:center;
+    color:var(--gold-bright); background:rgba(26,20,16,0.6);
+    border:1px solid var(--line); backdrop-filter:blur(6px);
+    cursor:pointer; transition:color .3s, border-color .3s, opacity .3s;
+  }
+  .music.ready, body.gate .music.ready{ display:flex !important; }
+  .music:hover{ border-color:var(--gold); }
+  .music::before{
+    content:""; position:absolute; inset:3px; border-radius:50%;
+    border:1px dashed rgba(183,140,79,0.45);
+  }
+  .music.on::before{ animation:groove 9s linear infinite; }
+  @keyframes groove{ to{ transform:rotate(360deg); } }
+  .music svg{ width:16px; height:16px; position:relative; }
+  .music .slash{ display:none; }
+  .music.off{ opacity:.55; }
+  .music.off .slash{ display:block; }
+  @media (max-width:520px){ .music{ right:14px; bottom:16px; width:38px; height:38px; } }
+  @media (prefers-reduced-motion: reduce){ .music.on::before{ animation:none; } }
+
+  /* 日本語の字体（2026-10-06 Nory）：トップページ（THE HOME Hair）と同じ。見出し＝Kaisei Decol、本文＝Klee One。英字の書体は今のまま */
+  .lot-sub.tr.ja, .footer-title .tri.ja{ font-style:normal; letter-spacing:.04em; }
+  .lot-sub.tr.ja{ font-weight:500; }
+  .tr.ja p{ letter-spacing:.02em; line-height:1.85; }
+  /* 一番下のリンク（2026-10-06） */
+  .ig-grid{ align-items:stretch; }
+  .link-card{ border:1px solid var(--line); padding:18px 20px 12px; }
+  .link-card .label{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; color:var(--gold); margin-bottom:6px; }
+  .link-row{
+    display:flex; align-items:center; gap:12px; min-height:44px; padding:6px 0;
+    color:var(--cream); text-decoration:none; border-top:1px solid rgba(183,140,79,0.14);
+    transition:color .3s;
+  }
+  .link-card .label + .link-row{ border-top:none; }
+  .link-row svg{ width:20px; height:20px; flex:none; color:var(--gold-bright); }
+  .link-row .nm{ font-family:'Fraunces','Kaisei Decol',serif; font-size:17px; }
+  .link-row .hd{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.04em; color:var(--cream-dim); overflow-wrap:anywhere; }
+  .link-row .go{ margin-left:auto; color:var(--gold); font-size:13px; transition:transform .3s; }
+  .link-row:hover{ color:var(--gold-bright); }
+  .link-row:hover .go{ transform:translateX(3px); }
+  .link-row .txt{ display:flex; flex-direction:column; line-height:1.3; min-width:0; }
+</style>
+<!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
+</head>
+<body class="lang-ja gate">
+
+<div class="langbar">
+  <button data-lang="ja" class="active">JA</button>
+  <button data-lang="es">ES</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<section class="hero" id="hero-bg">
+  <video class="hero-video-bg" id="hero-video-bg" muted loop playsinline preload="none" aria-hidden="true" data-src="hero.mp4"></video>
+  <video class="hero-video" id="hero-video" muted loop playsinline preload="none" poster="hero_poster.jpg" aria-hidden="true" data-src="hero.mp4"></video>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">MÉXICO × JAPÓN</div>
+    <h1 class="disp">Señor Nory</h1>
+  </div>
+  <a class="cue" href="#contenido"><span class="tri ja">さらに見る</span><span class="tri es">Descubrir</span><span class="tri en">Discover</span><i></i></a>
+</section>
+
+<section class="profile" id="contenido">
+  <div class="wrap">
+    <div class="profile-inner reveal">
+      <div class="eyebrow">
+        <span class="tri ja">プロフィール</span>
+        <span class="tri es">PERFIL</span>
+        <span class="tri en">PROFILE</span>
+      </div>
+
+      <div class="emblem-wrap reveal">
+        <img src="media/emblem.jpg" loading="lazy" decoding="async" alt="Señor Nory emblem" class="emblem-img">
+      </div>
+
+      <div class="lot text-only reveal" style="padding-top:0;">
+        <div class="lot-body">
+          <h3 class="disp">
+            <span class="tri ja">CURATING CULTURE &amp; STYLE</span>
+            <span class="tri es">CURATING CULTURE &amp; STYLE</span>
+            <span class="tri en">CURATING CULTURE &amp; STYLE</span>
+          </h3>
+          <div class="lot-sub tr ja">文化と感性の再構築</div>
+          <div class="lot-divider"></div>
+          <div class="tr ja">
+            <p>メキシコ在住10年以上。デニムと繊維文化の聖地・岡山出身。</p>
+            <p>BEAMSで培った審美眼と編集力を礎に、現在はメキシコを拠点に活動。日本とメキシコ、二つの文化を横断しながら、独自の視点で再構築するカルチュラルキュレーター。</p>
+          </div>
+          <div class="tr es">
+            <p>Más de 10 años viviendo en México. Originario de Okayama, Japón — ciudad del denim y los textiles.</p>
+            <p>Con la base del ojo crítico y la capacidad de edición que cultivó en BEAMS, hoy trabaja desde México. Cruzando dos culturas, Japón y México, es un curador cultural que reconstruye desde su propia mirada.</p>
+          </div>
+          <div class="tr en">
+            <p>Living in Mexico for over 10 years. Originally from Okayama, Japan — a city known for denim and textiles.</p>
+            <p>Building on the eye and editorial sense honed at BEAMS, now based in Mexico. Crossing between Japan and Mexico, a cultural curator reconstructing through his own point of view.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot text-only reveal">
+        <div class="lot-body">
+          <h3 class="disp">
+            <span class="tri ja">MAKE IT REAL</span>
+            <span class="tri es">MAKE IT REAL</span>
+            <span class="tri en">MAKE IT REAL</span>
+          </h3>
+          <div class="lot-sub tr ja">夢は見るものじゃない。叶えるもの。</div>
+          <div class="lot-sub tr es">Los sueños no se sueñan. Se cumplen.</div>
+          <div class="lot-sub tr en">Dreams aren't something you dream. They're something you make happen.</div>
+          <div class="lot-divider"></div>
+          <div class="tr ja">
+            <p>小学5年生で美容師を志し、18歳で海外に自分の店を持つことを決意。</p>
+            <p>メキシコへ渡る前に掲げたのは、日本とメキシコの架け橋になること。</p>
+            <p>現在はメキシコで美容師として活動しながら、日本のフュージョンレストランのクリエイティブディレクションにも携わる。</p>
+          </div>
+          <div class="tr es">
+            <p>Decidió ser estilista en quinto de primaria, y a los 18 años se propuso tener su propio salón en el extranjero.</p>
+            <p>Antes de partir a México, se propuso ser un puente entre Japón y México.</p>
+            <p>Hoy trabaja como estilista en México, mientras también participa en la dirección creativa de un restaurante fusión japonés.</p>
+          </div>
+          <div class="tr en">
+            <p>He decided to become a hairstylist in fifth grade, and at 18 set his sights on having his own salon abroad.</p>
+            <p>Before moving to Mexico, he set out to become a bridge between Japan and Mexico.</p>
+            <p>Now working as a hairstylist in Mexico, while also involved in creative direction for a Japanese fusion restaurant.</p>
+          </div>
+          <div class="lot-caption">MÉXICO × JAPÓN</div>
+        </div>
+      </div>
+
+      <div class="lot text-only reveal">
+        <div class="lot-body">
+          <h3 class="disp">
+            <span class="tri ja">CONCEPT / FROM PLAY TO PROFESSION</span>
+            <span class="tri es">CONCEPT / FROM PLAY TO PROFESSION</span>
+            <span class="tri en">CONCEPT / FROM PLAY TO PROFESSION</span>
+          </h3>
+          <div class="lot-sub tr ja">遊びからの学びを、仕事へ。</div>
+          <div class="lot-divider"></div>
+          <div class="tr ja">
+            <p>旅、レストラン、服、音楽、アート。長く親しみ、育ててきた感性を、自ら選び、組み合わせ、新しい価値として届ける側へ。</p>
+            <p>現在は、ビンテージショップやレストランのプロジェクトも進行中。</p>
+            <p>美容、ファッション、食、空間。衣・食・住を横断しながら新しい体験を生み出し、この世界観に共鳴する人たちと、次の場所や文化をつくっていきたい。</p>
+            <p>ヘアサロン、ビンテージ、レストラン。ジャンルを越えて、個性と感性を持ち寄り、共に形にしていく仲間を募集している。</p>
+          </div>
+          <div class="tr es">
+            <p>Viajes, restaurantes, moda, música, arte. Una sensibilidad cultivada por mucho tiempo, para elegirla, combinarla y ofrecerla como nuevo valor.</p>
+            <p>Actualmente también en marcha proyectos de tiendas vintage y restaurantes.</p>
+            <p>Belleza, moda, gastronomía, espacio. Cruzando moda, comida y hogar para crear nuevas experiencias, junto a quienes resuenan con esta visión, construyendo juntos el próximo lugar y cultura.</p>
+            <p>Salón de belleza, vintage, restaurante. Buscando compañeros que, más allá del género, aporten su personalidad y sensibilidad para crear algo juntos.</p>
+          </div>
+          <div class="tr en">
+            <p>Travel, restaurants, fashion, music, art. A sensibility cultivated over years, now chosen, combined, and delivered as new value.</p>
+            <p>Currently also developing vintage shop and restaurant projects.</p>
+            <p>Beauty, fashion, food, space. Crossing fashion, food, and home to create new experiences, building the next place and culture together with those who resonate with this vision.</p>
+            <p>Hair salon, vintage, restaurant. Looking for collaborators who, beyond genre, bring their personality and sensibility to build something together.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">
+      <span class="tri ja">WHAT I DO — 活動</span>
+      <span class="tri es">WHAT I DO — A qué me dedico</span>
+      <span class="tri en">WHAT I DO</span>
+    </div>
+
+    <div class="lot text-only reveal" id="lote-tacos">
+      <div class="lot-body">
+        <div class="lot-tag">LOTE Nº 01</div>
+        <h3 class="disp">
+          <span class="tri ja">TACOS / CREATIVE DIRECTION</span>
+          <span class="tri es">TACOS / CREATIVE DIRECTION</span>
+          <span class="tri en">TACOS / CREATIVE DIRECTION</span>
+        </h3>
+        <div class="lot-sub tr ja">ブランドの空気までデザインする。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>メキシコの食文化への理解を軸に、ブランドコンセプト、SNS戦略、企画、写真・動画、空間演出、音楽、買付け、味・素材・レシピ監修まで。</p>
+          <p>料理だけではなく、ブランド全体の体験を設計する。</p>
+          <p>メキシコで得た感覚を、日本のレストランに新しい景色として描く。</p>
+        </div>
+        <div class="lot-sub tr es">Diseñando hasta el aire de la marca.</div>
+        <div class="lot-sub tr en">Designing even the air a brand breathes.</div>
+        <div class="tr es">
+          <p>Con un profundo entendimiento de la cultura gastronómica mexicana como base: concepto de marca, estrategia de redes sociales, producción, foto y video, ambientación, música, compras y supervisión de sabor, ingredientes y recetas.</p>
+          <p>No se trata solo de comida — se diseña la experiencia completa de la marca.</p>
+          <p>Lo que aprendió en México, plasmado como un nuevo paisaje en los restaurantes de Japón.</p>
+        </div>
+        <div class="tr en">
+          <p>Grounded in a deep understanding of Mexican food culture: brand concept, social strategy, production, photo and video, space direction, music, sourcing, and supervision of flavor, ingredients, and recipes.</p>
+          <p>It's not just about the food — it's the full brand experience, designed.</p>
+          <p>Bringing what he's learned in Mexico back to Japan's restaurants, painted as a new landscape.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lot reveal" id="lote-guide">
+      <div class="lot-media slides" aria-roledescription="carousel"><img id="img-guide" src="media/guide.jpg" loading="lazy" decoding="async" alt="México Guide"><video data-src="media/guide.mp4" preload="none" playsinline muted loop aria-label="México Guide video"></video></div>
+      <div class="lot-body">
+        <div class="lot-tag">LOTE Nº 02</div>
+        <h3 class="disp">
+          <span class="tri ja">MÉXICO TRAVEL</span>
+          <span class="tri es">MÉXICO TRAVEL</span>
+          <span class="tri en">MÉXICO TRAVEL</span>
+        </h3>
+        <div class="lot-sub tr ja">オシャレに特化した、メキシコの旅を。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>レストラン、バー、ホテル、建築、アート、ビンテージ。</p>
+          <p>メキシコならではの建築美、アートシーン、デザインホテルなど、街に息づく感性と美意識を案内する。</p>
+          <p>10年以上暮らしてきたからこそ知る、ガイドブックには載らないメキシコへ。</p>
+        </div>
+        <div class="lot-sub tr es">Un viaje por México, con enfoque en el buen gusto.</div>
+        <div class="lot-sub tr en">A trip through Mexico, tailored for style.</div>
+        <div class="tr es">
+          <p>Restaurantes, bares, hoteles, arquitectura, arte, vintage.</p>
+          <p>Una guía por la belleza arquitectónica, la escena artística y los hoteles de diseño propios de México — la sensibilidad y la estética que laten en la ciudad.</p>
+          <p>Al México que solo se conoce tras más de 10 años viviendo aquí, el que no aparece en las guías turísticas.</p>
+        </div>
+        <div class="tr en">
+          <p>Restaurants, bars, hotels, architecture, art, vintage.</p>
+          <p>A guide through Mexico's own architectural beauty, art scene, and design hotels — the sensibility and aesthetic that live in the city.</p>
+          <p>To the Mexico only known after living here for over 10 years — the one you won't find in guidebooks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lot reveal" id="lote-hair">
+      <div class="lot-media slides" aria-roledescription="carousel">
+        <img id="img-hair-1" src="media/hair_1.jpg" loading="lazy" decoding="async" alt="Hair / Styling">
+        <img id="img-hair-2" src="media/hair_2.jpg" loading="lazy" decoding="async" alt="THE HOME salon"><video data-src="media/hair.mp4" preload="none" playsinline muted loop aria-label="Hair video"></video>
+      </div>
+      <div class="lot-body">
+        <div class="lot-tag">LOTE Nº 03</div>
+        <h3 class="disp">
+          <span class="tri ja">HAIR CREATION</span>
+          <span class="tri es">HAIR CREATION</span>
+          <span class="tri en">HAIR CREATION</span>
+        </h3>
+        <div class="lot-sub tr ja">まだ気づかぬ個性を、引き出す。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>メキシコシティ・コンデサを拠点に活動するヘアスタイリスト。</p>
+          <p>30〜40代の感度の高い顧客を中心に、Hair × Fashionの視点からトータルスタイルを提案。</p>
+          <p>ニューヨーク、ロサンゼルス、パリ、ロンドンなど、世界各地からアーティスト、ミュージシャン、クリエイターが集う、感性の交差点となるサロン。</p>
+        </div>
+        <div class="lot-sub tr es">Sacando a la luz la individualidad que aún no has notado.</div>
+        <div class="lot-sub tr en">Bringing out the individuality you haven't noticed yet.</div>
+        <div class="tr es">
+          <p>Estilista con base en Condesa, Ciudad de México.</p>
+          <p>Trabaja principalmente con clientes de 30 a 40 años con un alto sentido del estilo, proponiendo un look total desde la perspectiva de Hair × Fashion.</p>
+          <p>Un salón que se convierte en un cruce de sensibilidades, donde artistas, músicos y creativos de Nueva York, Los Ángeles, París, Londres y otras partes del mundo se reúnen.</p>
+        </div>
+        <div class="tr en">
+          <p>Hairstylist based in Condesa, Mexico City.</p>
+          <p>Working mainly with style-conscious clients in their 30s and 40s, offering total styling through the lens of Hair × Fashion.</p>
+          <p>A salon that becomes a crossroads of sensibility, where artists, musicians, and creatives from New York, Los Angeles, Paris, London, and beyond come together.</p>
+        </div>
+        <div class="lot-links">
+          <a class="lot-btn" href="https://thehomehair.com/reserva/"><span class="tri ja">予約する</span><span class="tri es">Reservar cita</span><span class="tri en">Book an appointment</span> <span aria-hidden="true">→</span></a>
+          <a class="lot-link" href="https://thehomehair.com/">THE HOME Hair re-creative</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="lot reveal" id="lote-vintage">
+      <div class="lot-media slides" aria-roledescription="carousel">
+        <img id="img-vintage-1" src="media/vintage_1.jpg" loading="lazy" decoding="async" alt="Vintage buying — flea market">
+        <img id="img-vintage-2" src="media/vintage_2.jpg" loading="lazy" decoding="async" alt="Vintage buying — jackets">
+        <img id="img-vintage-3" src="media/vintage_3.jpg" loading="lazy" decoding="async" alt="Vintage buying — outfit">
+      </div>
+      <div class="lot-body">
+        <div class="lot-tag">LOTE Nº 04</div>
+        <h3 class="disp">
+          <span class="tri ja">VINTAGE BUYING</span>
+          <span class="tri es">VINTAGE BUYING</span>
+          <span class="tri en">VINTAGE BUYING</span>
+        </h3>
+        <div class="lot-sub tr ja">一期一会、まだ見ぬビンテージへ。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>メキシコ、USA、日本。</p>
+          <p>旅した国や街、ストリートで出会った古着、セレクトブランド、アンティーク家具を買い付ける。</p>
+          <p>年代や知名度ではなく、今のスタイルや空間にどう生かせるかをNORYの視点で見極め、選び、提案する。</p>
+          <p>時代を越えて残ったものに、新しい価値と物語をつないでいく。</p>
+        </div>
+        <div class="lot-sub tr es">Un encuentro único, hacia el vintage aún no visto.</div>
+        <div class="lot-sub tr en">One encounter, one chance — toward vintage yet unseen.</div>
+        <div class="tr es">
+          <p>México, Estados Unidos, Japón.</p>
+          <p>Compra ropa vintage, marcas seleccionadas y muebles antiguos encontrados en los países y calles que ha recorrido.</p>
+          <p>No se basa en la época o el reconocimiento de marca, sino en cómo puede aprovecharse en el estilo o espacio actual, según la mirada de NORY.</p>
+          <p>Conectando nuevo valor e historias a aquello que ha perdurado a través del tiempo.</p>
+        </div>
+        <div class="tr en">
+          <p>Mexico, the USA, Japan.</p>
+          <p>Sourcing vintage clothing, select brands, and antique furniture found in the countries and streets he's traveled.</p>
+          <p>Not based on era or brand recognition, but on how it can serve today's style or space — judged, chosen, and proposed through NORY's own eye.</p>
+          <p>Connecting new value and stories to what has endured across time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lot reveal" id="lote-space">
+      <div class="lot-media drift"><img id="img-space" src="media/space.jpg" loading="lazy" decoding="async" alt="Space Design"></div>
+      <div class="lot-body">
+        <div class="lot-tag">LOTE Nº 05</div>
+        <h3 class="disp">
+          <span class="tri ja">SPACE DESIGN / INTERIOR STYLING</span>
+          <span class="tri es">SPACE DESIGN / INTERIOR STYLING</span>
+          <span class="tri en">SPACE DESIGN / INTERIOR STYLING</span>
+        </h3>
+        <div class="lot-sub tr ja">NORYにしか創れない空間。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>空間の個性を読み取り、家具、照明、色、素材をコーディネート。</p>
+          <p>自ら買い付けたアンティーク家具やオブジェを織り交ぜ、異なる時代や文化を編集し、その場所にしか生まれない空気と世界観をデザインする。</p>
+        </div>
+        <div class="lot-sub tr es">Un espacio que solo NORY puede crear.</div>
+        <div class="lot-sub tr en">A space only NORY can create.</div>
+        <div class="tr es">
+          <p>Lee la personalidad de cada espacio y coordina muebles, iluminación, color y materiales.</p>
+          <p>Combinando muebles antiguos y objetos que él mismo ha comprado, edita elementos de distintas épocas y culturas para diseñar una atmósfera y un mundo únicos de ese lugar.</p>
+        </div>
+        <div class="tr en">
+          <p>Reads the character of each space and coordinates furniture, lighting, color, and materials.</p>
+          <p>Weaving in antique furniture and objects he's sourced himself, he edits elements from different eras and cultures to design an atmosphere and world unique to that place.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="wrap">
+    <div class="next-grid reveal">
+      <div>
+        <div class="eyebrow">NEXT</div>
+        <h2>
+          <span class="tri ja">NEW PROJECT</span>
+          <span class="tri es">NEW PROJECT</span>
+          <span class="tri en">NEW PROJECT</span>
+        </h2>
+        <div class="lot-sub tr ja">夢を持ち続ける。</div>
+        <div class="lot-divider"></div>
+        <div class="tr ja">
+          <p>メキシコ、USA、日本で出会い、買い付けてきたビンテージファブリック。</p>
+          <p>それぞれの時代や土地の記憶を残しながら、新たなデザインを加え、オリジナルプロダクトとして形にしていく。</p>
+          <p>時を重ねた素材に、新しい表情と、その先の物語を。</p>
+        </div>
+        <div class="lot-sub tr es">Seguir teniendo un sueño.</div>
+        <div class="lot-sub tr en">Keep on dreaming.</div>
+        <div class="tr es">
+          <p>Telas vintage encontradas y compradas en México, Estados Unidos y Japón.</p>
+          <p>Conservando la memoria de cada época y lugar, se les suma un nuevo diseño para darles forma como producto original.</p>
+          <p>Un nuevo rostro, y la historia que sigue, para materiales que han acumulado el tiempo.</p>
+        </div>
+        <div class="tr en">
+          <p>Vintage fabric encountered and sourced in Mexico, the USA, and Japan.</p>
+          <p>Preserving the memory of each era and place, new design is added to shape it into an original product.</p>
+          <p>A new expression, and the story beyond, for materials that have gathered time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-title">
+      <span class="tri ja">つながる</span>
+      <span class="tri es">Conecta</span>
+      <span class="tri en">Connect</span>
+    </div>
+    <div class="ig-grid">
+      <div class="link-card">
+        <div class="label">THE HOME HAIR RE-CREATIVE</div>
+        <a class="link-row" href="https://www.instagram.com/the_home_hair_re_creative/" target="_blank" rel="noopener" aria-label="Instagram @the_home_hair_re_creative"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg><span class="txt"><span class="hd">@the_home_hair_re_creative</span></span><span class="go" aria-hidden="true">→</span></a>
+        <a class="link-row" href="https://thehomehair.com/" aria-label="THE HOME Hair re-creative — thehomehair.com"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span class="txt"><span class="nm">THE HOME Hair</span><span class="hd">thehomehair.com</span></span><span class="go" aria-hidden="true">→</span></a>
+      </div>
+      <div class="link-card">
+        <div class="label">SEÑOR NORY</div>
+        <a class="link-row" href="https://www.instagram.com/senor__nory/" target="_blank" rel="noopener" aria-label="Instagram Señor Nory @senor__nory"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg><span class="txt"><span class="nm">Señor Nory</span><span class="hd">@senor__nory</span></span><span class="go" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>SEÑOR NORY — CDMX, MÉXICO</div>
+      <div>MÉXICO × JAPÓN</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.langbar button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const lang = btn.getAttribute('data-lang');
+      document.body.classList.remove('lang-ja','lang-es','lang-en');
+      document.body.classList.add('lang-'+lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.langbar button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 最初の画面の動画：動きを減らす設定の人にはポスター画像だけ
+  // 案B（ぼかし背景）は URL の最後に ?blur を付けると見られる
+  (function(){
+    var b=document.body;
+    if(/[?&]blur\b/.test(location.search)) b.classList.add('hero-blur');
+    var v=document.getElementById('hero-video'), bg=document.getElementById('hero-video-bg');
+    if(!v) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var vids=[v];
+    if(b.classList.contains('hero-blur') && bg) vids.push(bg);
+    vids.forEach(function(x){ x.src=x.getAttribute('data-src'); x.muted=true; var p=x.play(); if(p&&p.catch){ p.catch(function(){}); } });
+    // つなぎ目：最後の0.45秒で少し暗くし、最初に戻ったら明るく戻す
+    function tick(){
+      if(v.duration){
+        if(bg && vids.length>1 && Math.abs(bg.currentTime-v.currentTime)>0.25){ bg.currentTime=v.currentTime; }
+        var on = v.currentTime > v.duration-0.45, off = v.currentTime < v.duration-0.6;
+        vids.forEach(function(x){ if(on) x.classList.add('dip'); else if(off) x.classList.remove('dip'); });
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  // ゲート：「さらに見る」を押すと下の部分が開く
+  (function(){
+    var b=document.body, c=document.querySelector('.cue');
+    function open(){ if(!b.classList.contains('gate')) return; b.classList.remove('gate'); }
+    if(c) c.addEventListener('click', function(e){
+      e.preventDefault(); open();
+      setTimeout(function(){ var a=document.getElementById('contenido'); if(a) a.scrollIntoView({behavior:'smooth'}); }, 30);
+    });
+    // ページ内リンク（#〜）で来た人はゲートを開けておく
+    if(location.hash && location.hash.length>1) open();
+  })();
+</script>
+
+<script>
+/* 写真・動画の自動スライド：3.8秒ごとにふわっと切りかわる。動画は音なしで流し、終わるまで待つ。
+   さわると止まり、8秒さわらなければまた動く。左右のスワイプで送れる。見えていない時は止まる。動きを減らす設定の人には自動で動かさない */
+(function(){
+  var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches, STEP=3800, IDLE=8000;
+  document.querySelectorAll('.lot-media.slides').forEach(function(box){
+    var items=[].slice.call(box.children).filter(function(x){return /^(IMG|VIDEO)$/.test(x.tagName);});
+    if(items.length<2){ if(items[0]) items[0].classList.add('on'); return; }
+    var i=0, timer=null, visible=false, held=false, idleT=null;
+    var dots=document.createElement('div'); dots.className='slide-dots';
+    items.forEach(function(_,k){ var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',(k+1)+' / '+items.length); b.addEventListener('click',function(e){ e.stopPropagation(); touch(); go(k); }); dots.appendChild(b); });
+    box.appendChild(dots);
+    function load(v){ if(v.tagName==='VIDEO' && !v.src){ v.src=v.getAttribute('data-src'); v.muted=true; } }
+    function show(){
+      items.forEach(function(x,k){ var on=k===i; x.classList.toggle('on',on); x.setAttribute('aria-hidden',on?'false':'true');
+        if(x.tagName==='VIDEO'){ if(on&&visible){ load(x); x.muted=true; var p=x.play(); if(p&&p.catch)p.catch(function(){}); } else if(!x.paused){ x.pause(); } } });
+      [].forEach.call(dots.children,function(d,k){ d.classList.toggle('on',k===i); });
+      // 次の1枚を先に読んでおく
+      var n=items[(i+1)%items.length]; if(visible) load(n), n.tagName==='VIDEO'&&(n.preload='auto');
+    }
+    function delay(){ var x=items[i]; if(x.tagName==='VIDEO'&&x.duration&&isFinite(x.duration)) return Math.max(STEP, Math.min(x.duration*1000, 12000)); return STEP; }
+    function sched(){ clearTimeout(timer); if(RM||!visible||held) return; timer=setTimeout(function(){ go(i+1); }, delay()); }
+    function go(k){ i=(k+items.length)%items.length; if(items[i].tagName==='VIDEO'){ items[i].currentTime=0; } show(); sched(); }
+    function touch(){ held=true; clearTimeout(timer); clearTimeout(idleT); idleT=setTimeout(function(){ held=false; sched(); }, IDLE); }
+    // スワイプ
+    var sx=null, sy=null;
+    box.addEventListener('pointerdown',function(e){ sx=e.clientX; sy=e.clientY; touch(); });
+    box.addEventListener('pointerup',function(e){ if(sx===null) return; var dx=e.clientX-sx, dy=e.clientY-sy; sx=null; if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)) go(i+(dx<0?1:-1)); });
+    box.addEventListener('pointercancel',function(){ sx=null; });
+    box.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse'){ held=true; clearTimeout(timer); clearTimeout(idleT);} });
+    box.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse'){ clearTimeout(idleT); held=false; sched(); } });
+    new IntersectionObserver(function(es){ es.forEach(function(e){ visible=e.isIntersecting; show(); sched(); }); },{rootMargin:'200px 0px'}).observe(box);
+    show();
+  });
+})();
+</script>
+
+<audio id="bgm" src="music.mp3" loop preload="none"></audio>
+<button class="music" id="musicBtn" aria-label="Music" title="Music"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12.2V3.4l7-1.6v8.6" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="4.4" cy="12.4" rx="1.9" ry="1.4" fill="currentColor"/><ellipse cx="11.4" cy="10.6" rx="1.9" ry="1.4" fill="currentColor"/><path class="slash" d="M2 14L14 2" stroke="currentColor" stroke-width="1.1"/></svg></button>
+<script>
+/* 音楽：美容室のページと同じしくみ。開いただけでは音が出せない（ブラウザの決まり）ので、最初に画面にさわった時に流す。ボタンで止める・流す。
+   曲のファイル（music.mp3）が無いときはボタンを出さず、何もしない */
+(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');if(!a||!b)return;a.volume=.45;var off=false,ok=false;
+function ui(){b.className='music ready '+(a.paused?'off':'on');}
+function play(){if(!ok)return;var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
+function ready(){if(ok)return;ok=true;ui();}
+a.addEventListener('error',function(){ok=false;b.className='music';},true);
+a.addEventListener('loadedmetadata',ready);
+/* ファイルがあるかを先に確かめる（無ければボタンを出さない） */
+if(location.protocol.indexOf('http')===0&&window.fetch){fetch(a.getAttribute('src'),{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok&&!/text\/html/.test(r.headers.get('content-type')||''))ready();}).catch(function(){});}
+else{a.preload='metadata';a.load();}
+function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){window.removeEventListener(t,first,true)});if(!off&&!(e&&b.contains(e.target)))play();}
+['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
+function resume(e){if(ok&&!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
+['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)resume();});
+a.addEventListener('pause',function(){if(ok)ui();});a.addEventListener('play',function(){if(ok)ui();});
+b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}});})();
+</script>
+
+<!-- 【10/6】Googleアナリティクスのお知らせ（小さく1行・ページの言語に合わせる） -->
+<script>(function(){var t={es:'Este sitio usa Google Analytics para contar las visitas.',en:'This site uses Google Analytics to count visits.',ja:'このサイトはアクセス数を数えるため Google アナリティクスを使っています。'};var p=document.createElement('p');p.className='ga-note';p.style.cssText='margin:4px auto 12px;padding:0 16px;max-width:520px;text-align:center;font-size:11px;line-height:1.5;color:#8a7663;opacity:.9;position:relative;z-index:1';function L(){var m=(document.body.className||'').match(/lang-(es|en|ja)/);var l=((m&&m[1])||document.documentElement.lang||new URLSearchParams(location.search).get('lang')||navigator.language||'es').slice(0,2).toLowerCase();return t[l]?l:'es';}function u(){p.textContent=t[L()];}u();document.body.appendChild(p);try{new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});new MutationObserver(u).observe(document.body,{attributes:true,attributeFilter:['class']});}catch(e){}})();</script>
+</body>
+</html>
