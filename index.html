@@ -868,7 +868,9 @@ function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){win
 /* 止まっていたら、画面にさわった時・ページに戻った時に、また流す（♪で止めた人はそのまま） */
 function resume(e){if(!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
 ['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
-document.addEventListener('visibilitychange',function(){if(!document.hidden)resume();});
+/* ページから離れたら（別のタブ・別のアプリ・予約ページなど）音楽を止める。戻ったらまた流す 2026-10-06 Nory */
+document.addEventListener('visibilitychange',function(){if(document.hidden){if(!a.paused)a.pause();}else resume();});
+window.addEventListener('pagehide',function(){if(!a.paused)a.pause();});window.addEventListener('blur',function(){if(!a.paused&&document.hidden)a.pause();});
 a.addEventListener('pause',ui);a.addEventListener('play',ui);
 b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}});ui();})();
 </script>
