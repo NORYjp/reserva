@@ -333,6 +333,10 @@
   .music.on::before{ animation:groove 9s linear infinite; }
   @keyframes groove{ to{ transform:rotate(360deg); } }
   .music svg{ width:16px; height:16px; position:relative; }
+  .music svg.rec{ width:34px; height:34px; }
+  .music.on svg.rec{ animation:groove 3.2s linear infinite; }
+  .music::before{ display:none; }
+  @media (prefers-reduced-motion: reduce){ .music.on svg.rec{ animation:none; } }
   .music .slash{ display:none; }
   .music.off{ opacity:.55; }
   .music.off .slash{ display:block; }
@@ -836,7 +840,7 @@
 </script>
 
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
-<button class="music" id="musicBtn" aria-label="Music" title="Music"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12.2V3.4l7-1.6v8.6" fill="none" stroke="currentColor" stroke-width="1.1"/><ellipse cx="4.4" cy="12.4" rx="1.9" ry="1.4" fill="currentColor"/><ellipse cx="11.4" cy="10.6" rx="1.9" ry="1.4" fill="currentColor"/><path class="slash" d="M2 14L14 2" stroke="currentColor" stroke-width="1.1"/></svg></button>
+<button class="music" id="musicBtn" aria-label="Music" title="Music"><svg class="rec" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#141010" stroke="currentColor" stroke-width=".8"/><circle cx="16" cy="16" r="12" fill="none" stroke="#3a302a" stroke-width=".6"/><circle cx="16" cy="16" r="10" fill="none" stroke="#3a302a" stroke-width=".6"/><circle cx="16" cy="16" r="8" fill="none" stroke="#3a302a" stroke-width=".6"/><path d="M6.5 11.5A11 11 0 0 1 11.5 6.5" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-linecap="round"/><circle cx="16" cy="16" r="5.2" fill="#f08a4b"/><circle cx="16" cy="16" r="3.4" fill="none" stroke="#141010" stroke-width=".5" opacity=".5"/><circle cx="16" cy="16" r="1" fill="#141010"/><path class="slash" d="M4 28L28 4" stroke="currentColor" stroke-width="1.6"/></svg></button> <!-- 【10/8 Nory】アイコンはレコードの形。流れている間は回る -->
 <script>
 /* 音楽：美容室のページと同じしくみ。開いただけでは音が出せない（ブラウザの決まり）ので、最初に画面にさわった時に流す。ボタンで止める・流す。
    曲のファイル（music.mp3）が無いときはボタンを出さず、何もしない */
@@ -845,7 +849,7 @@ function ui(){b.className='music ready '+(a.paused?'off':'on');}
 /* 【10/8 Nory】iPhoneは audio.volume が効かず大きすぎるので、Web Audio の音量（GAIN）で小さくする */
 var GAIN=.28,ctx=null,gn=null;
 function gainOn(){try{if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return;ctx=new C();var src=ctx.createMediaElementSource(a);gn=ctx.createGain();gn.gain.value=GAIN;src.connect(gn);gn.connect(ctx.destination);a.volume=1;}if(ctx.state==='suspended')ctx.resume();}catch(e){a.volume=GAIN;}}
-function play(cb){if(!ok)return;gainOn();var p=a.play();if(p&&p.then)p.then(function(){ui();cb&&cb(true);}).catch(function(){ui();cb&&cb(false);});else{ui();cb&&cb(true);}}
+function play(cb){gainOn();var p=a.play();if(p&&p.then)p.then(function(){ui();cb&&cb(true);}).catch(function(){ui();cb&&cb(false);});else{ui();cb&&cb(true);}}
 function ready(){if(ok)return;ok=true;ui();}
 a.addEventListener('error',function(){ok=false;b.className='music';},true);
 a.addEventListener('loadedmetadata',ready);
@@ -854,7 +858,7 @@ if(location.protocol.indexOf('http')===0&&window.fetch){fetch(a.getAttribute('sr
 else{a.preload='metadata';a.load();}
 /* 【10/8 Nory】最初にさわったら流す。iPhoneは touchstart では鳴らせないので、指を離した時・クリック・キーでも試し、鳴るまで待つ */
 var FE=['pointerdown','touchstart','touchend','pointerup','click','keydown'];
-function first(e){if(off||(e&&b.contains(e.target)))return;if(!ok)return;if(!a.paused){stopFirst();return;}play(function(r){if(r)stopFirst();});}
+function first(e){if(off||(e&&b.contains(e.target)))return;if(!a.paused){stopFirst();return;}play(function(r){if(r)stopFirst();});}
 function stopFirst(){FE.forEach(function(t){window.removeEventListener(t,first,true)});}
 FE.forEach(function(t){window.addEventListener(t,first,true)});
 function resume(e){if(ctx&&ctx.state==='suspended'&&!off)try{ctx.resume();}catch(x){}if(ok&&!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
