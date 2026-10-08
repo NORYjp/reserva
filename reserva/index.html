@@ -384,7 +384,21 @@ body.tkOn .w{padding-bottom:120px}
 /* ===== 【下書き 10/6 メニューのメリット】end ===== */
 /* ===== 【下書き 10/6 種類を選ぶまで】日時の所を薄くして押せなくする。帯にも「種類を選んでください」 ===== */
 body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べない（前は薄く表示） */
-.s2wait{display:flex;align-items:baseline;gap:8px;margin:4px 0 10px;color:var(--accent-d);font-size:14px;line-height:1.5;font-family:'Kaisei Decol','Yeseva One',serif}.s2wait i{font-style:normal;color:var(--accent);font-size:12px;flex:0 0 auto}.s2wait[hidden]{display:none}.s2wait.tn{margin:8px 0 2px;cursor:default}.s2wait.phh{margin:14px 0 0;font-size:15px}.s2wait.phh b{font-weight:700;color:var(--accent-d)}.s2wait.phh+.photo{margin-top:4px}#photoBox2[hidden]{display:none}
+.s2wait{display:flex;align-items:baseline;gap:8px;margin:4px 0 10px;color:var(--accent-d);font-size:14px;line-height:1.5;font-family:'Kaisei Decol','Yeseva One',serif}.s2wait i{font-style:normal;color:var(--accent);font-size:12px;flex:0 0 auto}.s2wait[hidden]{display:none}
+/* 【10/8 Nory】迷惑メールの注意（送る前・受け付けました画面）。箱はボタンに見せない（左の太いからし色の線＋ネイビーの地・クリームの文字）。コピーだけボタン（からし色） */
+.spam{margin:16px 0 0;padding:13px 14px 14px;background:#1f2d45;border:2px solid #121c2e;border-left:8px solid #e0a43a;border-radius:6px;text-align:left;color:#f7ebdd;overflow-wrap:break-word;box-shadow:0 3px 0 #121c2e} /* 【10/8 Nory 決定】ネイビーの地で目立たせる */
+.spam-h{display:flex;gap:9px;align-items:flex-start;margin:0;color:#f2c25c;font-weight:800;font-size:19px;line-height:1.35;font-family:'Kaisei Decol','Yeseva One',serif}
+.spam-h svg{flex:0 0 30px;width:30px;height:28px;margin-top:1px}
+.spam-p{margin:8px 0 0;font-size:14.5px;line-height:1.6}
+.spam-f{display:flex;gap:10px;align-items:center;margin-top:11px;padding:10px;background:var(--paper);border:1px dashed var(--line);border-radius:8px}
+.spam-f img{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:#fff;object-fit:cover}
+.spam-f div{min-width:0;flex:1}
+.spam-f small{display:block;color:var(--mute);font-size:12px;line-height:1.4}
+.spam-f strong{display:block;font-size:13px;line-height:1.35;color:var(--ink);overflow-wrap:normal;word-break:normal;margin:2px 0 6px}
+.spam-a{color:#f2c25c;font-weight:700;overflow-wrap:normal;word-break:normal}
+.spam-cp{font:inherit;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;border:1.5px solid #a8771c;background:#e0a43a;color:#3a2a20;cursor:pointer;line-height:1.2}
+.spam-cp.ok{background:#fff;color:#3a2a20}
+.done .spam{margin:16px 0 4px}.s2wait.tn{margin:8px 0 2px;cursor:default}.s2wait.phh{margin:14px 0 0;font-size:15px}.s2wait.phh b{font-weight:700;color:var(--accent-d)}.s2wait.phh+.photo{margin-top:4px}#photoBox2[hidden]{display:none}
 #typeNote{margin:0 0 10px}
 .tk-l small.tk-pend{color:var(--accent-d);white-space:normal}
 .tk-r.rm .tk-pr{white-space:normal;text-align:right;max-width:52%}
@@ -560,6 +574,7 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 
 <div id="photoBox2" hidden><div class="s2wait phh"><i aria-hidden="true">◆</i><b data-t="photoReq"></b></div><div class="photo" id="photoNote2" style="margin-top:0"></div></div><!-- 【10/8 Nory】送る前の確認の所にも -->
 <div class="sum" id="sum">—</div>
+<div id="spamPre"></div><!-- 【10/8 Nory】確定メールが迷惑メールに入ってお客様が来られなかった件。送る前に目立たせる -->
 <button class="go" id="go" disabled></button>
 <div class="hint" id="need3" style="text-align:center;margin-top:8px;display:none;color:#b00020" data-t="need3"></div>
 <div class="pmo" id="permNote2" hidden data-t="permOnly" style="text-align:center;margin-top:8px"></div>
@@ -590,6 +605,11 @@ waitC:{es:'Primero elija el tipo de color.',en:'Please choose the color type fir
 waitB:{es:'Primero elija con o sin decoloración.',en:'Please choose with or without bleach first.',ja:'先にブリーチあり／なしを選んでください'},
 waitS:{es:'Primero elija el tipo de alaciado.',en:'Please choose the straightening type first.',ja:'先に縮毛矯正の種類を選んでください'},
 waitM:{es:'Primero elija el menú.',en:'Please choose the menu first.',ja:'先にメニューを選んでください'},
+spamH:{es:'El correo de confirmación puede llegar a spam',en:'Your confirmation email may go to spam',ja:'確定のメールが迷惑メールに入ることがあります'}, // 【10/8 Nory】迷惑メールの注意
+spamP:{es:'Si no lo recibe, revise su carpeta de spam. Para asegurarse, agregue thehome.hair.recreative@gmail.com a sus contactos.',en:"If you don't see it, please check your spam folder. To be safe, add thehome.hair.recreative@gmail.com to your contacts.",ja:'メールが届かない時は、迷惑メールの中も見てください。thehome.hair.recreative@gmail.com を連絡先に入れておくと確実です。'},
+spamF:{es:'Llega con este logo, desde esta dirección:',en:'It comes with this logo, from this address:',ja:'このロゴ・このアドレスから届きます：'},
+spamCp:{es:'Copiar',en:'Copy',ja:'コピー'},
+spamOk:{es:'Copiado',en:'Copied',ja:'コピーしました'},
 photoReq:{es:'Se necesitan fotos',en:'Photo required',ja:'写真が必要です'}, // 【10/8 Nory】
 mmPick:{es:'Elija una opción.',en:'Please choose one.',ja:'どちらかを選んでください'}, // 【10/8】メンズ／レディースを選ぶまで
 mmNote:{es:'Elige el que mejor se adapte a ti.',en:'Choose the one that suits you best.',ja:'ご自分に合う方をお選びください'},
@@ -719,6 +739,14 @@ waAnyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por correo electró
 waDoneC:{es:'Le enviaremos la confirmación de su cita por correo electrónico. Si no la encuentra, revise su carpeta de spam.',en:'We will send your appointment confirmation by email. If you cannot find it, please check your spam folder.',ja:'ご予約の確定はメールでお送りします。見当たらない場合は迷惑メールフォルダもご確認ください。'}
 });
 const T=k=>TX[k][LANG];
+// 【10/8 Nory】迷惑メールの注意の箱（送る前・受け付けました画面で同じ物）。丸ロゴ＝確定メールと同じ画像。コピーはアドレスだけ
+const SHOP_MAIL='thehome.hair.recreative@gmail.com';
+function spamHTML(){return '<div class="spam" role="note"><p class="spam-h"><svg viewBox="0 0 30 28" aria-hidden="true"><path d="M15 2.2c.9 0 1.5.5 2 1.4l11 20c.8 1.5-.1 3.1-1.9 3.1H3.9C2.1 26.7 1.2 25.1 2 23.6l11-20c.5-.9 1.1-1.4 2-1.4z" fill="#e0a43a" stroke="#f2c25c" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 9.5v8.2" stroke="#1f2d45" stroke-width="3" stroke-linecap="round"/><circle cx="15" cy="22.2" r="1.8" fill="#1f2d45"/></svg><span>'+T('spamH')+'</span></p><p class="spam-p">'+T('spamP').replace(SHOP_MAIL,'<span class="spam-a">'+SHOP_MAIL.replace('@','<wbr>@')+'</span>')+'</p><div class="spam-f"><img src="/logo_round.png" alt="THE HOME Hair re-creative" width="48" height="48"><div><small>'+T('spamF')+'</small><strong>'+SHOP_MAIL.replace('@','<wbr>@')+'</strong><button type="button" class="spam-cp" aria-live="polite">'+T('spamCp')+'</button></div></div></div>';}
+function spamFill(){const e=document.getElementById('spamPre');if(e)e.innerHTML=spamHTML();}
+document.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.closest('.spam-cp');if(!b)return;
+ const ok=()=>{b.textContent=T('spamOk');b.classList.add('ok');clearTimeout(b._t);b._t=setTimeout(()=>{b.textContent=T('spamCp');b.classList.remove('ok');},2500);};
+ const old=()=>{try{const t=document.createElement('textarea');t.value=SHOP_MAIL;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,99);const r=document.execCommand('copy');t.remove();if(r)ok();}catch(e){}};
+ try{navigator.clipboard.writeText(SHOP_MAIL).then(ok,old);}catch(e){old();}});
 const CAMBIO=new URLSearchParams(location.search).get('cambio')==='1'; // 【下書き 10/4】
 let CUR=null; // 今の予約（?action=myres）
 const ID = (new URLSearchParams(location.search).get('id')||'').replace(/[^0-9]/g,'');
@@ -1021,11 +1049,11 @@ function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
 ['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay()))}) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(x=>x.json()).then(r=>{if(r&&r.ok){try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay()))}) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(x=>x.json()).then(r=>{if(r&&r.ok){try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
   else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
 if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><a class="go" style="text-decoration:none;text-align:center;background:#1f7a4d" href="https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.')+'">'+({es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約する'}[LANG]||'Reservar por WhatsApp')+'</a>';app.appendChild(bx);}
 document.documentElement.lang=LANG;
-document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));
+document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));spamFill();
 document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='es'){const x=document.getElementById('last2');x.style.display='block';x.placeholder=T('last2');}if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
 document.getElementById('go').textContent=T('send');
 // 【Google 10/4】IDなしの人：携帯は「WhatsApp」、確定はメール、写真はWhatsAppで
