@@ -451,10 +451,36 @@ body.needType #s2box{opacity:.35;pointer-events:none;filter:grayscale(.3)}
  .rz-js .step.rz-in::after,.rz-js .langs.rz-in .lk{transform-origin:left center;animation:rzGrow 1s cubic-bezier(.3,.6,.35,1) both,rzWig .25s ease-in-out 0s 4}
  .rz-js .step.rz-in.rz-done::after,.rz-js .langs.rz-in.rz-done .lk{animation:rzIdle 6.5s ease-in-out var(--rz-d,0s) infinite}
  .rz-js .step.rz-in.rz-done.rz-wig::after,.rz-js .langs.rz-in.rz-done.rz-wig .lk{animation:rzHov .5s ease-in-out 1}
+ .rz-js .hoy:not(.rz-in) .hoy-k{width:0!important;min-width:0!important;opacity:0!important}
+ .rz-js .hoy.rz-in .hoy-k{animation:rzGrow 1s cubic-bezier(.3,.6,.35,1) both,rzWig .25s ease-in-out 0s 4}
+ .rz-js .hoy.rz-in.rz-done .hoy-k{animation:rzIdle 6.5s ease-in-out var(--rz-d,0s) infinite}
+ .rz-js .hoy.rz-in.rz-done.rz-wig .hoy-k{animation:rzHov .5s ease-in-out 1}
  .rz-js .kk,.rz-js .photo::before,.rz-js .anyt::before,.rz-js .hold h3 [data-t="hT"]::before,.rz-js .t.rec::before,.rz-js .t.rec::after{animation:rzIdle 7s ease-in-out 2.5s infinite}
  .rz-js .photo:nth-of-type(2n)::before,.rz-js .t.rec:nth-child(2n)::before,.rz-js .t.rec:nth-child(2n)::after{animation-delay:4.2s}
  .rz-js .kk.rz-wig,.rz-js .photo.rz-wig::before,.rz-js .anyt.rz-wig::before,.rz-js .hold h3 [data-t="hT"].rz-wig::before,.rz-js .t.rec.rz-wig::before,.rz-js .t.rec.rz-wig::after{animation:rzHov .5s ease-in-out 1}
 }
+/* ===== 【下書き 10/8 Nory 本日のおすすめ】今日（メキシコ時間）まだ始まっていない空き時間を、カレンダーの上に小さな帯で。
+   クリームの紙＋茶色の細い線＋朱色の札。時間のボタンはゆっくり光る（動きを減らす設定では光らない） ===== */
+.hoy{position:relative;margin:2px 0 12px;padding:9px 11px 10px;background:var(--paper);border:1.5px solid var(--ink);border-radius:3px;display:flex;align-items:center;justify-content:space-between;gap:8px 10px;flex-wrap:wrap}
+.hoy[hidden]{display:none}
+.hoy::before{content:"";position:absolute;inset:3px;border:1px dashed var(--line);border-radius:2px;pointer-events:none}
+.hoy-h{position:relative;display:flex;flex-direction:column;min-width:0;line-height:1.2}
+.hoy-h b{font-family:'The Home Font F',inherit;font-weight:normal;font-size:15px;letter-spacing:.16em;color:var(--accent)}
+.hoy-k{display:block;width:100%;min-width:84px;max-width:150px;height:14px;margin:3px 0 4px;box-sizing:border-box;padding-right:23px;background-color:var(--ink);transform-origin:left center;
+ -webkit-mask:var(--hb-head) right center/23px 14px no-repeat border-box border-box,var(--hb-body) left center/14px 14px round no-repeat content-box content-box;
+ mask:var(--hb-head) right center/23px 14px no-repeat border-box border-box,var(--hb-body) left center/14px 14px round no-repeat content-box content-box}/* 【10/8 Nory】本日の下：見出しと同じククルカン（--hb-head・--hb-body をそのまま小さく） */
+.hoy-h span{font-size:12px;color:var(--mute);letter-spacing:.02em}
+:lang(ja) .hoy-h b{font-weight:700;letter-spacing:.12em;-webkit-text-stroke:.2px currentColor}
+.hoy-ts{position:relative;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.hoy-t{font:inherit;font-size:15px;min-width:62px;padding:7px 10px;border:2px solid var(--accent);border-radius:10px;background:#fbdcc6;color:var(--ink);cursor:pointer;
+ -webkit-text-stroke:.45px currentColor;paint-order:stroke fill;animation:hoyGlow 3.6s ease-in-out infinite;transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.hoy-t:nth-child(2){animation-delay:1.2s}.hoy-t:nth-child(3){animation-delay:2.4s}
+.hoy-t.on{background:var(--accent);border-color:var(--accent-d);color:#fff8f0;animation:none}
+@media (hover:hover){.hoy-t:not(.on):hover{background:var(--accent);color:#fff8f0;transform:translateY(-2px)}}
+.hoy-t:active{transform:scale(.95)}
+@keyframes hoyGlow{0%,100%{box-shadow:0 0 0 0 rgba(180,83,42,0)}50%{box-shadow:0 0 0 4px rgba(180,83,42,.16),0 0 10px rgba(180,83,42,.22)}}
+@media (prefers-reduced-motion:reduce){.hoy-t{animation:none;transition:none}}
+/* ===== 【下書き 10/8 本日のおすすめ】end ===== */
 </style><!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
@@ -497,6 +523,7 @@ body.needType #s2box{opacity:.35;pointer-events:none;filter:grayscale(.3)}
 <button class="anyt" id="anyt" type="button"></button>
 <div class="hint" id="anyNote" style="display:none;margin:-2px 0 8px" data-t="anyNote"></div>
 <div class="opts" id="opts"></div>
+<div class="hoy" id="hoy" hidden role="group"></div><!-- 【下書き 10/8 Nory】本日のおすすめ -->
 <div class="cal-h"><button id="prev">‹</button><div id="mon"></div><button id="next">›</button></div>
 <div class="grid" id="grid"></div>
 <div class="hint" data-t="closed"></div>
@@ -558,6 +585,8 @@ hora:{es:'Hora',en:'Time',ja:'時間'},
 pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にちを選んでください'},
 recT:{es:'Recomendado',en:'Recommended',ja:'おすすめ'}, // 【下書き 10/6 おすすめ】
 otherT:{es:'Otros horarios',en:'Other times',ja:'その他の時間'},
+hoyT:{es:'HOY',en:'TODAY',ja:'本日'}, // 【下書き 10/8 本日のおすすめ】
+hoyS:{es:'Horarios recomendados',en:'Recommended times',ja:'おすすめのお時間'},
 s3:{es:'3. Contacto',en:'3. Contact',ja:'3. ご連絡先'},
 name:{es:'Nombre',en:'First name',ja:'名（例：花子）'},
 last:{es:'Apellido paterno',en:'Last name(s)',ja:'姓（例：山田）'},
@@ -718,17 +747,19 @@ let OPENX=[];
 function closed(d){if(EXTRA.indexOf(ymd(d))<0&&OPENX.indexOf(ymd(d))>=0)return false;const w=d.getDay(),n=Math.ceil(d.getDate()/7);if(w===1)return true;if(w===2&&(n===1||n===3))return true;if(w===0&&n===3)return true;return EXTRA.indexOf(ymd(d))>=0;}
 function dur(){let t=0;const perm=sel.menus.indexOf(4)>=0;sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});return t;}
 const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
+// 【下書き 10/8 本日のおすすめ】日曜・休み・埋まりの3つを読み終えてから出す（読み終える前の、本当は埋まっている時間を出さないため）。読めなかった時も今の予約ページと同じ扱い
+var HOY_N=0;function hoyTick(){HOY_N++;drawHoy();}
 // 日曜：10:00から。埋まったら次の時間（Googleの記録 SUNDAY を見る）
 const SUN_CLOSE=1020; // 17:00
 let SUNDAY={};
-fetch(API+'?action=sunday').then(x=>x.json()).then(j=>{SUNDAY=j||{};revalidate();upd();}).catch(()=>{});
+fetch(API+'?action=sunday').then(x=>x.json()).then(j=>{SUNDAY=j||{};revalidate();upd();}).catch(()=>{}).then(hoyTick);
 // お店のGoogleカレンダーの「休み」（旅行など）を読んで休みにする
 // 「営業」と入れた日は、決まった休みでも開ける
-fetch(API+'?action=closed').then(x=>x.json()).then(j=>{((j&&j.closed)||[]).forEach(d=>{if(EXTRA.indexOf(d)<0)EXTRA.push(d);});OPENX=(j&&j.open)||[];revalidate();upd();}).catch(()=>{});
+fetch(API+'?action=closed').then(x=>x.json()).then(j=>{((j&&j.closed)||[]).forEach(d=>{if(EXTRA.indexOf(d)<0)EXTRA.push(d);});OPENX=(j&&j.open)||[];revalidate();upd();}).catch(()=>{}).then(hoyTick);
 const toM=t=>{const a=t.split(':');return (+a[0])*60+(+a[1]);};
 // 【下書き 10/5 埋まり】お店のカレンダーで埋まっている時間 {日付:[[開始分,終了分],...]}（?action=busy）。読めない時は {} のまま＝今まで通り全部選べる
 let BUSY={};
-fetch(API+'?action=busy').then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)){BUSY=j;revalidate();upd();}}).catch(()=>{});
+fetch(API+'?action=busy').then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)){BUSY=j;revalidate();upd();}}).catch(()=>{}).then(hoyTick);
 // 変更のページ：その人の今の予約（CUR.start）の日付と開始分（メキシコ時間）
 function curDM(){if(!CUR||!CUR.start)return null;const p={};new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date(CUR.start)).forEach(x=>{p[x.type]=x.value;});return {d:p.year+'-'+p.month+'-'+p.day,m:(+p.hour%24)*60+(+p.minute)};}
 // その日の埋まり。変更のときは、今の予約と同じ開始時間の埋まりを外す（自分の予約で自分がふさがらないように）
@@ -845,7 +876,7 @@ function needPhoto(){return sel.menus.indexOf(3)>=0||sel.menus.indexOf(4)>=0||se
 function cutPhoto(){return !needPhoto()&&(sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0||sel.menus.indexOf(2)>=0);}
 function fmtOpt(o){if(!o.date)return '—';const t=o.time==='any'?' '+T('anyShort'):o.time?' '+o.time:' —';if(LANG==='ja')return (o.date.getMonth()+1)+'/'+o.date.getDate()+'('+DIAS[o.date.getDay()]+')'+t;if(LANG==='en')return DIAS[o.date.getDay()]+' '+(o.date.getMonth()+1)+'/'+o.date.getDate()+t;return DIAS[o.date.getDay()]+' '+o.date.getDate()+'/'+(o.date.getMonth()+1)+t;}
 const durTxt=d=>LANG==='ja'?(d>=60?Math.floor(d/60)+'時間':'')+(d%60?d%60+'分':''):(d>=60?Math.floor(d/60)+' h ':'')+(d%60?d%60+' min':'');
-function drawOpts(){const e=document.getElementById('opts');e.innerHTML='';sel.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt'+(i===sel.cur?' on':'');b.innerHTML='<b>'+OPTN[i]+'</b>'+fmtOpt(o);b.onclick=()=>{sel.cur=i;drawOpts();drawCal();drawTimes();};e.appendChild(b);});}
+function drawOpts(){const e=document.getElementById('opts');e.innerHTML='';sel.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt'+(i===sel.cur?' on':'');b.innerHTML='<b>'+OPTN[i]+'</b>'+fmtOpt(o);b.onclick=()=>{sel.cur=i;drawOpts();drawCal();drawTimes();};e.appendChild(b);});drawHoy();}
 // calendar
 let view=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
 function drawCal(){const g=document.getElementById('grid');g.innerHTML='';document.getElementById('mon').textContent=LANG==='ja'?view.getFullYear()+'年'+(view.getMonth()+1)+'月':MESES[view.getMonth()]+' '+view.getFullYear();
@@ -857,6 +888,7 @@ function drawCal(){const g=document.getElementById('grid');g.innerHTML='';docume
   /* 【下書き 10/6】b.className が上のコメントの中に入って効いていなかったので行を分けた */b.className='d'+(ok?'':' off')+(sel.date&&ymd(sel.date)===ymd(d)?' on':'');
   if(ok)b.onclick=()=>{sel.date=d;sel.time=ANY?'any':null;if(ANY&&sel.cur<2&&!sel.opts[sel.cur+1].date)sel.cur++;drawCal();drawTimes();drawOpts();upd();};else b.disabled=true;g.appendChild(b);}
  document.getElementById('prev').disabled=view<=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
+ drawHoy(); // 【下書き 10/8 本日のおすすめ】
 }
 document.getElementById('prev').onclick=()=>{if(view>new Date(TODAY.getFullYear(),TODAY.getMonth(),1)){view=new Date(view.getFullYear(),view.getMonth()-1,1);drawCal();}};
 document.getElementById('next').onclick=()=>{const n=new Date(view.getFullYear(),view.getMonth()+1,1);if(n<=LAST){view=n;drawCal();}};
@@ -886,6 +918,20 @@ function zz(w,h,n){const a=[.95,.82,1,.88,.78,.97,.85,.92,.8,1,.9,.84];const dx=
  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+p+'" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/></svg>';}
 const ZZ_S=zz(30,7,6),ZZ_L=zz(240,9,26);
 function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.style.display=ANY?'none':'';document.getElementById('horaH').style.display=ANY?'none':'';if(ANY)return;if(!sel.date){t.innerHTML='<div class="hint" style="grid-column:1/-1">'+T('pickDay')+'</div>';return;}const P=planTimes(sel.date);const mk=(s,rec)=>{const b=document.createElement('button');const taken=sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(sel.date)&&o.time===s);const busy=busyHit(sel.date,s);b.className='t'+(rec?' rec':'')+(sel.time===s?' on':'')+(busy?' busy':'');if(rec)b.innerHTML='<span>'+s+'</span>'+ZZ_S;else b.textContent=s;if(busy){b.disabled=true;}else if(taken){b.disabled=true;b.style.opacity='.3';}b.onclick=()=>{sel.time=s;drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};t.appendChild(b);};const lbl=(k,o)=>{const e=document.createElement('div');e.className='tl'+(o?' o':'');e.innerHTML='<span>'+T(k)+'</span>'+(o?'<i></i>':ZZ_L);t.appendChild(e);};if(P.rec.length){lbl('recT');P.rec.forEach(s=>mk(s,true));if(P.rest.length)lbl('otherT',1);}P.rest.forEach(s=>mk(s,false));}
+// 【下書き 10/8 Nory 本日のおすすめ】今日の空き時間（今の空き判定 freeSlots と同じ決まり：2時間前まで・閉店までに終わる・埋まりと重ならない・選んだメニューの長さ）
+// 【10/8 Nory「1時半と早い時間だけ。遅い時間はおすすめに出さない」】早い時間だけ・最大2つ。
+// 出す順：予約のすぐ後につながる時間（planTimes の rec）を早い順に前へ → 残りはいちばん早い空き。16:00以降は、それより早い空きがあれば出さない。休み・空きなし・時間おまかせの時は出さない
+function hoyTimes(){if(HOY_N<3||ANY||TODAY>LAST||closed(TODAY))return [];
+ const taken=s=>sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(TODAY)&&o.time===s);
+ let free=freeSlots(TODAY).filter(s=>!taken(s)).sort();if(!free.length)return [];
+ const early=free.filter(s=>s<'16:00');if(early.length)free=early;
+ const rec=planTimes(TODAY).rec;const a=free.filter(s=>rec.indexOf(s)>=0).concat(free.filter(s=>rec.indexOf(s)<0));return a.slice(0,2);}
+function drawHoy(){const e=document.getElementById('hoy');if(!e)return;const a=hoyTimes();if(!a.length){e.hidden=true;e.innerHTML='';return;}
+ const isT=sel.date&&ymd(sel.date)===ymd(TODAY);e.setAttribute('aria-label',T('hoyT')+' · '+T('hoyS'));
+ e.innerHTML='<div class="hoy-h"><b>'+T('hoyT')+'</b><i class="hoy-k" aria-hidden="true"></i><span>'+T('hoyS')+'</span></div><div class="hoy-ts"></div>';
+ const w=e.querySelector('.hoy-ts');a.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='hoy-t'+(isT&&sel.time===s?' on':'');b.textContent=s;b.setAttribute('aria-label',T('hoyT')+' '+s);
+  b.onclick=()=>{sel.date=new Date(TODAY);sel.time=s;view=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);drawCal();drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};w.appendChild(b);});
+ e.hidden=false;}
 function showMenus(){return sel.menus.map(i=>i===3&&sel.ctype!==null?MENUS[3][1][LANG]+' ('+CTYPES[sel.ctype][1][LANG]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][1][LANG]:'')+')':(i===5&&sel.stype!==null?MENUS[5][1][LANG]+' ('+STYPES[sel.stype][1][LANG]+')':MENUS[i][1][LANG])).join(' + ');}
 function menuText(){return sel.menus.map(i=>i===3&&sel.ctype!==null?'Color ('+CTYPES[sel.ctype][0]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][0].toLowerCase():'')+')':(i===5&&sel.stype!==null?'Alaciado ('+STYPES[sel.stype][0]+')':MENUS[i][0])).join(' + ');}
 let lastDur=-1;
@@ -1073,12 +1119,12 @@ drawTimes();drawOpts();drawCal();upd();
 (function(){try{if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 document.documentElement.classList.add('rz-js');
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.style.setProperty('--rz-d',(Math.random()*3).toFixed(2)+'s');t.classList.add('rz-in');setTimeout(function(){t.classList.add('rz-done');},1150);io.unobserve(t);}});},{threshold:.6});
-function obs(){document.querySelectorAll('.step:not(.rz-in),.langs:not(.rz-in)').forEach(function(h){io.unobserve(h);io.observe(h);});}
+function obs(){document.querySelectorAll('.step:not(.rz-in),.langs:not(.rz-in),.hoy:not(.rz-in)').forEach(function(h){io.unobserve(h);io.observe(h);});}
 obs();
 /* 隠れていた見出し（時間の見出しなど）が出てきた時のために、押した後に見直す */
 document.addEventListener('click',function(){setTimeout(obs,120);},true);
-var SEL='.step,.langs,.photo,.anyt,.hold h3,.t.rec,.kk';
-function tgt(h){if(h.classList.contains('langs')||h.classList.contains('step'))return h.classList.contains('rz-done')?h:null;if(h.tagName==='H3')return h.querySelector('[data-t="hT"]');return h;}
+var SEL='.step,.langs,.hoy,.photo,.anyt,.hold h3,.t.rec,.kk';
+function tgt(h){if(h.classList.contains('langs')||h.classList.contains('step')||h.classList.contains('hoy'))return h.classList.contains('rz-done')?h:null;if(h.tagName==='H3')return h.querySelector('[data-t="hT"]');return h;}
 function host(n){if(!n||!n.closest)return null;var h=n.closest(SEL);if(h)return h;var k=n.querySelector&&n.querySelector(':scope > .kk');return k||null;}
 function wig(h){var t=h&&tgt(h);if(!t)return;t.classList.remove('rz-wig');void t.offsetWidth;t.classList.add('rz-wig');clearTimeout(t._rzw);t._rzw=setTimeout(function(){t.classList.remove('rz-wig');},560);}
 document.addEventListener('pointerover',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
