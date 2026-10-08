@@ -586,7 +586,7 @@ pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にち�
 recT:{es:'Recomendado',en:'Recommended',ja:'おすすめ'}, // 【下書き 10/6 おすすめ】
 otherT:{es:'Otros horarios',en:'Other times',ja:'その他の時間'},
 hoyT:{es:'HOY',en:'TODAY',ja:'本日'}, // 【下書き 10/8 本日のおすすめ】
-hoyS:{es:'Horarios recomendados',en:'Recommended times',ja:'おすすめのお時間'},
+hoyS:{es:'Horarios recomendados',en:'Recommended times',ja:'おすすめの時間'},
 s3:{es:'3. Contacto',en:'3. Contact',ja:'3. ご連絡先'},
 name:{es:'Nombre',en:'First name',ja:'名（例：花子）'},
 last:{es:'Apellido paterno',en:'Last name(s)',ja:'姓（例：山田）'},
@@ -924,7 +924,7 @@ function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.s
 function hoyTimes(){if(HOY_N<3||ANY||TODAY>LAST||closed(TODAY))return [];
  const taken=s=>sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(TODAY)&&o.time===s);
  let free=freeSlots(TODAY).filter(s=>!taken(s)).sort();if(!free.length)return [];
- const early=free.filter(s=>s<'16:00');if(early.length)free=early;
+ free=free.filter(s=>s<'16:00');if(!free.length)return []; // 【Nory 10/8】16時より後（5時など遅い時間）は出さない。早い時間だけ
  const rec=planTimes(TODAY).rec;const a=free.filter(s=>rec.indexOf(s)>=0).concat(free.filter(s=>rec.indexOf(s)<0));return a.slice(0,2);}
 function drawHoy(){const e=document.getElementById('hoy');if(!e)return;const a=hoyTimes();if(!a.length){e.hidden=true;e.innerHTML='';return;}
  const isT=sel.date&&ymd(sel.date)===ymd(TODAY);e.setAttribute('aria-label',T('hoyT')+' · '+T('hoyS'));
