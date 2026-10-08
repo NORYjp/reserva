@@ -963,12 +963,18 @@ var p=document.querySelector('.brand');if(p)p.addEventListener('click',function(
 /* 画面に最初にさわった時に音楽を流す（ブラウザの決まりで、開いただけでは音が出せない）。♪で止める・流す。次に開いた時はまた流す */
 (function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');a.volume=.45;var off=false;try{localStorage.removeItem('thmusic')}catch(e){} /* 開くたびに毎回流す（止めたことは覚えない）2026-10-05 Nory */
 function ui(){b.className='music '+(a.paused?'off':'on');}
-function play(){var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
-function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){window.removeEventListener(t,first,true)});if(!off&&!(e&&b.contains(e.target)))play();}
-['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
+/* 【10/8 Nory】iPhoneは audio.volume が効かず最大の音になるので、Web Audio の音量（GAIN）で 45% にする */
+var GAIN=.45,ctx=null,gn=null;
+function gainOn(){try{if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return;ctx=new C();var src=ctx.createMediaElementSource(a);gn=ctx.createGain();gn.gain.value=GAIN;src.connect(gn);gn.connect(ctx.destination);a.volume=1;}if(ctx.state==='suspended')ctx.resume();}catch(e){a.volume=GAIN;}}
+function play(cb){gainOn();var p=a.play();if(p&&p.then)p.then(function(){ui();cb&&cb(true);}).catch(function(){ui();cb&&cb(false);});else{ui();cb&&cb(true);}}
+/* 【10/8 Nory】最初にさわったら流す。iPhoneは指がふれた瞬間では鳴らせないことがあるので、指を離した時・クリック・キーでも試し、鳴るまで見張る */
+var FE=['pointerdown','touchstart','touchend','pointerup','click','keydown'];
+function first(e){if(off||(e&&b.contains(e.target)))return;if(!a.paused){stopFirst();return;}play(function(r){if(r)stopFirst();});}
+function stopFirst(){FE.forEach(function(t){window.removeEventListener(t,first,true)});}
+FE.forEach(function(t){window.addEventListener(t,first,true)});
 /* 止まっていたら、画面にさわった時・ページに戻った時に、また流す（♪で止めた人はそのまま） */
-function resume(e){if(!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
-['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
+function resume(e){if(ctx&&ctx.state==='suspended'&&!off)try{ctx.resume();}catch(x){}if(!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
+['pointerdown','touchstart','touchend','click'].forEach(function(t){window.addEventListener(t,resume,true)});
 /* ページから離れたら（別のタブ・別のアプリ・予約ページなど）音楽を止める。戻ったらまた流す 2026-10-06 Nory */
 document.addEventListener('visibilitychange',function(){if(document.hidden){if(!a.paused)a.pause();}else resume();});
 window.addEventListener('pagehide',function(){if(!a.paused)a.pause();});window.addEventListener('blur',function(){if(!a.paused&&document.hidden)a.pause();});
