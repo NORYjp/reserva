@@ -568,6 +568,16 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 .two.ab .ab-v video{position:absolute;inset:0;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:cover;object-position:50% 50%}}
 @media (max-width:819px){.two.ab .ab-v{margin-top:0!important}}
 .band.zb:not(.acc-hot):not(.acc-on) .big{color:var(--accent)}
+/* ===== 【10/8 Nory「ククルカンは、カーソルが上に行ったり下に行くたびに動くように。小さいものも大きいものも」】
+   見出し・小見出し・メニューの行・言葉の切りかえの蛇：カーソルが乗った時・離れた時（携帯は指でさわった時）に、1回くねる（約0.5秒）。
+   見出しの蛇は、画面に入って伸びきったら hz-done（ときどきくねるだけ）に切りかえ、乗った時は hz-wig でくねる。付け外しは下のJS。
+   動きを減らす設定の人には動かさない ===== */
+@keyframes hzHov{0%,100%{transform:none}15%{transform:translateY(-1.6px) skewX(-11deg)}35%{transform:translateY(1.6px) skewX(10deg)}55%{transform:translateY(-1px) skewX(-7deg)}75%{transform:translateY(.6px) skewX(4deg)}}
+@media (prefers-reduced-motion:no-preference){
+ .hz-js .big.hz-in.hz-done::before,.hz-js .band .sub-h.hz-in.hz-done::after{transform-origin:left center;animation:hzIdle 6.5s ease-in-out var(--hz-d,0s) infinite}
+ .hz-js .big.hz-in.hz-done.hz-wig::before,.hz-js .band .sub-h.hz-in.hz-done.hz-wig::after{animation:hzHov .5s ease-in-out 1}
+ .menu .r.hz-wig::after,.list li.hz-wig::after,.langs a.on.hz-wig::after{transform-origin:left center;animation:hzHov .5s ease-in-out 1}
+}
 </style>
 <!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
@@ -638,7 +648,7 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
       </div>
       <p class="note" data-t="menuNote"></p>
 
-      <h3 class="sub-h" style="color:#fff8f0" data-t="spaH"></h3>
+      <h3 class="sub-h" data-t="spaH"></h3> <!-- 【10/8】文字色は開いた時の .band.acc-on .sub-h（オレンジ）で決まるので、白の指定は外した -->
       <div class="menu">
         <div class="r"><span class="n" data-t="spa1"></span><span class="p">+$300 – 500</span></div>
         <div class="r"><span class="n" data-t="spa2"></span><span class="p">$600 – 800</span></div>
@@ -1021,8 +1031,23 @@ L_.forEach(function(x){x[0].addEventListener(x[1],x[2],{capture:true,passive:tru
 /* 【10/8 Nory A】見出しが画面に入ったら、下の蛇をくねらせながら伸ばす（動きを減らす設定の人・古いブラウザでは今までどおり止まった蛇） */
 (function(){try{if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 document.documentElement.classList.add('hz-js');
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.style.setProperty('--hz-d',(Math.random()*3).toFixed(2)+'s');t.classList.add('hz-in');io.unobserve(t);}});},{threshold:.6});
-document.querySelectorAll('.big,.band .sub-h').forEach(function(h){io.observe(h);});}catch(e){}})();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.style.setProperty('--hz-d',(Math.random()*3).toFixed(2)+'s');t.classList.add('hz-in');setTimeout(function(){t.classList.add('hz-done');},1150);io.unobserve(t);}});},{threshold:.6});
+document.querySelectorAll('.big,.band .sub-h').forEach(function(h){io.observe(h);});
+/* 【10/8】伸びきったら hz-done（ときどきくねる・乗るとくねる）に（上の1.15秒後）。開閉の中の見出し（ヘッドスパなど）は、開いた時に見直して必ず出す */
+function reo(){try{if(typeof hzFit==='function')hzFit();}catch(e){}document.querySelectorAll('.acc-body.open .big:not(.hz-in),.acc-body.open .sub-h:not(.hz-in)').forEach(function(h){io.unobserve(h);io.observe(h);});}
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('h2.acc'))setTimeout(reo,60);},true);
+document.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('h2.acc'))setTimeout(reo,60);},true);
+}catch(e){}})();
+/* 【10/8 Nory】蛇は全部、カーソルが乗った時・離れた時（携帯は指でさわった時）に1回くねる。動きを減らす設定の人には動かさない */
+(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var SEL='.big,.band .sub-h,.menu .r,.list li,.langs';
+function tgt(h){if(h.classList.contains('langs'))return h.querySelector('a.on');if(h.classList.contains('big')||h.classList.contains('sub-h')){if(!h.classList.contains('hz-done'))return null;}return h;}
+function wig(h){var t=h&&tgt(h);if(!t)return;t.classList.remove('hz-wig');void t.offsetWidth;t.classList.add('hz-wig');clearTimeout(t._hzw);t._hzw=setTimeout(function(){t.classList.remove('hz-wig');},560);}
+function host(n){return n&&n.closest?n.closest(SEL):null;}
+document.addEventListener('pointerover',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
+document.addEventListener('pointerout',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
+document.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')return;wig(host(e.target));},{passive:true});
+}catch(e){}})();
 </script>
 </body>
 </html>
