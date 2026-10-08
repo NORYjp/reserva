@@ -562,6 +562,11 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 /* ===== 10/8 Nory：開いた中身の一番下の「閉じる」ボタン（ほかの枠のボタンと同じ見た目） ===== */
 .acc-close{font-family:inherit;cursor:pointer;width:auto;min-width:180px;max-width:400px;margin:32px 0 0;background:transparent}
 .band .acc-close{margin-top:16px}
+/* 【10/8 Nory】左右どちらも下が空かないように：左に見出しと文、右に動画。動画は左の高さにぴったり合わせる（はみ出す所は切る） */
+@media (min-width:820px){.two.ab{grid-template-areas:"h v" "t v";grid-template-rows:auto auto;align-items:stretch;row-gap:22px}.ab-h{grid-area:h;align-self:end}.ab-t{grid-area:t;align-self:start}
+.two.ab .ab-v{grid-area:v;margin:0!important;position:relative;aspect-ratio:auto!important;width:100%;min-height:420px;height:auto;max-height:none}
+.two.ab .ab-v video{position:absolute;inset:0;width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:cover;object-position:50% 50%}}
+@media (max-width:819px){.two.ab .ab-v{margin-top:0!important}}
 </style>
 <!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
@@ -592,17 +597,17 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 </header>
 
 <section class="fade" id="about">
-  <div class="two">
-    <h2 class="big" data-t="aboutBig"></h2>
-    <div>
+  <div class="two ab"> <!-- 【10/8 Nory】パソコンで左下が空くので、店内の動画を左（見出しの下）へ。携帯の並びは今のまま -->
+    <h2 class="big ab-h" data-t="aboutBig"></h2>
+    <div class="ab-t">
       <p class="kicker">THE HOME Hair re-creative</p>
       <p class="text" data-t="lead"></p>
       <div class="btns btns-l" id="book">
         <a class="pill ig" href="/reserva/?src=web" data-href="reserva"><span data-t="book"></span><small data-t="bookN"></small></a>
       </div>
       <!-- 店内の動画：@the_home_hair_re_creative のリール（2026-10-05 Nory「店内の動画があればさらによし」） -->
-      <figure class="room" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
     </div>
+    <figure class="room ab-v" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
   </div>
   <div class="gallery">
     <!-- 動画：@nory_thehomehair のリール 1・3・12番（2026-10-05 Nory選択）。表紙は顔の画像 -->
