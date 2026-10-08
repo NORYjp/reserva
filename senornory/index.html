@@ -840,19 +840,25 @@
 <script>
 /* 音楽：美容室のページと同じしくみ。開いただけでは音が出せない（ブラウザの決まり）ので、最初に画面にさわった時に流す。ボタンで止める・流す。
    曲のファイル（music.mp3）が無いときはボタンを出さず、何もしない */
-(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');if(!a||!b)return;a.volume=.28; /* 【10/8 Nory】音は小さめ */ var off=false,ok=false;
+(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');if(!a||!b)return;a.volume=.28; /* 【10/8 Nory】音は小さめ（パソコン用。iPhoneは下の GAIN） */ var off=false,ok=false;
 function ui(){b.className='music ready '+(a.paused?'off':'on');}
-function play(){if(!ok)return;var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
+/* 【10/8 Nory】iPhoneは audio.volume が効かず大きすぎるので、Web Audio の音量（GAIN）で小さくする */
+var GAIN=.28,ctx=null,gn=null;
+function gainOn(){try{if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return;ctx=new C();var src=ctx.createMediaElementSource(a);gn=ctx.createGain();gn.gain.value=GAIN;src.connect(gn);gn.connect(ctx.destination);a.volume=1;}if(ctx.state==='suspended')ctx.resume();}catch(e){a.volume=GAIN;}}
+function play(cb){if(!ok)return;gainOn();var p=a.play();if(p&&p.then)p.then(function(){ui();cb&&cb(true);}).catch(function(){ui();cb&&cb(false);});else{ui();cb&&cb(true);}}
 function ready(){if(ok)return;ok=true;ui();}
 a.addEventListener('error',function(){ok=false;b.className='music';},true);
 a.addEventListener('loadedmetadata',ready);
 /* ファイルがあるかを先に確かめる（無ければボタンを出さない） */
 if(location.protocol.indexOf('http')===0&&window.fetch){fetch(a.getAttribute('src'),{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok&&!/text\/html/.test(r.headers.get('content-type')||''))ready();}).catch(function(){});}
 else{a.preload='metadata';a.load();}
-function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){window.removeEventListener(t,first,true)});if(!off&&!(e&&b.contains(e.target)))play();}
-['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
-function resume(e){if(ok&&!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
-['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
+/* 【10/8 Nory】最初にさわったら流す。iPhoneは touchstart では鳴らせないので、指を離した時・クリック・キーでも試し、鳴るまで待つ */
+var FE=['pointerdown','touchstart','touchend','pointerup','click','keydown'];
+function first(e){if(off||(e&&b.contains(e.target)))return;if(!ok)return;if(!a.paused){stopFirst();return;}play(function(r){if(r)stopFirst();});}
+function stopFirst(){FE.forEach(function(t){window.removeEventListener(t,first,true)});}
+FE.forEach(function(t){window.addEventListener(t,first,true)});
+function resume(e){if(ctx&&ctx.state==='suspended'&&!off)try{ctx.resume();}catch(x){}if(ok&&!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
+['pointerdown','touchstart','touchend','click'].forEach(function(t){window.addEventListener(t,resume,true)});
 document.addEventListener('visibilitychange',function(){if(document.hidden){if(!a.paused)a.pause();}else resume();}); /* 【10/8 Nory】ページを閉じる・別の画面にしたら止める（ホームページと同じ） */
 window.addEventListener('pagehide',function(){if(!a.paused)a.pause();});
 a.addEventListener('pause',function(){if(ok)ui();});a.addEventListener('play',function(){if(ok)ui();});
