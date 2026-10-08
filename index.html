@@ -43,6 +43,11 @@ img{display:block;max-width:100%}
 .brand .b2{font-size:.46em;letter-spacing:.1em;margin-top:2px}
 .bar-r{display:flex;align-items:center;gap:12px}
 .langs{display:flex;gap:10px;font-size:12px;letter-spacing:.06em}
+.langs{position:relative}
+.langs.moving a.on::after{opacity:0}
+.lk-run{position:absolute;bottom:0;height:10px;pointer-events:none;transition:left .75s cubic-bezier(.45,.05,.3,1),width .75s ease}
+.lk-run i{position:absolute;inset:0;box-sizing:border-box;padding:0 15px 0 0;background:var(--lk-head) right center/16px 10px no-repeat,var(--lk-body) left center/10px 10px round no-repeat;background-origin:border-box,content-box;background-clip:border-box,content-box;animation:lkWiggle .12s ease-in-out infinite alternate}
+@keyframes lkWiggle{from{transform:translateY(-2px) skewX(-8deg)}to{transform:translateY(2px) skewX(8deg)}}
 .langs a{white-space:nowrap;cursor:pointer;color:var(--mute);text-decoration:none;padding:2px 0}
 .langs a.on{color:var(--accent);border-bottom:1px solid var(--accent)}
 .pill-s{display:none;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:8px 18px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
@@ -68,6 +73,10 @@ img{display:block;max-width:100%}
 /* 日本語のキャッチ「ARTな美容室。」の ART だけ英語の見出しの字体（10/6 Nory） */
 .catch .art-en{font-family:'The Home Font F','Cormorant Garamond',serif;font-weight:400;font-size:1.12em;letter-spacing:.06em;margin-right:.04em}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hero .sub .resv{display:table;margin:0 auto 12px;font-size:13px;letter-spacing:.14em;white-space:nowrap;color:var(--pink);text-decoration:none;border:1.5px solid var(--pink);border-radius:999px;padding:9px 18px;background:rgba(0,0,0,.28);animation:resvPulse 1.6s ease-in-out infinite}
+/* 【10/8 Nory】完全予約制をボタンにして、強めに動かす（押すと予約ページ） */
+@keyframes resvPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(240,160,170,.55)}50%{transform:scale(1.08);box-shadow:0 0 0 10px rgba(240,160,170,0)}}
+@media (prefers-reduced-motion:reduce){.hero .sub .resv{animation:none}}
 .hero .sub{color:var(--pink);font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin:16px 0 0}
 .hero .tag span{display:inline-block;white-space:nowrap}
 .hero .tag{font-family:var(--display);font-weight:400;color:#f08a4b;font-size:clamp(24px,6.8vw,48px);line-height:1.15;letter-spacing:.06em;margin:26px 0 0;text-shadow:0 2px 12px rgba(0,0,0,.35)}
@@ -520,7 +529,7 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;bac
   <div class="hero-in">
     <h1><img class="logo" src="logo_round.png" alt="THE HOME Hair re-creative" width="463" height="463"><span class="vh">THE HOME</span></h1>
     <p class="catch" data-t="catch"></p>
-    <p class="sub"><span style="white-space:nowrap">THE HOME Hair re-creative</span> · <span style="white-space:nowrap">Condesa, CDMX</span></p>
+    <p class="sub"><a class="resv" href="/reserva/?src=web" data-href="reserva" data-t="resv">Exclusivamente con cita</a><span style="white-space:nowrap">Condesa, CDMX</span></p> <!-- 【10/8 Nory】完全予約制を最初の画面に。店名は上にあるので外す。日本語の画面もスペイン語の文 -->
   </div>
   <!-- 押すと下へ（2026-10-05 Nory「真ん中にアイコン、クリックヒアが動いて、押すと下の画面へ」） -->
   <a class="cue" href="#about" aria-label="next"><span data-t="cue"></span><i></i></a>
@@ -746,6 +755,7 @@ navBook:{es:'Reservar',en:'Book',ja:'ご予約'},
 book:{es:'Reservar cita',en:'Book an appointment',ja:'ご予約'},
 igB:{es:'Reservar por Instagram',en:'Book via Instagram',ja:'インスタでご予約'},
 igN:{es:'Por mensaje directo de Instagram',en:'Via Instagram direct message',ja:'インスタグラムのメッセージから'},
+resv:{es:'Exclusivamente con cita',en:'By appointment only',ja:'Exclusivamente con cita'}, /* 10/8 Nory 完全予約制（日本語の画面もスペイン語） */
 catch:{es:'Un salón de belleza con alma artística.',en:'An art-inspired hair salon.',ja:'ARTな美容室。'}, /* 10/6 Nory「アートな美容室」 */
 bookN:{es:'Elija día y hora en el calendario',en:'Choose a day and time on the calendar',ja:'カレンダーから日時を選べます'},
 wa:{es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppでご予約'},
@@ -832,8 +842,15 @@ function draw(){
  if(L==='ja'){const c=document.querySelector('.catch[data-t="catch"]');if(c)c.innerHTML='<span class="art-en">ART</span>な美容室。';}
  document.querySelectorAll('[data-href]').forEach(e=>e.href=BASE[e.dataset.href]+(BASE[e.dataset.href].indexOf('?')>=0?'&':'?')+'lang='+L);
  const b=document.getElementById('langs');b.innerHTML='';
- [['es','ES'],['en','EN'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{L=k;draw();try{const u=new URL(location.href);u.searchParams.set('lang',L);history.replaceState(null,'',u.toString());}catch(e){}};b.appendChild(a);});
+ [['es','ES'],['en','EN'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===L?'on':'';a.onclick=()=>{const o0=b.querySelector('a.on');const r0=o0?{l:o0.offsetLeft-4,w:o0.offsetWidth+8}:null;L=k;draw();snakeRun(r0);try{const u=new URL(location.href);u.searchParams.set('lang',L);history.replaceState(null,'',u.toString());}catch(e){}};b.appendChild(a);});
 }
+/* 【10/8 Nory】言葉を変えると、下の蛇がニョロニョロと次の言葉へ走る（動きを減らす設定の人には走らせない） */
+function snakeRun(r0){try{const nb=document.getElementById('langs'),n=nb.querySelector('a.on');if(!r0||!n||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const r1={l:n.offsetLeft-4,w:n.offsetWidth+8};if(Math.abs(r1.l-r0.l)<2)return;
+ const d=document.createElement('div');d.className='lk-run';d.style.left=r0.l+'px';d.style.width=r0.w+'px';if(r1.l<r0.l)d.style.transform='scaleX(-1)';
+ d.appendChild(document.createElement('i'));nb.appendChild(d);nb.classList.add('moving');void d.offsetWidth;
+ d.style.left=r1.l+'px';d.style.width=r1.w+'px';
+ setTimeout(()=>{d.remove();nb.classList.remove('moving');},800);}catch(e){}}
 draw();
 /* 10/6 Nory直し2：見出しの文字の長さを測って、下の蛇の線の長さにする（最短120px・最長280px） */
 function hzFit(){document.querySelectorAll('.big,.band .sub-h').forEach(function(h){try{var r=document.createRange();r.selectNodeContents(h);var w=0;[].forEach.call(r.getClientRects(),function(q){w=Math.max(w,q.width)});if(w>0)h.style.setProperty('--hz-w',Math.round(Math.min(280,Math.max(120,w+8)))+'px');}catch(e){}});}
