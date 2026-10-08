@@ -437,6 +437,24 @@ body.needType #s2box{opacity:.35;pointer-events:none;filter:grayscale(.3)}
 @media (hover:hover){.totop:hover{background:var(--ink);background-clip:padding-box}}
 .totop:active{background:var(--ink);background-clip:padding-box}
 /* ===== 【下書き 10/7 トップへ戻る】end ===== */
+/* ===== 【10/8 Nory「予約のメニューのところのククルカンたちは動かないんですかね」「小さいものも大きいものも全部」】トップページと同じ蛇の動き（見た目と動きだけ。予約の選び方・送る中身・時間の計算にはさわらない）
+   ・見出しの下の蛇（1. メニュー など）と言語の下の蛇：画面に入るとくねりながら左から伸びる（約1秒）→ そのあと数秒に1回だけ軽くくねる
+   ・小さい蛇の頭（取り置き・写真のお願い・時間はどれでも・おすすめの時間の札・合計の中の頭）：ときどき軽くくねる
+   ・どれも、カーソルが乗った時・離れた時（携帯は指でさわった時）に1回くねる（付け外しは下のJS：rz-in・rz-done・rz-wig）
+   ・動きを減らす設定の人には動かさない（今までどおり止まった蛇） ===== */
+@keyframes rzGrow{0%{width:0;opacity:0}12%{opacity:1}}
+@keyframes rzWig{0%,100%{transform:none}25%{transform:translateY(-1.5px) skewX(-9deg)}75%{transform:translateY(1.5px) skewX(9deg)}}
+@keyframes rzIdle{0%,12%,100%{transform:none}2%{transform:translateY(-1px) skewX(-7deg)}5%{transform:translateY(1px) skewX(7deg)}8%{transform:translateY(-.8px) skewX(-5deg)}10.5%{transform:translateY(.5px) skewX(3deg)}}
+@keyframes rzHov{0%,100%{transform:none}15%{transform:translateY(-1.6px) skewX(-11deg)}35%{transform:translateY(1.6px) skewX(10deg)}55%{transform:translateY(-1px) skewX(-7deg)}75%{transform:translateY(.6px) skewX(4deg)}}
+@media (prefers-reduced-motion:no-preference){
+ .rz-js .step:not(.rz-in)::after,.rz-js .langs:not(.rz-in) .lk{width:0!important;opacity:0!important}
+ .rz-js .step.rz-in::after,.rz-js .langs.rz-in .lk{transform-origin:left center;animation:rzGrow 1s cubic-bezier(.3,.6,.35,1) both,rzWig .25s ease-in-out 0s 4}
+ .rz-js .step.rz-in.rz-done::after,.rz-js .langs.rz-in.rz-done .lk{animation:rzIdle 6.5s ease-in-out var(--rz-d,0s) infinite}
+ .rz-js .step.rz-in.rz-done.rz-wig::after,.rz-js .langs.rz-in.rz-done.rz-wig .lk{animation:rzHov .5s ease-in-out 1}
+ .rz-js .kk,.rz-js .photo::before,.rz-js .anyt::before,.rz-js .hold h3 [data-t="hT"]::before,.rz-js .t.rec::before,.rz-js .t.rec::after{animation:rzIdle 7s ease-in-out 2.5s infinite}
+ .rz-js .photo:nth-of-type(2n)::before,.rz-js .t.rec:nth-child(2n)::before,.rz-js .t.rec:nth-child(2n)::after{animation-delay:4.2s}
+ .rz-js .kk.rz-wig,.rz-js .photo.rz-wig::before,.rz-js .anyt.rz-wig::before,.rz-js .hold h3 [data-t="hT"].rz-wig::before,.rz-js .t.rec.rz-wig::before,.rz-js .t.rec.rz-wig::after{animation:rzHov .5s ease-in-out 1}
+}
 </style><!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
@@ -1050,4 +1068,22 @@ drawTimes();drawOpts();drawCal();upd();
 <script>(function(){var a=document.getElementById('homeL'),t={es:'Inicio',en:'Home',ja:'ホーム'};function u(){var l=document.documentElement.lang;if(!t[l])l='es';a.textContent='← '+t[l];a.href='/?lang='+l;}u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();</script>
 <!-- 【10/6】Googleアナリティクスのお知らせ（小さく1行・ページの言語に合わせる） -->
 <script>(function(){var t={es:'Este sitio usa Google Analytics para contar las visitas.',en:'This site uses Google Analytics to count visits.',ja:'このサイトはアクセス数を数えるため Google アナリティクスを使っています。'};var p=document.createElement('p');p.className='ga-note';p.style.cssText='margin:4px auto 12px;padding:0 16px;max-width:520px;text-align:center;font-size:11px;line-height:1.5;color:#8a7663;opacity:.9;position:relative;z-index:1';function L(){var l=(document.documentElement.lang||new URLSearchParams(location.search).get('lang')||navigator.language||'es').slice(0,2).toLowerCase();return t[l]?l:'es';}function u(){p.textContent=t[L()];}u();document.body.appendChild(p);try{new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}})();</script>
+<script>
+/* 【10/8 Nory】予約ページの蛇の動き（見た目だけ。予約の仕組みの変数・関数にはさわらない）。動きを減らす設定の人・古いブラウザでは何もしない */
+(function(){try{if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.documentElement.classList.add('rz-js');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.style.setProperty('--rz-d',(Math.random()*3).toFixed(2)+'s');t.classList.add('rz-in');setTimeout(function(){t.classList.add('rz-done');},1150);io.unobserve(t);}});},{threshold:.6});
+function obs(){document.querySelectorAll('.step:not(.rz-in),.langs:not(.rz-in)').forEach(function(h){io.unobserve(h);io.observe(h);});}
+obs();
+/* 隠れていた見出し（時間の見出しなど）が出てきた時のために、押した後に見直す */
+document.addEventListener('click',function(){setTimeout(obs,120);},true);
+var SEL='.step,.langs,.photo,.anyt,.hold h3,.t.rec,.kk';
+function tgt(h){if(h.classList.contains('langs')||h.classList.contains('step'))return h.classList.contains('rz-done')?h:null;if(h.tagName==='H3')return h.querySelector('[data-t="hT"]');return h;}
+function host(n){if(!n||!n.closest)return null;var h=n.closest(SEL);if(h)return h;var k=n.querySelector&&n.querySelector(':scope > .kk');return k||null;}
+function wig(h){var t=h&&tgt(h);if(!t)return;t.classList.remove('rz-wig');void t.offsetWidth;t.classList.add('rz-wig');clearTimeout(t._rzw);t._rzw=setTimeout(function(){t.classList.remove('rz-wig');},560);}
+document.addEventListener('pointerover',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
+document.addEventListener('pointerout',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
+document.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')return;wig(host(e.target));},{passive:true});
+}catch(e){}})();
+</script>
 </body></html>
