@@ -368,7 +368,13 @@
   .lot-body h3{ font-size:clamp(26px,3.1vw,36px); }
   .next h2{ font-size:clamp(31px,3.6vw,41px); }
   .footer-title{ font-size:clamp(29px,3.6vw,38px); }
-  .hero h1{ font-size:clamp(57px, 12.1vw, 130px); }
+  .hero h1{ font-size:min(130px, 12.1vw, calc((100vw - 60px) / 6.6)); text-transform:uppercase; white-space:nowrap; } /* 【10/7 Nory】トップの Señor Nory は全部大文字 */
+  /* 【10/7 Nory】タイトルの下のオレンジの字：タイトルより小さく本文より大きく・太く・オレンジを強く */
+  .lot-sub{ font-size:clamp(20px,2.3vw,24px); color:#f08a4b; -webkit-text-stroke:0.5px #f08a4b; letter-spacing:.02em; }
+  .lot-sub.tr.ja{ font-weight:700; -webkit-text-stroke:0; font-size:clamp(18px,2.1vw,22px); }
+  .motto .quote{ color:#f08a4b; -webkit-text-stroke:0.5px #f08a4b; }
+  /* 【10/7 Nory】トップの MÉXICO × JAPÓN をもう少し大きく・太く */
+  .hero-eyebrow{ font-size:16px; letter-spacing:0.24em; -webkit-text-stroke:0.6px var(--gold-bright); }
 </style>
 <!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
@@ -734,6 +740,8 @@
       document.documentElement.lang = lang;
       document.querySelectorAll('.langbar button').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
+      // 【10/7 Nory】言葉を変えたあともプールの動画を止めない（止まっていたら流し直す）
+      const hv=document.getElementById('hero-video'); if(hv&&hv.src&&hv.paused){ const p=hv.play(); if(p&&p.catch)p.catch(function(){}); }
     });
   });
 
@@ -763,6 +771,9 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+    // 【10/7 Nory】最初の画面に戻ってきたとき、止まっていたら流し直す（携帯で動画が消える対策）
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ vids.forEach(function(x){ if(x.paused){ var q=x.play(); if(q&&q.catch)q.catch(function(){}); } }); } }); }).observe(v); }
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) vids.forEach(function(x){ if(x.paused){ var q=x.play(); if(q&&q.catch)q.catch(function(){}); } }); });
   })();
 
   // ゲート：「さらに見る」を押すと下の部分が開く
