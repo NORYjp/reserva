@@ -796,7 +796,7 @@ function mvBind(b,k){b.addEventListener('pointerenter',e=>{if(e.pointerType==='m
 const mEl=document.getElementById('menus');
 // 【下書き 10/6 シャンプーブローまとめ】一覧には「シャンプーブロー」を1つ。押すと下に3つ（7/8/9）が開き、1つだけ選ぶ。送る値（MENUS[i][0]・番号・DUR_MENU）は今と同じ
 const BR=[7,8,9];
-const CUTX=[[0,1],[1,2]]; // 一緒に選べない組。【10/7 Nory】レディースカットに前髪カットは含まれる（1と2）／【10/7 Nory B案】1つの予約は1人：メンズカットとレディースカット（0と1）はどちらか1つ。メンズ＋前髪は選べる
+const CUTX=[[0,1],[1,2],[1,7],[1,8],[1,9]]; // 一緒に選べない組。【10/7 Nory】レディースカットにシャンプーブローは含まれる（1と7・8・9）。【10/7 Nory】レディースカットに前髪カットは含まれる（1と2）／【10/7 Nory B案】1つの予約は1人：メンズカットとレディースカット（0と1）はどちらか1つ。メンズ＋前髪は選べる
 const cxOf=i=>CUTX.reduce((a,p)=>p.indexOf(i)>=0?a.concat(p.filter(j=>j!==i)):a,[]); // i と一緒に選べないメニューの番号
 const cutX=i=>{cxOf(i).forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});};
 const BRS={7:{es:'Corto / bob',en:'Short / bob',ja:'ショート・ボブ'},8:{es:'Largo',en:'Long',ja:'ロング'},9:{es:'Extra largo',en:'Extra long',ja:'スーパーロング'}};
@@ -807,7 +807,7 @@ MENUS.forEach((m,i)=>{
  if(i===BR[0]){bG=document.createElement('button');bG.className='chip';bG.onclick=()=>{bOpen=!bOpen;bUI();};mEl.appendChild(bG);
   bSub=document.createElement('div');bSub.className='bsub';mEl.appendChild(bSub);}
  const isB=BR.indexOf(i)>=0;const b=document.createElement('button');b.className='chip';b.innerHTML=(isB?BRS[i][LANG]:m[1][LANG])+'<span>'+price(m)+'</span>';
- b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}if(isB)bUI();colorUI();upd();};
+ b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}bUI();colorUI();upd();};
  mBtn[i]=b;(isB?bSub:mEl).appendChild(b);});
 bUI();
 mBtn.forEach((b,i)=>{if(b&&MERIT[i]&&i!==7)mvBind(b,i);});mvBind(bG,7); // 【10/6 メニューのメリット】
@@ -1014,7 +1014,7 @@ function tkRemove(k,name){const before=tkTimes();let undo;
   undo=()=>{try{const b0=tkTimes(); /* 【レビュー 10/6】押せない（disabled）ボタンを click() せず、選びの状態を直接戻す */
   if(sel.menus.indexOf(i)<0){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);mBtn[i].classList.add('on');}
   if(i===3){sel.ctype=st.c;sel.bleach=st.b;}if(i===5)sel.stype=st.s;
-  colorUI();[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.ctype));[...bEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.bleach));[...sEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.stype));if(BR.indexOf(i)>=0)bUI();
+  colorUI();[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.ctype));[...bEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.bleach));[...sEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.stype));bUI();
   upd();return {lost:tkTimes()<b0,fail:sel.menus.indexOf(i)<0};}catch(e){return {fail:true};}};}
  else{const id=k.slice(1),n=HSEL[id]||0;holdSet(id,0);undo=()=>{try{holdSet(id,n);return {fail:HSEL[id]!==n};}catch(e){return {fail:true};}};}
  const lost=tkTimes()<before;tkToast(name,lost,undo);}
