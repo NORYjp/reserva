@@ -375,6 +375,8 @@
   .motto .quote{ color:#f08a4b; -webkit-text-stroke:0.5px #f08a4b; }
   /* 【10/7 Nory】トップの MÉXICO × JAPÓN をもう少し大きく・太く */
   .hero-eyebrow{ font-size:16px; letter-spacing:0.24em; -webkit-text-stroke:0.6px var(--gold-bright); }
+  /* 【10/7 Nory】携帯で SEÑOR NORY が人物にかぶらないよう、文字をもう少し下へ */
+  @media (max-width:700px){ .hero-inner{ padding-bottom:88px; text-align:center; } .hero h1{ font-size:calc((100vw - 80px) / 6.6); } .hero-eyebrow{ padding-left:.24em; } .cue{ bottom:8px; gap:4px; padding:6px 14px; } .cue i{ width:18px; height:18px; } }
 </style>
 <!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
@@ -773,6 +775,9 @@
     requestAnimationFrame(tick);
     // 【10/7 Nory】最初の画面に戻ってきたとき、止まっていたら流し直す（携帯で動画が消える対策）
     if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ vids.forEach(function(x){ if(x.paused){ var q=x.play(); if(q&&q.catch)q.catch(function(){}); } }); } }); }).observe(v); }
+    // 【10/7 Nory】携帯の省電力モードなどで自動で流れない時：画面にさわった時に流し始める
+    var kick=function(){ vids.forEach(function(x){ if(x.paused){ var q=x.play(); if(q&&q.catch)q.catch(function(){}); } }); };
+    ['touchstart','click','scroll'].forEach(function(ev){ window.addEventListener(ev, kick, {passive:true}); });
     document.addEventListener('visibilitychange', function(){ if(!document.hidden) vids.forEach(function(x){ if(x.paused){ var q=x.play(); if(q&&q.catch)q.catch(function(){}); } }); });
   })();
 
