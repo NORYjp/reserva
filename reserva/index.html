@@ -787,7 +787,7 @@ const DUR_STRAIGHT = [210, 150, 60, 90];            // 全体3時間半 / リタ
 const DIAS={es:['dom','lun','mar','mié','jue','vie','sáb'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']}[LANG];
 const MESES={es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],en:['January','February','March','April','May','June','July','August','September','October','November','December'],ja:null}[LANG];
 const CTYPES=[['Color completo',{es:'Color completo',en:'Full color',ja:'全体カラー'}],['Retoque de raíz',{es:'Retoque de raíz',en:'Root touch-up',ja:'リタッチ（根元）'}],['Mechas',{es:'Mechas',en:'Highlights',ja:'ハイライト'}],['Doble color',{es:'Doble color',en:'Double color (bleach)',ja:'ダブルカラー'}]];
-const STYPES=[['Completo',{es:'Completo',en:'Full',ja:'全体'}],['Retoque de raíz',{es:'Retoque de raíz',en:'Root touch-up',ja:'リタッチ（根元）'}],['Solo flequillo',{es:'Solo flequillo',en:'Bangs only',ja:'前髪だけ'}],['Flequillo y lados',{es:'Flequillo y lados',en:'Bangs & sides',ja:'前髪と横'}]];
+const STYPES=[['Completo',{es:'Completo',en:'Full',ja:'全体'}],['Retoque de raíz',{es:'Retoque de raíz',en:'Root touch-up',ja:'リタッチ（根元）'}],['Solo flequillo',{es:'Solo flequillo',en:'Bangs only',ja:'前髪だけ'}],['Flequillo y lados',{es:'Flequillo y lados, hasta la patilla',en:'Bangs & sides, up to the sideburns',ja:'前髪と横・もみあげまで'}]];
 const sel={menus:[],ctype:null,bleach:null,stype:null,mm:null,opts:[{date:null,time:null},{date:null,time:null},{date:null,time:null}],cur:0};
 Object.defineProperty(sel,'date',{get(){return sel.opts[sel.cur].date},set(v){sel.opts[sel.cur].date=v}});
 Object.defineProperty(sel,'time',{get(){return sel.opts[sel.cur].time},set(v){sel.opts[sel.cur].time=v}});
@@ -1114,7 +1114,7 @@ let TK_V=0,TK_RAF=0;
 // 【10/8 Nory】レディースのリタッチ（ブリーチなし）の表示 $1,700〜1,800（カットと一緒なら −$300 で $1,400〜1,500）
 const CTYPE_PRICE={0:[1500,2500],'1n':[1700,1800],'1b':[2700,2900],2:[3500,4500],3:[3600,4400]}; // 【10/6 Nory決定】ダブル単独 $3,600〜4,400。カットと一緒なら −$300 で $3,300〜4,100（ショート3,300・ボブ3,500・ロング3,800・さらに長い+300） // 【10/6 Nory決定】ブリーチありのリタッチ＝通常のリタッチ＋$1,000 // 【10/6 Nory決定】リタッチ（ブリーチなし '1n'）単独 $1,700〜1,900（カットと一緒なら −$300 で $1,400〜1,600）。ブリーチあり '1b'・ダブル 3 は聞き中 // 【10/6 Nory決定】全体 $1,500〜2,500・ハイライト $3,500〜4,500 // カラーの種類の番号（CTYPES）：0 全体／1 リタッチ（'1n' ブリーチなし・'1b' ブリーチあり）／2 ハイライト／3 ダブル
 const ckey=()=>sel.ctype===1?(sel.bleach===0?'1n':(sel.bleach===1?'1b':null)):sel.ctype;
-const STYPE_PRICE={0:[3500,5000]}; // 【10/6 Nory決定】全体 $3,500〜5,000。根元・前髪・前髪と横は聞き中（今の $3,000〜 のまま）              // 縮毛矯正の部分の番号（STYPES）：0 全体／1 リタッチ／2 前髪だけ／3 前髪と横
+const STYPE_PRICE={0:[3500,5000],2:[1000,1200],3:[1200,1500]}; /* 【10/8 Nory】縮毛矯正の前髪だけ $1,000〜1,200・前髪と横 $1,200〜1,500（男女とも）。根元は聞き中 */ // 【10/6 Nory決定】全体 $3,500〜5,000。【10/8 Nory】前髪 $1,000〜1,200・前髪と横（もみあげまで）$1,200〜1,500。根元は聞き中（$3,000〜 のまま）              // 縮毛矯正の部分の番号（STYPES）：0 全体／1 リタッチ／2 前髪だけ／3 前髪と横
 // 【下書き 10/8 Nory】メンズ（メンズカット、またはメンズメニュー）のカラー：全体・リタッチ（ブリーチなし）は $1,400〜（上は決めない）。カット＋カラーの −$300 は引かない。
 // 全体カラー $1,500〜・リタッチ（ブリーチなし）$1,400〜（Nory 10/8 確定）。ブリーチあり・ハイライト・ダブル・レディースは今のまま
 const MEN_COLOR_FROM_K={0:1500,'1n':1400},MEN_CKEYS=[0,'1n'];const menFrom=k=>MEN_COLOR_FROM_K[k];
