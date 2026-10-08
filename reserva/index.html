@@ -793,6 +793,8 @@ function mvBind(b,k){b.addEventListener('pointerenter',e=>{if(e.pointerType==='m
 const mEl=document.getElementById('menus');
 // 【下書き 10/6 シャンプーブローまとめ】一覧には「シャンプーブロー」を1つ。押すと下に3つ（7/8/9）が開き、1つだけ選ぶ。送る値（MENUS[i][0]・番号・DUR_MENU）は今と同じ
 const BR=[7,8,9];
+const CUTX=[1,2]; // 【10/7 Nory】レディースカットに前髪カットは含まれる：どちらか1つだけ選べる（片方を押すと、もう片方は外れる）
+const cutX=i=>{if(CUTX.indexOf(i)>=0)CUTX.forEach(j=>{if(j!==i){const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}}});};
 const BRS={7:{es:'Corto / bob',en:'Short / bob',ja:'ショート・ボブ'},8:{es:'Largo',en:'Long',ja:'ロング'},9:{es:'Extra largo',en:'Extra long',ja:'スーパーロング'}};
 const BRG={es:'Lavado y brushing',en:'Shampoo & blow-dry',ja:'シャンプーブロー'};
 const mBtn=[];let bG=null,bSub=null,bOpen=false;
@@ -801,7 +803,7 @@ MENUS.forEach((m,i)=>{
  if(i===BR[0]){bG=document.createElement('button');bG.className='chip';bG.onclick=()=>{bOpen=!bOpen;bUI();};mEl.appendChild(bG);
   bSub=document.createElement('div');bSub.className='bsub';mEl.appendChild(bSub);}
  const isB=BR.indexOf(i)>=0;const b=document.createElement('button');b.className='chip';b.innerHTML=(isB?BRS[i][LANG]:m[1][LANG])+'<span>'+price(m)+'</span>';
- b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});sel.menus.push(i);b.classList.add('on');}if(isB)bUI();colorUI();upd();};
+ b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}if(isB)bUI();colorUI();upd();};
  mBtn[i]=b;(isB?bSub:mEl).appendChild(b);});
 bUI();
 mBtn.forEach((b,i)=>{if(b&&MERIT[i]&&i!==7)mvBind(b,i);});mvBind(bG,7); // 【10/6 メニューのメリット】
@@ -869,7 +871,7 @@ function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]
 function endTxt(o){if(o.time==='any')return '';const a=o.time.split(':');const e=(+a[0])*60+(+a[1])+dur();return o.date.getDay()===0?'':(LANG==='ja'?' → '+hm(e)+T('aprox'):' → '+T('aprox')+' '+hm(e));} // 終わる時間には必ず aprox.（Nory 10/4）
 // 選んだ時間から閉店までに終わらないメニューは押せなくする
 function fitsWith(ch){const b={m:sel.menus.slice(),c:sel.ctype,bl:sel.bleach,s:sel.stype};ch();const ok=sel.opts.every(o=>!(o.date&&o.time)||(o.time==='any'?slots(o.date).length>0:slots(o.date).indexOf(o.time)>=0));sel.menus=b.m;sel.ctype=b.c;sel.bleach=b.bl;sel.stype=b.s;return ok;}
-function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWith(()=>{sel.menus.push(i);if(i===3&&sel.ctype===null)sel.ctype=0;if(i===5&&sel.stype===null)sel.stype=2;});});
+function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWith(()=>{if(CUTX.indexOf(i)>=0)sel.menus=sel.menus.filter(j=>CUTX.indexOf(j)<0);sel.menus.push(i);if(i===3&&sel.ctype===null)sel.ctype=0;if(i===5&&sel.stype===null)sel.stype=2;});});
  bG.disabled=BR.every(i=>mBtn[i].disabled);
  [...cEl.children].forEach((x,i)=>{x.disabled=sel.ctype!==i&&!fitsWith(()=>{sel.ctype=i;if(i!==1)sel.bleach=null;});});
  [...bEl.children].forEach((x,i)=>{x.disabled=sel.bleach!==i&&!fitsWith(()=>{sel.bleach=i;});});
@@ -1000,7 +1002,7 @@ function tkToast(name,lost,undo){const t=document.getElementById('tkToast');TK_U
 function tkRemove(k,name){const before=tkTimes();let undo;
  if(k[0]==='m'){const i=+k.slice(1);const st={c:sel.ctype,b:sel.bleach,s:sel.stype};mBtn[i].click();
   undo=()=>{try{const b0=tkTimes(); /* 【レビュー 10/6】押せない（disabled）ボタンを click() せず、選びの状態を直接戻す */
-  if(sel.menus.indexOf(i)<0){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});sel.menus.push(i);mBtn[i].classList.add('on');}
+  if(sel.menus.indexOf(i)<0){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);mBtn[i].classList.add('on');}
   if(i===3){sel.ctype=st.c;sel.bleach=st.b;}if(i===5)sel.stype=st.s;
   colorUI();[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.ctype));[...bEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.bleach));[...sEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.stype));if(BR.indexOf(i)>=0)bUI();
   upd();return {lost:tkTimes()<b0,fail:sel.menus.indexOf(i)<0};}catch(e){return {fail:true};}};}
