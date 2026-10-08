@@ -484,6 +484,7 @@ body.needType #s2box{opacity:.35;pointer-events:none;filter:grayscale(.3)}
 <div class="hint" data-t="closed"></div>
 
 <div class="step" id="horaH" style="border:none;margin-top:12px;font-size:15px" data-t="hora"></div>
+<div class="hint" id="p2Note" style="display:none;color:#b00020;margin:6px 0" data-t="p2Miss" role="status"></div>
 <div class="times" id="times"></div>
 </div><!-- /s2box -->
 
@@ -602,6 +603,8 @@ hSel:{es:'Productos a apartar',en:'Products to hold',ja:'取り置き'},
 hTot:{es:'Total productos',en:'Products total',ja:'商品の合計'},
 hRm:{es:'Quitar',en:'Remove',ja:'外す'},
 hMax:{es:'Hasta 5 productos distintos.',en:'Up to 5 different products.',ja:'5品まで選べます。'},
+p2Btn:{es:'Reservar para otra persona',en:'Book for another person',ja:'もう1名様のご予約'},
+p2Miss:{es:'Ese horario no está disponible. Por favor, elija otro horario.',en:'That time is not available. Please choose another time.',ja:'そのお時間はご予約いただけません。ほかのお時間をお選びください。'},
 doneT:{es:'Solicitud recibida',en:'Request received',ja:'受け付けました'},
 doneC:{es:'Le confirmaremos su cita por DM.',en:'We will confirm by DM.',ja:'確定はDMでお知らせします。'},
 back:{es:'Volver a Instagram',en:'Back to Instagram',ja:'インスタに戻る'},
@@ -793,8 +796,9 @@ function mvBind(b,k){b.addEventListener('pointerenter',e=>{if(e.pointerType==='m
 const mEl=document.getElementById('menus');
 // 【下書き 10/6 シャンプーブローまとめ】一覧には「シャンプーブロー」を1つ。押すと下に3つ（7/8/9）が開き、1つだけ選ぶ。送る値（MENUS[i][0]・番号・DUR_MENU）は今と同じ
 const BR=[7,8,9];
-const CUTX=[1,2]; // 【10/7 Nory】レディースカットに前髪カットは含まれる：どちらか1つだけ選べる（片方を押すと、もう片方は外れる）
-const cutX=i=>{if(CUTX.indexOf(i)>=0)CUTX.forEach(j=>{if(j!==i){const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}}});};
+const CUTX=[[0,1],[1,2]]; // 一緒に選べない組。【10/7 Nory】レディースカットに前髪カットは含まれる（1と2）／【10/7 Nory B案】1つの予約は1人：メンズカットとレディースカット（0と1）はどちらか1つ。メンズ＋前髪は選べる
+const cxOf=i=>CUTX.reduce((a,p)=>p.indexOf(i)>=0?a.concat(p.filter(j=>j!==i)):a,[]); // i と一緒に選べないメニューの番号
+const cutX=i=>{cxOf(i).forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});};
 const BRS={7:{es:'Corto / bob',en:'Short / bob',ja:'ショート・ボブ'},8:{es:'Largo',en:'Long',ja:'ロング'},9:{es:'Extra largo',en:'Extra long',ja:'スーパーロング'}};
 const BRG={es:'Lavado y brushing',en:'Shampoo & blow-dry',ja:'シャンプーブロー'};
 const mBtn=[];let bG=null,bSub=null,bOpen=false;
@@ -871,7 +875,7 @@ function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]
 function endTxt(o){if(o.time==='any')return '';const a=o.time.split(':');const e=(+a[0])*60+(+a[1])+dur();return o.date.getDay()===0?'':(LANG==='ja'?' → '+hm(e)+T('aprox'):' → '+T('aprox')+' '+hm(e));} // 終わる時間には必ず aprox.（Nory 10/4）
 // 選んだ時間から閉店までに終わらないメニューは押せなくする
 function fitsWith(ch){const b={m:sel.menus.slice(),c:sel.ctype,bl:sel.bleach,s:sel.stype};ch();const ok=sel.opts.every(o=>!(o.date&&o.time)||(o.time==='any'?slots(o.date).length>0:slots(o.date).indexOf(o.time)>=0));sel.menus=b.m;sel.ctype=b.c;sel.bleach=b.bl;sel.stype=b.s;return ok;}
-function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWith(()=>{if(CUTX.indexOf(i)>=0)sel.menus=sel.menus.filter(j=>CUTX.indexOf(j)<0);sel.menus.push(i);if(i===3&&sel.ctype===null)sel.ctype=0;if(i===5&&sel.stype===null)sel.stype=2;});});
+function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWith(()=>{sel.menus=sel.menus.filter(j=>cxOf(i).indexOf(j)<0);sel.menus.push(i);if(i===3&&sel.ctype===null)sel.ctype=0;if(i===5&&sel.stype===null)sel.stype=2;});});
  bG.disabled=BR.every(i=>mBtn[i].disabled);
  [...cEl.children].forEach((x,i)=>{x.disabled=sel.ctype!==i&&!fitsWith(()=>{sel.ctype=i;if(i!==1)sel.bleach=null;});});
  [...bEl.children].forEach((x,i)=>{x.disabled=sel.bleach!==i&&!fitsWith(()=>{sel.bleach=i;});});
@@ -891,7 +895,13 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  const all3=ANY?sel.opts.some(x=>x.date&&x.time):sel.opts.every(x=>x.date&&x.time);const n3=document.getElementById('need3');n3.textContent=T(ANY?'need1':'need3');n3.style.display=all3?'none':'block';
  const po=permOnly();document.getElementById('permNote').hidden=!po;document.getElementById('permNote2').hidden=!po;
  const pt=pendTxt();['typeNote','typeNote2'].forEach(id=>{const e=document.getElementById(id);e.hidden=!pt;e.textContent=pt;});document.body.classList.toggle('needType',!!pt);
- document.getElementById('go').disabled=!(!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));lock();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
+ document.getElementById('go').disabled=!(!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));lock();p2UI();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
+// 【10/7 Nory B案】2人目の予約：送り終えた画面のボタンは同じページを ?d=日付&t=時間 で開き直す（読むだけの引数。src・id・ch・lang などはそのまま引き継ぐ）
+// t ＝ 1人目の「第1希望の開始＋所要時間」を30分きざみに切り上げた時刻。開いた時にその時間が空いていれば最初から選び、空いていなければ時間は選ばずにお知らせを出す
+function p2Url(){const u=new URL(location.href);['d','t'].forEach(k=>u.searchParams.delete(k));const o=sel.opts.find(x=>x.date&&x.time);if(o){u.searchParams.set('d',ymd(o.date));if(o.time!=='any'){const e=Math.ceil((toM(o.time)+Math.max(dur(),30))/STEP)*STEP;u.searchParams.set('t',hm(e));}}u.hash='';return u.toString();}
+const P2=(()=>{if(CAMBIO)return null;const q=new URLSearchParams(location.search);const d=q.get('d')||'',t=q.get('t')||'';if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return null;const a=d.split('-').map(Number);const dt=new Date(a[0],a[1]-1,a[2]);if(ymd(dt)!==d)return null;return {d:dt,t:/^\d{2}:\d{2}$/.test(t)?t:'',auto:false,miss:false};})();
+function p2UI(){if(!P2)return;if(P2.auto&&!sel.opts[0].time){P2.auto=false;if(P2.t)P2.miss=true;} /* 選んでおいた時間が、埋まり（あとから読む）やメニューで消えた時 */
+ const e=document.getElementById('p2Note');if(e)e.style.display=P2.miss&&!sel.opts[0].time&&!ANY?'block':'none';}
 // 名と姓は別々の欄で、両方必須（Nory 10/3）
 function nameOk(){return document.getElementById('name').value.trim().length>=1&&document.getElementById('last').value.trim().length>=1;}
 function fullName(){const n=document.getElementById('name').value.trim(),l=document.getElementById('last').value.trim(),l2=LANG==='es'?document.getElementById('last2').value.trim():'';return LANG==='ja'?l+' '+n:(n+' '+l+(l2?' '+l2:''));}
@@ -899,7 +909,7 @@ function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
 ['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30)},CAMBIO?{}:holdPay()))}) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(x=>x.json()).then(r=>{if(r&&r.ok){try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
+ fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30)},CAMBIO?{}:holdPay()))}) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(x=>x.json()).then(r=>{if(r&&r.ok){try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
   else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
 if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><a class="go" style="text-decoration:none;text-align:center;background:#1f7a4d" href="https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.')+'">'+({es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約する'}[LANG]||'Reservar por WhatsApp')+'</a>';app.appendChild(bx);}
 document.documentElement.lang=LANG;
@@ -1030,6 +1040,9 @@ function tipBind(b,kind,i){b.addEventListener('pointerenter',e=>{if(e.pointerTyp
 document.getElementById('upsC').addEventListener('click',upsGo);document.getElementById('upsT').addEventListener('click',upsGo);
 (()=>{const b=document.getElementById('tkBtn');if(!b)return;b.onclick=()=>{const d=document.getElementById('tkD');const o=d.hidden;d.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');document.getElementById('tk').classList.toggle('open',o);};
  const u0=upd;upd=function(){u0();tkUpd();};})();
+// 【10/7 Nory B案】2人目：同じ日を第1希望に選んでおく（第1希望の欄を開いたまま）。時間はその日に空いていれば選ぶ。空いていなければ選ばずにお知らせ
+if(P2&&P2.d>=TODAY&&P2.d<=LAST&&!closed(P2.d)){sel.opts[0].date=P2.d;sel.cur=0;view=new Date(P2.d.getFullYear(),P2.d.getMonth(),1);
+ if(P2.t&&freeSlots(P2.d).indexOf(P2.t)>=0){sel.opts[0].time=P2.t;P2.auto=true;}else if(P2.t)P2.miss=true;}
 drawTimes();drawOpts();drawCal();upd();
 </script>
 <!-- 【下書き 10/5 小さな直し】トップ（/）に戻るリンク。ページの外枠の外に置くので、予約完了の画面に変わっても消えない -->
