@@ -732,6 +732,8 @@
       <div>SEÑOR NORY — CDMX, MÉXICO</div>
       <div>MÉXICO × JAPÓN</div>
     </div>
+    <!-- 【10/8 Nory】♪の曲（CC BY-ND 4.0）。決まりどおり作者・曲名・ライセンスを表示。曲は編集しない -->
+    <p class="music-credit" style="margin:14px 0 0;font-family:'Italiana','Zen Antique Soft',serif;font-size:11px;letter-spacing:.06em;color:var(--cream-dim);opacity:.8">♪ “Surf Instrumental” by <a href="https://ricklawndale.bandcamp.com/track/surf-instrumental" target="_blank" rel="noopener" style="color:inherit">Rick Lawndale</a> — <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener" style="color:inherit">CC BY-ND 4.0</a></p>
   </div>
 </footer>
 
@@ -838,7 +840,7 @@
 <script>
 /* 音楽：美容室のページと同じしくみ。開いただけでは音が出せない（ブラウザの決まり）ので、最初に画面にさわった時に流す。ボタンで止める・流す。
    曲のファイル（music.mp3）が無いときはボタンを出さず、何もしない */
-(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');if(!a||!b)return;a.volume=.45;var off=false,ok=false;
+(function(){var a=document.getElementById('bgm'),b=document.getElementById('musicBtn');if(!a||!b)return;a.volume=.28; /* 【10/8 Nory】音は小さめ */ var off=false,ok=false;
 function ui(){b.className='music ready '+(a.paused?'off':'on');}
 function play(){if(!ok)return;var p=a.play();if(p&&p.then)p.then(ui).catch(ui);else ui();}
 function ready(){if(ok)return;ok=true;ui();}
@@ -851,7 +853,8 @@ function first(e){['pointerdown','touchstart','keydown'].forEach(function(t){win
 ['pointerdown','touchstart','keydown'].forEach(function(t){window.addEventListener(t,first,true)});
 function resume(e){if(ok&&!off&&a.paused&&a.currentTime>0&&!(e&&e.target&&b.contains(e.target)))play();}
 ['pointerdown','touchstart'].forEach(function(t){window.addEventListener(t,resume,true)});
-document.addEventListener('visibilitychange',function(){if(!document.hidden)resume();});
+document.addEventListener('visibilitychange',function(){if(document.hidden){if(!a.paused)a.pause();}else resume();}); /* 【10/8 Nory】ページを閉じる・別の画面にしたら止める（ホームページと同じ） */
+window.addEventListener('pagehide',function(){if(!a.paused)a.pause();});
 a.addEventListener('pause',function(){if(ok)ui();});a.addEventListener('play',function(){if(ok)ui();});
 b.addEventListener('click',function(e){e.stopPropagation();if(a.paused){off=false;play();}else{a.pause();off=true;ui();}});})();
 </script>
