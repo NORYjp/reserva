@@ -582,6 +582,13 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 <!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
+<style>
+/* ===== 2026-10-09 日本人ヘアサロンの1行（CONDESA, CDMX の下・オレンジ #f08a4b＝今のHPのオレンジ。Nory決定・足すだけ） ===== */
+.hero .jp-line{margin:10px 0 0;color:#f08a4b;font-family:'The Home Font F','Cormorant Garamond',serif;font-size:clamp(16px,4.6vw,22px);font-weight:400;line-height:1.2;letter-spacing:.14em;padding-left:.14em;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.hero .jp-line:lang(ja){font-family:'Kaisei Decol',serif;font-weight:500;font-size:clamp(15px,4.2vw,20px);letter-spacing:.3em;padding-left:.3em}
+/* パソコンの低い画面（高さ900未満）では、足した1行だけ小さく（今ある余白・位置は変えない） */
+@media (min-width:820px) and (max-height:899px){.hero .jp-line{margin-top:4px;font-size:15px;letter-spacing:.12em}.hero .jp-line:lang(ja){font-size:14px;letter-spacing:.24em}}
+</style>
 </head>
 <body class="gate">
 <!-- 名刺のジグザグの外枠（四辺）2026-10-06 -->
@@ -602,6 +609,7 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
     <h1><img class="logo" src="logo_round.png" alt="THE HOME Hair re-creative" width="463" height="463"><span class="vh">THE HOME</span></h1>
     <p class="catch" data-t="catch"></p>
     <p class="sub"><a class="resv" href="/reserva/?src=web" data-href="reserva" data-t="resv">Exclusivamente con cita</a><span style="white-space:nowrap">Condesa, CDMX</span></p> <!-- 【10/8 Nory】完全予約制を最初の画面に。店名は上にあるので外す。日本語の画面もスペイン語の文 -->
+    <p class="jp-line" id="jpLine">ESTÉTICA JAPONESA</p> <!-- 2026-10-09 Nory 日本人ヘアサロンの1行（CONDESA, CDMX の下・横書き・オレンジ） -->
   </div>
   <!-- 押すと下へ（2026-10-05 Nory「真ん中にアイコン、クリックヒアが動いて、押すと下の画面へ」） -->
   <a class="cue" href="#about" aria-label="next"><span data-t="cue"></span><i></i></a>
@@ -1054,6 +1062,12 @@ document.addEventListener('pointerover',function(e){if(e.pointerType!=='mouse')r
 document.addEventListener('pointerout',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
 document.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')return;wig(host(e.target));},{passive:true});
 }catch(e){}})();
+</script>
+<script>
+/* 2026-10-09 日本人ヘアサロンの1行：1ページ1言語 */
+(function(){var W={es:'ESTÉTICA JAPONESA',en:'JAPANESE HAIR SALON',ja:'日本人ヘアサロン'},e=document.getElementById('jpLine');if(!e)return;
+function put(){var l=(document.documentElement.lang||'es').slice(0,2);e.textContent=W[l]||W.es;}
+put();try{new MutationObserver(put).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(x){}})();
 </script>
 </body>
 </html>
