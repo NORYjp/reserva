@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 【案B2 10/10 下書き・仕組み担当】元＝公開中の 案B（SHA-256 52700b55…）。違いは「【メール確認 10/9】」「【同じ名前 10/9】」「【2時間半 10/10】」で検索。公開しない -->
 <html><head><!-- 【下書き 2026-10-05 仕組み担当】本番 web/reserva/index.html（10/5 公開版）の写し。Googleマップの「予約」（?src=google・?id= なし）から開いた人も送れるようにした。本番は変えていない。違いは「【Google 10/4】」「【Google 10/5】」の所だけ。 --><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>THE HOME Hair re-creative – Reserva</title><meta property="og:title" content="Book now – THE HOME Hair re-creative"><meta property="og:description" content="Calle Ensenada 138, Condesa, CDMX"><meta property="og:image" content="https://thehomehair.com/og_reserva_20261007.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Yeseva+One&family=Kaisei+Decol:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -49,7 +50,8 @@ textarea{width:100%;background:#fffaf3;border:1.5px solid #d6c0a8;border-radius:
 .done .big{font-size:40px}
 .done p{line-height:1.6}
 .ig{display:inline-block;margin-top:14px;padding:12px 18px;border:1.5px solid #222;border-radius:30px;color:#222;text-decoration:none}
-.err{color:#b00020;font-size:14px;margin-top:10px;text-align:center}
+.err{color:#b00020;font-size:14px;margin-top:10px;text-align:center;overflow-wrap:anywhere}
+.err .spl{display:block;margin-top:6px;line-height:1.5} /* 【同じ名前 10/9】 */
 .opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:8px}
 .opt{border:1.5px solid #d6c0a8;border-radius:10px;padding:7px 4px;background:#fffaf3;font:inherit;font-size:13px;text-align:center;cursor:pointer;line-height:1.3}
 .opt.on{border-color:#1d1d1d;box-shadow:0 0 0 1.5px #1d1d1d}
@@ -527,7 +529,8 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 .pmail{font-size:11.5px;color:var(--mute);line-height:1.5;margin:6px 0 0;overflow-wrap:anywhere}
 .pmail[hidden]{display:none}
 .picw{position:relative}
-.ptip{position:absolute;left:8px;right:8px;top:6px;z-index:5;background:#3a2a20;color:#fff8f0;border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.5;box-shadow:0 4px 14px rgba(0,0,0,.2);overflow-wrap:anywhere;pointer-events:none}
+.ptip{position:relative;margin:8px 0 0;background:#3a2a20;color:#fff8f0;border-radius:10px;padding:7px 34px 7px 10px;font-size:12px;line-height:1.45;overflow-wrap:anywhere} /* 【10/10 Nory「邪魔になる」】枠の下に出す（枠に重ならない） */
+.ptip-x{position:absolute;top:2px;right:2px;width:30px;height:30px;border:none;background:none;color:#fff8f0;font:inherit;font-size:16px;line-height:1;cursor:pointer;padding:0}
 .ptip[hidden]{display:none}
 #go:disabled{pointer-events:none} /* 【10/10】押せない時のタップを下で受けて、理由を1行出す */
 .perr{font-size:12.5px;color:#b00020;line-height:1.45;margin:8px 0 0;overflow-wrap:anywhere}
@@ -591,6 +594,20 @@ body.polOpen{overflow:hidden}
 .avs small{display:block;margin-top:3px;font-size:10px;color:#9a8775}
 .pol-body:focus{outline:none}
 </style>
+<style>
+/* 【メール確認 10/9】A：メールをもう一度／B：確認コードの箱。Apps Script の EMAIL_VERIFY がオフの間は出ない */
+#mail2[hidden],.ev-mis[hidden],.evb[hidden],.evb-m[hidden]{display:none}
+.ev-mis{color:#b00020;font-size:13px;margin:5px 2px 0;font-family:'Kaisei Decol',serif;overflow-wrap:anywhere}
+.evb{margin-top:16px;background:#fffaf3;border:1.5px solid #b4532a;border-radius:14px;padding:13px 14px 12px;font-family:'Kaisei Decol',serif;color:#3a2a20}
+.evb-t{margin:0 0 10px;font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+.evb-t b{color:#8e3f1f;font-weight:bold}
+.evb-in{display:block;width:100%;box-sizing:border-box;font:inherit;font-family:'Courier New',Courier,monospace;font-size:28px;font-weight:bold;letter-spacing:10px;text-indent:10px;text-align:center;padding:10px 6px;border:1.5px solid #d6c0a8;border-radius:12px;background:#fff;color:#3a2a20}
+.evb-in:focus{outline:2px solid #b4532a;outline-offset:1px}
+.evb-m{color:#b00020;font-size:13px;line-height:1.45;margin-top:8px;text-align:center;overflow-wrap:anywhere}
+.evb-a{display:flex;gap:8px;margin-top:10px}
+.evb-a button{flex:1;min-width:0;border:1px solid #dcc4ab;background:#f7ebdd;color:#3a2a20;border-radius:10px;padding:9px 6px;font:inherit;font-size:13px;line-height:1.3;cursor:pointer}
+.evb-a button:disabled{opacity:.5;cursor:default}
+</style>
 </head>
 <body><!-- 【下書き 10/6 トップと同じデザイン】名刺のジグザグの外枠（四辺＋四隅）トップと同じ -->
 <div class="fz fz-t" aria-hidden="true"></div><div class="fz fz-b" aria-hidden="true"></div><div class="fz fz-l" aria-hidden="true"></div><div class="fz fz-r" aria-hidden="true"></div><div class="fz fz-c fz-tl" aria-hidden="true"></div><div class="fz fz-c fz-tr" aria-hidden="true"></div><div class="fz fz-c fz-bl" aria-hidden="true"></div><div class="fz fz-c fz-br" aria-hidden="true"></div>
@@ -628,7 +645,7 @@ body.polOpen{overflow:hidden}
 <div class="photo" style="background:#fdecee" data-t="bleachWarn"></div></div>
 <div class="s2wait phh" id="photoH" hidden><i aria-hidden="true">◆</i><b data-t="photoReq"></b></div><!-- 【10/8 Nory】写真が必要と一目で分かる見出し（カラー・パーマ・縮毛矯正の時だけ） -->
 <div class="photo" id="photoNote" style="display:none" data-t="photo"></div>
-<div class="picw" id="picBox" hidden><!-- 【写真の枠 10/9】Apps Script の ?action=gmode が pics:true（PHOTO_ON=on）の時だけ出る。どの枠も任意。ラベルはその言語だけ（1ページ1言語） --><div class="pgh"><span data-t="picNow"></span></div><div class="pgrid"><div class="pslot" data-k="f"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.3 21c-.4-6.6 3.2-11 7.8-11 4.7 0 8.2 4.2 7.7 11-.2 2.6-1.1 4.4-2.3 5.6"/><path d="M12.3 21c.2 2.4 1 4.2 2.2 5.5"/><path d="M12.6 17.2c3.1-3.6 9.4-4.6 14.9-.6"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="s"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.4 27.6c-2.2-2.1-3.3-5-3.3-8.6 0-5.8 4-9 9.1-9 4.9 0 8.6 3.1 8.8 7.9l1.9 3.8-1.8.9.1 2.6c0 1.3-1 2.3-2.9 2.2h-1.6"/><path d="M11.2 18.6c1.6-4.6 5.2-7.4 10.4-7.6"/><path d="M9.6 36.8c1-4.1 5-6.2 10.3-6.2 5.2 0 9 2 10 6"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="b"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.1 22.2c-.3-7 3.4-12.2 7.9-12.2 4.6 0 8.2 5 7.9 12.1-.1 3-2.3 4.9-7.9 4.9-5.7 0-7.8-1.8-7.9-4.8z"/><path d="M20 11.2c-.3 5-.2 10.1.1 15M16.2 13.2c-1.3 4.1-1.4 8.8-.4 13.3M23.8 13.2c1.3 4.2 1.4 8.8.4 13.3"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="pgh"><span data-t="picWant"></span></div><div class="pgrid"><div class="pslot" data-k="d1" data-v="picF"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d2" data-v="picS"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d3" data-v="picB"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="perr" id="picErr" hidden role="status"></div><p class="pnote"><span id="picOptT"></span></p><p class="pmail" id="picMail" hidden></p><div class="ptip" id="picTipB" role="tooltip" hidden></div><!-- 【10/10 写真の必須】Nory「見える注意書きを少なめに」：くわしい説明は、枠にカーソル／タップで出す吹き出し --></div>
+<div class="picw" id="picBox" hidden><!-- 【写真の枠 10/9】Apps Script の ?action=gmode が pics:true（PHOTO_ON=on）の時だけ出る。どの枠も任意。ラベルはその言語だけ（1ページ1言語） --><div class="pgh"><span data-t="picNow"></span></div><div class="pgrid"><div class="pslot" data-k="f"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.3 21c-.4-6.6 3.2-11 7.8-11 4.7 0 8.2 4.2 7.7 11-.2 2.6-1.1 4.4-2.3 5.6"/><path d="M12.3 21c.2 2.4 1 4.2 2.2 5.5"/><path d="M12.6 17.2c3.1-3.6 9.4-4.6 14.9-.6"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="s"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.4 27.6c-2.2-2.1-3.3-5-3.3-8.6 0-5.8 4-9 9.1-9 4.9 0 8.6 3.1 8.8 7.9l1.9 3.8-1.8.9.1 2.6c0 1.3-1 2.3-2.9 2.2h-1.6"/><path d="M11.2 18.6c1.6-4.6 5.2-7.4 10.4-7.6"/><path d="M9.6 36.8c1-4.1 5-6.2 10.3-6.2 5.2 0 9 2 10 6"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="b"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.1 22.2c-.3-7 3.4-12.2 7.9-12.2 4.6 0 8.2 5 7.9 12.1-.1 3-2.3 4.9-7.9 4.9-5.7 0-7.8-1.8-7.9-4.8z"/><path d="M20 11.2c-.3 5-.2 10.1.1 15M16.2 13.2c-1.3 4.1-1.4 8.8-.4 13.3M23.8 13.2c1.3 4.2 1.4 8.8.4 13.3"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="pgh"><span data-t="picWant"></span></div><div class="pgrid"><div class="pslot" data-k="d1" data-v="picF"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d2" data-v="picS"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d3" data-v="picB"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="perr" id="picErr" hidden role="status"></div><p class="pnote"><span id="picOptT"></span></p><p class="pmail" id="picMail" hidden></p><div class="ptip" id="picTipB" role="note" hidden><span></span><button type="button" class="ptip-x">×</button></div><!-- 【10/10 写真の必須】Nory「見える注意書きを少なめに」：くわしい説明は、枠にカーソル／タップで出す吹き出し --></div>
 <div class="photo" id="cutNote" style="display:none" data-t="cutPhoto"></div>
 <!-- 【下書き 10/6 取り置き】メニューを選んだあとに出る。選ばなくても予約できる。商品は ../productos.json（在庫0＝order は出さない） -->
 <div class="hold" id="holdBox" style="display:none"><h3><span data-t="hT"></span> <span class="pnow" data-t="pNow"></span><small data-t="hOpt"></small></h3><div class="hn" data-t="hN"></div><div class="strip" id="strip" aria-label="Davines"></div><div class="hsel" id="hsel"></div></div>
@@ -656,6 +673,8 @@ body.polOpen{overflow:hidden}
 <input id="last2" class="inp" type="text" style="display:none">
 <input id="tel" class="inp" type="tel" inputmode="tel" autocomplete="tel">
 <input id="mail" class="inp" type="email" inputmode="email" autocomplete="email">
+<input id="mail2" class="inp" type="email" inputmode="email" autocomplete="off" hidden><!-- 【メール確認 10/9】A：メールをもう一度（スイッチが a・ab の時だけ出る） -->
+<div class="ev-mis" id="evMis" role="status" hidden></div>
 <input id="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><!-- 【Google 10/4】人には見えない欄（ロボット対策） -->
 <div class="hint" style="margin-top:4px" data-t="mailNote"></div>
 </div>
@@ -674,6 +693,7 @@ body.polOpen{overflow:hidden}
 <label class="cons-c" id="consLab"><input type="checkbox" id="consCb"><span id="consCbT"></span></label>
 </section>
 <button type="button" class="avs-b" id="avsB" aria-haspopup="dialog" aria-controls="avsW"></button><div class="avsW" id="avsW" role="dialog" aria-modal="true" hidden><div class="avsW-box"><div class="avs" id="avs"></div><button type="button" class="avsW-x" id="avsX"></button></div></div><!-- 【案B】個人情報の簡単なお知らせは1行のボタン＋小さな窓（中身は案Aと同じ） --><!-- 【10/9夜 個人情報】簡単なお知らせ（連邦個人情報保護法 第16条 第2号）＋完全版へのリンク -->
+<div class="evb" id="evBox" hidden><!-- 【メール確認 10/9】B：確認コード（コードを送ったあとだけ出る。答えはページに持たない） --><p class="evb-t" id="evSent"></p><input id="evCode" class="evb-in" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" aria-labelledby="evSent"><div class="evb-m" id="evMsg" role="status" hidden></div><div class="evb-a"><button type="button" id="evAgain"></button><button type="button" id="evFix"></button></div></div>
 <button class="go" id="go" disabled></button>
 <div class="cons-need" id="consNeed" hidden></div>
 <div class="cons-need" id="picNeed" hidden></div><!-- 【10/10 写真の必須】押そうとした時だけ -->
@@ -1253,13 +1273,14 @@ spamF:{es:'Llega con este logo, desde esta dirección:',en:'It comes with this l
 spamCp:{es:'Copiar',en:'Copy',ja:'コピー'},
 spamOk:{es:'Copiado',en:'Copied',ja:'コピーしました'},
 picReqLead:{es:'Este servicio requiere fotos.',en:'This service requires photos.',ja:'このメニューはお写真が必要です。'}, // 【10/10 写真の必須】
-picReqShort:{es:'Obligatorio: 3 de su cabello actual + al menos {b} del estilo deseado.',en:'Required: 3 of your hair now + at least {b} of the style you want.',ja:'必須：今の髪3枚＋なりたい髪型{b}枚以上'},
-picTipReq:{es:'Sin las 3 fotos de su cabello actual (frente, lado y detrás) y al menos {b} del estilo deseado no se puede enviar (lo ideal son 3).',en:'You cannot send without 3 photos of your hair now (front, side and back) and at least {b} of the style you want (3 is ideal).',ja:'今の髪（正面・横・後ろ）の3枚と、なりたい髪型{b}枚以上がないと送れません（3枚そろうのが基本です）。'},
-picTip:{es:'Tómelas con buena luz y bien enfocadas; las fotos borrosas o pequeñas no nos sirven.',en:'Please take them in good light and in focus; blurry or small photos do not help us.',ja:'明るい場所で、ピントを合わせて撮ってください。ぼやけた写真・小さい写真では分かりません。'},
+picReqShort:{es:'Obligatorio: 3 de su cabello actual + al menos {b} del estilo deseado.',en:'Required: 3 of your hair now + at least {b} of the style you want.',ja:'必須：今の髪型3枚＋なりたい髪型{b}枚以上'},
+picTipReq:{es:'Se necesitan: su cabello actual (3) y el estilo deseado ({b} o más).',en:'Needed: your hair now (3) and the style you want ({b} or more).',ja:'必要な写真：今の髪型3枚・なりたい髪型{b}枚以上'},
+picTip:{es:'Con buena luz y bien enfocadas.',en:'Good light, in focus.',ja:'明るい所で、ピントを合わせて。'},
+picTipX:{es:'Cerrar',en:'Close',ja:'閉じる'},
 picSmall:{es:'Esta foto es demasiado pequeña. Por favor, tómela de nuevo con buena luz y bien enfocada.',en:'This photo is too small. Please take it again in good light and in focus.',ja:'この写真は小さすぎます。明るい場所で、ピントを合わせて撮り直してください。'},
 picReqPre0:{es:'Este servicio requiere fotos.',en:'This service requires photos.',ja:'このメニューはお写真が必要です。'},
 picMiss:{es:'Faltan: ',en:'Still needed: ',ja:'あと必要なお写真：'},picMissWant:{es:'{n} más del estilo deseado',en:'{n} more of the style you want',ja:'なりたい髪型 あと{n}枚'},
-picNow:{es:'Su cabello actual',en:'Your hair now',ja:'今の髪'}, // 【写真の枠 10/9】
+picNow:{es:'Su cabello actual',en:'Your hair now',ja:'今の髪型'}, // 【写真の枠 10/9】
 picF:{es:'De frente',en:'Front',ja:'正面'},
 picS:{es:'De lado',en:'Side',ja:'横'},
 picB:{es:'Por detrás',en:'Back',ja:'後ろ'},
@@ -1280,13 +1301,13 @@ mmPick:{es:'Elija una opción.',en:'Please choose one.',ja:'どちらかを選�
 mmNote:{es:'Elige el que mejor se adapte a ti.',en:'Choose the one that suits you best.',ja:'ご自分に合う方をお選びください'},
 spart:{es:'¿Qué parte?',en:'Which part?',ja:'どこをまっすぐにしますか？'},
 bleachWarn:{es:'Si tuvo decoloración o mechas en el último año, es posible que no se pueda hacer. Lo revisamos con su foto.',en:'If you bleached or had highlights in the past year, it may not be possible. We will check with your photo.',ja:'1年以内にブリーチ・ハイライトをした髪は、できない可能性がございます。写真で確認します。'},
-photo:{es:'Para un precio y tiempo exactos, envíe fotos del estilo deseado y de su cabello actual a thehome.hair.recreative@gmail.com.',en:'For an exact price and time, email photos of the style you want and your current hair to thehome.hair.recreative@gmail.com.',ja:'正確な料金・時間のため、ご希望の髪型と今の髪の写真を thehome.hair.recreative@gmail.com にお送りください。'}, // 【Nory 10/8】インスタの道もDMではなくお店のGmailへ（gPhotoと同じ）
+photo:{es:'Para un precio y tiempo exactos, envíe fotos del estilo deseado y de su cabello actual a thehome.hair.recreative@gmail.com.',en:'For an exact price and time, email photos of the style you want and your current hair to thehome.hair.recreative@gmail.com.',ja:'正確な料金・時間のため、ご希望の髪型と今の髪型の写真を thehome.hair.recreative@gmail.com にお送りください。'}, // 【Nory 10/8】インスタの道もDMではなくお店のGmailへ（gPhotoと同じ）
 s2:{es:'2. Día y hora (elija 3 opciones)',en:'2. Date & time (choose 3 options)',ja:'2. 日時（第1〜第3希望をすべて選んでください）'},
 anyT:{es:'Sin preferencia de hora (cualquier hora)',en:'No time preference (any time is fine)',ja:'時間の希望なし（何時でもOK）'},
 anyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por DM.',en:'Choose 1 to 3 days. We will suggest a time by DM.',ja:'日にちを1〜3つ選んでください。時間はDMでご提案します。'},
 anyShort:{es:'cualquier hora',en:'any time',ja:'時間おまかせ'},
 need1:{es:'Elija al menos 1 día para enviar.',en:'Please choose at least 1 day to send.',ja:'日にちを1つ以上選ぶと送れます。'},
-aprox:{es:'aprox.',en:'approx.',ja:'ごろ（aprox.）'},
+aprox:{es:'aprox.',en:'approx.',ja:'ごろ（目安）'},
 need3:{es:'Elija las 3 opciones (①②③) para enviar.',en:'Please choose all 3 options (①②③) to send.',ja:'①②③の3つとも選ぶと送れます。'},
 closed:{es:'Cerrado: lunes, 1er y 3er martes, 3er domingo',en:'Closed: Mondays, 1st & 3rd Tuesday, 3rd Sunday',ja:'休み：毎週月曜・第1火曜・第3火曜・第3日曜'},
 hora:{es:'Hora',en:'Time',ja:'時間'},
@@ -1389,7 +1410,7 @@ telWa:{es:'Celular (WhatsApp)',en:'Mobile (WhatsApp)',ja:'携帯番号（WhatsAp
 gMailNote:{es:'Le enviaremos la confirmación de su cita a este correo.',en:'We will send your appointment confirmation to this email.',ja:'ご予約の確定は、このメールアドレスにお送りします。'},
 gReq:{es:'Esto es una solicitud. Le confirmaremos su cita por correo electrónico.',en:'This is a request. We will confirm your appointment by email.',ja:'こちらは予約のご希望の受付です。確定はメールでお知らせします。'},
 gAnyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por WhatsApp o por correo.',en:'Choose 1 to 3 days. We will suggest a time via WhatsApp or email.',ja:'日にちを1〜3つお選びください。お時間はWhatsAppまたはメールでご提案します。'},
-gPhoto:{es:'Para un precio y tiempo exactos, envíe fotos del estilo deseado y de su cabello actual a thehome.hair.recreative@gmail.com.',en:'For an exact price and time, email photos of the style you want and your current hair to thehome.hair.recreative@gmail.com.',ja:'正確な料金・時間のため、ご希望の髪型と今の髪の写真を thehome.hair.recreative@gmail.com にお送りください。'}, // 【Nory 10/8】短く・WhatsAppではなくお店のGmailへ（受付メールが届かない時・メール欄が空の時もうそにならないよう、アドレスを書く）
+gPhoto:{es:'Para un precio y tiempo exactos, envíe fotos del estilo deseado y de su cabello actual a thehome.hair.recreative@gmail.com.',en:'For an exact price and time, email photos of the style you want and your current hair to thehome.hair.recreative@gmail.com.',ja:'正確な料金・時間のため、ご希望の髪型と今の髪型の写真を thehome.hair.recreative@gmail.com にお送りください。'}, // 【Nory 10/8】短く・WhatsAppではなくお店のGmailへ（受付メールが届かない時・メール欄が空の時もうそにならないよう、アドレスを書く）
 gDoneC:{es:'Le enviamos un correo de recepción. Le confirmaremos su cita por correo electrónico; si no lo encuentra, revise su carpeta de spam.',en:'We have sent you a receipt by email. We will confirm your appointment by email; if you cannot find it, please check your spam folder.',ja:'受付のメールをお送りしました。ご予約の確定もメールでお知らせします。見当たらない場合は迷惑メールフォルダもご確認ください。'},
 gBack:{es:'Escríbanos por WhatsApp',en:'Message us on WhatsApp',ja:'WhatsAppで問い合わせる'},
 gMailNoteOff:{es:'Le contactaremos por WhatsApp o por teléfono para confirmar su cita.',en:'We will contact you via WhatsApp or phone to confirm your appointment.',ja:'ご予約の確定は、お店からWhatsAppまたはお電話でご連絡します。'},
@@ -1404,6 +1425,22 @@ waReq:{es:'Esto es una solicitud. Le enviaremos la confirmación de su cita por 
 waAnyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por correo electrónico.',en:'Choose 1 to 3 days. We will suggest a time by email.',ja:'日にちを1〜3つお選びください。お時間はメールでご提案します。'},
 waDoneC:{es:'Le enviaremos la confirmación de su cita por correo electrónico. Si no la encuentra, revise su carpeta de spam.',en:'We will send your appointment confirmation by email. If you cannot find it, please check your spam folder.',ja:'ご予約の確定はメールでお送りします。見当たらない場合は迷惑メールフォルダもご確認ください。'}
 });
+// 【同じ名前 10/9】同じ名前・同じメールで止めた時の文（1ページ1言語。WhatsAppへは誘導しない。v53h で短くした）
+Object.assign(TX,{
+spStop:{es:'No podemos recibir una reserva con estos datos. Para otra persona, escriba el nombre de esa persona.',en:'We cannot accept a booking with these details. For another person, please enter that person’s name.',ja:'この内容ではご予約をお受けできません。ほかの方のご予約は、その方のお名前でお申し込みください。'}, // 【家族 10/10】同じメールの家族は通るので「その方のお名前で」
+spMax:{es:'No podemos recibir una reserva con estos datos.',en:'We cannot accept a booking with these details.',ja:'この内容ではご予約をお受けできません。'}, // 【家族 10/10】同じメールの人数の上限の時（1文だけ・理由は出さない） // 【v53h レビュー1】2文まで・理由（名前かメールか・予約があるか）は出さない
+spCBtn:{es:'Cambiar mi cita',en:'Change my appointment',ja:'ご予約の変更'}, // SAME_CAMBIO=on の時だけ使う（初期は出ない）
+// 【v53h 決まり9-3 10/10 秘書の判断】IDなしの道（Google・ホームページ・WhatsAppの短いリンク）の文：連絡はメールが主。WhatsApp は「必要な方のみ」の小さな1行だけ（受け付けました画面・IDなしの案内にある今の1行）。インスタのDMの道（IDあり）の文は変えない
+telWa:{es:'Celular',en:'Mobile number',ja:'携帯番号'},
+gAnyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por correo.',en:'Choose 1 to 3 days. We will suggest a time by email.',ja:'日にちを1〜3つお選びください。お時間はメールでご提案します。'},
+gAnyNoteOff:{es:'Elija de 1 a 3 días. Le propondremos la hora por correo.',en:'Choose 1 to 3 days. We will suggest a time by email.',ja:'日にちを1〜3つお選びください。お時間はメールでご提案します。'},
+gMailNoteOff:{es:'Le confirmaremos su cita por correo electrónico.',en:'We will confirm your appointment by email.',ja:'ご予約の確定はメールでお知らせします。'},
+gReqOff:{es:'Esto es una solicitud. Le confirmaremos su cita por correo electrónico.',en:'This is a request. We will confirm your appointment by email.',ja:'こちらは予約のご希望の受付です。確定はメールでお知らせします。'},
+gDoneCOff:{es:'Hemos recibido su solicitud. Le confirmaremos su cita por correo electrónico.',en:'We have received your request. We will confirm your appointment by email.',ja:'ご希望を受け付けました。ご予約の確定はメールでお知らせします。'},
+gErr:{es:'No pudimos recibir su solicitud. Escríbanos a thehome.hair.recreative@gmail.com.',en:'We could not receive your request. Please email us at thehome.hair.recreative@gmail.com.',ja:'受付できませんでした。お手数ですが thehome.hair.recreative@gmail.com へご連絡ください。'},
+gBack:{es:'Escríbanos por correo',en:'Email us',ja:'メールで問い合わせる'}, // 今は画面に出ていない（念のため）
+p2Same:{es:'Es el mismo nombre de la primera persona. Escriba el nombre de la segunda persona.',en:'Same name as the first person. Please enter the second person’s name.',ja:'1人目の方と同じお名前です。2人目の方のお名前をご入力ください。'} /* 【家族 10/10】同じメールは通す */
+});
 const T=k=>TX[k][LANG];
 // 【10/8 Nory】迷惑メールの注意の箱（送る前・受け付けました画面で同じ物）。丸ロゴ＝確定メールと同じ画像。コピーはアドレスだけ
 const SHOP_MAIL='thehome.hair.recreative@gmail.com';
@@ -1414,6 +1451,10 @@ document.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.clos
  const old=()=>{try{const t=document.createElement('textarea');t.value=SHOP_MAIL;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,99);const r=document.execCommand('copy');t.remove();if(r)ok();}catch(e){}};
  try{navigator.clipboard.writeText(SHOP_MAIL).then(ok,old);}catch(e){old();}});
 const CAMBIO=new URLSearchParams(location.search).get('cambio')==='1'; // 【下書き 10/4】
+// 【メール確認 10/9】状態（早めに置く：upd() から使うため）。EV：''＝オフ／'a'＝メール2回／'ab'＝メール2回＋確認コード（Apps Script の ?action=gmode の ev で決まる）
+let EV=new URLSearchParams(location.search).get('evtest')==='1'?'ab':''; // evtest=1 は下見・試し用（ページの見た目だけ。確かめるのは Apps Script なので素通りはできない）
+const EVS={vt:'',to:'',okVt:'',okTo:'',gapEnd:0,timer:0,busy:false};
+let SAME_P2=false; // 【同じ名前 v53h】Apps Script の ?action=gmode の sp で決まる（SAME_PERSON=on の時だけ true）。ページの公開し直しはいらない
 
 // ===== 【10/9 規約の同意・案2】チェックを入れるだけ（規約は読むボタンで開ける）。チェックなしでは送れない =====
 const TERMS_VER='2026-10-09';
@@ -1502,10 +1543,11 @@ function menCutColor(){return menCut()&&sel.menus.indexOf(4)<0&&sel.menus.indexO
 // 次のお客様の始まりと重なってよい分（メンズカット＋カラー ブリーチなしの最後の30分。例：12:00の予約のあと13:30から次を取れる）
 function overlap(){return (menCutColor()&&sel.menus.length===2)?OVERLAP_MEN_CUT_COLOR:0;} // 10/8 レビュー：メンズカット＋カラー（ブリーチなし）のちょうど2つの時だけ（Apps Script の menCutColorMenu_ とそろえる）
 // 空き判定に使う長さ（重なってよい分を引く）。表示・送る長さは dur() のまま
+const DUR_WCUT_FULL_LESS=30; // 【2時間半 10/10】Nory 10/9「2時間半に変更してください」：レディースカット＋全体カラー（パーマなし）は 90＋90＝3時間 → 2時間30分
 const DUR_NOMENU=60; // 【10/10 おすすめの直し】メニューを選ぶ前は、一番多いカット（1時間）として空きを計算する
 function durFit(){return dur()>0?Math.max(dur()-overlap(),30):DUR_NOMENU;}
 function durEnd(){return dur()>0?Math.max(dur(),30):DUR_NOMENU;} // 【10/10 おすすめの直し】閉店までに終わるかを見る長さ
-function dur(){if(sel.mm==='caballero'&&sel.menus.length===1&&sel.menus[0]===6)return DUR_TREAT_MEN_MENU;let t=0;const perm=sel.menus.indexOf(4)>=0,mc=menCut(),mcc=menCutColor();sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(i===6&&mc)t+=DUR_TREAT_MEN_CUT;else if(i===3&&mcc)t+=DUR_COLOR_MEN_CUT;else if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});return t;}
+function dur(){if(sel.mm==='caballero'&&sel.menus.length===1&&sel.menus[0]===6)return DUR_TREAT_MEN_MENU;let t=0;const perm=sel.menus.indexOf(4)>=0,mc=menCut(),mcc=menCutColor();sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(i===6&&mc)t+=DUR_TREAT_MEN_CUT;else if(i===3&&mcc)t+=DUR_COLOR_MEN_CUT;else if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});if(sel.menus.indexOf(1)>=0&&sel.menus.indexOf(3)>=0&&sel.ctype===0&&sel.menus.indexOf(4)<0)t-=DUR_WCUT_FULL_LESS; /* 【2時間半 10/10】 */return t;}
 const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
 // 【下書き 10/8 本日のおすすめ】日曜・休み・埋まりの3つを読み終えてから出す（読み終える前の、本当は埋まっている時間を出さないため）。読めなかった時も今の予約ページと同じ扱い
 var HOY_N=0;function hoyTick(){HOY_N++;drawHoy();}
@@ -1654,8 +1696,9 @@ var PIC_REQ_NOW_KEYS=['f','s','b'],PIC_REQ_WANT=2,PIC_MIN_SIDE=600;
 function picReq(){return picsOn()&&((sel.menus.indexOf(3)>=0&&(sel.ctype===2||sel.ctype===3))||sel.menus.indexOf(4)>=0);} // picsOn() が false（Apps Script が受け取れない間）は必須にしない
 function picOk(){if(!picReq())return true;return PIC_REQ_NOW_KEYS.every(k=>PICS[k])&&['d1','d2','d3'].filter(k=>PICS[k]).length>=PIC_REQ_WANT;}
 function picMissTxt(){const nm={f:'picF',s:'picS',b:'picB'},a=PIC_REQ_NOW_KEYS.filter(k=>!PICS[k]).map(k=>LANG==='ja'?T(nm[k]):T(nm[k]).toLowerCase());const w=PIC_REQ_WANT-['d1','d2','d3'].filter(k=>PICS[k]).length;if(w>0)a.push(T('picMissWant').replace('{n}',w));return T('picMiss')+a.join(LANG==='ja'?'・':', ');}
-function picTipTxt(){return (picReq()?T('picTipReq').replace('{b}',PIC_REQ_WANT)+' ':'')+T('picTip')+' '+T('picPriv')+' '+picMailTxt();}
-let PIC_TIP_T=0;function picTipShow(on){const t=document.getElementById('picTipB');if(!t)return;clearTimeout(PIC_TIP_T);if(on){t.textContent=picTipTxt();t.hidden=false;PIC_TIP_T=setTimeout(()=>{t.hidden=true;},6000);}else t.hidden=true;}
+function picTipTxt(){return (picReq()?T('picTipReq').replace('{b}',PIC_REQ_WANT)+(LANG==='ja'?'／':' '):'')+T('picTip');} /* 【10/10 Nory「長すぎる」】1〜2行だけ */
+let PIC_TIP_T=0,PIC_TIP_OFF=false;function picTipShow(on){const t=document.getElementById('picTipB');if(!t)return;clearTimeout(PIC_TIP_T);if(on&&!PIC_TIP_OFF){t.querySelector('span').textContent=picTipTxt();const x=t.querySelector('button');x.setAttribute('aria-label',T('picTipX'));t.hidden=false;PIC_TIP_T=setTimeout(()=>{t.hidden=true;},8000);}else if(!on)t.hidden=true;}
+(function(){const x=document.querySelector('#picTipB button');if(x)x.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();PIC_TIP_OFF=true;picTipShow(false);});})(); // 【10/10 Nory】×ですぐ消す（このページではもう自動で出さない）
 (function(){const b=document.getElementById('picBox');if(!b)return;b.querySelectorAll('.pgrid').forEach(g=>{g.addEventListener('mouseenter',()=>picTipShow(true));g.addEventListener('mouseleave',()=>picTipShow(false));});
  b.querySelectorAll('.pslot label').forEach(l=>{l.addEventListener('touchstart',()=>picTipShow(true),{passive:true});l.addEventListener('focusin',()=>picTipShow(true));l.addEventListener('focusout',()=>picTipShow(false));});})();
 // 押せない「送る」を押そうとした時：写真が足りない時だけ、あと何が要るかを1行（6秒）
@@ -1687,7 +1730,7 @@ document.querySelectorAll('#picBox .pslot').forEach(el=>{const k=el.dataset.k,in
   picShrink(f).then(p=>{picClear(k,el);PICS[k]=p;el.querySelector('img').src=p.url;el.classList.add('has');}).catch(e=>{er.textContent=T(e==='small'?'picSmall':'picErr');er.hidden=false;}).then(()=>{el.classList.remove('wait');PIC_BUSY=Math.max(0,PIC_BUSY-1);upd();});});
  el.querySelector('.px').addEventListener('click',()=>{picClear(k,el);er.hidden=true;upd();});});
 // 送る：写真がある時だけ pics を足す。550万文字をこえたら写真を外す。返事が too_big なら写真なしで送り直す
-function sendR(o){let p=picsOn()?picsPayload():null,drop=false;let s=JSON.stringify(p?Object.assign({},o,{pics:p}):o);if(p&&s.length>5500000){p=null;drop=true;s=JSON.stringify(o);}
+function sendR(o){let p=picsOn()&&!evAsk()?picsPayload():null,drop=false;let s=JSON.stringify(p?Object.assign({},o,{pics:p}):o);if(p&&s.length>5500000){p=null;drop=true;s=JSON.stringify(o);}
  const post=bd=>fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:bd}).then(x=>x.json());
  if(p)document.getElementById('go').textContent=T('picSending');
  const mark=r=>{if(drop&&r&&typeof r==='object'){r.pics=0;r.picDrop=true;}return r;};
@@ -1789,7 +1832,7 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  const pt=pendTxt();['typeNote','typeNote2'].forEach(id=>{document.getElementById(id).hidden=true;}); /* 【10/8 Nory】日時の下には出さず、種類のボタンのすぐ下に出す */
  {const sh=(id,on)=>{document.getElementById(id).hidden=!on;};sh('tnC',sel.menus.indexOf(3)>=0&&sel.ctype===null);sh('tnB',sel.menus.indexOf(3)>=0&&sel.ctype===1&&sel.bleach===null);sh('tnS',sel.menus.indexOf(5)>=0&&sel.stype===null);sh('tnM',needMM()&&sel.mm===null);
   const wk=sel.menus.indexOf(3)>=0&&sel.ctype===null?'waitC':sel.menus.indexOf(3)>=0&&sel.ctype===1&&sel.bleach===null?'waitB':sel.menus.indexOf(5)>=0&&sel.stype===null?'waitS':needMM()&&sel.mm===null?'waitM':'';sh('s2wait',!!wk);document.getElementById('s2waitT').textContent=wk?T(wk):'';}document.body.classList.toggle('needType',!!pt);
- consDraw();document.getElementById('go').disabled=!(consentOk()&&!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));if(PIC_BUSY>0&&picsOn())document.getElementById('go').disabled=true;{const ok=picOk();if(!ok)document.getElementById('go').disabled=true;const pnd=document.getElementById('picNeed');if(pnd&&ok)pnd.hidden=true;} /* 【10/10 写真の必須】 */ /* 【写真の枠 10/9】写真を作っている間 */lock();p2UI();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
+ consDraw();document.getElementById('go').disabled=!(consentOk()&&!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk()&&evReady())));if(PIC_BUSY>0&&picsOn())document.getElementById('go').disabled=true;{const ok=picOk();if(!ok)document.getElementById('go').disabled=true;const pnd=document.getElementById('picNeed');if(pnd&&ok)pnd.hidden=true;} /* 【10/10 写真の必須】 */ /* 【写真の枠 10/9】写真を作っている間 */lock();p2UI();evDraw();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
 // 【10/7 Nory B案】2人目の予約：送り終えた画面のボタンは同じページを ?d=日付&t=時間 で開き直す（読むだけの引数。src・id・ch・lang などはそのまま引き継ぐ）
 // t ＝ 1人目の「第1希望の開始＋所要時間」を30分きざみに切り上げた時刻。開いた時にその時間が空いていれば最初から選び、空いていなければ時間は選ばずにお知らせを出す
 function p2Url(){const u=new URL(location.href);['d','t'].forEach(k=>u.searchParams.delete(k));const o=sel.opts.find(x=>x.date&&x.time);if(o){u.searchParams.set('d',ymd(o.date));if(o.time!=='any'){const e=Math.ceil((toM(o.time)+Math.max(dur(),30))/STEP)*STEP;u.searchParams.set('t',hm(e));}}u.hash='';return u.toString();}
@@ -1845,14 +1888,101 @@ function termsPay(){if(!CONS.checked)return {};let tz='';try{tz=Intl.DateTimeFor
 consDraw();
 // ===== /規約の同意 =====
 
-document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(r&&r.ok){setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<p class="waLine" style="margin:14px 0 0;font-size:12px;line-height:1.5;color:#86735f;text-align:center">'+({es:'Solo si es necesario: WhatsApp ',en:'Only if needed: WhatsApp ',ja:'必要な方のみ：WhatsApp '}[LANG]||'')+'<a href="https://wa.me/'+WA_SHOP+'" style="color:inherit;text-decoration:underline;text-underline-offset:2px">55-2179-8065</a></p>' /* 【10/10 WhatsAppは小さな1行】決まり9-3 */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
-  else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
+// ===== 【メール確認 10/9】A：メールを2回／B：6けたの確認コード（v53h で文を短くした） =====
+// コードの数字はページに持たない。正しいかは Apps Script だけが確かめる。今の予約の受け口（API）に、予約の中身と一緒に送る
+const EVT={
+ m2:{es:'Repita su correo',en:'Repeat your email',ja:'メールアドレス（もう一度）'},
+ mis:{es:'Los correos no coinciden.',en:'The emails do not match.',ja:'メールアドレスが一致しません。'},
+ sendCode:{es:'Enviar código',en:'Send code',ja:'確認コードを送る'},
+ sent:{es:'Escriba el código de 6 dígitos que enviamos a {m}.',en:'Enter the 6-digit code we sent to {m}.',ja:'{m} に送った6けたの確認コードを入力してください。'},
+ again:{es:'Reenviar',en:'Resend',ja:'もう一度送る'},
+ againW:{es:'Reenviar ({s} s)',en:'Resend ({s} s)',ja:'もう一度送る（{s}秒）'},
+ fix:{es:'Cambiar correo',en:'Change email',ja:'メールを直す'},
+ bad:{es:'Código incorrecto. Quedan {n} intentos.',en:'Wrong code. {n} attempts left.',ja:'確認コードが違います。あと{n}回。'},
+ bad0:{es:'Escriba los 6 dígitos.',en:'Please enter the 6 digits.',ja:'6けたを入力してください。'},
+ exp:{es:'El código venció. Pida uno nuevo.',en:'The code expired. Please request a new one.',ja:'確認コードの期限が切れました。もう一度お送りください。'},
+ lock:{es:'Demasiados intentos. Pida un código nuevo.',en:'Too many attempts. Please request a new code.',ja:'回数の上限です。新しいコードをお送りください。'},
+ wait:{es:'Espere un momento y vuelva a intentarlo.',en:'Please wait a moment and try again.',ja:'少し待ってから、もう一度お試しください。'},
+ limit:{es:'Ya enviamos varios códigos a este correo. Intente más tarde.',en:'We already sent several codes to this email. Please try later.',ja:'このメールには何度かお送りしました。時間をおいてお試しください。'},
+ fail:{es:'No pudimos enviar el código. Revise su correo.',en:'We could not send the code. Please check your email address.',ja:'確認コードを送れませんでした。メールアドレスをご確認ください。'},
+ nomail:{es:'Escriba un correo válido.',en:'Please enter a valid email.',ja:'正しいメールアドレスを入力してください。'},
+ notel:{es:'Escriba su celular (10 dígitos).',en:'Please enter your mobile number (10 digits).',ja:'携帯番号（10けた）を入力してください。'},
+ busy:{es:'No podemos enviar el código ahora. Intente más tarde o escríbanos a thehome.hair.recreative@gmail.com.',en:'We cannot send the code now. Please try later or email thehome.hair.recreative@gmail.com.',ja:'ただいま確認コードを送れません。時間をおくか thehome.hair.recreative@gmail.com へご連絡ください。'}
+};
+function et(k){return EVT[k][LANG]||EVT[k].es;}
+const evEsc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const EV_DV=(()=>{try{let v=localStorage.getItem('thv_dv');if(!/^[0-9a-f]{32}$/.test(v||'')){const a=new Uint8Array(16);crypto.getRandomValues(a);v=Array.from(a,x=>('0'+x.toString(16)).slice(-2)).join('');localStorage.setItem('thv_dv',v);}return v;}catch(e){return '';}})(); // 端末の印（ランダム。個人の情報ではない）。送りすぎの数え方だけに使う
+try{const s=JSON.parse(sessionStorage.getItem('thv_ev')||'null');if(s&&/^[0-9a-f]{32}$/.test(s.vt||'')&&s.m){EVS.okVt=s.vt;EVS.okTo=s.m;}}catch(e){} // 2人目の予約（同じタブ・30分以内・同じアドレス）はコードを省く
+function evOn(){return !CAMBIO&&(EV==='a'||EV==='ab');}
+function evB(){return !CAMBIO&&EV==='ab';}
+function evMail(){return document.getElementById('mail').value.trim().toLowerCase();}
+function mail2Ok(){if(!evOn())return true;const b=document.getElementById('mail2').value.trim().toLowerCase();return !!b&&b===evMail();}
+function evVerified(){return evB()&&!!EVS.okVt&&EVS.okTo===evMail();}
+function evAsk(){return evB()&&!EVS.vt&&!evVerified();} // 次の「送る」がコードを頼むだけか
+function evReady(){if(!mail2Ok())return false;if(!evB()||evVerified()||!EVS.vt)return true;return /^\d{6}$/.test(document.getElementById('evCode').value);}
+function goLabel(){return CAMBIO?T('cSend'):(evAsk()?et('sendCode'):T('send'));}
+function evReset(){EVS.vt='';EVS.to='';clearInterval(EVS.timer);const c=document.getElementById('evCode');if(c)c.value='';const m=document.getElementById('evMsg');if(m)m.hidden=true;}
+function evAgainDraw(){const a=document.getElementById('evAgain');if(!a)return;const s=Math.ceil((EVS.gapEnd-Date.now())/1000);a.disabled=s>0;a.textContent=s>0?et('againW').replace('{s}',s):et('again');}
+function evGap(s){EVS.gapEnd=Date.now()+Math.max(0,+s||60)*1000;clearInterval(EVS.timer);EVS.timer=setInterval(()=>{evAgainDraw();if(Date.now()>=EVS.gapEnd)clearInterval(EVS.timer);},1000);evAgainDraw();}
+var EV_INIT; // 下の準備が終わるまで evDraw は何もしない（upd() が先に呼ばれても止まらないように）
+function evDraw(){const m2=document.getElementById('mail2'),box=document.getElementById('evBox');if(!EV_INIT||!m2||!box)return;
+ m2.hidden=!evOn();m2.placeholder=et('m2');
+ const b=m2.value.trim(),mis=document.getElementById('evMis');mis.textContent=et('mis');
+ mis.hidden=!(evOn()&&b&&b.toLowerCase()!==evMail()&&(b.length>=evMail().length||document.activeElement!==m2)); // 打っている途中は出さない
+ if(EVS.vt&&EVS.to!==evMail())evReset(); // アドレスを変えたら、前のコードは使わない
+ box.hidden=!(evB()&&EVS.vt);
+ if(!box.hidden){document.getElementById('evSent').innerHTML=evEsc(et('sent')).replace('{m}','<b>'+evEsc(EVS.to)+'</b>');document.getElementById('evFix').textContent=et('fix');evAgainDraw();}
+ const g=document.getElementById('go');if(!EVS.busy)g.textContent=goLabel();}
+function evPay(){if(!evOn())return {};const o={mail2:document.getElementById('mail2').value.trim(),dv:EV_DV};
+ if(evB()){if(EVS.vt){o.vt=EVS.vt;o.vcode=document.getElementById('evCode').value.replace(/\D/g,'');}else if(evVerified())o.vt=EVS.okVt;}
+ return o;}
+// Apps Script の返事のうち、メール確認の物をここで受ける（true＝ここで処理した。予約はまだ送られていない）
+function evResp(r){EVS.busy=false;
+ if(r&&r.ok){if(evB()&&(EVS.vt||evVerified())){try{sessionStorage.setItem('thv_ev',JSON.stringify({vt:EVS.vt||EVS.okVt,m:evMail()}));}catch(e){}}return false;}
+ if(!r)return false;
+ const b=document.getElementById('go'),err=document.getElementById('err');
+ if(r.need==='code'){EVS.vt=String(r.vt||'');EVS.to=evMail();EVS.okVt='';evGap(r.gap);err.textContent='';document.getElementById('evCode').value='';document.getElementById('evMsg').hidden=true;
+  upd();evDraw();const c=document.getElementById('evCode');document.getElementById('evBox').scrollIntoView({block:'center',behavior:'smooth'});try{c.focus({preventScroll:true});}catch(e){}return true;}
+ const K={mail2:'mis',no_mail:'nomail',no_tel:'notel',vbad:'bad',vexp:'exp',vlock:'lock',vwait:'wait',vlimit:'limit',vsend:'fail',vbusy:'busy'}[r.err];if(!K)return false;
+ if(r.err==='vexp'||r.err==='vlock'){evReset();EVS.okVt='';EVS.okTo='';try{sessionStorage.removeItem('thv_ev');}catch(e){}}
+ const txt=r.err==='vbad'?(r.left?et('bad').replace('{n}',r.left):et('bad0')):et(K);
+ upd();evDraw();
+ if(r.err==='vbad'&&!document.getElementById('evBox').hidden){const m=document.getElementById('evMsg');m.textContent=txt;m.hidden=false;document.getElementById('evCode').select();err.textContent='';}
+ else err.textContent=txt;
+ return true;}
+document.getElementById('mail2').addEventListener('input',upd);
+document.getElementById('mail2').addEventListener('blur',evDraw);
+document.getElementById('mail2').addEventListener('paste',e=>e.preventDefault()); // 【v53h レビュー1】「もう一度」は貼りつけ不可（打ちまちがいを写さない）
+document.getElementById('mail2').addEventListener('drop',e=>e.preventDefault());
+document.getElementById('evCode').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,6);if(v!==e.target.value)e.target.value=v;document.getElementById('evMsg').hidden=true;upd();});
+document.getElementById('evAgain').onclick=()=>{evReset();upd();const g=document.getElementById('go');if(!g.disabled)g.click();};
+document.getElementById('evFix').onclick=()=>{evReset();upd();evDraw();const m=document.getElementById('mail');m.scrollIntoView({block:'center',behavior:'smooth'});try{m.focus({preventScroll:true});m.select();}catch(e){}};
+// 今もある ?action=gmode を読むだけ（オフなら何も変わらない）。ev＝メール確認、sp＝同じ名前（2人目の確かめ）
+if(!CAMBIO)fetch(API+'?action=gmode').then(x=>x.json()).then(j=>{SAME_P2=!!(j&&j.sp===true);const v=String(j&&j.ev||'');if(!EV&&(v==='a'||v==='ab')){EV=v;upd();evDraw();}}).catch(()=>{});
+EV_INIT=true;evDraw();
+// ===== /メール確認 =====
+
+// ===== 【同じ名前 10/9】（v53h：スイッチは Apps Script の SAME_PERSON だけ。2人目の上の注意書きは出さない＝見える注意書きを少なく） =====
+// 名前・メールをくらべやすく（Apps Script の spToks_・spMail_ と同じ決まり）
+const SP_STOP=['de','del','la','las','los','y','e','da','das','do','dos','van','von','di','du','le','mc','mac'];
+function spKeyN(t){const o=[];String(t||'').normalize('NFKC').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^0-9a-z぀-ヿ一-鿿]+/g,' ').trim().split(' ').forEach(w=>{if(!w||SP_STOP.indexOf(w)>=0)return;if(w.length<2&&!/[぀-ヿ一-鿿]/.test(w))return;if(o.indexOf(w)<0)o.push(w);});return o.sort().join(' ');}
+function spMailN(m){const a=String(m||'').trim().toLowerCase().split('@');if(a.length!==2||!a[0]||!a[1])return '';let u=a[0].split('+')[0],d=a[1];if(d==='googlemail.com')d='gmail.com';if(d==='gmail.com')u=u.replace(/\./g,'');return u?u+'@'+d:'';}
+// 名前・メールそのものは残さない：この画面のタブの中（sessionStorage・タブを閉じると消える）に、元に戻せない短い印（SHA-256）だけ。60分で使わない
+function spH(s){return s?crypto.subtle.digest('SHA-256',new TextEncoder().encode('thp|'+s)).then(b=>Array.from(new Uint8Array(b)).slice(0,12).map(x=>x.toString(16).padStart(2,'0')).join('')):Promise.resolve('');}
+function spList(){try{return JSON.parse(sessionStorage.getItem('thP1')||'[]').filter(x=>x&&Date.now()-x.t<36e5);}catch(e){return [];}}
+function spSave(){if(!SAME_P2||CAMBIO)return;const n=spKeyN(fullName()),m=spMailN(document.getElementById('mail').value);try{Promise.all([spH(n),spH(m)]).then(h=>{try{const L=spList().slice(-3);L.push({n:h[0],m:h[1],t:Date.now()});sessionStorage.setItem('thP1',JSON.stringify(L));}catch(e){}}).catch(()=>{});}catch(e){}}
+function spShow(r){const e=document.getElementById('err'),cb=r.how==='cambio'&&!!ID;e.innerHTML='<span class="spl">'+T(r.how==='max'?'spMax':'spStop')+'</span>'+(cb?'<a class="go" style="display:block;text-decoration:none;text-align:center;margin-top:10px" href="/cambio.html?id='+encodeURIComponent(ID)+'&lang='+encodeURIComponent(LANG)+'">'+T('spCBtn')+'</a>':'');try{e.scrollIntoView({block:'center'});}catch(x){}}
+// ===== /同じ名前 =====
+
+document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;EVS.busy=true;b.textContent=T('sending');document.getElementById('err').textContent='';
+ sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),given:document.getElementById('name').value.trim() /* 【家族 10/10】 */,src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay(),CAMBIO?{}:evPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(evResp(r))return;if(r&&r.ok){spSave(); /* 【同じ名前 10/9】画面を書きかえる前に印だけ */setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<p class="waLine" style="margin:14px 0 0;font-size:12px;line-height:1.5;color:#86735f;text-align:center">'+({es:'Solo si es necesario: WhatsApp ',en:'Only if needed: WhatsApp ',ja:'必要な方のみ：WhatsApp '}[LANG]||'')+'<a href="https://wa.me/'+WA_SHOP+'" style="color:inherit;text-decoration:underline;text-underline-offset:2px">55-2179-8065</a></p>' /* 【10/10 WhatsAppは小さな1行】決まり9-3 */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
+  else{b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');if(r&&r.err==='same_person')spShow(r); /* 【同じ名前 10/9】 */}}).catch(()=>{EVS.busy=false;b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
+(()=>{const g=document.getElementById('go'),o=g.onclick;g.onclick=function(ev){if(!SAME_P2||CAMBIO||!P2)return o.call(g,ev);const L=spList();if(!L.length)return o.call(g,ev);const n=spKeyN(fullName()),m=spMailN(document.getElementById('mail').value);Promise.all([spH(n),spH(m)]).then(h=>{if(L.some(x=>h[0]&&x.n===h[0])) /* 【家族 10/10】同じメール（家族）は通す。同じお名前だけ */{const e=document.getElementById('err');e.textContent=T('p2Same');try{e.scrollIntoView({block:'center'});}catch(x){}}else o.call(g,ev);}).catch(()=>o.call(g,ev));};})(); // 【同じ名前 10/9】
 if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><p class="waLine" style="margin:14px 0 0;font-size:12px;line-height:1.5;color:#86735f;text-align:center">'+({es:'Solo si es necesario: WhatsApp ',en:'Only if needed: WhatsApp ',ja:'必要な方のみ：WhatsApp '}[LANG]||'')+'<a href="https://wa.me/525521798065" style="color:inherit;text-decoration:underline;text-underline-offset:2px">55-2179-8065</a></p>' /* 【10/10 WhatsAppは小さな1行】決まり9-3：緑のボタンをやめた */;app.appendChild(bx);}
 document.documentElement.lang=LANG;
 document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));spamFill();
 document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='es'){const x=document.getElementById('last2');x.style.display='block';x.placeholder=T('last2');}if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
-document.getElementById('go').textContent=T('send');
+document.getElementById('go').textContent=goLabel(); // 【メール確認 10/9】オフの時は今と同じ T('send')
 // 【Google 10/4】IDなしの人：携帯は「WhatsApp」、確定はメール、写真はWhatsAppで
 // 文はメールのスイッチで切りかえる：最初は「オフ」の文 → ?action=gmode でオンと分かったらメールの文。送ったあとの画面は Apps Script の返事（r.mail）で決める
 function gText(){document.querySelector('[data-t="mailNote"]').textContent=T(gk('gMailNote'));document.querySelector('[data-t="reqNote"]').textContent=T(gk('gReq'));document.getElementById('anyNote').textContent=T(gk('gAnyNote'));}
