@@ -274,6 +274,9 @@ h1{color:var(--ink)}.sub{color:var(--mute)}
 .tk-n{position:relative;flex:0 0 auto;display:flex;align-items:center;gap:6px;padding-left:12px;border-left:2px dashed var(--line);font-size:26px;line-height:1.1;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;-webkit-text-stroke:.5px currentColor}
 .tk-ar{display:inline-block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:6px solid var(--accent);transition:transform .25s}
 .tk.open .tk-ar{transform:rotate(180deg)}
+.tk-cl{display:none;position:absolute;top:14px;right:14px;z-index:2;min-height:32px;padding:4px 12px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--mute);font:inherit;font-family:'Kaisei Decol','Yeseva One',serif;font-size:12px;line-height:1.2;cursor:pointer} /* 【10/9 価格の窓】窓を閉じる小さな文字のボタン（×はメニューを消すボタンなので使わない） */
+.tk.open .tk-cl{display:block}
+.tk-cl:active{color:var(--accent);border-color:var(--accent)}
 .tk-n::after{content:"";position:absolute;left:12px;right:16px;bottom:-4px;height:2.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;opacity:0}
 .tk.up .tk-n::after{animation:tkUp .7s ease-out 1}
 @keyframes tkUp{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
@@ -498,9 +501,96 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 @keyframes hoyGlow{0%,100%{box-shadow:0 0 0 0 rgba(180,83,42,0)}50%{box-shadow:0 0 0 4px rgba(180,83,42,.16),0 0 10px rgba(180,83,42,.22)}}
 @media (prefers-reduced-motion:reduce){.hoy-t{animation:none;transition:none}}
 /* ===== 【下書き 10/8 本日のおすすめ】end ===== */
+/* 【写真の枠 10/9】カラー・パーマ・縮毛矯正のときの写真の枠（紙の色・細い線。ネイビー・からし色は使わない） */
+.picw{margin-top:8px;background:#fcf2e4;border:1px solid var(--line);border-radius:12px;padding:10px 12px 12px;font-family:'Kaisei Decol',serif}
+.picw[hidden]{display:none}
+.pgh{font-size:13.5px;color:var(--ink);margin:2px 0 7px;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.pgh small{font-size:11.5px;color:var(--mute)}
+.pgh+.pgrid{margin-bottom:12px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pslot{position:relative;min-width:0}
+.pslot label{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:1/1;width:100%;border:1.5px dashed #b9a089;border-radius:10px;background:var(--paper);cursor:pointer;color:var(--mute);text-align:center;overflow:hidden;padding:4px}
+.pslot label:focus-within{outline:2px solid var(--accent);outline-offset:1px}
+.pslot input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.pslot svg{width:34px;height:34px;color:var(--accent);opacity:.85;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pslot .pl{display:block;font-size:12.5px;line-height:1.2;color:var(--ink);margin-top:3px}
+.pslot .pl small{display:block;font-size:10.5px;color:var(--mute);letter-spacing:.04em}
+.pslot img{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:9px}
+.pslot.has label{border-style:solid;border-color:var(--ink)}
+.pslot.has img{display:block}
+.pslot.wait svg,.pslot.wait .pl{opacity:.2}
+.pslot .px{display:none;position:absolute;top:-7px;right:-7px;width:26px;height:26px;border-radius:13px;border:1.5px solid var(--paper);background:var(--ink);color:#fff8f0;font:inherit;font-size:15px;line-height:1;padding:0;cursor:pointer}
+.pslot.has .px{display:block}
+.pnote{font-size:12px;color:var(--mute);line-height:1.5;margin:10px 0 0}
+.pslot .pbz{display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.3;color:var(--ink);background:rgba(255,250,243,.85);border-radius:9px;padding:4px}
+.pslot.wait .pbz{display:flex}
+.pmail{font-size:11.5px;color:var(--mute);line-height:1.5;margin:6px 0 0;overflow-wrap:anywhere}
+.pmail[hidden]{display:none}
+.picw{position:relative}
+.ptip{position:absolute;left:8px;right:8px;top:6px;z-index:5;background:#3a2a20;color:#fff8f0;border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.5;box-shadow:0 4px 14px rgba(0,0,0,.2);overflow-wrap:anywhere;pointer-events:none}
+.ptip[hidden]{display:none}
+#go:disabled{pointer-events:none} /* 【10/10】押せない時のタップを下で受けて、理由を1行出す */
+.perr{font-size:12.5px;color:#b00020;line-height:1.45;margin:8px 0 0;overflow-wrap:anywhere}
 </style><!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
+<style>
+/* 【10/9 規約の同意・案2】送る前の3点・規約を読むボタン・同意のチェック・規約の小さな窓 */
+.cons{margin-top:16px;background:#fffaf3;border:1px solid #dcc4ab;border-radius:14px;padding:12px 14px 12px;font-family:'Kaisei Decol',serif;color:#3a2a20}
+.cons[hidden]{display:none}
+.cons-h{font-family:'Yeseva One','Kaisei Decol',serif;font-size:15px;margin:0 0 6px}
+.cons-l{list-style:none;margin:0;padding:0}
+.cons-l li{position:relative;padding:5px 0 5px 22px;font-size:13.5px;line-height:1.45;border-top:1px dashed #ead8c4;overflow-wrap:anywhere}
+.cons-l li:first-child{border-top:none}
+.cons-l li::before{content:'◆';position:absolute;left:2px;top:5px;color:#b4532a;font-size:11px}
+.cons-read{display:block;width:100%;margin:10px 0 0;padding:11px 12px;border:1.5px solid #b4532a;border-radius:12px;background:#fff;color:#8e3f1f;font:inherit;font-size:15px;cursor:pointer}
+.cons-read::after{content:'\00a0›'} /* 【10/9夜】› だけが次の行に落ちないように */
+.cons-c{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;padding:10px 10px;border-radius:12px;background:#f7ebdd;font-size:14.5px;line-height:1.4;cursor:pointer}
+.cons-c input{flex:none;width:22px;height:22px;margin:0;accent-color:#b00020;cursor:pointer}
+.cons-c.on{background:#e9f3e4}
+.cons-need{text-align:center;font-size:13px;color:#b00020;margin-top:8px;font-family:'Kaisei Decol',serif}
+.cons-need[hidden]{display:none}
+.pol{position:fixed;inset:0;z-index:10000;background:rgba(40,25,15,.55);display:flex;align-items:flex-end;justify-content:center}
+.pol[hidden]{display:none}
+.pol-box{background:#fffaf3;width:100%;max-width:560px;height:88vh;height:88dvh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -6px 30px rgba(0,0,0,.25)}
+@media (min-width:620px){.pol{align-items:center}.pol-box{border-radius:18px;height:80vh}}
+.pol-top{display:flex;align-items:center;gap:8px;padding:12px 14px 10px;border-bottom:1px solid #ead8c4}
+.pol-top b{flex:1;font-family:'Yeseva One','Kaisei Decol',serif;font-weight:normal;font-size:16px}
+.pol-top button{border:none;background:none;font-size:22px;line-height:1;color:#7a6555;padding:4px 8px;cursor:pointer}
+.pol-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 18px 24px;font-family:'Kaisei Decol',serif;color:#2b211a;font-size:14.5px;line-height:1.6;overflow-wrap:anywhere}
+.pol-body h1{font-family:'Yeseva One','Kaisei Decol',serif;text-transform:none;letter-spacing:0;font-size:19px;text-align:left;margin:10px 0 2px}
+.pol-body h2{font-family:'Yeseva One','Kaisei Decol',serif;font-weight:normal;font-size:15.5px;margin:18px 0 4px;color:#8e3f1f}
+.pol-body p{margin:4px 0}.pol-body p.it{padding-left:1.6em;text-indent:-1.6em}.pol-body .n{display:inline-block;min-width:1.6em;text-indent:0;color:#8e3f1f}.pol-body p.fund{margin:8px 0 2px;font-size:12px;line-height:1.5;color:#86735f}.pol-body strong{color:#8e3f1f}.pol-body ul{margin:4px 0;padding-left:20px}.pol-body li{margin:4px 0}
+.pol-body .ver{font-size:12.5px;color:#86735f;margin:0 0 6px}
+.pol-end{margin:18px 0 0;padding:10px 0 0;border-top:1px dashed #dcc4ab;text-align:center;font-size:12.5px;color:#86735f}
+.pol-foot{display:flex;align-items:center;gap:10px;padding:10px 14px calc(12px + env(safe-area-inset-bottom));border-top:1px solid #ead8c4;background:#fff}
+.pol-foot span{flex:1;font-family:'Kaisei Decol',serif;font-size:13px;color:#7a6555;line-height:1.35}
+.pol-foot button{flex:none;border:none;border-radius:12px;background:#b4532a;color:#fff;font:inherit;font-size:15px;padding:10px 18px;cursor:pointer}
+body.polOpen{overflow:hidden}
+/* 【案B】1行・個人情報のボタンと小さな窓 */
+.cons-one{margin:0;font-size:13px;line-height:1.5;color:#3a2a20;overflow-wrap:anywhere}
+.cons .cons-read{margin-top:10px}
+.avs-b{display:block;margin:10px auto 0;padding:4px 6px;border:none;background:none;font-family:'Kaisei Decol',serif;font-size:12.5px;color:#8e3f1f;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.avs-b::after{content:'\00a0›'}
+.avsW{position:fixed;inset:0;z-index:10000;background:rgba(40,25,15,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.avsW[hidden]{display:none}
+.avsW-box{background:#fffaf3;border-radius:16px;max-width:480px;width:100%;max-height:80vh;overflow-y:auto;padding:14px 16px 12px;box-shadow:0 6px 30px rgba(0,0,0,.25)}
+.avsW .avs{margin:0;font-size:13px}
+.avsW-x{display:block;margin:12px 0 0 auto;border:none;border-radius:12px;background:#b4532a;color:#fff;font-family:'Kaisei Decol',serif;font-size:14px;padding:8px 18px;cursor:pointer}
+/* 【10/9夜 正式なスペイン語版】チェックの下の「正式なスペイン語版を見る」・窓の最初の1行 */
+.cons-c b{font-weight:700;color:#8e3f1f}
+.cons-es{display:block;margin:8px 2px 0;font-size:13px;color:#8e3f1f;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.cons-es::after{content:' ›'}
+.pol-off{margin:10px 0 8px;padding:8px 10px;border:1px solid #dcc4ab;border-radius:10px;background:#f7ebdd;font-size:13px;line-height:1.5;color:#3a2a20}
+.pol-off button{display:inline;border:none;background:none;padding:0;margin:0 0 0 4px;font:inherit;color:#8e3f1f;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.pol-off button::after{content:' ›'}
+/* 【10/9夜 個人情報】送るボタンの近くの簡単なお知らせ（小さく）・名前はもっと小さい行 */
+.avs{margin:12px 2px 0;font-family:'Kaisei Decol',serif;font-size:11.5px;line-height:1.5;color:#7a6555;overflow-wrap:anywhere}
+.avs b{font-weight:700;color:#5a4636}
+.avs a{color:#8e3f1f;text-decoration:underline;text-underline-offset:2px}
+.avs small{display:block;margin-top:3px;font-size:10px;color:#9a8775}
+.pol-body:focus{outline:none}
+</style>
 </head>
 <body><!-- 【下書き 10/6 トップと同じデザイン】名刺のジグザグの外枠（四辺＋四隅）トップと同じ -->
 <div class="fz fz-t" aria-hidden="true"></div><div class="fz fz-b" aria-hidden="true"></div><div class="fz fz-l" aria-hidden="true"></div><div class="fz fz-r" aria-hidden="true"></div><div class="fz fz-c fz-tl" aria-hidden="true"></div><div class="fz fz-c fz-tr" aria-hidden="true"></div><div class="fz fz-c fz-bl" aria-hidden="true"></div><div class="fz fz-c fz-br" aria-hidden="true"></div>
@@ -538,6 +628,7 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 <div class="photo" style="background:#fdecee" data-t="bleachWarn"></div></div>
 <div class="s2wait phh" id="photoH" hidden><i aria-hidden="true">◆</i><b data-t="photoReq"></b></div><!-- 【10/8 Nory】写真が必要と一目で分かる見出し（カラー・パーマ・縮毛矯正の時だけ） -->
 <div class="photo" id="photoNote" style="display:none" data-t="photo"></div>
+<div class="picw" id="picBox" hidden><!-- 【写真の枠 10/9】Apps Script の ?action=gmode が pics:true（PHOTO_ON=on）の時だけ出る。どの枠も任意。ラベルはその言語だけ（1ページ1言語） --><div class="pgh"><span data-t="picNow"></span></div><div class="pgrid"><div class="pslot" data-k="f"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.3 21c-.4-6.6 3.2-11 7.8-11 4.7 0 8.2 4.2 7.7 11-.2 2.6-1.1 4.4-2.3 5.6"/><path d="M12.3 21c.2 2.4 1 4.2 2.2 5.5"/><path d="M12.6 17.2c3.1-3.6 9.4-4.6 14.9-.6"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="s"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.4 27.6c-2.2-2.1-3.3-5-3.3-8.6 0-5.8 4-9 9.1-9 4.9 0 8.6 3.1 8.8 7.9l1.9 3.8-1.8.9.1 2.6c0 1.3-1 2.3-2.9 2.2h-1.6"/><path d="M11.2 18.6c1.6-4.6 5.2-7.4 10.4-7.6"/><path d="M9.6 36.8c1-4.1 5-6.2 10.3-6.2 5.2 0 9 2 10 6"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="b"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.1 22.2c-.3-7 3.4-12.2 7.9-12.2 4.6 0 8.2 5 7.9 12.1-.1 3-2.3 4.9-7.9 4.9-5.7 0-7.8-1.8-7.9-4.8z"/><path d="M20 11.2c-.3 5-.2 10.1.1 15M16.2 13.2c-1.3 4.1-1.4 8.8-.4 13.3M23.8 13.2c1.3 4.2 1.4 8.8.4 13.3"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="pgh"><span data-t="picWant"></span></div><div class="pgrid"><div class="pslot" data-k="d1" data-v="picF"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d2" data-v="picS"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d3" data-v="picB"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="perr" id="picErr" hidden role="status"></div><p class="pnote"><span id="picOptT"></span></p><p class="pmail" id="picMail" hidden></p><div class="ptip" id="picTipB" role="tooltip" hidden></div><!-- 【10/10 写真の必須】Nory「見える注意書きを少なめに」：くわしい説明は、枠にカーソル／タップで出す吹き出し --></div>
 <div class="photo" id="cutNote" style="display:none" data-t="cutPhoto"></div>
 <!-- 【下書き 10/6 取り置き】メニューを選んだあとに出る。選ばなくても予約できる。商品は ../productos.json（在庫0＝order は出さない） -->
 <div class="hold" id="holdBox" style="display:none"><h3><span data-t="hT"></span> <span class="pnow" data-t="pNow"></span><small data-t="hOpt"></small></h3><div class="hn" data-t="hN"></div><div class="strip" id="strip" aria-label="Davines"></div><div class="hsel" id="hsel"></div></div>
@@ -575,7 +666,17 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 <div id="photoBox2" hidden><div class="s2wait phh"><i aria-hidden="true">◆</i><b data-t="photoReq"></b></div><div class="photo" id="photoNote2" style="margin-top:0"></div></div><!-- 【10/8 Nory】送る前の確認の所にも -->
 <div class="sum" id="sum">—</div>
 <div id="spamPre"></div><!-- 【10/8 Nory】確定メールが迷惑メールに入ってお客様が来られなかった件。送る前に目立たせる -->
+
+<!-- 【10/9 規約の同意・案2】送るボタンの前：大事な3点（1行ずつ）→ 規約を読むボタン（同じ画面の小さな窓）→ 同意のチェック（最初は空）。チェックを入れるまで送るボタンは押せない -->
+<section class="cons" id="cons" aria-labelledby="consH">
+<p class="cons-one" id="consL1"></p><span id="consH" hidden></span><span id="consL2" hidden></span><span id="consL3" hidden></span><!-- 【案B】3点の箱をやめて1行 -->
+<button type="button" class="cons-read" id="consRead" aria-haspopup="dialog" aria-controls="pol"></button>
+<label class="cons-c" id="consLab"><input type="checkbox" id="consCb"><span id="consCbT"></span></label>
+</section>
+<button type="button" class="avs-b" id="avsB" aria-haspopup="dialog" aria-controls="avsW"></button><div class="avsW" id="avsW" role="dialog" aria-modal="true" hidden><div class="avsW-box"><div class="avs" id="avs"></div><button type="button" class="avsW-x" id="avsX"></button></div></div><!-- 【案B】個人情報の簡単なお知らせは1行のボタン＋小さな窓（中身は案Aと同じ） --><!-- 【10/9夜 個人情報】簡単なお知らせ（連邦個人情報保護法 第16条 第2号）＋完全版へのリンク -->
 <button class="go" id="go" disabled></button>
+<div class="cons-need" id="consNeed" hidden></div>
+<div class="cons-need" id="picNeed" hidden></div><!-- 【10/10 写真の必須】押そうとした時だけ -->
 <div class="hint" id="need3" style="text-align:center;margin-top:8px;display:none;color:#b00020" data-t="need3"></div>
 <div class="pmo" id="permNote2" hidden data-t="permOnly" style="text-align:center;margin-top:8px"></div>
 <div class="pmo" id="typeNote2" hidden style="text-align:center;margin-top:8px"></div>
@@ -584,8 +685,549 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 <!-- 【下書き 10/6 合計の帯】選ぶと下から出る「古い入場券」の帯。ページの表示だけ（送る中身には入れない） -->
 <div class="pv" id="pv" role="dialog" hidden></div><!-- 【10/6 商品の特徴】吹き出し -->
 <div class="tk-toast" id="tkToast" role="status" aria-live="polite" hidden><span id="tkToastT"></span><button type="button" id="tkUndo"></button></div>
-<div class="tk" id="tk" aria-live="polite"><div class="tk-d" id="tkD" hidden></div><button type="button" class="tk-in" id="tkBtn" aria-expanded="false" aria-controls="tkD"><span class="tk-l"><b data-t="tkL"></b><b class="tk-ls" data-t="tkLs"></b></span><span class="tk-n"><span id="tkN">$0</span><i class="tk-ar" aria-hidden="true"></i></span><span class="tk-s"><small class="tk-pick" id="tkPick" hidden data-t="pickPrice"></small><!-- 【10/8 Nory】種類を選ぶまで --><small id="tkSub"></small><small class="tk-dcs" id="tkDisc" hidden></small><small class="tk-lv" id="tkLen" hidden data-t="lenLine"></small><!-- 【下書き 10/8 Nory】範囲の料金のメニューがある時だけ --><small class="ups ups-s" id="upsT" hidden></small></span><!-- 【レビュー 10/6】2段：上＝ラベルと金額、下＝時間・明細・割引 --></button></div>
+<div class="tk" id="tk" aria-live="polite"><div class="tk-d" id="tkD" hidden></div><button type="button" class="tk-cl" id="tkCl" data-t="tkCl" aria-controls="tkD"></button><!-- 【10/9 価格の窓】閉じる --><button type="button" class="tk-in" id="tkBtn" aria-expanded="false" aria-controls="tkD"><span class="tk-l"><b data-t="tkL"></b><b class="tk-ls" data-t="tkLs"></b></span><span class="tk-n"><span id="tkN">$0</span><i class="tk-ar" aria-hidden="true"></i></span><span class="tk-s"><small class="tk-pick" id="tkPick" hidden data-t="pickPrice"></small><!-- 【10/8 Nory】種類を選ぶまで --><small id="tkSub"></small><small class="tk-dcs" id="tkDisc" hidden></small><small class="tk-lv" id="tkLen" hidden data-t="lenLine"></small><!-- 【下書き 10/8 Nory】範囲の料金のメニューがある時だけ --><small class="ups ups-s" id="upsT" hidden></small></span><!-- 【レビュー 10/6】2段：上＝ラベルと金額、下＝時間・明細・割引 --></button></div>
 </div>
+
+<!-- 【10/9 規約の同意・案2】規約の全文の小さな窓（お客様の言語の1つだけを入れて開く。ページは移らないので入力は消えない） -->
+<div class="pol" id="pol" role="dialog" aria-modal="true" aria-labelledby="polT" hidden>
+<div class="pol-box"><div class="pol-top"><b id="polT"></b><button type="button" id="polX">✕</button></div>
+<div class="pol-body" id="polBody" tabindex="0"><div class="pol-off" id="polOff"></div><div id="polTx"></div></div>
+<div class="pol-foot"><span id="polSt"></span><button type="button" id="polClose"></button></div></div>
+</div>
+<template id="pol-es"><h1>Términos y Condiciones del Servicio</h1>
+<p class="ver">THE HOME Hair re-creative · Versión 2026-10-09</p>
+<p>Estos Términos y Condiciones regulan la relación entre usted y THE HOME Hair re-creative para todos los servicios de peluquería y la venta de productos. Al final de cada cláusula indicamos la ley en la que se basa.</p>
+<h2>Cláusula 1. Aceptación y versión de estos Términos</h2>
+<p class="it"><span class="n">1.</span> Estos Términos se aplican a todas las reservas y servicios, sin importar el medio por el que reserve.</p>
+<p class="it"><span class="n">2.</span> Antes de confirmar su reserva le mostramos estos Términos completos en su versión oficial en español, junto con la traducción en el idioma que elija. Usted los acepta de forma expresa al marcar la casilla «He leído y acepto los Términos y Condiciones (versión oficial en español)» (la casilla aparece sin marcar). La traducción sirve para que comprenda el contenido; lo que usted acepta es la versión en español (cláusula 16).</p>
+<p class="it"><span class="n">3.</span> Guardamos la fecha y hora de su aceptación, la versión de estos Términos y el idioma en que los leyó. En su correo de confirmación le enviamos un enlace a la versión de estos Términos que aceptó.</p>
+<p class="it"><span class="n">4.</span> A cada reserva se le aplica la versión vigente el día en que se hizo. Si modificamos estos Términos, publicamos la nueva versión con su fecha; el cambio no se aplica a reservas ya hechas sin su consentimiento.</p>
+<p class="it"><span class="n">5.</span> Si reserva por un medio en el que no aparece la casilla (por ejemplo, por mensaje directo de Instagram o por WhatsApp), antes de confirmar su cita le enviamos estos Términos (versión oficial en español y traducción) y nuestro Aviso de Privacidad. Su cita se confirma solo después de que usted los acepte con el botón «Acepto» del mensaje o del correo, o pague el anticipo después de haberlos recibido.</p>
+<p class="fund">Fundamento: artículos 7, 76 Bis 1 (fracciones II, III y IV), 85 y 90, fracción I, de la Ley Federal de Protección al Consumidor; artículo 1803 del Código Civil para el Distrito Federal (consentimiento expreso por medios electrónicos).</p>
+<h2>Cláusula 2. Reserva y confirmación</h2>
+<p class="it"><span class="n">1.</span> Puede solicitar una cita en nuestra página de reservas. La solicitud no es una cita confirmada.</p>
+<p class="it"><span class="n">2.</span> La cita queda confirmada cuando le enviamos el correo de confirmación con la fecha, la hora, los servicios y el precio (si reservó por Instagram o WhatsApp, también le enviamos un mensaje). Si su cita requiere anticipo, queda confirmada solo cuando recibimos el anticipo (cláusula 4); el correo que reciba antes es una reserva provisional con las instrucciones de pago. En estos Términos, «cita» significa una cita confirmada.</p>
+<p class="it"><span class="n">3.</span> Le enviamos la confirmación y un recordatorio el día anterior al correo electrónico que nos proporcione. Revise también su carpeta de correo no deseado. El recordatorio es una cortesía; si no lo recibe, su cita y estos Términos no cambian.</p>
+<p class="it"><span class="n">4.</span> Estos Términos se le muestran y los acepta durante la reserva; por eso se aplican aunque un correo posterior llegue a su carpeta de correo no deseado.</p>
+<p class="it"><span class="n">5.</span> Le pedimos proporcionar un correo electrónico correcto. Enviamos todas las comunicaciones al correo que usted nos dio.</p>
+<p class="fund">Fundamento: artículos 7 y 76 Bis 1, fracciones II y III, de la Ley Federal de Protección al Consumidor; artículo 1796 del Código Civil para el Distrito Federal.</p>
+<h2>Cláusula 3. Precios y forma de pago</h2>
+<p class="it"><span class="n">1.</span> Todos los precios están en pesos mexicanos e incluyen IVA. La lista de precios está publicada en nuestra página de reservas; en el establecimiento se la mostramos si la solicita.</p>
+<p class="it"><span class="n">2.</span> El precio de su cita es el que aparece en su correo de confirmación.</p>
+<p class="it"><span class="n">3.</span> El precio puede variar según el estado de su cabello el día de la cita (largo, cantidad, daño, servicios químicos anteriores, entre otros). Al reservar y recibir el servicio, usted acepta esta posibilidad. Los servicios marcados con «desde» en la lista de precios son los servicios cuyo precio cambia según el estado del cabello. Si el precio cambia, se lo informamos antes de empezar, de forma verbal o en pantalla (por ejemplo, en una calculadora), y comenzamos el servicio solo después de que usted lo acepte. Si no lo acepta, ese día no realizamos el servicio. En ese caso no se cobra el cargo de la cláusula 6 y usted elige entre trasladar el anticipo a una nueva cita o su devolución completa por el mismo medio con el que pagó (punto 7 de la cláusula 4). Nunca realizamos cargos que usted no haya autorizado.</p>
+<p class="it"><span class="n">4.</span> Aceptamos efectivo y tarjetas de crédito y débito, excepto American Express.</p>
+<p class="it"><span class="n">5.</span> Si necesita comprobante fiscal (CFDI), solicítelo, de preferencia al pagar, y proporciónenos sus datos fiscales.</p>
+<p class="it"><span class="n">6.</span> Si no está de acuerdo con algún cobro, le pedimos que antes de solicitar a su tarjeta o a su banco la cancelación del pago (contracargo) nos escriba primero a thehome.hair.recreative@gmail.com; en la mayoría de los casos así se resuelve más rápido. Si se solicita la cancelación del pago de un servicio que sí se realizó o de un cargo previsto en estos Términos, entregaremos al procesador de pagos, a la emisora de la tarjeta o al banco los registros relacionados con ese pago (su aceptación de estos Términos, la confirmación de su cita y el registro de su visita y del servicio) (Aviso de Privacidad, apartado 4).</p>
+<p class="fund">Fundamento: artículos 7, 7 Bis, 10, 57, 76 Bis, fracción V, y 90, fracción V, de la Ley Federal de Protección al Consumidor (el aviso previo es una petición y no una condición para su reclamación); artículo 29 del Código Fiscal de la Federación (comprobante fiscal); numeral 4.5 de la NOM-174-SCFI-2007.</p>
+<h2>Cláusula 4. Anticipo</h2>
+<p class="it"><span class="n">1.</span> De acuerdo con nuestra política de cancelación, podemos solicitarle un anticipo al reservar. En ese caso, durante el proceso de reserva le indicamos el monto, la forma de pago y el plazo para pagarlo.</p>
+<p class="it"><span class="n">2.</span> Si el anticipo no se paga dentro del plazo indicado, la cita no queda confirmada y el horario puede liberarse.</p>
+<p class="it"><span class="n">3.</span> El anticipo se descuenta del precio total el día de su cita. Si el precio final es menor que el anticipo, le devolvemos la diferencia por el mismo medio con el que pagó.</p>
+<p class="it"><span class="n">4.</span> <strong>El anticipo no es reembolsable.</strong> El anticipo y las cantidades pagadas por una cita solo se devuelven en estos casos: punto 3 de la cláusula 3; punto 3 de esta cláusula; puntos 1, 2 y 4 de la cláusula 7; punto 4 de la cláusula 8 (cuando no realizamos un servicio por su seguridad); punto 5 de la cláusula 8 (en el caso del punto 1 de la cláusula 8 y cuando no realizamos un servicio por su seguridad); y cláusula 9. En los casos de las cláusulas 5 y 8 el anticipo no se devuelve: se traslada a una nueva cita (salvo las devoluciones de los puntos 4 y 5 de la cláusula 8; si no usa el anticipo trasladado dentro del plazo, se aplican el punto 5 de esta cláusula y el punto 5 de la cláusula 8). Este punto no limita las devoluciones de productos de la cláusula 12 ni las que establezca la ley. Esta condición se le informa antes de reservar y usted la acepta al reservar, conforme a los artículos 7 y 85 de la Ley Federal de Protección al Consumidor.</p>
+<p class="it"><span class="n">5.</span> Si cambia o cancela a tiempo (cláusula 5), su anticipo no se devuelve, pero puede usarlo en una nueva cita si nos envía la solicitud de la nueva cita dentro de los 7 días contados a partir del día siguiente a aquel en que recibimos su aviso (se cuentan también los días de descanso). Sin embargo, si cerramos 7 días seguidos o más (un cierre largo, por ejemplo por viaje), el plazo se amplía por el número de días de ese cierre que coincidan con él. Los cierres de menos de 7 días seguidos, como de 2 o 3 días, no amplían el plazo. «Día de descanso» significa nuestros días de cierre habituales y los cierres extraordinarios que hayamos avisado con anticipación. La nueva cita debe ser para una fecha dentro de los 7 días contados a partir del día siguiente a aquel en que recibimos su aviso (con la ampliación por cierres de 7 días seguidos o más indicada arriba). Solo si usted nos envía la solicitud dentro del plazo y no tenemos espacio disponible dentro de ese plazo, el plazo se amplía hasta nuestro siguiente día con espacio disponible. Si no nos envía la solicitud en ese plazo, el anticipo se pierde. El anticipo solo puede trasladarse una vez por un cambio o una cancelación a tiempo; si vuelve a cambiar o cancelar la nueva cita, aunque sea a tiempo, el anticipo se pierde. En ese caso, el anticipo que se pierde es la pena convencional por la cancelación de la cita, acordada al reservar; nunca es mayor que la mitad del precio de su cita.</p>
+<p class="it"><span class="n">6.</span> El anticipo se pierde en caso de cancelación fuera de plazo, de no presentarse a la cita o de llegar 15 minutos tarde o más (cláusula 6).</p>
+<p class="it"><span class="n">7.</span> Cuando le devolvemos el anticipo o las cantidades pagadas por una cita (punto 3 de la cláusula 3; punto 3 de esta cláusula; puntos 1, 2 y 4 de la cláusula 7; punto 4 de la cláusula 8 (cuando no realizamos un servicio por su seguridad); punto 5 de la cláusula 8 (en el caso del punto 1 de la cláusula 8 y cuando no realizamos un servicio por su seguridad); y cláusula 9), le devolvemos el monto completo que corresponde, por el medio que nosotros indicamos, que es únicamente el mismo medio con el que pagó (la misma tarjeta o la misma cuenta), sin descontar la comisión del servicio de pago ni ningún otro cargo. Si la devolución es a una tarjeta, el tiempo en que se refleja en su estado de cuenta depende de su banco.</p>
+<p class="fund">Fundamento: artículos 7, 7 Bis, 10, 56, 85 y 92 de la Ley Federal de Protección al Consumidor (devolución del monto pagado, por el mismo medio de pago); numerales 3.1 y 4.5 de la NOM-174-SCFI-2007 (informar si se requiere anticipo y el mecanismo de reembolso); artículos 1840, 1842 y 1843 del Código Civil para el Distrito Federal (pena convencional acordada al reservar, que no excede el precio).</p>
+<h2>Cláusula 5. Cambios y cancelaciones a tiempo</h2>
+<p class="it"><span class="n">1.</span> Puede cambiar o cancelar su cita sin el cargo de la cláusula 6 hasta las 10:00 a.m. (hora de la Ciudad de México) del día anterior a su cita, aunque ese día sea día de descanso. El anticipo se rige por la cláusula 4.</p>
+<p class="it"><span class="n">2.</span> Avísenos por escrito: por correo electrónico (responda a su correo de confirmación o escriba a thehome.hair.recreative@gmail.com), con el botón de cancelación o un mensaje en nuestros mensajes directos de Instagram, o con un mensaje escrito de WhatsApp. No aceptamos avisos por llamada telefónica.</p>
+<p class="it"><span class="n">3.</span> Cuenta la hora de recepción que registra nuestro correo electrónico, Instagram o WhatsApp.</p>
+<p class="it"><span class="n">4.</span> Si usted solicita su cita después de las 10:00 a.m. del día anterior, cualquier cambio o cancelación después de la confirmación se considera fuera de plazo y se aplica la cláusula 6 desde el momento de la confirmación. Si solicitó su cita antes de las 10:00 a.m. del día anterior y le enviamos la confirmación después de esa hora, podrá cambiarla o cancelarla sin el cargo de la cláusula 6 dentro de la hora siguiente a la hora en que le enviamos la confirmación. Si la confirmación se envía después de las 20:00 horas, el plazo vence a las 9:00 horas del día siguiente. En ambos casos, el plazo vence a más tardar 2 horas antes de la hora de inicio de su cita. La fecha y hora en que vence el plazo se indican en la confirmación. Aun cuando la confirmación llegue a su carpeta de correo no deseado, el plazo se computa a partir de la hora en que la enviamos (puntos 3 y 4 de la cláusula 2). El anticipo se rige por la cláusula 4.</p>
+<p class="fund">Fundamento: artículos 7 y 85 de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 6. Cargo del 100 % del precio</h2>
+<p class="it"><span class="n">1.</span> Se cobra el 100 % del precio de su cita en estos casos:</p>
+<ul>
+<li>❶ Cancelación después de las 10:00 a.m. del día anterior.</li>
+<li>❷ Cambio de la fecha o la hora de su cita después de las 10:00 a.m. del día anterior.</li>
+<li>❸ Llegar 15 minutos tarde o más, contados desde la hora de inicio de su cita.</li>
+<li>❹ No presentarse a la cita.</li>
+<li>❺ Quitar servicios reservados después de las 10:00 a.m. del día anterior (se cobra el 100 % del precio de los servicios que quitó).</li>
+</ul>
+<p class="it"><span class="n">2.</span> «Precio de su cita» es el precio total de los servicios reservados que aparece como monto exacto en su correo de confirmación.</p>
+<p class="it"><span class="n">3.</span> Si pagó un anticipo, el anticipo se aplica a este cargo y no se devuelve. Lo que falte para completar el 100 % se le solicita por correo electrónico con la forma de pago. Nunca cargamos su tarjeta ni su cuenta sin su consentimiento. Mientras exista un cargo pendiente de esta cláusula, podemos pedirle cubrirlo antes de confirmar una nueva cita.</p>
+<p class="it"><span class="n">4.</span> En el caso ❷, si acepta una nueva hora, la nueva cita se confirma cuando recibimos el pago del 100 %, y ese monto se aplica al precio del servicio de la nueva cita. Se aplica una sola vez: si cambia, cancela o no se presenta a la nueva cita, el monto no se devuelve ni se traslada otra vez (y no se cobra un cargo adicional).</p>
+<p class="it"><span class="n">5.</span> En el caso ❸, la cita se considera cancelada y no se realiza el servicio. La cancelación se produce a los 15 minutos de la hora de inicio de su cita, haya o no un aviso de nuestra parte.</p>
+<p class="it"><span class="n">6.</span> El cargo de esta cláusula es una pena convencional acordada al reservar. Nunca es mayor que el precio del servicio. En los casos ❶ a ❺ del punto 1 de esta cláusula (cancelación, cambio, retraso, inasistencia o quitar servicios), no se cobra ninguna otra indemnización además de este cargo.</p>
+<p class="it"><span class="n">7.</span> Estos cargos solo se aplican a citas confirmadas (cláusula 2).</p>
+<p class="it"><span class="n">8.</span> El caso ❺ no se aplica cuando nosotros decidimos que un servicio no se puede realizar (cláusula 10). Si usted no acepta un cambio de precio conforme al punto 3 de la cláusula 3, no se aplica la cláusula 6. Cambiar a un servicio del mismo precio o de mayor precio no se considera quitar servicios. Cambiar a un servicio de menor precio se considera quitar servicios solo por la diferencia de precio.</p>
+<p class="it"><span class="n">9.</span> Si llega con menos de 15 minutos de retraso, o si el servicio que desea necesita más tiempo del reservado, realizamos lo que sea posible dentro del horario de su cita. Antes de empezar le decimos qué parte se podrá hacer. El precio de su cita no cambia por el retraso. Si prefiere no reducir el servicio, puede elegir otra fecha u hora; en ese caso se aplican el caso ❷ del punto 1 y el punto 4 de esta cláusula.</p>
+<p class="fund">Fundamento: artículos 7, 10 y 85 de la Ley Federal de Protección al Consumidor; artículos 1840, 1842 (para exigir la pena no es necesario probar perjuicios), 1843 y 1846 (pena por retraso) del Código Civil para el Distrito Federal.</p>
+<h2>Cláusula 7. Si nosotros no podemos atenderle</h2>
+<p class="it"><span class="n">1.</span> Si por decisión nuestra (no a petición suya) cancelamos o cambiamos su cita, o no podemos prestar el servicio por causas atribuibles a nosotros, usted elige entre:</p>
+<ul>
+<li>una nueva fecha, o</li>
+<li>la devolución completa de las cantidades pagadas, por el mismo medio con el que pagó.</li>
+</ul>
+<p class="it"><span class="n">2.</span> En ambos casos le otorgamos, además, una bonificación no menor al 20 % del precio pagado (el monto que usted nos haya pagado por esa cita). Usted elige recibirla como descuento en su siguiente cita o como devolución.</p>
+<p class="it"><span class="n">3.</span> En este caso no se cobra ningún cargo de la cláusula 6.</p>
+<p class="it"><span class="n">4.</span> Si iniciamos su servicio 15 minutos tarde o más por causas atribuibles a nosotros, se aplica la bonificación del punto 2 de esta cláusula.</p>
+<p class="fund">Fundamento: artículos 92 (devolución por el mismo medio de pago), 92 Bis y 92 Ter (bonificación no menor al 20 %) de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 8. Caso fortuito, fuerza mayor y causas de salud</h2>
+<p class="it"><span class="n">1.</span> Si antes de empezar el servicio no podemos abrir el establecimiento y la cita no puede cumplirse por caso fortuito o fuerza mayor (por ejemplo, cierre ordenado por la autoridad, daños en el establecimiento o corte general de luz o agua en la zona de nuestro establecimiento), no se cobra el cargo de la cláusula 6. El anticipo se traslada a una nueva cita.</p>
+<p class="it"><span class="n">2.</span> Si por enfermedad, accidente o fallecimiento de su cónyuge, pareja o un familiar hasta el segundo grado no puede asistir y nos avisa antes de la hora de su cita, no se cobra el cargo de la cláusula 6. El anticipo no se devuelve: se traslada a una nueva cita. En este caso es obligatorio mostrarnos un comprobante oficial: en caso de enfermedad o accidente, un certificado médico con el número de cédula profesional del médico; en caso de fallecimiento, el acta de defunción u otro documento oficial. Debe mostrárnoslo al avisarnos o, a más tardar, dentro de los 7 días contados a partir del día siguiente a la fecha de su cita original; si no nos lo muestra, se aplica la cláusula 6. Solo revisamos el comprobante y no guardamos copia. Esto se aplica igual cada vez (también a partir de la segunda vez no se cobra el cargo de la cláusula 6 y el anticipo solo se traslada).</p>
+<p class="it"><span class="n">3.</span> El anticipo trasladado conforme a esta cláusula puede usarse en una nueva cita para cualquier fecha dentro de los 7 días contados a partir del día siguiente a la fecha de su cita original. Sin embargo, cuando no pudimos atenderle (punto 1 de esta cláusula), los 7 días se cuentan desde el día en que podamos volver a atenderle, incluido ese día. Nuestros cierres de 7 días seguidos o más se tratan conforme al punto 5 de la cláusula 4. Solo si usted nos envía la solicitud dentro del plazo y no tenemos espacio disponible dentro de ese plazo, el plazo se amplía hasta nuestro siguiente día con espacio disponible. Si cambia o cancela a tiempo la nueva cita reservada con ese anticipo, se aplica el punto 5 de la cláusula 4 (un solo traslado más).</p>
+<p class="it"><span class="n">4.</span> Cuando decidimos no realizar un servicio por su seguridad (punto 5 de la cláusula 10), no se cobra el cargo de la cláusula 6 y usted elige entre trasladar el anticipo a una nueva cita o su devolución inmediata por el mismo medio con el que pagó (punto 7 de la cláusula 4). Cuando usted no desea hacer la prueba de sensibilidad antes de un servicio de color (punto 3 de la cláusula 10), no se cobra el cargo de la cláusula 6 y el anticipo se traslada a una nueva cita.</p>
+<p class="it"><span class="n">5.</span> Si no usa el anticipo trasladado dentro del plazo: en el caso del punto 1 de esta cláusula y cuando decidimos no realizar un servicio por su seguridad (punto 5 de la cláusula 10), se lo devolvemos (punto 7 de la cláusula 4); en los casos de los puntos 2 y 8 de esta cláusula y cuando usted no desea hacer la prueba de sensibilidad (punto 3 de la cláusula 10), el anticipo se pierde.</p>
+<p class="it"><span class="n">6.</span> El tráfico de la Ciudad de México, las marchas, manifestaciones y bloqueos de calles, y los retrasos, suspensiones o huelgas del transporte público son hechos frecuentes y previsibles; por eso no se consideran caso fortuito ni fuerza mayor para efectos de los puntos 1 y 8 de esta cláusula. Le pedimos salir con tiempo suficiente y revisar el estado del tráfico antes de salir. Si por estas causas llega 15 minutos tarde o más, no se presenta o cancela fuera de plazo, se aplica la cláusula 6. El plazo de 15 minutos del caso ❸ del punto 1 de la cláusula 6 ya da margen para retrasos menores. Al aceptar estos Términos, usted acepta expresamente que estos hechos no le liberan del cargo de la cláusula 6. El punto 8 de esta cláusula solo se aplica cuando el hecho no se podía prever ni evitar aun saliendo con anticipación razonable (por ejemplo, una emergencia declarada por la autoridad o un cierre total de la zona de nuestro establecimiento ordenado por la autoridad), siempre que nos avise antes de la hora de su cita y nos muestre un aviso oficial de la autoridad o una noticia publicada sobre ese hecho. Solo revisamos el aviso o la noticia y no guardamos copia.</p>
+<p class="it"><span class="n">7.</span> Si durante el servicio no es posible continuarlo por una causa ajena a nosotros, como un corte de luz o de agua, usted paga ese mismo día el precio completo de los servicios reservados, sin devolución, y terminamos el resto del servicio en otra fecha sin costo adicional. Le enviamos por correo electrónico dos o más fechas y horas dentro de los 7 días contados a partir del día siguiente a la fecha original de la cita, y guardamos el registro de ese envío (el plazo solo se amplía por cierres de 7 días seguidos o más, conforme al punto 5 de la cláusula 4). Solo si usted nos envía la solicitud dentro del plazo y no tenemos espacio disponible dentro de ese plazo, el plazo se amplía hasta nuestro siguiente día con espacio disponible. Si no recibe el resto del servicio dentro del plazo, el resto del servicio se pierde, sin devolución.</p>
+<p class="it"><span class="n">8.</span> Si antes de empezar el servicio el establecimiento está abierto, pero usted no puede asistir por caso fortuito o fuerza mayor (por ejemplo, un sismo o una alerta sísmica), no se cobra el cargo de la cláusula 6. El anticipo no se devuelve: se traslada una sola vez a una nueva cita (con el plazo del punto 3 de esta cláusula).</p>
+<p class="fund">Fundamento: artículos 1847 (la pena no puede cobrarse cuando no se pudo cumplir por caso fortuito o fuerza insuperable) y 2111 (se responde del caso fortuito cuando se ha aceptado expresamente esa responsabilidad) del Código Civil para el Distrito Federal; artículo 85 de la Ley Federal de Protección al Consumidor; tesis II.1o.C.158 C (registro digital 197162) y tesis de la Tercera Sala de la Suprema Corte de Justicia de la Nación con registro digital 341341 (el caso fortuito exige un hecho imprevisible y una imposibilidad verdadera; si el hecho puede preverse, deben tomarse las precauciones para evitarlo).</p>
+<h2>Cláusula 9. Derecho de revocación</h2>
+<p>Si su cita es para una fecha a más de diez días hábiles de la fecha en que la solicitó, puede cancelar sin ningún cargo y con devolución completa de lo pagado (punto 7 de la cláusula 4) dentro de los cinco días hábiles siguientes a la confirmación de su cita. Esta cláusula prevalece sobre las cláusulas 4 y 5.</p>
+<p class="fund">Fundamento: artículos 51 y 56 de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 10. Información sobre el servicio, salud y seguridad</h2>
+<p class="it"><span class="n">1.</span> Antes de empezar le explicamos el servicio, su duración aproximada y los productos que usaremos.</p>
+<p class="it"><span class="n">2.</span> Infórmenos antes del servicio si tiene alergias, sensibilidad en el cuero cabelludo, alguna condición de la piel, si está embarazada o si ha tenido reacciones a tintes o tratamientos. Nosotros anotamos esta información de salud en su ficha técnica solo con su consentimiento por escrito. Puede darlo con el botón «Acepto» del correo que le enviamos a su dirección de correo electrónico (mecanismo de autenticación); guardamos la fecha y hora, la versión del texto y el correo desde el que aceptó. La casilla aparte de nuestra página de reservas (aparece sin marcar y no es obligatoria para reservar) es su solicitud para que le enviemos ese botón. Si no da su consentimiento, puede recibir el servicio igualmente: ese día le preguntamos en persona solo lo necesario, lo usamos solo para el servicio de ese día y no lo anotamos en su ficha. Su ficha técnica es confidencial (Aviso de Privacidad).</p>
+<p class="it"><span class="n">3.</span> Los tintes para el cabello pueden causar reacciones alérgicas graves. Antes de un servicio de color le pedimos una prueba preliminar de sensibilidad, según las instrucciones del producto. Si no desea hacer la prueba, no realizamos el servicio de color; en ese caso no se cobra el cargo de la cláusula 6 y puede cambiar a otro servicio o trasladar su anticipo (cláusula 8).</p>
+<p class="it"><span class="n">4.</span> No aplicamos tintes a personas menores de 16 años.</p>
+<p class="it"><span class="n">5.</span> Si al revisar su cabello o cuero cabelludo un servicio no es recomendable o no es seguro, se lo explicamos antes de empezar y no lo realizamos. En ese caso no se cobra el cargo de la cláusula 6 y puede cambiar a otro servicio, trasladar su anticipo o pedir su devolución (cláusula 8).</p>
+<p class="it"><span class="n">6.</span> El resultado depende del estado, la historia y el tipo de cabello de cada persona. La duración de los efectos que le indiquemos es aproximada y puede variar en cada persona.</p>
+<p class="it"><span class="n">7.</span> Solo podemos negarnos a prestar un servicio por causas que afecten la seguridad o la tranquilidad del establecimiento, de nuestros clientes o del personal. Las reglas para esos casos también se encuentran en la cláusula 10 Bis (conducta), la cláusula 10 Ter (sustracción de bienes), la cláusula 11 (acompañantes y animales) y la cláusula 13 (menores de 16 años).</p>
+<p class="it"><span class="n">8.</span> Le pedimos mantener con usted sus objetos de valor durante el servicio. Nuestra responsabilidad sobre sus pertenencias se rige por la cláusula 10 Quáter.</p>
+<p class="it"><span class="n">9.</span> Infórmenos también, antes del servicio, de los tratamientos químicos que se haya hecho en los últimos 12 meses, aunque se hayan hecho en casa o en otro salón (tintes, decoloraciones, alaciados, permanentes, henna, etc.). Si no nos da esta información o no es correcta, el resultado o la reacción que se deba a esa falta de información no se considera una falla nuestra.</p>
+<p class="it"><span class="n">10.</span> Por seguridad y para poder responder por el resultado, no aplicamos tintes, decolorantes ni otros productos químicos que usted traiga.</p>
+<p class="fund">Fundamento: artículo 1, fracciones I y III, y artículos 7, 32, 41, 58 y 90, fracción II (cuando la persona consumidora no nos informa), de la Ley Federal de Protección al Consumidor; numeral 4.1 de la NOM-174-SCFI-2007 (características y duración del servicio); NOM-141-SSA1/SCFI-2012, numeral 5.3.7.2 (advertencias de los tintes para el cabello: reacciones alérgicas, prueba preliminar y menores de dieciséis años); artículo 8 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (consentimiento por escrito para datos de salud mediante un mecanismo de autenticación).</p>
+<h2>Cláusula 10 Bis. Trato respetuoso</h2>
+<p class="it"><span class="n">1.</span> Cuidamos que el establecimiento sea un lugar seguro y tranquilo para todas las personas. Por eso, aunque su cita esté confirmada, podemos no iniciar o dar por terminado el servicio y pedirle que se retire del establecimiento si usted, o quien le acompañe, tiene alguna de estas conductas con nuestro personal o con otros clientes:</p>
+<ul>
+<li>a) insultar, gritar a una persona o usar lenguaje ofensivo o humillante dirigido a ella;</li>
+<li>b) amenazar o intimidar, o cualquier forma de violencia física, incluido golpear o lanzar objetos;</li>
+<li>c) presionar al personal con gritos, amenazas o exigencias insistentes para que haga algo distinto de lo acordado o algo que le explicamos que no es seguro;</li>
+<li>d) hacer comentarios despectivos o discriminatorios sobre una persona.</li>
+</ul>
+<p class="it"><span class="n">2.</span> No son motivo para terminar el servicio: expresar con respeto una queja, un desacuerdo o su inconformidad con el resultado; su tono de voz habitual, su idioma o su acento. Nunca tomamos esta decisión por origen étnico o nacional, color de piel, sexo, género, edad, discapacidad, apariencia física, tatuajes, religión, preferencia sexual, condición de salud, social o económica, ni por ninguna otra característica de la persona. Solo la tomamos por las conductas del punto 1 de esta cláusula y aplicamos el mismo criterio a todas las personas.</p>
+<p class="it"><span class="n">3.</span> Primero le pedimos con calma que deje esa conducta. Si continúa, damos por terminada la cita. En el caso del inciso b) del punto 1 de esta cláusula o de un riesgo para la seguridad de alguna persona, la damos por terminada de inmediato, sin aviso previo.</p>
+<p class="it"><span class="n">4.</span> Nunca usamos la fuerza. Si la persona no se retira, o si hay un riesgo para alguna persona, pedimos el apoyo de la policía (911).</p>
+<p class="it"><span class="n">5.</span> Si el servicio ya empezó, antes de que se retire hacemos lo indispensable para que su cabello y cuero cabelludo queden en un estado seguro (por ejemplo, retirar un producto químico), siempre que sea seguro para nuestro personal.</p>
+<p class="it"><span class="n">6.</span> Si le pedimos que se retire conforme a esta cláusula, antes o después de iniciar el servicio, se cobra el 100 % del precio de su cita y no se devuelve ninguna cantidad pagada, incluido el anticipo. Este cargo es la pena convencional acordada al reservar; nunca es mayor que el precio de su cita y no se cobra ningún otro cargo.</p>
+<p class="it"><span class="n">7.</span> En este caso no se aplica la bonificación de la cláusula 7, porque la causa no es atribuible a nosotros.</p>
+<p class="it"><span class="n">8.</span> A más tardar al día siguiente le enviamos por correo electrónico la conducta, la hora y el monto cobrado. Si no está de acuerdo, puede escribirnos o acudir a la Profeco (cláusula 17).</p>
+<p class="it"><span class="n">9.</span> Esta cláusula también se aplica si estas conductas (punto 1 de esta cláusula) ocurren en mensajes o correos sobre su cita antes del día de la cita, solo cuando quedan registradas por escrito (no se aplica a llamadas telefónicas). En ese caso, primero le pedimos por escrito, una vez, que deje esa conducta. Si continúa, cancelamos su cita y se lo avisamos por correo electrónico; también en ese caso, conforme al punto 6 de esta cláusula, se cobra el 100 % del precio de su cita y no se devuelve ninguna cantidad pagada, incluido el anticipo.</p>
+<p class="fund">Fundamento: artículos 7, 10, 58 y 85 de la Ley Federal de Protección al Consumidor (solo se puede negar un servicio por causas que afecten la seguridad o tranquilidad del establecimiento o de sus clientes); artículos 1, fracción III, y 5 de la Ley Federal para Prevenir y Eliminar la Discriminación (criterios objetivos, razonables y proporcionales); artículos 5 y 6 de la Ley para Prevenir y Eliminar la Discriminación de la Ciudad de México; artículo 10, apartado A, fracciones VIII bis (no discriminación) y XIII (seguridad de usuarios y empleados), de la Ley de Establecimientos Mercantiles para la Ciudad de México; artículo 26, fracción I, de la Ley de Cultura Cívica de la Ciudad de México; artículo 3o. de la Ley Federal del Trabajo (ambiente laboral libre de violencia); artículos 1796, 1840, 1843 y 1949 del Código Civil para el Distrito Federal.</p>
+<h2>Cláusula 10 Ter. Sustracción de bienes en el establecimiento</h2>
+<p class="it"><span class="n">1.</span> En esta cláusula, y solo para efectos de estos Términos, se usan estas palabras: «bienes» son los productos a la venta, las herramientas, los equipos, el mobiliario y los insumos del establecimiento, los objetos personales de nuestro personal y las pertenencias de otros clientes. «Sustracción» es tomar o intentar llevarse cualquiera de estos bienes sin pagarlo y sin autorización de su dueño, aunque sea de poco valor, aunque lo guarde entre sus pertenencias y aunque después lo devuelva. Si se trata o no de un delito lo determinan la policía y las demás autoridades. Las muestras que le regalemos no son parte de esta cláusula.</p>
+<p class="it"><span class="n">2.</span> Si ocurre una sustracción, llamamos de inmediato a la policía (911) y dejamos la atención del caso en manos de la policía. Si el bien es nuestro, nosotros presentamos la denuncia (si es un objeto personal de nuestro personal, la presentamos junto con esa persona). Si el bien es de otro cliente, le ayudamos a presentar su denuncia.</p>
+<p class="it"><span class="n">3.</span> Le pediremos que devuelva el bien. Nuestro personal nunca revisa su persona ni sus pertenencias y nunca cobra multas: la revisión le corresponde solo a la policía u otra autoridad.</p>
+<p class="it"><span class="n">4.</span> En ese momento suspendemos el servicio y le pedimos esperar fuera del área de servicio o retirarse; nunca le retenemos. Antes o después de iniciar el servicio, se cobra el 100 % del precio de su cita y no se devuelve ninguna cantidad pagada, incluido el anticipo. Este cargo es la pena convencional acordada al reservar y nunca es mayor que el precio de su cita. No se aplica la bonificación de la cláusula 7. El valor de los bienes no devueltos o devueltos dañados y los demás daños se rigen, por separado, por el punto 5 de esta cláusula.</p>
+<p class="it"><span class="n">5.</span> Usted debe pagar el valor de los bienes que no devuelva o que devuelva dañados, y los demás daños que cause, conforme a la ley. Nunca cargamos su tarjeta ni su cuenta sin su consentimiento.</p>
+<p class="it"><span class="n">6.</span> No aceptamos nuevas citas de una persona que haya realizado una sustracción en el establecimiento, porque afecta la seguridad del establecimiento, de nuestros clientes y del personal. Para esta decisión nos basamos en hechos comprobables (por ejemplo, que el bien se encontró en su poder, que lo devolvió o que quedó registrado en las cámaras de videovigilancia). Si considera que se trata de un error, escríbanos a thehome.hair.recreative@gmail.com; revisaremos su caso y le responderemos por correo electrónico.</p>
+<p class="it"><span class="n">7.</span> El establecimiento cuenta con cámaras de videovigilancia. En caso de sustracción, entregamos las grabaciones, los datos de la cita, la descripción de los hechos y las demás pruebas que tengamos solo a la policía, al Ministerio Público o a un juez. El tratamiento de las grabaciones se rige por nuestro Aviso de Privacidad.</p>
+<p class="it"><span class="n">8.</span> Nunca publicamos imágenes ni datos de ninguna persona por una sustracción, ni en redes sociales ni en mensajes.</p>
+<p class="fund">Fundamento: artículo 17 de la Constitución Política de los Estados Unidos Mexicanos (nadie puede hacerse justicia por sí mismo); artículos 42, 220, 226 y 246 del Código Penal para el Distrito Federal (definición del robo, momento en que se consuma y persecución por querella de la persona ofendida); artículos 10 y 58 de la Ley Federal de Protección al Consumidor; artículos 1910, 1915 y 1916 (protección del honor) del Código Civil para el Distrito Federal; artículo 36, fracciones V y VI, de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares; artículos 18, 19 y 26 de la Ley de Responsabilidad Civil para la Protección del Derecho a la Vida Privada, el Honor y la Propia Imagen en el Distrito Federal.</p>
+<h2>Cláusula 10 Quáter. Daños a objetos y responsabilidad del establecimiento</h2>
+<p class="it"><span class="n">1.</span> Si usted daña algún objeto del establecimiento (mobiliario, equipo, herramientas, decoración o productos a la venta) de forma intencional o por descuido, le pedimos cubrir el costo de la reparación o, si no se puede reparar, el valor de un objeto equivalente, considerando su antigüedad y estado. En el caso de productos a la venta, el monto nunca es mayor que su precio de venta al público; si lo paga completo, el producto es suyo.</p>
+<p class="it"><span class="n">2.</span> «Descuido» significa no tener el cuidado normal que cualquier persona tendría en un lugar como el nuestro; por ejemplo, mover o usar herramientas o productos que no le entregamos, subirse o apoyarse en muebles que no son para eso, o correr o lanzar objetos dentro del establecimiento.</p>
+<p class="it"><span class="n">3.</span> No le pedimos ningún pago si el daño se debe al uso normal del objeto (usarlo para lo que está hecho y como le indicamos), a su desgaste o a un defecto, a que el objeto estaba mal colocado o a otra causa atribuible a nosotros, o a un accidente sin descuido de su parte.</p>
+<p class="it"><span class="n">4.</span> Antes de cualquier pago le mostramos el daño y el comprobante del costo (ticket, factura o presupuesto), y acordamos con usted el monto y la forma de pago. No cobramos multas, cargos adicionales ni valor sentimental, y nunca cargamos su tarjeta, su cuenta ni su anticipo sin su consentimiento. Si no llegamos a un acuerdo, puede acudir a la Profeco o a los tribunales (cláusula 17).</p>
+<p class="it"><span class="n">5.</span> Si una persona menor de 18 años daña algún objeto del establecimiento, se aplica el punto 4 de la cláusula 13.</p>
+<p class="it"><span class="n">6.</span> Respondemos por la pérdida, el daño o las manchas en sus pertenencias (incluida su ropa) en cualquiera de estos casos:</p>
+<ul>
+<li>a) cuando se deban a una falta nuestra (incluido un descuido de nuestro personal) o a nuestras instalaciones o aparatos;</li>
+<li>b) cuando las haya dejado bajo nuestro cuidado en el lugar que le indicamos.</li>
+</ul>
+<p class="it"><span class="n">7.</span> También respondemos, conforme a la ley, de las lesiones que nuestras instalaciones, aparatos o personal le causen. Nada en estos Términos le traslada las responsabilidades del punto 6 de esta cláusula y de este punto.</p>
+<p class="it"><span class="n">8.</span> Para los servicios de color y químicos le damos una capa. Le recomendamos no usar ropa delicada, porque los productos pueden manchar de forma permanente.</p>
+<p class="fund">Fundamento: artículos 1910, 1913, 1914, 1915, 1924, 2112 a 2116 (reparación del daño y valor de la cosa) y 2522 (cosas en depósito) del Código Civil para el Distrito Federal; artículos 10 y 90, fracciones II y III, de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 11. Acompañantes y animales</h2>
+<p class="it"><span class="n">1.</span> Por seguridad y por el espacio del establecimiento, además de la persona que tiene la cita puede venir solo un acompañante (una persona adulta, o una persona menor de 16 años conforme al punto 3 de la cláusula 13). La persona que asiste a alguien con discapacidad no cuenta dentro de este límite.</p>
+<p class="it"><span class="n">2.</span> Si viene con personas menores de 16 años que no reciben servicio, se aplica el punto 3 de la cláusula 13.</p>
+<p class="it"><span class="n">3.</span> Los perros y otros animales pueden entrar si nos consulta antes y le confirmamos que podemos recibirlos. Nosotros decidimos si es posible, considerando a los demás clientes de ese día y la seguridad. Los animales de asistencia (por ejemplo, perros guía que ayudan a personas con discapacidad) siempre pueden entrar, sin condiciones ni costos adicionales.</p>
+<p class="it"><span class="n">4.</span> Si viene con un animal que no es de asistencia, la persona dueña debe estar con él y vigilarlo todo el tiempo, y cuidar que no moleste a los demás clientes. Conforme a la ley, la persona dueña responde de las manchas, los daños a objetos y las lesiones que cause el animal.</p>
+<p class="fund">Fundamento: artículo 58 de la Ley Federal de Protección al Consumidor (se pueden establecer límites por la seguridad o tranquilidad del establecimiento; no se puede excluir a personas con discapacidad ni a sus perros guía); artículo 10, apartado A, fracción VIII, de la Ley de Establecimientos Mercantiles para la Ciudad de México (libre acceso de los perros de asistencia, sin condiciones ni costos); artículo 1929 del Código Civil para el Distrito Federal (la persona dueña de un animal responde del daño que cause).</p>
+<h2>Cláusula 12. Productos a la venta</h2>
+<p class="it"><span class="n">1.</span> Los precios de los productos incluyen IVA.</p>
+<p class="it"><span class="n">2.</span> Si un producto tiene un defecto, puede elegir el cambio por otro igual o la devolución de lo pagado, por el mismo medio de pago, además de la bonificación que marca la ley.</p>
+<p class="it"><span class="n">3.</span> Los productos sin abrir pueden cambiarse o devolverse dentro de los 7 días siguientes a la compra, presentando el comprobante de compra.</p>
+<p class="fund">Fundamento: artículos 7 Bis, 92 y 92 Ter de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 13. Menores de edad</h2>
+<p class="it"><span class="n">1.</span> Las citas de personas menores de 18 años deben hacerlas y aceptarlas su madre, padre o tutor. Podemos pedir una identificación para confirmar la edad.</p>
+<p class="it"><span class="n">2.</span> Las personas menores de 16 años que reciben un servicio deben venir con su madre, padre o tutor, quien debe permanecer en el establecimiento desde el inicio hasta el final del servicio.</p>
+<p class="it"><span class="n">3.</span> Si viene con personas menores de 16 años que no reciben servicio, la persona adulta que las acompaña debe estar con ellas y cuidarlas todo el tiempo que estén en el establecimiento. Nuestro personal no puede quedarse a cargo de ellas ni cuidarlas. Le pedimos que no toquen los productos ni las herramientas.</p>
+<p class="it"><span class="n">4.</span> Si una persona menor de 18 años daña algún objeto del establecimiento, se aplican los puntos 1 a 4 de la cláusula 10 Quáter. El pago corresponde a su madre, padre o tutor, o a la persona adulta que la acompaña y aceptó estos Términos, salvo que el daño se deba a una causa atribuible a nosotros.</p>
+<p class="fund">Fundamento: artículos 450, 646, 1911 y 1919 a 1922 del Código Civil para el Distrito Federal; artículo 58 de la Ley Federal de Protección al Consumidor (límites por seguridad).</p>
+<h2>Cláusula 14. Fotografías y grabaciones</h2>
+<p class="it"><span class="n">1.</span> Solo publicamos fotografías en las que se le pueda reconocer cuando usted nos da su consentimiento expreso por escrito para cada publicación (por ejemplo, por mensaje). Para personas menores de 18 años, el consentimiento lo da su madre, padre o tutor. Puede retirar su consentimiento en cualquier momento escribiendo a thehome.hair.recreative@gmail.com.</p>
+<p class="it"><span class="n">2.</span> Para cuidar la privacidad de otras personas, le pedimos no tomar fotos ni videos de otros clientes dentro del establecimiento, ni grabar la voz o la imagen de nuestro personal sin su permiso. Puede tomar fotos de su propio cabello.</p>
+<p class="fund">Fundamento: artículo 7 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares; artículo 1916 del Código Civil para el Distrito Federal (vida privada e imagen).</p>
+<h2>Cláusula 15. Datos personales</h2>
+<p>Tratamos sus datos conforme a nuestro Aviso de Privacidad, que se le muestra en nuestra página de reservas o se le envía junto con estos Términos si reserva por mensaje.</p>
+<p class="fund">Fundamento: artículos 15 y 16 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares; artículo 76 Bis, fracciones I y II, de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 16. Idioma</h2>
+<p>Estos Términos están escritos en español, que es la versión oficial, y su aceptación se da sobre la versión en español (punto 2 de la cláusula 1). Las versiones en otros idiomas son traducciones; si hay alguna diferencia, prevalece la versión en español.</p>
+<p class="fund">Fundamento: artículo 85 de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 17. Dudas, quejas y autoridad competente</h2>
+<p class="it"><span class="n">1.</span> Escríbanos a thehome.hair.recreative@gmail.com. Le responderemos por correo electrónico.</p>
+<p class="it"><span class="n">2.</span> También puede acudir a la Procuraduría Federal del Consumidor (Profeco): Teléfono del Consumidor 55 5568 8722 o 800 468 8722, o en concilianet.profeco.gob.mx.</p>
+<p class="it"><span class="n">3.</span> Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos. Para cualquier controversia, usted puede acudir a la Profeco o a los tribunales competentes de la Ciudad de México.</p>
+<p class="it"><span class="n">4.</span> Nada en estos Términos limita los derechos que le otorga la Ley Federal de Protección al Consumidor, que son irrenunciables.</p>
+<p class="fund">Fundamento: artículos 1, 76 Bis 1 fracción VI, 90 fracción VI y 99 de la Ley Federal de Protección al Consumidor.</p>
+<h2>Cláusula 18. Registro ante la Profeco</h2>
+<p>Este modelo de Términos no requiere registro previo ante la Procuraduría Federal del Consumidor, porque los servicios de embellecimiento físico no están obligados a registrarlo.</p>
+<p class="fund">Fundamento: artículos 86 y 88 de la Ley Federal de Protección al Consumidor; numeral 5 de la NOM-174-SCFI-2007.</p>
+<h2>Cláusula 19. Datos del establecimiento</h2>
+<p class="it"><span class="n">1.</span> Nombre comercial: THE HOME Hair re-creative.</p>
+<p class="it"><span class="n">2.</span> Domicilio: Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México.</p>
+<p class="it"><span class="n">3.</span> Teléfono: 55-2179-8065. Correo electrónico: thehome.hair.recreative@gmail.com.</p>
+<p class="it"><span class="n">4.</span> Horario: martes a viernes de 10:00 a 19:00; sábado de 10:00 a 20:00; domingo de 10:00 a 17:00. Los días de descanso (nuestros días de cierre habituales y los cierres extraordinarios) se publican con anticipación en nuestra página de reservas. Atención solo con cita.</p>
+<p class="fund">Fundamento: artículo 76 Bis, fracción III, de la Ley Federal de Protección al Consumidor (domicilio, teléfono y medios de reclamación antes de contratar por medios electrónicos); numeral 4.2 de la NOM-174-SCFI-2007 (días y horario de atención); artículo 15, fracción I, de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (identidad y domicilio del responsable).</p>
+<p class="pol-end">— Fin de los Términos y Condiciones —</p></template>
+<template id="pol-en"><h1>Terms and Conditions of Service</h1>
+<p class="ver">THE HOME Hair re-creative · Version 2026-10-09</p>
+<p>These Terms and Conditions govern the relationship between you and THE HOME Hair re-creative for all hair services and product sales. At the end of each clause we state the law it is based on.</p>
+<h2>Clause 1. Acceptance and version of these Terms</h2>
+<p class="it"><span class="n">1.</span> These Terms apply to every booking and service, whichever channel you use to book.</p>
+<p class="it"><span class="n">2.</span> Before your booking is confirmed, we show you these full Terms in their official Spanish version, together with the translation in the language you choose. You accept them expressly by ticking the box "I have read and accept the Terms and Conditions (official Spanish version)" (the box starts unticked). The translation is there to help you understand the content; what you accept is the Spanish version (Clause 16).</p>
+<p class="it"><span class="n">3.</span> We save the date and time of your acceptance, the version of these Terms and the language you read them in. In your confirmation email we send you a link to the version of these Terms you accepted.</p>
+<p class="it"><span class="n">4.</span> Each booking is governed by the version in force on the day it was made. If we change these Terms, we publish the new version with its date; the change does not apply to existing bookings without your consent.</p>
+<p class="it"><span class="n">5.</span> If you book through a channel without the box (for example, Instagram direct messages or WhatsApp), before confirming your appointment we send you these Terms (official Spanish version and translation) and our Privacy Notice. Your appointment is confirmed only after you accept them with the "I agree" button in the message or email, or pay the deposit after receiving them.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7, 76 Bis 1 (sections II, III and IV), 85 and 90, section I; Civil Code for Mexico City, Article 1803 (express consent by electronic means).</p>
+<h2>Clause 2. Booking and confirmation</h2>
+<p class="it"><span class="n">1.</span> You can request an appointment on our booking page. A request is not a confirmed appointment.</p>
+<p class="it"><span class="n">2.</span> Your appointment is confirmed when we send you the confirmation email with the date, time, services and price (if you booked through Instagram or WhatsApp, we also send you a message). If your appointment requires a deposit, it is confirmed only when we receive the deposit (Clause 4); any email you receive before that is a provisional booking with payment instructions. In these Terms, "appointment" means a confirmed appointment.</p>
+<p class="it"><span class="n">3.</span> We send the confirmation and a reminder the day before to the email address you give us. Please also check your spam folder. The reminder is a courtesy; if you do not receive it, your appointment and these Terms do not change.</p>
+<p class="it"><span class="n">4.</span> These Terms are shown to you and accepted during the booking; they therefore apply even if a later email ends up in your spam folder.</p>
+<p class="it"><span class="n">5.</span> Please give us a correct email address. We send all communications to the email address you gave us.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7 and 76 Bis 1, sections II and III; Civil Code for Mexico City, Article 1796.</p>
+<h2>Clause 3. Prices and payment</h2>
+<p class="it"><span class="n">1.</span> All prices are in Mexican pesos and include VAT. The price list is published on our booking page; at the salon we will show it to you if you ask.</p>
+<p class="it"><span class="n">2.</span> The price of your appointment is the price shown in your confirmation email.</p>
+<p class="it"><span class="n">3.</span> The price may vary depending on the condition of your hair on the day (length, volume, damage, previous chemical services, etc.). By booking and receiving the service, you accept this possibility. Services marked "from" in the price list are services whose price changes depending on the condition of your hair. If the price changes, we tell you before we start, verbally or on a screen (for example, a calculator), and we begin only after you agree. If you do not agree, we do not perform the service that day. In that case, the charge in Clause 6 does not apply, and you choose between transferring the deposit to a new appointment or a full refund by the same method you paid with (Clause 4, point 7). We never charge anything you have not authorized.</p>
+<p class="it"><span class="n">4.</span> We accept cash and credit and debit cards, except American Express.</p>
+<p class="it"><span class="n">5.</span> If you need an official tax invoice (CFDI), please ask, preferably when you pay, and give us your tax details.</p>
+<p class="it"><span class="n">6.</span> If you disagree with a charge, we kindly ask you to write to us first at thehome.hair.recreative@gmail.com before asking your card issuer or bank to reverse the payment (chargeback); in most cases this resolves things faster. If a reversal is requested for a service that was actually provided or for a charge set out in these Terms, we will provide the payment processor, card issuer or bank with the records related to that payment (your acceptance of these Terms, the confirmation of your appointment and the record of your visit and service) (Privacy Notice, section 4).</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7, 7 Bis, 10, 57, 76 Bis (section V) and 90 (section V) (contacting us first is a request, not a condition for your claim); Federal Tax Code, Article 29 (tax invoices); NOM-174-SCFI-2007, item 4.5.</p>
+<h2>Clause 4. Deposit</h2>
+<p class="it"><span class="n">1.</span> Under our cancellation policy, we may ask for a deposit when you book. If so, during the booking process we tell you the amount, the payment method and the payment deadline.</p>
+<p class="it"><span class="n">2.</span> If the deposit is not paid by the deadline, the appointment is not confirmed and the time slot may be released.</p>
+<p class="it"><span class="n">3.</span> The deposit is deducted from the total price on the day of your appointment. If the final price is lower than the deposit, we refund the difference by the same method you paid with.</p>
+<p class="it"><span class="n">4.</span> <strong>The deposit is non-refundable.</strong> The deposit and amounts paid for an appointment are refunded only in these cases: Clause 3, point 3; point 3 of this clause; Clause 7, points 1, 2 and 4; Clause 8, point 4 (when we do not perform a service for your safety); Clause 8, point 5 (in the case of Clause 8, point 1, and when we do not perform a service for your safety); and Clause 9. In the cases in Clauses 5 and 8, the deposit is not refunded: it is transferred to a new appointment (except for the refunds in Clause 8, points 4 and 5; if you do not use the transferred deposit within the period, point 5 of this clause and Clause 8, point 5 apply). This point does not limit product returns and refunds under Clause 12 or refunds provided for by law. This condition is explained to you before you book, and you accept it when you book, in accordance with the Federal Consumer Protection Law, Articles 7 and 85.</p>
+<p class="it"><span class="n">5.</span> If you change or cancel on time (Clause 5), your deposit is not refunded, but you can use it for a new appointment if you send us the request for the new appointment within 7 days, counted from the day after we receive your notice (closing days are also counted). However, if we close for 7 or more consecutive days (a long closure, for example for travel), the period is extended by the number of days of that closure that fall within it. Closures of fewer than 7 consecutive days, such as 2 or 3 days, do not extend the period. "Closing day" means our regular closing days and any extraordinary closures we have announced in advance. The new appointment must be on a date within 7 days, counted from the day after we receive your notice (with the extension for closures of 7 or more consecutive days set out above). Only if you send us the request within the period and we have no availability within that period, the period is extended to our next available day. If you do not send the request within that period, the deposit is forfeited. A deposit can only be transferred once for an on-time change or cancellation; if you change or cancel the new appointment again, even on time, the deposit is forfeited. In that case, the forfeited deposit is the contractual penalty for cancelling the appointment, agreed when you booked; it is never more than half the price of your appointment.</p>
+<p class="it"><span class="n">6.</span> The deposit is forfeited for late cancellations, for not showing up, and for arriving 15 minutes late or more (Clause 6).</p>
+<p class="it"><span class="n">7.</span> When we refund the deposit or amounts paid for an appointment (Clause 3, point 3; point 3 of this clause; Clause 7, points 1, 2 and 4; Clause 8, point 4 (when we do not perform a service for your safety); Clause 8, point 5 (in the case of Clause 8, point 1, and when we do not perform a service for your safety); and Clause 9), we refund the full amount due, by the method we specify, which is only the same method you paid with (the same card or the same account), without deducting the payment processing fee or any other charge. If the refund goes to a card, the time it takes to appear on your statement depends on your bank.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7, 7 Bis, 10, 56, 85 and 92 (refund of the amount paid, by the same payment method); NOM-174-SCFI-2007, items 3.1 and 4.5 (stating whether a deposit is required and how it is refunded); Civil Code for Mexico City, Articles 1840, 1842 and 1843 (contractual penalty agreed when booking, not exceeding the price).</p>
+<h2>Clause 5. Changes and cancellations on time</h2>
+<p class="it"><span class="n">1.</span> You may change or cancel your appointment without the charge in Clause 6 until 10:00 a.m. (Mexico City time) the day before your appointment, even if that day is a closing day. The deposit is governed by Clause 4.</p>
+<p class="it"><span class="n">2.</span> Please let us know in writing: by email (reply to your confirmation email or write to thehome.hair.recreative@gmail.com), with the cancellation button or a message in our Instagram direct messages, or with a written WhatsApp message. We do not accept notices by phone call.</p>
+<p class="it"><span class="n">3.</span> The time of receipt recorded by our email, Instagram or WhatsApp is the time that counts.</p>
+<p class="it"><span class="n">4.</span> If you request your appointment after 10:00 a.m. the day before, any change or cancellation after confirmation counts as late, and Clause 6 applies from the moment of confirmation. If you requested your appointment before 10:00 a.m. the day before and we send you the confirmation after that time, you may change or cancel it without the charge in Clause 6 within 1 hour of the time we send the confirmation. If the confirmation is sent after 8:00 p.m., the period ends at 9:00 a.m. the next day. In either case, the period ends no later than 2 hours before the start time of your appointment. The deadline date and time are stated in the confirmation. Even if the confirmation ends up in your spam folder, the period is counted from the time we sent it (Clause 2, points 3 and 4). The deposit is governed by Clause 4.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7 and 85.</p>
+<h2>Clause 6. 100% charge</h2>
+<p class="it"><span class="n">1.</span> 100% of the price of your appointment is charged in these cases:</p>
+<ul>
+<li>❶ Cancellation after 10:00 a.m. the day before.</li>
+<li>❷ Changing the date or time of your appointment after 10:00 a.m. the day before.</li>
+<li>❸ Arriving 15 minutes late or more, counted from the start time of your appointment.</li>
+<li>❹ Not showing up for your appointment.</li>
+<li>❺ Removing booked services after 10:00 a.m. the day before (100% of the price of the removed services is charged).</li>
+</ul>
+<p class="it"><span class="n">2.</span> "Price of your appointment" means the total price of the booked services shown as an exact amount in your confirmation email.</p>
+<p class="it"><span class="n">3.</span> If you paid a deposit, it is applied to this charge and is not refunded. Any amount still needed to reach 100% is requested by email, together with the payment method. We never charge your card or account without your consent. While a charge under this clause remains unpaid, we may ask you to pay it before confirming a new appointment.</p>
+<p class="it"><span class="n">4.</span> In case ❷, if you accept a new time, the new appointment is confirmed when we receive the 100% payment, and that amount is applied to the price of the service at the new appointment. It is applied only once: if you change, cancel or do not show up for the new appointment, the amount is neither refunded nor transferred again (and no additional charge applies).</p>
+<p class="it"><span class="n">5.</span> In case ❸, the appointment is treated as cancelled and the service is not provided. The cancellation takes effect 15 minutes after the start time of your appointment, whether or not we send you a notice.</p>
+<p class="it"><span class="n">6.</span> The charge in this clause is a contractual penalty agreed when you book. It is never higher than the price of the service. In cases ❶ to ❺ of point 1 of this clause (cancellation, change, lateness, no-show or removing services), no other compensation is charged in addition to this charge.</p>
+<p class="it"><span class="n">7.</span> These charges apply only to confirmed appointments (Clause 2).</p>
+<p class="it"><span class="n">8.</span> Case ❺ does not apply when we decide that a service cannot be performed (Clause 10). If you do not accept a price change under Clause 3, point 3, Clause 6 does not apply. Changing to a service of the same or a higher price does not count as removing services. Changing to a lower-priced service counts as removing services only for the price difference.</p>
+<p class="it"><span class="n">9.</span> If you arrive less than 15 minutes late, or if the service you want needs more time than was booked, we do what is possible within the time of your appointment. Before we start, we tell you which part can be done. The price of your appointment does not change because of the delay. If you prefer not to shorten the service, you can choose another date or time; in that case, case ❷ of point 1 and point 4 of this clause apply.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7, 10 and 85; Civil Code for Mexico City, Articles 1840, 1842 (no proof of loss is needed to claim the penalty), 1843 and 1846 (penalty for delay).</p>
+<h2>Clause 7. If we cannot serve you</h2>
+<p class="it"><span class="n">1.</span> If, by our own decision (not at your request), we cancel or change your appointment, or cannot provide the service for reasons attributable to us, you choose between:</p>
+<ul>
+<li>a new date, or</li>
+<li>a full refund of the amounts you paid, by the same method you paid with.</li>
+</ul>
+<p class="it"><span class="n">2.</span> In either case, we also give you a credit of at least 20% of the price paid (the amount you paid us for that appointment). You choose to receive it as a discount on your next appointment or as a refund.</p>
+<p class="it"><span class="n">3.</span> In this case, no charge from Clause 6 applies.</p>
+<p class="it"><span class="n">4.</span> If we start your service 15 minutes late or more for reasons attributable to us, the credit in point 2 of this clause applies.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 92 (refund by the same payment method), 92 Bis and 92 Ter (credit of at least 20%).</p>
+<h2>Clause 8. Force majeure and health reasons</h2>
+<p class="it"><span class="n">1.</span> If, before the service begins, we cannot open the salon and the appointment cannot be kept because of an unforeseeable event or force majeure (for example, a closure ordered by the authorities, damage to the salon, or a general power or water outage in the area of our salon), the charge in Clause 6 does not apply. The deposit is transferred to a new appointment.</p>
+<p class="it"><span class="n">2.</span> If you cannot come because of illness, an accident or the death of your spouse, partner or a family member up to the second degree, and you let us know before the time of your appointment, the charge in Clause 6 does not apply. The deposit is not refunded: it is transferred to a new appointment. In this case, you must show us official proof: for illness or an accident, a medical certificate showing the doctor's professional license number (cédula profesional); for a death, the death certificate or another official document. You must show it when you let us know or, at the latest, within 7 days counted from the day after the date of your original appointment; if you do not show it, Clause 6 applies. We only look at the proof and do not keep a copy. This applies in the same way every time (from the second time on as well, the charge in Clause 6 does not apply and the deposit is only transferred).</p>
+<p class="it"><span class="n">3.</span> A deposit transferred under this clause can be used for a new appointment on any date within 7 days counted from the day after the date of your original appointment. However, when we were unable to serve you (point 1 of this clause), the 7 days are counted from the day we are able to serve you again, including that day. Our closures of 7 or more consecutive days are handled as set out in Clause 4, point 5. Only if you send us the request within the period and we have no availability within that period, the period is extended to our next available day. If you change or cancel on time the new appointment booked with that deposit, Clause 4, point 5 applies (only one more transfer).</p>
+<p class="it"><span class="n">4.</span> When we decide not to perform a service for your safety (Clause 10, point 5), the charge in Clause 6 does not apply and you choose between transferring the deposit to a new appointment or an immediate refund by the same method you paid with (Clause 4, point 7). When you do not wish to take the skin sensitivity test before a color service (Clause 10, point 3), the charge in Clause 6 does not apply and the deposit is transferred to a new appointment.</p>
+<p class="it"><span class="n">5.</span> If you do not use the transferred deposit within the period: in the case of point 1 of this clause and when we decide not to perform a service for your safety (Clause 10, point 5), we refund it (Clause 4, point 7); in the cases of points 2 and 8 of this clause and when you do not wish to take the skin sensitivity test (Clause 10, point 3), the deposit is forfeited.</p>
+<p class="it"><span class="n">6.</span> Mexico City traffic, marches, demonstrations and road blockades, and delays, suspensions or strikes in public transport are frequent and foreseeable events; for this reason they are not considered an unforeseeable event or force majeure for the purposes of points 1 and 8 of this clause. Please leave with enough time and check the traffic before you set out. If, for these reasons, you arrive 15 minutes late or more, do not show up, or cancel late, Clause 6 applies. The 15-minute period in Clause 6, point 1, case ❸ already allows for minor delays. By accepting these Terms, you expressly accept that these events do not release you from the charge in Clause 6. Point 8 of this clause applies only when the event could not have been foreseen or avoided even if you had left with reasonable time (for example, an emergency declared by the authorities or a full closure of the area around our salon ordered by the authorities), provided that you let us know before the time of your appointment and show us an official notice from the authorities or a published news report about that event. We only look at the notice or report and do not keep a copy.</p>
+<p class="it"><span class="n">7.</span> If, during the service, it cannot be continued for a reason outside our control, such as a power or water outage, you pay the full price of the booked services on that same day, with no refund, and we complete the rest of the service on another date at no additional cost. We email you two or more dates and times within 7 days counted from the day after the original appointment date, and keep a record of that email (the period is extended only for closures of 7 or more consecutive days, as set out in Clause 4, point 5). Only if you send us the request within the period and we have no availability within that period, the period is extended to our next available day. If you do not receive the rest of the service within the period, the rest of the service is forfeited, with no refund.</p>
+<p class="it"><span class="n">8.</span> If, before the service begins, the salon is open but you cannot come because of an unforeseeable event or force majeure (for example, an earthquake or an earthquake alert), the charge in Clause 6 does not apply. The deposit is not refunded: it is transferred once to a new appointment (within the period in point 3 of this clause).</p>
+<p class="fund">Legal basis: Civil Code for Mexico City, Articles 1847 (a penalty cannot be enforced when the obligation could not be met because of an unforeseeable event or irresistible force) and 2111 (liability for unforeseeable events applies when it has been expressly accepted); Federal Consumer Protection Law, Article 85; Thesis II.1o.C.158 C (digital record 197162) and the thesis of the Third Chamber of the Supreme Court of Justice of the Nation, digital record 341341 (an unforeseeable event requires an event that could not be foreseen and a real impossibility; if an event can be foreseen, precautions must be taken to avoid it).</p>
+<h2>Clause 9. Right to withdraw</h2>
+<p>If your appointment is more than ten business days after the day you requested it, you may cancel free of charge, with a full refund of what you paid (Clause 4, point 7), within five business days after your appointment is confirmed. This clause prevails over Clauses 4 and 5.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 51 and 56.</p>
+<h2>Clause 10. Service information, health and safety</h2>
+<p class="it"><span class="n">1.</span> Before we start, we explain the service, its approximate duration and the products we will use.</p>
+<p class="it"><span class="n">2.</span> Please tell us before the service if you have allergies, a sensitive scalp or a skin condition, if you are pregnant, or if you have reacted to hair color or treatments before. We record this health information in your client file only with your written consent. You can give it with the "I agree" button in the email we send to your email address (an authentication mechanism); we save the date and time, the version of the text and the email address from which you agreed. The separate box on our booking page (it starts unticked and is not required to book) is your request for us to send you that button. If you do not give your consent, you can still receive the service: that day we only ask you in person what is necessary, use it only for that day's service, and do not record it in your file. Your client file is confidential (Privacy Notice).</p>
+<p class="it"><span class="n">3.</span> Hair color can cause serious allergic reactions. Before a color service, we ask you to take a preliminary skin sensitivity test, following the product instructions. If you do not wish to take the test, we do not perform the color service; in that case the charge in Clause 6 does not apply, and you can change to another service or transfer your deposit (Clause 8).</p>
+<p class="it"><span class="n">4.</span> We do not apply hair color to anyone under 16.</p>
+<p class="it"><span class="n">5.</span> If, after seeing your hair or scalp, a service is not advisable or not safe, we explain this before we start and do not perform it. In that case the charge in Clause 6 does not apply, and you can change to another service, transfer your deposit or ask for a refund (Clause 8).</p>
+<p class="it"><span class="n">6.</span> Results depend on the condition, history and type of each person's hair. Any duration of effects we mention is approximate and varies from person to person.</p>
+<p class="it"><span class="n">7.</span> We may refuse a service only for reasons that affect the safety or peace of the salon, our clients or our staff. The rules for those cases are also set out in Clause 10-bis (conduct), Clause 10-ter (taking of property), Clause 11 (companions and animals) and Clause 13 (children under 16).</p>
+<p class="it"><span class="n">8.</span> Please keep your valuables with you during the service. Our responsibility for your belongings is set out in Clause 10-quater.</p>
+<p class="it"><span class="n">9.</span> Before the service, please also tell us about any chemical treatments you have had in the last 12 months, including at home or at another salon (color, bleach, straightening, perms, henna, etc.). If you do not give us this information, or it is not correct, any result or reaction caused by that missing information is not considered a mistake on our part.</p>
+<p class="it"><span class="n">10.</span> For safety, and so that we can stand behind the result, we do not apply hair color, bleach or other chemical products that you bring.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Article 1 (sections I and III) and Articles 7, 32, 41, 58 and 90 (section II) (when the consumer does not inform us); NOM-174-SCFI-2007, item 4.1 (characteristics and duration of the service); Official Mexican Standard NOM-141-SSA1/SCFI-2012, item 5.3.7.2 (hair color warnings: allergic reactions, preliminary test and persons under sixteen); Federal Law on the Protection of Personal Data Held by Private Parties, Article 8 (written consent for health data through an authentication mechanism).</p>
+<h2>Clause 10-bis. Respectful treatment</h2>
+<p class="it"><span class="n">1.</span> We keep the salon a safe and calm place for everyone. For this reason, even if your appointment is confirmed, we may not start or may end the service and ask you to leave the salon if you, or anyone with you, engage in any of the following conduct towards our staff or other clients:</p>
+<ul>
+<li>a) insulting or shouting at a person, or using offensive or humiliating language directed at them;</li>
+<li>b) threats or intimidation, or any form of physical violence, including hitting or throwing objects;</li>
+<li>c) pressuring staff with shouting, threats or repeated demands to do something different from what was agreed, or something we have explained is not safe;</li>
+<li>d) derogatory or discriminatory remarks about a person.</li>
+</ul>
+<p class="it"><span class="n">2.</span> The following are not reasons to end a service: respectfully making a complaint, disagreeing, or saying you are not satisfied with the result; your usual tone of voice, your language or your accent. We never make this decision based on ethnic or national origin, skin color, sex, gender, age, disability, physical appearance, tattoos, religion, sexual orientation, health, social or economic status, or any other personal characteristic. We make it only because of the conduct in point 1 of this clause, and we apply the same standard to everyone.</p>
+<p class="it"><span class="n">3.</span> First, we calmly ask you to stop the conduct. If it continues, we end the appointment. In the case of item b) of point 1 of this clause or a risk to anyone's safety, we end it immediately, without prior warning.</p>
+<p class="it"><span class="n">4.</span> We never use force. If the person does not leave, or if anyone is at risk, we ask the police for help (911).</p>
+<p class="it"><span class="n">5.</span> If the service has already started, before you leave we do what is essential to leave your hair and scalp in a safe condition (for example, removing a chemical product), as long as it is safe for our staff.</p>
+<p class="it"><span class="n">6.</span> If we ask you to leave under this clause, whether before or after the service has started, we charge 100% of the price of your appointment and no amount paid, including the deposit, is refunded. This charge is the contractual penalty agreed when you booked; it is never more than the price of your appointment, and no other charge applies.</p>
+<p class="it"><span class="n">7.</span> In this case, the credit in Clause 7 does not apply, because the cause is not attributable to us.</p>
+<p class="it"><span class="n">8.</span> By the following day at the latest, we email you the conduct, the time and the amount charged. If you disagree, you can write to us or contact Profeco (Clause 17).</p>
+<p class="it"><span class="n">9.</span> This clause also applies if this conduct (point 1 of this clause) occurs in messages or emails about your appointment before the day of the appointment, but only when it is recorded in writing (it does not apply to phone calls). In that case, we first ask you once, in writing, to stop the conduct. If it continues, we cancel your appointment and notify you by email; in that case too, as set out in point 6 of this clause, we charge 100% of the price of your appointment and no amount paid, including the deposit, is refunded.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7, 10, 58 and 85 (a service may be refused only for reasons that affect the safety or peace of the establishment or its clients); Federal Law to Prevent and Eliminate Discrimination, Article 1 (section III) and Article 5 (objective, reasonable and proportionate criteria); Mexico City Law to Prevent and Eliminate Discrimination, Articles 5 and 6; Mexico City Commercial Establishments Law, Article 10, Section A, items VIII bis (non-discrimination) and XIII (safety of users and employees); Mexico City Civic Culture Law, Article 26, item I; Federal Labor Law, Article 3 (workplace free of violence); Civil Code for Mexico City, Articles 1796, 1840, 1843 and 1949.</p>
+<h2>Clause 10-ter. Taking of property at the salon</h2>
+<p class="it"><span class="n">1.</span> In this clause, and only for the purposes of these Terms, these words are used: "property" means the products for sale, the tools, equipment, furniture and supplies of the salon, the personal belongings of our staff, and the belongings of other clients. "Taking" means taking, or trying to take away, any of this property without paying for it and without its owner's permission, even if it is of little value, even if you put it among your belongings, and even if you return it afterwards. Whether it is a crime is decided by the police and other authorities. Samples we give you are not covered by this clause.</p>
+<p class="it"><span class="n">2.</span> If a taking occurs, we immediately call the police (911) and leave the handling of the matter to the police. If the property is ours, we file the criminal complaint (if it is a personal belonging of a staff member, we file it together with that staff member). If the property belongs to another client, we help that person file their complaint.</p>
+<p class="it"><span class="n">3.</span> We will ask you to return the property. Our staff never search your person or your belongings and never charge fines: only the police or other authorities may carry out a search.</p>
+<p class="it"><span class="n">4.</span> At that moment we stop the service and ask you to wait outside the service area or to leave; we never hold you back. Whether before or after the service has started, we charge 100% of the price of your appointment and no amount paid, including the deposit, is refunded. This charge is the contractual penalty agreed when you booked and is never more than the price of your appointment. The credit in Clause 7 does not apply. The value of items not returned or returned damaged, and any other damage, is handled separately under point 5 of this clause.</p>
+<p class="it"><span class="n">5.</span> You must pay the value of any property you do not return or return damaged, and any other damage you cause, in accordance with the law. We never charge your card or account without your consent.</p>
+<p class="it"><span class="n">6.</span> We do not accept new appointments from a person who has carried out a taking at the salon, because it affects the safety of the salon, our clients and our staff. We base this decision on verifiable facts (for example, the property was found in your possession, you returned it, or it was recorded by the video surveillance cameras). If you believe this is a mistake, write to thehome.hair.recreative@gmail.com; we will review your case and reply by email.</p>
+<p class="it"><span class="n">7.</span> The salon has video surveillance cameras. In the event of a taking, we provide the recordings, the appointment details, a description of the events and any other evidence we have only to the police, the Public Prosecutor (Ministerio Público) or a judge. Recordings are handled in accordance with our Privacy Notice.</p>
+<p class="it"><span class="n">8.</span> We never publish images or details of any person because of a taking, whether on social media or in messages.</p>
+<p class="fund">Legal basis: Political Constitution of the United Mexican States, Article 17 (no one may take the law into their own hands); Criminal Code for Mexico City, Articles 42, 220, 226 and 246 (definition of theft, when it is completed, and prosecution upon the victim's complaint); Federal Consumer Protection Law, Articles 10 and 58; Civil Code for Mexico City, Articles 1910, 1915 and 1916 (protection of honor); Federal Law on the Protection of Personal Data Held by Private Parties, Article 36 (sections V and VI); Law on Civil Liability for the Protection of the Right to Private Life, Honor and One's Own Image in Mexico City, Articles 18, 19 and 26.</p>
+<h2>Clause 10-quater. Damage to property and our responsibility</h2>
+<p class="it"><span class="n">1.</span> If you damage any item in the salon (furniture, equipment, tools, decoration or products for sale) on purpose or through carelessness, we ask you to cover the cost of the repair or, if it cannot be repaired, the value of an equivalent item, taking into account its age and condition. For products for sale, the amount is never more than the retail price; if you pay it in full, the product is yours.</p>
+<p class="it"><span class="n">2.</span> "Carelessness" means not taking the normal care that anyone would take in a place like ours; for example, moving or using tools or products we did not hand to you, climbing or leaning on furniture not meant for that, or running or throwing objects inside the salon.</p>
+<p class="it"><span class="n">3.</span> We do not ask you for any payment if the damage is due to normal use of the item (using it for its purpose and as we indicated), wear and tear or a defect, the item being badly placed or any other cause attributable to us, or an accident with no carelessness on your part.</p>
+<p class="it"><span class="n">4.</span> Before any payment, we show you the damage and proof of the cost (receipt, invoice or quote), and we agree with you on the amount and how to pay. We do not charge fines, extra fees or sentimental value, and we never charge your card, your account or your deposit without your consent. If we cannot reach an agreement, you can go to Profeco or the courts (Clause 17).</p>
+<p class="it"><span class="n">5.</span> If anyone under 18 damages an item in the salon, Clause 13, point 4 applies.</p>
+<p class="it"><span class="n">6.</span> We are responsible for the loss of, damage to or stains on your belongings (including your clothes) in either of these cases:</p>
+<ul>
+<li>a) when they are caused by a fault on our part (including carelessness by our staff) or by our premises or equipment;</li>
+<li>b) when you left them in our care in the place we indicated.</li>
+</ul>
+<p class="it"><span class="n">7.</span> We are also responsible, in accordance with the law, for any injury that our premises, equipment or staff cause you. Nothing in these Terms transfers the responsibilities in point 6 of this clause and in this point to you.</p>
+<p class="it"><span class="n">8.</span> For color and chemical services we give you a cape. We recommend not wearing delicate clothing, because the products can stain permanently.</p>
+<p class="fund">Legal basis: Civil Code for Mexico City, Articles 1910, 1913, 1914, 1915, 1924, 2112 to 2116 (repair of damage and value of the item) and 2522 (items in deposit); Federal Consumer Protection Law, Articles 10 and 90 (sections II and III).</p>
+<h2>Clause 11. Companions and animals</h2>
+<p class="it"><span class="n">1.</span> For safety and because of the size of the salon, in addition to the person with the appointment, only one companion may come (an adult, or a person under 16 as set out in Clause 13, point 3). A person assisting someone with a disability does not count towards this limit.</p>
+<p class="it"><span class="n">2.</span> If you come with anyone under 16 who is not receiving a service, Clause 13, point 3 applies.</p>
+<p class="it"><span class="n">3.</span> Dogs and other animals may come in if you ask us in advance and we confirm that we can receive them. We decide whether this is possible, taking into account the other clients that day and safety. Assistance animals (for example, guide dogs that help people with disabilities) may always come in, without conditions or additional costs.</p>
+<p class="it"><span class="n">4.</span> If you come with an animal that is not an assistance animal, the owner must stay with it and watch it at all times, and make sure it does not disturb other clients. In accordance with the law, the owner is responsible for any dirt, damage to items or injuries the animal causes.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Article 58 (limits may be set for the safety or peace of the establishment; people with disabilities and their guide dogs may not be excluded); Mexico City Commercial Establishments Law, Article 10, Section A, item VIII (free access for assistance dogs, without conditions or costs); Civil Code for Mexico City, Article 1929 (the owner of an animal is liable for the damage it causes).</p>
+<h2>Clause 12. Retail products</h2>
+<p class="it"><span class="n">1.</span> Product prices include VAT.</p>
+<p class="it"><span class="n">2.</span> If a product is defective, you may choose an exchange for the same product or a refund by the same payment method, plus the credit set by law.</p>
+<p class="it"><span class="n">3.</span> Unopened products can be exchanged or returned within 7 days of purchase, with the proof of purchase.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 7 Bis, 92 and 92 Ter.</p>
+<h2>Clause 13. Minors</h2>
+<p class="it"><span class="n">1.</span> Appointments for anyone under 18 must be made and accepted by their parent or guardian. We may ask for an ID to confirm age.</p>
+<p class="it"><span class="n">2.</span> Anyone under 16 who receives a service must come with their parent or guardian, who must stay at the salon from the start to the end of the service.</p>
+<p class="it"><span class="n">3.</span> If you come with anyone under 16 who is not receiving a service, the adult with them must stay with them and watch them the whole time they are at the salon. Our staff cannot take charge of or watch them. Please make sure they do not touch products or tools.</p>
+<p class="it"><span class="n">4.</span> If anyone under 18 damages an item in the salon, Clause 10-quater, points 1 to 4 apply. Payment is the responsibility of their parent or guardian, or of the adult who accompanies them and accepted these Terms, unless the damage is due to a cause attributable to us.</p>
+<p class="fund">Legal basis: Civil Code for Mexico City, Articles 450, 646, 1911 and 1919 to 1922; Federal Consumer Protection Law, Article 58 (limits for safety).</p>
+<h2>Clause 14. Photos and recordings</h2>
+<p class="it"><span class="n">1.</span> We only publish photos in which you can be recognized if you give us your express consent in writing for each post (for example, by message). For anyone under 18, consent must be given by their parent or guardian. You can withdraw your consent at any time by writing to thehome.hair.recreative@gmail.com.</p>
+<p class="it"><span class="n">2.</span> To protect other people's privacy, we kindly ask you not to take photos or videos of other clients inside the salon, or to record the voice or image of our staff without their permission. You are welcome to take photos of your own hair.</p>
+<p class="fund">Legal basis: Federal Law on the Protection of Personal Data Held by Private Parties, Article 7; Civil Code for Mexico City, Article 1916 (private life and image).</p>
+<h2>Clause 15. Personal data</h2>
+<p>We handle your data in accordance with our Privacy Notice, which is shown to you on our booking page or sent to you together with these Terms if you book by message.</p>
+<p class="fund">Legal basis: Federal Law on the Protection of Personal Data Held by Private Parties, Articles 15 and 16; Federal Consumer Protection Law, Article 76 Bis, sections I and II.</p>
+<h2>Clause 16. Language</h2>
+<p>The official version of these Terms is the Spanish version, and your acceptance is given to the Spanish version (Clause 1, point 2). This English text is a translation; if there is any difference, the Spanish version prevails.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Article 85 (standard-form contracts must be written in Spanish).</p>
+<h2>Clause 17. Questions, complaints and governing law</h2>
+<p class="it"><span class="n">1.</span> Write to us at thehome.hair.recreative@gmail.com. We will reply by email.</p>
+<p class="it"><span class="n">2.</span> You may also contact the Federal Consumer Protection Office (Consumer Hotline: 55 5568 8722 or 800 468 8722, or online at concilianet.profeco.gob.mx).</p>
+<p class="it"><span class="n">3.</span> These Terms are governed by the laws of Mexico. In any dispute, you may go to the Federal Consumer Protection Office or to the competent courts of Mexico City.</p>
+<p class="it"><span class="n">4.</span> Nothing in these Terms limits your rights under the Federal Consumer Protection Law, which cannot be waived.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 1, 76 Bis 1 (section VI), 90 (section VI) and 99.</p>
+<h2>Clause 18. Registration with the Federal Consumer Protection Office</h2>
+<p>These Terms do not need to be registered in advance with the Federal Consumer Protection Office, because registration is not mandatory for beauty services.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Articles 86 and 88; NOM-174-SCFI-2007, Chapter 5.</p>
+<h2>Clause 19. About us</h2>
+<p class="it"><span class="n">1.</span> Business name: THE HOME Hair re-creative.</p>
+<p class="it"><span class="n">2.</span> Address: Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México.</p>
+<p class="it"><span class="n">3.</span> Phone: 55-2179-8065. Email: thehome.hair.recreative@gmail.com.</p>
+<p class="it"><span class="n">4.</span> Opening hours: Tuesday to Friday 10:00 a.m.–7:00 p.m.; Saturday 10:00 a.m.–8:00 p.m.; Sunday 10:00 a.m.–5:00 p.m. Closing days (our regular closing days and extraordinary closures) are published in advance on our booking page. By appointment only.</p>
+<p class="fund">Legal basis: Federal Consumer Protection Law, Article 76 Bis, section III (address, phone and complaint channels before an online contract); Official Mexican Standard NOM-174-SCFI-2007, item 4.2 (days and hours of service); Federal Law on the Protection of Personal Data Held by Private Parties, Article 15, section I (identity and address of the data controller).</p>
+<p class="pol-end">— End of the Terms and Conditions —</p></template>
+<template id="pol-ja"><h1>サービス約款</h1>
+<p class="ver">THE HOME Hair re-creative・2026-10-09版</p>
+<p>この約款は、当店のすべての施術と商品の販売について、お客様と当店との約束を定めるものです。各条の最後に、根拠となる法律を記載しています。</p>
+<h2>第1条 約款への同意と版</h2>
+<p class="it"><span class="n">1.</span> この約款は、どの方法でご予約いただいた場合にも、すべてのご予約と施術に適用されます。</p>
+<p class="it"><span class="n">2.</span> ご予約の確定前に、正式なスペイン語版の約款の全文と、お選びの言語の翻訳をお見せします。「正式なスペイン語版の約款を読み、同意しました」のチェック（最初はチェックが入っていません）を入れていただくことで、ご同意いただいたものとします。翻訳は内容をご理解いただくためのもので、ご同意の対象はスペイン語版です（第16条）。</p>
+<p class="it"><span class="n">3.</span> 同意の日時・約款の版・お読みになった言語を記録します。確定メールに、ご同意いただいた版の約款へのリンクをお送りします。</p>
+<p class="it"><span class="n">4.</span> 各ご予約には、ご予約の日の版が適用されます。約款を変更する時は、新しい版を日付とともに公開します。すでにいただいているご予約には、お客様の同意なく新しい版を適用しません。</p>
+<p class="it"><span class="n">5.</span> チェックの欄がない方法（インスタグラムのメッセージ・ワッツアップなど）でご予約の場合は、確定の前に、この約款（正式なスペイン語版と翻訳）と個人情報の取り扱いのお知らせをお送りします。メッセージまたはメールの「同意します」のボタンを押していただくか、受け取られたあとに前金をお支払いいただいてから、ご予約を確定します。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第76条の2の1（第2号・第3号・第4号）・第85条・第90条 第1号、メキシコシティ民法 第1803条（電子的な方法による明示の同意）</p>
+<h2>第2条 ご予約と確定</h2>
+<p class="it"><span class="n">1.</span> ご予約は予約ページからお申し込みいただけます。お申し込みの時点では、ご予約は確定していません。</p>
+<p class="it"><span class="n">2.</span> 日時・メニュー・料金を記載した確定メールをお送りした時点で、ご予約が確定します（インスタグラム・ワッツアップでご予約の方には、メッセージでもお送りします）。前金が必要なご予約は、前金のお支払いを確認した時点で確定します（第4条）。それより前にお送りするメールは、お支払いの案内のついた仮のご予約です。この約款で「ご予約」とは、確定したご予約のことです。</p>
+<p class="it"><span class="n">3.</span> 確定のご連絡と前日のお知らせは、ご登録のメールアドレスにお送りします。迷惑メールのフォルダもご確認ください。前日のお知らせはサービスです。届かなかった場合も、ご予約とこの約款の内容は変わりません。</p>
+<p class="it"><span class="n">4.</span> この約款はご予約の手続きの中でお見せし、ご同意いただくものです。そのため、その後のメールが迷惑メールのフォルダに入った場合も、この約款が適用されます。</p>
+<p class="it"><span class="n">5.</span> 正しいメールアドレスをお知らせください。ご連絡はすべて、お知らせいただいたメールアドレスにお送りします。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第76条の2の1 第2号・第3号、メキシコシティ民法 第1796条</p>
+<h2>第3条 料金とお支払い</h2>
+<p class="it"><span class="n">1.</span> 料金はすべてメキシコペソで、付加価値税込みです。料金表は予約ページに掲載しています。店内でも、ご希望があればお見せします。</p>
+<p class="it"><span class="n">2.</span> ご予約の料金は、確定メールに記載した料金です。</p>
+<p class="it"><span class="n">3.</span> 料金は、当日の髪の状態（長さ・量・傷み・これまでの施術など）によって前後することがあります。このことをご了承いただいた上で、ご予約・施術をお受けいただきます。料金表で「〜」がついているメニューは、髪の状態で料金が変わるメニューです。料金が変わる場合は、施術の前に新しい料金を口頭または画面（電卓など）でお伝えし、ご了承いただいてから施術を始めます。ご了承いただけない場合は、その日の施術は行いません。この場合、第6条の料金はいただかず、前金は新しいご予約への振り替えか、お支払いと同じ方法での全額のお返し（第4条第7項）かを、お選びいただけます。お客様が認めていない料金をいただくことはありません。</p>
+<p class="it"><span class="n">4.</span> 現金・クレジットカード・デビットカードをご利用いただけます（アメリカン・エキスプレスはご利用いただけません）。</p>
+<p class="it"><span class="n">5.</span> 税務上の領収書（電子インボイス）が必要な場合は、できればお会計の時にお申し出いただき、税務上の情報をお知らせください。</p>
+<p class="it"><span class="n">6.</span> お支払いについてご納得いただけない点がある場合は、カード会社や銀行に支払いの取り消し（チャージバック）をお申し出になる前に、まず thehome.hair.recreative@gmail.com にご連絡をお願いいたします。多くの場合、その方が早く解決できます。実際に行った施術や、この約款に定めた料金について支払いの取り消しのお申し出があった場合、当店は、決済会社・カード会社・銀行に、そのお支払いに関わる記録（約款へのご同意・ご予約の確定のご連絡・ご来店と施術の記録）を提出いたします（個人情報の取り扱いのお知らせ 4.）。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第7条の2・第10条・第57条・第76条の2 第5号・第90条 第5号（ご連絡はお願いであり、お客様のお申し出の条件ではありません）、連邦税法典 第29条（税務上の領収書）、公式規格 NOM-174-SCFI-2007 4.5</p>
+<h2>第4条 前金</h2>
+<p class="it"><span class="n">1.</span> 当店のキャンセルポリシーにより、ご予約の際に前金をお願いする場合がございます。その場合は、ご予約の手続きの中で、金額・お支払い方法・お支払いの期限をご案内いたします。</p>
+<p class="it"><span class="n">2.</span> 期限までにお支払いがない場合、ご予約は確定せず、お時間をお取り置きできなくなることがあります。</p>
+<p class="it"><span class="n">3.</span> 前金は、ご来店日の料金から差し引きます。最終の料金が前金より少ない場合は、差額をお支払いと同じ方法でお返しします。</p>
+<p class="it"><span class="n">4.</span> <strong>前金は返金いたしません。</strong> 前金とご予約のためにお支払いいただいたお金をお返しするのは、次の場合だけです：第3条第3項、この条の第3項、第7条第1項・第2項・第4項、第8条第4項（当店が安全のために施術を行わない場合）、第8条第5項（第8条第1項の場合と、当店が安全のために施術を行わない場合）、第9条。第5条・第8条の場合は、前金は返金せず、新しいご予約へ振り替えます（第8条第4項・第5項でお返しする場合を除きます。振り替えた前金を期間内にお使いにならなかった場合は、この条の第5項と第8条第5項のとおりです）。第12条の商品の返品・返金と、法律で定められた返金は、この項の制限を受けません。この条件は、連邦消費者保護法 第7条・第85条に基づき、ご予約の前にお知らせし、ご予約の際にご同意いただくものです。</p>
+<p class="it"><span class="n">5.</span> 期限内に変更・キャンセルされた場合（第5条）、前金は返金いたしませんが、当店がご連絡を受け取った日の翌日から数えて7日以内（お休みの日も数えます）に新しいご予約のお申し込みをお送りいただければ、そのご予約にお使いいただけます。ただし、当店が連続7日以上のお休み（旅行などによる長期のお休み）をいただく場合は、その期間に重なった日数の分だけ、期限を延ばします。2日・3日など、連続7日未満のお休みに重なった場合は、期限は延びません。「お休みの日」とは、当店の定休日と、前もってお知らせした臨時のお休みの日のことです。新しいご予約の日は、当店がご連絡を受け取った日の翌日から数えて7日以内の日に限ります（連続7日以上のお休みの場合は、上のとおり延ばします）。お客様が期限内にお申し込みをお送りいただいたのに、期限内に当店の空きがない場合に限り、当店の次の空きの日まで延ばします。期間内にお申し込みをお送りにならなかった場合、前金は無効となります。期限内の変更・キャンセルによる前金の振り替えは1回だけです。新しいご予約をもう一度変更・キャンセルされた場合は、期限内であっても前金は無効となります。この場合に無効となる前金は、ご予約の際に合意したキャンセルの違約金です。ご予約の料金の半分を超えることはありません。</p>
+<p class="it"><span class="n">6.</span> 期限後のキャンセル、ご来店されなかった場合、15分以上の遅刻の場合は、前金は無効となります（第6条）。</p>
+<p class="it"><span class="n">7.</span> 前金とご予約のためにお支払いいただいたお金をお返しする時（第3条第3項、この条の第3項、第7条第1項・第2項・第4項、第8条第4項（当店が安全のために施術を行わない場合）、第8条第5項（第8条第1項の場合と、当店が安全のために施術を行わない場合）、第9条）は、お返しする額の全額を、当店が指定する方法でお返しします。お返しの方法は、お支払いいただいた方法（同じカード・同じ口座）だけです。お支払いの手数料（決済サービスの手数料）やそのほかの料金を差し引くことはありません。カードへのご返金の場合、明細に反映されるまでの日数は、お客様の銀行によって異なります。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第7条の2・第10条・第56条・第85条・第92条（支払った額を、同じ支払い方法で返す）、公式規格 NOM-174-SCFI-2007 3.1・4.5（前金が必要かどうかと、返金のしかたを知らせる）、メキシコシティ民法 第1840条・第1842条・第1843条（ご予約の際に決める違約金。料金を超えない）</p>
+<h2>第5条 期限内の変更・キャンセル</h2>
+<p class="it"><span class="n">1.</span> ご予約の変更・キャンセルは、ご予約日の前日午前10時（メキシコシティ時間）まで、第6条の料金なしで承ります（前日がお休みの日でも同じです）。前金の扱いは第4条のとおりです。</p>
+<p class="it"><span class="n">2.</span> ご連絡は、書いて残る方法でお願いいたします：メール（確定メールにご返信いただくか、thehome.hair.recreative@gmail.com まで）、インスタグラムのメッセージ（キャンセルボタンまたは文）、またはワッツアップの文。お電話でのご連絡はお受けしておりません。</p>
+<p class="it"><span class="n">3.</span> 当店のメール・インスタグラム・ワッツアップに記録された、受け取りの時刻で判断いたします。</p>
+<p class="it"><span class="n">4.</span> 前日午前10時を過ぎてからお申し込みいただいたご予約は、確定後の変更・キャンセルはすべて期限後の扱いとなり、確定の時から第6条が適用されます。前日午前10時より前にお申し込みいただき、当店の確定のご連絡が前日午前10時を過ぎた場合は、当店が確定のご連絡を送った時刻から1時間以内は、第6条の料金なしで変更・キャンセルできます。確定のご連絡が20時を過ぎた場合は、翌朝9時までとします。どちらの場合も、ご予約の開始時刻の2時間前までです。期限の日時は確定のご連絡に記載します。確定のご連絡が迷惑メールのフォルダに入った場合も、当店が送った時刻から数えます（第2条第3項・第4項）。前金の扱いは第4条のとおりです。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第85条</p>
+<h2>第6条 料金の100%を頂戴する場合</h2>
+<p class="it"><span class="n">1.</span> 次の場合は、ご予約の料金の100%を頂戴いたします。</p>
+<ul>
+<li>❶ 前日午前10時以降のキャンセル</li>
+<li>❷ 前日午前10時以降のご予約の日または時間の変更</li>
+<li>❸ ご予約の開始時刻から15分以上の遅刻</li>
+<li>❹ ご来店されなかった場合</li>
+<li>❺ 前日午前10時以降に、ご予約のメニューを減らした場合（減らしたメニューの料金の100%）</li>
+</ul>
+<p class="it"><span class="n">2.</span> 「ご予約の料金」とは、確定メールに金額をはっきり記載した、ご予約メニューの合計の料金です。</p>
+<p class="it"><span class="n">3.</span> 前金をお支払いの場合は、前金をこの料金に充て、返金いたしません。100%に足りない分は、お支払い方法とあわせてメールでお願いいたします。お客様の同意なく、カードや口座から引き落とすことはありません。この条の料金のお支払いが残っている間は、新しいご予約の確定の前に、そのお支払いをお願いすることがあります。</p>
+<p class="it"><span class="n">4.</span> ❷の場合、新しいお時間でご来店いただく時は、新しいご予約は100%のお支払いを確認した時に確定し、いただいた100%を新しいご予約の施術の料金に充てます。充てるのは1回だけです。新しいご予約を変更・キャンセルされた場合や、ご来店されなかった場合は、お返しも振り替えもいたしません（追加の料金もいただきません）。</p>
+<p class="it"><span class="n">5.</span> ❸の場合、ご予約はキャンセル扱いとなり、施術は行いません。キャンセル扱いは、当店からのお知らせがあるかどうかに関係なく、ご予約の開始時刻から15分で決まります。</p>
+<p class="it"><span class="n">6.</span> この条の料金は、ご予約の際に合意する違約金です。施術の料金を超えることはありません。この条の第1項❶〜❺の場合（キャンセル・変更・遅刻・ご来店なし・メニューを減らした場合）について、この料金のほかに損害の請求はいたしません。</p>
+<p class="it"><span class="n">7.</span> これらの料金は、確定したご予約にだけ適用します（第2条）。</p>
+<p class="it"><span class="n">8.</span> ❺は、当店が施術できないと判断した場合（第10条）には適用しません。当日の料金の変更を第3条第3項でお断りになった場合は、第6条を適用しません。同じ料金か、より高いメニューへの変更は、メニューを減らしたことにはなりません。より安いメニューへの変更は、料金の差の分だけメニューを減らしたことになります。</p>
+<p class="it"><span class="n">9.</span> 15分未満の遅刻の場合、またはご希望の施術がご予約の時間より長くかかる場合は、ご予約の時間の中でできる範囲の施術を行います。始める前に、どこまでできるかをお伝えします。遅刻によってご予約の料金は変わりません。施術を短くしたくない場合は、別の日時をお選びいただけます。その場合は、この条の第1項❷と第4項を適用します。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第10条・第85条、メキシコシティ民法 第1840条・第1842条（違約金を求める時、損の証明はいらない）・第1843条・第1846条（遅れのための違約金）</p>
+<h2>第7条 当店の都合で施術できない場合</h2>
+<p class="it"><span class="n">1.</span> 当店の判断で（お客様のご希望によらず）ご予約をキャンセル・変更した場合、または当店の理由で施術できない場合は、次のどちらかをお選びいただけます。</p>
+<ul>
+<li>新しい日時へのご予約</li>
+<li>お支払いいただいた額の全額返金（お支払いと同じ方法で返金します）</li>
+</ul>
+<p class="it"><span class="n">2.</span> どちらの場合も、お支払い額（そのご予約のためにお支払いいただいた額）の20%以上の補償をいたします。補償は、次回の料金からの割引か返金か、お客様がお選びいただけます。</p>
+<p class="it"><span class="n">3.</span> この場合、第6条の料金はいただきません。</p>
+<p class="it"><span class="n">4.</span> 当店の理由で、施術の開始が15分以上遅れた場合も、この条の第2項の補償をいたします。</p>
+<p class="fund">根拠：連邦消費者保護法 第92条（お支払いと同じ方法での返金）・第92条の2・第92条の3（20%以上の補償）</p>
+<h2>第8条 不可抗力・ご病気など</h2>
+<p class="it"><span class="n">1.</span> 施術を始める前に、行政による営業停止・当店の被害・当店の周辺一帯の停電や断水など、当店が営業できないやむを得ない事情（不可抗力）でご予約を行えない場合は、第6条の料金はいただきません。前金は新しいご予約へ振り替えます。</p>
+<p class="it"><span class="n">2.</span> ご病気・おけが、または配偶者・パートナー・2親等までのご家族のご不幸でご来店できず、ご予約の時刻までにご連絡いただいた場合は、第6条の料金はいただきません。前金は返金せず、新しいご予約へ振り替えます。この場合は、公的な証明を必ず見せていただきます。ご病気・おけがの場合は医師の免許番号（cédula profesional）が書かれた診断書、ご家族のご不幸の場合は死亡証明書などです。証明は、ご連絡の時、または遅くとも元のご予約の日の翌日から数えて7日以内に見せていただき、見せていただけない場合は、第6条を適用します。証明は拝見して確かめるだけで、写しはお預かりしません。何度目でも同じ扱いです（2回目以降も第6条の料金はいただかず、前金は振り替えだけです）。</p>
+<p class="it"><span class="n">3.</span> この条で振り替えた前金は、元のご予約の日の翌日から数えて7日以内の日のご予約にお使いいただけます。ただし、当店がご予約をお受けできなかった場合（この条の第1項）は、当店が再びご予約をお受けできるようになった日から数えて7日以内（その日を含みます）とします。当店の連続7日以上のお休みの扱いは、第4条第5項のただし書きのとおりです。お客様が期限内にお申し込みをお送りいただいたのに、期限内に当店の空きがない場合に限り、当店の次の空きの日まで延ばします。振り替えた前金で入れた新しいご予約を期限内に変更・キャンセルされた場合は、第4条第5項（振り替えはもう1回だけ）を適用します。</p>
+<p class="it"><span class="n">4.</span> 当店がお客様の安全のために施術を行わないと判断した場合（第10条第5項）は、第6条の料金はいただかず、前金を新しいご予約へ振り替えるか、お支払いと同じ方法ですぐにお返しするか（第4条第7項）を、お選びいただけます。カラーの前の皮膚のテストをご希望にならない場合（第10条第3項）は、第6条の料金はいただかず、前金を新しいご予約へ振り替えます。</p>
+<p class="it"><span class="n">5.</span> 振り替えた前金を期間内にご利用にならなかった場合、この条の第1項の場合と、当店がお客様の安全のために施術を行わないと判断した場合（第10条第5項）は、前金をお返しします（第4条第7項）。この条の第2項・第8項の場合と、皮膚のテストをご希望にならない場合（第10条第3項）は、前金は無効となります。</p>
+<p class="it"><span class="n">6.</span> メキシコシティの渋滞、デモ・行進・道路の封鎖、公共交通機関の遅れ・運休・ストライキは、よく起こり、前もって予想できる事情のため、この条の第1項・第8項の不可抗力には当たりません。時間に余裕をもってお出かけいただき、出発の前に道路の状況をご確認ください。これらの理由で15分以上遅れた場合、ご来店されなかった場合、期限後にキャンセルされた場合は、第6条が適用されます。第6条第1項❸の15分が、少しの遅れのための余裕です。この約款にご同意いただくことで、これらの事情があっても第6条の料金がなくならないことを、はっきりお引き受けいただいたものとします。この条の第8項を適用するのは、時間に余裕をもってお出かけになっても予想も回避もできなかった場合（例：行政が出した緊急事態、行政による当店の周辺一帯の全面通行止め）で、ご予約の時刻までにご連絡いただき、行政の公式のお知らせか、その出来事の報道を見せていただいた場合だけです。お知らせや報道は拝見して確かめるだけで、写しはお預かりしません。</p>
+<p class="it"><span class="n">7.</span> 施術の途中で、停電・断水など当店の外の理由により施術を続けられなくなった場合も、ご予約のメニューの料金は、その日に全額お支払いいただき、返金はいたしません。残りの施術は、別の日に追加の料金なしで行います。当店が、元のご予約の日の翌日から数えて7日以内の日時を2つ以上メールでお知らせし、その記録を残します（連続7日以上のお休みの場合は、第4条第5項のただし書きのとおり延ばします）。お客様が期限内にお申し込みをお送りいただいたのに、期限内に当店の空きがない場合に限り、当店の次の空きの日まで延ばします。期限内に残りの施術をお受けにならなかった場合、残りの施術は無効となり、返金はいたしません。</p>
+<p class="it"><span class="n">8.</span> 施術を始める前に、地震・地震警報など、当店は営業しているものの、やむを得ない事情（不可抗力）でお客様がご来店できない場合は、第6条の料金はいただきません。前金は返金せず、新しいご予約へ1回だけ振り替えます（期限はこの条の第3項のとおりです）。</p>
+<p class="fund">根拠：メキシコシティ民法 第1847条（偶然の出来事や避けられない力で守れなかった時は、違約金を請求できない）・第2111条（はっきり引き受けた場合は、偶然の出来事でも責任を負う）、連邦消費者保護法 第85条、判例 II.1o.C.158 C（登録番号 197162）、最高裁判所 第3小法廷の判例（登録番号 341341）（不可抗力には、予想できない出来事と、本当に無理であることが必要。予想できる出来事なら、前もって備えなければならない）</p>
+<h2>第9条 ご予約を取り消す権利</h2>
+<p>ご予約日がお申し込みの日から10営業日より先の場合、ご予約の確定から5営業日以内であれば、料金なしでキャンセルでき、お支払いいただいた額は全額お返しします（第4条第7項）。この条は第4条・第5条より優先します。</p>
+<p class="fund">根拠：連邦消費者保護法 第51条・第56条</p>
+<h2>第10条 施術のご説明・健康と安全</h2>
+<p class="it"><span class="n">1.</span> 施術の前に、施術の内容・おおよその所要時間・使用する薬剤についてご説明します。</p>
+<p class="it"><span class="n">2.</span> アレルギー、頭皮の敏感さや皮膚の症状、妊娠中であること、カラーやトリートメントで反応が出たことがある場合は、施術の前にお知らせください。当店は、これらの健康の情報を、お客様の書面でのご同意がある場合にだけ、当店のカルテに記録します。ご同意は、お客様のメールアドレスにお送りするメールの「同意します」のボタン（ご本人と確かめる仕組み）でいただき、日時・文の版・ご同意いただいたメールアドレスを記録します。予約ページの別のチェック欄（最初はチェックが入っておらず、チェックしなくてもご予約できます）は、このボタンをお送りするためのお申し出です。ご同意いただけない場合も施術はお受けいただけます。その日に必要なことを口頭でお聞きし、その日の施術のためだけに使い、カルテには記録しません。カルテは外に出しません（個人情報の取り扱いのお知らせ）。</p>
+<p class="it"><span class="n">3.</span> ヘアカラーは、重いアレルギー反応を起こすことがあります。カラーの前に、薬剤の説明書に従った皮膚のテスト（パッチテスト）をお願いします。テストをご希望にならない場合は、カラーは行いません。その場合、第6条の料金はいただかず、ほかのメニューへの変更か、前金の振り替え（第8条）をお選びいただけます。</p>
+<p class="it"><span class="n">4.</span> 16歳未満の方にはカラーを行いません。</p>
+<p class="it"><span class="n">5.</span> 髪や頭皮の状態を拝見して、おすすめできない・安全でない施術の場合は、施術の前にご説明し、その施術は行いません。その場合、第6条の料金はいただかず、ほかのメニューへの変更か、前金の振り替えかお返し（第8条）をお選びいただけます。</p>
+<p class="it"><span class="n">6.</span> 仕上がりは、髪の状態・これまでの施術・髪質によって異なります。お伝えする効果の持ちはおおよその目安で、個人差があります。</p>
+<p class="it"><span class="n">7.</span> 当店が施術をお断りするのは、お店・ほかのお客様・スタッフの安全や落ち着きに関わる場合に限ります。そのような場合の決まりは、第10条の2（ふるまい）・第10条の3（持ち去り）・第11条（同伴の方と動物）・第13条（お子様）にも定めています。</p>
+<p class="it"><span class="n">8.</span> 施術中は、貴重品をお手元でお持ちください。お持ち物についての当店の責任は、第10条の4のとおりです。</p>
+<p class="it"><span class="n">9.</span> ご自宅やほかのお店でのものも含め、この12か月に受けた薬剤の施術（カラー・ブリーチ・縮毛矯正・パーマ・ヘナなど）も、施術の前にお知らせください。お知らせがなかった場合や、事実と違った場合、そのために起きた仕上がりや反応は当店の不備には当たりません。</p>
+<p class="it"><span class="n">10.</span> 安全と仕上がりに責任を持つため、お客様がお持ちになったカラー剤・ブリーチ剤などの薬剤は使いません。</p>
+<p class="fund">根拠：連邦消費者保護法 第1条 第1号・第3号・第7条・第32条・第41条・第58条・第90条 第2号（お客様がお知らせくださらなかった場合）、公式規格 NOM-174-SCFI-2007 4.1（施術の内容と所要時間）、公式規格 NOM-141-SSA1/SCFI-2012 5.3.7.2（ヘアカラーの注意表示：アレルギー反応・事前のテスト・16歳未満）、連邦個人情報保護法（民間事業者が持つ個人情報）第8条（健康の情報は、ご本人と確かめる仕組みによる書面の同意）</p>
+<h2>第10条の2 おたがいを大切にするために</h2>
+<p class="it"><span class="n">1.</span> 当店は、どなたにとっても安全で落ち着いた場所であるよう努めています。そのため、ご予約が確定していても、お客様またはお連れの方が、スタッフやほかのお客様に対して次のような行いをされた場合は、施術を始めない、または途中で終了し、お帰りいただくことがあります。</p>
+<ul>
+<li>a) 人をののしる、人に向かってどなる、人に向けた乱暴な言葉・おとしめる言葉を使う</li>
+<li>b) 脅す・威圧する、たたく・物を投げるなどの暴力</li>
+<li>c) どなる・脅す・何度も強く求めるなどして、お約束と違うことや、当店が安全でないとご説明したことを、スタッフに無理にさせようとする</li>
+<li>d) 人を見下す・差別する発言</li>
+</ul>
+<p class="it"><span class="n">2.</span> 次のことは、施術を終了する理由になりません：ていねいに苦情・反対のご意見・仕上がりへのご不満をお伝えいただくこと、ふだんの声の調子、言語、なまり。民族や国籍、肌の色、性別、年齢、障がい、見た目、タトゥー、宗教、性的指向、健康や社会的・経済的な状況、そのほかのお客様の特徴で判断することは決してありません。判断はこの条の第1項の行いだけによるもので、どなたにも同じ基準を使います。</p>
+<p class="it"><span class="n">3.</span> まず、落ち着いてその行いをおやめいただくようお願いします。続いた場合に、ご予約を終了します。この条の第1項b)の場合と、どなたかの安全に危険がある場合は、事前のお願いなしに、すぐに終了します。</p>
+<p class="it"><span class="n">4.</span> 当店が力ずくでお帰りいただくことはありません。お帰りいただけない場合や、どなたかに危険がある場合は、警察（911）に助けを求めます。</p>
+<p class="it"><span class="n">5.</span> 施術がすでに始まっている場合は、お帰りの前に、髪と頭皮が安全な状態になるよう、必要最低限のこと（薬剤を流すなど）をいたします（スタッフにとって安全な場合に限ります）。</p>
+<p class="it"><span class="n">6.</span> この条によりお帰りいただく場合は、施術を始める前か途中かにかかわらず、ご予約の料金の100%を頂戴し、前金を含め、お支払いいただいたお金は一切返金いたしません。この料金は、ご予約の際に合意する違約金です。ご予約の料金を超えることはなく、これ以外の料金はいただきません。</p>
+<p class="it"><span class="n">7.</span> この場合は当店の理由ではないため、第7条の補償はいたしません。</p>
+<p class="it"><span class="n">8.</span> 遅くとも翌日までに、どの行いがあったか・時刻・いただいた金額を、メールでお知らせします。ご納得いただけない場合は、当店へのご連絡か、連邦消費者保護庁へのご相談ができます（第17条）。</p>
+<p class="it"><span class="n">9.</span> ご来店の日より前に、ご予約についてのメッセージやメールでこの条の第1項の行いがあった場合も、この条を適用します。ただし、文で記録が残っている場合に限ります（お電話でのお話は対象にしません）。その場合は、まず文で1回、その行いをおやめいただくようお願いします。続いた場合は、ご予約をキャンセルし、メールでお知らせします。この場合も、この条の第6項のとおり、ご予約の料金の100%を頂戴し、前金を含め、お支払いいただいたお金は一切返金いたしません。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条・第10条・第58条（お店・お客様の安全や落ち着きに関わる理由がある時だけ、サービスをお断りできる）・第85条、連邦差別防止法 第1条 第3号・第5条（客観的・合理的・つり合いのとれた基準）、メキシコシティ差別防止法 第5条・第6条、メキシコシティ営業所法 第10条 A 第8号の2（差別をしない）・第13号（お客様と従業員の安全）、メキシコシティ市民文化法 第26条 第1号、連邦労働法 第3条（暴力のない職場）、メキシコシティ民法 第1796条・第1840条・第1843条・第1949条</p>
+<h2>第10条の3 店内の物の持ち去り</h2>
+<p class="it"><span class="n">1.</span> この条では、この約款のためだけに、次の言葉を使います。「物」とは、当店の売り物の商品・道具・機械・家具・材料、当店のスタッフの私物、ほかのお客様のお持ち物をいいます。「持ち去り」とは、これらの物を、代金を払わず、持ち主の許可なく、取ること、または持ち出そうとすることをいいます。値段が低い物でも、ご自分のお持ち物の中に入れただけでも、あとで返した場合でも、持ち去りにあたります。犯罪にあたるかどうかは、警察などの当局が判断します。当店が差し上げたサンプルは、この条の対象ではありません。</p>
+<p class="it"><span class="n">2.</span> 持ち去りがあった場合、当店はすぐに警察（911）を呼び、その後の対応は警察にお任せします。当店の物の場合は、当店が訴えます（スタッフの私物の場合は、当店とそのスタッフが訴えます）。ほかのお客様のお持ち物の場合は、被害に遭われた方の訴えをお手伝いします。</p>
+<p class="it"><span class="n">3.</span> 当店は、物をお返しいただくようお願いします。当店のスタッフが、お客様のお体やお持ち物を調べること、罰金をいただくことは、決してありません。調べるのは警察などの当局だけです。</p>
+<p class="it"><span class="n">4.</span> その時点で施術を止め、施術の場所の外でお待ちいただくか、お帰りいただきます。当店がお客様を引き止めることはありません。施術を始める前か途中かにかかわらず、ご予約の料金の100%を頂戴し、前金を含め、お支払いいただいたお金は一切返金いたしません。この料金は、ご予約の際に合意する違約金で、ご予約の料金を超えることはありません。第7条の補償もいたしません。お返しいただけない物・壊れた物の代金と損害は、この料金とは別に、この条の第5項のとおりです。</p>
+<p class="it"><span class="n">5.</span> お返しいただけない物、壊れた状態で返された物の代金と、そのほかの損害は、法律にしたがってお支払いいただきます。お客様の同意なく、カードや口座から引き落とすことはありません。</p>
+<p class="it"><span class="n">6.</span> 店内で持ち去りをされた方からは、今後のご予約をお受けしません。お店・ほかのお客様・スタッフの安全に関わるためです。この判断は、確かめられる事実（たとえば、物がその方のお手元から見つかった・お返しいただいた・防犯カメラの映像に残っている）にもとづいて行います。間違いだとお考えの場合は、thehome.hair.recreative@gmail.com までご連絡ください。内容を確認し、メールでお返事いたします。</p>
+<p class="it"><span class="n">7.</span> 店内には防犯カメラがあります。持ち去りがあった場合、映像、ご予約の情報、出来事の説明、そのほか当店が持っている証拠は、警察・検察・裁判所にだけお渡しします。映像の扱いは、個人情報の取り扱いのお知らせのとおりです。</p>
+<p class="it"><span class="n">8.</span> 持ち去りを理由に、どなたかの写真や情報を、SNSやメッセージで公開することは、決してありません。</p>
+<p class="fund">根拠：メキシコ合衆国憲法 第17条（自分で勝手に裁かない）、メキシコシティ刑法 第42条・第220条・第226条・第246条（窃盗の意味・成り立つ時・被害者の訴えで捜査される）、連邦消費者保護法 第10条・第58条、メキシコシティ民法 第1910条・第1915条・第1916条（名誉を守る）、連邦個人情報保護法（民間事業者が持つ個人情報）第36条 第5号・第6号、メキシコシティ 私生活・名誉・肖像の民事責任法 第18条・第19条・第26条</p>
+<h2>第10条の4 物の損害と当店の責任</h2>
+<p class="it"><span class="n">1.</span> お客様が店内の物（家具・機器・道具・飾り・販売商品）を、わざと、または不注意で傷つけた・壊した場合は、修理の費用を、修理ができない場合は、古さと状態を考えた同等の物の価格をご負担いただきます。販売商品の場合は、販売価格を上限とし、全額をお支払いいただいた商品はお客様の物となります。</p>
+<p class="it"><span class="n">2.</span> 「不注意」とは、当店のような場所でどなたでもされる通常の注意をされないことをいいます。例：当店がお渡ししていない道具・商品を動かす・使う、そのための物ではない家具に乗る・寄りかかる、店内で走る・物を投げる。</p>
+<p class="it"><span class="n">3.</span> 次の場合は、お支払いはいただきません：通常のご使用（その物の目的どおり、当店のご案内どおりに使うこと）による場合、古くなっていた・欠陥があった場合、置き方が悪かったなど当店の理由による場合、お客様の不注意がない事故の場合。</p>
+<p class="it"><span class="n">4.</span> お支払いの前に、傷んだ物と費用の分かる書類（レシート・請求書・見積もり）をお見せし、金額とお支払い方法をお客様と話し合って決めます。罰金・追加の料金・思い出の価値はいただきません。お客様のご同意なしに、カード・口座・前金から引くことはありません。話し合いで決まらない場合は、連邦消費者保護庁または裁判所にご相談いただけます（第17条）。</p>
+<p class="it"><span class="n">5.</span> 18歳未満の方が店内の物を傷つけた・壊した場合は、第13条第4項のとおりです。</p>
+<p class="it"><span class="n">6.</span> お客様のお持ち物（服を含みます）がなくなった・傷んだ・汚れた場合、次のどちらかにあたる時は、当店が責任を負います。</p>
+<ul>
+<li>a) 当店の落ち度（スタッフの不注意を含みます）や当店の設備・機器による場合</li>
+<li>b) 当店がお示しした場所でお預かりした場合</li>
+</ul>
+<p class="it"><span class="n">7.</span> 当店の設備・機器・スタッフによってお客様がおけがをされた場合も、法律に従って当店が責任を負います。この約款が、この条の第6項とこの項の当店の責任をお客様に移すことはありません。</p>
+<p class="it"><span class="n">8.</span> カラーや薬剤を使う施術では、ケープをお貸しします。薬剤は服に付くと落ちないことがあるため、汚れて困る服はお避けください。</p>
+<p class="fund">根拠：メキシコシティ民法 第1910条・第1913条・第1914条・第1915条・第1924条・第2112条〜第2116条（損害の償いと物の価格）・第2522条（預かった物）、連邦消費者保護法 第10条・第90条 第2号・第3号</p>
+<h2>第11条 同伴の方と動物</h2>
+<p class="it"><span class="n">1.</span> 安全とお店の広さのため、ご予約のお客様のほかに同伴いただけるのは、お一人まで（大人の方、または第13条第3項のお子様）です。お体の不自由な方を手伝う介助の方は、この数に含みません。</p>
+<p class="it"><span class="n">2.</span> 施術を受けないお子様をお連れになる場合は、第13条第3項のとおりです。</p>
+<p class="it"><span class="n">3.</span> 犬などの動物は、前もってご相談いただき、当店がお受けできるとお返事した場合に、ご一緒にお入りいただけます。お受けできるかどうかは、その日のほかのお客様と安全を考えて、当店が判断します。介助犬（盲導犬など、お体の不自由な方を助ける犬）は、いつでも、条件や追加の料金なしで、ご一緒にお入りいただけます。</p>
+<p class="it"><span class="n">4.</span> 介助犬以外の動物とご一緒の場合は、飼い主の方がずっとそばで見守り、ほかのお客様のご迷惑にならないようご配慮ください。動物による汚れ・物の損害・けがは、法律に従い、飼い主の方の責任となります。</p>
+<p class="fund">根拠：連邦消費者保護法 第58条（安全や落ち着きのための制限はできる。お体の不自由な方の盲導犬などはお断りできない）、メキシコシティ営業所法 第10条 A 第8号（介助犬は自由に入れ、条件も料金もつけない）、メキシコシティ民法 第1929条（動物による損害は飼い主が償う）</p>
+<h2>第12条 店頭販売の商品</h2>
+<p class="it"><span class="n">1.</span> 商品の価格は付加価値税込みです。</p>
+<p class="it"><span class="n">2.</span> 商品に不良がある場合は、同じ商品との交換か、お支払いと同じ方法での返金をお選びいただけ、あわせて法律に定める補償をいたします。</p>
+<p class="it"><span class="n">3.</span> 未開封の商品は、お買い上げから7日以内に、レシートをお持ちいただければ、交換・返品を承ります。</p>
+<p class="fund">根拠：連邦消費者保護法 第7条の2・第92条・第92条の3</p>
+<h2>第13条 18歳未満の方とお子様</h2>
+<p class="it"><span class="n">1.</span> 18歳未満の方のご予約は、保護者の方がご予約と約款への同意をお願いいたします。年齢を確かめるため、身分証明書をお見せいただくことがあります。</p>
+<p class="it"><span class="n">2.</span> 16歳未満の方が施術を受けられる場合は、保護者の方がご一緒にご来店いただき、施術の始めから終わりまでお店にいてください。</p>
+<p class="it"><span class="n">3.</span> 施術を受けない16歳未満の方をお連れになる場合は、付き添いの大人の方が、お店にいる間ずっとそばで見守ってください。当店のスタッフは、お子様をお預かりしたり、見守ったりすることはできません。薬剤や道具にお子様が触れないよう、お願いいたします。</p>
+<p class="it"><span class="n">4.</span> 18歳未満の方が店内の物を傷つけた・壊した場合は、第10条の4第1項から第4項を適用します。お支払いは、保護者の方、または付き添いで来られて約款に同意された大人の方にお願いいたします。ただし、当店の理由による場合は除きます。</p>
+<p class="fund">根拠：メキシコシティ民法 第450条・第646条・第1911条・第1919条〜第1922条、連邦消費者保護法 第58条（安全のための制限）</p>
+<h2>第14条 写真と店内での撮影</h2>
+<p class="it"><span class="n">1.</span> お客様と分かる写真は、掲載のたびに、お客様の書いて残るはっきりしたご同意（メッセージなど）がある場合にのみ掲載します。18歳未満の方は、保護者の方のご同意が必要です。ご同意はいつでも thehome.hair.recreative@gmail.com へのご連絡で取り消せます。</p>
+<p class="it"><span class="n">2.</span> ほかの方のプライバシーを守るため、店内で、ほかのお客様の写真・動画を撮ること、スタッフの声や姿を許可なく撮る・録ることは、ご遠慮ください。ご自分の髪の写真は撮っていただけます。</p>
+<p class="fund">根拠：連邦個人情報保護法（民間事業者が持つ個人情報）第7条、メキシコシティ民法 第1916条（私生活・姿の権利）</p>
+<h2>第15条 個人情報</h2>
+<p>お客様の個人情報は、「個人情報の取り扱いのお知らせ」に従って取り扱います。お知らせは予約ページでお見せし、メッセージでご予約の方には、この約款と一緒にお送りします。</p>
+<p class="fund">根拠：連邦個人情報保護法（民間事業者が持つ個人情報）第15条・第16条、連邦消費者保護法 第76条の2 第1号・第2号</p>
+<h2>第16条 言語</h2>
+<p>正式な約款はスペイン語版で、ご同意はスペイン語版に対していただくものです（第1条第2項）。この日本語の文は翻訳で、内容に違いがある場合は、スペイン語版が優先されます。</p>
+<p class="fund">根拠：連邦消費者保護法 第85条（定型の約款はスペイン語で書くこと）</p>
+<h2>第17条 お問い合わせ・苦情・準拠法</h2>
+<p class="it"><span class="n">1.</span> thehome.hair.recreative@gmail.com までメールでご連絡ください。メールでお返事いたします。</p>
+<p class="it"><span class="n">2.</span> 連邦消費者保護庁（消費者相談電話：55 5568 8722／800 468 8722、またはインターネットの窓口 concilianet.profeco.gob.mx）にご相談いただくこともできます。</p>
+<p class="it"><span class="n">3.</span> この約款はメキシコの法律に従います。争いがある場合、お客様は連邦消費者保護庁、またはメキシコシティの管轄の裁判所に申し立てることができます。</p>
+<p class="it"><span class="n">4.</span> この約款は、連邦消費者保護法でお客様に認められた権利（放棄できない権利）を制限するものではありません。</p>
+<p class="fund">根拠：連邦消費者保護法 第1条・第76条の2の1 第6号・第90条 第6号・第99条</p>
+<h2>第18条 連邦消費者保護庁への登録</h2>
+<p>この約款は、連邦消費者保護庁への事前の登録が必要なものではありません。美容のサービスは登録が義務ではないためです。</p>
+<p class="fund">根拠：連邦消費者保護法 第86条・第88条、公式規格 NOM-174-SCFI-2007 5章</p>
+<h2>第19条 お店の情報</h2>
+<p class="it"><span class="n">1.</span> 店名：THE HOME Hair re-creative</p>
+<p class="it"><span class="n">2.</span> 住所：Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México（コロニア・イポドロモ〔コンデサ〕、クアウテモック区）</p>
+<p class="it"><span class="n">3.</span> 電話：55-2179-8065　メール：thehome.hair.recreative@gmail.com</p>
+<p class="it"><span class="n">4.</span> 営業時間：火曜〜金曜 10時〜19時／土曜 10時〜20時／日曜 10時〜17時。お休みの日（定休日と臨時のお休み）は、前もって予約ページでお知らせしています。完全予約制。</p>
+<p class="fund">根拠：連邦消費者保護法 第76条の2 第3号（インターネットでの契約の前に、住所・電話・苦情の窓口を知らせる）、公式規格 NOM-174-SCFI-2007 4.2（営業日と営業時間の表示）、連邦個人情報保護法（民間事業者が持つ個人情報）第15条 第1号（責任者の名前と住所）</p>
+<p class="pol-end">— 約款はここまでです —</p></template>
+<template id="avs-es"><b>Aviso de privacidad simplificado.</b> La persona física que opera THE HOME Hair re-creative (Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México) es responsable de sus datos personales. Usamos su nombre, teléfono, correo electrónico, usuario de Instagram y los datos de su cita y, solo con su consentimiento por escrito, datos de salud (datos personales sensibles), para gestionar su cita, cobrar y prestar el servicio con seguridad. Con su permiso, también los usamos para recordatorios de su próxima visita, publicar fotos de su cabello y mejorar esta página (Google Analytics, con cookies). Puede negarse a estos usos adicionales escribiendo a thehome.hair.recreative@gmail.com. Aviso de privacidad integral: <a href="aviso-privacidad-es.html" target="_blank" rel="noopener">leer aquí</a>.<small>Responsable: NORITSUGU KAWAMOTO, persona física que opera con el nombre comercial THE HOME Hair re-creative.</small></template>
+<template id="avs-en"><b>Short privacy notice.</b> The individual who operates THE HOME Hair re-creative (Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México) is responsible for your personal data. We use your name, phone number, email address, Instagram username and appointment details and, only with your written consent, health data (sensitive personal data) to manage your appointment, take payment and provide the service safely. With your permission, we also use them for reminders of your next visit, to publish photos of your hair and to improve this page (Google Analytics, which uses cookies). You can refuse these additional uses by writing to thehome.hair.recreative@gmail.com. Full privacy notice: <a href="aviso-privacidad-en.html" target="_blank" rel="noopener">read here</a>.<small>Data controller: NORITSUGU KAWAMOTO, an individual operating under the business name THE HOME Hair re-creative.</small></template>
+<template id="avs-ja"><b>個人情報の簡単なお知らせ</b> THE HOME Hair re-creative（Calle Ensenada 138, Col. Hipódromo (Condesa), Alcaldía Cuauhtémoc, C.P. 06100, Ciudad de México）を運営する個人事業主が、お客様の個人情報の責任者です。お名前・電話番号・メールアドレス・インスタグラムのアカウント名・ご予約の情報と、書面のご同意がある場合だけ健康の情報（特に慎重に扱う情報）を、ご予約の管理・お支払い・安全な施術のために使います。お客様のお許しがあれば、次回のご来店のお知らせ・髪の写真の掲載・このページの改善（Google Analytics。クッキーを使います）にも使います。これらをお断りになる場合は thehome.hair.recreative@gmail.com までご連絡ください。完全版のお知らせ：<a href="aviso-privacidad-ja.html" target="_blank" rel="noopener">こちら</a><small>責任者：THE HOME Hair re-creative の名前で営業する個人事業主 NORITSUGU KAWAMOTO</small></template>
 <script>
 const LANGS=['es','en','ja'];
 let LANG=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
@@ -610,6 +1252,29 @@ spamP:{es:'Si no lo recibe, revise su carpeta de spam. Para asegurarse, agregue 
 spamF:{es:'Llega con este logo, desde esta dirección:',en:'It comes with this logo, from this address:',ja:'このロゴ・このアドレスから届きます：'},
 spamCp:{es:'Copiar',en:'Copy',ja:'コピー'},
 spamOk:{es:'Copiado',en:'Copied',ja:'コピーしました'},
+picReqLead:{es:'Este servicio requiere fotos.',en:'This service requires photos.',ja:'このメニューはお写真が必要です。'}, // 【10/10 写真の必須】
+picReqShort:{es:'Obligatorio: 3 de su cabello actual + al menos {b} del estilo deseado.',en:'Required: 3 of your hair now + at least {b} of the style you want.',ja:'必須：今の髪3枚＋なりたい髪型{b}枚以上'},
+picTipReq:{es:'Sin las 3 fotos de su cabello actual (frente, lado y detrás) y al menos {b} del estilo deseado no se puede enviar (lo ideal son 3).',en:'You cannot send without 3 photos of your hair now (front, side and back) and at least {b} of the style you want (3 is ideal).',ja:'今の髪（正面・横・後ろ）の3枚と、なりたい髪型{b}枚以上がないと送れません（3枚そろうのが基本です）。'},
+picTip:{es:'Tómelas con buena luz y bien enfocadas; las fotos borrosas o pequeñas no nos sirven.',en:'Please take them in good light and in focus; blurry or small photos do not help us.',ja:'明るい場所で、ピントを合わせて撮ってください。ぼやけた写真・小さい写真では分かりません。'},
+picSmall:{es:'Esta foto es demasiado pequeña. Por favor, tómela de nuevo con buena luz y bien enfocada.',en:'This photo is too small. Please take it again in good light and in focus.',ja:'この写真は小さすぎます。明るい場所で、ピントを合わせて撮り直してください。'},
+picReqPre0:{es:'Este servicio requiere fotos.',en:'This service requires photos.',ja:'このメニューはお写真が必要です。'},
+picMiss:{es:'Faltan: ',en:'Still needed: ',ja:'あと必要なお写真：'},picMissWant:{es:'{n} más del estilo deseado',en:'{n} more of the style you want',ja:'なりたい髪型 あと{n}枚'},
+picNow:{es:'Su cabello actual',en:'Your hair now',ja:'今の髪'}, // 【写真の枠 10/9】
+picF:{es:'De frente',en:'Front',ja:'正面'},
+picS:{es:'De lado',en:'Side',ja:'横'},
+picB:{es:'Por detrás',en:'Back',ja:'後ろ'},
+picWant:{es:'Estilo deseado',en:'Style you want',ja:'なりたい髪型'},
+picD1:{es:'Foto 1',en:'Photo 1',ja:'1枚目'},picD2:{es:'Foto 2',en:'Photo 2',ja:'2枚目'},picD3:{es:'Foto 3',en:'Photo 3',ja:'3枚目'},
+picOpt:{es:'Opcional: también puede reservar sin fotos.',en:'Optional: you can book without photos.',ja:'写真なしでもご予約いただけます。'},
+picPriv:{es:'Sus fotos solo las ve el salón.',en:'Only the salon sees your photos.',ja:'お写真はお店だけが拝見します。'},
+picErr:{es:'No pudimos leer esta foto. Puede enviarla a thehome.hair.recreative@gmail.com.',en:'We could not read this photo. You can email it to thehome.hair.recreative@gmail.com.',ja:'この写真は読み込めませんでした。thehome.hair.recreative@gmail.com へお送りください。'},
+picSending:{es:'Enviando fotos…',en:'Sending photos…',ja:'写真を送っています…'},
+picGot:{es:'Hemos recibido sus fotos ({n}).',en:'We have received your photos ({n}).',ja:'お写真（{n}枚）を受け取りました。'},
+picLead:{es:'Puede adjuntar sus fotos.',en:'You can attach your photos.',ja:'お写真を添付いただけます。'},
+picBusy:{es:'Preparando foto…',en:'Preparing photo…',ja:'写真を準備しています…'},
+picPre:{es:'Enviaremos sus fotos ({n}) junto con su solicitud.',en:'Your photos ({n}) will be sent with your request.',ja:'お写真（{n}枚）をご予約と一緒にお送りします。'},
+picPre0:{es:'Aún no ha agregado fotos (puede reservar sin ellas).',en:'No photos added yet (you can book without them).',ja:'お写真はまだ入っていません（なくてもご予約いただけます）。'},
+picRetry:{es:'No pudimos enviar las fotos. Su solicitud se envió sin ellas; puede enviarlas a thehome.hair.recreative@gmail.com.',en:'We could not send the photos. Your request was sent without them; you can email them to thehome.hair.recreative@gmail.com.',ja:'お写真を送れませんでした。ご予約はお写真なしで送りました。thehome.hair.recreative@gmail.com へお送りください。'},
 photoReq:{es:'Se necesitan fotos',en:'Photo required',ja:'写真が必要です'}, // 【10/8 Nory】
 mmPick:{es:'Elija una opción.',en:'Please choose one.',ja:'どちらかを選んでください'}, // 【10/8】メンズ／レディースを選ぶまで
 mmNote:{es:'Elige el que mejor se adapte a ti.',en:'Choose the one that suits you best.',ja:'ご自分に合う方をお選びください'},
@@ -660,6 +1325,7 @@ pNowC:{es:'Pague en su visita',en:'Pay at your visit',ja:'お支払いは<br>ご
 tkDs:{es:'Detalle',en:'Details',ja:'明細'}, // 【レビュー 10/6】420px以下
 discOn:{es:'Corte + color −$300 aplicado',en:'Cut + color −$300 applied',ja:'カット＋カラー −$300 適用中'},
 tkLs:{es:'Aprox.',en:'Est.',ja:'目安'}, // 【レビュー 10/6】320〜359px用の短いラベル
+tkCl:{es:'Cerrar ▾',en:'Close ▾',ja:'閉じる ▾'}, // 【10/9 価格の窓】合計の窓を閉じるボタン
 tkL:{es:'Total estimado',en:'Estimated total',ja:'お見積もり（目安）'}, // 【10/6 合計の帯】
 tkS:{es:'Servicios',en:'Services',ja:'施術'},
 tkP:{es:'Productos',en:'Products',ja:'商品'},
@@ -748,6 +1414,34 @@ document.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.clos
  const old=()=>{try{const t=document.createElement('textarea');t.value=SHOP_MAIL;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(t);t.select();t.setSelectionRange(0,99);const r=document.execCommand('copy');t.remove();if(r)ok();}catch(e){}};
  try{navigator.clipboard.writeText(SHOP_MAIL).then(ok,old);}catch(e){old();}});
 const CAMBIO=new URLSearchParams(location.search).get('cambio')==='1'; // 【下書き 10/4】
+
+// ===== 【10/9 規約の同意・案2】チェックを入れるだけ（規約は読むボタンで開ける）。チェックなしでは送れない =====
+const TERMS_VER='2026-10-09';
+const TERMS_HASH={"es": "0b3cdeb47da6aedb", "en": "ce010045d46b1457", "ja": "066a1aa41dabe390"}; // 規約の文の指紋（版の証拠。Apps Script の TERMS_VERSIONS と同じ値）
+const CT={
+ h:{es:'Política de cancelación',en:'Cancellation policy',ja:'キャンセル規約'},
+ l1:{es:'Cargo del 100 % del precio por cancelaciones o cambios después de las 10:00 a.m. del día anterior, o por llegar 15 minutos tarde o más. El anticipo no es reembolsable (artículos 7 y 85 de la Ley Federal de Protección al Consumidor).',en:'100% of the price is charged for cancellations or changes after 10:00 a.m. the day before, or for arriving 15 minutes late or more. Deposits are non-refundable (Federal Consumer Protection Law, Articles 7 and 85).',ja:'前日午前10時以降のキャンセル・変更、15分以上の遅刻は料金の100%。前金は返金なし（連邦消費者保護法 第7条・第85条）。'}, // 【案B】1行
+ l1A:{es:'Cambios y cancelaciones: hasta las 10:00 a.m. (hora de la Ciudad de México) del día anterior{d}, por escrito (por ejemplo, por correo electrónico). No se aceptan avisos por llamada telefónica.',en:'Changes and cancellations: until 10:00 a.m. (Mexico City time) the day before{d}, in writing (for example, by email). We do not accept notices by phone call.',ja:'変更・キャンセルは、前日午前10時（メキシコシティ時間）まで{d}に、メールなど書いて残る方法でご連絡ください。お電話でのご連絡はお受けしておりません。'}, // 【10/9夜】約款 第5条（書いて残る方法・電話は不可・メキシコシティ時間）に合わせた
+ l1d:{es:' ({o}{w} {n} de {m})',en:' ({o}{w}, {m} {n})',ja:'（{o}{m}月{n}日（{w}））'},
+ l1o:{es:'1ª opción: ',en:'1st choice: ',ja:'第1希望なら'},
+ l2:{es:'Cargo del 100 % del precio: cancelación o cambio de la fecha o la hora después de las 10:00 a.m. del día anterior, o llegar 15 minutos tarde o más.',en:'100% of the price is charged for: cancelling or changing the date or time after 10:00 a.m. the day before, or arriving 15 minutes late or more.',ja:'前日午前10時以降のキャンセル・日時の変更、15分以上の遅刻は、料金の100%を頂戴いたします。'},
+ l3:{es:'Si le solicitamos un anticipo, durante la reserva le indicamos el monto y la forma de pago. El anticipo no es reembolsable, conforme a los artículos 7 y 85 de la Ley Federal de Protección al Consumidor.',en:'If we ask you for a deposit, we will tell you the amount and how to pay during the booking. The deposit is non-refundable, in accordance with the Federal Consumer Protection Law, Articles 7 and 85.',ja:'前金をお願いする場合は、ご予約の手続きの中で金額とお支払い方法をご案内します。前金は、連邦消費者保護法 第7条・第85条に基づき、返金いたしません。'},
+ read:{es:'Leer los Términos y Condiciones',en:'Read the Terms and Conditions',ja:'サービス約款を読む'},
+ // 【10/9夜】同意の1行＝簡単なお知らせ_予約ページとカメラ.md「3. 同意のチェック欄」のまま（［…］のリンクは下の consEs）
+ cb:{es:'He leído y acepto los <b>Términos y Condiciones (versión oficial en español)</b> y el <b>Aviso de Privacidad</b>.',en:'I have read and accept the <b>Terms and Conditions (official Spanish version)</b> and the <b>Privacy Notice</b>.',ja:'<b>正式なスペイン語版の約款</b>と<b>個人情報のお知らせ</b>を読み、同意しました。'}, // 【案B】短く（10/10 レビュー：約款 第1条第2項の訳の文にそろえた）
+ cbA:{es:'He leído y acepto los <b>Términos y Condiciones (versión oficial en español)</b> y el <b>Aviso de Privacidad</b>.',en:'I have read and accept the <b>Terms and Conditions (official Spanish version)</b> and the <b>Privacy Notice</b>. The English text is a translation; the Spanish version is the one that applies.',ja:'<b>正式なスペイン語版の約款</b>と<b>個人情報のお知らせ</b>を読み、同意しました。日本語の文は翻訳で、適用されるのはスペイン語版です。'},
+ es:{es:'Ver la versión oficial en español',en:'See the official Spanish version',ja:'正式なスペイン語版を見る'},
+ // 【10/9夜】窓の最初の1行＝約款 第16条と同じ中身（スペイン語版が正式・翻訳は理解のため・違いはスペイン語版が優先）
+ off:{es:'Esta es la versión oficial en español. Las versiones en otros idiomas son traducciones para que comprenda el contenido; si hay alguna diferencia, prevalece la versión en español.',en:'The official version of these Terms is the Spanish version, and your acceptance is given to the Spanish version. This English text is a translation to help you understand it; if there is any difference, the Spanish version prevails.',ja:'正式な約款はスペイン語版で、ご同意はスペイン語版に対していただくものです。この日本語の文は内容を理解していただくための翻訳で、違いがある場合はスペイン語版が優先されます。'},
+ offEs:{en:'You are viewing the official Spanish version.',ja:'正式なスペイン語版を表示しています。'},
+ back:{en:'Back to the English translation',ja:'日本語の翻訳に戻る'},
+ need:{es:'Para enviar, marque la casilla de los Términos y Condiciones.',en:'To send, please tick the Terms and Conditions box.',ja:'送るには、約款のチェックを入れてください。'},
+ t:{es:'Términos y Condiciones',en:'Terms and Conditions',ja:'サービス約款'},
+ x:{es:'Cerrar',en:'Close',ja:'閉じる'},
+ close:{es:'Cerrar',en:'Close',ja:'閉じる'},
+ st:{es:'Puede cerrar y marcar la casilla.',en:'You can close this and tick the box.',ja:'閉じて、チェックを入れてください。'}
+};
+const CONS={checked:false,at:'',opened:false,openedAt:''};
 let CUR=null; // 今の予約（?action=myres）
 const ID = (new URLSearchParams(location.search).get('id')||'').replace(/[^0-9]/g,'');
 // 【Google 10/4】Googleマップから開いた人（?src=google・IDなし・変更のページ以外）は送れる。来店きっかけ「Google」の印
@@ -808,7 +1502,9 @@ function menCutColor(){return menCut()&&sel.menus.indexOf(4)<0&&sel.menus.indexO
 // 次のお客様の始まりと重なってよい分（メンズカット＋カラー ブリーチなしの最後の30分。例：12:00の予約のあと13:30から次を取れる）
 function overlap(){return (menCutColor()&&sel.menus.length===2)?OVERLAP_MEN_CUT_COLOR:0;} // 10/8 レビュー：メンズカット＋カラー（ブリーチなし）のちょうど2つの時だけ（Apps Script の menCutColorMenu_ とそろえる）
 // 空き判定に使う長さ（重なってよい分を引く）。表示・送る長さは dur() のまま
-function durFit(){return Math.max(dur()-overlap(),30);}
+const DUR_NOMENU=60; // 【10/10 おすすめの直し】メニューを選ぶ前は、一番多いカット（1時間）として空きを計算する
+function durFit(){return dur()>0?Math.max(dur()-overlap(),30):DUR_NOMENU;}
+function durEnd(){return dur()>0?Math.max(dur(),30):DUR_NOMENU;} // 【10/10 おすすめの直し】閉店までに終わるかを見る長さ
 function dur(){if(sel.mm==='caballero'&&sel.menus.length===1&&sel.menus[0]===6)return DUR_TREAT_MEN_MENU;let t=0;const perm=sel.menus.indexOf(4)>=0,mc=menCut(),mcc=menCutColor();sel.menus.forEach(i=>{if(perm&&(i===0||i===1))return;if(i===6&&mc)t+=DUR_TREAT_MEN_CUT;else if(i===3&&mcc)t+=DUR_COLOR_MEN_CUT;else if(DUR_MENU[i])t+=DUR_MENU[i];else if(i===4)t+=(sel.menus.indexOf(0)>=0&&sel.menus.indexOf(1)<0)?DUR_PERM_MEN:DUR_PERM_WOMEN;else if(i===3)t+=(sel.ctype===1&&sel.bleach===1)?DUR_COLOR_RETOUCH_BLEACH:DUR_COLOR[sel.ctype===null?0:sel.ctype];else if(i===5)t+=DUR_STRAIGHT[sel.stype===null?0:sel.stype];});return t;}
 const hm=x=>String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0');
 // 【下書き 10/8 本日のおすすめ】日曜・休み・埋まりの3つを読み終えてから出す（読み終える前の、本当は埋まっている時間を出さないため）。読めなかった時も今の予約ページと同じ扱い
@@ -834,7 +1530,7 @@ function freeSlots(d){return slots(d).filter(s=>!busyHit(d,s));}
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&o.time!=='any'&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
  return st;}
-function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+Math.max(dur(),30)<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-Math.max(dur(),30);else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
+function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+durEnd()<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-durEnd();else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
 // ===== 【下書き 10/6 取り置き】Davines商品（任意）=====
 // 読むのは ../productos.json（商品ページと同じ。make_productos_json.py が台帳から作る）。在庫の印 order（在庫0・お取り寄せ）は出さない
 // 選べる数：ラスト1点（last）=1・残りわずか（low）=2・在庫あり（ok）=3（前の設計：1品3個・5品まで）。読めない時・変更のページでは段を出さない
@@ -945,6 +1641,58 @@ function colorUI(){mmUI();straightUI();const on=sel.menus.indexOf(3)>=0;document
 // 写真をDMで送ってもらう：カラー（全部）・パーマ・縮毛矯正
 // 【10/8 Nory】カラーは種類を選んでから判断。リタッチ（ブリーチなし・あり）は写真いらない。全体・ハイライト・ダブル・パーマ・縮毛矯正は写真あり
 function needPhoto(){return (sel.menus.indexOf(3)>=0&&sel.ctype!==null&&sel.ctype!==1)||sel.menus.indexOf(4)>=0||sel.menus.indexOf(5)>=0;}
+
+// 【写真の枠 10/9】写真が必要なメニュー（全体カラー・ハイライト・ダブル・パーマ・縮毛矯正）の時だけ。Apps Script の ?action=gmode が pics:true の時だけ出る。pics:false・読めない時は今と全く同じ画面・同じ送る中身
+var PHOTO_UPLOAD=true; /* ページ側はオン。枠を出すかは Apps Script のスイッチ PHOTO_ON だけで決まる（今の v50 は pics を返さない＝枠は出ない・今と同じ） */
+var PICS_SRV=false,PICS={},PIC_BUSY=0,PIC_KEYS=['f','s','b','d1','d2','d3']; /* var：upd() がこの行より先に呼ばれても止まらない */
+function picMenu(){return needPhoto()||(sel.menus.indexOf(3)>=0&&sel.ctype===1);} // 【10/10 写真の必須】リタッチにも枠（任意）
+function picsOn(){return PHOTO_UPLOAD&&PICS_SRV&&picMenu()&&!CAMBIO;}
+function picMailTxt(){return T(DIRECT?'gPhoto':'photo');} // 今のメールで送る案内（インスタ・WhatsApp は photo、Google・ホームページは gPhoto）
+function picCount(){return PIC_KEYS.filter(k=>PICS[k]).length;}
+// 【10/10 写真の必須】数はここだけで変える：今の髪＝正面・横・後ろの3枚全部／なりたい髪型＝2枚以上／短い辺が600px未満の写真は受け付けない
+var PIC_REQ_NOW_KEYS=['f','s','b'],PIC_REQ_WANT=2,PIC_MIN_SIDE=600;
+function picReq(){return picsOn()&&((sel.menus.indexOf(3)>=0&&(sel.ctype===2||sel.ctype===3))||sel.menus.indexOf(4)>=0);} // picsOn() が false（Apps Script が受け取れない間）は必須にしない
+function picOk(){if(!picReq())return true;return PIC_REQ_NOW_KEYS.every(k=>PICS[k])&&['d1','d2','d3'].filter(k=>PICS[k]).length>=PIC_REQ_WANT;}
+function picMissTxt(){const nm={f:'picF',s:'picS',b:'picB'},a=PIC_REQ_NOW_KEYS.filter(k=>!PICS[k]).map(k=>LANG==='ja'?T(nm[k]):T(nm[k]).toLowerCase());const w=PIC_REQ_WANT-['d1','d2','d3'].filter(k=>PICS[k]).length;if(w>0)a.push(T('picMissWant').replace('{n}',w));return T('picMiss')+a.join(LANG==='ja'?'・':', ');}
+function picTipTxt(){return (picReq()?T('picTipReq').replace('{b}',PIC_REQ_WANT)+' ':'')+T('picTip')+' '+T('picPriv')+' '+picMailTxt();}
+let PIC_TIP_T=0;function picTipShow(on){const t=document.getElementById('picTipB');if(!t)return;clearTimeout(PIC_TIP_T);if(on){t.textContent=picTipTxt();t.hidden=false;PIC_TIP_T=setTimeout(()=>{t.hidden=true;},6000);}else t.hidden=true;}
+(function(){const b=document.getElementById('picBox');if(!b)return;b.querySelectorAll('.pgrid').forEach(g=>{g.addEventListener('mouseenter',()=>picTipShow(true));g.addEventListener('mouseleave',()=>picTipShow(false));});
+ b.querySelectorAll('.pslot label').forEach(l=>{l.addEventListener('touchstart',()=>picTipShow(true),{passive:true});l.addEventListener('focusin',()=>picTipShow(true));l.addEventListener('focusout',()=>picTipShow(false));});})();
+// 押せない「送る」を押そうとした時：写真が足りない時だけ、あと何が要るかを1行（6秒）
+let PIC_NEED_T=0;(document.getElementById('go')||{}).parentNode.addEventListener('click',e=>{const g=document.getElementById('go'); /* iPhone でもタップが届くよう、送るボタンのすぐ外の箱で受ける */if(!g||!g.disabled||picOk())return;const r=g.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)return;
+ const n=document.getElementById('picNeed');if(!n)return;n.textContent=picMissTxt();n.hidden=false;clearTimeout(PIC_NEED_T);PIC_NEED_T=setTimeout(()=>{n.hidden=true;},6000);});
+// 枠を出す時：#photoNote は picLead に、メールの案内は枠の一番下に小さく、送る前の #photoBox2 は picPre(n)／picPre0。出さない時は今の文のまま
+function picUI(){const on=picsOn();const b=document.getElementById('picBox');if(b)b.hidden=!on;if(!PHOTO_UPLOAD)return;
+ const pn=document.getElementById('photoNote'),p2=document.getElementById('photoNote2'),n=picCount();
+ const rq=picReq();pn.textContent=on?T(rq?'picReqLead':'picLead'):picMailTxt(); /* 【10/10 写真の必須】 */
+ {const o=document.getElementById('picOptT');if(o)o.textContent=rq?T('picReqShort').replace('{b}',PIC_REQ_WANT):T('picOpt');}
+ if(on&&!rq){document.getElementById('photoH').hidden=true;pn.style.display='none';document.getElementById('photoBox2').hidden=true;} /* 【10/10 レビュー】任意の時は「写真が必要です」の見出し・案内を出さない（リタッチと同じ見え方）。受け取れない間（on=false）は今のまま */document.getElementById('picMail').textContent=picMailTxt();
+ if(needPhoto()&&!CAMBIO)p2.textContent=on?(n?T('picPre').replace('{n}',n):T(rq?'picReqPre0':'picPre0')):picMailTxt();}
+function picsPayload(){const o={};let n=0;PIC_KEYS.forEach(k=>{if(PICS[k]){o[k]=PICS[k].b64;n++;}});return n?o:null;}
+// 写真を小さくする：長い辺1280px・JPEG 0.72 → 600KBをこえたら0.6 → それでもこえたら1024px。メモリに持つだけ（どこにも保存しない）
+async function picShrink(file){let bm=null,url='';
+ try{bm=await createImageBitmap(file,{imageOrientation:'from-image'});}catch(e){bm=null;}
+ if(!bm){url=URL.createObjectURL(file);bm=await new Promise((ok,ng)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=ng;i.src=url;});}
+ const W=bm.naturalWidth||bm.width,H=bm.naturalHeight||bm.height;if(!W||!H)throw 0;
+ if(Math.min(W,H)<PIC_MIN_SIDE){try{if(bm.close)bm.close();}catch(e){}if(url)URL.revokeObjectURL(url);throw 'small';} /* 【10/10 写真の注意】小さすぎる写真 */
+ const mk=(L,q)=>new Promise(ok=>{const r=Math.min(1,L/Math.max(W,H));const c=document.createElement('canvas');c.width=Math.max(1,Math.round(W*r));c.height=Math.max(1,Math.round(H*r));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(bm,0,0,c.width,c.height);c.toBlob(ok,'image/jpeg',q);});
+ let b=await mk(1280,.72);if(b&&b.size>600000)b=await mk(1280,.6);if(b&&b.size>600000)b=await mk(1024,.6);
+ try{if(bm.close)bm.close();}catch(e){}if(url)URL.revokeObjectURL(url);
+ if(!b||b.size>700000||b.size<500)throw 0;
+ const b64=await new Promise((ok,ng)=>{const f=new FileReader();f.onload=()=>ok(String(f.result).split(',')[1]||'');f.onerror=ng;f.readAsDataURL(b);});
+ if(!b64)throw 0;return {b64:b64,url:URL.createObjectURL(b)};}
+function picClear(k,el){if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}el.classList.remove('has');const im=el.querySelector('img');im.removeAttribute('src');}
+document.querySelectorAll('#picBox .pslot').forEach(el=>{const k=el.dataset.k,inp=el.querySelector('input'),er=document.getElementById('picErr');
+ inp.addEventListener('change',()=>{const f=inp.files&&inp.files[0];inp.value='';if(!f)return;er.hidden=true;el.classList.add('wait');PIC_BUSY++;upd(); /* 作っている間は picBusy・送るボタンは押せない */
+  picShrink(f).then(p=>{picClear(k,el);PICS[k]=p;el.querySelector('img').src=p.url;el.classList.add('has');}).catch(e=>{er.textContent=T(e==='small'?'picSmall':'picErr');er.hidden=false;}).then(()=>{el.classList.remove('wait');PIC_BUSY=Math.max(0,PIC_BUSY-1);upd();});});
+ el.querySelector('.px').addEventListener('click',()=>{picClear(k,el);er.hidden=true;upd();});});
+// 送る：写真がある時だけ pics を足す。550万文字をこえたら写真を外す。返事が too_big なら写真なしで送り直す
+function sendR(o){let p=picsOn()?picsPayload():null,drop=false;let s=JSON.stringify(p?Object.assign({},o,{pics:p}):o);if(p&&s.length>5500000){p=null;drop=true;s=JSON.stringify(o);}
+ const post=bd=>fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:bd}).then(x=>x.json());
+ if(p)document.getElementById('go').textContent=T('picSending');
+ const mark=r=>{if(drop&&r&&typeof r==='object'){r.pics=0;r.picDrop=true;}return r;};
+ return post(s).then(r=>(p&&r&&r.err==='too_big')?(drop=true,post(JSON.stringify(o))):r).then(mark);} // 写真を外して送った時は最後の画面に picRetry
+if(PHOTO_UPLOAD&&!CAMBIO)fetch(API+'?action=gmode').then(x=>x.json()).then(j=>{PICS_SRV=!!(j&&j.pics);upd();}).catch(()=>{});
 // カットだけの人：来店時に写真を持ってきてもらう
 // 【10/8 Nory】カットだけの時の「写真をお持ちください」は出さない（カットには必要ない）
 function cutPhoto(){return false&&!needPhoto()&&(sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0||sel.menus.indexOf(2)>=0);}
@@ -998,8 +1746,13 @@ function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.s
 function hoyTimes(){if(HOY_N<3||ANY||TODAY>LAST||closed(TODAY))return [];
  const taken=s=>sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(TODAY)&&o.time===s);
  let free=freeSlots(TODAY).filter(s=>!taken(s)).sort();if(!free.length)return [];
- free=free.filter(s=>s<'16:00');if(!free.length)return []; // 【Nory 10/8】16時より後（5時など遅い時間）は出さない。早い時間だけ
- const rec=planTimes(TODAY).rec;const a=free.filter(s=>rec.indexOf(s)>=0).concat(free.filter(s=>rec.indexOf(s)<0));return a.slice(0,2);}
+ // 【10/10 おすすめの直し】Nory「2時と4時ですよね」：予約のすぐ後ろ・すぐ前にくっつく空きの始まりの時刻だけ（所要時間が次の予約までに入る物＝free）。16:00まで・早い順に最大2つ
+ const bz=dayBusy(TODAY),D=durFit();
+ if(bz.length){const run=[];free.forEach((s,i)=>{if(i>0&&toM(free[i-1])===toM(s)-STEP)run[run.length-1].push(s);else run.push([s]);});
+  const rec=run.filter(r=>{const st=toM(r[0]),en=toM(r[r.length-1])+D;return bz.some(b=>(st>=b[1]&&st-b[1]<STEP)||(en<=b[0]&&b[0]-en<STEP));}).map(r=>r[0]).filter(s=>s<='16:00');
+  if(rec.length)return rec.slice(0,2);}
+ free=free.filter(s=>s<'16:00');if(!free.length)return []; // 【Nory 10/8】16時より後（5時など遅い時間）は出さない。早い時間だけ（予約のない日・くっつく空きがない日）
+ return free.slice(0,2);}
 function drawHoy(){const e=document.getElementById('hoy');if(!e)return;const a=hoyTimes();if(!a.length){e.hidden=true;e.innerHTML='';return;}
  const isT=sel.date&&ymd(sel.date)===ymd(TODAY);e.setAttribute('aria-label',T('hoyT')+' · '+T('hoyS'));
  e.innerHTML='<div class="hoy-h"><b>'+T('hoyT')+'</b><i class="hoy-k" aria-hidden="true"></i><span>'+T('hoyS')+'</span></div><div class="hoy-ts"></div>';
@@ -1027,6 +1780,7 @@ function permOnly(){return !CAMBIO&&sel.menus.indexOf(4)>=0&&sel.menus.indexOf(0
 function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms=menuText();const o=sel.opts.filter(x=>x.date&&x.time);
  document.getElementById('photoNote').style.display=needPhoto()&&!CAMBIO?'block':'none';{const on=needPhoto()&&!CAMBIO;document.getElementById('photoH').hidden=!on;document.getElementById('photoBox2').hidden=!on;if(on)document.getElementById('photoNote2').textContent=document.getElementById('photoNote').textContent;} /* 【10/8 Nory】見出し＋送る前にも */ // 【下書き 10/4】変更のときはDMで写真のお願いを出さない
  document.getElementById('cutNote').style.display=cutPhoto()?'block':'none';
+ try{picUI();}catch(e){} // 【写真の枠 10/9】
  holdUI(); // 【下書き 10/6 取り置き】
  document.getElementById('sum').innerHTML=(showMenus()||T('menuNone'))+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':''):T('dtNone'))+(holdLine()?'<br>'+holdLine():''); // 【下書き 10/6 取り置き】まとめに1行
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null)&&!(needMM()&&sel.mm===null);
@@ -1035,7 +1789,7 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  const pt=pendTxt();['typeNote','typeNote2'].forEach(id=>{document.getElementById(id).hidden=true;}); /* 【10/8 Nory】日時の下には出さず、種類のボタンのすぐ下に出す */
  {const sh=(id,on)=>{document.getElementById(id).hidden=!on;};sh('tnC',sel.menus.indexOf(3)>=0&&sel.ctype===null);sh('tnB',sel.menus.indexOf(3)>=0&&sel.ctype===1&&sel.bleach===null);sh('tnS',sel.menus.indexOf(5)>=0&&sel.stype===null);sh('tnM',needMM()&&sel.mm===null);
   const wk=sel.menus.indexOf(3)>=0&&sel.ctype===null?'waitC':sel.menus.indexOf(3)>=0&&sel.ctype===1&&sel.bleach===null?'waitB':sel.menus.indexOf(5)>=0&&sel.stype===null?'waitS':needMM()&&sel.mm===null?'waitM':'';sh('s2wait',!!wk);document.getElementById('s2waitT').textContent=wk?T(wk):'';}document.body.classList.toggle('needType',!!pt);
- document.getElementById('go').disabled=!(!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));lock();p2UI();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
+ consDraw();document.getElementById('go').disabled=!(consentOk()&&!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk())));if(PIC_BUSY>0&&picsOn())document.getElementById('go').disabled=true;{const ok=picOk();if(!ok)document.getElementById('go').disabled=true;const pnd=document.getElementById('picNeed');if(pnd&&ok)pnd.hidden=true;} /* 【10/10 写真の必須】 */ /* 【写真の枠 10/9】写真を作っている間 */lock();p2UI();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
 // 【10/7 Nory B案】2人目の予約：送り終えた画面のボタンは同じページを ?d=日付&t=時間 で開き直す（読むだけの引数。src・id・ch・lang などはそのまま引き継ぐ）
 // t ＝ 1人目の「第1希望の開始＋所要時間」を30分きざみに切り上げた時刻。開いた時にその時間が空いていれば最初から選び、空いていなければ時間は選ばずにお知らせを出す
 function p2Url(){const u=new URL(location.href);['d','t'].forEach(k=>u.searchParams.delete(k));const o=sel.opts.find(x=>x.date&&x.time);if(o){u.searchParams.set('d',ymd(o.date));if(o.time!=='any'){const e=Math.ceil((toM(o.time)+Math.max(dur(),30))/STEP)*STEP;u.searchParams.set('t',hm(e));}}u.hash='';return u.toString();}
@@ -1048,10 +1802,53 @@ function fullName(){const n=document.getElementById('name').value.trim(),l=docum
 function telOk(){return document.getElementById('tel').value.replace(/[^0-9]/g,'').length>=10;}
 function mailOk(){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('mail').value.trim());}
 ['name','last','tel','mail'].forEach(i=>document.getElementById(i).addEventListener('input',upd));
+
+// 【10/9 規約の同意・案2】動き
+function ct(k){return CT[k][LANG]||CT[k].es;}
+function consentOk(){return CAMBIO||CONS.checked;}
+function consDate(){ // ①の行の日付：第1希望の前日。希望が全部同じ日なら「第1希望なら」をつけない
+ const ds=sel.opts.filter(x=>x.date).map(x=>x.date);if(!ds.length)return '';
+ const d=new Date(ds[0]);d.setDate(d.getDate()-1);const one=ds.every(x=>ymd(x)===ymd(ds[0]));
+ const W={es:['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],ja:['日','月','火','水','木','金','土']}[LANG];
+ const M={es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],en:['January','February','March','April','May','June','July','August','September','October','November','December'],ja:null}[LANG];
+ return ct('l1d').replace('{o}',one?'':ct('l1o')).replace('{w}',W[d.getDay()]).replace('{n}',d.getDate()).replace('{m}',M?M[d.getMonth()]:(d.getMonth()+1));}
+function avsDraw(){const a=document.getElementById('avs');if(!a||a.dataset.l)return;const t=document.getElementById('avs-'+LANG)||document.getElementById('avs-es');a.innerHTML=t.innerHTML;a.dataset.l=LANG;a.lang=LANG;}
+const AVB={b:{es:'Aviso de privacidad simplificado',en:'Short privacy notice',ja:'個人情報のお知らせ（簡単な版）'},x:{es:'Cerrar',en:'Close',ja:'閉じる'}};
+function avsW(o){document.getElementById('avsW').hidden=!o;document.body.classList.toggle('polOpen',o);if(o)document.getElementById('avsX').focus({preventScroll:true});else document.getElementById('avsB').focus({preventScroll:true});}
+function consDraw(){avsDraw();{const b=document.getElementById('avsB');if(b&&!b.dataset.on){b.dataset.on=1;b.textContent=AVB.b[LANG]||AVB.b.es;document.getElementById('avsX').textContent=AVB.x[LANG]||AVB.x.es;b.onclick=()=>avsW(true);document.getElementById('avsX').onclick=()=>avsW(false);document.getElementById('avsW').addEventListener('click',e=>{if(e.target.id==='avsW')avsW(false);});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('avsW').hidden)avsW(false);});}}const box=document.getElementById('cons');if(!box)return;box.hidden=!!CAMBIO;const nd=document.getElementById('consNeed');if(CAMBIO){if(nd)nd.hidden=true;return;}
+ document.getElementById('consH').textContent=ct('h');document.getElementById('consL1').textContent=ct('l1').replace('{d}',consDate());
+ document.getElementById('consL2').textContent=ct('l2');document.getElementById('consL3').textContent=ct('l3');
+ document.getElementById('consRead').textContent=ct('read');document.getElementById('consCbT').innerHTML=ct('cb');
+ document.getElementById('consCb').checked=CONS.checked;document.getElementById('consLab').classList.toggle('on',CONS.checked);
+ if(nd){nd.textContent=ct('need');nd.hidden=CONS.checked;}}
+let POL_LAST=null;
+function polFill(l){const b=document.getElementById('polBody'),x=document.getElementById('polTx'),o=document.getElementById('polOff');
+ const t=document.getElementById('pol-'+l)||document.getElementById('pol-es');x.innerHTML=t.innerHTML;x.lang=l;b.dataset.l=l;o.innerHTML='';
+ const add=(txt,btn,to)=>{const sp=document.createElement('span');sp.textContent=txt;o.appendChild(sp);if(btn){const k=document.createElement('button');k.type='button';k.textContent=btn;k.onclick=()=>{polFill(to);b.scrollTop=0;};o.appendChild(k);}};
+ if(LANG==='es')add(ct('off'));else if(l==='es')add(CT.offEs[LANG],CT.back[LANG],LANG);else add(ct('off'),ct('es'),'es');}
+function polOpen(){const p=document.getElementById('pol'),b=document.getElementById('polBody');POL_LAST=document.activeElement;
+ polFill(LANG); // お客様の言語の1つだけを入れる（en/ja の画面では、窓の最初の1行からスペイン語の正式版に切りかえられる）
+ document.getElementById('polT').textContent=ct('t');document.getElementById('polX').setAttribute('aria-label',ct('x'));document.getElementById('polClose').textContent=ct('close');
+ document.getElementById('polSt').textContent=ct('st');
+ p.hidden=false;document.body.classList.add('polOpen');b.scrollTop=0;if(!CONS.opened){CONS.opened=true;CONS.openedAt=new Date().toISOString();}
+ b.focus({preventScroll:true});}
+function polClose(){document.getElementById('pol').hidden=true;document.body.classList.remove('polOpen');consDraw();
+ const cb=document.getElementById('consCb');if(!cb.checked){document.getElementById('consLab').scrollIntoView({block:'center',behavior:'smooth'});cb.focus({preventScroll:true});}else if(POL_LAST&&POL_LAST.focus)POL_LAST.focus({preventScroll:true});}
+document.getElementById('consRead').onclick=polOpen;
+document.getElementById('polX').onclick=polClose;document.getElementById('polClose').onclick=polClose;
+document.getElementById('pol').addEventListener('click',e=>{if(e.target.id==='pol')polClose();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('pol').hidden)polClose();});
+document.getElementById('consCb').addEventListener('change',e=>{CONS.checked=e.target.checked;CONS.at=CONS.checked?new Date().toISOString():'';upd();});
+// Apps Script に送る同意の記録（チェックの時刻はお客様の端末の時刻。受け取った時刻は Apps Script が自分で記録する）
+function termsPay(){if(!CONS.checked)return {};let tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+ return {terms:{ver:TERMS_VER,hash:TERMS_HASH[LANG]||'',lang:LANG,mode:'check',at:CONS.at,tz:tz,opened:CONS.opened,openedAt:CONS.openedAt}};}
+consDraw();
+// ===== /規約の同意 =====
+
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;b.textContent=T('sending');document.getElementById('err').textContent='';
- fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay()))}) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(x=>x.json()).then(r=>{if(r&&r.ok){try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+document.getElementById('photoNote').innerHTML+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<a class="ig" href="https://wa.me/'+WA_SHOP+'">'+T('gBack')+'</a>':'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
-  else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
-if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><a class="go" style="text-decoration:none;text-align:center;background:#1f7a4d" href="https://wa.me/525521798065?text='+encodeURIComponent({es:'Hola, me gustaría agendar una cita.',en:'Hello, I would like to book an appointment.',ja:'こんにちは。予約をお願いしたいです。'}[LANG]||'Hola, me gustaría agendar una cita.')+'">'+({es:'Reservar por WhatsApp',en:'Book via WhatsApp',ja:'WhatsAppで予約する'}[LANG]||'Reservar por WhatsApp')+'</a>';app.appendChild(bx);}
+ sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(dur(),30),overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(r&&r.ok){setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML='<img class="logo" src="'+document.querySelector('.logo').src+'"><div class="done"><div class="big">✓</div><h1>'+T(CAMBIO?'cDoneT':'doneT')+'</h1><p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'<p class="waLine" style="margin:14px 0 0;font-size:12px;line-height:1.5;color:#86735f;text-align:center">'+({es:'Solo si es necesario: WhatsApp ',en:'Only if needed: WhatsApp ',ja:'必要な方のみ：WhatsApp '}[LANG]||'')+'<a href="https://wa.me/'+WA_SHOP+'" style="color:inherit;text-decoration:underline;text-underline-offset:2px">55-2179-8065</a></p>' /* 【10/10 WhatsAppは小さな1行】決まり9-3 */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';}
+  else{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');}}).catch(()=>{b.disabled=false;b.textContent=T(CAMBIO?'cSend':'send');document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
+if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a><p class="waLine" style="margin:14px 0 0;font-size:12px;line-height:1.5;color:#86735f;text-align:center">'+({es:'Solo si es necesario: WhatsApp ',en:'Only if needed: WhatsApp ',ja:'必要な方のみ：WhatsApp '}[LANG]||'')+'<a href="https://wa.me/525521798065" style="color:inherit;text-decoration:underline;text-underline-offset:2px">55-2179-8065</a></p>' /* 【10/10 WhatsAppは小さな1行】決まり9-3：緑のボタンをやめた */;app.appendChild(bx);}
 document.documentElement.lang=LANG;
 document.querySelectorAll('[data-t]').forEach(e=>e.textContent=T(e.dataset.t));spamFill();
 document.getElementById('name').placeholder=T('name');document.getElementById('last').placeholder=T('last');if(LANG==='es'){const x=document.getElementById('last2');x.style.display='block';x.placeholder=T('last2');}if(LANG==='ja'){const r=document.getElementById('nameRow');r.insertBefore(document.getElementById('last'),document.getElementById('name'));}document.getElementById('tel').placeholder=T('tel');document.getElementById('mail').placeholder=T('mail');document.getElementById('note').placeholder=T('optional');
@@ -1190,6 +1987,12 @@ function tipBind(b,kind,i){b.addEventListener('pointerenter',e=>{if(e.pointerTyp
 [...cEl.children].forEach((b,i)=>tipBind(b,'c',i));[...bEl.children].forEach((b,i)=>tipBind(b,'b',i));[...sEl.children].forEach((b,i)=>tipBind(b,'s',i));
 document.getElementById('upsC').addEventListener('click',upsGo);document.getElementById('upsT').addEventListener('click',upsGo);
 (()=>{const b=document.getElementById('tkBtn');if(!b)return;b.onclick=()=>{const d=document.getElementById('tkD');const o=d.hidden;d.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');document.getElementById('tk').classList.toggle('open',o);};
+ /* 【10/9 価格の窓】Nory：値段をもう一度タップ・窓の外をタップで閉じる（下の帯の値段は今までどおり開く／閉じる）。窓の中の「合計」の行・上の右の「閉じる ▾」でも閉じる。指を動かした時（スクロール）は閉じない。消す×・元に戻す・吹き出しは今のまま */
+ const tkClose=()=>{const d=document.getElementById('tkD');if(d.hidden)return;d.hidden=true;b.setAttribute('aria-expanded','false');document.getElementById('tk').classList.remove('open');};
+ document.getElementById('tkCl').addEventListener('click',tkClose);
+ let tkPD=null;document.addEventListener('pointerdown',e=>{tkPD=null;const t=e.target;if(!t||!t.closest||document.getElementById('tkD').hidden)return;if(t.closest('#tkD .tk-t')||!(t.closest('#tk')||t.closest('#tkToast')||t.closest('#pv')))tkPD=[e.clientX,e.clientY];},true);
+ document.addEventListener('pointerup',e=>{const p=tkPD;tkPD=null;if(!p||Math.abs(e.clientX-p[0])>10||Math.abs(e.clientY-p[1])>10)return;tkClose();},true);
+ document.addEventListener('pointercancel',()=>{tkPD=null;},true);
  const u0=upd;upd=function(){u0();tkUpd();};})();
 // 【10/7 Nory B案】2人目：同じ日を第1希望に選んでおく（第1希望の欄を開いたまま）。時間はその日に空いていれば選ぶ。空いていなければ選ばずにお知らせ
 if(P2&&P2.d>=TODAY&&P2.d<=LAST&&!closed(P2.d)){sel.opts[0].date=P2.d;sel.cur=0;view=new Date(P2.d.getFullYear(),P2.d.getMonth(),1);
@@ -1200,7 +2003,7 @@ drawTimes();drawOpts();drawCal();upd();
 <div style="text-align:center;margin:0 auto;max-width:480px;padding:14px 16px 28px;font-size:13px"><a id="homeL" href="/" style="color:#777">← Inicio</a></div>
 <script>(function(){var a=document.getElementById('homeL'),t={es:'Inicio',en:'Home',ja:'ホーム'};function u(){var l=document.documentElement.lang;if(!t[l])l='es';a.textContent='← '+t[l];a.href='/?lang='+l;}u();new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});})();</script>
 <!-- 【10/6】Googleアナリティクスのお知らせ（小さく1行・ページの言語に合わせる） -->
-<script>(function(){var t={es:'Este sitio usa Google Analytics para contar las visitas.',en:'This site uses Google Analytics to count visits.',ja:'このサイトはアクセス数を数えるため Google アナリティクスを使っています。'};var p=document.createElement('p');p.className='ga-note';p.style.cssText='margin:4px auto 12px;padding:0 16px;max-width:520px;text-align:center;font-size:11px;line-height:1.5;color:#8a7663;opacity:.9;position:relative;z-index:1';function L(){var l=(document.documentElement.lang||new URLSearchParams(location.search).get('lang')||navigator.language||'es').slice(0,2).toLowerCase();return t[l]?l:'es';}function u(){p.textContent=t[L()];}u();document.body.appendChild(p);try{new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}})();</script>
+<script>(function(){var t={es:'Google Analytics',en:'Google Analytics',ja:'Google Analytics'};var p=document.createElement('p');p.className='ga-note';p.style.cssText='margin:4px auto 12px;padding:0 16px;max-width:520px;text-align:center;font-size:11px;line-height:1.5;color:#8a7663;opacity:.9;position:relative;z-index:1';function L(){var l=(document.documentElement.lang||new URLSearchParams(location.search).get('lang')||navigator.language||'es').slice(0,2).toLowerCase();return t[l]?l:'es';}function u(){p.textContent=t[L()];}u();document.body.appendChild(p);try{new MutationObserver(u).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}})();</script>
 <script>
 /* 【10/8 Nory】予約ページの蛇の動き（見た目だけ。予約の仕組みの変数・関数にはさわらない）。動きを減らす設定の人・古いブラウザでは何もしない */
 (function(){try{if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
