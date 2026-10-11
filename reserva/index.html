@@ -695,6 +695,7 @@ body.polOpen{overflow:hidden}
 <button type="button" class="avs-b" id="avsB" aria-haspopup="dialog" aria-controls="avsW"></button><div class="avsW" id="avsW" role="dialog" aria-modal="true" hidden><div class="avsW-box"><div class="avs" id="avs"></div><button type="button" class="avsW-x" id="avsX"></button></div></div><!-- 【案B】個人情報の簡単なお知らせは1行のボタン＋小さな窓（中身は案Aと同じ） --><!-- 【10/9夜 個人情報】簡単なお知らせ（連邦個人情報保護法 第16条 第2号）＋完全版へのリンク -->
 <div class="evb" id="evBox" hidden><!-- 【メール確認 10/9】B：確認コード（コードを送ったあとだけ出る。答えはページに持たない） --><p class="evb-t" id="evSent"></p><input id="evCode" class="evb-in" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" aria-labelledby="evSent"><div class="evb-m" id="evMsg" role="status" hidden></div><div class="evb-a"><button type="button" id="evAgain"></button><button type="button" id="evFix"></button></div></div>
 <button class="go" id="go" disabled></button>
+<div class="hint" id="evNote" role="status" style="text-align:center;margin-top:8px;display:none"></div><!-- 【10/10 Nory】コードを送ったあとの1行 -->
 <div class="cons-need" id="consNeed" hidden></div>
 <div class="cons-need" id="picNeed" hidden></div><!-- 【10/10 写真の必須】押そうとした時だけ -->
 <div class="hint" id="need3" style="text-align:center;margin-top:8px;display:none;color:#b00020" data-t="need3"></div>
@@ -1453,7 +1454,7 @@ document.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.clos
 const CAMBIO=new URLSearchParams(location.search).get('cambio')==='1'; // 【下書き 10/4】
 // 【メール確認 10/9】状態（早めに置く：upd() から使うため）。EV：''＝オフ／'a'＝メール2回／'ab'＝メール2回＋確認コード（Apps Script の ?action=gmode の ev で決まる）
 let EV=new URLSearchParams(location.search).get('evtest')==='1'?'ab':''; // evtest=1 は下見・試し用（ページの見た目だけ。確かめるのは Apps Script なので素通りはできない）
-const EVS={vt:'',to:'',okVt:'',okTo:'',gapEnd:0,timer:0,busy:false};
+const EVS={vt:'',to:'',okVt:'',okTo:'',gapEnd:0,timer:0,busy:false,sentTo:'',gapS:60,gt:0,pend:null}; // pend＝送ったコードの控え（同じアドレスなら入れる欄を戻す・このページの中だけ） // 【10/10 再送の60秒】sentTo＝最後にコードを送ったアドレス
 let SAME_P2=false; // 【同じ名前 v53h】Apps Script の ?action=gmode の sp で決まる（SAME_PERSON=on の時だけ true）。ページの公開し直しはいらない
 
 // ===== 【10/9 規約の同意・案2】チェックを入れるだけ（規約は読むボタンで開ける）。チェックなしでは送れない =====
@@ -1903,6 +1904,8 @@ const EVT={
  exp:{es:'El código venció. Pida uno nuevo.',en:'The code expired. Please request a new one.',ja:'確認コードの期限が切れました。もう一度お送りください。'},
  lock:{es:'Demasiados intentos. Pida un código nuevo.',en:'Too many attempts. Please request a new code.',ja:'回数の上限です。新しいコードをお送りください。'},
  wait:{es:'Espere un momento y vuelva a intentarlo.',en:'Please wait a moment and try again.',ja:'少し待ってから、もう一度お試しください。'},
+ waitBtn:{es:'Reenviar en {s} s',en:'Resend in {s} s',ja:'再送まで {s}秒'}, // 【10/10 Nory】60秒は押せない・ボタンの中に残りの秒数
+ sentNote:{es:'Le enviamos el código. Revise su correo, incluida la carpeta de spam.',en:'We have sent you the code. Please check your email, including your spam folder.',ja:'確認コードをお送りしました。メール（迷惑メールフォルダも）をご確認ください。'},
  limit:{es:'Ya enviamos varios códigos a este correo. Intente más tarde.',en:'We already sent several codes to this email. Please try later.',ja:'このメールには何度かお送りしました。時間をおいてお試しください。'},
  fail:{es:'No pudimos enviar el código. Revise su correo.',en:'We could not send the code. Please check your email address.',ja:'確認コードを送れませんでした。メールアドレスをご確認ください。'},
  nomail:{es:'Escriba un correo válido.',en:'Please enter a valid email.',ja:'正しいメールアドレスを入力してください。'},
@@ -1919,8 +1922,12 @@ function evMail(){return document.getElementById('mail').value.trim().toLowerCas
 function mail2Ok(){if(!evOn())return true;const b=document.getElementById('mail2').value.trim().toLowerCase();return !!b&&b===evMail();}
 function evVerified(){return evB()&&!!EVS.okVt&&EVS.okTo===evMail();}
 function evAsk(){return evB()&&!EVS.vt&&!evVerified();} // 次の「送る」がコードを頼むだけか
-function evReady(){if(!mail2Ok())return false;if(!evB()||evVerified()||!EVS.vt)return true;return /^\d{6}$/.test(document.getElementById('evCode').value);}
-function goLabel(){return CAMBIO?T('cSend'):(evAsk()?et('sendCode'):T('send'));}
+function evCool(){return evAsk()&&!!EVS.sentTo&&EVS.sentTo===evMail()&&EVS.gapEnd>Date.now();} // 【10/10】同じアドレスへ送ってから60秒の間
+function evNoteDraw(){const n=document.getElementById('evNote');if(!n)return;const on=evB()&&!!EVS.sentTo&&EVS.sentTo===evMail()&&!evVerified();n.textContent=on?et('sentNote'):'';n.style.display=on?'':'none';}
+function evGoTick(){const g=document.getElementById('go');if(g&&!EVS.busy&&evCool()){g.disabled=true;g.textContent=goLabel();}evNoteDraw();if(Date.now()>=EVS.gapEnd){clearInterval(EVS.gt);if(!EVS.busy)upd();}}
+function evGoStart(){clearInterval(EVS.gt);EVS.gt=setInterval(evGoTick,1000);evGoTick();}
+function evReady(){if(evCool())return false;if(!mail2Ok())return false;if(!evB()||evVerified()||!EVS.vt)return true;return /^\d{6}$/.test(document.getElementById('evCode').value);}
+function goLabel(){return CAMBIO?T('cSend'):(evAsk()?(EVS.sentTo&&EVS.sentTo===evMail()?(evCool()?et('waitBtn').replace('{s}',Math.ceil((EVS.gapEnd-Date.now())/1000)):et('again')):et('sendCode')):T('send'));}
 function evReset(){EVS.vt='';EVS.to='';clearInterval(EVS.timer);const c=document.getElementById('evCode');if(c)c.value='';const m=document.getElementById('evMsg');if(m)m.hidden=true;}
 function evAgainDraw(){const a=document.getElementById('evAgain');if(!a)return;const s=Math.ceil((EVS.gapEnd-Date.now())/1000);a.disabled=s>0;a.textContent=s>0?et('againW').replace('{s}',s):et('again');}
 function evGap(s){EVS.gapEnd=Date.now()+Math.max(0,+s||60)*1000;clearInterval(EVS.timer);EVS.timer=setInterval(()=>{evAgainDraw();if(Date.now()>=EVS.gapEnd)clearInterval(EVS.timer);},1000);evAgainDraw();}
@@ -1930,9 +1937,10 @@ function evDraw(){const m2=document.getElementById('mail2'),box=document.getElem
  const b=m2.value.trim(),mis=document.getElementById('evMis');mis.textContent=et('mis');
  mis.hidden=!(evOn()&&b&&b.toLowerCase()!==evMail()&&(b.length>=evMail().length||document.activeElement!==m2)); // 打っている途中は出さない
  if(EVS.vt&&EVS.to!==evMail())evReset(); // アドレスを変えたら、前のコードは使わない
+ else if(evB()&&!EVS.vt&&EVS.pend&&EVS.pend.to===evMail()&&EVS.pend.exp>Date.now()){EVS.vt=EVS.pend.vt;EVS.to=EVS.pend.to;clearInterval(EVS.timer);if(EVS.gapEnd>Date.now())EVS.timer=setInterval(()=>{evAgainDraw();if(Date.now()>=EVS.gapEnd)clearInterval(EVS.timer);},1000);upd();return;} // 【10/10】同じアドレスに戻ったら、届いたコードを入れる欄を戻す
  box.hidden=!(evB()&&EVS.vt);
  if(!box.hidden){document.getElementById('evSent').innerHTML=evEsc(et('sent')).replace('{m}','<b>'+evEsc(EVS.to)+'</b>');document.getElementById('evFix').textContent=et('fix');evAgainDraw();}
- const g=document.getElementById('go');if(!EVS.busy)g.textContent=goLabel();}
+ const g=document.getElementById('go');if(!EVS.busy)g.textContent=goLabel();evNoteDraw();}
 function evPay(){if(!evOn())return {};const o={mail2:document.getElementById('mail2').value.trim(),dv:EV_DV};
  if(evB()){if(EVS.vt){o.vt=EVS.vt;o.vcode=document.getElementById('evCode').value.replace(/\D/g,'');}else if(evVerified())o.vt=EVS.okVt;}
  return o;}
@@ -1941,10 +1949,11 @@ function evResp(r){EVS.busy=false;
  if(r&&r.ok){if(evB()&&(EVS.vt||evVerified())){try{sessionStorage.setItem('thv_ev',JSON.stringify({vt:EVS.vt||EVS.okVt,m:evMail()}));}catch(e){}}return false;}
  if(!r)return false;
  const b=document.getElementById('go'),err=document.getElementById('err');
- if(r.need==='code'){EVS.vt=String(r.vt||'');EVS.to=evMail();EVS.okVt='';evGap(r.gap);err.textContent='';document.getElementById('evCode').value='';document.getElementById('evMsg').hidden=true;
+ if(r.need==='code'){EVS.vt=String(r.vt||'');EVS.to=evMail();EVS.okVt='';evGap(r.gap);EVS.sentTo=EVS.to;EVS.gapS=Math.max(1,+r.gap||60);evGoStart();EVS.pend={vt:EVS.vt,to:EVS.to,exp:Date.now()+Math.max(1,+r.ttl||10)*60000};err.textContent='';document.getElementById('evCode').value='';document.getElementById('evMsg').hidden=true;
   upd();evDraw();const c=document.getElementById('evCode');document.getElementById('evBox').scrollIntoView({block:'center',behavior:'smooth'});try{c.focus({preventScroll:true});}catch(e){}return true;}
+ if(r.err==='vwait'){const m=evMail();if(!(EVS.sentTo===m&&EVS.gapEnd>Date.now()))EVS.gapEnd=Date.now()+EVS.gapS*1000;EVS.sentTo=m;err.textContent='';upd();evGoStart();return true;} // 【10/10】赤い文にしない・同じ待ちの表示（残りが分からない時は60秒）
  const K={mail2:'mis',no_mail:'nomail',no_tel:'notel',vbad:'bad',vexp:'exp',vlock:'lock',vwait:'wait',vlimit:'limit',vsend:'fail',vbusy:'busy'}[r.err];if(!K)return false;
- if(r.err==='vexp'||r.err==='vlock'){evReset();EVS.okVt='';EVS.okTo='';try{sessionStorage.removeItem('thv_ev');}catch(e){}}
+ if(r.err==='vexp'||r.err==='vlock'){EVS.pend=null;evReset();EVS.okVt='';EVS.okTo='';try{sessionStorage.removeItem('thv_ev');}catch(e){}}
  const txt=r.err==='vbad'?(r.left?et('bad').replace('{n}',r.left):et('bad0')):et(K);
  upd();evDraw();
  if(r.err==='vbad'&&!document.getElementById('evBox').hidden){const m=document.getElementById('evMsg');m.textContent=txt;m.hidden=false;document.getElementById('evCode').select();err.textContent='';}
@@ -1955,8 +1964,8 @@ document.getElementById('mail2').addEventListener('blur',evDraw);
 document.getElementById('mail2').addEventListener('paste',e=>e.preventDefault()); // 【v53h レビュー1】「もう一度」は貼りつけ不可（打ちまちがいを写さない）
 document.getElementById('mail2').addEventListener('drop',e=>e.preventDefault());
 document.getElementById('evCode').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,6);if(v!==e.target.value)e.target.value=v;document.getElementById('evMsg').hidden=true;upd();});
-document.getElementById('evAgain').onclick=()=>{evReset();upd();const g=document.getElementById('go');if(!g.disabled)g.click();};
-document.getElementById('evFix').onclick=()=>{evReset();upd();evDraw();const m=document.getElementById('mail');m.scrollIntoView({block:'center',behavior:'smooth'});try{m.focus({preventScroll:true});m.select();}catch(e){}};
+document.getElementById('evAgain').onclick=()=>{EVS.pend=null;evReset();upd();const g=document.getElementById('go');if(!g.disabled)g.click();};
+document.getElementById('evFix').onclick=()=>{upd();evDraw(); /* 【10/10】欄は残す。別のアドレスに変えた時だけ evDraw が消す */const m=document.getElementById('mail');m.scrollIntoView({block:'center',behavior:'smooth'});try{m.focus({preventScroll:true});m.select();}catch(e){}};
 // 今もある ?action=gmode を読むだけ（オフなら何も変わらない）。ev＝メール確認、sp＝同じ名前（2人目の確かめ）
 if(!CAMBIO)fetch(API+'?action=gmode').then(x=>x.json()).then(j=>{SAME_P2=!!(j&&j.sp===true);const v=String(j&&j.ev||'');if(!EV&&(v==='a'||v==='ab')){EV=v;upd();evDraw();}}).catch(()=>{});
 EV_INIT=true;evDraw();
