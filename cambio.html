@@ -6,7 +6,11 @@
      ・今の予約（日時・メニュー）は Apps Script の ?action=myres で読む（名前・電話は出ない）
      ・「日時を変更する」→ 予約ページ（./?id=…&cambio=1）でカレンダーから新しい希望を選ぶ
      ・「キャンセルする」→ 確認 → Apps Script に送る → Noryにメール。ManyChat・カレンダーは変えない
-     ・前日10:00（メキシコ時間）を過ぎたら、受付不可の文だけ -->
+     ・前日10:00（メキシコ時間）を過ぎたら、受付不可の文だけ
+     【キャンセル自動 10/11】メールのリンク（?r=記録の番号&k=鍵&lang=）でも開ける。Googleの道（IDなし）の人も使える
+     ・キャンセル：前日10:00より前なら、お店の仕組みが自動で予約を取り消す（お客様には何も送らない。画面に「受け付けました」だけ）
+     ・変更：今までどおり（インスタの道＝予約ページのカレンダー。Googleの道＝今のメールと同じ、お店あてのメール mailto）。新しい画面は作らない
+     ・前日10:00を過ぎたら「受付期間を過ぎております」の文だけ（キャンセルの手段は出さない） -->
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f4f1ec;font-family:'Yeseva One','Kaisei Decol',serif;color:#1d1d1d}
@@ -61,7 +65,8 @@ cYes:{es:'Sí, cancelar',en:'Yes, cancel',ja:'はい、キャンセルします'
 cNo:{es:'No, volver',en:'No, go back',ja:'いいえ、戻る'},
 sending:{es:'Enviando…',en:'Sending…',ja:'送信中…'},
 doneT:{es:'Recibido',en:'Received',ja:'受け付けました'},
-doneC:{es:'Hemos recibido su solicitud de cancelación. Le llegará un aviso de confirmación.',en:'We have received your cancellation request. You will receive a confirmation notice.',ja:'キャンセルのご連絡を受け付けました。確認のお知らせが届きます。'},
+doneC:{es:'Hemos recibido su cancelación.',en:'We have received your cancellation.',ja:'キャンセルを受け付けました。'}, // 【キャンセル自動 10/11】前は「確認のお知らせが届きます」（お客様には何も送らないので消した）
+mto:{es:{sub:'Cambio de cita',open:'Hola, quisiera cambiar o cancelar mi cita.',want:'Cambio deseado:',d:'Fecha',t:'Hora',m:'Menú'},en:{sub:'Appointment change',open:'Hello, I would like to change or cancel my appointment.',want:'Requested change:',d:'Date',t:'Time',m:'Menu'},ja:{sub:'ご予約の変更・キャンセル',open:'ご予約の変更・キャンセルをお願いいたします。',want:'ご希望の内容：',d:'日付',t:'時間',m:'メニュー'}}, // 【キャンセル自動 10/11】Googleの道の「日時を変更する」＝今のメールのリンクと同じ mailto（言葉は Code.gs の GM_CHG・GM と同じ）
 thanks:{es:'Muchas gracias por avisarnos.',en:'Thank you for letting us know.',ja:'ご連絡ありがとうございます。'},
 closed:{es:'El plazo para cambios y cancelaciones es hasta las 10:00 a.m. del día anterior a su cita, por lo que ya no es posible realizarlo.',en:'Changes and cancellations are accepted until 10:00 a.m. the day before your appointment, so this is no longer possible.',ja:'ご予約の変更・キャンセルは、ご予約日の前日朝10時までとなっております。恐れ入りますが、受付期間を過ぎております。'},
 none:{es:'No encontramos una cita confirmada. Si ya la canceló, no necesita hacer nada más.',en:'We could not find a confirmed appointment. If you already cancelled, no further action is needed.',ja:'確定済みのご予約が見つかりませんでした。すでにキャンセル済みの場合は、このままで大丈夫です。'},
@@ -70,6 +75,10 @@ err:{es:'Error. Inténtelo de nuevo en unos minutos.',en:'Error. Please try agai
 };
 const T=k=>TX[k][LANG];
 const ID=(new URLSearchParams(location.search).get('id')||'').replace(/[^0-9]/g,'');
+// 【キャンセル自動 10/11】メールのリンクの記録の番号（R…）と鍵。形がちがえば使わない
+const RID=(()=>{const v=new URLSearchParams(location.search).get('r')||'';return /^R[0-9a-z]{1,40}$/.test(v)?v:'';})();
+const KEY=(()=>{const v=new URLSearchParams(location.search).get('k')||'';return /^[A-Za-z0-9_-]{10,40}$/.test(v)?v:'';})();
+const RK=!!(RID&&KEY);
 const API='https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
 // メニュー名（ManyChatの r_menu はスペイン語）を表示の言語に
 const MN=[['Corte (hombre)',"Men's cut",'メンズカット'],['Corte (mujer)',"Women's cut",'レディースカット'],['Flequillo','Bang trim','前髪カット'],['Alaciado japonés','Japanese straightening','縮毛矯正'],['Alaciado','Japanese straightening','縮毛矯正'],['Permanente','Perm','パーマ'],['Tratamiento','Treatment','トリートメント'],['Color completo','Full color','全体カラー'],['Retoque de raíz','Root touch-up','リタッチ（根元）'],['Mechas','Highlights','ハイライト'],['Doble color','Double color','ダブルカラー'],['Color','Color','カラー'],['Sin decoloración','no bleach','ブリーチなし'],['Con decoloración','with bleach','ブリーチあり'],['sin decoloración','no bleach','ブリーチなし'],['con decoloración','with bleach','ブリーチあり'],['Completo','Full','全体'],['Solo flequillo','Bangs only','前髪だけ'],['Flequillo y lados','Bangs & sides','前髪と横']];
@@ -87,8 +96,11 @@ function home(){
  app.innerHTML=card()+
   '<a class="btn dark" id="ch">'+T('change')+'</a><div class="hint" style="margin-top:6px">'+T('changeN')+'</div>'+
   '<button class="btn line" id="cx">'+T('cancel')+'</button>';
- const u=new URL('/reserva/',location.href);u.searchParams.set('id',ID);u.searchParams.set('cambio','1');u.searchParams.set('lang',LANG);
- document.getElementById('ch').href=u.toString();
+ const cid=RK?(RES.cid||''):ID; // 【キャンセル自動 10/11】
+ if(cid){const u=new URL('/reserva/',location.href);u.searchParams.set('id',cid);u.searchParams.set('cambio','1');u.searchParams.set('lang',LANG);
+ document.getElementById('ch').href=u.toString();}
+ else{const m=TX.mto[LANG],ja=LANG==='ja',kv=(k,v)=>k+(ja?'：':': ')+v,d=fmt(RES.start,{year:'numeric',month:'2-digit',day:'2-digit'}),h=fmt(RES.start,{hour:'2-digit',minute:'2-digit',hour12:false});
+  document.getElementById('ch').href='mailto:thehome.hair.recreative@gmail.com?subject='+encodeURIComponent(m.sub+' – '+d+' '+h)+'&body='+encodeURIComponent(m.open+'\r\n\r\n'+[kv(m.d,d),kv(m.t,h),kv(m.m,menuTx(RES.menu))].join('\r\n')+'\r\n\r\n'+m.want+(ja?'':' ')+'\r\n');}
  document.getElementById('cx').onclick=ask;
 }
 function ask(){
@@ -96,7 +108,7 @@ function ask(){
   '<button class="btn red" id="yes">'+T('cYes')+'</button><button class="btn line" id="no">'+T('cNo')+'</button><div class="err" id="err"></div>';
  document.getElementById('no').onclick=home;
  document.getElementById('yes').onclick=()=>{const b=document.getElementById('yes');b.disabled=true;b.textContent=T('sending');
-  fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({mode:'cancel',id:ID,lang:LANG})})
+  fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(RK?{mode:'cancel',r:RID,k:KEY,lang:LANG}:{mode:'cancel',id:ID,lang:LANG}) /* 【キャンセル自動 10/11】 */})
   .then(x=>x.json()).then(r=>{
    if(r&&r.ok){app.innerHTML='<div class="done"><div class="big">✓</div><h1>'+T('doneT')+'</h1><p>'+T('thanks')+'<br>'+T('doneC')+'</p></div>';return;}
    if(r&&r.err==='plazo'){msg('shut',T('closed'));return;}
@@ -108,8 +120,8 @@ document.documentElement.lang=LANG;
 document.getElementById('h1').textContent=T('title');
 document.getElementById('loading').textContent=T('loading');
 (()=>{const L=document.getElementById('langs');[['es','Español'],['en','English'],['ja','日本語']].forEach(([k,n])=>{const a=document.createElement('a');a.textContent=n;a.className=k===LANG?'on':'';const u=new URL(location.href);u.searchParams.set('lang',k);a.href=u.toString();L.appendChild(a);});})();
-if(!ID){msg('info',T('noId'));}
-else fetch(API+'?action=myres&id='+ID).then(x=>x.json()).then(j=>{
+if(!ID&&!RK){msg('info',T('noId'));}
+else fetch(API+'?action=myres&'+(RK?'r='+encodeURIComponent(RID)+'&k='+encodeURIComponent(KEY):'id='+ID)).then( /* 【キャンセル自動 10/11】 */x=>x.json()).then(j=>{
  if(!j||!j.ok){msg('info',j&&j.err==='error'?T('err'):T('none'));return;}
  RES=j;
  // 締切はサーバーの判定（open）と、この端末の時計の両方で見る
