@@ -1574,7 +1574,11 @@ function curDM(){if(!CUR||!CUR.start)return null;const p={};new Intl.DateTimeFor
 // その日の埋まり。変更のときは、今の予約と同じ開始時間の埋まりを外す（自分の予約で自分がふさがらないように）
 function busyOf(k){let a=Array.isArray(BUSY[k])?BUSY[k]:[];if(CAMBIO){const c=curDM();if(c&&c.d===k)a=a.filter(b=>b[0]!==c.m);}return a;}
 // 開始 s（'HH:MM'）から施術時間（メニュー未定なら最小30分）が埋まりと重なるか
-function busyHit(d,s){const st=toM(s),en=st+durFit(); /* 10/8 メンズカット＋カラー（ブリーチなし）は最後の30分を次のお客様と重ねてよい */return busyOf(ymd(d)).some(b=>+b[1]>st&&+b[0]<en);}
+// 【家族の時間 10/13】2人目以降：前の人の①②③の開始から60分（前の人が短ければその長さ）は選べない。?f=日付T開始~長さ,…（読むだけ）
+var FAM_GAP=60,FAMB_=null;
+function famB(){if(FAMB_)return FAMB_;FAMB_=[];try{if(typeof CAMBIO!=='undefined'&&CAMBIO)return FAMB_;String(new URLSearchParams(location.search).get('f')||'').split(',').slice(0,18).forEach(v=>{const m=/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})~(\d{1,3})$/.exec(v);if(m)FAMB_.push({d:m[1],s:+m[2]*60+ +m[3],n:Math.max(30,+m[4])});});}catch(e){}return FAMB_;}
+function famHit(d,s){const k=ymd(d),st=toM(s);return famB().some(x=>{if(x.d!==k)return false;const df=st-x.s;return df>=0?df<Math.min(FAM_GAP,x.n):-df<Math.min(FAM_GAP,durFit());});}
+function busyHit(d,s){if(famHit(d,s))return true; /* 【家族の時間 10/13】 */const st=toM(s),en=st+durFit(); /* 10/8 メンズカット＋カラー（ブリーチなし）は最後の30分を次のお客様と重ねてよい */return busyOf(ymd(d)).some(b=>+b[1]>st&&+b[0]<en);}
 function freeSlots(d){return slots(d).filter(s=>!busyHit(d,s));}
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&o.time!=='any'&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
@@ -1842,7 +1846,9 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  consDraw();document.getElementById('go').disabled=!(consentOk()&&!po&&ms&&colorOk&&all3&&(ID||DIRECT)&&(CAMBIO?(CUR&&CUR.open):(nameOk()&&telOk()&&mailOk()&&evReady())));if(PIC_BUSY>0&&picsOn())document.getElementById('go').disabled=true;{const ok=picOk();if(!ok)document.getElementById('go').disabled=true;const pnd=document.getElementById('picNeed');if(pnd&&ok)pnd.hidden=true;} /* 【10/10 写真の必須】 */ /* 【写真の枠 10/9】写真を作っている間 */lock();p2UI();evDraw();} // 【下書き 10/4】変更モードは連絡先なし・今の予約が受付中のときだけ
 // 【10/7 Nory B案】2人目の予約：送り終えた画面のボタンは同じページを ?d=日付&t=時間 で開き直す（読むだけの引数。src・id・ch・lang などはそのまま引き継ぐ）
 // t ＝ 1人目の「第1希望の開始＋所要時間」を30分きざみに切り上げた時刻。開いた時にその時間が空いていれば最初から選び、空いていなければ時間は選ばずにお知らせを出す
-function p2Url(){const u=new URL(location.href);['d','t'].forEach(k=>u.searchParams.delete(k));const o=sel.opts.find(x=>x.date&&x.time);if(o){u.searchParams.set('d',ymd(o.date));if(o.time!=='any'){const e=Math.ceil((toM(o.time)+Math.max(dur(),30))/STEP)*STEP;u.searchParams.set('t',hm(e));}}u.hash='';return u.toString();}
+function p2Url(){const u=new URL(location.href);['d','t'].forEach(k=>u.searchParams.delete(k));const o=sel.opts.find(x=>x.date&&x.time);if(o){u.searchParams.set('d',ymd(o.date));if(o.time!=='any'){const e=Math.ceil((toM(o.time)+Math.min(FAM_GAP,durFit()))/STEP)*STEP;u.searchParams.set('t',hm(e));}} /* 【家族の時間 10/13】1人目の開始＋60分（Nory：土曜18時と19時の形） */
+ const fl=famB().map(x=>x.d+'T'+hm(x.s)+'~'+x.n);sel.opts.forEach(x=>{if(x.date&&x.time&&x.time!=='any')fl.push(ymd(x.date)+'T'+x.time+'~'+durFit());});if(fl.length)u.searchParams.set('f',fl.slice(-18).join(','));else u.searchParams.delete('f'); /* 【家族の時間 10/13】前の人の時間だけ（名前・連絡先は入れない） */
+ u.hash='';return u.toString();}
 const P2=(()=>{if(CAMBIO)return null;const q=new URLSearchParams(location.search);const d=q.get('d')||'',t=q.get('t')||'';if(!/^\d{4}-\d{2}-\d{2}$/.test(d))return null;const a=d.split('-').map(Number);const dt=new Date(a[0],a[1]-1,a[2]);if(ymd(dt)!==d)return null;return {d:dt,t:/^\d{2}:\d{2}$/.test(t)?t:'',auto:false,miss:false};})();
 function p2UI(){if(!P2)return;if(P2.auto&&!sel.opts[0].time){P2.auto=false;if(P2.t)P2.miss=true;} /* 選んでおいた時間が、埋まり（あとから読む）やメニューで消えた時 */
  const e=document.getElementById('p2Note');if(e)e.style.display=P2.miss&&!sel.opts[0].time&&!ANY?'block':'none';}
