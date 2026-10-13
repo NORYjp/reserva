@@ -30,9 +30,9 @@ html[lang=ja] h1{font-family:'Kaisei Decol',serif;font-weight:700;font-size:21px
 const API='https://script.google.com/macros/s/AKfycbxGGZm0AkELBjTBPFG9R-02Gd5347Y1T3UPLeorJtgmFA6H3QC7FAk7Zq5Qk-TVc31C/exec';
 const q=new URLSearchParams(location.search);
 const L=({es:1,en:1,ja:1})[q.get('lang')]?q.get('lang'):'es';document.documentElement.lang=L;
-const T={es:{h:'Productos apartados',each:'c/u',tot:'Total de productos',ask:'Precio en el salón',n:'Precio de salón, IVA incluido. El pago se realiza en el salón el día de su visita. Si algún producto no estuviera disponible, nosotros le avisaremos.',e:'No encontramos esta información. Si tiene dudas, escríbanos por WhatsApp.'},
- en:{h:'Products on hold',each:'each',tot:'Products total',ask:'Price at the salon',n:'Salon price, VAT (IVA) included. Payment is made at the salon on the day of your visit. If any item is unavailable, we will contact you.',e:'We could not find this information. If you have questions, message us on WhatsApp.'},
- ja:{h:'お取り置きの商品',each:'1点',tot:'商品の合計',ask:'価格は店頭にて',n:'サロン価格・IVA（税）込み。お支払いはご来店時に店頭で承ります。在庫がない商品があった場合は、こちらからご連絡いたします。',e:'情報が見つかりませんでした。ご不明な点はWhatsAppでお問い合わせください。'}}[L];
+const T={es:{h:'Productos apartados',each:'c/u',tot:'Total de productos',ask:'Precio en el salón',n:'Precio de salón, IVA incluido. El pago se realiza en el salón el día de su visita. Si algún producto no estuviera disponible, nosotros le avisaremos.',e:'No encontramos esta información. Si tiene dudas, escríbanos a thehome.hair.recreative@gmail.com.'},
+ en:{h:'Products on hold',each:'each',tot:'Products total',ask:'Price at the salon',n:'Salon price, VAT (IVA) included. Payment is made at the salon on the day of your visit. If any item is unavailable, we will contact you.',e:'We could not find this information. If you have questions, please email us at thehome.hair.recreative@gmail.com.'},
+ ja:{h:'お取り置きの商品',each:'1点',tot:'商品の合計',ask:'価格は店頭にて',n:'サロン価格・IVA（税）込み。お支払いはご来店時に店頭で承ります。在庫がない商品があった場合は、こちらからご連絡いたします。',e:'情報が見つかりませんでした。ご不明な点は thehome.hair.recreative@gmail.com へお問い合わせください。'}}[L];
 const $=i=>document.getElementById(i),esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),m=n=>'$'+Number(n).toLocaleString('en-US');
 $('h').textContent=T.h;
 fetch(API+'?action=hinfo&r='+encodeURIComponent(q.get('r')||'')+'&k='+encodeURIComponent(q.get('k')||'')).then(x=>x.json()).then(j=>{
