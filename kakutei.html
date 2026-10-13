@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja"><head>
+<!-- 【料金の範囲 10/13 仕組み担当・下書き】元＝GitHub NORYjp/reserva の kakutei.html（10/13 の公開中と同じ）。違いは「料金の範囲 10/13」の所だけ。公開はしていない。
+     料金の欄：type="number" → 文字の欄（4610〜4750 などの幅を入れられる）。「〜」を入れるボタンと、お客様に出る形の下見（読めない時は赤）を足した。
+     Apps Script が v69 になる前に公開すると、幅を入れても料金表の金額で確定されてしまう → 必ず Apps Script（v69）を先に入れる。 -->
 <!-- 【本人番号 10/7 仕組み担当・下書き】元＝web/kakutei.html（今の公開中）。違いは「本人番号 10/7」の所だけ。公開はしていない。
      cinfo に idWarn があるとき：確定ボタンの前に「🔴要確認：リンクの番号と予約した人が違う可能性」と、
      「お客様のメールに直接確定メールを送る（Googleの道）」／「今までどおり ManyChat で確定」を選ぶ欄を出す（はじめは Googleの道）。
@@ -44,6 +47,12 @@ label{display:block;margin-top:14px;font-size:14px;color:#444}
 .way input{width:22px;height:22px;flex:none;margin-top:2px}
 .way small{display:block;color:#666;font-size:13px}
 a{color:inherit}
+/* 料金の範囲 10/13 */
+.prw{display:flex;gap:8px;margin-top:6px}
+.prw .inp{margin-top:0;flex:1;min-width:0}
+.wave{flex:none;width:64px;border:1.5px solid #ccc;border-radius:10px;background:#f4f1ec;font:inherit;font-size:22px;color:#1d1d1d;cursor:pointer}
+.pv{font-size:13px;color:#666;margin-top:4px;min-height:1.2em}
+.pv.bad{color:#b00020}
 </style>
 </head><body><div class="w">
 <img class="logo" src="logo_round.png" alt="">
@@ -89,8 +98,10 @@ function show(j){
     h += '<div class="box gray">この日の予定：' + (j.day.length ? '<br>' + j.day.map(esc).join('<br>') : 'なし') + '</div>' +
       '<label>開始時間<input id="tm" class="inp" type="time" step="1800"></label>';
   }
-  h += '<label>料金（ペソ）<input id="pr" class="inp" type="number" inputmode="numeric" value="' + esc(j.price) + '"></label>' +
-    '<label>施術時間（分）<input id="du" class="inp" type="number" inputmode="numeric" step="10" value="' + esc(j.dur) + '"></label>' +
+  h += '<label for="pr">料金（ペソ）・幅は「4610〜4750」の形でも可</label>' + // 料金の範囲 10/13：数字だけの欄 → 文字の欄＋「〜」ボタン＋下見
+    '<div class="prw"><input id="pr" class="inp" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="例 4610 または 4610〜4750" value="' + esc(j.price) + '">' +
+    '<button type="button" id="wv" class="wave" aria-label="〜を入れる">〜</button></div><div id="pv" class="pv"></div>' +
+    '<label>施術時間（分）<input id="du" class="inp" type="number" inputmode="numeric" step="10" value="' + esc(j.dur) + '"></label><div id="dv" class="pv"></div>' + // 料金の範囲 10/13：施術時間もお客様に出る形を下に（Nory 10/13「アプロックスとか使おうよ」）
     '<label class="chk"><input id="nw" type="checkbox">新規のお客様（題名の先頭に S. をつける）</label>' +
     '<label>カレンダーの題名<input id="ti" class="inp" type="text" value="' + esc(j.title) + '"></label>' +
     (j.kind === 'cambio' ? '<label class="chk"><input id="dl" type="checkbox" checked>今の予約（' + esc(j.cur) + '）のカレンダーの予定を消す</label>' : '') +
@@ -101,12 +112,51 @@ function show(j){
         '<small>確定DM・確定メール・前日メールは、リンクの番号の連絡先に届きます。' + (j.idWarn.owner ? 'この番号は Nory本人なので、メールが合わないと止まります。' : 'メールが合わないと止まります。') + '</small></span></label>' : '') +
     '<button id="go" class="go">この内容で確定する</button><div id="msg"></div>';
   $('app').innerHTML = h;
+  LANG = j.lang || ''; // 料金の範囲 10/13：お客様の言語（Apps Script v70 から。無い時は3つの言語を並べる）
+  $('pr').oninput = prView; prView(); // 料金の範囲 10/13
+  $('du').oninput = duView; duView(); // 料金の範囲 10/13：施術時間の下見
+  $('wv').onclick = function(){ const p = $('pr'), v = p.value.replace(/\s*〜\s*$/, ''); p.value = v + '〜'; p.focus(); prView(); };
   $('nw').onchange = function(){ const t = $('ti'); t.value = t.value.replace(/^S\./, ''); if (this.checked) t.value = 'S.' + t.value; };
   $('go').onclick = confirmIt;
 }
 
+// 料金の範囲 10/13：Apps Script の priceIn_ と同じ読み方（ここは下見と入れ間違いの注意だけ。決めるのは Apps Script）
+function prIn(v){
+  const s = String(v == null ? '' : v).normalize('NFKC').replace(/\$|pesos?|ペソ|mxn/gi, '').replace(/\s+/g, ' ').trim();
+  if (!s) return { ok: true, min: 0, max: 0 };
+  const m = /^(\d[\d,]*)(?:\s*(?:[-‐‑‒–—―−~〜～_ーｰ]+|から)\s*(\d[\d,]*))?$/.exec(s);
+  if (!m) return { ok: false };
+  const n = x => Number(String(x).replace(/,/g, ''));
+  let a = n(m[1]), b = m[2] ? n(m[2]) : 0;
+  if (!isFinite(a) || !isFinite(b) || a > 99999 || b > 99999) return { ok: false };
+  if (b && b < a) { const t = a; a = b; b = t; }
+  if (!(a > 0)) return b ? { ok: false } : { ok: true, min: 0, max: 0 };
+  return { ok: true, min: a, max: b > a ? b : 0 };
+}
+function prView(){
+  const p = prIn($('pr').value), e = $('pv'), f = x => Number(x).toLocaleString('en-US');
+  e.className = 'pv' + (p.ok ? '' : ' bad');
+  e.textContent = !p.ok ? '⚠️ 読めません。「4610」か「4610〜4750」の形で入れてください' :
+    !p.min ? '空なので、料金表の金額で確定します' :
+    p.max ? 'お客様に出る形：' + (LANG === 'ja' ? f(p.min) + '〜' + f(p.max) + 'ペソ' : LANG ? f(p.min) + '–' + f(p.max) + ' pesos' : f(p.min) + '–' + f(p.max) + ' pesos（日本語のメールは ' + f(p.min) + '〜' + f(p.max) + 'ペソ）') :
+    'お客様に出る形：' + f(p.min) + (LANG === 'ja' ? 'ペソ' : ' pesos');
+}
+// 料金の範囲 10/13：施術時間の「お客様に出る形」。Apps Script の gDur_（es aprox.・en approx.・ja 約）と同じ形。Apps Script と同じく 10〜360分にそろえて見せる
+let LANG = '';
+function durTxt(m, l){
+  if (l === 'ja') return '約' + (m >= 60 ? Math.floor(m / 60) + '時間' : '') + (m % 60 ? m % 60 + '分' : '');
+  return (l === 'en' ? 'approx. ' : 'aprox. ') + (m >= 60 ? Math.floor(m / 60) + 'h' : '') + (m % 60 ? (m >= 60 ? ' ' : '') + (m % 60) + 'min' : '');
+}
+function duView(){
+  const v = Number($('du').value), e = $('dv');
+  if (!(v > 0)) { e.className = 'pv'; e.textContent = '空なので、予約のときの長さで確定します'; return; }
+  const m = Math.max(10, Math.min(360, Math.round(v)));
+  e.className = 'pv';
+  e.textContent = 'お客様に出る形：' + (LANG ? durTxt(m, LANG) : durTxt(m, 'es') + '（英語 ' + durTxt(m, 'en') + '・日本語 ' + durTxt(m, 'ja') + '）') + (m !== v ? '　※' + m + '分にそろえます' : '');
+}
 function confirmIt(){
   const b = $('go'), tm = $('tm') ? $('tm').value : '';
+  if (!prIn($('pr').value).ok) { $('msg').innerHTML = '<div class="ng">⚠️ 料金の書き方が読めません。「4610」か「4610〜4750」の形で入れてください</div>'; return; } // 料金の範囲 10/13
   if ($('tm') && !/^\d\d:\d\d$/.test(tm)) { $('msg').innerHTML = '<div class="ng">⚠️ 開始時間を入れてください</div>'; return; }
   b.disabled = true; b.textContent = '確定中…'; $('msg').innerHTML = '';
   fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
