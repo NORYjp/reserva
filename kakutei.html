@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja"><head>
+<!-- 【同じ見た目 10/16 仕組み担当・下書き】元＝公開中の kakutei.html（10/16 に thehomehair.com から写した）。変えたのは style と、ロゴと題の2行（.hd で包んだ）だけ。script・id・ボタン・確定の動きは1文字も変えていない。公開はしていない。 -->
 <!-- 【料金の範囲 10/13 仕組み担当・下書き】元＝GitHub NORYjp/reserva の kakutei.html（10/13 の公開中と同じ）。違いは「料金の範囲 10/13」の所だけ。公開はしていない。
      料金の欄：type="number" → 文字の欄（4610〜4750 などの幅を入れられる）。「〜」を入れるボタンと、お客様に出る形の下見（読めない時は赤）を足した。
      Apps Script が v69 になる前に公開すると、幅を入れても料金表の金額で確定されてしまう → 必ず Apps Script（v69）を先に入れる。 -->
@@ -18,45 +19,49 @@
 <link rel="icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&family=Kaisei+Decol:wght@500;700&display=swap" rel="stylesheet">
 <style>
+/* 【同じ見た目 10/16】お客様メールの報告・売上報告・ホームページと同じ空気（見た目だけ。下の script・id・ボタンの動きは1文字も変えていない） */
 *{box-sizing:border-box}
-body{margin:0;background:#f4f1ec;font-family:'Kaisei Decol',sans-serif;color:#1d1d1d}
-.w{width:100%;max-width:480px;margin:0 auto;background:#fff;min-height:100vh;padding:18px 16px 40px}
-.logo{display:block;width:72px;height:72px;margin:0 auto 4px;border-radius:50%}
-h1{font-family:'Diplomata SC',serif;font-size:18px;text-align:center;margin:4px 0 14px}
-.card{background:#f4f1ec;border-radius:12px;padding:12px 14px;line-height:1.6;font-size:15px}
-.card .nm{font-size:20px;font-weight:700}
-.card .dt{font-size:19px;font-weight:700;margin-top:4px}
-.box{border-radius:10px;padding:10px 12px;margin:12px 0 0;font-size:14px;line-height:1.6}
-.red{background:#fdecee;color:#b00020}
-.blue{background:#e8f0fe;color:#1a4fa0}
-.gray{background:#f3f3f3;color:#333}
-label{display:block;margin-top:14px;font-size:14px;color:#444}
-.inp{display:block;width:100%;border:1.5px solid #ccc;border-radius:10px;padding:10px;font:inherit;font-size:18px;margin-top:6px;background:#fff;color:#1d1d1d}
-.chk{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;color:#1d1d1d}
-.chk input{width:24px;height:24px;flex:none}
-.go{display:block;width:100%;margin-top:20px;padding:15px;border:none;border-radius:14px;background:#1d1d1d;color:#fff;font:inherit;font-size:18px;font-weight:700;cursor:pointer}
-.go:disabled{background:#aaa}
-#msg{margin-top:14px;font-size:15px;line-height:1.6}
-.ok{background:#e7f5ea;color:#1b6b2a;border-radius:10px;padding:12px}
-.ng{background:#fdecee;color:#b00020;border-radius:10px;padding:12px}
-.load{text-align:center;color:#888;padding:40px 0}
+body{margin:0;background:#efdcc6;font-family:'Kaisei Decol',sans-serif;color:#3a2a20}
+.w{width:100%;max-width:480px;margin:0 auto;background:#fff;padding:0 16px 0;border-left:6px solid #b4532a;border-right:6px solid #b4532a}
+.w::before{content:"";display:block;margin:0 -16px 0;height:29px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 22 17%22%3E%3Cpath d=%22M0 0 L22 0 L11 17 Z%22 fill=%22%23392920%22/%3E%3C/svg%3E") left 12px/22px 17px repeat-x,url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 12%22%3E%3Ccircle cx=%225%22 cy=%226%22 r=%222%22 fill=%22%23f7ebdd%22/%3E%3C/svg%3E") left 0/10px 12px repeat-x,linear-gradient(#b4532a,#b4532a) left top/100% 12px no-repeat;background-color:#f7ebdd}
+.w::after{content:"";display:block;margin:32px -16px 0;height:29px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 22 17%22%3E%3Cpath d=%22M0 17 L22 17 L11 0 Z%22 fill=%22%23392920%22/%3E%3C/svg%3E") left 0/22px 17px repeat-x,url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 12%22%3E%3Ccircle cx=%225%22 cy=%226%22 r=%222%22 fill=%22%23f7ebdd%22/%3E%3C/svg%3E") left 17px/10px 12px repeat-x,linear-gradient(#b4532a,#b4532a) left bottom/100% 12px no-repeat;background-color:#f7ebdd}
+.hd{display:flex;align-items:center;gap:10px;margin:0 -16px 14px;padding:4px 14px 8px;background:#f7ebdd}
+.logo{display:block;width:56px;height:56px;margin:0;border-radius:50%;flex:none}
+.hd small{display:block;font-family:Georgia,serif;font-size:11px;letter-spacing:3px;color:#b4532a}
+h1{font-family:Georgia,'Kaisei Decol',serif;font-size:21px;text-align:left;margin:0;color:#3a2a20}
+.card{background:#fffdf9;border:2.5px solid #5a3d2b;border-left:6px solid #b4532a;border-radius:6px;padding:12px 14px;line-height:1.6;font-size:16px}
+.card .nm{font-size:22px;font-weight:700;font-family:Georgia,'Kaisei Decol',serif}
+.card .dt{font-size:21px;font-weight:700;margin-top:4px;color:#b4532a;font-family:Georgia,'Kaisei Decol',serif}
+.box{border-radius:6px;padding:10px 12px;margin:12px 0 0;font-size:15px;line-height:1.6;border:2px solid}
+.red{background:#fbeeea;color:#9c2b23;border-color:#9c2b23}
+.blue{background:#eef4f9;color:#2f6690;border-color:#2f6690}
+.gray{background:#f7f2ec;color:#3a2a20;border-color:#cfc6bc}
+label{display:block;margin-top:14px;font-size:15px;color:#5a3d2b;font-weight:700}
+.inp{display:block;width:100%;border:2px solid #5a3d2b;border-radius:8px;padding:10px;font:inherit;font-size:19px;margin-top:6px;background:#fffdf9;color:#3a2a20}
+.chk{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:16px;color:#3a2a20}
+.chk input{width:24px;height:24px;flex:none;accent-color:#b4532a}
+.go{display:block;width:100%;margin-top:20px;padding:16px;border:2.5px solid #392920;border-radius:10px;background:#392920;color:#f7ebdd;font:inherit;font-family:Georgia,'Kaisei Decol',serif;font-size:20px;font-weight:700;letter-spacing:2px;cursor:pointer}
+.go:disabled{background:#cfc6bc;border-color:#cfc6bc;color:#fff}
+#msg{margin-top:14px;font-size:16px;line-height:1.6}
+.ok{background:#eef5ee;color:#2e5e3a;border:2.5px solid #2e5e3a;border-radius:6px;padding:12px}
+.ng{background:#fbeeea;color:#9c2b23;border:2.5px solid #9c2b23;border-radius:6px;padding:12px}
+.load{text-align:center;color:#8a7b6c;padding:40px 0}
 /* 本人番号 10/7 */
-.warn{background:#b00020;color:#fff;border-radius:10px;padding:12px;margin:12px 0 0;font-size:14px;line-height:1.6}
-.warn b{font-size:15px}
-.way{display:flex;gap:10px;align-items:flex-start;border:1.5px solid #e3c4c9;border-radius:10px;padding:10px 12px;margin-top:10px;font-size:15px;line-height:1.5;background:#fff}
-.way input{width:22px;height:22px;flex:none;margin-top:2px}
-.way small{display:block;color:#666;font-size:13px}
+.warn{background:#9c2b23;color:#fff;border:2.5px solid #6b1a14;border-radius:6px;padding:12px;margin:12px 0 0;font-size:15px;line-height:1.6}
+.warn b{font-size:16px}
+.way{display:flex;gap:10px;align-items:flex-start;border:2px solid #9c2b23;border-radius:6px;padding:10px 12px;margin-top:10px;font-size:16px;line-height:1.5;background:#fff}
+.way input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:#b4532a}
+.way small{display:block;color:#7a6555;font-size:13px}
 a{color:inherit}
 /* 料金の範囲 10/13 */
 .prw{display:flex;gap:8px;margin-top:6px}
 .prw .inp{margin-top:0;flex:1;min-width:0}
-.wave{flex:none;width:64px;border:1.5px solid #ccc;border-radius:10px;background:#f4f1ec;font:inherit;font-size:22px;color:#1d1d1d;cursor:pointer}
-.pv{font-size:13px;color:#666;margin-top:4px;min-height:1.2em}
-.pv.bad{color:#b00020}
+.wave{flex:none;width:64px;border:2px solid #5a3d2b;border-radius:8px;background:#f7ebdd;font:inherit;font-size:22px;color:#3a2a20;cursor:pointer}
+.pv{font-size:13px;color:#7a6555;margin-top:4px;min-height:1.2em}
+.pv.bad{color:#9c2b23}
 </style>
 </head><body><div class="w">
-<img class="logo" src="logo_round.png" alt="">
-<h1>予約の確定</h1>
+<div class="hd"><img class="logo" src="logo_round.png" alt=""><div><small>THE HOME HAIR · RESERVA</small><h1>予約の確定</h1></div></div>
 <div id="app"><div class="load">読み込み中…</div></div>
 </div>
 <script>
