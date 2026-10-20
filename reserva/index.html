@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 【見せる時間 10/20 下書き・仕組み担当】元＝公開中の reserva/index.html（コミット e4a14c2・10/20）。違いは「【見せる時間 10/20】」で検索 -->
 <!-- 【埋まりの再確認 10/20 下書き・仕組み担当】元＝公開中の reserva/index.html（コミット 7960144・10/17）。違いは「【埋まりの再確認 10/20】」で検索 -->
 <!-- 【案B2 10/10 下書き・仕組み担当】元＝公開中の 案B（SHA-256 52700b55…）。違いは「【メール確認 10/9】」「【同じ名前 10/9】」「【2時間半 10/10】」で検索。公開しない -->
 <html><head><!-- 【下書き 2026-10-05 仕組み担当】本番 web/reserva/index.html（10/5 公開版）の写し。Googleマップの「予約」（?src=google・?id= なし）から開いた人も送れるようにした。本番は変えていない。違いは「【Google 10/4】」「【Google 10/5】」の所だけ。 --><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>THE HOME Hair re-creative – Reserva</title><meta name="description" content="Reserve su cita en THE HOME Hair re-creative, estética y peluquería japonesa en Condesa, CDMX: corte de cabello, color, alaciado japonés y más. Elija menú, día y hora."><meta property="og:title" content="Book now – THE HOME Hair re-creative"><meta property="og:description" content="Calle Ensenada 138, Condesa, CDMX"><meta property="og:image" content="https://thehomehair.com/og_reserva_20261007.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
@@ -1621,7 +1622,15 @@ const toM=t=>{const a=t.split(':');return (+a[0])*60+(+a[1]);};
 let BUSY={};
 // 【埋まりの再確認 10/20】読めない時に「全部空き」で選ばせない：2回までやり直す → だめなら赤い文・時間を選んだ送信は押せない。画面に戻った時、5分より古ければ読み直す
 var BUSY_OK=0,BZ_FAIL=false,TAKEN_MSG=''; // var：upd() がこの行より先に呼ばれても大丈夫なように
-function loadBusy(n){return fetch(API+'?action=busy').then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)&&!j._err){BUSY=j;BUSY_OK=Date.now();BZ_FAIL=false;revalidate();upd();return true;}throw 0; /* _err＝Apps Script がカレンダーを読めなかった印 */}).catch(()=>n>0?new Promise(r=>setTimeout(r,1500)).then(()=>loadBusy(n-1)):(BUSY_OK?true:(BZ_FAIL=true,upd(),false)));}
+// 【見せる時間 10/20】16:00以降の開始時刻を見せるかは Apps Script が決める（?action=busy の _show）。ページは印を見て出すだけ。
+// _show が無い（スイッチ off・古い Apps Script）時は今と同じ＝全部出す。日付が載っていない日も全部出す（2日前より後・日曜など）
+var SHOW=null;
+function showGet(j){return (j&&j._show&&typeof j._show==='object'&&j._show.d&&typeof j._show.d==='object')?j._show:null;}
+// 家族の2人目（?f=）と変更のページ（今の予約）は、その分も Apps Script に渡す（日付と時刻だけ）
+function showQ(){let q='';try{if(CAMBIO){const c=curDM();if(c)q+='&x='+encodeURIComponent(c.d+'T'+hm(c.m));}else{const f=String(new URLSearchParams(location.search).get('f')||'');if(f)q+='&f='+encodeURIComponent(f.split(',').slice(0,18).join(','));}}catch(e){}return q;}
+// d の x 分（数）の開始を見せてよいか。長さは durFit()（空きの計算と同じ）を5分単位に切り上げて表を引く
+function showOk(d,x){if(!SHOW||x<SHOW.late)return true;const h=SHOW.d[ymd(d)];if(typeof h!=='string')return true;const n=Math.max(SHOW.n0,Math.min(SHOW.n0+SHOW.nd*(SHOW.nn-1),Math.ceil(durFit()/SHOW.nd)*SHOW.nd));const i=(n-SHOW.n0)/SHOW.nd,k=(x-SHOW.late)/SHOW.step;if(k!==Math.floor(k)||k>7)return true;const v=parseInt(h.substr(i*2,2),16);return isNaN(v)||!!(v&(1<<k));}
+function loadBusy(n){return fetch(API+'?action=busy'+showQ() /* 【見せる時間 10/20】 */).then(x=>x.json()).then(j=>{if(j&&typeof j==='object'&&!Array.isArray(j)&&!j._err){BUSY=j;SHOW=showGet(j); /* 【見せる時間 10/20】 */BUSY_OK=Date.now();BZ_FAIL=false;revalidate();upd();return true;}throw 0; /* _err＝Apps Script がカレンダーを読めなかった印 */}).catch(()=>n>0?new Promise(r=>setTimeout(r,1500)).then(()=>loadBusy(n-1)):(BUSY_OK?true:(BZ_FAIL=true,upd(),false)));}
 loadBusy(2).then(hoyTick);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&Date.now()-BUSY_OK>5*60e3)loadBusy(1);});
 function bzDraw(){const t=[TAKEN_MSG,(BZ_FAIL&&!BUSY_OK&&!ANY)?T('busyFail'):''].filter(String).join(' ');['bzTop','bzErr'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=t;e.hidden=!t;}});}
@@ -1629,7 +1638,7 @@ function takenResp(r){if(!r||(r.err!=='taken'&&r.err!=='unavail'))return false;
  const b=document.getElementById('go');EVS.busy=false;b.disabled=false;b.textContent=goLabel();
  if(r.err==='unavail'){TAKEN_MSG=T('unavail');upd();try{document.getElementById('bzErr').scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}return true;} // Apps Script がカレンダーを読めず、受け付けなかった：選んだ物はそのまま
  const names=(Array.isArray(r.bad)?r.bad:[]).filter(i=>sel.opts[i]&&sel.opts[i].date).map(i=>OPTN[i]+' '+fmtOpt(sel.opts[i]));
- if(r.busy&&typeof r.busy==='object'&&!Array.isArray(r.busy)&&!r.busy._err){BUSY=r.busy;BUSY_OK=Date.now();BZ_FAIL=false;}
+ if(r.busy&&typeof r.busy==='object'&&!Array.isArray(r.busy)&&!r.busy._err){BUSY=r.busy;SHOW=showGet(r.busy);BUSY_OK=Date.now();BZ_FAIL=false;if(showQ())loadBusy(1); /* 【見せる時間 10/20】家族・変更の分は入っていないので読み直す */}
  else{BUSY_OK=0;BZ_FAIL=true;loadBusy(2);} // 一覧が読めなかった：送れない状態にして、読み直す
  TAKEN_MSG=T('takenE').replace('{o}',names.join(' / ')||'—');
  revalidate();const f=sel.opts.findIndex(o=>!o.date||!o.time);if(f>=0){sel.cur=f;drawOpts();drawCal();drawTimes();}upd();
@@ -1649,7 +1658,7 @@ function freeSlots(d){return slots(d).filter(s=>!busyHit(d,s));}
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&o.time!=='any'&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
  return st;}
-function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+durEnd()<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-durEnd();else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
+function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+durEnd()<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-durEnd();else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3&&showOk(d,x) /* 【見せる時間 10/20】 */)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
 // ===== 【下書き 10/6 取り置き】Davines商品（任意）=====
 // 読むのは ../productos.json（商品ページと同じ。make_productos_json.py が台帳から作る）。在庫の印 order（在庫0・お取り寄せ）は出さない
 // 選べる数：ラスト1点（last）=1・残りわずか（low）=2・在庫あり（ok）=3（前の設計：1品3個・5品まで）。読めない時・変更のページでは段を出さない
@@ -2091,6 +2100,7 @@ if(CAMBIO){
  fetch(API+'?action=myres&id='+ID).then(x=>x.json()).then(j=>{
   if(!j||!j.ok){cb.textContent=T('cNone');return;}
   CUR=j;
+  if(SHOW)loadBusy(1); // 【見せる時間 10/20】今の予約の分を外して読み直す
   revalidate(); // 【10/5 埋まり】今の予約の時間を埋まりから外して引き直す
   if(!j.open){cb.textContent=T('cClosed');document.getElementById('go').style.display='none';return;}
   cb.innerHTML='<b>'+T('cCur')+'</b><br>'+fmtCur(j.start)+'<br>'+j.menu.replace(/[<>&]/g,'')+'<br><small>'+T('cKeep')+'</small>';
