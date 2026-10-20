@@ -1346,13 +1346,17 @@ mmNote:{es:'Elige el que mejor se adapte a ti.',en:'Choose the one that suits yo
 spart:{es:'¿Qué parte?',en:'Which part?',ja:'どこをまっすぐにしますか？'},
 bleachWarn:{es:'Si tuvo decoloración o mechas en el último año, es posible que no se pueda hacer. Lo revisamos con su foto.',en:'If you bleached or had highlights in the past year, it may not be possible. We will check with your photo.',ja:'1年以内にブリーチ・ハイライトをした髪は、できない可能性がございます。写真で確認します。'},
 photo:{es:'Para un precio y tiempo exactos, envíe fotos del estilo deseado y de su cabello actual a thehome.hair.recreative@gmail.com.',en:'For an exact price and time, email photos of the style you want and your current hair to thehome.hair.recreative@gmail.com.',ja:'正確な料金・時間のため、ご希望の髪型と今の髪型の写真を thehome.hair.recreative@gmail.com にお送りください。'}, // 【Nory 10/8】インスタの道もDMではなくお店のGmailへ（gPhotoと同じ）
-s2:{es:'2. Día y hora (elija 3 opciones)',en:'2. Date & time (choose 3 options)',ja:'2. 日時（第1〜第3希望をすべて選んでください）'},
+s2:{es:'2. Día y hora (elija 3 opciones; para hoy, 1 basta)',en:'2. Date & time (choose 3 options; for today, 1 is enough)',ja:'2. 日時（第1〜第3希望を選んでください。今日なら1つで大丈夫です）'}, // 【希望1つでよい日 10/20】A
+s2B:{es:'2. Día y hora (elija 3 opciones; de hoy a pasado mañana, 1 basta)',en:'2. Date & time (choose 3 options; today to the day after tomorrow, 1 is enough)',ja:'2. 日時（第1〜第3希望を選んでください。今日・明日・あさってなら1つで大丈夫です）'}, // 【希望1つでよい日 10/20】B
 anyT:{es:'Sin preferencia de hora (cualquier hora)',en:'No time preference (any time is fine)',ja:'時間の希望なし（何時でもOK）'},
 anyNote:{es:'Elija de 1 a 3 días. Le propondremos la hora por DM.',en:'Choose 1 to 3 days. We will suggest a time by DM.',ja:'日にちを1〜3つ選んでください。時間はDMでご提案します。'},
 anyShort:{es:'cualquier hora',en:'any time',ja:'時間おまかせ'},
 need1:{es:'Elija al menos 1 día para enviar.',en:'Please choose at least 1 day to send.',ja:'日にちを1つ以上選ぶと送れます。'},
 aprox:{es:'aprox.',en:'approx.',ja:'ごろ（目安）'},
-need3:{es:'Elija las 3 opciones (①②③) para enviar.',en:'Please choose all 3 options (①②③) to send.',ja:'①②③の3つとも選ぶと送れます。'},
+need3:{es:'Elija las 3 opciones (①②③) para enviar. Para hoy basta con 1.',en:'Please choose all 3 options (①②③) to send. For today, 1 is enough.',ja:'①②③の3つとも選ぶと送れます。今日の日なら1つで送れます。'}, // 【希望1つでよい日 10/20】A＝当日だけ（NEAR_DAYS=0）
+near1:{es:'Para hoy basta con 1 opción (② y ③ son opcionales).',en:'For today, 1 option is enough (② and ③ are optional).',ja:'今日の日は1つで送れます（②③はなくても大丈夫です）。'}, // 【希望1つでよい日 10/20】A
+need3B:{es:'Elija las 3 opciones (①②③) para enviar. Para hoy, mañana o pasado mañana basta con 1.',en:'Please choose all 3 options (①②③) to send. For today, tomorrow or the day after, 1 is enough.',ja:'①②③の3つとも選ぶと送れます。今日・明日・あさっての日なら1つで送れます。'}, // 【希望1つでよい日 10/20】B＝今日〜あさって（NEAR_DAYS=2）
+near1B:{es:'Para hoy, mañana o pasado mañana basta con 1 opción (② y ③ son opcionales).',en:'For today, tomorrow or the day after, 1 option is enough (② and ③ are optional).',ja:'今日・明日・あさっての日は1つで送れます（②③はなくても大丈夫です）。'}, // 【希望1つでよい日 10/20】B
 closed:{es:'Cerrado: lunes, 1er y 3er martes, 3er domingo',en:'Closed: Mondays, 1st & 3rd Tuesday, 3rd Sunday',ja:'休み：毎週月曜・第1火曜・第3火曜・第3日曜'},
 hora:{es:'Hora',en:'Time',ja:'時間'},
 pickDay:{es:'Primero elija el día',en:'Choose a day first',ja:'先に日にちを選んでください'},
@@ -1587,6 +1591,12 @@ Object.defineProperty(sel,'date',{get(){return sel.opts[sel.cur].date},set(v){se
 Object.defineProperty(sel,'time',{get(){return sel.opts[sel.cur].time},set(v){sel.opts[sel.cur].time=v}});
 const OPTN=T('opt');
 let ANY=false; // 時間の希望なし（Nory 10/4）
+// 【希望1つでよい日 10/20 Nory】選んだ希望のどれかが「今日から NEAR_DAYS 日先まで」なら、1つ（または2つ）で送れる。A＝当日だけ（0）・B＝今日〜あさって（2：見せる時間の決まり3と同じ境目）。
+// それ以外は今どおり①②③の3つ。時間おまかせ（ANY）は今どおり1つ以上。Apps Script の nearOk_ と同じ決まり（両方そろえて入れる）
+const NEAR_DAYS=2; // 【Noryが選ぶまで A】A＝0（当日だけ）／B＝2（今日・明日・あさって）。Bならこの数を2にするだけ（文も自動でBに変わる）。Apps Script の NEAR_DAYS_ も同じ数に
+if(NEAR_DAYS>0)['s2','need3','near1'].forEach(k=>{TX[k]=TX[k+'B'];});
+function nearDay(d){const x=new Date(TODAY);x.setDate(x.getDate()+NEAR_DAYS);return !!d&&d>=TODAY&&d<=x;}
+function sendOptsOk(){const f=sel.opts.filter(x=>x.date&&x.time);if(ANY)return f.length>0;return f.length===3||(f.length>0&&f.some(x=>nearDay(x.date)));}
 function nowMx(){const s=new Date().toLocaleString('en-US',{timeZone:'America/Mexico_City'});return new Date(s);}
 const NOW=nowMx(); const TODAY=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
 const LAST=new Date(TODAY); LAST.setDate(LAST.getDate()+60);
@@ -1914,7 +1924,7 @@ function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms
  holdUI(); // 【下書き 10/6 取り置き】
  document.getElementById('sum').innerHTML=(showMenus()||T('menuNone'))+'<br>'+(o.length?o.map((x,i)=>OPTN[sel.opts.indexOf(x)]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':''):T('dtNone'))+(holdLine()?'<br>'+holdLine():''); // 【下書き 10/6 取り置き】まとめに1行
  const colorOk=(sel.menus.indexOf(3)<0||(sel.ctype!==null&&(sel.ctype!==1||sel.bleach!==null)))&&(sel.menus.indexOf(5)<0||sel.stype!==null)&&!(needMM()&&sel.mm===null);
- const all3=ANY?sel.opts.some(x=>x.date&&x.time):sel.opts.every(x=>x.date&&x.time);const n3=document.getElementById('need3');n3.textContent=T(ANY?'need1':'need3');n3.style.display=all3?'none':'block';
+ const all3=sendOptsOk();const n3=document.getElementById('need3');const nf=sel.opts.filter(x=>x.date&&x.time).length;const nr=!ANY&&all3&&nf<3; /* 【希望1つでよい日 10/20】近い日で1〜2つの時は、赤でなく案内の色で「1つで送れます」 */n3.textContent=T(ANY?'need1':nr?'near1':'need3');n3.style.color=nr?'':'#b00020';n3.style.display=(all3&&!nr)?'none':'block';
  const po=permOnly();document.getElementById('permNote').hidden=!po;document.getElementById('permNote2').hidden=!po;
  const pt=pendTxt();['typeNote','typeNote2'].forEach(id=>{document.getElementById(id).hidden=true;}); /* 【10/8 Nory】日時の下には出さず、種類のボタンのすぐ下に出す */
  {const sh=(id,on)=>{document.getElementById(id).hidden=!on;};sh('tnC',sel.menus.indexOf(3)>=0&&sel.ctype===null);sh('tnB',sel.menus.indexOf(3)>=0&&sel.ctype===1&&sel.bleach===null);sh('tnS',sel.menus.indexOf(5)>=0&&sel.stype===null);sh('tnM',needMM()&&sel.mm===null);
