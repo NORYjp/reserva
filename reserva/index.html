@@ -1861,9 +1861,10 @@ function planTimes(d){const all=slots(d),bz=dayBusy(d),D=durFit(),dm=dur();
  if(d.getDay()===0||!bz.length)return {rec:[],rest:all};
  if(!all.length)return {rec:[],rest:all};
  const first=toM(all[0]),free=all.filter(s=>!busyHit(d,s));
- let keep=free.filter(s=>{const g=gapsOf(toM(s),D,bz,first);return !smallGap(g[0])&&!smallGap(g[1]);});if(!keep.length)keep=free;
+ let keep=free; /* 【Nory 10/20】早い時間を細切れ防止で消さない（空いていれば出す） */
  const rec=keep.filter(s=>{const st=toM(s),en=st+D;return st===OPEN||st===first||bz.some(b=>(st>=Math.max(b[1],first)&&st-Math.max(b[1],first)<STEP)||(en<=b[0]&&b[0]-en<STEP));});
- return {rec:rec,rest:all.filter(s=>rec.indexOf(s)<0&&(busyHit(d,s)||keep.indexOf(s)>=0||s===sel.time))};}
+ const early=rec.filter(s=>toM(s)<960),recF=early.length?early:rec; /* 【Nory 10/20】早い時間があれば、おすすめは早い時間だけ */
+ return {rec:recF,rest:all.filter(s=>recF.indexOf(s)<0&&(busyHit(d,s)||keep.indexOf(s)>=0||s===sel.time))};}
 // 名刺のジグザグを細く小さくした線（とがった山・手描きの少しのゆれ）
 function zz(w,h,n){const a=[.95,.82,1,.88,.78,.97,.85,.92,.8,1,.9,.84];const dx=[0,.12,-.1,.08,-.14,.1,-.06,.13,-.09,.05];let p='';for(let k=0;k<=n;k++){const x=Math.min(w,Math.max(0,(w/n)*k+(k&&k<n?dx[k%dx.length]*(w/n):0))),v=a[k%a.length],y=k%2?h*(.5-v*.48):h*(.5+v*.48);p+=(k?' L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+p+'" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/></svg>';}
