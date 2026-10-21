@@ -80,6 +80,7 @@ function show(j){
     '<div>' + esc(j.menu) + (j.photo ? '・📸写真あり' : '') + '</div>' +
     '<div class="dt">' + dateJa(j.date, j.dow) + ' ' + (j.any ? '時間おまかせ' : esc(j.time)) + '</div>' +
     '<div style="font-size:13px;color:#666">目安 ' + durJa(j.dur) + '</div></div>';
+  if (j.cdNote) h += '<div class="box gray">' + esc(j.cdNote) + '</div>'; // 【お客様ごとの長さ 10/21】Apps Script の確定ページの中身（cinfo）に cdNote がある時だけ。無ければ今と同じ
   if (j.kind === 'cambio') h += '<div class="box red">変更の希望です。今の予約：' + esc(j.cur) + '<br>確定するまでは今の予約のままです。</div>';
   if (j.fam && j.fam.length > 1) h += '<div class="box gray">👪 同じメールのご家族（' + j.fam.length + '名）<br>' + j.fam.map(f => (f.me ? '<b>' : '') + esc(f.n + '人目 ' + f.name + '：' + f.st) + (f.me ? '（この人）</b>' : '')).join('<br>') + '</div>'; // 【家族 10/10】v53i の cinfo が fam を返す時だけ（今の Apps Script では出ない）
   if (j.direct) {
