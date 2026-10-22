@@ -301,6 +301,39 @@ body.tkOn .w{padding-bottom:120px}
 .ups-s{margin:2px 0 0;padding:1px 9px;font-size:11px;align-self:flex-start}
 @media (hover:hover){.ups:hover{background:var(--accent);color:#fff8f0}}
 .ups:active{background:var(--accent);color:#fff8f0}
+/* ===== 【下書き 10/21 Nory】トリートメントを選んだ時だけ出る枠：髪の長さ（S・M・L・LL・1行）＋目安の料金1行＋「説明」のボタン（ジグザグ・#p2Go と同じ作り）。説明は押すとその場で開く・閉じるボタンつき ===== */
+#trBox[hidden],#trLenW[hidden],#trPr[hidden]{display:none}
+#menus>.chip .tri{position:absolute;top:7px;right:8px;width:16px;height:16px;border:1.4px solid currentColor;border-radius:50%;font-family:'Yeseva One',serif;font-style:normal;font-size:10.5px;line-height:13.5px;text-align:center;-webkit-text-stroke:0;opacity:.9;cursor:help}
+#menus>.chip .tri::before{content:"";position:absolute;inset:-10px} /* 指で押しやすいように、見えない所まで広げる */
+.mv-t.trt b{margin-bottom:3px}
+.mv-t.trt ol{list-style:none;margin:6px 0 0;padding:6px 0 0;border-top:1px dashed var(--line)}
+.mv-t.trt li{display:flex;gap:6px;align-items:baseline;font-size:12px;line-height:1.45}
+.mv-t.trt li i{flex:0 0 15px;height:15px;border:1px solid var(--accent);border-radius:50%;font-style:normal;font-size:9.5px;line-height:13px;text-align:center;color:var(--accent-d)}
+#trBox{margin-top:12px}
+#trLens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+#trLens .chip{padding:7px 2px 6px;font-size:16px;line-height:1.1;letter-spacing:0;white-space:nowrap}
+#trLens .chip span{font-size:11px;margin-top:2px;line-height:1.2;white-space:normal}:lang(ja) #trLens .chip span{font-size:10px;letter-spacing:-.04em;word-break:keep-all} /* 「スーパーロング」は入らない幅の時だけ「スーパー／ロング」で2行（変な所で切らない） */
+#trLens .chip small{display:block;margin-top:1px;font-size:9.5px;line-height:1.2;white-space:normal;color:var(--mute);-webkit-text-stroke:0}#trLens .chip.on small{color:#fbe3d3}
+.trpr{margin:7px 0 0;font-size:13px;line-height:1.45;font-family:'Kaisei Decol',serif;color:var(--ink)}
+.trpr b{display:block;margin:2px 0 0;font-family:'Yeseva One','Kaisei Decol',serif;font-weight:400;font-size:24px;line-height:1.15;color:var(--accent-d);white-space:nowrap;-webkit-text-stroke:.3px currentColor} /* 【10/21 Nory】およその料金を大きくはっきり */
+.trpr b .tre{font-family:'Kaisei Decol',serif;font-size:12px;color:var(--ink);-webkit-text-stroke:0;margin-right:6px;vertical-align:.25em} /* 【10/22 Nory】「目安の料金」はラベル小さめ・料金は大きく */
+.trpr em{display:block;margin-top:3px;font-style:normal;color:var(--accent-d);white-space:nowrap}
+.trpr .trn{display:block;margin-top:1px;font-size:11px;line-height:1.35;color:var(--mute)}
+.trb{position:relative;isolation:isolate;--zt:6px;display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:10px;padding:8px 16px;border:2px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--accent-d);font:inherit;font-family:'Kaisei Decol','Yeseva One',serif;font-size:13.5px;line-height:1.3;cursor:pointer;-webkit-text-stroke:0;max-width:100%;text-align:left}
+.trb::after{content:"";position:absolute;pointer-events:none;z-index:-1;inset:0;background:linear-gradient(135deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-x,linear-gradient(225deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-x,linear-gradient(45deg,var(--ink) 25%,transparent 25%) left bottom/var(--zt) var(--zt) repeat-x,linear-gradient(315deg,var(--ink) 25%,transparent 25%) left bottom/var(--zt) var(--zt) repeat-x,linear-gradient(135deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-y,linear-gradient(45deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-y,linear-gradient(225deg,var(--ink) 25%,transparent 25%) right top/var(--zt) var(--zt) repeat-y,linear-gradient(315deg,var(--ink) 25%,transparent 25%) right top/var(--zt) var(--zt) repeat-y}
+.trb i{font-style:normal;font-size:11px;color:var(--ink)}
+@media (hover:hover){.trb:hover{background:#fbe3d3}}
+.trb[aria-expanded="true"]{background:#fbe3d3}
+.trp{margin:10px 0 0;padding:14px 14px 12px;background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:4px 12px 12px 4px;font-family:'Kaisei Decol',serif;color:var(--ink);overflow-wrap:break-word}
+.trp[hidden]{display:none}
+.trp h4{margin:0 0 4px;font-family:'Yeseva One','Kaisei Decol',serif;font-size:17px;font-weight:400;color:var(--accent-d);letter-spacing:.02em}
+.trp .tr-l{margin:0 0 10px;font-size:13px;line-height:1.55}
+.trp ol{list-style:none;margin:0;padding:0;border-top:1px dashed var(--line)}
+.trp li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px;line-height:1.5}
+.trp li .tr-n{flex:0 0 28px;height:28px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--accent);border-radius:50%;color:var(--accent-d);font-family:'Yeseva One',serif;font-size:14px;line-height:1}
+.trp li b{display:block;color:var(--accent-d);font-weight:700}
+.trp .tr-r{margin:10px 0 0;font-size:13px;line-height:1.55}
+.trp .tr-x{display:block;margin:12px 0 0 auto;min-height:36px;border:none;border-radius:12px;background:var(--accent);color:#fff;font-family:'Kaisei Decol',serif;font-size:14px;padding:8px 18px;cursor:pointer}
 #menus>.chip.flash{animation:upsFlash 1.2s ease-out 1}
 @keyframes upsFlash{0%,100%{box-shadow:none}25%,60%{box-shadow:0 0 0 3px var(--accent)}}
 @media (prefers-reduced-motion:reduce){#menus>.chip.flash{animation:none;box-shadow:0 0 0 3px var(--accent)}}
@@ -567,6 +600,26 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 @keyframes pbm{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.pband .pb-r{animation:none}}
 /* ===== 【10/10 Nory】end ===== */
+/* ===== 【下書き 10/21 取り置きの検索】Nory：見出し「取り置き」の下の余白に検索の欄。入れた文字でその場で絞りこむ（ボタン不要）。
+   囲みは案B ジグザグ（#menus>.chip・#p2Go と同じ作り）。消す×も同じジグザグの小さな四角 ===== */
+.hsr{position:relative;isolation:isolate;--zt:6px;margin:10px 14px 2px;border:2px solid var(--ink);border-radius:3px;background:var(--paper)}
+.hsr::after,.hsr .hsx::after{content:"";position:absolute;pointer-events:none;z-index:-1;inset:0;background:linear-gradient(135deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-x,linear-gradient(225deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-x,linear-gradient(45deg,var(--ink) 25%,transparent 25%) left bottom/var(--zt) var(--zt) repeat-x,linear-gradient(315deg,var(--ink) 25%,transparent 25%) left bottom/var(--zt) var(--zt) repeat-x,linear-gradient(135deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-y,linear-gradient(45deg,var(--ink) 25%,transparent 25%) left top/var(--zt) var(--zt) repeat-y,linear-gradient(225deg,var(--ink) 25%,transparent 25%) right top/var(--zt) var(--zt) repeat-y,linear-gradient(315deg,var(--ink) 25%,transparent 25%) right top/var(--zt) var(--zt) repeat-y}
+.hsr svg{position:absolute;left:12px;top:50%;width:17px;height:17px;transform:translateY(-50%);fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
+.hsr input{display:block;width:100%;box-sizing:border-box;border:0;outline:0;background:transparent;color:var(--ink);font-family:'Kaisei Decol','Yeseva One',serif;font-size:16px;line-height:1.3;padding:13px 46px 13px 38px;-webkit-appearance:none;appearance:none;border-radius:0}
+.hsr input::-webkit-search-cancel-button{display:none}
+.hsr input::placeholder{color:var(--mute);opacity:1;font-size:14px}
+.hsr:focus-within{box-shadow:0 0 0 2px var(--accent)}
+.hsr .hsx{position:absolute;right:7px;top:50%;transform:translateY(-50%);isolation:isolate;--zt:4px;width:30px;height:30px;padding:0;border:1.5px solid var(--ink);border-radius:2px;background:var(--cream);color:var(--ink);font:inherit;font-size:17px;line-height:26px;text-align:center;cursor:pointer}
+.hsr .hsx[hidden]{display:none}
+@media (hover:hover){.hsr .hsx:hover{background:var(--ink);color:#fff8f0}}
+.hsn{font-family:'Kaisei Decol',serif;font-size:12px;color:var(--accent-d);margin:6px 14px 0;line-height:1.45}
+.hsn:empty{display:none}
+/* 探している時：帯を止め、合う商品だけを並べる（2つ目の並び＝つなぎ目用は隠す） */
+.strip.qon{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;overflow:visible;-webkit-mask-image:none;mask-image:none}
+.strip.qon .pc{width:auto;min-width:0}
+.strip.qon .pc[aria-hidden="true"],.strip .pc.hsh{display:none}
+.strip.qon.qnone{display:none}
+/* ===== 【下書き 10/21 取り置きの検索】end ===== */
 </style><!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
@@ -682,12 +735,16 @@ body.polOpen{overflow:hidden}
 <div class="menus" id="stypes"></div>
 <div class="s2wait tn" id="tnS" hidden role="status"><i aria-hidden="true">◆</i><span data-t="pickType2"></span></div>
 <div class="photo" style="background:#fdecee" data-t="bleachWarn"></div></div>
+<!-- 【下書き 10/21 Nory】トリートメント（6番）を選んだ時だけ出る。①髪の長さ（S・M・L・LL。男性・女性とも・選ばなくても送れる）②目安の料金は下の1行だけ ③説明のボタン（押すとその場で開く）。送るメニューの文（menu）は今のまま -->
+<div id="trBox" hidden><div id="trLenW"><div class="hint" style="margin-bottom:6px" data-t="trLenQ"></div><div class="menus" id="trLens"></div><p class="trpr" id="trPr" hidden aria-live="polite"></p></div>
+<button type="button" class="trb" id="trB" aria-expanded="false" aria-controls="trP"></button>
+<div class="trp" id="trP" hidden role="region" aria-labelledby="trH"></div></div>
 <div class="s2wait phh" id="photoH" hidden><i aria-hidden="true">◆</i><b data-t="photoReq"></b></div><!-- 【10/8 Nory】写真が必要と一目で分かる見出し（カラー・パーマ・縮毛矯正の時だけ） -->
 <div class="photo" id="photoNote" style="display:none" data-t="photo"></div>
 <div class="picw" id="picBox" hidden><!-- 【写真の枠 10/9】Apps Script の ?action=gmode が pics:true（PHOTO_ON=on）の時だけ出る。どの枠も任意。ラベルはその言語だけ（1ページ1言語） --><div class="pgh"><span data-t="picNow"></span></div><div class="pgrid"><div class="pslot" data-k="f"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.3 21c-.4-6.6 3.2-11 7.8-11 4.7 0 8.2 4.2 7.7 11-.2 2.6-1.1 4.4-2.3 5.6"/><path d="M12.3 21c.2 2.4 1 4.2 2.2 5.5"/><path d="M12.6 17.2c3.1-3.6 9.4-4.6 14.9-.6"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="s"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14.4 27.6c-2.2-2.1-3.3-5-3.3-8.6 0-5.8 4-9 9.1-9 4.9 0 8.6 3.1 8.8 7.9l1.9 3.8-1.8.9.1 2.6c0 1.3-1 2.3-2.9 2.2h-1.6"/><path d="M11.2 18.6c1.6-4.6 5.2-7.4 10.4-7.6"/><path d="M9.6 36.8c1-4.1 5-6.2 10.3-6.2 5.2 0 9 2 10 6"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="b"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M12.1 22.2c-.3-7 3.4-12.2 7.9-12.2 4.6 0 8.2 5 7.9 12.1-.1 3-2.3 4.9-7.9 4.9-5.7 0-7.8-1.8-7.9-4.8z"/><path d="M20 11.2c-.3 5-.2 10.1.1 15M16.2 13.2c-1.3 4.1-1.4 8.8-.4 13.3M23.8 13.2c1.3 4.2 1.4 8.8.4 13.3"/><path d="M8.2 36.6c1.1-4.6 5.8-6.8 11.9-6.8 6.2 0 10.9 2.3 11.8 6.9"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="pgh"><span data-t="picWant"></span></div><div class="pgrid"><div class="pslot" data-k="d1" data-v="picF"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picF"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d2" data-v="picS"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picS"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div><div class="pslot" data-k="d3" data-v="picB"><label><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 8.5c.9 4.6 2.5 7.6 7.8 10.6-5.1 2.4-6.9 5.6-7.7 10.9-1-5.2-2.8-8.4-7.9-10.8 5.2-2.7 6.9-5.9 7.8-10.7z"/><path d="M29.5 9.5c.3 1.6.9 2.6 2.6 3.5-1.7.8-2.3 1.9-2.6 3.6-.3-1.7-.9-2.8-2.6-3.6 1.7-.9 2.3-1.9 2.6-3.5z"/></svg><input type="file" accept="image/*"><span class="pl"><span data-t="picB"></span></span><img alt=""><span class="pbz" data-t="picBusy"></span></label><button type="button" class="px" aria-label="×">×</button></div></div><div class="perr" id="picErr" hidden role="status"></div><p class="pnote"><span id="picOptT"></span></p><p class="pmail" id="picMail" hidden></p><div class="ptip" id="picTipB" role="note" hidden><span></span><button type="button" class="ptip-x">×</button></div><!-- 【10/10 写真の必須】Nory「見える注意書きを少なめに」：くわしい説明は、枠にカーソル／タップで出す吹き出し --></div>
 <div class="photo" id="cutNote" style="display:none" data-t="cutPhoto"></div>
 <!-- 【下書き 10/6 取り置き】メニューを選んだあとに出る。選ばなくても予約できる。商品は ../productos.json（在庫0＝order は出さない） -->
-<div class="hold" id="holdBox" style="display:none"><h3><span data-t="hT"></span> <span class="pnow" data-t="pNow"></span><small data-t="hOpt"></small></h3><div class="hn" data-t="hN"></div><div class="strip" id="strip" aria-label="Davines"></div><div class="hsel" id="hsel"></div></div>
+<div class="hold" id="holdBox" style="display:none"><h3><span data-t="hT"></span> <span class="pnow" data-t="pNow"></span><small data-t="hOpt"></small></h3><div class="hsr" id="hsr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><input type="search" id="hsq" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"><button type="button" class="hsx" id="hsx" hidden>×</button></div><div class="hsn" id="hsn" aria-live="polite"></div><!-- 【10/21 取り置きの検索】 --><div class="hn" data-t="hN"></div><div class="strip" id="strip" aria-label="Davines"></div><div class="hsel" id="hsel"></div></div>
 
 <div class="step" data-t="s2"></div>
 <div class="pmo" id="typeNote" hidden></div><!-- 【10/6 Nory】種類を選ぶまで日時へ進めない -->
@@ -1421,7 +1478,7 @@ apLen:{es:'Precio aproximado · según el largo',en:'Approx. · depends on lengt
 apRoot:{es:'Precio aproximado · según el crecimiento de la raíz',en:'Approx. · depends on root growth',ja:'およその金額・根元の伸び具合により'},
 apOnly:{es:'Precio aproximado',en:'Approx.',ja:'およその金額'},
 tkNi:{es:'IVA incluido.',en:'VAT (IVA) included.',ja:'IVA込み。'}, // 【10/6 Nory】カットなどだけの時
-tkDisc:{es:'Corte + color',en:'Cut + color',ja:'カット＋カラー'}, // 【10/6 Nory決定】−$300
+tkDisc:{es:'Corte + color',en:'Cut + color',ja:'カット＋カラー'},tkDiscT:{es:'Corte + tratamiento',en:'Cut + treatment',ja:'カット＋トリートメント'},trLenQ:{es:'Largo del cabello',en:'Hair length',ja:'髪の長さ'},trWithCut:{es:'con corte',en:'with a cut',ja:'カットと一緒なら'},trEst:{es:'Precio estimado:',en:'Estimated price:',ja:'目安の料金'},trFinal:{es:'Precio final en el salón',en:'Final price at the salon',ja:'料金は当日確定'}, /* 【10/21 Nory A案】 */ /* 【10/21 Nory】トリートメントの長さ */ // 【10/6 Nory決定】−$300
 lenNote:{es:'(según el largo)',en:'(depending on length)',ja:'（髪の長さによる）'}, // 【10/6 Nory決定】ハイライトの幅
 dblNote:{es:'(con corte: hombre/corto $3,300 · bob $3,500 · largo $3,800 · más largo +$300)',en:"(with a cut: men's/short $3,300 · bob $3,500 · long $3,800 · longer +$300)",ja:'（カットと一緒の時：メンズ・ショート $3,300・ボブ $3,500・ロング $3,800・さらに長い場合 +$300）'}, // 【10/6 Nory決定】ダブル
 rootNote:{es:'(según el crecimiento de la raíz)',en:'(depending on root growth)',ja:'（根元の伸び具合による）'}, // 【10/6 Nory決定】リタッチ
@@ -1573,7 +1630,7 @@ const MENUS = [
  ['Color',{es:'Color',en:'Color',ja:'カラー'},'$1,400',1], // 【10/8 Nory】いちばん安いのがメンズの $1,400〜
  ['Permanente',{es:'Permanente',en:'Perm',ja:'パーマ'},'$1,500',1],
  ['Alaciado japonés',{es:'Alaciado japonés',en:'Japanese straightening',ja:'縮毛矯正'},'$3,000',1],
- ['Tratamiento',{es:'Tratamiento',en:'Treatment',ja:'トリートメント'},'$1,300',1],
+ ['Tratamiento',{es:'Tratamiento',en:'Treatment',ja:'トリートメント'},'$1,000',1], // 【10/21 Nory A案】一番安い S（ショート）$1,000 に合わせた（前は $1,300）。長さごとの料金は TR_PRICE
  ['Brushing corto',{es:'Lavado y brushing (corto/bob)',en:'Shampoo & blow-dry (short/bob)',ja:'シャンプーブロー（ショート・ボブ）'},'$600',0],
  ['Brushing largo',{es:'Lavado y brushing (largo)',en:'Shampoo & blow-dry (long)',ja:'シャンプーブロー（ロング）'},'$700',0],
  ['Brushing extra largo',{es:'Lavado y brushing (extra largo)',en:'Shampoo & blow-dry (extra long)',ja:'シャンプーブロー（スーパーロング）'},'$800',0],
@@ -1726,10 +1783,79 @@ function holdBuild(){const st=document.getElementById('strip');
  let pause=0,acc=0,last=0,moved=false,sx=0;const calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
  const hold=()=>{pause=Infinity;},rel=()=>{if(PV_ID)return;pause=performance.now()+1200;};STRIP_HOLD=hold;STRIP_REL=()=>{pause=performance.now()+1200;}; /* 【10/6】吹き出しが出ている間は帯を止める */ // 【10/6 Nory】離したらすぐ（約1秒）また流れる
  st.addEventListener('pointerenter',hold);st.addEventListener('pointerleave',rel);st.addEventListener('touchstart',e=>{hold();moved=false;sx=e.touches[0].clientX;},{passive:true});st.addEventListener('touchmove',e=>{if(Math.abs(e.touches[0].clientX-sx)>8)moved=true;},{passive:true});st.addEventListener('touchend',()=>{rel();setTimeout(()=>{moved=false;},50);},{passive:true});st.addEventListener('focusin',hold);st.addEventListener('focusout',rel);
- const step=t=>{const dt=last?Math.min(t-last,100):0;last=t;if(!calm&&t>pause&&st.offsetParent){acc+=dt*0.018;if(acc>=1){const w=st.scrollWidth/2;let v=st.scrollLeft+Math.floor(acc);acc-=Math.floor(acc);if(v>=w)v-=w;st.scrollLeft=v;}}else if(st.scrollLeft>=st.scrollWidth/2)st.scrollLeft-=st.scrollWidth/2;requestAnimationFrame(step);};requestAnimationFrame(step);}
+ const step=t=>{const dt=last?Math.min(t-last,100):0;last=t;const qon=st.classList.contains('qon'); /* 【10/21 取り置きの検索】探している間は流さない */if(!calm&&!qon&&t>pause&&st.offsetParent){acc+=dt*0.018;if(acc>=1){const w=st.scrollWidth/2;let v=st.scrollLeft+Math.floor(acc);acc-=Math.floor(acc);if(v>=w)v-=w;st.scrollLeft=v;}}else if(!qon&&st.scrollLeft>=st.scrollWidth/2)st.scrollLeft-=st.scrollWidth/2;requestAnimationFrame(step);};requestAnimationFrame(step);}
 fetch('../productos.json?v='+Date.now()).then(x=>x.json()).then(j=>{const it=((j&&j.items)||[]).filter(x=>x&&x.id&&x.stock&&x.stock!=='order'&&HOLD_CAP[x.stock]);
  it.sort((a,b)=>(a.rank||9)-(b.rank||9)); // 当店人気（rank 1〜4）を先に。ほかは台帳の順
- HITEMS=it;if(!it.length)return;holdBuild();holdDraw();holdUI();}).catch(()=>{});
+ HITEMS=it;if(!it.length)return;holdBuild();holdDraw();holdUI();if(document.getElementById('hsq').value)hsRun();}).catch(()=>{});
+// ===== 【下書き 10/21 取り置きの検索】Nory：「おい」と入れたら OI シリーズがいっぱい出てくるように =====
+// 大文字小文字・アクセント・全角半角・ひらがな/カタカナ・「ー」のちがいを無視。シリーズ名は日本語の読みでも当たる（HS_YOMI）
+// 当て方の順：①シリーズ名ぴったり（oi・おい → OI だけ）②種類（トリートメント・champú・hand cream → その種類が全部）③言葉の頭 ④説明の中まで（frizz・くせ など）
+const HS_YOMI={'OI':'オイ','LOVE':'ラブ','NOUNOU':'ヌーヌー','MOMO':'モモ','MINU':'ミヌ','DEDE':'デデ','VOLU':'ボリュ','MELU':'メル','SOLU':'ソル','SU':'スー','ALCHEMIC':'アルケミック','AUTHENTIC':'オーセンティック','HEART OF GLASS':'ハートオブグラス','LIQUID SPELL':'リキッドスペル','NATURALTECH':'ナチュラルテック','more inside':'モアインサイド','PASTA & LOVE':'パスタアンドラブ パスタ&ラブ','The Circle Chronicles':'サークルクロニクルズ','ESSENTIAL HAIRCARE':'エッセンシャルヘアケア','HAIR REFRESHER':'ヘアリフレッシャー','THERE MUST BE AN ANGEL':'ゼアマストビーアンエンジェル'};
+const HS_TX={ph:{es:'Buscar (p. ej. OI, champú)',en:'Search (e.g. OI, shampoo)',ja:'商品を探す（例：おい）'},
+ x:{es:'Borrar',en:'Clear',ja:'消す'},
+ none:{es:'No encontramos productos con esa palabra. Pruebe con otra.',en:'No products match that word. Please try another.',ja:'その言葉に合う商品が見つかりませんでした。ほかの言葉でお試しください。'},
+ n:{es:n=>n+(n===1?' producto':' productos'),en:n=>n+(n===1?' product':' products'),ja:n=>n+'点'}};
+const hsNorm=s=>String(s||'').normalize('NFKC').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').normalize('NFC')
+ .replace(/[\u3041-\u3096]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60)).replace(/ヴ/g,'ブ').replace(/[ー〜~\-]/g,'')
+ .replace(/[・／\/（）()、,.;；:&＆!¡?¿'"]/g,' ').replace(/\s+/g,' ').trim();
+const hsCmp=s=>hsNorm(s).replace(/ /g,'');
+function hsIdx(x){if(x._hs)return x._hs;const y=HS_YOMI[x.line]||'';
+ const series=[hsCmp(x.line)].concat(y.split(' ').map(hsCmp)).filter(Boolean);
+ const words=hsNorm([x.line,x.name,x.type,x.kw,y].join(' ')).split(' ').concat(series);
+ const all=hsNorm([x.line,x.name,x.size,x.type,x.nayami,x.kw,y,x.desc&&x.desc.es,x.desc&&x.desc.en,x.desc&&x.desc.ja,x.feat&&x.feat.es,x.feat&&x.feat.en,x.feat&&x.feat.ja].join(' '));
+ return x._hs={series:series,words:words,all:all,allc:all.replace(/ /g,'')};}
+// 【10/21 Nory】種類で入れたら、名前に入っていなくてもその種類が全部出る（productos.json の type＝台帳の「種類」の列で見る）
+// w：その種類の言葉（ja・es・en。| で区切る）、t：当てる「種類」、k：kw でも当てる時
+const HS_CAT=[
+ {w:'シャンプー|shampoo|champu|champú|shampoo bar|dry shampoo|ドライシャンプー|champu en seco',t:/シャンプー|クレンジングクリーム/},
+ {w:'コンディショナー|リンス|conditioner|acondicionador',t:/^コンディショナー|クレンジングクリーム/},
+ {w:'トリートメント|treatment|tratamiento|hair treatment|ヘアトリートメント',t:/トリートメント|マスク/},
+ {w:'マスク|ヘアマスク|パック|mask|hair mask|mascarilla',t:/マスク|（パック）/},
+ {w:'洗い流さないトリートメント|洗い流さない|アウトバス|leave in|leave-in|sin enjuague',t:/^洗い流さない/},
+ {w:'ハンドクリーム|ハンドバーム|ハンドケア|hand cream|hand balm|hand care|crema de manos|crema para manos',t:/^ハンドバーム/},
+ {w:'ハンドソープ|ハンドウォッシュ|hand soap|hand wash|jabon de manos|jabón de manos|jabon para manos',t:/^ハンドソープ/},
+ {w:'オイル|ヘアオイル|oil|hair oil|aceite',t:/オイル/},
+ {w:'バーム|balm|balsamo|bálsamo',t:/バーム/},
+ {w:'バター|butter|manteca|mantequilla',t:/バター/},
+ {w:'スプレー|ミスト|spray|hairspray|hair spray|mist|laca|aerosol|bruma',t:/スプレー|ミスト/},
+ {w:'スタイリング|整髪料|styling|peinado|fijador',t:/^スタイリング/},
+ {w:'ワックス|ポマード|wax|pomade|cera|pomada',t:/ワックス|ポマード/},
+ {w:'ジェル|gel',t:/ジェル/},
+ {w:'ムース|mousse|espuma',t:/ムース/},
+ {w:'クリーム|cream|crema',t:/クリーム/},
+ {w:'クレイ|clay|arcilla|ペースト|paste|ガム|gum|パウダー|powder|polvo|フルイド|fluid|fluido|スフレ|souffle|soufflé',t:/クレイ|ペースト|ガム|パウダー|フルイド|スフレ/},
+ {w:'セラム|美容液|serum|sérum|suero',t:/セラム/},
+ {w:'ミルク|milk|leche',t:/ミルク/},
+ {w:'頭皮|スカルプ|scalp|cuero cabelludo',t:/^頭皮/,k:'頭皮'},
+ {w:'ボディ|ボディソープ|体|body|body wash|cuerpo|gel de baño|jabon corporal|jabón corporal',t:/ボディ|体/},
+ {w:'日焼け止め|サンスクリーン|sunscreen|protector solar|bloqueador',t:/日焼け止め/},
+ {w:'アフターサン|after sun|aftersun|despues del sol|después del sol',t:/アフターサン/},
+ {w:'ひげ|髭|シェービング|シェーブ|アフターシェーブ|beard|shaving|shave|after shave|aftershave|barba|afeitar|rasurar',t:/ひげ|シェーブ|シェービング/},
+ {w:'ルームフレグランス|フレグランス|香り|fragrance|room fragrance|aromatizante|fragancia',t:/フレグランス/},
+ {w:'詰め替え|レフィル|refill|recarga',t:/詰め替え/},
+ {w:'ミニ|トラベル|mini|travel|viaje|tamaño viaje',t:/ミニ/}];
+HS_CAT.forEach(c=>{c.ws=c.w.split('|').map(hsCmp).filter(Boolean);});
+const hsInCat=(x,c)=>c.t.test(x.type||'')||(c.k&&String(x.kw||'').indexOf(c.k)>=0);
+function hsFind(q){const ws=hsNorm(q).split(' ').filter(Boolean),qc=ws.join('');if(!ws.length)return null;
+ let r=HITEMS.filter(x=>hsIdx(x).series.indexOf(qc)>=0);if(r.length)return r; // ① シリーズ名ぴったり
+ let cs=HS_CAT.filter(c=>c.ws.indexOf(qc)>=0);if(!cs.length&&qc.length>=3)cs=HS_CAT.filter(c=>c.ws.some(v=>v.indexOf(qc)===0)); // ② 種類（ぴったり→なければ3文字以上の頭）
+ if(cs.length){r=HITEMS.filter(x=>cs.some(c=>hsInCat(x,c)));if(r.length)return r;} // 今その種類の在庫がない時は③④へ
+ r=HITEMS.filter(x=>ws.every(w=>hsIdx(x).words.some(v=>v.indexOf(w)===0)));if(r.length)return r; // ③ 言葉の頭
+ return HITEMS.filter(x=>ws.every(w=>hsIdx(x).all.indexOf(w)>=0||hsIdx(x).allc.indexOf(w)>=0));} // ④ 説明の中まで
+function hsRun(){const q=document.getElementById('hsq').value,st=document.getElementById('strip'),n=document.getElementById('hsn');
+ document.getElementById('hsx').hidden=!q;const r=hsFind(q);
+ if(!r){st.classList.remove('qon','qnone');st.querySelectorAll('.pc').forEach(b=>b.classList.remove('hsh'));n.textContent='';return;}
+ const ok={};r.forEach(x=>ok[x.id]=1);st.querySelectorAll('.pc').forEach(b=>b.classList.toggle('hsh',!ok[b.dataset.id]));
+ st.classList.add('qon');st.classList.toggle('qnone',!r.length);st.scrollLeft=0;
+ n.textContent=r.length?HS_TX.n[LANG](r.length):HS_TX.none[LANG];
+ if(PV_ID&&!ok[PV_ID])pvClose(false);else pvPlace();}
+(()=>{const i=document.getElementById('hsq'),x=document.getElementById('hsx');if(!i)return;
+ i.placeholder=HS_TX.ph[LANG];i.setAttribute('aria-label',HS_TX.ph[LANG]);x.setAttribute('aria-label',HS_TX.x[LANG]);
+ i.addEventListener('input',hsRun);i.addEventListener('search',hsRun);
+ i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();i.blur();}}); // Enter で予約フォームを送らない・キーボードを閉じるだけ
+ x.onclick=()=>{i.value='';hsRun();i.focus();};})();
+// ===== 【下書き 10/21 取り置きの検索】end =====
+
 // ===== 【下書き 10/6 メニューのメリット】文：納品/2026-10-06_salon-message_メニューのメリット文.md（レビュー合格）。パーマは「承っておりません」にそろえ、縮毛矯正の見出しは「まっすぐが続く」に =====
 const MERIT={
 0:{es:['Precisión.','Técnica japonesa de corte y desfilado: la forma se mantiene por más tiempo.'],en:['Precision.','Japanese cutting and thinning technique, so your shape holds longer.'],ja:['精密。','日本のカットとすきの技術で、形がきれいに長持ちします。']},
@@ -1738,16 +1864,16 @@ const MERIT={
 3:{es:['Cuidado.','Color pensado para reducir el daño y conservar la suavidad del cabello.'],en:['Gentle.','Color designed to minimize damage and keep hair soft.'],ja:['やさしく。','ダメージをおさえ、やわらかな手ざわりを残すカラー。']},
 4:{es:['Movimiento.','Se agrega a un corte; por el momento no aceptamos reservas solo de permanente.'],en:['Movement.',"An add-on to a haircut; we don't take perm-only bookings."],ja:['動き。','カットに追加するメニューです（パーマのみのご予約は承っておりません）。']},
 5:{es:['Liso para siempre.','La parte tratada queda lisa de forma permanente; el cabello nuevo se retoca después.'],en:['Straight for good.','Treated hair stays straight permanently; new growth is touched up later.'],ja:['ずっとまっすぐ。','かけた部分は、ずっとストレートのまま。伸びてくる根元はリタッチで整えます。']}, // 【Nory 10/8】「当てたところは永遠にストレート」の言い方に
-6:{es:['Suavidad.','Tratamiento japonés que deja el cabello muy suave y da cuerpo al cabello fino. Dura aprox. 3 a 4 semanas (varía según la persona).'],en:['Softness.','A Japanese treatment that leaves hair very soft and adds body to fine hair. Lasts about 3–4 weeks (results vary).'],ja:['やわらかさ。','日本のトリートメントで髪がとてもやわらかに。細い髪・コシのない髪にはハリも。もちの目安は3週間〜1か月（個人差あり）。']}, // 【10/6】更新済みの文に差しかえ
+6:{es:['Suavidad.','Tratamiento japonés que deja el cabello muy suave y da cuerpo al cabello fino. Dura aprox. de 3 semanas a 1 mes (varía según la persona).'],en:['Softness.','A Japanese treatment that leaves hair very soft and adds body to fine hair. Lasts about 3 weeks to 1 month (results vary).'],ja:['やわらかさ。','日本のトリートメントで髪がとてもやわらかに。細い髪・コシのない髪にはハリも。もちの目安は3週間〜1か月（個人差あり）。']}, // 【10/6】更新済みの文に差しかえ
 7:{es:['Listo.','Lavado y peinado para un evento o un día especial.'],en:['Ready.','Shampoo and blow-dry for an event or a special day.'],ja:['お出かけ前に。','シャンプーとブローで、大事な日の髪を整えます。']},
 10:{es:['Marco.','Cejas definidas para equilibrar el rostro.'],en:['Frame.','Neatly shaped brows to balance your face.'],ja:['印象。','眉を整えて、顔まわりをすっきり。']}};
 let MV_T=0;
 function mvOpen(k,el,below){const m=MERIT[k];if(!m||!m[LANG])return;const pv=document.getElementById('pv');clearTimeout(MV_T);if(PV_ID)pvClose();
- PV_EL=el;pv.dataset.id='';pv.classList.remove('inter');pv.classList.add('mv');pv.innerHTML='<p class="mv-t"><b>'+m[LANG][0]+'</b> '+m[LANG][1]+'</p>';pv.hidden=false;pv.classList.remove('in');void pv.offsetWidth;pv.classList.add('in');pvPlace(below);}
+ PV_EL=el;pv.dataset.id='';pv.classList.remove('inter');pv.classList.add('mv');pv.innerHTML=k===6?trTip():'<p class="mv-t"><b>'+m[LANG][0]+'</b> '+m[LANG][1]+'</p>';pv.hidden=false;pv.classList.remove('in');void pv.offsetWidth;pv.classList.add('in');pvPlace(below);}
 function mvClose(){const pv=document.getElementById('pv');if(pv.classList.contains('mv')&&!pv.hidden){pv.hidden=true;PV_EL=null;}pv.classList.remove('mv');}
 function mvBind(b,k){b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&!PV_TOUCH())mvOpen(k,b,false);});b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!PV_TOUCH())mvClose();});
  b.addEventListener('focus',()=>{if(!PV_TOUCH())mvOpen(k,b,false);});b.addEventListener('blur',()=>{if(!PV_TOUCH())mvClose();});
- b.addEventListener('click',()=>{if(!PV_TOUCH())return;const on=b===bG?bOpen:b.classList.contains('on');if(!on){mvClose();return;}mvOpen(k,b,true);MV_T=setTimeout(mvClose,2600);});} /* スマホ：選んだ時に、ボタンの下に約2.6秒 */
+ b.addEventListener('click',()=>{if(!PV_TOUCH())return;const on=b===bG?bOpen:b.classList.contains('on');if(!on){mvClose();return;}mvOpen(k,b,true);MV_T=setTimeout(mvClose,k===6?6000:2600);});} /* スマホ：選んだ時に、ボタンの下に約2.6秒 */
 // menus
 const mEl=document.getElementById('menus');
 // 【下書き 10/6 シャンプーブローまとめ】一覧には「シャンプーブロー」を1つ。押すと下に3つ（7/8/9）が開き、1つだけ選ぶ。送る値（MENUS[i][0]・番号・DUR_MENU）は今と同じ
@@ -1766,7 +1892,10 @@ MENUS.forEach((m,i)=>{
  b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');if(isB)bOpen=false; /* 【10/8 Nory】シャンプーブローを外したら長さのボタンも閉じる */}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}bUI();colorUI();upd();};
  mBtn[i]=b;(isB?bSub:mEl).appendChild(b);});
 bUI();
-mBtn.forEach((b,i)=>{if(b&&MERIT[i]&&i!==7)mvBind(b,i);});mvBind(bG,7); // 【10/6 メニューのメリット】
+mBtn.forEach((b,i)=>{if(b&&MERIT[i]&&i!==7)mvBind(b,i);});mvBind(bG,7);
+function trTip(){const t=TRI[LANG]||TRI.es;return '<div class="mv-t trt"><b>'+t.h+'</b>'+t.l+'<ol>'+t.s.map((x,i)=>'<li><i>'+(i+1)+'</i><span>'+x[0]+'</span></li>').join('')+'</ol></div>';} /* 【10/21 Nory】 */
+(function(){const b=mBtn[6];if(!b)return;const m=document.createElement('i');m.className='tri';m.textContent='i';m.setAttribute('aria-hidden','true');b.appendChild(m);
+ m.addEventListener('click',e=>{e.stopPropagation();e.preventDefault();const pv=document.getElementById('pv');if(!pv.hidden&&pv.classList.contains('mv')&&PV_EL===b){mvClose();return;}mvOpen(6,b,true);clearTimeout(MV_T);MV_T=setTimeout(mvClose,8000);});})(); /* 印を押した時は選ばない・説明だけ（8秒・もう一度押すと閉じる） */ // 【10/6 メニューのメリット】
 const cEl=document.getElementById('ctypes');
 CTYPES.forEach((c,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=c[1][LANG];b.onclick=()=>{sel.ctype=i;[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===i));bleachUI();upd();};cEl.appendChild(b);});
 const BTYPES=[['Sin decoloración',{es:'Sin decoloración',en:'No bleach',ja:'ブリーチなし'}],['Con decoloración',{es:'Con decoloración',en:'With bleach',ja:'ブリーチあり'}]];
@@ -1784,7 +1913,41 @@ function mmMark(){[...mmEl.children].forEach((x,k)=>x.classList.toggle('on',MMTY
 function needMM(){return sel.menus.length>0&&sel.menus.indexOf(0)<0&&sel.menus.indexOf(1)<0&&!permOnly();}
 function mmUI(){const on=needMM();document.getElementById('mmBox').style.display=on?'block':'none';if(!on)sel.mm=null;mmMark();}
 const mmLabel=(k,L)=>{const m=MMTYPES.find(x=>x[0]===sel.mm);return m?(L?m[1][L]:m[1].es):'';};
-function colorUI(){mmUI();straightUI();const on=sel.menus.indexOf(3)>=0;document.getElementById('colorBox').style.display=on?'block':'none';if(!on){sel.ctype=null;[...cEl.children].forEach(x=>x.classList.remove('on'));}bleachUI();}
+// 【下書き 10/21 Nory】トリートメントの説明（Noryがお店のGmailに送った説明を es/en/ja に整えた文）。1つの言語の中にほかの言語は入れない
+const TRI={
+es:{b:'Ver detalles del tratamiento',h:'Tratamiento japonés',l:'Tratamiento en 4 pasos. Su efecto dura aproximadamente de 3 semanas a 1 mes (varía según la persona).',
+ s:[['Hidratación','Hidrata el cuero cabelludo y el cabello.'],['Proteína','Aporta la proteína que le falta a su cabello.'],['Proteína y volumen','Sigue aportando proteína, con una de dos fórmulas según su cabello: para dar volumen o para reducirlo.'],['Sellado','Fija los efectos de los pasos 1, 2 y 3.']],
+ r:'Deja el cabello muy suave y, en el cabello fino o sin cuerpo, también le da firmeza.',x:'Cerrar'},
+en:{b:'Treatment details',h:'Japanese treatment',l:'A 4-step treatment. Results last about 3 weeks to 1 month (results vary).',
+ s:[['Hydration','Moisturizes the scalp and hair.'],['Protein','Replenishes the protein your hair is missing.'],['Protein & volume','Continues replenishing protein, with one of two formulas chosen for your hair: to add volume or to reduce it.'],['Seal','Locks in the effects of steps 1, 2 and 3.']],
+ r:'Leaves hair very soft and gives body to fine or limp hair.',x:'Close'},
+ja:{b:'トリートメントの詳しい説明',h:'日本のトリートメント',l:'4つの段階で仕上げるトリートメントです。もちの目安は3週間〜1か月です（個人差があります）。',
+ s:[['うるおい','頭皮と髪に水分を与えます。'],['補修','髪に足りないたんぱく質を補います。'],['補修とボリューム','たんぱく質をさらに補います。髪に合わせて、ボリュームを出すタイプと抑えるタイプの2種類を使い分けます。'],['仕上げ','1〜3の効果を髪に閉じこめます。']],
+ r:'髪がとてもやわらかくなり、細い髪・コシのない髪にはハリも出ます。',x:'閉じる'}};
+function trOpen(o){const b=document.getElementById('trB'),p=document.getElementById('trP'),t=TRI[LANG]||TRI.es;p.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');b.innerHTML='<span>'+t.b+'</span><i aria-hidden="true">'+(o?'▴':'▾')+'</i>';
+ if(o){const r=p.getBoundingClientRect();if(r.bottom>innerHeight)p.scrollIntoView({behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'nearest'});}}
+(function(){const t=TRI[LANG]||TRI.es,p=document.getElementById('trP');
+ p.innerHTML='<h4 id="trH">'+t.h+'</h4><p class="tr-l">'+t.l+'</p><ol>'+t.s.map((x,i)=>'<li><span class="tr-n" aria-hidden="true">'+(i+1)+'</span><span><b>'+x[0]+'</b>'+x[1]+'</span></li>').join('')+'</ol><p class="tr-r">'+t.r+'</p><button type="button" class="tr-x" id="trX">'+t.x+'</button>';
+ document.getElementById('trB').onclick=()=>trOpen(document.getElementById('trP').hidden);document.getElementById('trX').onclick=()=>{trOpen(false);document.getElementById('trB').focus({preventScroll:true});};trOpen(false);})();
+// 【下書き 10/21 Nory】トリートメントの髪の長さ。S＝ショート／M＝ボブ／L＝ロング／LL＝スーパーロング（Nory 10/21 の2回目の言葉）。ボタンの中に、とても短い長さの目安（耳まで・あごまで…）
+// ★料金はこの表だけ。数字が null の長さは、メニュー表の「$1,000〜」で出す。幅なら S:[1000,1200] のように入れる
+const TR_PRICE={S:1000,M:1600,L:1800,LL:1900}; // 【Nory 10/21 A案】トリートメントだけの料金。男性・女性とも同じ表
+// カット（メンズカット・レディースカット）と一緒なら、トリートメントから S は −$200、M・L・LL は −$300（Nory 10/21 A案：S 800／M 1,300／L 1,500／LL 1,600）。長さを選んだ時だけ引く。変える時はこの表だけ
+const TR_DISC_CUT={S:200,M:300,L:300,LL:300};
+const TR_LENS=['S','M','L','LL'];
+const TR_LN={S:{es:'Corto',en:'Short',ja:'ショート'},M:{es:'Bob',en:'Bob',ja:'ボブ'},L:{es:'Largo',en:'Long',ja:'ロング'},LL:{es:'Extra largo',en:'Extra long',ja:'スーパー<wbr>ロング'}};
+const TR_LF={S:{es:'Hasta la oreja',en:'To the ears',ja:'耳まで'},M:{es:'Hasta la barbilla',en:'To the chin',ja:'あごまで'},L:{es:'Hombro a pecho',en:'Shoulder to chest',ja:'肩〜胸'},LL:{es:'Bajo el pecho',en:'Below the chest',ja:'胸より下'}}; // 長さの目安（1つ1行・短く）
+sel.trlen=null;
+const trLenOn=()=>sel.menus.indexOf(6)>=0; // 男性・女性とも同じ表（Nory 10/21）
+const discCutTreat=()=>(trLenOn()&&sel.trlen&&(sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0))?TR_DISC_CUT[sel.trlen]:0;
+const trEl=document.getElementById('trLens');
+TR_LENS.forEach(k=>{const b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed','false');b.innerHTML=k+'<span>'+TR_LN[k][LANG]+'</span><small>'+TR_LF[k][LANG]+'</small>';b.setAttribute('aria-label',k+' – '+TR_LN[k][LANG].replace('<wbr>','')+' – '+TR_LF[k][LANG]);
+ b.onclick=()=>{sel.trlen=sel.trlen===k?null:k;trMark();upd();};trEl.appendChild(b);});
+function trMark(){[...trEl.children].forEach((x,i)=>{const on=TR_LENS[i]===sel.trlen;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
+function trPriceTxt(dd){const v=sel.trlen&&TR_PRICE[sel.trlen];if(v==null)return price(MENUS[6]);return Array.isArray(v)?rangeTxt(v[0]-dd,v[1]-dd):fromTxt(v-dd,true);} /* 【10/21 Nory】長さを選んでも「〜」は付けたまま（当日に長さ・量で確定） */
+function trUI(){const on=sel.menus.indexOf(6)>=0;document.getElementById('trBox').hidden=!on;if(!on)trOpen(false);const lo=trLenOn();document.getElementById('trLenW').hidden=!lo;if(!lo&&sel.trlen){sel.trlen=null;trMark();}
+ const pr=document.getElementById('trPr');pr.hidden=!(lo&&sel.trlen);if(lo&&sel.trlen){const d=discCutTreat(),c=TR_DISC_CUT[sel.trlen];pr.innerHTML=MENUS[6][1][LANG]+' · '+sel.trlen+' '+TR_LN[sel.trlen][LANG]+(LANG==='ja'?'（':' (')+TR_LF[sel.trlen][LANG].toLowerCase()+(LANG==='ja'?'）':')')+'<b><small class="tre">'+T('trEst')+'</small>'+trPriceTxt(d)+'</b><small class="trn">'+T('trFinal')+'</small><em>'+(d?T('tkDiscT')+' −'+money(d):T('trWithCut')+' '+trPriceTxt(c))+'</em>';}}
+function colorUI(){mmUI();straightUI();trUI();const on=sel.menus.indexOf(3)>=0;document.getElementById('colorBox').style.display=on?'block':'none';if(!on){sel.ctype=null;[...cEl.children].forEach(x=>x.classList.remove('on'));}bleachUI();}
 // 写真をDMで送ってもらう：カラー（全部）・パーマ・縮毛矯正
 // 【10/8 Nory】カラーは種類を選んでから判断。リタッチ（ブリーチなし・あり）は写真いらない。全体・ハイライト・ダブル・パーマ・縮毛矯正は写真あり
 function needPhoto(){return (sel.menus.indexOf(3)>=0&&sel.ctype!==null&&sel.ctype!==1)||sel.menus.indexOf(4)>=0||sel.menus.indexOf(5)>=0;}
@@ -1908,7 +2071,7 @@ function drawHoy(){const e=document.getElementById('hoy');if(!e)return;const a=h
  const w=e.querySelector('.hoy-ts');a.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='hoy-t'+(isT&&sel.time===s?' on':'');b.textContent=s;b.setAttribute('aria-label',T('hoyT')+' '+s);
   b.onclick=()=>{sel.date=new Date(TODAY);sel.time=s;view=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);drawCal();drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};w.appendChild(b);});
  e.hidden=false;}
-function showMenus(){return sel.menus.map(i=>i===3&&sel.ctype!==null?MENUS[3][1][LANG]+' ('+CTYPES[sel.ctype][1][LANG]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][1][LANG]:'')+')':(i===5&&sel.stype!==null?MENUS[5][1][LANG]+' ('+STYPES[sel.stype][1][LANG]+')':MENUS[i][1][LANG])).join(' + ')+(needMM()&&sel.mm?' ('+mmLabel(0,LANG)+')':'');}
+function showMenus(){return sel.menus.map(i=>i===3&&sel.ctype!==null?MENUS[3][1][LANG]+' ('+CTYPES[sel.ctype][1][LANG]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][1][LANG]:'')+')':(i===5&&sel.stype!==null?MENUS[5][1][LANG]+' ('+STYPES[sel.stype][1][LANG]+')':(i===6&&trLenOn()&&sel.trlen?MENUS[6][1][LANG]+' ('+sel.trlen+')':MENUS[i][1][LANG]))).join(' + ')+(needMM()&&sel.mm?' ('+mmLabel(0,LANG)+')':'');}
 function menuText(){return sel.menus.map(i=>i===3&&sel.ctype!==null?'Color ('+CTYPES[sel.ctype][0]+(sel.ctype===1&&sel.bleach!==null?', '+BTYPES[sel.bleach][0].toLowerCase():'')+')':(i===5&&sel.stype!==null?'Alaciado ('+STYPES[sel.stype][0]+')':MENUS[i][0])).join(' + ')+(needMM()&&sel.mm?' ('+mmLabel().toLowerCase()+')':'');}
 let lastDur=-1;
 function revalidate(){sel.opts.forEach(o=>{if(o.date){const ok=closed(o.date)?[]:freeSlots(o.date);if(!ok.length){o.date=null;o.time=null;}else if(o.time&&o.time!=='any'&&ok.indexOf(o.time)<0)o.time=null;}});drawCal();drawTimes();drawOpts();}
@@ -1926,7 +2089,7 @@ function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWit
 function pendingTypes(){const a=[];if(sel.menus.indexOf(3)>=0&&(sel.ctype===null||(sel.ctype===1&&sel.bleach===null)))a.push(3);if(sel.menus.indexOf(5)>=0&&sel.stype===null)a.push(5);if(needMM()&&sel.mm===null)a.push('mm');return a;}
 const pendTxt=()=>pendingTypes().map(i=>i==='mm'?T('mmQ'):MENUS[i][1][LANG]+(LANG==='ja'?'：':': ')+T('pickType')).join(LANG==='ja'?'／':' / ');
 function permOnly(){return !CAMBIO&&sel.menus.indexOf(4)>=0&&sel.menus.indexOf(0)<0&&sel.menus.indexOf(1)<0;}
-function upd(){const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms=menuText();const o=sel.opts.filter(x=>x.date&&x.time);
+function upd(){trUI();const dd=dur();if(dd!==lastDur){lastDur=dd;revalidate();}const ms=menuText();const o=sel.opts.filter(x=>x.date&&x.time);
  document.getElementById('photoNote').style.display=needPhoto()&&!CAMBIO?'block':'none';{const on=needPhoto()&&!CAMBIO;document.getElementById('photoH').hidden=!on;document.getElementById('photoBox2').hidden=!on;if(on)document.getElementById('photoNote2').textContent=document.getElementById('photoNote').textContent;} /* 【10/8 Nory】見出し＋送る前にも */ // 【下書き 10/4】変更のときはDMで写真のお願いを出さない
  document.getElementById('cutNote').style.display=cutPhoto()?'block':'none';
  try{picUI();}catch(e){} // 【写真の枠 10/9】
@@ -2095,7 +2258,7 @@ function spShow(r){const e=document.getElementById('err'),cb=r.how==='cambio'&&!
 // ===== /同じ名前 =====
 
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;EVS.busy=true;b.textContent=T('sending');document.getElementById('err').textContent='';TAKEN_MSG='';bzDraw(); /* 【埋まりの再確認 10/20】 */
- sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),given:document.getElementById('name').value.trim() /* 【家族 10/10】 */,src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),mailp:mailpVal() /* 【1人ずつ 10/13】 */,note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(durBase(),30),cdur:cdUse()?Math.max(dur(),30):0,p:CDP /* 【お客様ごとの長さ 10/21】dur はいつもの長さのまま。その方の長さは cdur */,overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:''},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay(),CAMBIO?{}:evPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(takenResp(r))return; /* 【埋まりの再確認 10/20】 */if(evResp(r))return;if(r&&r.ok){spSave(); /* 【同じ名前 10/9】画面を書きかえる前に印だけ */setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML=/* 【デザイン統一 10/21】変更の希望の「受け付けました」画面も、ふつうの予約と同じ弧の画像（RECIBIDA／英語 RECEIVED）。前は丸ロゴだけ */'<div class="done">'+('<img class="doneHd" src="mail/'+(LANG==='en'?'head_received_en':'head_received')+'_sway.gif" width="243" height="231" alt="'+(LANG==='en'?'RECEIVED':'RECIBIDA')+' – THE HOME HAIR RE-CREATIVE">')+'<div class="big">✓</div>'+(CAMBIO?'<h1>'+T('cDoneT')+'</h1>':'')+'<p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'' /* 【10/13 決まり9-3】WhatsAppの1行は出さない（電話の1行も出さない） */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';if(!CAMBIO)pBand();}
+ sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),given:document.getElementById('name').value.trim() /* 【家族 10/10】 */,src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),mailp:mailpVal() /* 【1人ずつ 10/13】 */,note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(durBase(),30),cdur:cdUse()?Math.max(dur(),30):0,p:CDP /* 【お客様ごとの長さ 10/21】dur はいつもの長さのまま。その方の長さは cdur */,overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:'',trlen:trLenOn()&&sel.trlen?sel.trlen:'' /* 【10/21 Nory】トリートメントの長さ S/M/L/LL（Apps Script はまだ読まない） */},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay(),CAMBIO?{}:evPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(takenResp(r))return; /* 【埋まりの再確認 10/20】 */if(evResp(r))return;if(r&&r.ok){spSave(); /* 【同じ名前 10/9】画面を書きかえる前に印だけ */setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML=/* 【デザイン統一 10/21】変更の希望の「受け付けました」画面も、ふつうの予約と同じ弧の画像（RECIBIDA／英語 RECEIVED）。前は丸ロゴだけ */'<div class="done">'+('<img class="doneHd" src="mail/'+(LANG==='en'?'head_received_en':'head_received')+'_sway.gif" width="243" height="231" alt="'+(LANG==='en'?'RECEIVED':'RECIBIDA')+' – THE HOME HAIR RE-CREATIVE">')+'<div class="big">✓</div>'+(CAMBIO?'<h1>'+T('cDoneT')+'</h1>':'')+'<p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'' /* 【10/13 決まり9-3】WhatsAppの1行は出さない（電話の1行も出さない） */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';if(!CAMBIO)pBand();}
   else{b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');if(r&&r.err==='same_person')spShow(r); /* 【同じ名前 10/9】 */}}).catch(()=>{EVS.busy=false;b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
 (()=>{const g=document.getElementById('go'),o=g.onclick;g.onclick=function(ev){if(!SAME_P2||CAMBIO||!P2)return o.call(g,ev);const L=spList();if(!L.length)return o.call(g,ev);const n=spKeyN(fullName()),m=spMailN(document.getElementById('mail').value);Promise.all([spH(n),spH(m)]).then(h=>{if(L.some(x=>h[0]&&x.n===h[0])) /* 【家族 10/10】同じメール（家族）は通す。同じお名前だけ */{const e=document.getElementById('err');e.textContent=T('p2Same');try{e.scrollIntoView({block:'center'});}catch(x){}}else o.call(g,ev);}).catch(()=>o.call(g,ev));};})(); // 【同じ名前 10/9】
 if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a>' /* 【10/13 決まり9-3】WhatsAppの1行は出さない（電話の1行も出さない） */;app.appendChild(bx);}
@@ -2169,11 +2332,11 @@ const MEN_COLOR_FROM_K={0:1500,'1n':1400},MEN_CKEYS=[0,'1n'];const menFrom=k=>ME
 function isMen(){return menCut()||(needMM()&&sel.mm==='caballero');}
 function menColor(){return sel.menus.indexOf(3)>=0&&isMen()&&MEN_CKEYS.indexOf(ckey())>=0;}
 function svcPrice(i){if(i===3&&menColor())return {min:menFrom(ckey()),max:menFrom(ckey()),ap:true,range:false};const m=MENUS[i];const r=i===3&&sel.ctype!==null?CTYPE_PRICE[ckey()]:(i===5&&sel.stype!==null?STYPE_PRICE[sel.stype]:null);
- if(r)return {min:r[0],max:r[1],ap:false,range:true};const v=yen(m[2]);return {min:v,max:v,ap:!!m[3],range:false};}
+ if(r)return {min:r[0],max:r[1],ap:false,range:true};if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null){const q=TR_PRICE[sel.trlen];return Array.isArray(q)?{min:q[0],max:q[1],ap:false,range:true}:{min:q,max:q,ap:true,range:false};} /* 【10/21 Nory】トリートメントの長さ */const v=yen(m[2]);return {min:v,max:v,ap:!!m[3],range:false};}
 const num=v=>Number(v).toLocaleString('en-US');
 const rangeTxt=(a,b)=>LANG==='ja'?money(a)+'〜'+num(b):money(a)+'–'+num(b);
 function tkFmtR(a,b,ap){if(b<=a||ap)return tkFmt(a,ap); /* 「〜」のメニューがある時は上が決まらないので「最低〜」だけ */return (LANG!=='ja'&&ap?'<small>'+T('from')+'</small> ':'')+rangeTxt(a,b)+(LANG==='ja'&&ap?'<small>〜</small>':'');}
-function rowPrice(i){const p=svcPrice(i);if(i===3&&menColor())return fromTxt(menFrom(ckey()),true);return p.range?rangeTxt(p.min,p.max)+' '+T(i===3&&ckey()===3?'dblNote':(i===3&&(ckey()==='1n'||ckey()==='1b')?'rootNote':'lenNote')):price(MENUS[i]);}
+function rowPrice(i){const p=svcPrice(i);if(i===3&&menColor())return fromTxt(menFrom(ckey()),true);if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null)return p.range?rangeTxt(p.min,p.max):fromTxt(p.min,true); /* 【10/21 Nory】「〜」つき */return p.range?rangeTxt(p.min,p.max)+' '+T(i===3&&ckey()===3?'dblNote':(i===3&&(ckey()==='1n'||ckey()==='1b')?'rootNote':'lenNote')):price(MENUS[i]);}
 // 【10/6 Nory決定】カット（メンズ／レディース）＋カラーは −$300。今は「カラー全体」の時だけ（ほかの種類はNoryに確認中。決まったら番号を足す）
 const DISC_CTYPES=[0,'1n','1b',3],DISC_CUT_COLOR=300;
 const discCutColor=()=>(!menColor()&&sel.menus.indexOf(3)>=0&&DISC_CTYPES.indexOf(ckey())>=0&&(sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0))?DISC_CUT_COLOR:0;
@@ -2188,14 +2351,14 @@ function tkUpd(){const tk=document.getElementById('tk');if(!tk)return;
  const on=sel.menus.length>0||pr.length>0;tk.classList.toggle('on',on);document.body.classList.toggle('tkOn',on);if(!on){document.getElementById('tkD').hidden=true;document.getElementById('tkBtn').setAttribute('aria-expanded','false');tk.classList.remove('open');}
  const est=sel.menus.some(i=>i===3||i===4||i===5||i===6); /* 【10/6 Nory】「目安」はカラー・パーマ・縮毛矯正・トリートメントが入った時だけ */
  const lb=tk.querySelector('.tk-l b[data-t="tkL"]'),ls=tk.querySelector('.tk-l .tk-ls');lb.textContent=est?T('tkL'):T('tkT');ls.textContent=est?T('tkLs'):T('tkT');
- const dc=discCutColor();const tot=sv+pv-dc;const totMax=svMax+pv-dc;const dEl=document.getElementById('tkDisc');dEl.hidden=!dc;dEl.textContent=dc?T('tkDisc')+' −'+money(dc):'';const uo=upsell();['upsC','upsT'].forEach(id=>{const e=document.getElementById(id);e.hidden=!uo;e.textContent=uo?T('ups'):'';});TK_MAX=totMax;const n=document.getElementById('tkN');const tp=pend.some(x=>typeof x==='number'); /* 【10/8 Nory】種類を選ぶまで合計は「—」 */const up=!tp&&tot>TK_V;n.dataset.ap=ap?'1':'0';if(tp){cancelAnimationFrame(TK_RAF);TK_V=0;n.classList.remove('rg');n.textContent='—';}else tkCount(tot);document.getElementById('tkPick').hidden=!tp;document.getElementById('tkSub').hidden=tp; /* 【10/8 レビュー】種類待ちの時は下の1行だけ（帯の下で切れないように） */
+ const dc=discCutColor(),dt=discCutTreat();const tot=sv+pv-dc-dt;const totMax=svMax+pv-dc-dt;const dEl=document.getElementById('tkDisc');dEl.hidden=!(dc||dt);dEl.textContent=[dc?T('tkDisc')+' −'+money(dc):'',dt?T('tkDiscT')+' −'+money(dt):''].filter(String).join(' · ');const uo=upsell();['upsC','upsT'].forEach(id=>{const e=document.getElementById(id);e.hidden=!uo;e.textContent=uo?T('ups'):'';});TK_MAX=totMax;const n=document.getElementById('tkN');const tp=pend.some(x=>typeof x==='number'); /* 【10/8 Nory】種類を選ぶまで合計は「—」 */const up=!tp&&tot>TK_V;n.dataset.ap=ap?'1':'0';if(tp){cancelAnimationFrame(TK_RAF);TK_V=0;n.classList.remove('rg');n.textContent='—';}else tkCount(tot);document.getElementById('tkPick').hidden=!tp;document.getElementById('tkSub').hidden=tp; /* 【10/8 レビュー】種類待ちの時は下の1行だけ（帯の下で切れないように） */
  if(up&&on){tk.classList.remove('up');void tk.offsetWidth;tk.classList.add('up');}
  document.getElementById('tkLen').hidden=!(rng||ap); /* 【10/8 Nory】カラー・パーマなど「〜」の料金がある時だけ */
  const d=dur();{const sb=document.getElementById('tkSub');if(pend.length)sb.textContent=pendTxt();else sb.innerHTML=(d?'<span class="tk-du">'+durTxt(d)+'</span> · ':'')+'<span class="tk-dt">'+T('tkD')+'</span><span class="tk-dts">'+T('tkDs')+'</span>';}document.getElementById('tkSub').classList.toggle('tk-pend',!!pend.length);
  const esc=x=>String(x).replace(/[<>&]/g,'');
  document.getElementById('tkD').innerHTML=(sel.menus.length?'<div class="tk-h m">'+T('tkS')+'</div>'+sel.menus.map(i=>'<button type="button" class="tk-r rm" data-k="m'+i+'" aria-label="'+esc(T('rmA'))+': '+esc(MENUS[i][1][LANG])+'"><span class="tk-nm">'+esc(MENUS[i][1][LANG])+'</span><span class="tk-pr">'+(pend.indexOf(i)>=0?'<em class="tk-pt">'+T('pickType')+'</em>':esc(rowPrice(i)))+'</span><span class="tk-x" aria-hidden="true"></span></button>').join(''):'')
   +(pr.length?'<div class="tk-h p">'+T('tkP')+'</div>'+pr.map(x=>'<button type="button" class="tk-r rm" data-k="p'+x.id+'" aria-label="'+esc(T('rmA'))+': '+esc(hName(x))+'"><span class="tk-nm">'+esc(hName(x))+' ×'+HSEL[x.id]+'</span><span class="tk-pr">'+(x.salon?money(x.salon*HSEL[x.id]):T('hAskS'))+'</span><span class="tk-x" aria-hidden="true"></span></button>').join(''):'')
-  +(dc?'<div class="tk-r tk-dc"><span>'+T('tkDisc')+'</span><span>−'+money(dc)+'</span></div>':'')+'<div class="tk-r tk-t"><span>'+T('tkT')+'</span><span>'+(pend.some(x=>typeof x==='number')?'—':totMax>tot?tkFmtR(tot,totMax,ap):fromTxt(tot,ap))+'</span></div>'
+  +(dc?'<div class="tk-r tk-dc"><span>'+T('tkDisc')+'</span><span>−'+money(dc)+'</span></div>':'')+(dt?'<div class="tk-r tk-dc"><span>'+T('tkDiscT')+'</span><span>−'+money(dt)+'</span></div>':'')+'<div class="tk-r tk-t"><span>'+T('tkT')+'</span><span>'+(pend.some(x=>typeof x==='number')?'—':totMax>tot?tkFmtR(tot,totMax,ap):fromTxt(tot,ap))+'</span></div>'
   +'<p>'+T(est?'tkN':'tkNi')+(rng?'<br>'+T(svi.indexOf(3)>=0&&(ckey()==='1n'||ckey()==='1b')?'rootVar':'lenVar'):'')+(ap?'<br>'+T('tkV'):'')+(ask?'<br>'+T('tkAsk'):'')+'</p>';}
 // ===== 【下書き 10/6 明細から取り消し】明細の行を押すと、打ち消し線→たたむ→選びを外す。5秒「元に戻す」 =====
 const tkTimes=()=>sel.opts.filter(o=>o.date&&o.time).length;
@@ -2205,10 +2368,10 @@ function tkPos(t){const tk=document.getElementById('tk');const fz=parseFloat(get
 function tkToast(name,lost,undo){const t=document.getElementById('tkToast');TK_UNDO=undo;document.getElementById('tkToastT').innerHTML=T('rmDone').replace('{n}',String(name).replace(/[<>&]/g,''))+(lost?'<br><b>'+T('rmTime')+'</b>':'');document.getElementById('tkUndo').textContent=T('rmUndo');
  tkPos(t);t.hidden=false;t.classList.remove('in');void t.offsetWidth;t.classList.add('in');clearTimeout(TK_TT);TK_TT=setTimeout(()=>{t.hidden=true;TK_UNDO=null;},5000);}
 function tkRemove(k,name){const before=tkTimes();let undo;
- if(k[0]==='m'){const i=+k.slice(1);const st={c:sel.ctype,b:sel.bleach,s:sel.stype};mBtn[i].click();
+ if(k[0]==='m'){const i=+k.slice(1);const st={c:sel.ctype,b:sel.bleach,s:sel.stype,t:sel.trlen};mBtn[i].click();
   undo=()=>{try{const b0=tkTimes(); /* 【レビュー 10/6】押せない（disabled）ボタンを click() せず、選びの状態を直接戻す */
   if(sel.menus.indexOf(i)<0){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);mBtn[i].classList.add('on');}
-  if(i===3){sel.ctype=st.c;sel.bleach=st.b;}if(i===5)sel.stype=st.s;
+  if(i===3){sel.ctype=st.c;sel.bleach=st.b;}if(i===5)sel.stype=st.s;if(i===6){sel.trlen=st.t;trMark();}
   colorUI();[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.ctype));[...bEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.bleach));[...sEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.stype));bUI();
   upd();return {lost:tkTimes()<b0,fail:sel.menus.indexOf(i)<0};}catch(e){return {fail:true};}};}
  else{const id=k.slice(1),n=HSEL[id]||0;holdSet(id,0);undo=()=>{try{holdSet(id,n);return {fail:HSEL[id]!==n};}catch(e){return {fail:true};}};}
