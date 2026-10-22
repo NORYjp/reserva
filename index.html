@@ -610,6 +610,35 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 }
 </style>
 <!-- 【2026-10-13 web パソコン表示】 ここまで -->
+<style>
+/* 【2026-10-22 art 店内の写真を1枚ずつ画面いっぱい】Nory「店内の写真全部、画面いっぱいにスクロールして見えるように」「切らない・引き伸ばさない・解像度を下げない」
+   1画面＝1枚：写真・動画の箱の高さ＝見えている画面の高さ（スマホ：上のバーと下の予約ボタンのあいだ／パソコン：上のバーの下〜外枠の上）。
+   中の写真・動画は object-fit:contain（全体が見える・切らない・形を変えない）。トップの最初の画面は今のまま */
+.pn{position:relative;overflow:hidden;margin:28px -16px 0;height:calc(100vh - var(--fz)*2 - 160px);height:calc(100svh - var(--fz)*2 - 160px);min-height:420px;border-radius:0!important;aspect-ratio:auto!important}
+.pn+.pn{margin-top:14px}
+.pn picture{display:contents}
+.pn img,.pn video{position:relative;z-index:1;display:block;width:100%!important;height:100%!important;object-fit:contain!important;aspect-ratio:auto!important;background:none!important}
+.pn .pn-bg{display:none}
+@media (min-width:820px){
+ .pn{height:calc(100vh - var(--fz)*2 - 113px);min-height:520px;width:calc(100vw - var(--fz)*2);margin:64px 0 0 50%;transform:translateX(-50%)}
+ .pn+.pn{margin-top:18px}
+ /* 「ようこそ」：動画が下の箱に移ったので、見出しと文を左右2列に */
+ .two.ab{grid-template-areas:"h t";grid-template-columns:1fr 1fr;align-items:end}
+ .two.shop-one{grid-template-columns:minmax(0,640px);justify-content:start}
+}
+
+/* ===== 10/22 Nory「最大限のサイズに・モーションをつけて」：すき間はクリームの地。写真・動画は1画面に全体が収まる最大の大きさ ===== */
+.pn{background:var(--cream)}
+.pn .pn-bg{display:none}
+/* ===== 動き M1「重なる」：前の写真はその場に残り、次の写真が下から重なって上がってくる（sticky）。前の写真は同じ大きさのまま（10/22 Nory：M2と同じ大きさに。縮む動きはなし） ===== */
+html.pn-js .pn-stack>.pn{position:sticky;top:var(--stick,calc(var(--fz) + 87px))}
+html.pn-js .pn-stack>.pn+.pn{margin-top:0;box-shadow:0 -24px 40px -22px rgba(58,42,32,.32)}
+@media (min-width:820px){html.pn-js .pn-stack>.pn{top:var(--stick,calc(var(--fz) + 113px))}}
+/* 1枚だけの所（Davinesの棚）：下からヒュンと上がってくる */
+html.pn-js .pn.m1-rise img{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
+html.pn-js .pn.m1-rise:not(.in) img{transform:translateY(90px);opacity:0}
+/* 【2026-10-22 art】ここまで */
+</style>
 </head>
 <body class="gate">
 <!-- 名刺のジグザグの外枠（四辺）2026-10-06 -->
@@ -647,7 +676,12 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
       </div>
       <!-- 店内の動画：@the_home_hair_re_creative のリール（2026-10-05 Nory「店内の動画があればさらによし」） -->
     </div>
-    <figure class="room ab-v" style="margin:26px 0 0;aspect-ratio:4/5"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+  </div>
+  <div class="pn-stack">
+  <!-- 【2026-10-22 art】店内の動画（今までと同じ salon.mp4）：1画面＝1本・切らない -->
+  <figure class="room pn"><video src="salon.mp4" poster="salon.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture></video></figure>
+  <!-- 【2026-10-22 art】今日の店内の写真（素材/美容室/2026-10-22_サロンの写真・位置情報を消した版）：1画面＝1枚・切らない -->
+  <figure class="pn"><picture><source type="image/webp" srcset="thehomehair_salon_1200.webp 1200w, thehomehair_salon_1500.webp 1500w, thehomehair_salon_2400.webp 2400w, thehomehair_salon_3000.webp 3000w" sizes="(min-width:820px) calc((100vh - 205px) * .75), 100vw"><img src="thehomehair_salon_1500.jpg" alt="THE HOME Hair re-creative – interior del salón" width="1500" height="2000" loading="lazy" decoding="async"></picture></figure>
   </div>
   <div class="gallery">
     <!-- 動画：@nory_thehomehair のリール 1・3・12番（2026-10-05 Nory選択）。表紙は顔の画像 -->
@@ -720,10 +754,9 @@ h2.acc{border-radius:14px;outline:none;transition:background-color .25s ease,col
 
 <div class="orn-stripe" aria-hidden="true"></div>
 <section class="fade">
-  <div class="two">
-    <!-- 写真を入れる場所：店頭のDavines商品の棚。撮ったら下の div を <img src="shop.jpg"> に差し替え -->
-    <div class="gallery" style="grid-template-columns:1fr;margin:0"><!-- 棚の写真：お店のインスタの投稿（素材/お店の写真_インスタ/22） -->
-<figure style="aspect-ratio:4/3"><img src="shelf.jpg" alt="" loading="lazy" style="object-position:50% 30%"></figure></div>
+  <!-- 【2026-10-22 art】店頭のDavinesの棚の写真（素材/お店の写真_インスタ/22・大きい元 1440×1800）：1画面＝1枚・切らない。前の2列の左の写真はここへ移した -->
+  <figure class="pn m1-rise"><picture><source type="image/webp" srcset="thehomehair_shelf_1440.webp 1440w"><img src="shelf.jpg" alt="" loading="lazy" decoding="async" width="1080" height="1350"></picture></figure>
+  <div class="two shop-one">
     <div>
       <h2 class="big" data-t="shopBig"></h2>
       <p class="text" data-t="shopTx"></p>
@@ -982,6 +1015,18 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)vs.f
 if(location.hash&&location.hash!=='#top'){open();}
 var c=document.querySelector('.cue');if(c)c.addEventListener('click',function(e){e.preventDefault();open();setTimeout(function(){var a=document.getElementById('about');if(a)a.scrollIntoView({behavior:'smooth'});},30);});
 var p=document.querySelector('.brand');if(p)p.addEventListener('click',function(){});})();
+</script>
+<script>
+/* 【2026-10-22 art 動き M1】重なる。動きを減らす設定の人には動かさない（ふつうに並ぶだけ） */
+(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var d=document.documentElement;d.classList.add('pn-js');
+var bar=document.querySelector('.bar');function st(){if(bar)d.style.setProperty('--stick',Math.round(bar.getBoundingClientRect().bottom-(document.body.classList.contains('gate')?0:0))+'px');}
+var tk=false;function upd(){tk=false;st();}
+function on(){if(!tk){tk=true;requestAnimationFrame(upd);}}addEventListener('resize',on);on();
+/* 棚の写真：画面の下から15%ほど入ったら上がってくる（スクロールの位置で見る。写真の読み込みが終わってから動く）。画面の下へ外れたら元へ */
+var rs=[].slice.call(document.querySelectorAll('.pn.m1-rise'));
+function rise(){var vh=innerHeight;rs.forEach(function(t){var r=t.getBoundingClientRect(),im=t.querySelector('img');if(r.top<vh*.85&&r.bottom>0){if(t.classList.contains('in')||t._w)return;if(im&&!im.complete){t._w=1;var go=function(){t._w=0;t.classList.add('in');};im.addEventListener('load',go,{once:true});im.addEventListener('error',go,{once:true});}else t.classList.add('in');}else if(r.top>=vh)t.classList.remove('in');});}
+var tr=false;addEventListener('scroll',function(){if(!tr){tr=true;requestAnimationFrame(function(){tr=false;rise();});}},{passive:true});addEventListener('resize',rise);rise();
+}catch(e){}})();
 </script>
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
 <button class="music" id="musicBtn" aria-label="music" title="Music">♪</button>
