@@ -622,6 +622,7 @@ body.needType #s2box{display:none} /* 【10/8 Nory】押せない四角は並べ
 /* ===== 【下書き 10/21 取り置きの検索】end ===== */
 </style><!-- Google tag (gtag.js)【10/6 Nory：Googleアナリティクス】広告のパーソナライズは無効 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCVESB9Y1Y"></script>
+<script>(function(){try{var u=new URL(location.href),p=u.searchParams.get('pago');if(!p)return;var k=new URLSearchParams();k.set('pago',p==='ng'?'ng':'ok');var l=u.searchParams.get('lang');if(l)k.set('lang',l);history.replaceState(null,'',location.pathname+'?'+k.toString());}catch(e){}})(); /* 【先払い 10/28】Mercado Pago から戻った時、支払いの番号などを アドレスから消す（Googleアナリティクスに残さない） */</script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WCVESB9Y1Y',{allow_google_signals:true,allow_ad_personalization_signals:false});</script>
 <style>
 /* 【10/9 規約の同意・案2】送る前の3点・規約を読むボタン・同意のチェック・規約の小さな窓 */
@@ -717,6 +718,7 @@ body.polOpen{overflow:hidden}
 <div class="menus" id="menus"></div>
 <div class="pmo" id="permNote" role="alert" hidden data-t="permOnly"></div><!-- 【10/6 Nory決定】パーマのみは受けない -->
 <div class="hint" id="lockNote" style="display:none;margin-top:6px" data-t="lock"></div>
+<div class="hint" id="cutNote" style="display:none;margin-top:6px" data-t="cutInc"></div><!-- 【カットと前髪カット 10/29 Nory】カットを選んだ時だけ -->
 <!-- 【下書き 10/8 Nory A案】カット（メンズ・レディース）を選ばずに、ほかのメニューだけの時に出す。性別は聞かない -->
 <div id="mmBox" style="display:none;margin-top:10px"><div class="hint" style="margin-bottom:6px"><span data-t="mmQ"></span><br><small data-t="mmNote"></small></div>
 <div class="menus" id="mmtypes"></div>
@@ -1358,6 +1360,8 @@ title:{es:'Reserva',en:'Booking',ja:'ご予約'},
 sub:{es:'THE HOME HAIR RE-CREATIVE',en:'THE HOME HAIR RE-CREATIVE',ja:'THE HOME HAIR RE-CREATIVE'}, // 【10/6】お店のフォント（大文字だけ）で出す
 s1:{es:'1. Menú',en:'1. Menu',ja:'1. メニュー'},
 lock:{es:'Las opciones en gris no terminan antes del cierre en el horario elegido.',en:"Greyed-out options can't finish before closing at the chosen time.",ja:'薄いメニューは、選んだ時間からでは閉店までに終わりません。'},
+cutInc:{es:'El corte ya incluye el flequillo.',en:'The haircut already includes the bangs.',ja:'カットには前髪カットも含まれています。'}, // 【カットと前髪カット 10/29 Nory】
+cutBangsErr:{es:'El corte ya incluye el flequillo. Quite «Corte de flequillo» y envíe de nuevo.',en:'The haircut already includes the bangs. Please remove “Bang trim” and send again.',ja:'カットには前髪カットも含まれています。「前髪カット」を外して、もう一度お送りください。'}, // 【カットと前髪カット 10/29】サーバーが止めた時（cut_bangs）
 ctype:{es:'¿Qué tipo de color?',en:'Color type',ja:'カラーの種類'},
 bleachQ:{es:'¿Con decoloración?',en:'With bleach?',ja:'ブリーチを使いますか？'},
 bleachNote:{es:'(el precio y el tiempo cambian)',en:'(price & time differ)',ja:'（料金と時間が変わります）'},
@@ -1553,7 +1557,8 @@ p2Same:{es:'Es el mismo nombre de la primera persona. Escriba el nombre de la se
 Object.assign(TX,{
  takenE:{es:'Lo sentimos, el siguiente horario acaba de ocuparse: {o}. Por favor, elija otro horario.',en:'Sorry, the following time has just been booked: {o}. Please choose another time.',ja:'申し訳ございません。次の時間は、先にご予約が入りました：{o}。お手数ですが、別の時間をお選びください。'},
  busyFail:{es:'No pudimos cargar la disponibilidad actualizada. Por favor, revise su conexión y vuelva a cargar la página.',en:'We could not load the latest availability. Please check your connection and reload the page.',ja:'最新の空き状況を読み込めませんでした。通信状態をご確認のうえ、ページを読み込み直してください。'},
- unavail:{es:'En este momento no podemos confirmar la disponibilidad. Por favor, inténtelo de nuevo en unos minutos.',en:'We cannot check availability right now. Please try again in a few minutes.',ja:'ただいま空き状況を確認できません。数分後にもう一度お試しください。'}
+ unavail:{es:'En este momento no podemos confirmar la disponibilidad. Por favor, inténtelo de nuevo en unos minutos.',en:'We cannot check availability right now. Please try again in a few minutes.',ja:'ただいま空き状況を確認できません。数分後にもう一度お試しください。'},
+ ngStop:{es:'Lamentamos informarle que, debido a una inasistencia previa sin aviso, no nos es posible aceptar su reserva.',en:'We regret to inform you that, due to a previous missed appointment without notice, we are unable to accept your booking.',ja:'誠に恐れ入りますが、以前ご連絡のないままご来店がなかったため、ご予約をお受けすることができません。'} /* 【お断りリスト 10/29】 */
 });
 const T=k=>TX[k][LANG];
 // 【10/8 Nory】迷惑メールの注意の箱（送る前・受け付けました画面で同じ物）。丸ロゴ＝確定メールと同じ画像。コピーはアドレスだけ
@@ -1645,7 +1650,7 @@ const DUR_MENU = {0:60, 1:90, 2:10, 6:90, 7:35, 8:40, 9:50, 10:10}; // 10/6 シ�
 const DUR_PERM_MEN = 120, DUR_PERM_WOMEN = 150;      // パーマはカットに付け足すメニュー（料金は足す・時間はパーマの時間：男性2時間・女性2時間半。カットの時間は足さない）
 const DUR_COLOR = [90, 90, 210, 210];                 // 全体 / リタッチ / ハイライト / ダブル
 const DUR_COLOR_RETOUCH_BLEACH = 120;                 // リタッチ（ブリーチあり）
-const DUR_STRAIGHT = [210, 150, 60, 90];            // 全体3時間半 / リタッチ2時間半 / 前髪 / 前髪と横
+const DUR_STRAIGHT = [210, 150, 60, 60]; /* 【縮毛 前髪と横 10/29 Nory】「前髪と横の縮毛矯正90分もかからないな。それも1時間で。」90 → 60分。Code.gs の mbMenuDur_ と同じ */            // 全体3時間半 / リタッチ2時間半 / 前髪 / 前髪と横
 const DIAS={es:['dom','lun','mar','mié','jue','vie','sáb'],en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ja:['日','月','火','水','木','金','土']}[LANG];
 const MESES={es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],en:['January','February','March','April','May','June','July','August','September','October','November','December'],ja:null}[LANG];
 const CTYPES=[['Color completo',{es:'Color completo',en:'Full color',ja:'全体カラー'}],['Retoque de raíz',{es:'Retoque de raíz',en:'Root touch-up',ja:'リタッチ（根元）'}],['Mechas',{es:'Mechas',en:'Highlights',ja:'ハイライト'}],['Doble color',{es:'Doble color',en:'Double color (bleach)',ja:'ダブルカラー'}]];
@@ -1878,7 +1883,7 @@ function mvBind(b,k){b.addEventListener('pointerenter',e=>{if(e.pointerType==='m
 const mEl=document.getElementById('menus');
 // 【下書き 10/6 シャンプーブローまとめ】一覧には「シャンプーブロー」を1つ。押すと下に3つ（7/8/9）が開き、1つだけ選ぶ。送る値（MENUS[i][0]・番号・DUR_MENU）は今と同じ
 const BR=[7,8,9];
-const CUTX=[[0,1],[1,2],[1,7],[1,8],[1,9]]; // 一緒に選べない組。【10/7 Nory】レディースカットにシャンプーブローは含まれる（1と7・8・9）。【10/7 Nory】レディースカットに前髪カットは含まれる（1と2）／【10/7 Nory B案】1つの予約は1人：メンズカットとレディースカット（0と1）はどちらか1つ。メンズ＋前髪は選べる
+const CUTX=[[0,1],[1,2],[0,2],[1,7],[1,8],[1,9]]; /* 【カットと前髪カット 10/29 Nory】メンズカットと前髪カット（0と2）も一緒に選べない（10/7 B案の「メンズ＋前髪は選べる」はやめた）。前髪カットを選んだあとにカットを押すと、前髪カットは自動で外れる */ const hasCut=()=>sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0; // 一緒に選べない組。【10/7 Nory】レディースカットにシャンプーブローは含まれる（1と7・8・9）。【10/7 Nory】レディースカットに前髪カットは含まれる（1と2）／【10/7 Nory B案】1つの予約は1人：メンズカットとレディースカット（0と1）はどちらか1つ。メンズ＋前髪は選べる
 const cxOf=i=>CUTX.reduce((a,p)=>p.indexOf(i)>=0?a.concat(p.filter(j=>j!==i)):a,[]); // i と一緒に選べないメニューの番号
 const cutX=i=>{cxOf(i).forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});};
 const BRS={7:{es:'Corto / bob',en:'Short / bob',ja:'ショート・ボブ'},8:{es:'Largo',en:'Long',ja:'ロング'},9:{es:'Extra largo',en:'Extra long',ja:'スーパーロング'}};
@@ -1889,7 +1894,7 @@ MENUS.forEach((m,i)=>{
  if(i===BR[0]){bG=document.createElement('button');bG.className='chip';bG.onclick=()=>{bOpen=!bOpen;bUI();};mEl.appendChild(bG);
   bSub=document.createElement('div');bSub.className='bsub';mEl.appendChild(bSub);}
  const isB=BR.indexOf(i)>=0;const b=document.createElement('button');b.className='chip';b.innerHTML=(isB?BRS[i][LANG]:m[1][LANG])+'<span>'+price(m)+'</span>';
- b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');if(isB)bOpen=false; /* 【10/8 Nory】シャンプーブローを外したら長さのボタンも閉じる */}else{if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}bUI();colorUI();upd();};
+ b.onclick=()=>{const k=sel.menus.indexOf(i);if(k>=0){sel.menus.splice(k,1);b.classList.remove('on');if(isB)bOpen=false; /* 【10/8 Nory】シャンプーブローを外したら長さのボタンも閉じる */}else{if(i===2&&hasCut())return; /* 【カットと前髪カット 10/29】カットを選んでいる間は前髪カットを足さない（灰色・押せない。変更のページの読み込みでも足さない） */if(isB)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);b.classList.add('on');}bUI();colorUI();upd();};
  mBtn[i]=b;(isB?bSub:mEl).appendChild(b);});
 bUI();
 mBtn.forEach((b,i)=>{if(b&&MERIT[i]&&i!==7)mvBind(b,i);});mvBind(bG,7);
@@ -2083,7 +2088,8 @@ function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWit
  [...cEl.children].forEach((x,i)=>{x.disabled=sel.ctype!==i&&!fitsWith(()=>{sel.ctype=i;if(i!==1)sel.bleach=null;});});
  [...bEl.children].forEach((x,i)=>{x.disabled=sel.bleach!==i&&!fitsWith(()=>{sel.bleach=i;});});
  [...sEl.children].forEach((x,i)=>{x.disabled=sel.stype!==i&&!fitsWith(()=>{sel.stype=i;});});
- const any=[...mBtn,...cEl.children,...bEl.children,...sEl.children].some(x=>x.disabled);document.getElementById('lockNote').style.display=any?'block':'none';}
+ const cbx=hasCut()&&sel.menus.indexOf(2)<0;if(cbx)mBtn[2].disabled=true;document.getElementById('cutNote').style.display=hasCut()?'block':'none'; /* 【カットと前髪カット 10/29】灰色の理由はカット（閉店の文は出さない） */
+ const any=[...mBtn.filter((x,i)=>!(cbx&&i===2)),...cEl.children,...bEl.children,...sEl.children].some(x=>x.disabled);document.getElementById('lockNote').style.display=any?'block':'none';}
 // 【10/6 Nory決定】パーマを選び、メンズカットもレディースカットも選んでいない時は送れない（予約の変更ページは今の動きのまま）
 // 【10/6 Nory】種類のあるメニュー（カラー：種類＋リタッチはブリーチあり/なし、縮毛矯正：部分）は、選ぶまで合計に入れず、日時・送るへ進めない。初期値は選ばない
 function pendingTypes(){const a=[];if(sel.menus.indexOf(3)>=0&&(sel.ctype===null||(sel.ctype===1&&sel.bleach===null)))a.push(3);if(sel.menus.indexOf(5)>=0&&sel.stype===null)a.push(5);if(needMM()&&sel.mm===null)a.push('mm');return a;}
@@ -2259,7 +2265,7 @@ function spShow(r){const e=document.getElementById('err'),cb=r.how==='cambio'&&!
 
 document.getElementById('go').onclick=()=>{const b=document.getElementById('go');b.disabled=true;EVS.busy=true;b.textContent=T('sending');document.getElementById('err').textContent='';TAKEN_MSG='';bzDraw(); /* 【埋まりの再確認 10/20】 */
  sendR(Object.assign({cambio:CAMBIO?1:0,id:ID,menu:menuText(),photo:needPhoto(),opts:sel.opts.filter(x=>x.date&&x.time).map(x=>({date:ymd(x.date),time:x.time})),name:fullName(),given:document.getElementById('name').value.trim() /* 【家族 10/10】 */,src:DIRECT?SRC:'',hp:document.getElementById('hp').value,tel:document.getElementById('tel').value.trim(),mail:document.getElementById('mail').value.trim(),mailp:mailpVal() /* 【1人ずつ 10/13】 */,note:document.getElementById('note').value,lang:LANG,anytime:ANY,dur:Math.max(durBase(),30),cdur:cdUse()?Math.max(dur(),30):0,p:CDP /* 【お客様ごとの長さ 10/21】dur はいつもの長さのまま。その方の長さは cdur */,overlap:overlap(),mm:needMM()&&sel.mm?sel.mm:'',trlen:trLenOn()&&sel.trlen?sel.trlen:'' /* 【10/21 Nory】トリートメントの長さ S/M/L/LL（Apps Script はまだ読まない） */},CAMBIO?{}:holdPay(),CAMBIO?{}:termsPay(),CAMBIO?{}:evPay())) /* 【下書き 10/6 取り置き】選んだ時だけ items:[{id,n}] を足す */.then(r=>{if(takenResp(r))return; /* 【埋まりの再確認 10/20】 */if(evResp(r))return;if(r&&r.ok){spSave(); /* 【同じ名前 10/9】画面を書きかえる前に印だけ */setTimeout(()=>{PIC_KEYS.forEach(k=>{if(PICS[k]){try{URL.revokeObjectURL(PICS[k].url);}catch(e){}delete PICS[k];}});},0); /* 【写真の枠 10/9】送り終えたら写真を消す（2人目には引き継がない） */try{if(!CAMBIO&&window.gtag){const ni=holdItems().length;gtag('event','generate_lead',Object.assign({method:DIRECT?SRC:(WA?'wa':'ig')},ni?{items_count:ni}:{}));}}catch(e){} /* 【10/6 GA】予約の送信が成功した時だけ1回。名前・メール・予約の中身は送らない */document.getElementById('app').innerHTML=/* 【デザイン統一 10/21】変更の希望の「受け付けました」画面も、ふつうの予約と同じ弧の画像（RECIBIDA／英語 RECEIVED）。前は丸ロゴだけ */'<div class="done">'+('<img class="doneHd" src="mail/'+(LANG==='en'?'head_received_en':'head_received')+'_sway.gif" width="243" height="231" alt="'+(LANG==='en'?'RECEIVED':'RECIBIDA')+' – THE HOME HAIR RE-CREATIVE">')+'<div class="big">✓</div>'+(CAMBIO?'<h1>'+T('cDoneT')+'</h1>':'')+'<p>'+sel.opts.filter(x=>x.date&&x.time).map((x,i)=>OPTN[i]+': '+fmtOpt(x)+(dur()?endTxt(x):'')).join('<br>')+'<br>'+showMenus()+(holdLine()&&!CAMBIO?'<br>'+holdLine():'')+(dur()?'<br><small><i class="kk"></i>'+(LANG==='ja'?T('dur')+'：'+durTxt(dur()):durTxt(dur())+' '+T('dur'))+'</small>':'')+(ANY?'<br><small>'+T(DIRECT?(r.mail?'gAnyNote':'gAnyNoteOff'):WA?'waAnyNote':'anyNote')+'</small>':'')+'</p>'+(needPhoto()&&!CAMBIO?'<div class="photo">'+((picsOn()&&r.picDrop)?T('picRetry'):(picsOn()&&(+r.pics|0)>0)?T('picGot').replace('{n}',String(+r.pics|0)):picMailTxt())+'</div>':'')+(cutPhoto()?'<div class="photo">'+T('cutPhoto')+'</div>':'')+spamHTML()/* 【10/8 Nory】受け付けました画面にも迷惑メールの注意 */+'<p>'+T(CAMBIO?'cDoneC':DIRECT?(r.mail?'gDoneC':'gDoneCOff'):WA?'waDoneC':'doneC')+'</p>'+(CAMBIO?'':'<a class="go" id="p2Go" style="text-decoration:none;text-align:center" href="'+p2Url().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">'+T('p2Btn')+'</a>')+(CAMBIO?'':DIRECT?'' /* 【10/13 決まり9-3】WhatsAppの1行は出さない（電話の1行も出さない） */:'<a class="ig" href="https://ig.me/m/the_home_hair_re_creative">'+T('back')+'</a>')+'</div>';if(!CAMBIO)pBand();}
-  else{b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');if(r&&r.err==='same_person')spShow(r); /* 【同じ名前 10/9】 */}}).catch(()=>{EVS.busy=false;b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
+  else{b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=(r&&r.err==='cut_bangs')?T('cutBangsErr') /* 【カットと前髪カット 10/29】 */:(r&&r.err==='nobook')?T('ngStop') /* 【お断りリスト 10/29】 */:(r&&r.err==='plazo')?T('cClosed'):(r&&r.err==='terms')?ct('need'):T(DIRECT?'gErr':'err');if(r&&r.err==='same_person')spShow(r); /* 【同じ名前 10/9】 */}}).catch(()=>{EVS.busy=false;b.disabled=false;b.textContent=goLabel();document.getElementById('err').textContent=T(DIRECT?'gErr':'err');});};
 (()=>{const g=document.getElementById('go'),o=g.onclick;g.onclick=function(ev){if(!SAME_P2||CAMBIO||!P2)return o.call(g,ev);const L=spList();if(!L.length)return o.call(g,ev);const n=spKeyN(fullName()),m=spMailN(document.getElementById('mail').value);Promise.all([spH(n),spH(m)]).then(h=>{if(L.some(x=>h[0]&&x.n===h[0])) /* 【家族 10/10】同じメール（家族）は通す。同じお名前だけ */{const e=document.getElementById('err');e.textContent=T('p2Same');try{e.scrollIntoView({block:'center'});}catch(x){}}else o.call(g,ev);}).catch(()=>o.call(g,ev));};})(); // 【同じ名前 10/9】
 if(!ID&&!DIRECT){/* 【下書き 10/5】idなし（【WA 10/5】?src=google・wa・web 以外）：フォームを隠し、インスタDMでの予約の案内を出す */const app=document.getElementById('app');const st=document.createElement('style');st.textContent='#app.noid>*:not(.logo):not(.hd):not(h1):not(.sub):not(#langs):not(#noIdBox){display:none!important}';document.head.appendChild(st);app.classList.add('noid');const bx=document.createElement('div');bx.className='done';bx.id='noIdBox';bx.innerHTML='<p>'+T('noIdT')+'</p><a class="go" style="text-decoration:none;text-align:center" href="https://ig.me/m/the_home_hair_re_creative">'+T('noIdBtn')+'</a>' /* 【10/13 決まり9-3】WhatsAppの1行は出さない（電話の1行も出さない） */;app.appendChild(bx);}
 document.documentElement.lang=LANG;
@@ -2325,18 +2331,18 @@ let TK_V=0,TK_RAF=0;
 // 【10/8 Nory】レディースのリタッチ（ブリーチなし）の表示 $1,700〜1,800（カットと一緒なら −$300 で $1,400〜1,500）
 const CTYPE_PRICE={0:[1500,2500],'1n':[1700,1800],'1b':[2700,2900],2:[3500,4500],3:[3600,4400]}; // 【10/6 Nory決定】ダブル単独 $3,600〜4,400。カットと一緒なら −$300 で $3,300〜4,100（ショート3,300・ボブ3,500・ロング3,800・さらに長い+300） // 【10/6 Nory決定】ブリーチありのリタッチ＝通常のリタッチ＋$1,000 // 【10/6 Nory決定】リタッチ（ブリーチなし '1n'）単独 $1,700〜1,900（カットと一緒なら −$300 で $1,400〜1,600）。ブリーチあり '1b'・ダブル 3 は聞き中 // 【10/6 Nory決定】全体 $1,500〜2,500・ハイライト $3,500〜4,500 // カラーの種類の番号（CTYPES）：0 全体／1 リタッチ（'1n' ブリーチなし・'1b' ブリーチあり）／2 ハイライト／3 ダブル
 const ckey=()=>sel.ctype===1?(sel.bleach===0?'1n':(sel.bleach===1?'1b':null)):sel.ctype;
-const STYPE_PRICE={0:[3500,5000],2:[1000,1200],3:[1200,1500]}; /* 【10/8 Nory】縮毛矯正の前髪だけ $1,000〜1,200・前髪と横 $1,200〜1,500（男女とも）。根元は聞き中 */ // 【10/6 Nory決定】全体 $3,500〜5,000。【10/8 Nory】前髪 $1,000〜1,200・前髪と横（もみあげまで）$1,200〜1,500。根元は聞き中（$3,000〜 のまま）              // 縮毛矯正の部分の番号（STYPES）：0 全体／1 リタッチ／2 前髪だけ／3 前髪と横
+const STYPE_PRICE={0:[3500,5000],2:1000,3:1300}; /* 【縮毛 前髪と横 10/29 第4版・Nory 10/29 確定】前髪と横＝縮毛矯正 $1,300＋ブロー（前髪だけと同じ決め方） */const STYPE_BANGS_FROM=true /* 【薬剤は「〜から」10/29 20時 Nory】縮毛矯正（前髪だけ・前髪と横）も desde／from／〜 をつける。料金の数は同じ。Code.gs の STRAIGHT_BANGS_FROM と同じ（前は false） */,STYPE_BANGS_BLOW={dama:300,caballero:200};function stBangs(b){b=typeof b==='number'?b:STYPE_PRICE[2];return (sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0)?b:b+(needMM()&&sel.mm==='caballero'?STYPE_BANGS_BLOW.caballero:STYPE_BANGS_BLOW.dama);} /* 【縮毛 前髪だけ 10/29 Nory】前髪だけ＝縮毛矯正 $1,000＋シャンプーブロー（レディースメニュー $300・メンズメニュー $200。選ぶ前は高い方）。カット（メンズ・レディース）と一緒ならブローはカットに入っているので $1,000 だけ。ちょうどの金額（幅なし）。Code.gs の STRAIGHT_BANGS・STRAIGHT_BANGS_BLOW・STRAIGHT_BANGS_FROM と同じにする */ /* 【10/8 Nory】縮毛矯正の前髪だけ $1,000〜1,200・前髪と横 $1,200〜1,500（男女とも）。根元は聞き中 */ // 【10/6 Nory決定】全体 $3,500〜5,000。【10/8 Nory】前髪 $1,000〜1,200・前髪と横（もみあげまで）$1,200〜1,500。根元は聞き中（$3,000〜 のまま）              // 縮毛矯正の部分の番号（STYPES）：0 全体／1 リタッチ／2 前髪だけ／3 前髪と横
 // 【下書き 10/8 Nory】メンズ（メンズカット、またはメンズメニュー）のカラー：全体・リタッチ（ブリーチなし）は $1,400〜（上は決めない）。カット＋カラーの −$300 は引かない。
 // 全体カラー $1,500〜・リタッチ（ブリーチなし）$1,400〜（Nory 10/8 確定）。ブリーチあり・ハイライト・ダブル・レディースは今のまま
 const MEN_COLOR_FROM_K={0:1500,'1n':1400},MEN_CKEYS=[0,'1n'];const menFrom=k=>MEN_COLOR_FROM_K[k];
 function isMen(){return menCut()||(needMM()&&sel.mm==='caballero');}
 function menColor(){return sel.menus.indexOf(3)>=0&&isMen()&&MEN_CKEYS.indexOf(ckey())>=0;}
 function svcPrice(i){if(i===3&&menColor())return {min:menFrom(ckey()),max:menFrom(ckey()),ap:true,range:false};const m=MENUS[i];const r=i===3&&sel.ctype!==null?CTYPE_PRICE[ckey()]:(i===5&&sel.stype!==null?STYPE_PRICE[sel.stype]:null);
- if(r)return {min:r[0],max:r[1],ap:false,range:true};if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null){const q=TR_PRICE[sel.trlen];return Array.isArray(q)?{min:q[0],max:q[1],ap:false,range:true}:{min:q,max:q,ap:true,range:false};} /* 【10/21 Nory】トリートメントの長さ */const v=yen(m[2]);return {min:v,max:v,ap:!!m[3],range:false};}
+ if(typeof r==='number'){const v=stBangs(r);return {min:v,max:v,ap:STYPE_BANGS_FROM,range:false};} /* 【縮毛 前髪だけ 10/29】 */if(r)return {min:r[0],max:r[1],ap:false,range:true};if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null){const q=TR_PRICE[sel.trlen];return Array.isArray(q)?{min:q[0],max:q[1],ap:false,range:true}:{min:q,max:q,ap:true,range:false};} /* 【10/21 Nory】トリートメントの長さ */const v=yen(m[2]);return {min:v,max:v,ap:!!m[3],range:false};}
 const num=v=>Number(v).toLocaleString('en-US');
 const rangeTxt=(a,b)=>LANG==='ja'?money(a)+'〜'+num(b):money(a)+'–'+num(b);
 function tkFmtR(a,b,ap){if(b<=a||ap)return tkFmt(a,ap); /* 「〜」のメニューがある時は上が決まらないので「最低〜」だけ */return (LANG!=='ja'&&ap?'<small>'+T('from')+'</small> ':'')+rangeTxt(a,b)+(LANG==='ja'&&ap?'<small>〜</small>':'');}
-function rowPrice(i){const p=svcPrice(i);if(i===3&&menColor())return fromTxt(menFrom(ckey()),true);if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null)return p.range?rangeTxt(p.min,p.max):fromTxt(p.min,true); /* 【10/21 Nory】「〜」つき */return p.range?rangeTxt(p.min,p.max)+' '+T(i===3&&ckey()===3?'dblNote':(i===3&&(ckey()==='1n'||ckey()==='1b')?'rootNote':'lenNote')):price(MENUS[i]);}
+function rowPrice(i){const p=svcPrice(i);if(i===5&&sel.stype!==null&&typeof STYPE_PRICE[sel.stype]==='number')return fromTxt(p.min,p.ap); /* 【縮毛 前髪だけ 10/29】 */if(i===3&&menColor())return fromTxt(menFrom(ckey()),true);if(i===6&&trLenOn()&&sel.trlen&&TR_PRICE[sel.trlen]!=null)return p.range?rangeTxt(p.min,p.max):fromTxt(p.min,true); /* 【10/21 Nory】「〜」つき */return p.range?rangeTxt(p.min,p.max)+' '+T(i===3&&ckey()===3?'dblNote':(i===3&&(ckey()==='1n'||ckey()==='1b')?'rootNote':'lenNote')):price(MENUS[i]);}
 // 【10/6 Nory決定】カット（メンズ／レディース）＋カラーは −$300。今は「カラー全体」の時だけ（ほかの種類はNoryに確認中。決まったら番号を足す）
 const DISC_CTYPES=[0,'1n','1b',3],DISC_CUT_COLOR=300;
 const discCutColor=()=>(!menColor()&&sel.menus.indexOf(3)>=0&&DISC_CTYPES.indexOf(ckey())>=0&&(sel.menus.indexOf(0)>=0||sel.menus.indexOf(1)>=0))?DISC_CUT_COLOR:0;
@@ -2370,7 +2376,7 @@ function tkToast(name,lost,undo){const t=document.getElementById('tkToast');TK_U
 function tkRemove(k,name){const before=tkTimes();let undo;
  if(k[0]==='m'){const i=+k.slice(1);const st={c:sel.ctype,b:sel.bleach,s:sel.stype,t:sel.trlen};mBtn[i].click();
   undo=()=>{try{const b0=tkTimes(); /* 【レビュー 10/6】押せない（disabled）ボタンを click() せず、選びの状態を直接戻す */
-  if(sel.menus.indexOf(i)<0){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);mBtn[i].classList.add('on');}
+  if(sel.menus.indexOf(i)<0&&!(i===2&&hasCut())){if(BR.indexOf(i)>=0)BR.forEach(j=>{const q=sel.menus.indexOf(j);if(q>=0){sel.menus.splice(q,1);mBtn[j].classList.remove('on');}});cutX(i);sel.menus.push(i);mBtn[i].classList.add('on');}
   if(i===3){sel.ctype=st.c;sel.bleach=st.b;}if(i===5)sel.stype=st.s;if(i===6){sel.trlen=st.t;trMark();}
   colorUI();[...cEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.ctype));[...bEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.bleach));[...sEl.children].forEach((x,k)=>x.classList.toggle('on',k===sel.stype));bUI();
   upd();return {lost:tkTimes()<b0,fail:sel.menus.indexOf(i)<0};}catch(e){return {fail:true};}};}
@@ -2393,7 +2399,7 @@ function typeTip0(kind,i){
   const r=CTYPE_PRICE[i],ds=CDESC[i]&&CDESC[i][LANG];return r?tipHTML([rangeTxt(r[0],r[1])],'apLen',DISC_CTYPES.indexOf(i)>=0,ds):tipHTML([price(MENUS[3])],'apOnly',false,ds);}
  if(kind==='b'&&i===0&&isMen())return tipHTML([fromTxt(menFrom('1n'),true)],'apRoot',false); // 【10/8】メンズ
  if(kind==='b'){const k=i===0?'1n':'1b',r=CTYPE_PRICE[k];return r?tipHTML([rangeTxt(r[0],r[1])],'apRoot',DISC_CTYPES.indexOf(k)>=0):'';}
- if(kind==='s'){const r=STYPE_PRICE[i];return r?tipHTML([rangeTxt(r[0],r[1])],'apLen',false):tipHTML([price(MENUS[5])],'apOnly',false);}return '';}
+ if(kind==='s'){const r=STYPE_PRICE[i];if(typeof r==='number')return '<p class="mv-t pt"><b>'+fromTxt(stBangs(r),STYPE_BANGS_FROM)+'</b></p>'; /* 【縮毛 前髪だけ 10/29】「およその金額」の言葉は出さない。【10/29 20時】「〜」は STYPE_BANGS_FROM のとおり（今は〜あり） */return r?tipHTML([rangeTxt(r[0],r[1])],'apLen',false):tipHTML([price(MENUS[5])],'apOnly',false);}return '';}
 function tipOpen(h,el,below){if(!h)return;const pv=document.getElementById('pv');clearTimeout(MV_T);if(PV_ID)pvClose();PV_EL=el;pv.dataset.id='';pv.classList.remove('inter');pv.classList.add('mv');pv.innerHTML=h;pv.hidden=false;pv.classList.remove('in');void pv.offsetWidth;pv.classList.add('in');pvPlace(below);}
 function tipBind(b,kind,i){b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&!PV_TOUCH())tipOpen(typeTip(kind,i),b,false);});b.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!PV_TOUCH())mvClose();});
  b.addEventListener('focus',()=>{if(!PV_TOUCH())tipOpen(typeTip(kind,i),b,false);});b.addEventListener('blur',()=>{if(!PV_TOUCH())mvClose();});
@@ -2435,5 +2441,73 @@ document.addEventListener('pointerover',function(e){if(e.pointerType!=='mouse')r
 document.addEventListener('pointerout',function(e){if(e.pointerType!=='mouse')return;var h=host(e.target);if(h&&!(e.relatedTarget&&h.contains(e.relatedTarget)))wig(h);},{passive:true});
 document.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')return;wig(host(e.target));},{passive:true});
 }catch(e){}})();
+</script>
+<script>
+/* 【先払い 2026-10-28 下書き・仕組み担当】予約ページ（thehomehair.com/reserva/）の一番下に足す部品。今のページの関数（sendR・goLabel）を包むだけで、中は1文字も変えない。
+   ・前金のいる方：メールの確認コードのあと、ボタンの上に1行「このご予約は前金（〇〇ペソ）が必要です」＋小さな1行、ボタンは「前金を払って予約する」→ Mercado Pago へ。
+   ・前金のいらない方：今の「送る」のまま。
+   ・Apps Script の DEP_PREPAY が off の間は、返事に need:'dep'・pay が来ない＝今と1つも変わらない（送る中身に dp:1 が増えるだけ。Apps Script は dp を読むだけ）。
+   ・お客様に見える字に、出さないと決めた連絡先の名前・番号は出さない（決まり 9-3）。 */
+(function(){
+const DT={
+ line:{es:'Esta reserva requiere un anticipo de {amt} pesos.',en:'This booking requires a deposit of {amt} pesos.',ja:'このご予約は前金（{amt}ペソ）が必要です。'},
+ lineFull:{es:'Esta reserva requiere el pago total por adelantado: {amt} pesos.',en:'This booking requires full payment in advance: {amt} pesos.',ja:'このご予約は、全額（{amt}ペソ）を前もってお支払いいただきます。'}, /* 【前髪は全額 10/29】Apps Script が full:1 を返した時だけ */
+ hold:{es:'Al pulsar, apartamos su horario ({o}) por {m} minutos para el pago.',en:'When you tap, we hold your time ({o}) for {m} minutes for payment.',ja:'押すと、お支払いのあいだ {o} を{m}分お取りします。'},
+ btn:{es:'Pagar anticipo y reservar',en:'Pay deposit and book',ja:'前金を払って予約する'},
+ btnFull:{es:'Pagar y reservar',en:'Pay and book',ja:'お支払いをして予約する'}, /* 【前髪は全額 10/29】 */
+ time:{es:'Para las reservas con anticipo, elija un horario.',en:'For bookings with a deposit, please choose a time.',ja:'前金が必要なご予約は、お時間を選んでください。'},
+ open:{es:'Abriendo el pago…',en:'Opening payment…',ja:'お支払いの画面を開いています…'},
+ okT:{es:'Gracias. En 1 a 2 minutos le enviaremos un correo con la confirmación de su cita.',en:'Thank you. Within 1–2 minutes we will email you the confirmation of your appointment.',ja:'ありがとうございます。1〜2分で、ご予約の確定をメールでお送りします。'},
+ ngT:{es:'El pago no se completó, por lo que no se hizo ninguna reserva. Puede intentarlo de nuevo.',en:'The payment was not completed, so no booking was made. You can try again.',ja:'お支払いが完了しなかったため、ご予約はできていません。もう一度お試しください。'},
+ again:{es:'Volver a reservar',en:'Book again',ja:'予約のページへ'}
+};
+const dt=(k,v)=>{let s=(DT[k]||{})[LANG]||(DT[k]||{}).es||'';Object.keys(v||{}).forEach(x=>{s=s.split('{'+x+'}').join(String(v[x]));});return s;};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* 1) Mercado Pago から戻ってきた時（?pago=ok／ng）：静かなページ。仕組みには何も送らない（確定は Apps Script の見回りが Mercado Pago に聞いて行う） */
+const PG=new URLSearchParams(location.search).get('pago');
+if(PG==='ok'||PG==='ng'){
+ const app=document.getElementById('app');if(!app)return;
+ app.classList.remove('noid');const nb=document.getElementById('noIdBox');if(nb)nb.remove();
+ const back='/reserva/?src=web&lang='+encodeURIComponent(LANG);
+ app.innerHTML='<div class="done">'+(PG==='ok'
+  ?'<img class="doneHd" src="mail/'+(LANG==='en'?'head_received_en':'head_received')+'_sway.gif" width="243" height="231" alt="'+(LANG==='en'?'RECEIVED':'RECIBIDA')+' – THE HOME HAIR RE-CREATIVE"><div class="big">✓</div><p>'+esc(dt('okT'))+'</p>'+(typeof spamHTML==='function'?spamHTML():'')
+  :'<p>'+esc(dt('ngT'))+'</p><a class="go" style="text-decoration:none;text-align:center" href="'+esc(back)+'">'+esc(dt('again'))+'</a>')+'</div>';
+ return;
+}
+if(CAMBIO)return; // 変更のページは今のまま
+
+/* 2) 予約のページ：前金の1行とボタン */
+let DQ=null; // { amt, i, min, sig }：Apps Script が「前金がいる」と返した時だけ
+const sig=()=>{try{return JSON.stringify([menuText(),sel.opts.map(x=>x.date?ymd(x.date)+' '+x.time:''),fullName(),document.getElementById('mail').value.trim().toLowerCase(),ANY]);}catch(e){return String(Math.random());}};
+const g=document.getElementById('go');if(!g)return;
+const box=document.createElement('div');box.id='depBox';box.className='hint';box.hidden=true;box.setAttribute('role','status');box.style.cssText='text-align:center;margin:12px 0 8px;line-height:1.6';
+g.parentNode.insertBefore(box,g);
+const box2=document.createElement('div');box2.id='depHold';box2.className='hint';box2.hidden=true;box2.style.cssText='text-align:center;margin:8px 0 0;line-height:1.5'; /* 【本番用 10/29】押さえの一文はボタンの下 */
+g.parentNode.insertBefore(box2,g.nextSibling);
+function draw(){if(!DQ){box.hidden=true;box.innerHTML='';box2.hidden=true;box2.innerHTML='';return;}const o=sel.opts[DQ.i];box.innerHTML='<b>'+esc(dt(DQ.full?'lineFull':'line',{amt:Number(DQ.amt).toLocaleString('en-US')}))+'</b>';box.hidden=false;if(o&&o.date){box2.innerHTML='<small>'+esc(dt('hold',{o:fmtOpt(o),m:DQ.min}))+'</small>';box2.hidden=false;}else{box2.hidden=true;box2.innerHTML='';}}
+function live(){if(DQ&&DQ.sig!==sig()){DQ=null;draw();}return !!DQ;} // メニュー・時間・名前・メールを変えたら、1行は消えて今の「送る」に戻る（次に押した時、Apps Script がもう一度判定）
+const gl0=goLabel;goLabel=function(){return live()?dt(DQ.full?'btnFull':'btn'):gl0();};
+function reset(msg){EVS.busy=false;g.disabled=false;g.textContent=goLabel();document.getElementById('err').textContent=msg||'';}
+const payOk=u=>typeof u==='string'&&/^https:\/\/(www|sandbox)\.mercadopago\.com\.mx\//.test(u); // Mercado Pago のアドレスの時だけ開く
+function depResp(r){
+ if(!r||typeof r!=='object')return false;
+ if(r.pay){if(!payOk(r.pay)){reset(T(DIRECT?'gErr':'err'));return true;}g.disabled=true;g.textContent=dt('open');location.href=r.pay;return true;}
+ if(r.need==='dep'){
+  // メールの確認コードは済んだ：同じ確認で「前金を払って予約する」を送れるようにする（今の evResp と同じ置き方）
+  if(evB()&&(EVS.vt||evVerified())){EVS.okVt=EVS.vt||EVS.okVt;EVS.okTo=evMail();EVS.vt='';EVS.pend=null;try{sessionStorage.setItem('thv_ev',JSON.stringify({vt:EVS.okVt,m:evMail()}));}catch(e){}}
+  DQ={amt:+r.amt||0,full:r.full===1,i:Math.max(0,Math.min(2,+r.i||0)),date:String(r.date||''),time:String(r.time||''),min:+r.min||15,sig:sig()}; // 【レビュー1 直し2】見せた時間を覚えて、押す時に送る
+  reset('');try{evDraw();}catch(e){}draw();upd();try{box.scrollIntoView({block:'center',behavior:'smooth'});}catch(e){}
+  return true;}
+ if(r.err==='deptime'){reset(dt('time'));return true;}
+ return false;
+}
+const sr0=sendR;
+sendR=function(o){
+ o=Object.assign({},o,{dp:1},live()?{dep:'go',depAt:{i:DQ.i,date:DQ.date,time:DQ.time}}:{});
+ return sr0(o).then(r=>{if(depResp(r))return new Promise(()=>{}); /* ここで扱った：今の続き（受け付けました画面・エラーの文）は出さない */ return r;});
+};
+})();
+
 </script>
 </body></html>
