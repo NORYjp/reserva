@@ -2039,7 +2039,11 @@ const GAP_SMALL=30,STEP=30;
 function dayBusy(d){return busyOf(ymd(d)).map(b=>[+b[0],+b[1]]).filter(b=>b[1]>b[0]);}
 function gapsOf(st,D,bz,first){let pv=null,nx=null;bz.forEach(b=>{if(b[1]<=st&&(pv===null||b[1]>pv))pv=b[1];if(b[0]>=st+D&&(nx===null||b[0]<nx))nx=b[0];});return [pv===null?Infinity:st-Math.max(pv,first),nx===null?Infinity:nx-(st+D)];}
 const smallGap=g=>g>0&&g<=GAP_SMALL&&g>=STEP;
+// 【予約0の日は16時まで 10/30 Nory】「予約0の日」＝その日の営業時間（10:00〜閉店）に埋まりが1つも無く、家族の前の人の予約も無い日（日曜は対象外）。営業時間の外だけの予定は数えない
+const ZERO_REC_TO=960; // 16:00 開始まで（16:00を含む）
+function zeroDay(d){const w=d.getDay(),cl=CLOSE[w];if(w===0||!cl)return false;const k=ymd(d);if(busyOf(k).some(b=>+b[1]>+b[0]&&+b[1]>OPEN&&+b[0]<cl))return false;if(famB().some(x=>x.d===k))return false;return true;}
 function planTimes(d){const all=slots(d),bz=dayBusy(d),D=durFit(),dm=dur();
+ if(zeroDay(d)&&all.length){const z=all.filter(s=>toM(s)<=ZERO_REC_TO&&!busyHit(d,s));if(z.length){if(dm>0&&dm<=20){const cl=CLOSE[d.getDay()],r=z.concat(all.filter(s=>{const st=toM(s),en=st+D;return st>ZERO_REC_TO&&!busyHit(d,s)&&en<=cl&&cl-en<STEP;}));return {rec:r,rest:sel.time&&r.indexOf(sel.time)<0&&all.indexOf(sel.time)>=0?[sel.time]:[]};} /* 短いメニュー：16:00より後は今までどおり（閉店直前の1枠だけ・その他の時間は出さない） */return {rec:z,rest:all.filter(s=>z.indexOf(s)<0)};}} /* 【予約0の日 10/30】おすすめ＝10:00〜16:00の空き全部（閉店までに終わる枠だけ＝slots のまま）・16:00より後はその他の時間（今までどおり） */
  // 20分以下の短いメニュー（前髪・眉など）：長いメニューの時間を細切れにしないよう、出す時間を絞る（全部おすすめ・その他の時間は出さない）
  // ①予約が終わるちょうど ②予約が始まる直前にぴったり終わる ③開店ちょうど（今日は、いちばん早く予約できる時間）。予約がない日は ③＋閉店の直前にぴったり終わる時間。候補が無い日は全部出す。
  if(d.getDay()!==0&&dm>0&&dm<=20&&all.length){const first=toM(all[0]),cl=CLOSE[d.getDay()]||SUN_CLOSE;
