@@ -1741,7 +1741,11 @@ function freeSlots(d){return slots(d).filter(s=>!busyHit(d,s));}
 function sunNext(d){let st=OPEN;(SUNDAY[ymd(d)]||[]).forEach(x=>{if(toM(x.e)>st)st=toM(x.e);});
  sel.opts.forEach((o,i)=>{if(i!==sel.cur&&o.date&&o.time&&o.time!=='any'&&ymd(o.date)===ymd(d)){const e=toM(o.time)+Math.max(dur(),30);if(e>st)st=e;}});
  return st;}
-function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+durEnd()<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-durEnd();else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3&&showOk(d,x) /* 【見せる時間 10/20】 */)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return out;}
+function slots(d){const w=d.getDay();let last;if(w===0){const st=sunNext(d);const t=new Date(d);t.setHours(Math.floor(st/60),st%60,0,0);return (st+durEnd()<=SUN_CLOSE&&t-NOW>=2*3600e3)?[hm(st)]:[];}else if(CLOSE[w])last=CLOSE[w]-durEnd();else return[];const out=[];for(let x=OPEN;x<=last;x+=30){const t=new Date(d);t.setHours(Math.floor(x/60),x%60,0,0);if(t-NOW>=2*3600e3&&showOk(d,x) /* 【見せる時間 10/20】 */)out.push(String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0'));}return cheapZero(d)?out.filter(s=>toM(s)<=CHEAP_TO):out;} /* 【500ペソ以内 10/30】 */
+// 【500ペソ以内 10/30 Nory】予約0の日に料金の合計が500ペソ以内（眉100・前髪250・前髪＋眉350など）なら、開始は10:00〜12:00だけ（その他の時間も出さない）
+const CHEAP_MAX=500,CHEAP_TO=720; // 12:00 開始まで（12:00を含む）
+function cheapSum(){if(!sel.menus.length)return null;const pend=pendingTypes();if(pend.some(x=>typeof x==='number'))return null;return sel.menus.filter(i=>pend.indexOf(i)<0).map(svcPrice).reduce((a,p)=>a+p.min,0)-discCutColor()-discCutTreat();} // 合計の帯（tkUpd）と同じ数え方。店販は入れない
+function cheapZero(d){if(d.getDay()===0||!zeroDay(d))return false;const cl=CLOSE[d.getDay()];if(busyOf(ymd(d)).some(b=>+b[1]>+b[0]&&+b[1]>OPEN&&+b[0]<cl))return false; /* クラスだけの木曜は今のまま */const v=cheapSum();return v!==null&&v<=CHEAP_MAX;}
 // ===== 【下書き 10/6 取り置き】Davines商品（任意）=====
 // 読むのは ../productos.json（商品ページと同じ。make_productos_json.py が台帳から作る）。在庫の印 order（在庫0・お取り寄せ）は出さない
 // 選べる数：ラスト1点（last）=1・残りわずか（low）=2・在庫あり（ok）=3（前の設計：1品3個・5品まで）。読めない時・変更のページでは段を出さない
@@ -2044,25 +2048,23 @@ const smallGap=g=>g>0&&g<=GAP_SMALL&&g>=STEP;
 // 【予約0の日は16時まで 10/30 Nory】「予約0の日」＝その日の営業時間（10:00〜閉店）に埋まりが1つも無く、家族の前の人の予約も無い日（日曜は対象外）。営業時間の外だけの予定は数えない
 const ZERO_REC_TO=960; // 16:00 開始まで（16:00を含む）
 function zeroDay(d){const w=d.getDay(),cl=CLOSE[w];if(w===0||!cl)return false;const k=ymd(d);const cs=Array.isArray(CLS[k])?CLS[k]:[];if(busyOf(k).some(b=>+b[1]>+b[0]&&+b[1]>OPEN&&+b[0]<cl&&!cs.some(c=>+c[0]===+b[0]&&+c[1]===+b[1])))return false; /* 【木曜A 10/30】クラスの時間（_cls と同じ開始・終わり）は数えない */if(famB().some(x=>x.d===k))return false;return true;}
-function planTimes(d){const all=slots(d),bz=dayBusy(d),D=durFit(),dm=dur();
- if(zeroDay(d)&&all.length){const z=all.filter(s=>toM(s)<=ZERO_REC_TO&&!busyHit(d,s));if(z.length){if(dm>0&&dm<=20){const cl=CLOSE[d.getDay()],r=z.concat(all.filter(s=>{const st=toM(s),en=st+D;return st>ZERO_REC_TO&&!busyHit(d,s)&&en<=cl&&cl-en<STEP;}));return {rec:r,rest:sel.time&&r.indexOf(sel.time)<0&&all.indexOf(sel.time)>=0?[sel.time]:[]};} /* 短いメニュー：16:00より後は今までどおり（閉店直前の1枠だけ・その他の時間は出さない） */return {rec:z,rest:all.filter(s=>z.indexOf(s)<0)};}} /* 【予約0の日 10/30】おすすめ＝10:00〜16:00の空き全部（閉店までに終わる枠だけ＝slots のまま）・16:00より後はその他の時間（今までどおり） */
- // 20分以下の短いメニュー（前髪・眉など）：長いメニューの時間を細切れにしないよう、出す時間を絞る（全部おすすめ・その他の時間は出さない）
- // ①予約が終わるちょうど ②予約が始まる直前にぴったり終わる ③開店ちょうど（今日は、いちばん早く予約できる時間）。予約がない日は ③＋閉店の直前にぴったり終わる時間。候補が無い日は全部出す。
- if(d.getDay()!==0&&dm>0&&dm<=20&&all.length){const first=toM(all[0]),cl=CLOSE[d.getDay()]||SUN_CLOSE;
-  const r=all.filter(s=>{if(busyHit(d,s))return false;const st=toM(s),en=st+D;if(st===OPEN||st===first)return true;if(!bz.length)return en<=cl&&cl-en<STEP;return bz.some(b=>(st>=b[1]&&st-b[1]<STEP)||(en<=b[0]&&b[0]-en<STEP));});
-  if(r.length)return {rec:r,rest:sel.time&&r.indexOf(sel.time)<0&&all.indexOf(sel.time)>=0?[sel.time]:[]};return {rec:[],rest:all};}
- if(d.getDay()===0||!bz.length)return {rec:[],rest:all};
- if(!all.length)return {rec:[],rest:all};
- const first=toM(all[0]),free=all.filter(s=>!busyHit(d,s));
- let keep=free; /* 【Nory 10/20】早い時間を細切れ防止で消さない（空いていれば出す） */
- const rec=keep.filter(s=>{const st=toM(s),en=st+D;return st===OPEN||st===first||bz.some(b=>(st>=Math.max(b[1],first)&&st-Math.max(b[1],first)<STEP)||(en<=b[0]&&b[0]-en<STEP));});
- const early=rec.filter(s=>toM(s)<960),recF=early.length?early:rec; /* 【Nory 10/20】早い時間があれば、おすすめは早い時間だけ */
- return {rec:recF,rest:all.filter(s=>recF.indexOf(s)<0&&(busyHit(d,s)||keep.indexOf(s)>=0||s===sel.time))};}
+function planTimes(d){const all=slots(d),bz=dayBusy(d),D=durFit();
+ // 【全部の日で16時まで 10/30 Nory】日曜は今のまま（10:00から1枠ずつ・印なし）
+ if(d.getDay()===0||!all.length)return {rec:[],mid:[],rest:all};
+ // 予約0の日・クラスだけの木曜：10:00〜16:00の空き全部がおすすめ（今の直しどおり）。短いメニューも同じ（16:00より後はその他の時間）
+ if(zeroDay(d)){const z=all.filter(s=>toM(s)<=ZERO_REC_TO&&!busyHit(d,s));if(z.length)return {rec:z,mid:[],rest:all.filter(s=>z.indexOf(s)<0)};}
+ // 予約がある日：10:00〜16:00は全部見せる。おすすめ（上に並べる）＝開店ちょうど（今日はいちばん早い時間）・ほかの予約のすぐ後に始まる・すぐ前に終わる空き（前と同じ決め方）
+ // 16:00までにおすすめがあれば16:00までだけ。無い日は前と同じく16:00より後の候補に印（その分は「その他の時間」から外して上へ）
+ const first=toM(all[0]),early=all.filter(s=>toM(s)<=ZERO_REC_TO);
+ const cand=!bz.length?[]:all.filter(s=>{if(busyHit(d,s))return false;const st=toM(s),en=st+D;return st===OPEN||st===first||bz.some(b=>(st>=Math.max(b[1],first)&&st-Math.max(b[1],first)<STEP)||(en<=b[0]&&b[0]-en<STEP));});
+ const ce=cand.filter(s=>toM(s)<=ZERO_REC_TO),rec=ce.length?ce:cand;
+ return {rec:rec,mid:early.filter(s=>rec.indexOf(s)<0),rest:all.filter(s=>toM(s)>ZERO_REC_TO&&rec.indexOf(s)<0)};} /* 16:00より後＝その他の時間（埋まりは灰色・今までどおり） */
+
 // 名刺のジグザグを細く小さくした線（とがった山・手描きの少しのゆれ）
 function zz(w,h,n){const a=[.95,.82,1,.88,.78,.97,.85,.92,.8,1,.9,.84];const dx=[0,.12,-.1,.08,-.14,.1,-.06,.13,-.09,.05];let p='';for(let k=0;k<=n;k++){const x=Math.min(w,Math.max(0,(w/n)*k+(k&&k<n?dx[k%dx.length]*(w/n):0))),v=a[k%a.length],y=k%2?h*(.5-v*.48):h*(.5+v*.48);p+=(k?' L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+p+'" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/></svg>';}
 const ZZ_S=zz(30,7,6),ZZ_L=zz(240,9,26);
-function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.style.display=ANY?'none':'';document.getElementById('horaH').style.display=ANY?'none':'';if(ANY)return;if(!sel.date){t.innerHTML='<div class="hint" style="grid-column:1/-1">'+T('pickDay')+'</div>';return;}const P=planTimes(sel.date);const mk=(s,rec)=>{const b=document.createElement('button');const taken=sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(sel.date)&&o.time===s);const busy=busyHit(sel.date,s);b.className='t'+(rec?' rec':'')+(sel.time===s?' on':'')+(busy?' busy':'');if(rec)b.innerHTML='<span>'+s+'</span>'+ZZ_S;else b.textContent=s;if(busy){b.disabled=true;}else if(taken){b.disabled=true;b.style.opacity='.3';}b.onclick=()=>{sel.time=s;drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};t.appendChild(b);};const lbl=(k,o)=>{const e=document.createElement('div');e.className='tl'+(o?' o':'');e.innerHTML='<span>'+T(k)+'</span>'+(o?'<i></i>':ZZ_L);t.appendChild(e);};if(P.rec.length){lbl('recT');P.rec.forEach(s=>mk(s,true));if(P.rest.length)lbl('otherT',1);}P.rest.forEach(s=>mk(s,false));}
+function drawTimes(){const t=document.getElementById('times');t.innerHTML='';t.style.display=ANY?'none':'';document.getElementById('horaH').style.display=ANY?'none':'';if(ANY)return;if(!sel.date){t.innerHTML='<div class="hint" style="grid-column:1/-1">'+T('pickDay')+'</div>';return;}const P=planTimes(sel.date);const mk=(s,rec)=>{const b=document.createElement('button');const taken=sel.opts.some((o,i)=>i!==sel.cur&&o.date&&ymd(o.date)===ymd(sel.date)&&o.time===s);const busy=busyHit(sel.date,s);b.className='t'+(rec?' rec':'')+(sel.time===s?' on':'')+(busy?' busy':'');if(rec)b.innerHTML='<span>'+s+'</span>'+ZZ_S;else b.textContent=s;if(busy){b.disabled=true;}else if(taken){b.disabled=true;b.style.opacity='.3';}b.onclick=()=>{sel.time=s;drawTimes();drawOpts();upd();if(sel.cur<2&&!sel.opts[sel.cur+1].date){sel.cur++;drawOpts();drawCal();drawTimes();}};t.appendChild(b);};const lbl=(k,o)=>{const e=document.createElement('div');e.className='tl'+(o?' o':'');e.innerHTML='<span>'+T(k)+'</span>'+(o?'<i></i>':ZZ_L);t.appendChild(e);};const MID=P.mid||[]; /* 【全部の日 10/30】印なしの10:00〜16:00 */if(P.rec.length)lbl('recT');P.rec.forEach(s=>mk(s,true));MID.forEach(s=>mk(s,false));if((P.rec.length||MID.length)&&P.rest.length)lbl('otherT',1);P.rest.forEach(s=>mk(s,false));}
 // 【下書き 10/8 Nory 本日のおすすめ】今日の空き時間（今の空き判定 freeSlots と同じ決まり：2時間前まで・閉店までに終わる・埋まりと重ならない・選んだメニューの長さ）
 // 【10/8 Nory「1時半と早い時間だけ。遅い時間はおすすめに出さない」】早い時間だけ・最大2つ。
 // 出す順：予約のすぐ後につながる時間（planTimes の rec）を早い順に前へ → 残りはいちばん早い空き。16:00以降は、それより早い空きがあれば出さない。休み・空きなし・時間おまかせの時は出さない
