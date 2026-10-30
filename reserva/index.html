@@ -718,7 +718,7 @@ body.polOpen{overflow:hidden}
 <div class="menus" id="menus"></div>
 <div class="pmo" id="permNote" role="alert" hidden data-t="permOnly"></div><!-- 【10/6 Nory決定】パーマのみは受けない -->
 <div class="hint" id="lockNote" style="display:none;margin-top:6px" data-t="lock"></div>
-<div class="hint" id="cutNote" style="display:none;margin-top:6px" data-t="cutInc"></div><!-- 【カットと前髪カット 10/29 Nory】カットを選んだ時だけ -->
+<!-- 【前髪の一言は出さない 10/30 Nory】ここにあった「カットには前髪カットも含まれています。」（cutInc）の欄は消した。前髪カットの灰色は今のまま -->
 <!-- 【下書き 10/8 Nory A案】カット（メンズ・レディース）を選ばずに、ほかのメニューだけの時に出す。性別は聞かない -->
 <div id="mmBox" style="display:none;margin-top:10px"><div class="hint" style="margin-bottom:6px"><span data-t="mmQ"></span><br><small data-t="mmNote"></small></div>
 <div class="menus" id="mmtypes"></div>
@@ -2092,7 +2092,7 @@ function lock(){mBtn.forEach((x,i)=>{x.disabled=sel.menus.indexOf(i)<0&&!fitsWit
  [...cEl.children].forEach((x,i)=>{x.disabled=sel.ctype!==i&&!fitsWith(()=>{sel.ctype=i;if(i!==1)sel.bleach=null;});});
  [...bEl.children].forEach((x,i)=>{x.disabled=sel.bleach!==i&&!fitsWith(()=>{sel.bleach=i;});});
  [...sEl.children].forEach((x,i)=>{x.disabled=sel.stype!==i&&!fitsWith(()=>{sel.stype=i;});});
- const cbx=hasCut()&&sel.menus.indexOf(2)<0;if(cbx)mBtn[2].disabled=true;document.getElementById('cutNote').style.display=hasCut()?'block':'none'; /* 【カットと前髪カット 10/29】灰色の理由はカット（閉店の文は出さない） */
+ const cbx=hasCut()&&sel.menus.indexOf(2)<0;if(cbx)mBtn[2].disabled=true; /* 【カットと前髪カット 10/29】灰色の理由はカット（閉店の文は出さない）。【10/30 Nory】一言（cutInc）は出さない */
  const any=[...mBtn.filter((x,i)=>!(cbx&&i===2)),...cEl.children,...bEl.children,...sEl.children].some(x=>x.disabled);document.getElementById('lockNote').style.display=any?'block':'none';}
 // 【10/6 Nory決定】パーマを選び、メンズカットもレディースカットも選んでいない時は送れない（予約の変更ページは今の動きのまま）
 // 【10/6 Nory】種類のあるメニュー（カラー：種類＋リタッチはブリーチあり/なし、縮毛矯正：部分）は、選ぶまで合計に入れず、日時・送るへ進めない。初期値は選ばない
