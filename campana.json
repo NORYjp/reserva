@@ -1,0 +1,158 @@
+{
+ "updated": "2026-11-12",
+ "until": "2026-12-26",
+ "sets": [
+  {
+   "id": "OI_MILK_BOX",
+   "kind": "box",
+   "name": "OI MILK",
+   "n": 0,
+   "wait": 2,
+   "st": "wait"
+  },
+  {
+   "id": "OI_OIL_BOX",
+   "kind": "box",
+   "name": "OI OIL",
+   "n": 1,
+   "wait": 1,
+   "st": "last"
+  },
+  {
+   "id": "LOVE_SMOOTH_BOX",
+   "kind": "box",
+   "name": "LOVE SMOOTH",
+   "n": 0,
+   "wait": 3,
+   "st": "wait"
+  },
+  {
+   "id": "LOVE_CURL_BOX",
+   "kind": "box",
+   "name": "LOVE CURL",
+   "n": 1,
+   "wait": 4,
+   "st": "last"
+  },
+  {
+   "id": "MINU_BOX",
+   "kind": "box",
+   "name": "MINU",
+   "n": 1,
+   "wait": 1,
+   "st": "last"
+  },
+  {
+   "id": "HOG_BOX",
+   "kind": "box",
+   "name": "HEART OF GLASS",
+   "n": 1,
+   "wait": 1,
+   "st": "last"
+  },
+  {
+   "id": "NOUNOU_BOX",
+   "kind": "box",
+   "name": "NOUNOU",
+   "n": 1,
+   "wait": 1,
+   "st": "last"
+  },
+  {
+   "id": "OI_COND_SINGLE",
+   "kind": "single",
+   "name": "OI CONDITIONER 250 ml",
+   "n": 9,
+   "wait": 0,
+   "st": "ok"
+  },
+  {
+   "id": "OI_LUX_SC",
+   "kind": "sc",
+   "name": "OI LUX",
+   "n": 2,
+   "wait": 0,
+   "st": "low"
+  },
+  {
+   "id": "OI_OIL_SC",
+   "kind": "sc",
+   "name": "OI OIL",
+   "n": 1,
+   "wait": 0,
+   "st": "last"
+  },
+  {
+   "id": "OI_MILK_SC",
+   "kind": "sc",
+   "name": "OI MILK",
+   "n": 1,
+   "wait": 0,
+   "st": "last"
+  },
+  {
+   "id": "LOVE_SMOOTH_SC",
+   "kind": "sc",
+   "name": "LOVE SMOOTH",
+   "n": 2,
+   "wait": 0,
+   "st": "low"
+  },
+  {
+   "id": "MINU_SC",
+   "kind": "sc",
+   "name": "MINU",
+   "n": 2,
+   "wait": 0,
+   "st": "low"
+  },
+  {
+   "id": "LOVE_CURL_SC",
+   "kind": "sc",
+   "name": "LOVE CURL",
+   "n": 1,
+   "wait": 0,
+   "st": "last"
+  },
+  {
+   "id": "MOMO_SC",
+   "kind": "sc",
+   "name": "MOMO",
+   "n": 0,
+   "wait": 0,
+   "st": "order"
+  },
+  {
+   "id": "NOUNOU_SC",
+   "kind": "sc",
+   "name": "NOUNOU",
+   "n": 0,
+   "wait": 0,
+   "st": "order"
+  },
+  {
+   "id": "MELU_SC",
+   "kind": "sc",
+   "name": "MELU",
+   "n": 0,
+   "wait": 0,
+   "st": "order"
+  },
+  {
+   "id": "HOG_SC",
+   "kind": "sc",
+   "name": "HEART OF GLASS",
+   "n": 0,
+   "wait": 0,
+   "st": "order"
+  },
+  {
+   "id": "NT_SC",
+   "kind": "sc",
+   "name": "NATURALTECH",
+   "n": 0,
+   "wait": 0,
+   "st": "order"
+  }
+ ]
+}

@@ -665,6 +665,27 @@ html.pn-js .pn.m1-rise:not(.in) img{transform:translateY(90px);opacity:0}
   <a class="cue" href="#about" aria-label="next"><span data-t="cue"></span><i></i></a>
 </header>
 
+<!-- 【2026-11-12 web Davinesキャンペーンの欄】「さらに見る」の行き先の一番上（Nory 11/12）。2026-12-26 の後は下の仕組みが自動で消す。消すときはこの印から「ここまで」を消す -->
+<section class="fade dvs" id="campana" aria-labelledby="dvsK">
+  <div class="dvs-in">
+    <h2 class="dvs-k" id="dvsK">DAVINES CAMPAIGN</h2>
+    <p class="dvs-big" id="dvsBig"></p>
+    <div class="dvs-fl">
+      <button type="button" data-i="0"><img alt="" loading="lazy" decoding="async" width="640" height="800"></button>
+      <button type="button" data-i="1"><img alt="" loading="lazy" decoding="async" width="640" height="1294"></button>
+    </div>
+    <p class="dvs-tap" id="dvsTap"></p>
+    <div class="dvs-st" id="dvsSt" hidden>
+      <div class="dvs-g"><h3 id="dvsH0"></h3><ul id="dvsL0"></ul></div>
+      <div class="dvs-g"><h3 id="dvsH1"></h3><ul id="dvsL1"></ul></div>
+      <div class="dvs-g"><h3 id="dvsH2"></h3><ul id="dvsL2"></ul></div>
+      <p class="dvs-note" id="dvsNote"></p>
+    </div>
+    <p class="dvs-n" id="dvsN"></p>
+  </div>
+</section>
+<!-- 【2026-11-12 web Davinesキャンペーンの欄】ここまで -->
+
 <section class="fade" id="about">
   <div class="two ab"> <!-- 【10/8 Nory】パソコンで左下が空くので、店内の動画を左（見出しの下）へ。携帯の並びは今のまま -->
     <h2 class="big ab-h" data-t="aboutBig"></h2>
@@ -1013,7 +1034,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)vs.f
 /* 「さらに見る」を押すまでは下を見せない。ほかのページから #book などで来た時は最初から全部見せる */
 (function(){var b=document.body;function open(){if(!b.classList.contains('gate'))return;b.classList.remove('gate');window.dispatchEvent(new Event('scroll'));}
 if(location.hash&&location.hash!=='#top'){open();}
-var c=document.querySelector('.cue');if(c)c.addEventListener('click',function(e){e.preventDefault();open();setTimeout(function(){var a=document.getElementById('about');if(a)a.scrollIntoView({behavior:'smooth'});},30);});
+var c=document.querySelector('.cue');if(c)c.addEventListener('click',function(e){e.preventDefault();open();setTimeout(function(){var a=document.getElementById('campana')||document.getElementById('about');if(a){a.scrollIntoView({behavior:'smooth'});setTimeout(function(){var t=a.getBoundingClientRect().top,m=parseFloat(getComputedStyle(a).scrollMarginTop)||0;if(Math.abs(t-m)>40)a.scrollIntoView();},900);}},30);});
 var p=document.querySelector('.brand');if(p)p.addEventListener('click',function(){});})();
 </script>
 <script>
@@ -1132,5 +1153,355 @@ document.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')r
 function put(){var l=(document.documentElement.lang||'es').slice(0,2);e.textContent=W[l]||W.es;}
 put();try{new MutationObserver(put).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(x){}})();
 </script>
+<!-- 【2026-11-12 web Davinesフライヤーの一時表示】ここから（2026-12-26 メキシコ時間の終わりで自動で出なくなる。消すときはこの印から「ここまで」を消す） -->
+<style>
+.dvp{position:fixed;z-index:35;left:50%;bottom:calc(var(--dvp-b,12px) + 10px);width:min(460px,calc(100% - var(--fz,0px)*2 - 20px));transform:translate(-50%,calc(100% + 60px));opacity:0;visibility:hidden;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s ease,visibility 0s linear .55s;
+ background:var(--cream,#f7ebdd);color:var(--ink,#3a2a20);border:2px solid #ff5a1f;border-radius:4px;box-shadow:0 10px 30px rgba(58,42,32,.22),0 0 16px rgba(255,90,31,.3);box-sizing:border-box}
+.dvp.on{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s ease,visibility 0s}
+.dvp .dvp-full{padding:10px 12px 12px}
+.dvp .dvp-h{display:flex;align-items:center;justify-content:space-between;min-height:32px;padding-right:34px}
+.dvp .dvp-k{margin:0;font-family:'The Home Font F','Cormorant Garamond',serif;font-size:19px;letter-spacing:.06em;line-height:1.1;color:var(--accent,#b4532a)}
+.dvp .dvp-m{display:flex;gap:10px;align-items:center;margin-top:6px}
+.dvp .dvp-th{display:flex;gap:6px;flex:none}
+.dvp .dvp-th button{display:block;padding:0;margin:0;border:1px solid var(--line,#dcc4ab);background:#fff;cursor:zoom-in;width:62px;height:78px;overflow:hidden;border-radius:2px}
+.dvp .dvp-th img{display:block;width:100%;height:100%;object-fit:contain}
+.dvp .dvp-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.dvp .dvp-i{margin:0;font-size:12px;line-height:1.3}
+.dvp .dvp-i b{font-weight:700;color:var(--accent,#b4532a)}
+.dvp .dvp-big{font-size:14px;line-height:1.35}
+.dvp .dvp-big span{display:block}
+.dvp .dvp-big b{display:block;font-size:22px;line-height:1.1;white-space:nowrap}
+.dvp .dvp-f{display:flex;align-items:center;gap:10px;margin-top:10px}
+.dvp .dvp-n{flex:1;margin:0;font-size:11px;line-height:1.35;color:var(--mute,#7a6555)}
+:lang(ja) .dvp .dvp-i,:lang(ja) .dvp .dvp-n{font-family:'Klee One','Kaisei Decol',serif}
+:lang(es) .dvp .dvp-i,:lang(en) .dvp .dvp-i,:lang(es) .dvp .dvp-n,:lang(en) .dvp .dvp-n{font-family:'Special Elite','Montserrat',sans-serif}
+@media (min-width:820px){.dvp .dvp-th button{width:76px;height:95px}.dvp .dvp-i{font-size:13px}.dvp .dvp-i b{font-size:14px}}
+/* ボタン：今のHPの「完全予約制」と同じジグザグの枠（色だけ朱色） */
+.dvp .dvp-go,.dvp-mini{font-family:inherit;cursor:pointer;background:transparent;color:var(--accent,#b4532a);font-weight:600;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;
+ border:1.5px solid transparent;border-radius:3px;border-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22%3E%3Cg fill=%22%23b4532a%22 stroke=%22%23b4532a%22 stroke-width=%22.5%22 stroke-linejoin=%22round%22%3E%3Cg transform=%22rotate(0 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(90 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(180 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(270 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3C/g%3E%3Crect x=%2210.75%22 y=%2210.75%22 width=%2238.5%22 height=%2238.5%22 fill=%22none%22 stroke=%22%23b4532a%22 stroke-width=%221.5%22/%3E%3C/svg%3E") 12 / 12px / 10.5px round;transition:background .25s,color .25s}
+.dvp .dvp-go{flex:none;padding:8px 16px;font-size:11.5px;white-space:nowrap}
+.dvp .dvp-go:hover,.dvp-mini:hover{background:var(--accent,#b4532a);color:#fff8f0}
+:lang(ja) .dvp .dvp-go,:lang(ja) .dvp-mini{letter-spacing:.06em;font-size:12.5px}
+.dvp .dvp-x{position:absolute;top:4px;right:4px;width:40px;height:40px;border:0;background:transparent;color:var(--ink,#3a2a20);font-size:24px;line-height:40px;cursor:pointer;padding:0}
+.dvp .dvp-x:hover{color:var(--accent,#b4532a)}
+/* 小さくたたんだ形（下へ読み進めたら自動で小さく。押すと元に戻る） */
+.dvp.mini{width:auto;max-width:calc(100% - var(--fz,0px)*2 - 20px);background:var(--cream,#f7ebdd)}
+.dvp .dvp-mini{display:none}
+.dvp.mini .dvp-full{display:none}
+.dvp.mini .dvp-mini{display:block;margin:8px 44px 8px 10px;padding:8px 14px;font-size:11.5px;white-space:nowrap}
+/* 最初の画面の写真の上のバッジ（2026-11-12 Nory：開いてすぐ目に入る・動きで気づく） */
+.dvb{--dvb-t:translateX(-50%);position:absolute;z-index:3;left:50%;top:18px;transform:var(--dvb-t);display:flex;flex-direction:column;align-items:center;gap:4px;width:max-content;max-width:calc(100% - 32px);padding:12px 22px 11px;cursor:pointer;font-family:inherit;text-align:center;
+ background:rgba(180,83,42,.94);color:#fff8f0;box-shadow:0 8px 26px rgba(0,0,0,.35),0 0 18px rgba(255,90,31,.45);overflow:hidden;border-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22%3E%3Cg fill=%22%23ff5a1f%22 stroke=%22%23ff5a1f%22 stroke-width=%22.5%22 stroke-linejoin=%22round%22%3E%3Cg transform=%22rotate(0 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(90 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(180 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3Cg transform=%22rotate(270 30 30)%22%3E%3Cpath d=%22M12 10.6 L16.5 3.7 Q17.6 2.2 18.7 3.7 L24 10.6Z M24 10.6 L29.3 6.1 Q30.4 4.6 31.5 6.1 L36 10.6Z M36 10.6 L40.7 4.5 Q41.8 3.0 42.9 4.5 L48 10.6Z%22/%3E%3Ccircle cx=%225%22 cy=%225%22 r=%222.3%22/%3E%3C/g%3E%3C/g%3E%3Crect x=%2210.75%22 y=%2210.75%22 width=%2238.5%22 height=%2238.5%22 fill=%22none%22 stroke=%22%23ff5a1f%22 stroke-width=%221.5%22/%3E%3C/svg%3E") 12 / 14px / 12px round}
+.dvb .dvb-k{font-family:'The Home Font F','Cormorant Garamond',serif;font-size:clamp(17px,5.2vw,30px);letter-spacing:.05em;line-height:1.05;white-space:nowrap}
+.dvb .dvb-s{font-size:clamp(12.5px,3.6vw,15px);font-weight:600;letter-spacing:.06em;line-height:1.2;white-space:nowrap}
+:lang(ja) .dvb .dvb-s{font-family:'Kaisei Decol',serif;letter-spacing:.1em}
+:lang(es) .dvb .dvb-s,:lang(en) .dvb .dvb-s{font-family:'Special Elite','Montserrat',sans-serif;letter-spacing:0;font-size:clamp(12px,3.3vw,15px)}
+@media (max-width:360px){.dvb .dvb-s{white-space:normal}}
+.dvb .dvb-s b{color:#ffd9a8;font-weight:700}
+.dvb::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,248,240,0) 0%,rgba(255,248,240,.55) 50%,rgba(255,248,240,0) 100%);transform:skewX(-18deg);pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+ .dvb{animation:dvbPulse 2.8s ease-in-out infinite}
+ .dvb::after{animation:dvbShine 3.6s ease-in-out infinite}
+}
+@keyframes dvbPulse{0%,100%{transform:var(--dvb-t) scale(1);box-shadow:0 8px 26px rgba(0,0,0,.35),0 0 14px rgba(255,90,31,.35)}50%{transform:var(--dvb-t) scale(1.04);box-shadow:0 10px 34px rgba(0,0,0,.35),0 0 28px rgba(255,90,31,.7)}}
+@keyframes dvbShine{0%{left:-60%}55%,100%{left:130%}}
+.dvb.dvb-big.dvb-big{width:calc(100% - 28px)!important;margin-bottom:12px!important;max-width:none!important;box-sizing:border-box;justify-content:center;gap:4px;padding:6px 10px!important}
+.dvb.dvb-big.dvb-big .dvb-k{font-size:clamp(26px,8.6vw,40px)!important;letter-spacing:.04em;white-space:normal!important;line-height:.98!important;max-width:100%}
+.dvb.dvb-big.dvb-big .dvb-s{font-size:clamp(13px,4.1vw,18px)!important;white-space:nowrap!important}
+.dvb.dvb-big.dvb-big .dvb-s b{font-size:1.3em;color:#ffe08a}
+:lang(es) .dvb.dvb-big.dvb-big .dvb-s,:lang(en) .dvb.dvb-big.dvb-big .dvb-s{font-size:clamp(11.5px,3.15vw,16px)!important}
+.dvb.dvb-big.dvb-big.dvb-big-s .dvb-k{font-size:clamp(22px,7vw,32px)!important}
+/* 【11/12 Nory】ロゴと重ねない：重なる幅では、札をロゴの上の流れの中に置く */
+.dvb.dvb-flow{position:relative!important;left:auto!important;top:auto!important;--dvb-t:translateX(0)!important;max-width:calc(100% - 32px)!important;margin:0 auto 10px;align-self:center;padding:8px 20px 7px!important}
+.dvb.dvb-flow .dvb-k{font-size:clamp(17px,4.6vw,26px)!important;white-space:nowrap!important}
+.dvb.dvb-flow .dvb-s{font-size:clamp(12px,3.3vw,14px)!important;white-space:nowrap!important}
+.dvb:hover{background:rgba(142,63,31,.96)}
+.dvb:focus-visible{outline:2px solid #fff8f0;outline-offset:4px}
+/* パソコン：真ん中の丸いロゴと重ならないよう、写真の左側の真ん中に置く（幅はロゴと文字の左まで） */
+@media (min-width:820px){.dvb{--dvb-t:translateY(-50%);left:28px;top:50%;max-width:calc(50% - 200px);padding:16px 24px 15px}.dvb .dvb-k{font-size:clamp(20px,2.4vw,34px);white-space:normal}.dvb .dvb-s,:lang(es) .dvb .dvb-s,:lang(en) .dvb .dvb-s{font-size:16px;white-space:normal}}
+/* 大きく見る（2枚を左右にめくる） */
+.dvl{position:fixed;inset:0;z-index:60;background:rgba(30,22,16,.92);display:none;flex-direction:column;align-items:center;justify-content:center}
+.dvl.on{display:flex}
+.dvl .dvl-s{display:flex;width:100%;height:calc(100% - 96px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dvl .dvl-s::-webkit-scrollbar{display:none}
+.dvl .dvl-s figure{flex:0 0 100%;margin:0;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:0 12px;box-sizing:border-box}
+.dvl .dvl-s img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.dvl .dvl-x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:10px;width:48px;height:48px;border:0;background:transparent;color:#f7ebdd;font-size:32px;line-height:48px;cursor:pointer;padding:0}
+.dvl .dvl-d{display:flex;gap:10px;margin-top:14px}
+.dvl .dvl-d button{width:10px;height:10px;border-radius:50%;border:1px solid #f7ebdd;background:transparent;padding:0;cursor:pointer}
+.dvl .dvl-d button.on{background:#f7ebdd}
+.dvl .dvl-a{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:64px;border:0;background:transparent;color:#f7ebdd;font-size:40px;cursor:pointer;display:block;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dvl .dvl-a[disabled]{opacity:.25;cursor:default}
+.dvl .dvl-p{left:8px}.dvl .dvl-nx{right:8px}
+@media (max-width:819px){.dvl .dvl-a{top:auto;bottom:calc(14px + env(safe-area-inset-bottom));transform:none;height:48px;line-height:44px}}
+@media (min-width:820px){.dvl .dvl-s figure{padding:0 72px}}
+@media (prefers-reduced-motion:reduce){.dvp,.dvp.on{transition:none}}
+/* 「さらに見る」の行き先の一番上の欄（2026-11-12 Nory） */
+.dvs{padding:44px 16px 40px;background:var(--cream,#f7ebdd);color:var(--ink,#3a2a20);border-top:3px solid #ff5a1f;border-bottom:1px solid var(--line,#dcc4ab)}
+.dvs .dvs-in{max-width:880px;margin:0 auto;text-align:center}
+.dvs .dvs-k{margin:0;font-family:'The Home Font F','Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,8vw,46px);letter-spacing:.05em;line-height:1.05;color:var(--accent,#b4532a)}
+.dvs .dvs-big{margin:8px 0 0;font-size:clamp(15px,4.4vw,19px);font-weight:600;letter-spacing:.06em}
+.dvs .dvs-big b{color:#c8361d;font-size:1.25em}
+.dvs .dvs-fl{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;margin:22px auto 0;max-width:560px} /* 11/12 Nory：1枚ずつ縦に、幅いっぱい */
+.dvs .dvs-fl button[data-i="1"]{order:-1}
+.dvs .dvs-fl button img{display:block;width:100%;height:auto} /* 11/13 Nory：23% OFF（箱なし）を上に */
+/* 11/13 Nory：フライヤーを押すと、1品1ページの本になってめくれる */
+.dvbk{position:fixed;inset:0;z-index:9999;background:rgba(28,20,14,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;box-sizing:border-box;opacity:0;transition:opacity .3s}
+.dvbk[hidden]{display:none}
+.dvbk.on{opacity:1}
+.dvbk-top{width:100%;max-width:520px;display:flex;justify-content:space-between;align-items:center;color:#f3e6d4;font-size:13px;letter-spacing:.06em;margin-bottom:10px}
+.dvbk-x{background:none;border:1px solid rgba(243,230,212,.5);color:#f3e6d4;border-radius:2px;padding:6px 12px;font:inherit;cursor:pointer}
+.dvbk-book{position:relative;width:100%;max-width:520px;perspective:1800px}
+.pzf{--pz:22px}
+.dvbk-pg{--pz:22px;position:relative;background:var(--cream,#f7ebdd);box-shadow:0 18px 40px rgba(0,0,0,.45);padding:calc(var(--pz) + 10px) calc(var(--pz) + 10px) calc(var(--pz) + 12px);box-sizing:border-box;transform-origin:left center;backface-visibility:hidden}
+/* 11/13 Nory：1枚ずつに、ホームページの外の額と同じギザギザと点々の縁＋お店のロゴ */
+.pzf .pz{position:absolute;pointer-events:none}
+.pzf .pz-t,.pzf .pz-b{left:var(--pz);right:var(--pz);height:var(--pz);background-repeat:round no-repeat;background-size:calc(var(--pz)*12.5) 100%}
+.pzf .pz-t{top:0;background-image:var(--fz-t)}.pzf .pz-b{bottom:0;background-image:var(--fz-b)}
+.pzf .pz-l,.pzf .pz-r{top:var(--pz);bottom:var(--pz);width:var(--pz);background-repeat:no-repeat round;background-size:100% calc(var(--pz)*12.5)}
+.pzf .pz-l{left:0;background-image:var(--fz-l)}.pzf .pz-r{right:0;background-image:var(--fz-r)}
+.pzf .pz-c{z-index:1;width:calc(var(--pz)*1.3334);height:calc(var(--pz)*1.3334);background:var(--fz-c) center/100% 100% no-repeat}
+.pzf .pz-tl{top:0;left:0}.pzf .pz-tr{top:0;right:0;transform:scaleX(-1)}.pzf .pz-bl{bottom:0;left:0;transform:scaleY(-1)}.pzf .pz-br{bottom:0;right:0;transform:scale(-1,-1)}
+.dvbk-pg img.dvbk-logo{display:block;width:62px;height:62px;margin:0 auto 6px;border-radius:50%}
+.dvbk-pg img{display:block;width:100%;height:auto;border-radius:2px}
+.dvbk-g{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;margin:0 0 10px}
+.dvbk-g .k{font-size:12px;letter-spacing:.16em;color:#8a5a3c}
+.dvbk-g .eco{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px 0 0;padding:6px 12px;border:1.5px solid #2f6b4a;border-radius:2px;color:#2f6b4a;font-weight:600;font-size:12.5px;line-height:1.4;text-align:left;background:rgba(47,107,74,.07)}
+.dvbk-g .eco b{font-size:15px}
+.dvbk-g .eco svg{flex:none;width:22px;height:22px} /* 11/13 Nory：箱をもらわない＝エコを強調 */
+.dvbk-g .off{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(34px,10vw,46px);line-height:1;color:#c0272d;letter-spacing:.02em;text-shadow:2px 2px 0 rgba(180,83,42,.18)}
+.dvbk-g .mas{display:inline-block;margin-top:6px;background:#b4532a;color:#f7ebdd;font-weight:700;font-size:14px;letter-spacing:.12em;padding:4px 14px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+@media (prefers-reduced-motion:no-preference){.dvbk.on .dvbk-cur .dvbk-g .mas{animation:dvbkMas 1.8s ease-in-out infinite}}
+@keyframes dvbkMas{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.dvbk-b{display:flex;justify-content:center;margin-top:12px;min-height:26px}
+.dvbk-b span{display:inline-block;font-size:14px;font-weight:600;padding:5px 14px;border-radius:2px;background:#2f6b4a;color:#fff}
+.dvbk-b span.wait,.dvbk-b span.check{background:#8a6d2f}
+.dvbk-b span.order{background:#9c2f2f}
+.dvbk-b span.last{background:#c0392b}
+.dvbk-fl{position:absolute;inset:0;z-index:2;pointer-events:none}
+.dvbk-fl .dvbk-pg{position:absolute;inset:0;height:100%}
+.dvbk-fl .dvbk-pg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.35));opacity:0;transition:opacity .75s}
+.dvbk-fl.go .dvbk-pg::after{opacity:1}
+.dvbk-nv{width:100%;max-width:520px;display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:#f3e6d4;font-size:13px}
+.dvbk-nv button{background:#f4ece0;color:#3a2a20;border:0;border-radius:2px;width:52px;height:40px;font-size:20px;cursor:pointer}
+.dvbk-nv button:disabled{opacity:.3;cursor:default}
+.dvbk-h{color:rgba(243,230,212,.75);font-size:12px;margin-top:8px;text-align:center}
+.dvs-st li.tp{cursor:pointer}
+/* 11/13 Nory：キャンペーンの縁はクリスマスの色（ビビッドな赤の帯・白の点々・ビビッドな緑のギザギザ） */
+.pzf{--xz-t:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 48%22 preserveAspectRatio=%22none%22%3E%3Cg transform=%22%22%3E%3Crect width=%22600%22 height=%2220%22 fill=%22%23e60012%22/%3E%3Cpath d=%22M9.4 5.9 Q11.1 6.4 12.7 7.3 Q14.3 8.3 14 10.2 Q13.6 12 12.3 13.2 Q10.9 14.5 9.1 14.5 Q7.3 14.5 6 13.1 Q4.7 11.8 5.2 10 Q5.7 8.2 6.7 6.9 Q7.8 5.5 9.4 5.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M28.2 5.9 Q30 5.5 31.9 6.1 Q33.8 6.7 34.8 8.7 Q35.8 10.7 34.8 12.8 Q33.8 14.9 31.5 15.3 Q29.3 15.7 27.3 15 Q25.2 14.3 24.9 12.1 Q24.6 9.9 25.5 8.1 Q26.4 6.3 28.2 5.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M49.9 13.9 Q48.4 13.4 47.1 12 Q45.8 10.6 46.5 8.8 Q47.2 7.1 48.8 5.9 Q50.4 4.7 52.1 5.7 Q53.8 6.6 55 8.1 Q56.2 9.5 55.4 11.3 Q54.5 13.1 53 13.7 Q51.4 14.3 49.9 13.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M72.7 14.2 Q71.1 15.5 69.2 14.9 Q67.3 14.2 66.2 12.5 Q65.1 10.9 65.3 8.8 Q65.5 6.7 67.4 5.6 Q69.3 4.4 71.3 5.1 Q73.3 5.8 74.3 7.6 Q75.3 9.3 74.8 11.1 Q74.3 12.9 72.7 14.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M86.4 6.2 Q88.1 5.2 90.2 5.4 Q92.3 5.6 93.2 7.5 Q94.1 9.4 93.5 11.2 Q92.9 13.1 91.2 13.9 Q89.6 14.8 87.5 14.9 Q85.3 15 84.4 13 Q83.5 11 84.1 9.1 Q84.8 7.2 86.4 6.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M108.5 6.2 Q110.2 5.6 111.8 6.3 Q113.3 7 114 8.4 Q114.7 9.8 114.2 11.4 Q113.6 13 112.1 13.6 Q110.6 14.1 108.8 14.1 Q106.9 14.1 106.2 12.2 Q105.5 10.3 106.1 8.6 Q106.8 6.8 108.5 6.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M127.2 6.3 Q128.8 5.3 130.3 6.3 Q131.8 7.2 132.9 8.6 Q134 10 133.2 11.5 Q132.4 13.1 130.9 14.2 Q129.5 15.3 127.8 14.7 Q126 14.1 125.1 12.4 Q124.2 10.7 124.9 9 Q125.6 7.3 127.2 6.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M150.7 5.1 Q152.6 5.4 154.1 7 Q155.7 8.6 155 10.7 Q154.4 12.7 152.6 14.1 Q150.8 15.4 148.6 15 Q146.3 14.6 145.3 12.6 Q144.3 10.7 144.9 8.7 Q145.6 6.7 147.3 5.8 Q148.9 4.8 150.7 5.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M174 12.2 Q173.2 13.8 171.4 14 Q169.7 14.3 168.7 13 Q167.6 11.7 166.9 10.2 Q166.1 8.6 167.2 7.3 Q168.3 5.9 170 5.7 Q171.6 5.6 173.1 6.5 Q174.6 7.3 174.7 9 Q174.9 10.6 174 12.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M186.2 11.5 Q186 9.8 186.8 8.5 Q187.7 7.2 188.9 6.4 Q190.2 5.7 191.7 6.3 Q193.3 6.8 193.7 8.4 Q194.2 10 193.6 11.5 Q193.1 12.9 191.6 13.7 Q190 14.4 188.3 13.8 Q186.5 13.3 186.2 11.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M212.3 12.6 Q211.2 14.1 209.3 14.6 Q207.3 15.1 206.1 13.6 Q204.9 12.1 204.5 10.3 Q204.2 8.5 205.4 7.3 Q206.7 6.1 208.5 5.5 Q210.3 5 211.9 6.2 Q213.4 7.4 213.3 9.3 Q213.3 11.2 212.3 12.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M234.6 9.8 Q234.9 11.4 233.9 12.8 Q233 14.1 231.2 14.6 Q229.5 15.1 228.1 14 Q226.7 12.9 226.6 11.2 Q226.4 9.5 227.4 8.1 Q228.4 6.7 230 6.6 Q231.5 6.5 232.9 7.4 Q234.4 8.2 234.6 9.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M250.4 13.2 Q249.1 13.8 247.4 13.6 Q245.7 13.5 245.4 11.8 Q245.1 10 245.4 8.5 Q245.8 6.9 247.4 6.4 Q249 5.8 250.7 6.1 Q252.4 6.4 252.9 8.2 Q253.4 9.9 252.5 11.3 Q251.7 12.7 250.4 13.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M267.2 14.2 Q265.3 13.7 265.1 11.8 Q265 9.8 265.7 8.2 Q266.4 6.6 268.2 5.7 Q269.9 4.8 271.7 5.8 Q273.4 6.8 274.1 8.8 Q274.9 10.7 274.1 12.6 Q273.3 14.6 271.2 14.7 Q269.1 14.7 267.2 14.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M294.2 7.4 Q294.8 9.3 294.4 11.2 Q293.9 13 292.2 14.1 Q290.5 15.3 288.6 14.6 Q286.7 13.9 286 12 Q285.4 10.2 285.7 8.4 Q286.1 6.6 287.8 5.9 Q289.6 5.1 291.6 5.3 Q293.7 5.4 294.2 7.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M307.9 14.4 Q306 13.6 305.3 11.8 Q304.5 10 305.4 8.4 Q306.3 6.7 307.9 5.4 Q309.4 4.1 311 5.3 Q312.6 6.6 313.4 8.1 Q314.1 9.7 313.5 11.3 Q312.9 12.9 311.3 14 Q309.7 15.1 307.9 14.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M333 14.4 Q331.2 15.1 329.5 14.6 Q327.7 14 327 12.5 Q326.3 11 326.8 9.4 Q327.2 7.7 328.6 6.7 Q330 5.7 331.7 6.3 Q333.5 6.8 334.3 8.4 Q335.1 9.9 335 11.8 Q334.9 13.8 333 14.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M350.7 4.9 Q352.6 4.5 354.3 5.8 Q356 7.2 355.4 9.2 Q354.7 11.1 353.8 12.7 Q352.8 14.2 350.8 14.4 Q348.7 14.6 347.4 13.1 Q346 11.5 346.4 9.8 Q346.8 8 347.8 6.6 Q348.8 5.3 350.7 4.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M370.5 5.1 Q372.4 5.9 373.9 7.1 Q375.4 8.3 375.4 10.4 Q375.3 12.4 373.7 13.9 Q372 15.5 369.8 15.2 Q367.6 15 366.4 13.3 Q365.2 11.5 365.7 9.7 Q366.1 7.8 367.3 6.1 Q368.6 4.3 370.5 5.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M393.5 8.6 Q393.4 10.7 392.4 12.3 Q391.4 13.9 389.5 14.2 Q387.7 14.5 386.2 13.4 Q384.7 12.2 384.5 10.4 Q384.4 8.5 385.4 7.1 Q386.4 5.6 388.3 4.9 Q390.2 4.1 391.9 5.3 Q393.6 6.5 393.5 8.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M405.6 12.5 Q404.9 11 405 9.4 Q405.1 7.7 406.7 7 Q408.3 6.2 410 6.3 Q411.8 6.3 412.5 8 Q413.3 9.6 413 11.4 Q412.8 13.2 411.2 14 Q409.7 14.8 408 14.5 Q406.3 14.1 405.6 12.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M430.9 15.3 Q428.9 15.2 427.7 13.8 Q426.5 12.3 426 10.5 Q425.6 8.6 427.2 7.4 Q428.8 6.2 430.5 6.2 Q432.3 6.1 433.7 7.2 Q435.2 8.3 435 10.1 Q434.8 11.9 433.9 13.6 Q432.9 15.4 430.9 15.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M452.6 12 Q451.7 13.1 450.2 13.8 Q448.7 14.4 447.3 13.3 Q445.8 12.1 445.6 10.4 Q445.5 8.7 446.8 7.6 Q448.1 6.6 449.6 5.8 Q451.2 5.1 452.3 6.4 Q453.5 7.8 453.5 9.3 Q453.5 10.8 452.6 12Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M473.7 9.9 Q473.8 12 472.4 13.6 Q470.9 15.2 468.7 15.1 Q466.4 15.1 465.1 13.4 Q463.7 11.7 463.7 9.5 Q463.6 7.3 465.4 6.2 Q467.2 5.1 469.1 5.1 Q471 5.1 472.3 6.5 Q473.6 7.9 473.7 9.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M493 5.1 Q494.7 6.4 495.1 8.4 Q495.5 10.4 494.4 12.2 Q493.4 13.9 491.6 14.4 Q489.8 14.8 487.9 13.9 Q486.1 12.9 485.7 11 Q485.4 9.1 486.5 7.5 Q487.5 5.9 489.4 4.9 Q491.3 3.8 493 5.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M506.8 8.7 Q507.1 7 508.5 6.1 Q509.9 5.3 511.3 5.8 Q512.8 6.4 513.9 7.5 Q515 8.6 514.5 10.2 Q513.9 11.8 512.7 12.8 Q511.6 13.8 509.8 13.6 Q508.1 13.4 507.3 11.9 Q506.5 10.3 506.8 8.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M533.4 12.9 Q532.2 14.6 530.2 14.8 Q528.2 15.1 526.9 13.8 Q525.5 12.5 524.8 10.6 Q524 8.8 525.3 7.2 Q526.6 5.6 528.7 5.1 Q530.7 4.7 532 6.1 Q533.3 7.5 533.9 9.4 Q534.5 11.2 533.4 12.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M546.8 10.4 Q547 8.7 547.9 6.9 Q548.8 5.1 550.8 5.5 Q552.8 5.8 554.2 7.1 Q555.7 8.3 555.5 10.3 Q555.3 12.2 554.1 13.8 Q553 15.4 550.9 15.5 Q548.8 15.5 547.7 13.8 Q546.7 12.1 546.8 10.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M573.2 9.3 Q572.8 11 571.7 12.1 Q570.6 13.2 569 13.3 Q567.5 13.4 566.3 12.3 Q565 11.1 564.9 9.5 Q564.8 7.9 566.1 6.7 Q567.4 5.4 569 5.5 Q570.6 5.7 572.2 6.6 Q573.7 7.6 573.2 9.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M588.6 12.5 Q587.4 11.6 587 10.2 Q586.7 8.7 587.6 7.5 Q588.5 6.3 590.1 5.6 Q591.7 4.9 593 6.2 Q594.2 7.5 594.4 9 Q594.6 10.5 593.8 11.9 Q593 13.4 591.4 13.3 Q589.8 13.3 588.6 12.5Z%22 fill=%22%23ffffff%22/%3E%3Crect y=%2219%22 width=%22600%22 height=%222%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M0 20 Q13.1 32.5 23.9 43.4 Q28.3 47.7 32.9 43.4 Q46.5 31.9 61.4 20 Q68.8 27.9 77.4 35.3 Q80 37.7 81.8 35.3 Q87.4 28.6 95.1 20 Q102.7 26.6 112.3 35.2 Q115.1 38.4 117.5 35.2 Q125.1 27 131.8 20 Q143.3 30.4 156.1 40.7 Q159.8 43.7 162.4 40.7 Q172.8 31 182.5 20 Q195.4 31.4 207.7 43.8 Q211.4 48 215.8 43.8 Q231.2 31.6 244.4 20 Q255.8 32.6 269 43.3 Q272 47 275.8 43.3 Q290 32.3 302.1 20 Q316.4 29.9 331.1 40.7 Q336.3 45 339.4 40.7 Q349.2 31.1 359.1 20 Q369.4 30.6 377.6 42.9 Q379.7 46.1 383 42.9 Q394.4 32.1 406.6 20 Q415 26.4 422 33.1 Q424.2 35.3 426.1 33.1 Q432 26.3 438.6 20 Q452 30 466.9 41.4 Q471.5 44.7 473.9 41.4 Q485 29.9 493.9 20 Q500.6 27.6 508.8 34.6 Q511 36.9 513 34.6 Q521.6 27.6 528 20 Q535.2 27.5 543.9 36.1 Q546.4 39.4 548.8 36.1 Q556.4 27.6 564.6 20 Q571.7 28.3 576.9 35.4 Q579.2 38.2 582 35.4 Q591.2 27.8 600 20 Z%22 fill=%22%2300a651%22 stroke=%22%2300a651%22 stroke-width=%22.8%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E");--xz-b:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 48%22 preserveAspectRatio=%22none%22%3E%3Cg transform=%22translate(0 48) scale(1 -1)%22%3E%3Crect width=%22600%22 height=%2220%22 fill=%22%23e60012%22/%3E%3Cpath d=%22M6.7 11.9 Q5.6 10.1 6.1 8.1 Q6.5 6 8.6 5.3 Q10.7 4.7 12.4 5.2 Q14.2 5.6 15 7.3 Q15.7 9.1 15.1 10.7 Q14.5 12.4 13.1 13.3 Q11.6 14.2 9.7 13.9 Q7.7 13.6 6.7 11.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M27.6 7.5 Q28.4 5.8 30.3 5.9 Q32.2 6.1 33.5 7.2 Q34.7 8.3 35.1 10.1 Q35.6 11.8 34.5 13.3 Q33.3 14.9 31.5 14.7 Q29.7 14.5 28.2 13.6 Q26.7 12.8 26.7 11 Q26.8 9.2 27.6 7.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M44.8 10.4 Q44.9 8.6 45.9 7 Q47 5.5 48.9 5.4 Q50.9 5.3 52.4 6.6 Q53.9 7.9 53.8 9.8 Q53.6 11.7 52.5 13.2 Q51.3 14.7 49.4 14.8 Q47.4 14.8 46.1 13.5 Q44.7 12.1 44.8 10.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M67.7 14.3 Q66.1 13.6 64.9 12 Q63.7 10.3 64.5 8.4 Q65.3 6.5 67.1 5.6 Q69 4.7 70.7 5.8 Q72.3 6.9 73.6 8.5 Q75 10.1 74.2 12.2 Q73.4 14.3 71.3 14.7 Q69.3 15.1 67.7 14.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M87.4 6 Q89.2 5.3 90.6 6.3 Q92.1 7.4 92.9 8.9 Q93.8 10.4 92.8 11.9 Q91.7 13.4 90.3 13.9 Q88.8 14.4 87.3 13.8 Q85.7 13.2 85.2 11.7 Q84.7 10.1 85.1 8.4 Q85.6 6.7 87.4 6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M111.3 14.7 Q109.6 15.5 107.7 14.7 Q105.8 13.8 105.4 11.8 Q104.9 9.7 105.7 7.8 Q106.6 5.9 108.7 5.9 Q110.7 6 112.4 6.6 Q114.1 7.3 114.4 9.1 Q114.8 10.9 113.9 12.4 Q112.9 13.9 111.3 14.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M126.6 11 Q125.8 9.5 126.9 8.2 Q128 6.9 129.6 6.5 Q131.2 6.1 132.8 6.8 Q134.5 7.4 134.3 9.2 Q134.1 11 133.5 12.5 Q132.9 13.9 131.3 14.4 Q129.7 14.8 128.5 13.6 Q127.4 12.5 126.6 11Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M149.5 14.3 Q147.6 13.8 146 12.5 Q144.5 11.2 145.1 9.3 Q145.7 7.4 146.9 5.6 Q148 3.8 150.4 4.2 Q152.7 4.5 154 6.3 Q155.4 8.1 154.7 10.1 Q154.1 12 152.8 13.5 Q151.4 14.9 149.5 14.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M166 8.2 Q167.2 6.6 169 5.8 Q170.8 5.1 172.7 6.1 Q174.5 7.1 174.8 9.1 Q175 11.1 174.1 12.7 Q173.1 14.4 171.2 15 Q169.4 15.6 167.7 14.6 Q166.1 13.5 165.5 11.6 Q164.9 9.7 166 8.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M190.3 14.1 Q188.4 14.1 187.2 12.8 Q186 11.5 185.7 9.8 Q185.3 8 186.7 7 Q188 6 189.6 5.6 Q191.2 5.3 192.9 6.2 Q194.6 7.1 194.7 9.1 Q194.8 11.1 193.4 12.6 Q192.1 14.2 190.3 14.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M214.1 7.7 Q214.8 9.4 214.5 11.3 Q214.2 13.3 212.2 13.7 Q210.3 14.2 208.5 13.8 Q206.6 13.4 206 11.6 Q205.4 9.7 206.3 8.2 Q207.1 6.7 208.5 5.6 Q210 4.5 211.7 5.3 Q213.5 6 214.1 7.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M231.5 13.5 Q230 14.2 228.3 13.7 Q226.5 13.2 225.7 11.3 Q225 9.5 225.7 7.7 Q226.5 5.9 228.4 5.1 Q230.3 4.3 231.8 5.4 Q233.3 6.6 234.1 8.1 Q234.9 9.7 234 11.2 Q233 12.8 231.5 13.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M246.1 12.5 Q245.3 10.7 245.6 8.9 Q245.9 7.1 247.4 5.9 Q248.8 4.8 250.8 5.1 Q252.8 5.5 253.8 7.1 Q254.8 8.8 254 10.4 Q253.3 12.1 252 13.1 Q250.8 14 248.9 14.2 Q247 14.3 246.1 12.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M270.9 13.5 Q269.4 14.2 267.8 13.7 Q266.1 13.3 265.2 11.7 Q264.3 10.1 265.2 8.6 Q266.2 7.1 267.7 6.5 Q269.2 5.9 271 6.2 Q272.7 6.5 273.2 8.1 Q273.6 9.8 273 11.3 Q272.3 12.8 270.9 13.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M290 5 Q291.9 5.4 293.3 6.5 Q294.6 7.7 295.2 9.6 Q295.8 11.6 294 12.7 Q292.2 13.7 290.5 13.8 Q288.8 13.9 287.1 12.9 Q285.4 11.9 285.7 10 Q286.1 8.1 287.1 6.3 Q288.2 4.6 290 5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M308.7 5.9 Q310.2 5 312.1 5.7 Q314 6.3 314.1 8.2 Q314.2 10.1 313.9 12 Q313.7 13.8 311.8 13.9 Q310 14.1 308.4 13.6 Q306.8 13.1 306.3 11.5 Q305.8 9.9 306.5 8.4 Q307.2 6.8 308.7 5.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M327.4 5.8 Q329.4 5.3 331.3 5.7 Q333.3 6.2 333.7 8.2 Q334.1 10.1 333.3 11.7 Q332.4 13.3 330.8 14.3 Q329.2 15.3 327.7 14.2 Q326.1 13.2 325.6 11.6 Q325 10 325.3 8.1 Q325.5 6.3 327.4 5.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M345.1 9.3 Q345.3 7.5 346.6 6 Q347.9 4.5 349.7 5 Q351.6 5.5 352.8 7 Q354 8.4 353.9 10.4 Q353.9 12.3 352.4 13.8 Q350.9 15.4 348.9 14.8 Q346.9 14.2 345.9 12.7 Q344.8 11.1 345.1 9.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M374.2 11.5 Q373.6 12.8 372.2 14 Q370.7 15.1 369.1 14.1 Q367.4 13.1 366.9 11.5 Q366.3 9.8 367.1 8.2 Q367.9 6.7 369.5 6.2 Q371.1 5.7 372.8 6.3 Q374.4 6.9 374.6 8.5 Q374.8 10.2 374.2 11.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M392.2 5.5 Q393.9 6.3 394.3 8 Q394.7 9.7 393.9 11.1 Q393.1 12.5 391.7 13.5 Q390.3 14.6 388.7 13.6 Q387.2 12.6 386.4 11 Q385.5 9.5 386.5 7.9 Q387.4 6.4 388.9 5.6 Q390.5 4.8 392.2 5.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M412.6 13.2 Q411 13.9 409.4 13.5 Q407.8 13.1 406.8 11.6 Q405.8 10.2 406.2 8.2 Q406.7 6.3 408.4 5.5 Q410.1 4.7 412.2 5.1 Q414.2 5.5 414.7 7.4 Q415.3 9.2 414.7 10.9 Q414.1 12.6 412.6 13.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M426 9.8 Q426.3 7.8 427.8 6.3 Q429.3 4.9 431.2 5.3 Q433.1 5.8 435 6.9 Q436.9 8 436.1 10.1 Q435.4 12.1 434.1 13.8 Q432.8 15.4 430.7 15.3 Q428.5 15.1 427.1 13.4 Q425.7 11.8 426 9.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M445.5 6.9 Q446.7 5.4 448.6 4.9 Q450.5 4.5 451.7 6 Q453 7.6 453.5 9.4 Q453.9 11.2 452.4 12.4 Q450.9 13.5 449.2 13.9 Q447.4 14.3 446.2 13 Q444.9 11.8 444.6 10 Q444.3 8.3 445.5 6.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M466.9 13.5 Q465.5 12.5 465.2 11 Q464.8 9.4 465.6 8 Q466.3 6.5 468 6.2 Q469.7 5.9 471.1 6.7 Q472.5 7.6 473.2 9.3 Q473.9 11 472.6 12.2 Q471.2 13.4 469.7 13.9 Q468.2 14.4 466.9 13.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M486.2 7.7 Q487.2 6.3 489.1 5.5 Q490.9 4.7 492.4 6 Q494 7.3 494.4 9.2 Q494.8 11.2 493.4 12.5 Q492.1 13.7 490.3 14.8 Q488.4 15.9 487.2 14.2 Q486 12.5 485.5 10.8 Q485.1 9.1 486.2 7.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M507.4 7.7 Q508.3 6.2 510.1 5.8 Q511.8 5.5 513.3 6.4 Q514.7 7.3 515.5 9 Q516.4 10.7 515 12 Q513.7 13.3 512 14 Q510.4 14.7 509.1 13.5 Q507.8 12.4 507.1 10.8 Q506.5 9.2 507.4 7.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M529.7 13.7 Q528 13.2 526.9 11.8 Q525.8 10.4 526.1 8.7 Q526.4 6.9 528 6.3 Q529.6 5.7 531.1 6 Q532.6 6.3 533.4 7.5 Q534.2 8.8 534.1 10.3 Q534 11.9 532.7 13.1 Q531.4 14.2 529.7 13.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M549.2 14.5 Q547.1 14.3 546.1 12.4 Q545.2 10.4 545.8 8.3 Q546.4 6.2 548.3 5 Q550.1 3.9 552.1 4.7 Q554.2 5.6 554.9 7.4 Q555.6 9.2 555.5 11.3 Q555.5 13.4 553.4 14 Q551.3 14.6 549.2 14.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M567 7 Q568.7 5.7 570.8 5.6 Q572.8 5.4 574.2 7 Q575.5 8.5 575.1 10.4 Q574.6 12.2 573.6 13.7 Q572.5 15.2 570.7 15 Q568.8 14.8 567.1 13.6 Q565.5 12.5 565.4 10.4 Q565.3 8.3 567 7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M584.7 9.8 Q585.5 8 586.6 6.4 Q587.7 4.8 589.7 5.4 Q591.7 5.9 592.5 7.5 Q593.3 9.1 593.3 10.9 Q593.3 12.7 591.7 13.5 Q590.1 14.3 588.5 14.1 Q586.9 13.9 585.4 12.7 Q583.9 11.5 584.7 9.8Z%22 fill=%22%23ffffff%22/%3E%3Crect y=%2219%22 width=%22600%22 height=%222%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M0 20 Q9.5 28.4 19.8 38.5 Q22.9 41.8 25.5 38.5 Q31.8 30.1 39.8 20 Q53.3 31.3 69.1 42.3 Q74.4 46.3 77.7 42.3 Q88.4 30.7 98.9 20 Q113.6 30.8 126.4 40.5 Q130.8 44.3 134.6 40.5 Q145 29.7 157 20 Q171.9 31.6 186.7 43.6 Q191.6 48.1 195.3 43.6 Q206 31 218.3 20 Q224.1 29.7 231.7 37.7 Q234.6 41.4 237.6 37.7 Q247.8 29 257.6 20 Q265.4 26.5 274.7 34 Q277.8 36.5 279.7 34 Q285.3 26.9 291.6 20 Q301.5 32.5 312.7 43.6 Q315.8 47.5 319.3 43.6 Q333.1 31.7 345.6 20 Q353.7 30.6 361.2 40.7 Q363.1 43.5 365.9 40.7 Q374.8 30.4 385.3 20 Q392.6 28.4 401.8 37.4 Q405 40.6 408.2 37.4 Q419.4 29.1 430.9 20 Q438.1 30.1 446.7 38.5 Q448.6 41.8 451.9 38.5 Q461 30 471.8 20 Q480.3 27.8 489.1 35.2 Q492.1 37.8 494.5 35.2 Q502.5 27 510.8 20 Q520.1 28.6 529.8 37.2 Q533.1 40.7 536.5 37.2 Q547.3 29.5 557.4 20 Q567.1 30 577.3 38.1 Q580.3 41.6 583.5 38.1 Q592.9 29.1 600 20 Z%22 fill=%22%2300a651%22 stroke=%22%2300a651%22 stroke-width=%22.8%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E");--xz-l:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 600%22 preserveAspectRatio=%22none%22%3E%3Cg transform=%22matrix(0 1 1 0 0 0)%22%3E%3Crect width=%22600%22 height=%2220%22 fill=%22%23e60012%22/%3E%3Cpath d=%22M7.5 6.6 Q9 5.3 11.1 5.6 Q13.1 5.9 13.6 7.6 Q14.1 9.4 14.6 11.3 Q15 13.3 13.2 14.3 Q11.5 15.2 9.7 14.8 Q7.9 14.4 7 12.9 Q6.2 11.4 6 9.6 Q5.9 7.8 7.5 6.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M35.3 10.3 Q35.1 12.1 33.6 13 Q32.2 14 30.4 13.8 Q28.6 13.6 27.5 12.1 Q26.4 10.6 26.7 8.7 Q27 6.8 28.6 6.2 Q30.3 5.6 32 5.5 Q33.7 5.4 34.6 7 Q35.6 8.6 35.3 10.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M51.7 6.8 Q52.9 8 53.4 9.6 Q53.9 11.2 52.7 12.5 Q51.5 13.7 49.9 13.7 Q48.2 13.7 46.8 12.9 Q45.3 12.1 45.4 10.4 Q45.5 8.7 46.4 7.3 Q47.3 5.9 48.9 5.8 Q50.6 5.7 51.7 6.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M65.3 12.4 Q64.6 10.8 65.1 9 Q65.5 7.2 67.2 6.1 Q68.8 4.9 70.6 5.8 Q72.5 6.7 73.2 8.4 Q73.8 10 73.6 12 Q73.3 13.9 71.5 14.4 Q69.7 15 67.8 14.5 Q66 14.1 65.3 12.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M94.7 12.9 Q94 14.6 92 14.7 Q90 14.8 88.5 13.8 Q86.9 12.8 86.3 10.9 Q85.7 9.1 87 7.6 Q88.3 6.1 90.2 5.5 Q92.1 5 93.7 6.1 Q95.2 7.3 95.3 9.2 Q95.4 11.2 94.7 12.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M114.7 10.2 Q114.1 12 112.8 12.9 Q111.5 13.9 109.8 13.9 Q108 13.8 106.6 12.6 Q105.2 11.3 105.7 9.4 Q106.3 7.6 107.6 6.6 Q109 5.6 110.7 5.6 Q112.4 5.6 113.9 7 Q115.3 8.4 114.7 10.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M130.5 5 Q132.4 5.2 133.7 6.4 Q135 7.6 135.4 9.4 Q135.7 11.2 134.4 12.6 Q133 13.9 131.2 14.2 Q129.4 14.6 128.1 13.2 Q126.8 11.9 126.5 10 Q126.2 8.2 127.4 6.6 Q128.6 4.9 130.5 5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M145.9 10.6 Q145.7 8.8 146.8 7.4 Q147.9 5.9 149.6 5.9 Q151.4 5.8 153 6.7 Q154.7 7.6 154.7 9.5 Q154.7 11.4 153.8 13.1 Q153 14.9 151 14.5 Q149 14.1 147.6 13.2 Q146.2 12.4 145.9 10.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M174.6 10.6 Q174.8 12.4 173.3 13.6 Q171.8 14.9 169.9 14.9 Q168.1 14.8 167.1 13.3 Q166.1 11.7 165.9 9.9 Q165.8 8 167.2 6.9 Q168.6 5.7 170.5 5.6 Q172.5 5.4 173.4 7.1 Q174.4 8.8 174.6 10.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M186.5 7.4 Q187.9 6.2 189.7 6.1 Q191.5 6 192.7 7.3 Q193.8 8.5 194.1 10.3 Q194.4 12.1 193.2 13.4 Q191.9 14.6 190.2 14.8 Q188.4 14.9 187.1 13.6 Q185.7 12.3 185.4 10.5 Q185 8.6 186.5 7.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M206.5 13.3 Q205.4 11.7 205.5 10 Q205.6 8.4 206.5 6.8 Q207.4 5.2 209.5 5.1 Q211.6 4.9 212.4 6.6 Q213.3 8.2 213.5 9.8 Q213.6 11.4 212.5 12.7 Q211.4 14 209.5 14.4 Q207.6 14.9 206.5 13.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M225.2 8.3 Q225.8 6.5 227.5 6 Q229.1 5.5 230.8 5.8 Q232.5 6.1 233.1 7.6 Q233.8 9.2 233.4 11 Q233.1 12.7 231.5 13.5 Q229.9 14.3 228.5 13.5 Q227.1 12.6 225.9 11.3 Q224.7 10 225.2 8.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M245.9 10.1 Q245.6 8 247.2 6.7 Q248.9 5.4 250.8 5.7 Q252.7 5.9 254.1 7.1 Q255.5 8.2 255.8 10.3 Q256.1 12.3 254.6 13.7 Q253.1 15.1 251.2 14.8 Q249.2 14.6 247.7 13.4 Q246.2 12.2 245.9 10.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M272.6 12.9 Q271.8 14.5 269.8 15 Q267.8 15.4 266.4 14 Q265.1 12.5 264.8 10.7 Q264.5 9 265.6 7.7 Q266.7 6.3 268.5 5.8 Q270.3 5.4 271.7 6.5 Q273.1 7.7 273.3 9.4 Q273.4 11.2 272.6 12.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M287.5 12.4 Q286.8 10.5 286.7 8.6 Q286.6 6.7 288.4 5.9 Q290.1 5.1 291.9 5.3 Q293.8 5.5 294.7 7.1 Q295.6 8.8 295.8 10.8 Q295.9 12.8 293.9 13.5 Q292 14.3 290.1 14.2 Q288.1 14.2 287.5 12.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M306.8 7.8 Q308.4 6.6 310.1 6.3 Q311.8 5.9 313.6 6.8 Q315.3 7.6 315.7 9.7 Q316.1 11.9 314.5 13.1 Q312.9 14.4 311 15.3 Q309.1 16.2 307.8 14.5 Q306.5 12.8 305.8 10.9 Q305.2 9 306.8 7.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M325.1 12 Q324.7 10 325.4 8.2 Q326 6.4 327.9 5.7 Q329.8 5 331.4 5.9 Q333 6.9 333.8 8.6 Q334.6 10.3 333.9 12.2 Q333.2 14 331.3 14.5 Q329.5 15 327.5 14.5 Q325.5 14.1 325.1 12Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M355.5 8.5 Q356.5 10.2 355.6 12.3 Q354.6 14.4 352.6 14.3 Q350.5 14.3 348.8 13.7 Q347.1 13.1 346.2 11.3 Q345.3 9.5 346.4 7.8 Q347.5 6 349.3 5.3 Q351.1 4.6 352.8 5.7 Q354.5 6.7 355.5 8.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M369.6 14.5 Q367.8 13.7 366.7 12 Q365.5 10.4 366.4 8.6 Q367.3 6.9 368.7 5.5 Q370.1 4.2 372.1 4.7 Q374.2 5.3 374.8 7.2 Q375.5 9.2 375 11 Q374.6 12.8 373 14 Q371.5 15.3 369.6 14.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M392.6 5.7 Q394.5 6.7 394.6 8.8 Q394.6 10.8 394.1 12.8 Q393.6 14.8 391.4 15.3 Q389.2 15.9 387.3 14.8 Q385.3 13.7 385.1 11.7 Q384.9 9.6 385.8 7.8 Q386.8 5.9 388.7 5.3 Q390.7 4.7 392.6 5.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M405.3 10.1 Q405 8.2 406.1 6.4 Q407.2 4.6 409.3 4.5 Q411.4 4.3 412.8 5.6 Q414.3 6.9 414.4 8.8 Q414.5 10.7 413.7 12.5 Q412.9 14.3 410.7 14.4 Q408.6 14.6 407.1 13.4 Q405.7 12.1 405.3 10.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M433.7 10.6 Q433.2 12.2 432.2 13.7 Q431.2 15.2 429.6 14.5 Q427.9 13.8 426.2 12.8 Q424.6 11.7 425.2 9.8 Q425.9 8 427.2 7 Q428.6 5.9 430.2 6.2 Q431.9 6.4 433 7.7 Q434.2 9 433.7 10.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M444.9 6.3 Q446.3 4.6 448.5 4.4 Q450.6 4.3 451.9 5.7 Q453.2 7.1 453.6 9 Q454 10.9 452.9 12.5 Q451.7 14.1 449.7 14.2 Q447.7 14.4 446.2 13.2 Q444.7 12 444.1 10 Q443.6 8.1 444.9 6.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M465.8 8.9 Q466 7 467.6 6 Q469.3 5 471.2 5.1 Q473.1 5.1 474.3 6.7 Q475.6 8.2 475.2 10.1 Q474.8 12.1 473.3 13.2 Q471.8 14.4 469.7 14.3 Q467.7 14.2 466.7 12.5 Q465.7 10.8 465.8 8.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M488.3 4.7 Q490.4 4.6 492 5.6 Q493.5 6.7 494.2 8.6 Q495 10.5 493.9 12.3 Q492.8 14.2 490.8 14.3 Q488.7 14.5 487 13.5 Q485.2 12.6 484.5 10.7 Q483.8 8.7 485 6.7 Q486.1 4.8 488.3 4.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M507.1 6.7 Q508.2 5.1 510.2 5.1 Q512.2 5.2 513.6 6.1 Q515.1 7.1 515.7 9 Q516.3 10.9 515 12.4 Q513.6 13.9 511.7 14.4 Q509.8 15 508.5 13.5 Q507.1 12.1 506.5 10.2 Q505.9 8.3 507.1 6.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M526.7 13 Q525.1 12.3 524.7 10.6 Q524.3 8.9 525.3 7.4 Q526.3 6 527.9 5.7 Q529.6 5.5 530.9 6.4 Q532.2 7.3 532.8 8.8 Q533.3 10.4 532.4 11.9 Q531.6 13.4 529.9 13.5 Q528.2 13.6 526.7 13Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M545.1 9.1 Q545.7 7.1 547.5 5.9 Q549.2 4.8 551.2 5.1 Q553.2 5.5 554 7.4 Q554.8 9.2 554.7 11.1 Q554.5 13 552.9 14.4 Q551.3 15.8 549.2 15 Q547.2 14.3 545.8 12.7 Q544.4 11.2 545.1 9.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M566 8.7 Q567.2 7.2 568.7 6.3 Q570.1 5.4 571.9 6.1 Q573.6 6.7 574.6 8.4 Q575.5 10.1 574.4 11.5 Q573.2 13 571.8 13.7 Q570.3 14.5 568.8 13.8 Q567.2 13.2 566 11.7 Q564.8 10.2 566 8.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M587.2 11.8 Q586.5 10.3 587.2 8.7 Q587.8 7 589.4 6.5 Q591 6 592.5 6.5 Q594 7.1 594.6 8.6 Q595.2 10.2 594.8 11.8 Q594.4 13.4 592.8 14.2 Q591.2 15.1 589.6 14.2 Q587.9 13.4 587.2 11.8Z%22 fill=%22%23ffffff%22/%3E%3Crect y=%2219%22 width=%22600%22 height=%222%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M0 20 Q10.4 30.6 18.7 39.9 Q21.6 42.8 23.6 39.9 Q32.6 28.9 40.9 20 Q53.5 31.2 68.1 43.6 Q72.4 47.6 76.4 43.6 Q87.9 30.9 101.5 20 Q109.2 26.2 116 34 Q118.2 36.5 119.9 34 Q126.2 26.2 133.6 20 Q141 30.7 148.9 40.2 Q150.8 43.7 154.7 40.2 Q165.9 30.3 176.6 20 Q188.4 31 199.3 41.2 Q202.8 44.8 205.6 41.2 Q215.7 30.6 227.1 20 Q239.6 29.8 250.4 39.8 Q253.2 43.1 256.9 39.8 Q269.9 30 282.5 20 Q290.5 27.7 298.4 34.9 Q300.2 37.1 302.3 34.9 Q309.1 26.5 315.7 20 Q328.7 30.4 339.9 40.9 Q343.4 44.3 347.1 40.9 Q359.3 29.8 371.7 20 Q383.4 31.5 394.1 42.5 Q397.1 46 399.7 42.5 Q410.1 31.5 421.8 20 Q430.6 26.4 438.6 33.6 Q441.6 36.4 443.8 33.6 Q451.7 26.2 461.7 20 Q470.9 30.1 482.2 41.4 Q485 45 488.9 41.4 Q503.4 31.4 516.7 20 Q527.6 32.4 537.3 43.5 Q540.8 48 544.8 43.5 Q557.8 30.9 569.6 20 Q578.5 27.6 585.5 33.4 Q587.3 35.6 589.3 33.4 Q593.9 27.2 600 20 Z%22 fill=%22%2300a651%22 stroke=%22%2300a651%22 stroke-width=%22.8%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E");--xz-r:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 600%22 preserveAspectRatio=%22none%22%3E%3Cg transform=%22matrix(0 1 -1 0 48 0)%22%3E%3Crect width=%22600%22 height=%2220%22 fill=%22%23e60012%22/%3E%3Cpath d=%22M6.6 12.1 Q5.7 10.2 6.4 8.4 Q7.2 6.5 8.8 5.4 Q10.4 4.3 12.4 5 Q14.4 5.6 15.1 7.4 Q15.9 9.1 15.5 11 Q15.1 12.8 13.3 13.5 Q11.5 14.1 9.5 14.1 Q7.6 14 6.6 12.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M33.7 9.1 Q34 10.7 33.4 12.2 Q32.7 13.7 31.1 14.1 Q29.5 14.5 27.6 14.3 Q25.7 14 25.3 12 Q24.9 10 26 8.5 Q27.1 7 28.6 6.4 Q30.2 5.8 31.7 6.6 Q33.3 7.4 33.7 9.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M51.6 5.5 Q53.5 5.9 54.2 7.4 Q55 8.9 54.5 10.3 Q54 11.8 53 12.9 Q52 14 50.4 13.6 Q48.9 13.1 47.9 12 Q46.8 10.9 47.2 9.4 Q47.5 7.8 48.6 6.5 Q49.8 5.2 51.6 5.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M74.3 11.7 Q73.3 13.2 71.6 14.2 Q70 15.2 68.4 14.1 Q66.8 13 65.8 11.3 Q64.8 9.6 65.9 8 Q67 6.3 68.8 5.8 Q70.5 5.2 72.2 6 Q73.9 6.7 74.6 8.4 Q75.4 10.1 74.3 11.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M94.8 11 Q94 12.4 92.6 13.3 Q91.2 14.1 89.5 13.5 Q87.9 13 87.4 11.3 Q86.9 9.7 87.6 8.3 Q88.3 6.9 89.7 5.9 Q91 4.9 92.5 5.8 Q94 6.7 94.8 8.1 Q95.5 9.5 94.8 11Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M105.2 11.5 Q104.8 9.7 105.1 7.9 Q105.5 6.1 107.1 5.3 Q108.8 4.6 110.5 5.4 Q112.2 6.1 112.7 7.8 Q113.2 9.4 112.8 11 Q112.3 12.7 110.8 13.7 Q109.2 14.8 107.3 14 Q105.5 13.3 105.2 11.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M130.2 5.7 Q132.2 6 134 7 Q135.8 8 135.6 10.1 Q135.4 12.2 134.3 14.1 Q133.1 15.9 131.1 15.4 Q129.1 14.8 127.4 13.8 Q125.7 12.8 125.4 10.7 Q125.1 8.6 126.6 6.9 Q128.2 5.3 130.2 5.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M145.4 10.9 Q145.2 9.1 146.2 7.7 Q147.3 6.3 149.1 6 Q150.9 5.7 152.3 6.9 Q153.7 8 153.9 9.8 Q154 11.6 153.2 13.2 Q152.3 14.9 150.4 14.9 Q148.5 14.9 147.1 13.8 Q145.6 12.7 145.4 10.9Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M174.1 12.8 Q172.9 14.2 171.2 15.1 Q169.4 16 168.2 14.3 Q166.9 12.7 166.2 10.9 Q165.5 9.2 166.9 7.8 Q168.3 6.3 170.1 5.8 Q171.9 5.3 173 6.8 Q174.1 8.3 174.7 9.9 Q175.2 11.5 174.1 12.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M185.6 9.5 Q186.2 7.7 187.6 6.6 Q189 5.5 191.1 5.3 Q193.2 5.2 194.2 7 Q195.1 8.9 194.9 10.8 Q194.7 12.8 193 14 Q191.4 15.3 189.4 15 Q187.5 14.6 186.3 13 Q185.1 11.3 185.6 9.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M213 7 Q214.3 8.5 214.1 10.6 Q213.8 12.6 212 13.6 Q210.2 14.6 208.1 14.7 Q206 14.8 205.2 12.8 Q204.4 10.9 204.5 9.1 Q204.6 7.2 206.2 5.8 Q207.7 4.3 209.7 4.9 Q211.6 5.5 213 7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M231 4.7 Q233 5.6 233.7 7.4 Q234.4 9.2 234 11.3 Q233.7 13.3 231.9 14.5 Q230 15.7 228 14.8 Q226 13.9 225.1 12 Q224.1 10.1 225.1 8.3 Q226 6.6 227.6 5.2 Q229.1 3.7 231 4.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M253.3 9.4 Q253.8 11.3 252.7 12.8 Q251.5 14.2 249.7 14.5 Q247.8 14.7 246.3 13.6 Q244.9 12.6 244.5 10.7 Q244.2 8.9 245.3 7.5 Q246.4 6.1 248.2 5.9 Q250 5.8 251.5 6.7 Q252.9 7.6 253.3 9.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M265.3 10.1 Q265.3 8 266.9 6.6 Q268.5 5.3 270.2 5.5 Q272 5.6 273.7 6.5 Q275.4 7.5 275.3 9.4 Q275.2 11.3 274 13 Q272.8 14.7 270.8 14.6 Q268.8 14.4 267.1 13.3 Q265.3 12.1 265.3 10.1Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M285.3 8.2 Q286.3 6.6 288.2 6 Q290 5.5 291.8 6.3 Q293.5 7.1 294.3 9 Q295.1 10.9 294 12.6 Q292.8 14.3 291 14.6 Q289.1 15 287.5 14.2 Q285.9 13.3 285.1 11.6 Q284.3 9.9 285.3 8.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M311.4 5.7 Q313.2 6.3 313.9 7.9 Q314.7 9.6 314.5 11.4 Q314.2 13.3 312.6 14.2 Q310.9 15.1 308.8 14.9 Q306.8 14.7 306.1 12.8 Q305.4 10.9 305.5 8.9 Q305.7 6.9 307.6 6 Q309.5 5.2 311.4 5.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M330.3 14 Q328.6 13.9 327.1 13.4 Q325.6 12.8 325.2 11.1 Q324.7 9.4 325.7 8 Q326.8 6.7 328.3 6.2 Q329.9 5.8 331.3 6.7 Q332.6 7.6 333.3 9.2 Q334 10.9 333 12.5 Q332 14.1 330.3 14Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M351.7 5.6 Q353.7 6.6 354 8.7 Q354.3 10.8 353.1 12.4 Q351.9 14 350.1 14.6 Q348.2 15.3 346.4 14.4 Q344.5 13.6 343.9 11.4 Q343.3 9.3 344.7 7.7 Q346.1 6.2 347.9 5.4 Q349.7 4.5 351.7 5.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M367.2 12.3 Q366.8 10.4 367.2 8.7 Q367.5 7 369.2 5.8 Q370.8 4.7 372.8 5.4 Q374.7 6.1 375.3 8 Q376 9.8 375.5 11.6 Q375 13.4 373.3 14.2 Q371.5 15 369.5 14.6 Q367.5 14.2 367.2 12.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M393.4 8.8 Q394.1 10.4 393.4 12 Q392.7 13.6 391 14.3 Q389.4 15 387.6 14.4 Q385.8 13.7 385.2 11.8 Q384.5 10 385 7.9 Q385.5 5.8 387.6 5.9 Q389.8 5.9 391.3 6.6 Q392.7 7.2 393.4 8.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M412.7 13.4 Q411.3 14.8 409.2 14.9 Q407.1 15 405.7 13.3 Q404.3 11.5 404.3 9.4 Q404.4 7.2 406.3 6.4 Q408.2 5.6 410.1 5.1 Q412 4.6 413.3 6.3 Q414.6 8 414.3 10 Q414.1 11.9 412.7 13.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M426 11.5 Q425.8 9.7 426.4 8 Q427.1 6.3 428.9 6.1 Q430.6 5.9 432.1 6.5 Q433.5 7.2 434.4 8.8 Q435.3 10.4 434.7 12.3 Q434.1 14.2 432 14.3 Q430 14.3 428.2 13.8 Q426.3 13.3 426 11.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M452.6 7.8 Q453.4 9.3 453 11.1 Q452.6 12.8 450.9 13.5 Q449.2 14.1 447.4 13.8 Q445.6 13.6 445.2 11.8 Q444.8 10 445.1 8.4 Q445.5 6.9 447 6.2 Q448.4 5.5 450.1 5.9 Q451.7 6.4 452.6 7.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M472.5 7.5 Q473.7 8.7 473.8 10.5 Q473.8 12.4 472.3 13.3 Q470.7 14.2 468.9 14.6 Q467.2 15 466.3 13.2 Q465.4 11.5 465.1 9.7 Q464.8 7.9 466.3 6.8 Q467.9 5.7 469.6 6 Q471.4 6.3 472.5 7.5Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M494.3 13.6 Q492.6 15 490.6 14.7 Q488.6 14.4 487.5 12.9 Q486.5 11.4 485.9 9.2 Q485.3 7.1 487.3 6.2 Q489.3 5.4 491.1 5.4 Q492.9 5.4 494.3 6.7 Q495.8 8 495.9 10.1 Q495.9 12.2 494.3 13.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M513.3 6.3 Q514.8 8 514 9.9 Q513.2 11.9 511.8 13.1 Q510.3 14.4 508.5 14 Q506.6 13.7 504.9 12.3 Q503.3 11 503.7 8.8 Q504.2 6.6 506 5.7 Q507.8 4.9 509.8 4.7 Q511.8 4.6 513.3 6.3Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M529.9 14.8 Q528 14.1 526.7 12.5 Q525.4 10.9 526.3 8.9 Q527.1 7 528.8 6.1 Q530.6 5.3 532.5 5.8 Q534.4 6.3 535.5 7.9 Q536.7 9.6 536.1 11.7 Q535.5 13.7 533.6 14.6 Q531.7 15.4 529.9 14.8Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M547.1 12.6 Q545.9 11.1 546.2 9.3 Q546.5 7.5 548 6.5 Q549.5 5.5 551.2 5.5 Q553 5.5 554.2 6.9 Q555.4 8.3 555.3 10.2 Q555.2 12 553.6 12.8 Q552 13.6 550.2 13.9 Q548.4 14.1 547.1 12.6Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M568.8 5.4 Q570.7 5 572.5 5.6 Q574.3 6.2 574.3 8.1 Q574.4 10 573.9 11.6 Q573.3 13.3 571.6 14 Q569.9 14.7 568.2 13.7 Q566.6 12.8 566.2 11.1 Q565.9 9.3 566.4 7.6 Q566.9 5.8 568.8 5.4Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M586.9 9.5 Q587.5 7.8 588.7 7 Q590 6.2 591.4 6.6 Q592.9 6.9 594.2 8 Q595.4 9.1 594.8 10.6 Q594.2 12.2 593 13.1 Q591.7 14 590.1 13.8 Q588.5 13.5 587.4 12.3 Q586.3 11.1 586.9 9.5Z%22 fill=%22%23ffffff%22/%3E%3Crect y=%2219%22 width=%22600%22 height=%222%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M0 20 Q5.8 27.2 13.9 32.4 Q15.6 34.7 17.6 32.4 Q24.3 27 32 20 Q45.6 30.7 59.3 43.4 Q63.9 47.8 67.8 43.4 Q78.5 31 89.8 20 Q103.2 31.6 115.7 44.3 Q118.7 47.6 122.4 44.3 Q136.6 33.1 149 20 Q154.5 28 162 35.4 Q163.8 38.3 167 35.4 Q176.8 27.3 184.9 20 Q194.6 28.7 203.7 38.8 Q206.3 42.7 210.9 38.8 Q224.1 29.5 235.4 20 Q246.6 29.2 257.7 38.3 Q260.8 41.2 264.2 38.3 Q275.3 30 286.4 20 Q293.2 29.5 301.7 37.8 Q304.6 41.2 307.2 37.8 Q315.7 29.4 326.1 20 Q337.1 30.3 348.4 40 Q352 44 356.2 40 Q368.7 30.8 381 20 Q391.6 32 402.7 43.5 Q406 48.1 411.3 43.5 Q427.9 31.5 442 20 Q450.6 28 460 34.9 Q462.7 37 464.4 34.9 Q472.2 27 480.9 20 Q488.7 28.8 495 38.4 Q497.4 41.7 499.7 38.4 Q508.3 28.4 518.8 20 Q538.6 32.6 558.7 43.3 Q565.4 48.1 570.8 43.3 Q584.2 30.9 600 20 Z%22 fill=%22%2300a651%22 stroke=%22%2300a651%22 stroke-width=%22.8%22 stroke-linejoin=%22round%22/%3E%3C/g%3E%3C/svg%3E");--xz-c:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpath d=%22M0 0H47.5V47.5H0Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M0 0H49.6V20H20V49.6H0Z%22 fill=%22%23e60012%22/%3E%3Cpath d=%22M49.6 19H19V49.6H21V21H49.6Z%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M19 19 L55 19 L47.6 46.4 Q47.2 47.2 46.4 47.6 L19 55 Z%22 fill=%22%2300a651%22/%3E%3Cpath d=%22M15.1 12.7 Q14.5 15.0 12.0 15.8 Q9.6 16.6 7.6 15.3 Q5.5 14.0 4.6 11.8 Q3.7 9.6 4.8 7.5 Q5.9 5.4 8.1 4.5 Q10.4 3.5 12.7 4.6 Q15.0 5.6 15.4 8.0 Q15.7 10.3 15.1 12.7Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M34.6 7.2 Q35.8 8.6 35.2 10.3 Q34.7 12.0 33.4 13.0 Q32.2 14.1 30.4 14.2 Q28.6 14.3 27.5 12.8 Q26.4 11.3 26.6 9.5 Q26.8 7.7 28.3 6.7 Q29.8 5.7 31.5 5.8 Q33.3 5.9 34.6 7.2Z%22 fill=%22%23ffffff%22/%3E%3Cpath d=%22M11.8 34.7 Q10.4 35.6 8.7 35.0 Q7.1 34.4 6.2 32.9 Q5.3 31.4 5.9 29.6 Q6.4 27.9 8.0 27.4 Q9.7 26.8 11.2 27.3 Q12.7 27.9 13.8 29.2 Q14.9 30.6 14.1 32.2 Q13.3 33.9 11.8 34.7Z%22 fill=%22%23ffffff%22/%3E%3C/svg%3E");}
+.pzf .pz-t{background-image:var(--xz-t)!important}.pzf .pz-b{background-image:var(--xz-b)!important}.pzf .pz-l{background-image:var(--xz-l)!important}.pzf .pz-r{background-image:var(--xz-r)!important}.pzf .pz-c{background-image:var(--xz-c)!important}
+.dvbk-pg.pzf{background:#ffffff!important}
+
+.dvs-eco{margin:2px 0 8px;color:#2f6b4a;font-weight:700;font-size:13px;border-left:3px solid #2f6b4a;padding-left:8px}
+.dvs-st li.tp .nm{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+/* 11/13 Nory：本のページをめくるように出る（下に見えてきた時に1枚ずつ） */
+.dvs .dvs-fl{perspective:1400px}
+@media (prefers-reduced-motion:no-preference){
+ .dvs .dvs-fl button.pg{transform-origin:left center;transform:rotateY(-88deg);opacity:0;transition:transform 1.1s cubic-bezier(.2,.75,.25,1),opacity .5s ease;backface-visibility:hidden;will-change:transform}
+ .dvs .dvs-fl button.pg.in{transform:rotateY(0);opacity:1}
+ .dvs .dvs-fl button.pg::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,0) 40%);opacity:1;transition:opacity 1.1s ease}
+ .dvs .dvs-fl button.pg.in::after{opacity:0}
+ .dvs .dvs-fl button.pg{position:relative}
+}
+.dvs .dvs-fl button{display:block;padding:0;margin:0;border:1px solid var(--line,#dcc4ab);background:#fff;position:relative;cursor:zoom-in;border-radius:2px;box-shadow:0 6px 18px rgba(58,42,32,.14);min-width:0}
+.dvs .dvs-fl img{display:block;width:100%;height:auto}
+.dvs .dvs-tap{margin:8px 0 0;font-size:12px;color:var(--mute,#7a6555)}
+.dvs .dvs-st{display:grid;grid-template-columns:1fr;gap:18px;margin:26px auto 0;max-width:640px;text-align:left}
+@media (min-width:820px){.dvs .dvs-st{grid-template-columns:1fr 1fr;column-gap:32px}.dvs .dvs-g:nth-child(3){grid-column:1}.dvs .dvs-note{grid-column:1/-1}}
+.dvs h3{text-transform:uppercase;margin:0 0 6px;font-family:'The Home Font F','Cormorant Garamond',serif;font-weight:400;font-size:20px;letter-spacing:.05em;color:var(--accent,#b4532a);border-bottom:1px solid var(--line,#dcc4ab);padding-bottom:4px}
+.dvs ul{list-style:none;margin:0;padding:0}
+.dvs li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dotted var(--line,#dcc4ab);font-size:14px;line-height:1.25}
+.dvs li .nm{font-weight:600;letter-spacing:.04em;min-width:0}
+.dvs li .bd{flex:none;font-size:12px;padding:3px 8px;border:1px solid currentColor;border-radius:2px;white-space:nowrap}
+.dvs li .bd.ok{color:#3d6b3a}.dvs li .bd.low,.dvs li .bd.last{color:#c8361d;font-weight:700}
+.dvs li .bd.wait,.dvs li .bd.order,.dvs li .bd.check{color:var(--mute,#7a6555)}
+.dvs li .bd small{font-size:11px;font-weight:400}
+.dvs .dvs-note,.dvs .dvs-n{margin:4px 0 0;font-size:12px;line-height:1.45;color:var(--mute,#7a6555)}
+.dvs .dvs-n{margin-top:16px;text-align:center}
+:lang(ja) .dvs .dvs-big,:lang(ja) .dvs li,:lang(ja) .dvs .dvs-note,:lang(ja) .dvs .dvs-n,:lang(ja) .dvs .dvs-tap{font-family:'Klee One','Kaisei Decol',serif}
+</style>
+<div class="dvp" id="dvp" role="dialog" aria-labelledby="dvpK" hidden>
+  <div class="dvp-full">
+    <div class="dvp-h"><p class="dvp-k" id="dvpK">DAVINES CAMPAIGN</p></div>
+    <div class="dvp-m">
+      <div class="dvp-th">
+        <button type="button" data-i="0"><img alt="" decoding="async"></button>
+        <button type="button" data-i="1"><img alt="" decoding="async"></button>
+      </div>
+      <div class="dvp-tx">
+        <p class="dvp-i dvp-big" id="dvpBig"></p>
+      </div>
+    </div>
+    <div class="dvp-f">
+      <p class="dvp-n" id="dvpN"></p>
+      <button type="button" class="dvp-go" id="dvpGo"></button>
+    </div>
+  </div>
+  <button type="button" class="dvp-mini" id="dvpMini"></button>
+  <button type="button" class="dvp-x" id="dvpX">&times;</button>
+</div>
+<div class="dvl" id="dvl" role="dialog" aria-modal="true" hidden>
+  <div class="dvl-s" id="dvlS"><figure><img alt="" decoding="async"></figure><figure><img alt="" decoding="async"></figure></div>
+  <div class="dvl-d" id="dvlD"><button type="button" data-i="0"></button><button type="button" data-i="1"></button></div>
+  <button type="button" class="dvl-a dvl-p" id="dvlP">&#8249;</button>
+  <button type="button" class="dvl-a dvl-nx" id="dvlN">&#8250;</button>
+  <button type="button" class="dvl-x" id="dvlX">&times;</button>
+</div>
+<script>
+(function(){
+ /* 2026-12-26 の終わり（メキシコ市はUTC-6・夏時間なし）＝ 2026-12-27 06:00 UTC を過ぎたら何もしない */
+ var END=Date.UTC(2026,11,27,6,0,0);
+ var p=document.getElementById('dvp'),lb=document.getElementById('dvl');
+ if(!p||!lb)return;
+ var sec=document.getElementById('campana');
+ if(Date.now()>=END){p.remove();lb.remove();if(sec)sec.remove();return;}
+ /* 最初の画面（さらに見るの前）は写真より後ろの部品が全部かくれるので、大きく見る画面はページの一番前に置く */
+ try{document.body.insertBefore(lb,document.body.firstChild);}catch(e){}
+ var K='thDavinesHide';
+ function today(){try{return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}catch(e){var d=new Date(Date.now()-6*3600e3);return d.toISOString().slice(0,10);}}
+ function hidden(){try{return localStorage.getItem(K)===today();}catch(e){return false;}}
+ var T={
+  es:{cb:['Hasta','23% OFF','Por tiempo limitado'],bs:'Hasta <b>23% OFF</b> · Por tiempo limitado',n:'Hasta el 26 de diciembre de 2026 o hasta agotar existencias.',go:'Ver',mini:'DAVINES CAMPAIGN',x:'Cerrar',prev:'Anterior',next:'Siguiente',alt0:'Promoción Davines Gift Box',alt1:'Promoción Davines Gift Set sin caja',alt2:'Promoción Davines Gift Set sin caja (2)'},
+  en:{cb:['Up to','23% OFF','Limited time'],bs:'Up to <b>23% OFF</b> · Limited time',n:'Until December 26, 2026, or while supplies last.',go:'View',mini:'DAVINES CAMPAIGN',x:'Close',prev:'Previous',next:'Next',alt0:'Davines Gift Box offer',alt1:'Davines Gift Set (no box) offer',alt2:'Davines Gift Set (no box) offer (2)'},
+  ja:{cb:['最大','23% OFF','期間限定'],bs:'最大<b>23% OFF</b>・期間限定',n:'2026年12月26日まで（なくなり次第終了）',go:'見る',mini:'DAVINES CAMPAIGN',x:'閉じる',prev:'前へ',next:'次へ',alt0:'Davines ギフトボックスのキャンペーン',alt1:'Davines 箱なしセットのキャンペーン',alt2:'Davines 箱なしセットのキャンペーン（2）'}
+ };
+ /* 欄の文（残りの数の言い方は商品ページ productos.html とそろえる） */
+ var S={
+  es:{tap:'Toca la imagen para verla en grande.',h:['Gift Box','Sin caja','20% OFF'],ok:'Quedan {n} sets',low:'Últimos {n} sets',last:'¡Último set!',ok1:'Quedan {n}',low1:'Últimas {n} piezas',last1:'¡Última pieza!',wait:'Agotado · próximamente',order:'Solo bajo pedido · anticipo: 50% del precio de campaña',check:'Consulta disponibilidad',plus:'+{m} por llegar',note:'Existencias en el salón al {d} de {mes} de 2026. Se requiere reservación previa.',mes:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']},
+  en:{tap:'Tap an image to see it full size.',h:['Gift Box','No box','20% OFF'],ok:'{n} sets left',low:'Only {n} sets left',last:'Last set!',ok1:'{n} left',low1:'Only {n} left',last1:'Last one!',wait:'Sold out · restocking soon',order:'Order only · 50% deposit of the campaign price',check:'Ask for availability',plus:'+{m} arriving',note:'In-salon stock as of {mes} {d}, 2026. Advance reservation required.',mes:['January','February','March','April','May','June','July','August','September','October','November','December']},
+  ja:{tap:'画像を押すと大きく見られます。',h:['箱あり（GIFT BOX）','箱なし','20% OFF'],ok:'残り{n}セット',low:'残りわずか（{n}セット）',last:'ラスト1セット！',ok1:'残り{n}本',low1:'残りわずか（{n}本）',last1:'ラスト1本！',wait:'入荷待ち',order:'ご注文のみ・前金はキャンペーン価格の半額',check:'店頭でご確認ください',plus:'＋入荷待ち{m}',note:'在庫は2026年{m}月{d}日時点の店頭の数です。ご購入には事前予約が必要です。'}
+ };
+ var CJ=null;
+ function rf(s,o){return s.replace(/\{(\w+)\}/g,function(_,k){return o[k];});}
+ /* 11/13 Nory：フライヤーが見えてきたら、本のページをめくるように出す */
+ (function(){try{var bs=document.querySelectorAll('.dvs .dvs-fl button');if(!bs.length||!('IntersectionObserver' in window))return;
+  bs.forEach(function(b){b.classList.add('pg');});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var b=e.target;setTimeout(function(){b.classList.add('in');},120);io.unobserve(b);}});},{threshold:.18});
+  bs.forEach(function(b){io.observe(b);});
+  }catch(e){document.querySelectorAll('.dvs .dvs-fl button').forEach(function(b){b.classList.add('in');});}})();
+ /* 11/13 Nory：1品1ページの本（フライヤーから切り出した写真・めくって見る） */
+ var BK_ORD=['OI_LUX_SC','OI_OIL_SC','OI_MILK_SC','LOVE_SMOOTH_SC','MINU_SC','LOVE_CURL_SC','MOMO_SC','NOUNOU_SC','MELU_SC','HOG_SC','NT_SC','OI_MILK_BOX','OI_OIL_BOX','LOVE_SMOOTH_BOX','LOVE_CURL_BOX','MINU_BOX','HOG_BOX','NOUNOU_BOX','OI_COND_SINGLE'];
+ var BK_T={es:{sc:'SIN CAJA · 23% OFF',box:'GIFT BOX · 21% OFF',single:'20% OFF',x:'Cerrar',h:'Toca a la derecha o desliza para pasar la página'},en:{sc:'NO BOX · 23% OFF',box:'GIFT BOX · 21% OFF',single:'20% OFF',x:'Close',h:'Tap the right side or swipe to turn the page'},ja:{sc:'箱なし・23% OFF',box:'ギフトボックス・21% OFF',single:'20% OFF',x:'閉じる',h:'右側をタップ、または横にスワイプでめくれます'}};
+ /* 11/13 Nory：割引を強調（色の大きな字＋さらにお得の帯・全ページ） */
+ var BK_P={sc:23,box:21,single:20};
+ var BK_K={es:{sc:'SIN CAJA',box:'GIFT BOX',single:'OI CONDITIONER',mas:'¡MÁS DESCUENTO!',eco:'Sin caja, más sustentable.|Menos residuos: una elección consciente.'},en:{sc:'NO BOX',box:'GIFT BOX',single:'OI CONDITIONER',mas:'EXTRA SAVINGS!',eco:'No box, more sustainable.|Less waste: a conscious choice.'},ja:{sc:'箱なし',box:'ギフトボックス',single:'OIコンディショナー',mas:'さらにお得！',eco:'箱なしで、エコに。|ゴミを減らす、サステナブルな選び方。'}};
+ var bkL='es',bkI=0,bkBusy=false,bkEl=null,bkLast=null;
+ function bkItems(){var m={};(CJ&&CJ.sets||[]).forEach(function(x){m[x.id]=x;});return BK_ORD.filter(function(id){return m[id];}).map(function(id){return m[id];});}
+ function bkBadge(x){var s=S[bkL],u=(x.kind==='single')?'1':'',key=(x.st==='ok'||x.st==='low'||x.st==='last')?x.st+u:x.st,t=s[key]?rf(s[key],{n:x.n}):'';if(t&&x.wait>0&&x.st!=='wait'&&x.st!=='check')t+=' '+rf(s.plus,{m:x.wait});return t;}
+ function bkPage(x){var d=document.createElement('div');d.className='dvbk-pg pzf';var g=document.createElement('div');g.className='dvbk-g';var K=BK_K[bkL],k1=document.createElement('span');k1.className='k';k1.textContent=K[x.kind]||'';var k2=document.createElement('span');k2.className='off';k2.textContent=(BK_P[x.kind]||'')+'% OFF';var k3=document.createElement('span');k3.className='mas';k3.textContent=K.mas;g.appendChild(k1);g.appendChild(k2);g.appendChild(k3);if(x.kind==='sc'){var ec=document.createElement('p');ec.className='eco';ec.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 1.5.4 2.8 1 4 1-4 4-8 9-10-4 3-6.5 6.5-7.5 10.5 1 .3 2 .5 3 .5 7 0 11-6 10.5-17z" fill="currentColor"/></svg>';var et=document.createElement('span'),ep=K.eco.split('|'),eb=document.createElement('b');eb.textContent=ep[0];et.appendChild(eb);et.appendChild(document.createElement('br'));et.appendChild(document.createTextNode(ep[1]));ec.appendChild(et);g.appendChild(ec);}var im=document.createElement('img');im.src='campana/pg/'+x.id+'_'+bkL+'.jpg?v=1113';im.alt=x.name;var b=document.createElement('div');b.className='dvbk-b';var t=bkBadge(x);if(t){var sp=document.createElement('span');sp.className=x.st;sp.textContent=t;b.appendChild(sp);}['t','b','l','r','c pz-tl','c pz-tr','c pz-bl','c pz-br'].forEach(function(k){var z=document.createElement('i');z.className='pz pz-'+k;d.appendChild(z);});var lg=document.createElement('img');lg.className='dvbk-logo';lg.src='logo_round.png';lg.alt='THE HOME Hair re-creative';d.appendChild(lg);d.appendChild(g);d.appendChild(im);d.appendChild(b);return d;}
+ function bkBuild(){if(bkEl)return bkEl;var o=document.createElement('div');o.className='dvbk';o.hidden=true;o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');
+  o.innerHTML='<div class="dvbk-top"><span class="dvbk-c"></span><button type="button" class="dvbk-x"></button></div><div class="dvbk-book"><div class="dvbk-cur"></div></div><div class="dvbk-nv"><button type="button" class="dvbk-p" aria-label="prev">&#8592;</button><span class="dvbk-n"></span><button type="button" class="dvbk-q" aria-label="next">&#8594;</button></div><p class="dvbk-h"></p>';
+  document.body.appendChild(o);bkEl=o;
+  o.querySelector('.dvbk-x').onclick=bkClose;o.querySelector('.dvbk-p').onclick=function(){bkGo(bkI-1);};o.querySelector('.dvbk-q').onclick=function(){bkGo(bkI+1);};
+  var bk=o.querySelector('.dvbk-book');bk.addEventListener('click',function(e){var r=bk.getBoundingClientRect();bkGo((e.clientX-r.left)>r.width*0.4?bkI+1:bkI-1);});
+  var sx=null;bk.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});bk.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40){e.preventDefault();bkGo(dx<0?bkI+1:bkI-1);}});
+  o.addEventListener('click',function(e){if(e.target===o)bkClose();});
+  addEventListener('keydown',function(e){if(!o.classList.contains('on'))return;if(e.key==='Escape')bkClose();else if(e.key==='ArrowRight')bkGo(bkI+1);else if(e.key==='ArrowLeft')bkGo(bkI-1);});
+  return o;}
+ function bkShow(){var it=bkItems(),o=bkEl,x=it[bkI];var cur=o.querySelector('.dvbk-cur');cur.textContent='';cur.appendChild(bkPage(x));
+  o.querySelector('.dvbk-n').textContent=(bkI+1)+' / '+it.length;o.querySelector('.dvbk-c').textContent='DAVINES CAMPAIGN';
+  o.querySelector('.dvbk-p').disabled=bkI<=0;o.querySelector('.dvbk-q').disabled=bkI>=it.length-1;
+  var n=it[bkI+1];if(n){var pi=new Image();pi.src='campana/pg/'+n.id+'_'+bkL+'.jpg';}}
+ function bkGo(i){var it=bkItems();if(bkBusy||i<0||i>=it.length||i===bkI)return;var fwd=i>bkI,o=bkEl,bk=o.querySelector('.dvbk-book');
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;if(still){bkI=i;bkShow();return;}
+  bkBusy=true;var fl=document.createElement('div');fl.className='dvbk-fl';
+  if(fwd){fl.appendChild(bkPage(it[bkI]));bkI=i;bkShow();}else{bkI=i;fl.appendChild(bkPage(it[bkI]));}
+  var pg=fl.firstChild;pg.style.transition='transform .75s cubic-bezier(.3,.6,.25,1)';pg.style.transform=fwd?'rotateY(0deg)':'rotateY(-115deg)';bk.appendChild(fl);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){fl.classList.toggle('go',fwd);pg.style.transform=fwd?'rotateY(-115deg)':'rotateY(0deg)';});});
+  setTimeout(function(){if(!fwd)bkShow();fl.remove();bkBusy=false;},780);}
+ function bkOpen(id){if(!CJ||!CJ.sets)return;bkBuild();var it=bkItems(),k=0;it.forEach(function(x,n){if(x.id===id)k=n;});bkI=k;bkLast=document.activeElement;
+  var T=BK_T[bkL];bkEl.querySelector('.dvbk-x').textContent=T.x;bkEl.querySelector('.dvbk-h').textContent=T.h;bkEl.setAttribute('aria-label','DAVINES CAMPAIGN');
+  bkShow();bkEl.hidden=false;document.documentElement.style.overflow='hidden';requestAnimationFrame(function(){bkEl.classList.add('on');});bkEl.querySelector('.dvbk-x').focus();}
+ function bkClose(){if(!bkEl||bkEl.hidden)return;bkEl.classList.remove('on');setTimeout(function(){bkEl.hidden=true;},250);document.documentElement.style.overflow='';if(bkLast&&bkLast.focus)try{bkLast.focus();}catch(e){}}
+ function putSec(l,t){if(!sec)return;var s=S[l];bkL=l;
+  var bg=document.getElementById('dvsBig');bg.innerHTML=t.bs;document.getElementById('dvsTap').textContent=s.tap;document.getElementById('dvsN').textContent=t.n;
+  sec.setAttribute('lang',l);
+  sec.querySelectorAll('.dvs-fl button').forEach(function(b,i){var im=b.querySelector('img');im.src='campana/'+IMG.full[i].split('/')[1]+l+'.jpg?v=1113';im.alt=t['alt'+i];b.setAttribute('aria-label',t['alt'+i]);});
+  var st=document.getElementById('dvsSt');
+  if(!CJ||!CJ.sets){st.hidden=true;return;}
+  var g={box:[],sc:[],single:[]};CJ.sets.forEach(function(x){/* 11/13 Nory：箱なし（お取り寄せの品も）も一覧に戻す */if(g[x.kind])g[x.kind].push(x);});
+  ['box','sc','single'].forEach(function(k,gi){document.getElementById('dvsH'+gi).textContent=s.h[gi];if(k==='sc'){var h1=document.getElementById('dvsH1'),oe=document.getElementById('dvsEco');if(!oe){oe=document.createElement('p');oe.id='dvsEco';oe.className='dvs-eco';h1.parentNode.insertBefore(oe,h1.nextSibling);}oe.textContent=BK_K[l].eco.replace('|',' ');}var ul=document.getElementById('dvsL'+gi);ul.textContent='';
+   g[k].forEach(function(x){var u=(k==='single')?'1':'';var li=document.createElement('li'),nm=document.createElement('span'),bd=document.createElement('span');
+    nm.className='nm';nm.textContent=x.name;var key=(x.st==='ok'||x.st==='low'||x.st==='last')?x.st+u:x.st;bd.className='bd '+x.st;
+    bd.textContent=s[key]?rf(s[key],{n:x.n}):'';
+    if(x.wait>0&&x.st!=='wait'&&x.st!=='check'){var sm=document.createElement('small');sm.textContent=' '+rf(s.plus,{m:x.wait});bd.appendChild(sm);}
+    if(!bd.textContent)return;li.appendChild(nm);li.appendChild(bd);li.className='tp';li.tabIndex=0;li.setAttribute('role','button');li.onclick=function(){bkOpen(x.id);};li.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();bkOpen(x.id);}};ul.appendChild(li);});
+   ul.parentNode.hidden=!ul.children.length;});
+  var dm=/^(\d{4})-(\d{2})-(\d{2})$/.exec(CJ.updated||'');
+  document.getElementById('dvsNote').textContent=dm?rf(s.note,{d:+dm[3],m:+dm[2],mes:s.mes?s.mes[+dm[2]-1]:''}):'';
+  st.hidden=false;}
+ /* 残りの数（campana.json）。読めない時は数を出さない（フライヤーだけ） */
+ /* 「さらに見る」で移った時、上の帯（店名）の下に欄の題が見えるようにする */
+ function smt(){if(!sec)return;try{var br=document.querySelector('.bar');sec.style.scrollMarginTop=(br?(parseFloat(getComputedStyle(br).top)||0)+br.offsetHeight+8:0)+'px';}catch(e){}}
+ smt();addEventListener('resize',smt);addEventListener('load',smt);
+ if(sec){try{fetch('campana.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(j&&j.sets){CJ=j;put();}}).catch(function(){});}catch(e){}
+  sec.querySelectorAll('.dvs-fl button').forEach(function(b){b.onclick=function(){bkOpen(+b.dataset.i===1?'OI_LUX_SC':'OI_MILK_BOX');};});}
+ var IMG={full:['campana/davines_giftbox_','campana/davines_sincaja_'],th:['campana/th_davines_giftbox_','campana/th_davines_sincaja_']};
+ function lg(){var l=(document.documentElement.lang||'es').slice(0,2).toLowerCase();return T[l]?l:'es';}
+ var thImgs=p.querySelectorAll('.dvp-th img'),lbImgs=lb.querySelectorAll('.dvl-s img'),loaded=false,big=false;
+ function put(){var l=lg(),t=T[l];
+  var cbE=document.getElementById('dvpBig');cbE.textContent='';t.cb.forEach(function(x,k){var e=document.createElement(k===1?'b':'span');e.textContent=x;cbE.appendChild(e);});document.getElementById('dvpN').textContent=t.n;
+  document.getElementById('dvpGo').textContent=t.go;document.getElementById('dvpMini').textContent=t.mini;
+  ['dvpX','dvlX'].forEach(function(id){document.getElementById(id).setAttribute('aria-label',t.x);});
+  document.getElementById('dvlP').setAttribute('aria-label',t.prev);document.getElementById('dvlN').setAttribute('aria-label',t.next);
+  p.setAttribute('lang',l);if(bd){bd.querySelector('.dvb-s').innerHTML=t.bs;bd.setAttribute('aria-label','DAVINES CAMPAIGN · '+t.bs.replace(/<[^>]+>/g,''));}lb.setAttribute('lang',l);lb.setAttribute('aria-label',t.alt0);
+  [0,1].forEach(function(i){var a=t['alt'+i];thImgs[i].alt=a;lbImgs[i].alt=a;thImgs[i].parentNode.setAttribute('aria-label',a);
+   if(loaded)thImgs[i].src=IMG.th[i]+l+'.jpg?v=1113';if(big)lbImgs[i].src=IMG.full[i]+l+'.jpg?v=1113';});
+  putSec(l,t);
+ }
+/* 最初の画面の写真の上にバッジを置く（押すと大きく見る） */
+ var hero=document.querySelector('header.hero'),bd=null;
+ if(hero){bd=document.createElement('button');bd.type='button';bd.className='dvb';bd.id='dvb';bd.innerHTML='<span class="dvb-k">DAVINES CAMPAIGN</span><span class="dvb-s"></span>';hero.appendChild(bd);bd.onclick=function(){/* 11/12 Nory：押すとキャンペーンの欄（写真・値段・残りの数）へ */var cs=document.getElementById('campana'),q=hero.querySelector('.cue');if(cs&&q){q.click();}else if(cs&&cs.offsetHeight){cs.scrollIntoView({behavior:'smooth',block:'start'});}else{openLb(0);}};}
+ /* パソコン：バッジの高さを丸いロゴの真ん中にそろえる（下の文字にかからないように） */
+ function posB(){if(!bd)return;var inn=hero.querySelector('.hero-in'),lgE=hero.querySelector('.logo');
+  function flow(){if(inn&&bd.parentNode!==inn){inn.insertBefore(bd,inn.firstChild);}bd.classList.add('dvb-flow');bd.style.top='';bd.style.maxWidth='';}
+  function abs(){if(bd.parentNode!==hero)hero.appendChild(bd);bd.classList.remove('dvb-flow');}
+  function hit(a,b){var x=a.getBoundingClientRect(),y=b.getBoundingClientRect();return !(x.right+12<=y.left||y.right+12<=x.left||x.bottom+12<=y.top||y.bottom+12<=x.top);}
+  if(!lgE){flow();return;}
+  /* 11/12 Nory：携帯は写真の上の余白を全部使って大きく（ロゴには重ねない）。足りない時は真ん中・ロゴの上 */
+  if(innerWidth<820){flow();var cue=hero.querySelector('.cue');var tries=['dvb-big','dvb-big dvb-big-s'];
+   for(var ti=0;ti<tries.length;ti++){bd.classList.remove('dvb-big','dvb-big-s');tries[ti].split(' ').forEach(function(c){bd.classList.add(c);});
+    var OY=function(el){var t=0;while(el&&el!==hero){t+=el.offsetTop;el=el.offsetParent;}return t;};
+    var bT=OY(bd),bB=bT+bd.offsetHeight,lT=OY(lgE),last=inn.lastElementChild,iB=OY(last)+last.offsetHeight,cT=cue?cue.offsetTop:1e9;
+    if(bT>=10&&iB<=cT-6&&bB<=lT-4)return;}
+   bd.classList.remove('dvb-big','dvb-big-s');return;}
+  flow();return; /* パソコン：真ん中・ロゴの上 */
+  abs();try{var c=hero.querySelector('.catch');var oy=function(el){var t=0;while(el&&el!==hero){t+=el.offsetTop;el=el.offsetParent;}return el===hero?t:null;};var ly=oy(lgE);if(ly===null){flow();return;}var ox=function(el){var t=0;while(el&&el!==hero){t+=el.offsetLeft;el=el.offsetParent;}return t;};var lx=ox(lgE);bd.style.maxWidth=Math.max(170,lx-56)+'px';var y=ly+lgE.offsetHeight/2;var bh=bd.offsetHeight;var cy=c?oy(c):null;if(cy!==null){if(y+bh/2>cy-12)y=cy-12-bh/2;}y=Math.max(y,bh/2+16);bd.style.top=Math.round(y)+'px';
+  if(hit(bd,lgE)||(c&&hit(bd,c)))flow();}catch(e){flow();}}
+ posB();addEventListener('resize',posB);addEventListener('load',posB);setTimeout(posB,1500);
+ /* 言語を切りかえたら、その言語の2枚・文に入れかえる */
+ try{new MutationObserver(function(){put();setTimeout(posB,80);}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});}catch(e){}
+ put();
+ /* 画面の下の予約ボタン（携帯）の上に置く */
+ function place(){var b=0,fz=0;try{fz=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fz'))||0;}catch(e){}
+  var d=document.querySelector('.dock');if(d){var r=d.getBoundingClientRect();if(r.height>0&&getComputedStyle(d).display!=='none')b=Math.max(0,innerHeight-r.top);}
+  p.style.setProperty('--dvp-b',Math.max(b,fz)+'px');}
+ var shown=false,startY=0,done=false;
+ function show(){if(shown||done||hidden()||Date.now()>=END)return;shown=true;loaded=true;put();place();p.hidden=false;void p.offsetWidth;p.classList.add('on');startY=scrollY;}
+ function onScroll(){if(document.body.classList.contains('gate'))return;
+  /* 小窓は、上のキャンペーンの欄を読み過ぎてから出す（同じ物を2つ同時に出さない） */
+  if(!shown){if(scrollY>60&&(!sec||sec.getBoundingClientRect().bottom<0))show();return;}
+  /* 1画面半ほど読み進めたら小さくたたむ（文字や予約ボタンを隠しっぱなしにしない） */
+  if(!p.classList.contains('mini')&&!p.dataset.keep&&scrollY-startY>innerHeight*1.5)p.classList.add('mini');}
+ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',place);
+ document.getElementById('dvpMini').onclick=function(){p.classList.remove('mini');p.dataset.keep='1';};
+ document.getElementById('dvpX').onclick=function(){done=true;p.classList.remove('on');setTimeout(function(){p.hidden=true;},600);try{localStorage.setItem(K,today());}catch(e){}closeLb();};
+ /* 大きく見る */
+ var s=document.getElementById('dvlS'),dots=lb.querySelectorAll('.dvl-d button'),last=null,cur=0;
+ function go(i){s.scrollTo({left:i*s.clientWidth,behavior:'auto'});mark(i);}
+ function mark(i){cur=i;dots.forEach(function(d,k){d.classList.toggle('on',k===i);});document.getElementById('dvlP').disabled=(i===0);document.getElementById('dvlN').disabled=(i===dots.length-1);}
+ s.addEventListener('scroll',function(){mark(Math.round(s.scrollLeft/Math.max(1,s.clientWidth)));},{passive:true});
+ function openLb(i){if(!big){big=true;put();}last=document.activeElement;lb.hidden=false;lb.classList.add('on');if(!document.body.classList.contains('gate'))document.documentElement.style.overflow='hidden';requestAnimationFrame(function(){go(i);});document.getElementById('dvlX').focus();}
+ function closeLb(){if(!lb.classList.contains('on'))return;lb.classList.remove('on');lb.hidden=true;document.documentElement.style.overflow='';if(last&&last.focus)try{last.focus();}catch(e){}}
+ p.querySelectorAll('.dvp-th button').forEach(function(b){b.onclick=function(){openLb(+b.dataset.i);};});
+ document.getElementById('dvpGo').onclick=function(){openLb(0);};
+ dots.forEach(function(d){d.onclick=function(){go(+d.dataset.i);};});
+ document.getElementById('dvlP').onclick=function(){go(Math.max(0,cur-1));};document.getElementById('dvlN').onclick=function(){go(Math.min(dots.length-1,cur+1));};
+ document.getElementById('dvlX').onclick=closeLb;
+ lb.addEventListener('click',function(e){if(e.target===lb||e.target.tagName==='FIGURE')closeLb();});
+ addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowRight')go(Math.min(dots.length-1,cur+1));else if(e.key==='ArrowLeft')go(Math.max(0,cur-1));});
+})();
+</script>
+<!-- 【2026-11-12 web Davinesフライヤーの一時表示】ここまで -->
 </body>
 </html>
