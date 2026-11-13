@@ -1225,7 +1225,8 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
 .dvl .dvl-s{display:flex;width:100%;height:calc(100% - 96px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .dvl .dvl-s::-webkit-scrollbar{display:none}
 .dvl .dvl-s figure{flex:0 0 100%;margin:0;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:0 12px;box-sizing:border-box}
-.dvl .dvl-s img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.dvl::after{content:attr(data-hint);position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));text-align:center;color:#fff;font-size:14px;letter-spacing:.04em;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.dvl .dvl-s img{cursor:pointer;display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .dvl .dvl-x{position:absolute;top:calc(8px + env(safe-area-inset-top));right:10px;width:48px;height:48px;border:0;background:transparent;color:#f7ebdd;font-size:32px;line-height:48px;cursor:pointer;padding:0}
 .dvl .dvl-d{display:flex;gap:10px;margin-top:14px}
 .dvl .dvl-d button{width:10px;height:10px;border-radius:50%;border:1px solid #f7ebdd;background:transparent;padding:0;cursor:pointer}
@@ -1367,17 +1368,19 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
  };
  /* 欄の文（残りの数の言い方は商品ページ productos.html とそろえる） */
  var S={
-  es:{tap:'Toca la imagen para verla en grande.',h:['Gift Box','Sin caja','20% OFF'],ok:'Quedan {n} sets',low:'Últimos {n} sets',last:'¡Último set!',ok1:'Quedan {n}',low1:'Últimas {n} piezas',last1:'¡Última pieza!',wait:'Agotado · próximamente',order:'Solo bajo pedido · anticipo: 50% del precio de campaña',check:'Consulta disponibilidad',plus:'+{m} por llegar',note:'Existencias en el salón al {d} de {mes} de 2026. Se requiere reservación previa.',mes:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']},
-  en:{tap:'Tap an image to see it full size.',h:['Gift Box','No box','20% OFF'],ok:'{n} sets left',low:'Only {n} sets left',last:'Last set!',ok1:'{n} left',low1:'Only {n} left',last1:'Last one!',wait:'Sold out · restocking soon',order:'Order only · 50% deposit of the campaign price',check:'Ask for availability',plus:'+{m} arriving',note:'In-salon stock as of {mes} {d}, 2026. Advance reservation required.',mes:['January','February','March','April','May','June','July','August','September','October','November','December']},
-  ja:{tap:'画像を押すと大きく見られます。',h:['箱あり（GIFT BOX）','箱なし','20% OFF'],ok:'残り{n}セット',low:'残りわずか（{n}セット）',last:'ラスト1セット！',ok1:'残り{n}本',low1:'残りわずか（{n}本）',last1:'ラスト1本！',wait:'入荷待ち',order:'ご注文のみ・前金はキャンペーン価格の半額',check:'店頭でご確認ください',plus:'＋入荷待ち{m}',note:'在庫は2026年{m}月{d}日時点の店頭の数です。ご購入には事前予約が必要です。'}
+  es:{tap:'Toca la imagen para ver cada producto.',h:['Gift Box','Sin caja','20% OFF'],ok:'Quedan {n} sets',low:'Últimos {n} sets',last:'¡Último set!',ok1:'Quedan {n}',low1:'Últimas {n} piezas',last1:'¡Última pieza!',wait:'Agotado · próximamente',order:'Solo bajo pedido · anticipo: 50% del precio de campaña',check:'Consulta disponibilidad',plus:'+{m} por llegar',note:'Existencias en el salón al {d} de {mes} de 2026. Se requiere reservación previa.',mes:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']},
+  en:{tap:'Tap the image to see each product.',h:['Gift Box','No box','20% OFF'],ok:'{n} sets left',low:'Only {n} sets left',last:'Last set!',ok1:'{n} left',low1:'Only {n} left',last1:'Last one!',wait:'Sold out · restocking soon',order:'Order only · 50% deposit of the campaign price',check:'Ask for availability',plus:'+{m} arriving',note:'In-salon stock as of {mes} {d}, 2026. Advance reservation required.',mes:['January','February','March','April','May','June','July','August','September','October','November','December']},
+  ja:{tap:'画像を押すと、1品ずつ見られます。',h:['箱あり（GIFT BOX）','箱なし','20% OFF'],ok:'残り{n}セット',low:'残りわずか（{n}セット）',last:'ラスト1セット！',ok1:'残り{n}本',low1:'残りわずか（{n}本）',last1:'ラスト1本！',wait:'入荷待ち',order:'ご注文のみ・前金はキャンペーン価格の半額',check:'店頭でご確認ください',plus:'＋入荷待ち{m}',note:'在庫は2026年{m}月{d}日時点の店頭の数です。ご購入には事前予約が必要です。'}
  };
  var CJ=null;
  function rf(s,o){return s.replace(/\{(\w+)\}/g,function(_,k){return o[k];});}
  /* 11/13 Nory：フライヤーが見えてきたら、本のページをめくるように出す */
  (function(){try{var bs=document.querySelectorAll('.dvs .dvs-fl button');if(!bs.length||!('IntersectionObserver' in window))return;
   bs.forEach(function(b){b.classList.add('pg');});
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var b=e.target;setTimeout(function(){b.classList.add('in');},120);io.unobserve(b);}});},{threshold:.18});
-  bs.forEach(function(b){io.observe(b);});
+  /* 11/13 直し：回転したままの形では画面に入ったと分からず、1枚目が出ないことがあった → 回転していない箱の位置で見る */
+  function chk(){var all=true;bs.forEach(function(b){if(b.classList.contains('in'))return;all=false;var op=b.offsetParent;if(!op)return;var t=op.getBoundingClientRect().top+b.offsetTop;if(t<innerHeight*0.92&&t+b.offsetHeight>0)b.classList.add('in');});return all;}
+  addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);addEventListener('load',chk);
+  var nT=0,iv=setInterval(function(){if(chk()||++nT>200)clearInterval(iv);},500);
   }catch(e){document.querySelectorAll('.dvs .dvs-fl button').forEach(function(b){b.classList.add('in');});}})();
  /* 11/13 Nory：1品1ページの本（フライヤーから切り出した写真・めくって見る） */
  var BK_ORD=['OI_LUX_SC','OI_OIL_SC','OI_MILK_SC','LOVE_SMOOTH_SC','MINU_SC','LOVE_CURL_SC','MOMO_SC','NOUNOU_SC','MELU_SC','HOG_SC','NT_SC','OI_MILK_BOX','OI_OIL_BOX','LOVE_SMOOTH_BOX','LOVE_CURL_BOX','MINU_BOX','HOG_BOX','NOUNOU_BOX','OI_COND_SINGLE'];
@@ -1444,7 +1447,7 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
   document.getElementById('dvpGo').textContent=t.go;document.getElementById('dvpMini').textContent=t.mini;
   ['dvpX','dvlX'].forEach(function(id){document.getElementById(id).setAttribute('aria-label',t.x);});
   document.getElementById('dvlP').setAttribute('aria-label',t.prev);document.getElementById('dvlN').setAttribute('aria-label',t.next);
-  p.setAttribute('lang',l);if(bd){bd.querySelector('.dvb-s').innerHTML=t.bs;bd.setAttribute('aria-label','DAVINES CAMPAIGN · '+t.bs.replace(/<[^>]+>/g,''));}lb.setAttribute('lang',l);lb.setAttribute('aria-label',t.alt0);
+  p.setAttribute('lang',l);if(bd){bd.querySelector('.dvb-s').innerHTML=t.bs;bd.setAttribute('aria-label','DAVINES CAMPAIGN · '+t.bs.replace(/<[^>]+>/g,''));}lb.setAttribute('lang',l);lb.setAttribute('data-hint',S[l].tap);lb.setAttribute('aria-label',t.alt0);
   [0,1].forEach(function(i){var a=t['alt'+i];thImgs[i].alt=a;lbImgs[i].alt=a;thImgs[i].parentNode.setAttribute('aria-label',a);
    if(loaded)thImgs[i].src=IMG.th[i]+l+'.jpg?v=1113';if(big)lbImgs[i].src=IMG.full[i]+l+'.jpg?v=1113';});
   putSec(l,t);
@@ -1498,7 +1501,7 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
  dots.forEach(function(d){d.onclick=function(){go(+d.dataset.i);};});
  document.getElementById('dvlP').onclick=function(){go(Math.max(0,cur-1));};document.getElementById('dvlN').onclick=function(){go(Math.min(dots.length-1,cur+1));};
  document.getElementById('dvlX').onclick=closeLb;
- lb.addEventListener('click',function(e){if(e.target===lb||e.target.tagName==='FIGURE')closeLb();});
+ lb.addEventListener('click',function(e){/* 11/13 Nory：大きく見た画像を押すと、1品1ページの本へ */if(e.target.tagName==='IMG'&&e.target.closest('.dvl-s')){var k=[].indexOf.call(lbImgs,e.target);closeLb();bkOpen(k===1?'OI_LUX_SC':'OI_MILK_BOX');return;}if(e.target===lb||e.target.tagName==='FIGURE')closeLb();});
  addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowRight')go(Math.min(dots.length-1,cur+1));else if(e.key==='ArrowLeft')go(Math.max(0,cur-1));});
 })();
 </script>
