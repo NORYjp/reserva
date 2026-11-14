@@ -1275,6 +1275,8 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
 @media (prefers-reduced-motion:no-preference){.dvbk.on .dvbk-cur .dvbk-g .mas{animation:dvbkMas 1.8s ease-in-out infinite}}
 @keyframes dvbkMas{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .dvbk-b{display:flex;justify-content:center;margin-top:12px;min-height:26px}
+.dvbk-d{margin:12px 2px 0;text-align:center;font-size:14px;line-height:1.55;color:#3a2a20}.dvbk-d b{display:inline-block;font-size:15px;color:#8a5a3c;margin-bottom:2px} /* 11/14 Nory：商品の説明 */
+.dvs li .nm .ds{display:block;font-size:12px;font-weight:400;line-height:1.45;color:#6b5a4c;margin-top:2px;letter-spacing:0;text-transform:none}
 .dvbk-b span{display:inline-block;font-size:14px;font-weight:600;padding:5px 14px;border-radius:2px;background:#2f6b4a;color:#fff}
 .dvbk-b span.wait,.dvbk-b span.check{background:#8a6d2f}
 .dvbk-b span.order{background:#9c2f2f}
@@ -1388,10 +1390,25 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
  /* 11/13 Nory：割引を強調（色の大きな字＋さらにお得の帯・全ページ） */
  var BK_P={sc:23,box:21,single:20};
  var BK_K={es:{sc:'SIN CAJA',box:'GIFT BOX',single:'OI CONDITIONER',mas:'¡MÁS DESCUENTO!',eco:'Sin caja, más sustentable.|Menos residuos: una elección consciente.'},en:{sc:'NO BOX',box:'GIFT BOX',single:'OI CONDITIONER',mas:'EXTRA SAVINGS!',eco:'No box, more sustainable.|Less waste: a conscious choice.'},ja:{sc:'箱なし',box:'ギフトボックス',single:'OIコンディショナー',mas:'さらにお得！',eco:'箱なしで、エコに。|ゴミを減らす、サステナブルな選び方。'}};
+
+ /* 11/14 Nory：商品の説明（どんな髪に・どんな効果）。Davines公式の説明（商品台帳）から */
+ var BK_D={
+ OI:{es:['Para todo tipo de cabello','Suavidad y brillo intenso, para uso diario.'],en:['For all hair types','Softness and radiant shine, for everyday use.'],ja:['すべての髪質に','やわらかさと輝くツヤを与えます。毎日お使いいただけます。']},
+ LOVE_SMOOTH:{es:['Para cabello con frizz o rebelde','Controla el frizz y deja el cabello suave y manejable.'],en:['For frizzy, unruly hair','Tames frizz for smooth, manageable hair.'],ja:['くせ・広がりが気になる髪に','広がりを抑え、なめらかにまとまる髪へ導きます。']},
+ LOVE_CURL:{es:['Para rizos y ondas','Hidratación y elasticidad para rizos definidos.'],en:['For curly and wavy hair','Hydration and bounce for defined curls.'],ja:['カール・ウェーブの髪に','うるおいと弾力を与え、カールを美しく整えます。']},
+ MINU:{es:['Para cabello teñido','Protege el color y el brillo; ayuda a que el color dure más.'],en:['For color-treated hair','Protects color and shine; helps color last longer.'],ja:['カラーをした髪に','色あせを抑え、色もちとツヤを守ります。']},
+ MOMO:{es:['Para cabello seco','Hidratación rápida para un cabello suave.'],en:['For dry hair','Quick hydration for soft hair.'],ja:['乾燥が気になる髪に','すばやくうるおいを与え、しっとりやわらかな髪へ。']},
+ NOUNOU:{es:['Para cabello decolorado, con permanente o alaciado','Nutre y repara el cabello dañado.'],en:['For bleached, permed or straightened hair','Nourishes and repairs damaged hair.'],ja:['ブリーチ・パーマ・縮毛矯正をした髪に','傷んだ髪に栄養を与え、やわらかく補修します。']},
+ MELU:{es:['Para cabello largo o dañado','Previene el quiebre y deja el cabello flexible hasta las puntas.'],en:['For long or damaged hair','Prevents breakage and keeps hair supple to the ends.'],ja:['ロングヘア・傷んだ髪に','切れ毛を防ぎ、毛先までしなやかに保ちます。']},
+ HOG:{es:['Para cabello rubio, natural o decolorado','Limpieza suave, nutrición y luminosidad.'],en:['For natural or lightened blonde hair','Gentle cleansing, nourishment and radiance.'],ja:['ブロンド・ハイライトの髪に','やさしく洗い、うるおいと輝きを与えます。']},
+ NT:{es:['Para cabello reseco o dañado','Nutrición de origen vegetal para un cabello suave y brillante.'],en:['For dry or damaged hair','Plant-based nourishment for soft, shiny hair.'],ja:['乾燥・ダメージが気になる髪に','植物由来の栄養で、やわらかくツヤのある髪へ。']}};
+ var BK_DL={es:'Ideal',en:'Best for',ja:'おすすめ'};
+ function bkSer(id){if(/^OI_/.test(id))return 'OI';if(/^LOVE_SMOOTH/.test(id))return 'LOVE_SMOOTH';if(/^LOVE_CURL/.test(id))return 'LOVE_CURL';var m=/^(MINU|MOMO|NOUNOU|MELU|HOG|NT)_/.exec(id);return m?m[1]:'';}
+ function bkDesc(id,l){var d=BK_D[bkSer(id)];return d?(d[l]||d.es):null;}
  var bkL='es',bkI=0,bkBusy=false,bkEl=null,bkLast=null;
  function bkItems(){var m={};(CJ&&CJ.sets||[]).forEach(function(x){m[x.id]=x;});return BK_ORD.filter(function(id){return m[id];}).map(function(id){return m[id];});}
  function bkBadge(x){var s=S[bkL],u=(x.kind==='single')?'1':'',key=(x.st==='ok'||x.st==='low'||x.st==='last')?x.st+u:x.st,t=s[key]?rf(s[key],{n:x.n}):'';if(t&&x.wait>0&&x.st!=='wait'&&x.st!=='check')t+=' '+rf(s.plus,{m:x.wait});return t;}
- function bkPage(x){var d=document.createElement('div');d.className='dvbk-pg pzf';var g=document.createElement('div');g.className='dvbk-g';var K=BK_K[bkL],k1=document.createElement('span');k1.className='k';k1.textContent=K[x.kind]||'';var k2=document.createElement('span');k2.className='off';k2.textContent=(BK_P[x.kind]||'')+'% OFF';var k3=document.createElement('span');k3.className='mas';k3.textContent=K.mas;g.appendChild(k1);g.appendChild(k2);g.appendChild(k3);if(x.kind==='sc'){var ec=document.createElement('p');ec.className='eco';ec.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 1.5.4 2.8 1 4 1-4 4-8 9-10-4 3-6.5 6.5-7.5 10.5 1 .3 2 .5 3 .5 7 0 11-6 10.5-17z" fill="currentColor"/></svg>';var et=document.createElement('span'),ep=K.eco.split('|'),eb=document.createElement('b');eb.textContent=ep[0];et.appendChild(eb);et.appendChild(document.createElement('br'));et.appendChild(document.createTextNode(ep[1]));ec.appendChild(et);g.appendChild(ec);}var im=document.createElement('img');im.src='campana/pg/'+x.id+'_'+bkL+'.jpg?v=1113b';im.alt=x.name;var b=document.createElement('div');b.className='dvbk-b';var t=bkBadge(x);if(t){var sp=document.createElement('span');sp.className=x.st;sp.textContent=t;b.appendChild(sp);}['t','b','l','r','c pz-tl','c pz-tr','c pz-bl','c pz-br'].forEach(function(k){var z=document.createElement('i');z.className='pz pz-'+k;d.appendChild(z);});var lg=document.createElement('img');lg.className='dvbk-logo';lg.src='logo_round.png';lg.alt='THE HOME Hair re-creative';d.appendChild(lg);d.appendChild(g);d.appendChild(im);d.appendChild(b);return d;}
+ function bkPage(x){var d=document.createElement('div');d.className='dvbk-pg pzf';var g=document.createElement('div');g.className='dvbk-g';var K=BK_K[bkL],k1=document.createElement('span');k1.className='k';k1.textContent=K[x.kind]||'';var k2=document.createElement('span');k2.className='off';k2.textContent=(BK_P[x.kind]||'')+'% OFF';var k3=document.createElement('span');k3.className='mas';k3.textContent=K.mas;g.appendChild(k1);g.appendChild(k2);g.appendChild(k3);if(x.kind==='sc'){var ec=document.createElement('p');ec.className='eco';ec.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 4C10 4 4 9 4 16c0 1.5.4 2.8 1 4 1-4 4-8 9-10-4 3-6.5 6.5-7.5 10.5 1 .3 2 .5 3 .5 7 0 11-6 10.5-17z" fill="currentColor"/></svg>';var et=document.createElement('span'),ep=K.eco.split('|'),eb=document.createElement('b');eb.textContent=ep[0];et.appendChild(eb);et.appendChild(document.createElement('br'));et.appendChild(document.createTextNode(ep[1]));ec.appendChild(et);g.appendChild(ec);}var im=document.createElement('img');im.src='campana/pg/'+x.id+'_'+bkL+'.jpg?v=1113c';im.alt=x.name;var b=document.createElement('div');b.className='dvbk-b';var t=bkBadge(x);if(t){var sp=document.createElement('span');sp.className=x.st;sp.textContent=t;b.appendChild(sp);}['t','b','l','r','c pz-tl','c pz-tr','c pz-bl','c pz-br'].forEach(function(k){var z=document.createElement('i');z.className='pz pz-'+k;d.appendChild(z);});var lg=document.createElement('img');lg.className='dvbk-logo';lg.src='logo_round.png';lg.alt='THE HOME Hair re-creative';d.appendChild(lg);d.appendChild(g);d.appendChild(im);var dd=bkDesc(x.id,bkL);if(dd){var dp=document.createElement('p');dp.className='dvbk-d';var d1=document.createElement('b');d1.textContent=BK_DL[bkL]+'：'+dd[0];dp.appendChild(d1);dp.appendChild(document.createElement('br'));dp.appendChild(document.createTextNode(dd[1]));d.appendChild(dp);}d.appendChild(b);return d;}
  function bkBuild(){if(bkEl)return bkEl;var o=document.createElement('div');o.className='dvbk';o.hidden=true;o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');
   o.innerHTML='<div class="dvbk-top"><span class="dvbk-c"></span><button type="button" class="dvbk-x"></button></div><div class="dvbk-book"><div class="dvbk-cur"></div></div><div class="dvbk-nv"><button type="button" class="dvbk-p" aria-label="prev">&#8592;</button><span class="dvbk-n"></span><button type="button" class="dvbk-q" aria-label="next">&#8594;</button></div><p class="dvbk-h"></p>';
   document.body.appendChild(o);bkEl=o;
@@ -1419,13 +1436,13 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
  function putSec(l,t){if(!sec)return;var s=S[l];bkL=l;
   var bg=document.getElementById('dvsBig');bg.innerHTML=t.bs;document.getElementById('dvsTap').textContent=s.tap;document.getElementById('dvsN').textContent=t.n;
   sec.setAttribute('lang',l);
-  sec.querySelectorAll('.dvs-fl button').forEach(function(b,i){var im=b.querySelector('img');im.src='campana/'+IMG.full[i].split('/')[1]+l+'.jpg?v=1113b';im.alt=t['alt'+i];b.setAttribute('aria-label',t['alt'+i]);});
+  sec.querySelectorAll('.dvs-fl button').forEach(function(b,i){var im=b.querySelector('img');im.src='campana/'+IMG.full[i].split('/')[1]+l+'.jpg?v=1113c';im.alt=t['alt'+i];b.setAttribute('aria-label',t['alt'+i]);});
   var st=document.getElementById('dvsSt');
   if(!CJ||!CJ.sets){st.hidden=true;return;}
   var g={box:[],sc:[],single:[]};CJ.sets.forEach(function(x){/* 11/13 Nory：箱なし（お取り寄せの品も）も一覧に戻す */if(g[x.kind])g[x.kind].push(x);});
   ['box','sc','single'].forEach(function(k,gi){document.getElementById('dvsH'+gi).textContent=s.h[gi];if(k==='sc'){var h1=document.getElementById('dvsH1'),oe=document.getElementById('dvsEco');if(!oe){oe=document.createElement('p');oe.id='dvsEco';oe.className='dvs-eco';h1.parentNode.insertBefore(oe,h1.nextSibling);}oe.textContent=BK_K[l].eco.replace('|',' ');}var ul=document.getElementById('dvsL'+gi);ul.textContent='';
    g[k].forEach(function(x){var u=(k==='single')?'1':'';var li=document.createElement('li'),nm=document.createElement('span'),bd=document.createElement('span');
-    nm.className='nm';nm.textContent=x.name;var key=(x.st==='ok'||x.st==='low'||x.st==='last')?x.st+u:x.st;bd.className='bd '+x.st;
+    nm.className='nm';nm.textContent=x.name;var ld=bkDesc(x.id,l);if(ld){var lds=document.createElement('small');lds.className='ds';lds.textContent=ld[0]+' · '+ld[1];nm.appendChild(lds);}var key=(x.st==='ok'||x.st==='low'||x.st==='last')?x.st+u:x.st;bd.className='bd '+x.st;
     bd.textContent=s[key]?rf(s[key],{n:x.n}):'';
     if(x.wait>0&&x.st!=='wait'&&x.st!=='check'){var sm=document.createElement('small');sm.textContent=' '+rf(s.plus,{m:x.wait});bd.appendChild(sm);}
     if(!bd.textContent)return;li.appendChild(nm);li.appendChild(bd);li.className='tp';li.tabIndex=0;li.setAttribute('role','button');li.onclick=function(){bkOpen(x.id);};li.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();bkOpen(x.id);}};ul.appendChild(li);});
@@ -1449,7 +1466,7 @@ put();try{new MutationObserver(put).observe(document.documentElement,{attributes
   document.getElementById('dvlP').setAttribute('aria-label',t.prev);document.getElementById('dvlN').setAttribute('aria-label',t.next);
   p.setAttribute('lang',l);if(bd){bd.querySelector('.dvb-s').innerHTML=t.bs;bd.setAttribute('aria-label','DAVINES CAMPAIGN · '+t.bs.replace(/<[^>]+>/g,''));}lb.setAttribute('lang',l);lb.setAttribute('data-hint',S[l].tap);lb.setAttribute('aria-label',t.alt0);
   [0,1].forEach(function(i){var a=t['alt'+i];thImgs[i].alt=a;lbImgs[i].alt=a;thImgs[i].parentNode.setAttribute('aria-label',a);
-   if(loaded)thImgs[i].src=IMG.th[i]+l+'.jpg?v=1113b';if(big)lbImgs[i].src=IMG.full[i]+l+'.jpg?v=1113b';});
+   if(loaded)thImgs[i].src=IMG.th[i]+l+'.jpg?v=1113c';if(big)lbImgs[i].src=IMG.full[i]+l+'.jpg?v=1113c';});
   putSec(l,t);
  }
 /* 最初の画面の写真の上にバッジを置く（押すと大きく見る） */
